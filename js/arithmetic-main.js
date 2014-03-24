@@ -3,32 +3,34 @@
 /**
  * Main entry point for the 'Arithmetic' sim.
  *
- * @author John Blanco
+ * @author John Blanco, Andrey Zelenkov (MLearner)
  */
 define( function( require ) {
   'use strict';
 
   // imports
-  var ArithmeticScreen = require( 'ARITHMETIC/common/view/ArithmeticScreen' );
-  var Rectangle = require( 'SCENERY/nodes/rectangle' );
-  var Screen = require( 'JOIST/Screen' );
-  var Sim = require( 'JOIST/Sim' );
-  var SimLauncher = require( 'JOIST/SimLauncher' );
+  var ArithmeticScreen = require( 'ARITHMETIC/common/view/ArithmeticScreen' ),
+    DivideScreenIconNode = require( 'ARITHMETIC/divide/view/DivideScreenIconNode' ),
+    MultiplyScreenIconNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenIconNode' ),
+    FactorScreenIconNode = require( 'ARITHMETIC/factor/view/FactorScreenIconNode' ),
+    Screen = require( 'JOIST/Screen' ),
+    Sim = require( 'JOIST/Sim' ),
+    SimLauncher = require( 'JOIST/SimLauncher' ),
 
   // strings and images
-  var simTitle = require( 'string!ARITHMETIC/arithmetic.name' );
-  var multiplyString = require( 'string!ARITHMETIC/multiply' );
-  var divideString = require( 'string!ARITHMETIC/divide' );
-  var factorString = require( 'string!ARITHMETIC/factor' );
+    simTitle = require( 'string!ARITHMETIC/arithmetic.name' ),
 
-  var simOptions = {
-    credits: {
-      leadDesign: 'Mike Dubson, Bryce Gruneich',
-      softwareDevelopment: 'John Blanco, Mike Dubson',
-      designTeam: 'Karina Hensberry, Trish Loeblein, Ariel Paul, Kathy Perkins, Beth Stade',
-      thanks: 'Thanks to Mobile Learner Labs for working with the PhET development team to convert this simulation to HTML5.'
-    }
-  };
+  // constants
+    BACKGROUND_COLOR = 'rgb( 255, 245, 236 )',
+
+    simOptions = {
+      credits: {
+        leadDesign: 'Mike Dubson, Bryce Gruneich',
+        softwareDevelopment: 'John Blanco, Mike Dubson',
+        designTeam: 'Karina Hensberry, Trish Loeblein, Ariel Paul, Kathy Perkins, Beth Stade',
+        thanks: 'Thanks to Mobile Learner Labs for working with the PhET development team to convert this simulation to HTML5.'
+      }
+    };
 
   // Appending '?dev' to the URL will enable developer-only features.
   if ( window.phetcommon.getQueryParameter( 'dev' ) ) {
@@ -40,22 +42,22 @@ define( function( require ) {
   }
 
   SimLauncher.launch( function() {
-    //Create and start the sim
+    // create and start the sim
     new Sim( simTitle, [
-      new Screen( multiplyString, new Rectangle( 0, 0, 50, 50, 0, 0, { fill: 'blue' } ),
+      new Screen( '', new MultiplyScreenIconNode(),
         function() {return {}},
         function( model ) {return new ArithmeticScreen( model );},
-        { backgroundColor: 'rgb( 255, 245, 236 )' }
+        { backgroundColor: BACKGROUND_COLOR }
       ),
-      new Screen( factorString, new Rectangle( 0, 0, 50, 50, 0, 0, { fill: 'green' } ),
+      new Screen( '', new FactorScreenIconNode(),
         function() {return {}},
         function( model ) {return new ArithmeticScreen( model );},
-        { backgroundColor: 'rgb( 255, 245, 236 )' }
+        { backgroundColor: BACKGROUND_COLOR }
       ),
-      new Screen( divideString, new Rectangle( 0, 0, 50, 50, 0, 0, { fill: 'red' } ),
+      new Screen( '', new DivideScreenIconNode(),
         function() {return {}},
         function( model ) {return new ArithmeticScreen( model );},
-        { backgroundColor: 'rgb( 255, 245, 236 )' }
+        { backgroundColor: BACKGROUND_COLOR }
       )
     ], simOptions ).start();
   } );
