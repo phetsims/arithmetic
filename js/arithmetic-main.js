@@ -13,6 +13,7 @@ define( function( require ) {
     DivideScreenIconNode = require( 'ARITHMETIC/divide/view/DivideScreenIconNode' ),
     MultiplyScreenIconNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenIconNode' ),
     FactorScreenIconNode = require( 'ARITHMETIC/factor/view/FactorScreenIconNode' ),
+    ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' ),
     Screen = require( 'JOIST/Screen' ),
     Sim = require( 'JOIST/Sim' ),
     SimLauncher = require( 'JOIST/SimLauncher' ),
@@ -45,17 +46,17 @@ define( function( require ) {
     // create and start the sim
     new Sim( simTitle, [
       new Screen( '', new MultiplyScreenIconNode(),
-        function() {return {}},
+        function() {return new ArithmeticModel();},
         function( model ) {return new ArithmeticScreen( model );},
         { backgroundColor: BACKGROUND_COLOR }
       ),
       new Screen( '', new FactorScreenIconNode(),
-        function() {return {}},
+        function() {return new ArithmeticModel();},
         function( model ) {return new ArithmeticScreen( model );},
         { backgroundColor: BACKGROUND_COLOR }
       ),
       new Screen( '', new DivideScreenIconNode(),
-        function() {return {}},
+        function() {return new ArithmeticModel();},
         function( model ) {return new ArithmeticScreen( model );},
         { backgroundColor: BACKGROUND_COLOR }
       )
