@@ -10,9 +10,16 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' ),
     ScreenView = require( 'JOIST/ScreenView' ),
     VBox = require( 'SCENERY/nodes/VBox' ),
+    HBox = require( 'SCENERY/nodes/HBox' ),
+    LevelIconNode = require( 'ARITHMETIC/common/view/LevelIconNode' ),
     SoundToggleButton = require( 'SCENERY_PHET/SoundToggleButton' ),
     TimerToggleButton = require( 'SCENERY_PHET/TimerToggleButton' ),
-    ResetAllButton = require( 'SCENERY_PHET/ResetAllButton' );
+    ResetAllButton = require( 'SCENERY_PHET/ResetAllButton' ),
+
+  // images
+    girlLevel1Image = require( 'image!ARITHMETIC/girl-level-1.png' ),
+    girlLevel2Image = require( 'image!ARITHMETIC/girl-level-2.png' ),
+    girlLevel3Image = require( 'image!ARITHMETIC/girl-level-3.png' );
 
   /**
    * @param model
@@ -20,6 +27,12 @@ define( function( require ) {
    */
   function ArithmeticScreen( model ) {
     ScreenView.call( this );
+
+    this.addChild( new HBox( {centerX: model.width / 2, centerY: model.height / 2, spacing: 20, children: [
+      new LevelIconNode( girlLevel1Image ),
+      new LevelIconNode( girlLevel2Image ),
+      new LevelIconNode( girlLevel3Image )
+    ]} ) );
 
     // add timer, sound and reset buttons
     this.addChild( new VBox( {spacing: 5, children: [
