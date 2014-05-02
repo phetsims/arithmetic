@@ -12,8 +12,8 @@ define( function( require ) {
     VBox = require( 'SCENERY/nodes/VBox' ),
     HBox = require( 'SCENERY/nodes/HBox' ),
     LevelIconNode = require( 'ARITHMETIC/common/view/LevelIconNode' ),
-    SoundToggleButton = require( 'SCENERY_PHET/SoundToggleButton' ),
-    TimerToggleButton = require( 'SCENERY_PHET/TimerToggleButton' ),
+    SoundToggleButtonDeprecated = require( 'SCENERY_PHET/SoundToggleButtonDeprecated' ),
+    TimerToggleButtonDeprecated = require( 'SCENERY_PHET/TimerToggleButtonDeprecated' ),
     ResetAllButtonDeprecated = require( 'SCENERY_PHET/ResetAllButtonDeprecated' ),
 
   // images
@@ -36,8 +36,8 @@ define( function( require ) {
 
     // add timer, sound and reset buttons
     this.addChild( new VBox( {spacing: 5, children: [
-      new TimerToggleButton( model.property( 'isTimer' ) ),
-      new SoundToggleButton( model.property( 'isSound' ) ),
+      new TimerToggleButtonDeprecated( model.property( 'isTimer' ) ),
+      new SoundToggleButtonDeprecated( model.property( 'isSound' ) ),
       new ResetAllButtonDeprecated( function() {model.reset();}, {scale: 0.75} )
     ]} ).mutate( {right: this.layoutBounds.maxX * 0.98, bottom: this.layoutBounds.maxY * 0.95} ) );
   }
