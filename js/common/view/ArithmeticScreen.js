@@ -14,7 +14,7 @@ define( function( require ) {
     LevelIconNode = require( 'ARITHMETIC/common/view/LevelIconNode' ),
     SoundToggleButtonDeprecated = require( 'SCENERY_PHET/SoundToggleButtonDeprecated' ),
     TimerToggleButtonDeprecated = require( 'SCENERY_PHET/TimerToggleButtonDeprecated' ),
-    ResetAllButtonDeprecated = require( 'SCENERY_PHET/ResetAllButtonDeprecated' ),
+    ResetAllButton = require( 'SCENERY_PHET/ResetAllButton' ),
 
   // images
     girlLevel1Image = require( 'image!ARITHMETIC/girl-level-1.png' ),
@@ -38,7 +38,10 @@ define( function( require ) {
     this.addChild( new VBox( {spacing: 5, children: [
       new TimerToggleButtonDeprecated( model.property( 'isTimer' ) ),
       new SoundToggleButtonDeprecated( model.property( 'isSound' ) ),
-      new ResetAllButtonDeprecated( function() {model.reset();}, {scale: 0.75} )
+      new ResetAllButton( {
+        listener: function() {model.reset();},
+        scale: 0.75
+      } )
     ]} ).mutate( {right: this.layoutBounds.maxX * 0.98, bottom: this.layoutBounds.maxY * 0.95} ) );
   }
 
