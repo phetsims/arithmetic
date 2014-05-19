@@ -16,6 +16,7 @@ define( function( require ) {
   var SoundToggleButton = require( 'SCENERY_PHET/SoundToggleButton' );
   var StartGameLevelNode = require( 'ARITHMETIC/common/view/StartGameLevelNode' );
   var VBox = require( 'SCENERY/nodes/VBox' );
+  var WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
 
   /**
    * @param model
@@ -25,16 +26,26 @@ define( function( require ) {
   function ArithmeticScreen( model, titleString ) {
     ScreenView.call( this );
 
-    this.addChild( new StartGameLevelNode( model.levels, model.bestScores, titleString, model.simBounds ) );
+    // add start game level buttons
+    this.addChild( new StartGameLevelNode( model.levels, model.bestScores, model.property( 'level' ), titleString, model.simBounds ) );
+
+    // add game components
+    this.addChild( new WorkspaceNode( model ) );
 
     // add timer, sound and reset buttons
-    this.addChild( new VBox( {spacing: 5, children: [
+    var generalButtons = new VBox( {spacing: 5, children: [
       new TimerToggleButton( model.property( 'isTimer' ) ),
       new SoundToggleButton( model.property( 'isSound' ) ),
       new ResetAllButton( {
         listener: function() {model.reset();}
       } )
-    ]} ).mutate( {right: this.layoutBounds.maxX * 0.98, bottom: this.layoutBounds.maxY * 0.95} ) );
+    ]} ).mutate( {right: this.layoutBounds.maxX * 0.98, bottom: this.layoutBounds.maxY * 0.95} );
+    this.addChild( generalButtons );
+
+    // observers
+    model.property( 'level' ).link( function( level ) {
+      generalButtons.visible = !level;
+    } );
   }
 
   return inherit( ScreenView, ArithmeticScreen );

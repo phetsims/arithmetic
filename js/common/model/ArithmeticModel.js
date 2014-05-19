@@ -42,6 +42,7 @@ define( function( require ) {
     PropertySet.call( this, {
       level: 0, // level difficulty, zero-based in the model, though levels appear to the user to start
       score: 0, // current score
+      input: '', // user's input value
       isSound: true, // is sound active
       isTimer: false // is time mode active
     } );
@@ -49,7 +50,7 @@ define( function( require ) {
     // best times and scores, equal to number of levels
     this.bestTimes = [];
     this.bestScores = [];
-    _.times( this.levels.length, function() {
+    this.levels.forEach( function() {
       self.bestTimes.push( null );
       self.bestScores.push( new Property( 0 ) );
     } );

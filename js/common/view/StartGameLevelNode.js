@@ -27,7 +27,8 @@ define( function( require ) {
   // strings
   var chooseYourLevelString = require( 'string!ARITHMETIC/chooseYourLevel' );
 
-  function StartGameLevelNode( levels, scorePropertyArray, titleString, simBounds ) {
+  function StartGameLevelNode( levels, scorePropertyArray, levelProperty, titleString, simBounds ) {
+    var self = this;
     Node.call( this );
 
     // add title
@@ -52,7 +53,9 @@ define( function( require ) {
       selectLevelButtons.addChild( new LevelStartButton(
         new Image( level.icon ),
         STAR_NUMBER,
-        function() {},
+        function() {
+          levelProperty.value = levelNumber;
+        },
         scorePropertyArray[levelNumber],
         PERFECT_SCORE,
         {backgroundColor: 'white', highlightedBackgroundColor: 'white'}
@@ -62,6 +65,10 @@ define( function( require ) {
     selectLevelButtons.centerX = simBounds.width / 2;
     selectLevelButtons.top = chooseLevelTitle.bounds.maxY + 20;
     this.addChild( selectLevelButtons );
+
+    levelProperty.link( function( level ) {
+      self.visible = !level;
+    } );
   }
 
   return inherit( Node, StartGameLevelNode );
