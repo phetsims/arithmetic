@@ -8,17 +8,17 @@
 define( function( require ) {
   'use strict';
 
-  var PropertySet = require( 'AXON/PropertySet' ),
-    inherit = require( 'PHET_CORE/inherit' ),
-    ScreenView = require( 'JOIST/ScreenView' );
-
+  var inherit = require( 'PHET_CORE/inherit' );
+  var PropertySet = require( 'AXON/PropertySet' );
+  var ScreenView = require( 'JOIST/ScreenView' );
 
   function ArithmeticModel() {
     // dimensions of the model's space
-    this.width = ScreenView.DEFAULT_LAYOUT_BOUNDS.width;
-    this.height = ScreenView.DEFAULT_LAYOUT_BOUNDS.height;
+    this.simBounds = ScreenView.DEFAULT_LAYOUT_BOUNDS;
 
     PropertySet.call( this, {
+      level: 0, // level difficulty, zero-based in the model, though levels appear to the user to start
+      score: 0, // current score
       isSound: true, // is sound active
       isTimer: false // is time mode active
     } );

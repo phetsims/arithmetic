@@ -3,14 +3,18 @@
 /**
  * Constants for simulation 'Arithmetic'.
  *
- * @author Andrey Zelenkov (Mlearner)
+ * @author Andrey Zelenkov (MLearner)
  */
 
-define( function() {
+define( function( require ) {
   'use strict';
 
+  // imports
+  var Dimension2 = require( 'DOT/Dimension2' );
+
   return {
-    SCREEN_ICON_HEIGHT: 40, // height of screen icons
-    SCREEN_ICON_WIDTH: 60 // width of screen icons
+    PERFECT_SCORE: 12, // perfect score
+    SCREEN_ICON_SIZE: new Dimension2( 60, 40 ), // size of screen icons
+    STAR_NUMBER: 5 // number of stars in select level buttons
   };
 } );

@@ -9,29 +9,28 @@ define( function( require ) {
   'use strict';
 
   // imports
-  var inherit = require( 'PHET_CORE/inherit' ),
-    Rectangle = require( 'SCENERY/nodes/rectangle' ),
-    Text = require( 'SCENERY/nodes/Text' ),
-    PhetFont = require( 'SCENERY_PHET/PhetFont' ),
-    Constants = require( 'ARITHMETIC/common/model/Constants' ),
+  var Constants = require( 'ARITHMETIC/common/model/Constants' );
+  var inherit = require( 'PHET_CORE/inherit' );
+  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  var Rectangle = require( 'SCENERY/nodes/rectangle' );
+  var Text = require( 'SCENERY/nodes/Text' );
 
   // strings
-    multiplyString = require( 'string!ARITHMETIC/multiply' ),
+  var multiplyString = require( 'string!ARITHMETIC/multiply' );
 
   // constants
-    ICON_WIDTH = Constants.SCREEN_ICON_WIDTH,
-    ICON_HEIGHT = Constants.SCREEN_ICON_HEIGHT,
-    FONT_TITLE = new PhetFont( 12 ),
-    FONT_X = new PhetFont( 18 );
+  var FONT_TITLE = new PhetFont( 12 );
+  var FONT_X = new PhetFont( 18 );
+  var ICON_SIZE = Constants.SCREEN_ICON_SIZE;
 
   function MultiplyScreenIconNode() {
-    Rectangle.call( this, 0, 0, ICON_WIDTH, ICON_HEIGHT, {fill: 'white'} );
+    Rectangle.call( this, 0, 0, ICON_SIZE.width, ICON_SIZE.height, {fill: 'white'} );
 
     // add text
-    this.addChild( new Text( multiplyString, {font: FONT_TITLE, centerX: ICON_WIDTH / 2, centerY: ICON_HEIGHT / 4} ) );
+    this.addChild( new Text( multiplyString, {font: FONT_TITLE, centerX: ICON_SIZE.width / 2, centerY: ICON_SIZE.height / 4} ) );
 
     // add multiply sign
-    this.addChild( new Text( 'X', {font: FONT_X, centerX: ICON_WIDTH / 2, centerY: 3 * ICON_HEIGHT / 4} ) );
+    this.addChild( new Text( 'X', {font: FONT_X, centerX: ICON_SIZE.width / 2, centerY: 3 * ICON_SIZE.height / 4} ) );
   }
 
   return inherit( Rectangle, MultiplyScreenIconNode );

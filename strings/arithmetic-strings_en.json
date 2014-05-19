@@ -1,6 +1,7 @@
 {
   "arithmetic.name": "Arithmetic",
-  "multiply": "Multiply",
+  "chooseYourLevel": "Choose your level!",
+  "divide": "Divide",
   "factor": "Factor",
-  "divide": "Divide"
+  "multiply": "Multiply"
 }
