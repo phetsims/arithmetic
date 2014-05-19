@@ -49,14 +49,14 @@ define( function( require ) {
 
     // add select level buttons
     var selectLevelButtons = new HBox( {spacing: 10} );
-    levels.forEach( function( level, levelNumber ) {
+    levels.forEach( function( level, levelIndex ) {
       selectLevelButtons.addChild( new LevelStartButton(
         new Image( level.icon ),
         STAR_NUMBER,
         function() {
-          levelProperty.value = levelNumber;
+          levelProperty.value = levelIndex + 1;
         },
-        scorePropertyArray[levelNumber],
+        scorePropertyArray[levelIndex],
         PERFECT_SCORE,
         {backgroundColor: 'white', highlightedBackgroundColor: 'white'}
       ) );
