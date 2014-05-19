@@ -28,9 +28,11 @@ define( function( require ) {
   var chooseYourLevelString = require( 'string!ARITHMETIC/chooseYourLevel' );
 
   // images
-  var phetGirlIcon1Image = require( 'image!ARITHMETIC/phet-girl-icon-1.png' );
-  var phetGirlIcon2Image = require( 'image!ARITHMETIC/phet-girl-icon-2.png' );
-  var phetGirlIcon3Image = require( 'image!ARITHMETIC/phet-girl-icon-3.png' );
+  var phetGirlIconImages = [
+    require( 'image!ARITHMETIC/phet-girl-icon-1.png' ),
+    require( 'image!ARITHMETIC/phet-girl-icon-2.png' ),
+    require( 'image!ARITHMETIC/phet-girl-icon-3.png' )
+  ];
 
   function StartGameLevelNode( scoreProperty, titleString, simBounds ) {
     Node.call( this );
@@ -52,16 +54,21 @@ define( function( require ) {
     this.addChild( chooseLevelTitle );
 
     // add select level buttons
-    this.addChild( new HBox( {
-      spacing: 10,
-      children: [
-        new LevelStartButton( new Image( phetGirlIcon1Image ), STAR_NUMBER, function() {}, scoreProperty, PERFECT_SCORE ),
-        new LevelStartButton( new Image( phetGirlIcon2Image ), STAR_NUMBER, function() {}, scoreProperty, PERFECT_SCORE ),
-        new LevelStartButton( new Image( phetGirlIcon3Image ), STAR_NUMBER, function() {}, scoreProperty, PERFECT_SCORE )
-      ],
-      centerX: simBounds.width / 2,
-      top: chooseLevelTitle.bounds.maxY + 20
-    } ) );
+    var selectLevelButtons = new HBox( {spacing: 10} );
+    phetGirlIconImages.forEach( function( icon ) {
+      selectLevelButtons.addChild( new LevelStartButton(
+        new Image( icon ),
+        STAR_NUMBER,
+        function() {},
+        scoreProperty,
+        PERFECT_SCORE,
+        {backgroundColor: 'white', highlightedBackgroundColor: 'white'}
+      ) );
+    } );
+    selectLevelButtons.updateLayout();
+    selectLevelButtons.centerX = simBounds.width / 2;
+    selectLevelButtons.top = chooseLevelTitle.bounds.maxY + 20;
+    this.addChild( selectLevelButtons );
   }
 
   return inherit( Node, StartGameLevelNode );
