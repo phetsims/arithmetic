@@ -25,7 +25,7 @@ define( function( require ) {
   function ArithmeticScreen( model, titleString ) {
     ScreenView.call( this );
 
-    this.addChild( new StartGameLevelNode( model.property( 'score' ), titleString, model.simBounds ) );
+    this.addChild( new StartGameLevelNode( model.levels, model.bestScores, titleString, model.simBounds ) );
 
     // add timer, sound and reset buttons
     this.addChild( new VBox( {spacing: 5, children: [
