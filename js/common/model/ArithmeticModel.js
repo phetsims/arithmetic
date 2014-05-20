@@ -57,6 +57,9 @@ define( function( require ) {
   }
 
   return inherit( PropertySet, ArithmeticModel, {
+    checkInput: function() {
+
+    },
     reset: function() {
       PropertySet.prototype.reset.call( this );
     }

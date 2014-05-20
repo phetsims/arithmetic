@@ -30,7 +30,7 @@ define( function( require ) {
     this.addChild( new StartGameLevelNode( model.levels, model.bestScores, model.property( 'level' ), titleString, model.simBounds ) );
 
     // add game components
-    this.addChild( new WorkspaceNode( model ) );
+    this.addChild( new WorkspaceNode( model, this.layoutBounds ) );
 
     // add timer, sound and reset buttons
     var generalButtons = new VBox( {spacing: 5, children: [

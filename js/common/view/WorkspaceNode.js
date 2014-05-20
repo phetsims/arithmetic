@@ -13,11 +13,16 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
 
-  function WorkspaceNode( model ) {
+  function WorkspaceNode( model, layoutBounds ) {
     var self = this;
     Node.call( this );
 
-    this.addChild( new CalculatorNode( model.property( 'input' ) ) );
+    this.addChild( new CalculatorNode(
+        model.property( 'input' ),
+        model.property( 'level' ),
+        model.checkInput
+      ).mutate( {right: layoutBounds.maxX * 0.98, bottom: layoutBounds.maxY * 0.95} )
+    );
 
     model.property( 'level' ).link( function( level ) {
       self.visible = level;
