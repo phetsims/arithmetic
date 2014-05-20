@@ -43,8 +43,11 @@ define( function( require ) {
     // add background
     this.addChild( background );
 
+    // add control buttons
     this.addChild( new VBox( {spacing: SPACING, children: [
+      // add level text
       levelText,
+      // add refresh button
       new RefreshButton( {
         baseColor: 'rgb(244,133,24)',
         listener: refreshLevelCallback
@@ -53,11 +56,13 @@ define( function( require ) {
         new VBox( {spacing: SPACING, align: 'left', children: [
           new Text( timeString + ':', {font: FONT} ),
           new Text( scoreString + ':', {font: FONT} ),
+          // add sound toggle button
           new SoundToggleButton( isSoundProperty, {baseColor: 'white'} )
         ]} ),
         new VBox( {spacing: SPACING, align: 'right', children: [
           timeText,
           scoreText,
+          // add timer toggle button
           new TimerToggleButton( isTimerProperty, {baseColor: 'white'} )
         ]} )
       ]} )
