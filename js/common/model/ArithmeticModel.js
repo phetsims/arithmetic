@@ -42,7 +42,7 @@ define( function( require ) {
 
     PropertySet.call( this, {
       level: 0, // level difficulty, zero-based in the model, though levels appear to the user to start
-      score: 0, // current score
+      scoreTotal: 0, // total user score for current games
       time: 0, // current time
       input: '', // user's input value
       isSound: true, // is sound active

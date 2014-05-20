@@ -13,6 +13,7 @@ define( function( require ) {
   var CalculatorNode = require( 'ARITHMETIC/common/view/CalculatorNode' );
   var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
   var EquationNode = require( 'ARITHMETIC/common/view/EquationNode' );
+  var FaceWithScoreNode = require( 'ARITHMETIC/common/view/FaceWithScoreNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var TimesTableNode = require( 'ARITHMETIC/common/view/TimesTableNode' );
@@ -31,7 +32,7 @@ define( function( require ) {
     // add control panel
     this.addChild( new ControlPanelNode(
         model.property( 'level' ),
-        model.property( 'score' ),
+        model.property( 'scoreTotal' ),
         model.property( 'time' ),
         model.property( 'isTimer' ),
         model.property( 'isSound' ),
@@ -57,6 +58,12 @@ define( function( require ) {
       model.game.property( 'multiplierRight' ),
       model.game.property( 'product' )
     ).mutate( {bottom: layoutBounds.maxY * 0.95, centerX: layoutBounds.width * 0.45} ) );
+
+    // add smile face
+    this.addChild( new FaceWithScoreNode(
+        model.game.property( 'scoreGame' )
+      ).mutate( {bottom: layoutBounds.maxY * 0.95, left: 50} )
+    );
 
     model.property( 'level' ).link( function( level ) {
       self.visible = level;

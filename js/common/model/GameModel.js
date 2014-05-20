@@ -16,7 +16,10 @@ define( function( require ) {
     PropertySet.call( this, {
       multiplierLeft: undefined, // left multiplier
       multiplierRight: undefined, // right multiplier
-      product: undefined // product of multiplication
+      product: undefined, // product of multiplication
+      state: undefined, // current game state
+      isFirstTry: true, // first user try flag
+      scoreGame: 1 // score for current game
     } );
   }
 
