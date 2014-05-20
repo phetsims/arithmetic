@@ -42,6 +42,7 @@ define( function( require ) {
     PropertySet.call( this, {
       level: 0, // level difficulty, zero-based in the model, though levels appear to the user to start
       score: 0, // current score
+      time: 0, // current time
       input: '', // user's input value
       isSound: true, // is sound active
       isTimer: false // is time mode active
@@ -57,9 +58,14 @@ define( function( require ) {
   }
 
   return inherit( PropertySet, ArithmeticModel, {
-    checkInput: function() {
-
+    step: function( dt ) {
+      // if timer is on and level selected - add time
+      if ( this.isTimer && this.level ) {
+        this.time += dt;
+      }
     },
+    checkInput: function() {},
+    refreshLevel: function() {},
     reset: function() {
       PropertySet.prototype.reset.call( this );
     }

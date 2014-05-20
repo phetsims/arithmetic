@@ -10,6 +10,7 @@ define( function( require ) {
 
   // imports
   var CalculatorNode = require( 'ARITHMETIC/common/view/CalculatorNode' );
+  var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
 
@@ -17,10 +18,22 @@ define( function( require ) {
     var self = this;
     Node.call( this );
 
+    // add calculator
     this.addChild( new CalculatorNode(
         model.property( 'input' ),
         model.checkInput
       ).mutate( {right: layoutBounds.maxX * 0.98, bottom: layoutBounds.maxY * 0.95} )
+    );
+
+    // add control panel
+    this.addChild( new ControlPanelNode(
+        model.property( 'level' ),
+        model.property( 'score' ),
+        model.property( 'time' ),
+        model.property( 'isTimer' ),
+        model.property( 'isSound' ),
+        model.refreshLevel
+      ).mutate( {right: layoutBounds.maxX * 0.98, top: 10} )
     );
 
     model.property( 'level' ).link( function( level ) {

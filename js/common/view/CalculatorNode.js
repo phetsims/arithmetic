@@ -21,7 +21,7 @@ define( function( require ) {
 
   // constants
   var FONT = new PhetFont( 24 );
-  var SPACING = 5;
+  var SPACING = 10;
   var ARROW_SIZE = 28;
 
   function CalculatorNode( inputProperty, enterCallback ) {

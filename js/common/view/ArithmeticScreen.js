@@ -11,10 +11,10 @@ define( function( require ) {
   // imports
   var inherit = require( 'PHET_CORE/inherit' );
   var ResetAllButton = require( 'SCENERY_PHET/ResetAllButton' );
-  var TimerToggleButton = require( 'SCENERY_PHET/TimerToggleButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var SoundToggleButton = require( 'SCENERY_PHET/SoundToggleButton' );
   var StartGameLevelNode = require( 'ARITHMETIC/common/view/StartGameLevelNode' );
+  var TimerToggleButton = require( 'SCENERY_PHET/TimerToggleButton' );
   var VBox = require( 'SCENERY/nodes/VBox' );
   var WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
 
@@ -34,8 +34,8 @@ define( function( require ) {
 
     // add timer, sound and reset buttons
     var generalButtons = new VBox( {spacing: 5, children: [
-      new TimerToggleButton( model.property( 'isTimer' ) ),
-      new SoundToggleButton( model.property( 'isSound' ) ),
+      new TimerToggleButton( model.property( 'isTimer' ), {baseColor: 'white'} ),
+      new SoundToggleButton( model.property( 'isSound' ), {baseColor: 'white'} ),
       new ResetAllButton( {
         listener: function() {model.reset();}
       } )
