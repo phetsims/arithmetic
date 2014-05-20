@@ -10,6 +10,7 @@ define( function( require ) {
 
   // imports
   var inherit = require( 'PHET_CORE/inherit' );
+  var GameModel = require( 'ARITHMETIC/common/model/GameModel' );
   var Property = require( 'AXON/Property' );
   var PropertySet = require( 'AXON/PropertySet' );
   var ScreenView = require( 'JOIST/ScreenView' );
@@ -47,6 +48,9 @@ define( function( require ) {
       isSound: true, // is sound active
       isTimer: false // is time mode active
     } );
+
+    // model for single game
+    this.game = new GameModel();
 
     // best times and scores, equal to number of levels
     this.bestTimes = [];
