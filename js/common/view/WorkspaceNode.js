@@ -12,8 +12,10 @@ define( function( require ) {
   var BackButtonNode = require( 'ARITHMETIC/common/view/BackButtonNode' );
   var CalculatorNode = require( 'ARITHMETIC/common/view/CalculatorNode' );
   var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
+  var EquationNode = require( 'ARITHMETIC/common/view/EquationNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
+  var TimesTableNode = require( 'ARITHMETIC/common/view/TimesTableNode' );
 
   function WorkspaceNode( model, layoutBounds ) {
     var self = this;
@@ -37,7 +39,24 @@ define( function( require ) {
       ).mutate( {right: layoutBounds.maxX * 0.98, top: 10} )
     );
 
-    this.addChild( new BackButtonNode( model.property( 'level' ) ).mutate( {left: 10, top: 10} ) );
+    // add back button
+    this.addChild( new BackButtonNode(
+        model.property( 'level' )
+      ).mutate( {left: 10, top: 10} )
+    );
+
+    // add times table
+    this.addChild( new TimesTableNode(
+        model.property( 'level' )
+      )
+    );
+
+    // add equation
+    this.addChild( new EquationNode(
+      model.game.property( 'multiplierLeft' ),
+      model.game.property( 'multiplierRight' ),
+      model.game.property( 'product' )
+    ).mutate( {bottom: layoutBounds.maxY * 0.95, centerX: layoutBounds.width * 0.45} ) );
 
     model.property( 'level' ).link( function( level ) {
       self.visible = level;
