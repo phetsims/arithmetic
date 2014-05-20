@@ -55,6 +55,13 @@ define( function( require ) {
       self.bestTimes.push( null );
       self.bestScores.push( new Property( 0 ) );
     } );
+
+    // clear time when timer off
+    this.property( 'isTimer' ).link( function( isTimer ) {
+      if ( !isTimer ) {
+        self.time = 0;
+      }
+    } );
   }
 
   return inherit( PropertySet, ArithmeticModel, {
