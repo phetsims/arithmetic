@@ -19,7 +19,6 @@ define( function( require ) {
 
     this.addChild( new CalculatorNode(
         model.property( 'input' ),
-        model.property( 'level' ),
         model.checkInput
       ).mutate( {right: layoutBounds.maxX * 0.98, bottom: layoutBounds.maxY * 0.95} )
     );

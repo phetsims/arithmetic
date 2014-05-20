@@ -24,8 +24,7 @@ define( function( require ) {
   var SPACING = 5;
   var ARROW_SIZE = 28;
 
-  function CalculatorNode( inputProperty, levelProperty, enterCallback ) {
-    var self = this;
+  function CalculatorNode( inputProperty, enterCallback ) {
     Node.call( this );
 
     // add buttons
@@ -51,10 +50,6 @@ define( function( require ) {
         this.getButtonBackspace( inputProperty )
       ]} )
     ]} ) );
-
-    levelProperty.link( function( level ) {
-      self.visible = level;
-    } );
   }
 
   return inherit( Node, CalculatorNode, {
