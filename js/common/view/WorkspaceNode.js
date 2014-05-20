@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // imports
+  var BackButtonNode = require( 'ARITHMETIC/common/view/BackButtonNode' );
   var CalculatorNode = require( 'ARITHMETIC/common/view/CalculatorNode' );
   var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -35,6 +36,8 @@ define( function( require ) {
         model.refreshLevel
       ).mutate( {right: layoutBounds.maxX * 0.98, top: 10} )
     );
+
+    this.addChild( new BackButtonNode( model.property( 'level' ) ).mutate( {left: 10, top: 10} ) );
 
     model.property( 'level' ).link( function( level ) {
       self.visible = level;
