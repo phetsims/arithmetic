@@ -16,7 +16,7 @@ define( function( require ) {
   var FaceWithScoreConfiguredNode = require( 'ARITHMETIC/common/view/FaceWithScoreConfiguredNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
-  var TimesTableNode = require( 'ARITHMETIC/common/view/TimesTableNode' );
+  var TimesTableNode = require( 'ARITHMETIC/common/view/table/TimesTableNode' );
 
   function WorkspaceNode( model, layoutBounds ) {
     var self = this;
@@ -37,19 +37,19 @@ define( function( require ) {
         model.property( 'isTimer' ),
         model.property( 'isSound' ),
         model.refreshLevel
-      ).mutate( {right: layoutBounds.maxX * 0.98, top: 10} )
+      ).mutate( {right: layoutBounds.maxX * 0.98, top: layoutBounds.maxY * 0.02} )
     );
 
     // add back button
     this.addChild( new BackButtonNode(
         model.property( 'level' )
-      ).mutate( {left: 10, top: 10} )
+      ).mutate( {left: layoutBounds.maxX * 0.02, top: layoutBounds.maxY * 0.02} )
     );
 
     // add times table
     this.addChild( new TimesTableNode(
         model.property( 'level' )
-      )
+      ).mutate( {top: layoutBounds.maxY * 0.02, centerX: layoutBounds.width * 0.45} )
     );
 
     // add equation
@@ -62,7 +62,7 @@ define( function( require ) {
     // add smile face
     this.addChild( new FaceWithScoreConfiguredNode(
         model.game.property( 'scoreGame' )
-      ).mutate( {bottom: layoutBounds.maxY * 0.95, left: 50} )
+      ).mutate( {bottom: layoutBounds.maxY * 0.95, left: layoutBounds.maxX * 0.04} )
     );
 
     model.property( 'level' ).link( function( level ) {
