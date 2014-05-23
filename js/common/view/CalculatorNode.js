@@ -28,66 +28,69 @@ define( function( require ) {
     // add buttons
     VBox.call( this, {spacing: SPACING, children: [
       new HBox( {spacing: SPACING, children: [
-        this.getButtonNumber( 7, inputProperty ),
-        this.getButtonNumber( 8, inputProperty ),
-        this.getButtonNumber( 9, inputProperty )
+        getButtonNumber( 7, inputProperty ),
+        getButtonNumber( 8, inputProperty ),
+        getButtonNumber( 9, inputProperty )
       ]} ),
       new HBox( {spacing: SPACING, children: [
-        this.getButtonNumber( 4, inputProperty ),
-        this.getButtonNumber( 5, inputProperty ),
-        this.getButtonNumber( 6, inputProperty )
+        getButtonNumber( 4, inputProperty ),
+        getButtonNumber( 5, inputProperty ),
+        getButtonNumber( 6, inputProperty )
       ]} ),
       new HBox( {spacing: SPACING, children: [
-        this.getButtonNumber( 1, inputProperty ),
-        this.getButtonNumber( 2, inputProperty ),
-        this.getButtonNumber( 3, inputProperty )
+        getButtonNumber( 1, inputProperty ),
+        getButtonNumber( 2, inputProperty ),
+        getButtonNumber( 3, inputProperty )
       ]} ),
       new HBox( {spacing: SPACING, children: [
-        this.getButtonEnter( enterCallback ),
-        this.getButtonNumber( 0, inputProperty ),
-        this.getButtonBackspace( inputProperty )
+        getButtonEnter( enterCallback ),
+        getButtonNumber( 0, inputProperty ),
+        getButtonBackspace( inputProperty )
       ]} )
     ]} );
   }
 
-  return inherit( VBox, CalculatorNode, {
-    // return backspace button
-    getButtonBackspace: function( inputProperty ) {
-      return this.getButtonDefault( new Node( {children: [
-        new ArrowNode( ARROW_SIZE / 2, 0, -ARROW_SIZE / 2, 0, {
-          headWidth: 6,
-          headHeight: 6,
-          tailWidth: 1
-        } ),
-        new Rectangle( ARROW_SIZE / 2 - 1, -ARROW_SIZE / 4, 2, ARROW_SIZE / 4, {fill: 'black'} )
-      ]} ), function() {
-        inputProperty.value = inputProperty.value.substr( 0, inputProperty.value.length - 1 );
-      } );
-    },
-    // return default rectangular button with common options. Necessary for other building other buttons
-    getButtonDefault: function( content, listener ) {
-      return new RectangularPushButton( {
-        content: content,
-        baseColor: 'white',
-        minHeight: 40,
-        minWidth: 40,
-        listener: listener
-      } );
-    },
-    // return enter button
-    getButtonEnter: function( callback ) {
-      return this.getButtonDefault( new ArrowNode( ARROW_SIZE / 2, 0, -ARROW_SIZE / 2, 0, {
+  // return backspace button
+  var getButtonBackspace = function( inputProperty ) {
+    return getButtonDefault( new Node( {children: [
+      new ArrowNode( ARROW_SIZE / 2, 0, -ARROW_SIZE / 2, 0, {
         headWidth: 6,
         headHeight: 6,
         tailWidth: 1
-      } ), callback );
-    },
-    // return number button
-    getButtonNumber: function( number, inputProperty ) {
-      var numberString = number.toString();
-      return this.getButtonDefault( new Text( numberString, {font: FONT} ), function() {
-        inputProperty.value += numberString;
-      } );
-    }
-  } );
+      } ),
+      new Rectangle( ARROW_SIZE / 2 - 1, -ARROW_SIZE / 4, 2, ARROW_SIZE / 4, {fill: 'black'} )
+    ]} ), function() {
+      inputProperty.value = inputProperty.value.substr( 0, inputProperty.value.length - 1 );
+    } );
+  };
+
+  // return default rectangular button with common options. Necessary for other building other buttons
+  var getButtonDefault = function( content, listener ) {
+    return new RectangularPushButton( {
+      content: content,
+      baseColor: 'white',
+      minHeight: 40,
+      minWidth: 40,
+      listener: listener
+    } );
+  };
+
+  // return enter button
+  var getButtonEnter = function( callback ) {
+    return getButtonDefault( new ArrowNode( ARROW_SIZE / 2, 0, -ARROW_SIZE / 2, 0, {
+      headWidth: 6,
+      headHeight: 6,
+      tailWidth: 1
+    } ), callback );
+  };
+
+  // return number button
+  var getButtonNumber = function( number, inputProperty ) {
+    var numberString = number.toString();
+    return getButtonDefault( new Text( numberString, {font: FONT} ), function() {
+      inputProperty.value += numberString;
+    } );
+  };
+
+  return inherit( VBox, CalculatorNode );
 } );
