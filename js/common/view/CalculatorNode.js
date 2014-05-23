@@ -25,10 +25,8 @@ define( function( require ) {
   var ARROW_SIZE = 28;
 
   function CalculatorNode( inputProperty, enterCallback ) {
-    Node.call( this );
-
     // add buttons
-    this.addChild( new VBox( {spacing: SPACING, children: [
+    VBox.call( this, {spacing: SPACING, children: [
       new HBox( {spacing: SPACING, children: [
         this.getButtonNumber( 7, inputProperty ),
         this.getButtonNumber( 8, inputProperty ),
@@ -49,10 +47,10 @@ define( function( require ) {
         this.getButtonNumber( 0, inputProperty ),
         this.getButtonBackspace( inputProperty )
       ]} )
-    ]} ) );
+    ]} );
   }
 
-  return inherit( Node, CalculatorNode, {
+  return inherit( VBox, CalculatorNode, {
     // return backspace button
     getButtonBackspace: function( inputProperty ) {
       return this.getButtonDefault( new Node( {children: [
