@@ -16,9 +16,6 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
 
-  // constants
-  var FONT = new PhetFont( 24 );
-
   function TimesTableButtonAbstract( backgroundOptions ) {
     Node.call( this );
 
@@ -27,13 +24,13 @@ define( function( require ) {
       fill: 'white',
       stroke: 'black',
       strokePosition: 'inside',
-      lineWidth: 1.5
+      lineWidth: 1
     }, backgroundOptions ) );
     this.addChild( this._background );
 
     // add content text
     this._text = new Text( '?', {
-      font: FONT,
+      font: new PhetFont( Math.round( this.bounds.height / 2 + 2 ) ),
       fill: 'white',
       centerX: this.bounds.width / 2,
       centerY: this.bounds.height / 2
@@ -47,6 +44,7 @@ define( function( require ) {
     },
     setText: function( text ) {
       this._text.setText( text );
+      this._text.centerX = this.bounds.width / 2;
     },
     showText: function() {
       this._text.visible = true;

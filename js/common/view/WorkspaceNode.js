@@ -48,7 +48,8 @@ define( function( require ) {
 
     // add times table
     this.addChild( new TimesTableNode(
-        model.property( 'level' )
+        model.property( 'level' ),
+        model.levels.length
       ).mutate( {top: layoutBounds.maxY * 0.02, centerX: layoutBounds.width * 0.45} )
     );
 

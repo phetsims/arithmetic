@@ -19,59 +19,84 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
-  var TABLE_SIZE = new Dimension2( 365, 270 );
+  var TABLE_SIZE = new Dimension2( 400, 295 );
 
-  function TimesTableNode( levelProperty ) {
-    var hBox,
-      vBox,
-      SIZE = 6,
-      buttonWidth = TABLE_SIZE.width / (SIZE + 1),
-      buttonHeight = TABLE_SIZE.height / (SIZE + 1),
-      i,
-      j;
+  function TimesTableNode( levelProperty, levelNumber ) {
+    var self = this;
     Node.call( this );
 
-    vBox = new VBox();
-    for ( i = 0; i <= SIZE; i++ ) {
-      hBox = new HBox();
-      // first row
-      if ( i === 0 ) {
-        for ( j = 0; j <= SIZE; j++ ) {
-          // first cell is 'X', other - multiplier numbers
-          if ( j === 0 ) {
-            hBox.addChild( new TimesTableButtonMultiplierNode( 'X', buttonWidth, buttonHeight ) );
-          }
-          else {
-            hBox.addChild( new TimesTableButtonMultiplierNode( j.toString(), buttonWidth, buttonHeight ) );
+    this._viewForLevel = [];
+
+    // create view of times table for levels
+    _.times( levelNumber, function( levelIndex ) {
+      var hBox,
+        vBox = new VBox( {visible: false} ),
+        tableSize = 3 * (levelIndex + 2),
+        buttonWidth = TABLE_SIZE.width / (tableSize + 1),
+        buttonHeight = TABLE_SIZE.height / (tableSize + 1),
+        i,
+        j;
+
+      for ( i = 0; i <= tableSize; i++ ) {
+        hBox = new HBox();
+        // first row
+        if ( i === 0 ) {
+          for ( j = 0; j <= tableSize; j++ ) {
+            // first cell is 'X', other - multiplier numbers
+            if ( j === 0 ) {
+              hBox.addChild( new TimesTableButtonMultiplierNode( 'X', buttonWidth, buttonHeight ) );
+            }
+            else {
+              hBox.addChild( new TimesTableButtonMultiplierNode( j.toString(), buttonWidth, buttonHeight ) );
+            }
           }
         }
-      }
-      // other rows
-      else {
-        for ( j = 0; j <= SIZE; j++ ) {
-          // first cell is multiplier number, other - product numbers
-          if ( j === 0 ) {
-            hBox.addChild( new TimesTableButtonMultiplierNode( i.toString(), buttonWidth, buttonHeight ) );
-          }
-          else {
-            hBox.addChild( new TimesTableButtonProductNode( (i * j).toString(), buttonWidth, buttonHeight ) );
+        // other rows
+        else {
+          for ( j = 0; j <= tableSize; j++ ) {
+            // first cell is multiplier number, other - product numbers
+            if ( j === 0 ) {
+              hBox.addChild( new TimesTableButtonMultiplierNode( i.toString(), buttonWidth, buttonHeight ) );
+            }
+            else {
+              hBox.addChild( new TimesTableButtonProductNode( (i * j).toString(), buttonWidth, buttonHeight ) );
+            }
           }
         }
+        vBox.addChild( hBox );
       }
-      vBox.addChild( hBox );
-    }
 
-    this.addChild( vBox );
+      // add view to node
+      self.addChild( vBox );
 
-    this._stroke = new Rectangle( 0, 0, 0, 0, {
-      stroke: 'black',
-      lineWidth: 1.5,
-      strokePosition: 'outside'
+      // scale for appropriate size
+      vBox.scale( TABLE_SIZE.width / vBox.bounds.width, TABLE_SIZE.height / vBox.bounds.height );
+
+      // save view
+      self._viewForLevel[levelIndex + 1] = vBox;
     } );
-    this.addChild( this._stroke );
-    this._stroke.setRectWidth( this.bounds.width );
-    this._stroke.setRectHeight( this.bounds.height );
+
+    // add stroke for all times table views
+    this.addChild( new Rectangle( 0, 0, this.bounds.width, this.bounds.height, {
+      stroke: 'black',
+      lineWidth: 1,
+      strokePosition: 'outside'
+    } ) );
+
+    levelProperty.link( function( levelNumberNext, levelNumberPrev ) {
+      // show next times table view for level
+      if ( self._viewForLevel[levelNumberNext] ) {
+        self._viewForLevel[levelNumberNext].visible = true;
+      }
+
+      // hide previous times table view
+      if ( self._viewForLevel[levelNumberPrev] ) {
+        self._viewForLevel[levelNumberPrev].visible = false;
+      }
+    } );
   }
 
-  return inherit( Node, TimesTableNode );
+  return inherit( Node, TimesTableNode, {
+
+  } );
 } );
