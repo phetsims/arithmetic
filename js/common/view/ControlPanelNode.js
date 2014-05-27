@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // imports
+  var Constants = require( 'ARITHMETIC/common/model/Constants' ).CONTROL_PANEL;
   var inherit = require( 'PHET_CORE/inherit' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -28,16 +29,15 @@ define( function( require ) {
   var timeString = require( 'string!ARITHMETIC/time' );
 
   // constants
+  var BACKGROUND_MARGIN = Constants.BACKGROUND.MARGIN;
   var FONT = new PhetFont( 18 );
-  var SPACING = 18;
-  var BACKGROUND_X_MARGIN = 20;
-  var BACKGROUND_Y_MARGIN = 20;
+  var SPACING = Constants.SPACING;
 
   function ControlPanelNode( levelProperty, scoreProperty, timeProperty, isTimerProperty, isSoundProperty, refreshLevelCallback ) {
-    var background = new Rectangle( 0, 0, 0, 0, {fill: 'rgb(254,208,153)'} ),
-      levelText = new Text( '1', {font: FONT} ),
-      scoreText = new Text( '1', {font: FONT} ),
-      timeText = new Text( '1', {font: FONT} );
+    var background = new Rectangle( 0, 0, 0, 0, {fill: Constants.BACKGROUND.COLOR} ),
+      levelText = new Text( '?', {font: FONT} ),
+      scoreText = new Text( '?', {font: FONT} ),
+      timeText = new Text( '?', {font: FONT} );
     Node.call( this );
 
     // add background
@@ -49,7 +49,7 @@ define( function( require ) {
       levelText,
       // add refresh button
       new RefreshButton( {
-        baseColor: 'rgb(244,133,24)',
+        baseColor: Constants.REFRESH_BUTTON_COLOR,
         listener: refreshLevelCallback
       } ),
       new HBox( {spacing: SPACING, children: [
@@ -69,7 +69,7 @@ define( function( require ) {
     ]} ) );
 
     // set background size
-    background.setRect( -BACKGROUND_X_MARGIN / 2, -BACKGROUND_Y_MARGIN / 2, this.bounds.width + BACKGROUND_X_MARGIN, this.bounds.height + BACKGROUND_Y_MARGIN, 5, 5 );
+    background.setRect( -BACKGROUND_MARGIN / 2, -BACKGROUND_MARGIN / 2, this.bounds.width + BACKGROUND_MARGIN, this.bounds.height + BACKGROUND_MARGIN, 5, 5 );
 
     // add observers
     levelProperty.link( function( level ) {

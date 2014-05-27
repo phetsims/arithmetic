@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // imports
-  var Dimension2 = require( 'DOT/Dimension2' );
+  var Constants = require( 'ARITHMETIC/common/model/Constants' ).EQUATION;
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -20,10 +20,11 @@ define( function( require ) {
   // constants
   var FONT_VBOX = new PhetFont( 36 );
   var FONT_TEXT = new PhetFont( 32 );
-  var INPUT_SIZE = new Dimension2( 60, 40 );
+  var INPUT_SIZE = Constants.INPUT_SIZE;
+  var SPACING = Constants.SPACING;
 
   function EquationNode( leftMultiplierProperty, rightMultiplierProperty, productProperty ) {
-    HBox.call( this, {spacing: 10, children: [
+    HBox.call( this, {spacing: SPACING, children: [
       getInput( leftMultiplierProperty ),
       new Text( 'x', {font: FONT_VBOX} ),
       getInput( rightMultiplierProperty ),

@@ -10,6 +10,7 @@ define( function( require ) {
 
   // imports
   var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
+  var Constants = require( 'ARITHMETIC/common/model/Constants' ).CALCULATOR;
   var inherit = require( 'PHET_CORE/inherit' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -20,9 +21,10 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
+  var ARROW_SIZE = Constants.ARROW_SIZE;
+  var BUTTON_SIZE = Constants.BUTTON_SIZE;
   var FONT = new PhetFont( 24 );
-  var SPACING = 10;
-  var ARROW_SIZE = 28;
+  var SPACING = Constants.SPACING;
 
   function CalculatorNode( inputProperty, enterCallback ) {
     // add buttons
@@ -69,8 +71,8 @@ define( function( require ) {
     return new RectangularPushButton( {
       content: content,
       baseColor: 'white',
-      minHeight: 40,
-      minWidth: 40,
+      minHeight: BUTTON_SIZE.height,
+      minWidth: BUTTON_SIZE.width,
       listener: listener
     } );
   };

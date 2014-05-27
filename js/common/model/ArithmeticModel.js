@@ -73,7 +73,7 @@ define( function( require ) {
 
   return inherit( PropertySet, ArithmeticModel, {
     step: function( dt ) {
-      // if timer is on and level selected - add time
+      // if timer is on and level is select - add time
       if ( this.isTimer && this.level ) {
         this.time += dt;
       }

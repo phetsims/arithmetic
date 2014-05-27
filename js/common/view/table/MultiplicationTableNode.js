@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // imports
-  var Dimension2 = require( 'DOT/Dimension2' );
+  var Constants = require( 'ARITHMETIC/common/model/Constants' ).MULTIPLICATION_TABLE;
   var inherit = require( 'PHET_CORE/inherit' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -19,7 +19,7 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
-  var TABLE_SIZE = new Dimension2( 434, 320 );
+  var TABLE_SIZE = Constants.SIZE;
 
   function MultiplicationTableNode( levelProperty, levels ) {
     var self = this;
