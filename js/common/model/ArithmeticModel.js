@@ -53,7 +53,7 @@ define( function( require ) {
     } );
 
     // model for single game
-    this.game = new GameModel();
+    this.game = new GameModel( this.property( 'level' ), levels );
 
     // best times and scores, equal to number of levels
     this.bestTimes = [];

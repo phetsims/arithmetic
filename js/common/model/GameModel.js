@@ -12,7 +12,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var PropertySet = require( 'AXON/PropertySet' );
 
-  function GameModel() {
+  function GameModel( levelProperty, levels ) {
     var self = this;
 
     PropertySet.call( this, {
@@ -20,10 +20,11 @@ define( function( require ) {
       multiplierRight: undefined, // right multiplier
       product: undefined, // product of multiplication
       state: undefined, // current game state
-      multiplierRange: undefined, // range of possible multipliers
       isFaceVisible: false, // flag of smile face visibility
       scoreGame: 1 // score for current game
     } );
+
+    this.answerSheet = [];
 
     // show smile face when properties multiplierLeft, multiplierRight and product are define
     this.property( 'multiplierLeft' )
@@ -32,14 +33,63 @@ define( function( require ) {
       .link( function() {
         self.isFaceVisible = (!!self.multiplierLeft && !!self.multiplierRight && !!self.product);
       } );
+
+    // set new answer sheet changing level
+    levelProperty.lazyLink( function( levelNumber ) {
+      var answerSheetSize;
+      if ( levelNumber ) {
+        self.answerSheet = [];
+        answerSheetSize = levels[levelNumber - 1].tableSize;
+
+        // add arrays with right multipliers for every left multiplier
+        _.times( answerSheetSize, function() {
+          self.answerSheet.push( [] );
+        } );
+
+        // fill arrays appropriate to right multipliers
+        self.answerSheet.forEach( function( el ) {
+          _.times( answerSheetSize, function() {
+            el.push( false );
+          } );
+        } );
+      }
+    } );
   }
 
   return inherit( PropertySet, GameModel, {
     reset: function() {
       PropertySet.prototype.reset.call( this );
     },
-    update: function() {
+    getAvailableMultipliers: function() {
+      var availableLeftMultipliers = [],
+        availableRightMultipliers = [],
+        multiplierLeft,
+        multiplierRight;
 
+      // find available left multipliers
+      this.answerSheet.forEach( function( rightMultipliers, index ) {
+        if ( rightMultipliers.indexOf( false ) !== -1 ) {
+          availableLeftMultipliers.push( index + 1 );
+        }
+      } );
+
+      // set left multiplier
+      multiplierLeft = _.shuffle( availableLeftMultipliers )[0];
+
+      // find available right multipliers
+      this.answerSheet[multiplierLeft - 1].forEach( function( isRightMultiplierAnswered, index ) {
+        if ( !isRightMultiplierAnswered ) {
+          availableRightMultipliers.push( index + 1 );
+        }
+      } );
+
+      // set right multiplier
+      multiplierRight = _.shuffle( availableRightMultipliers )[0];
+
+      return {
+        multiplierLeft: multiplierLeft,
+        multiplierRight: multiplierRight
+      };
     }
   } );
 } );

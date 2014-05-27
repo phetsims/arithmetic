@@ -9,13 +9,15 @@ define( function( require ) {
   'use strict';
 
   // imports
-  var MultiplyScreen = require( 'ARITHMETIC/multiply/view/MultiplyScreen' );
-  var FactorScreen = require( 'ARITHMETIC/factor/view/FactorScreen' );
+  var DivideModel = require( 'ARITHMETIC/divide/model/DivideModel' );
   var DivideScreen = require( 'ARITHMETIC/divide/view/DivideScreen' );
   var DivideScreenIconNode = require( 'ARITHMETIC/divide/view/DivideScreenIconNode' );
-  var MultiplyScreenIconNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenIconNode' );
+  var FactorModel = require( 'ARITHMETIC/factor/model/FactorModel' );
+  var FactorScreen = require( 'ARITHMETIC/factor/view/FactorScreen' );
   var FactorScreenIconNode = require( 'ARITHMETIC/factor/view/FactorScreenIconNode' );
-  var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
+  var MultiplyModel = require( 'ARITHMETIC/multiply/model/MultiplyModel' );
+  var MultiplyScreen = require( 'ARITHMETIC/multiply/view/MultiplyScreen' );
+  var MultiplyScreenIconNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenIconNode' );
   var Screen = require( 'JOIST/Screen' );
   var Sim = require( 'JOIST/Sim' );
   var SimLauncher = require( 'JOIST/SimLauncher' );
@@ -48,17 +50,17 @@ define( function( require ) {
     // create and start the sim
     new Sim( simTitle, [
       new Screen( '', new MultiplyScreenIconNode(),
-        function() {return new ArithmeticModel();},
+        function() {return new MultiplyModel();},
         function( model ) {return new MultiplyScreen( model );},
         { backgroundColor: BACKGROUND_COLOR }
       ),
       new Screen( '', new FactorScreenIconNode(),
-        function() {return new ArithmeticModel();},
+        function() {return new FactorModel();},
         function( model ) {return new FactorScreen( model );},
         { backgroundColor: BACKGROUND_COLOR }
       ),
       new Screen( '', new DivideScreenIconNode(),
-        function() {return new ArithmeticModel();},
+        function() {return new DivideModel();},
         function( model ) {return new DivideScreen( model );},
         { backgroundColor: BACKGROUND_COLOR }
       )

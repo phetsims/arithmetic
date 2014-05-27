@@ -34,11 +34,13 @@ define( function( require ) {
   }
 
   var getInput = function( property ) {
-    var inputText = new Text( '?', {font: FONT_TEXT, centerX: INPUT_SIZE.width / 2, centerY: INPUT_SIZE.height / 2} );
+    var inputText = new Text( '?', {font: FONT_TEXT} );
 
     // update text when property changed
     property.link( function( value ) {
       inputText.setText( value ? value : '?' );
+      inputText.centerX = INPUT_SIZE.width / 2;
+      inputText.centerY = INPUT_SIZE.height / 2;
     } );
 
     return new Node( {children: [
