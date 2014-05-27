@@ -14,18 +14,18 @@ define( function( require ) {
   var RectangularPushButton = require( 'SUN/buttons/RectangularPushButton' );
 
   // constants
-  var ARROW_SIZE = 22;
+  var ARROW_SIZE = 28;
 
   function BackButtonNode( levelProperty ) {
     RectangularPushButton.call( this, {
       content: new ArrowNode( ARROW_SIZE / 2, 0, -ARROW_SIZE / 2, 0, {
-        headWidth: 8,
-        headHeight: 8,
-        tailWidth: 2
+        headWidth: 12,
+        headHeight: 12,
+        tailWidth: 3
       } ),
       baseColor: 'rgb(243,238,103)',
-      xMargin: 5,
-      yMargin: 7,
+      xMargin: 10,
+      yMargin: 8,
       listener: function() {
         levelProperty.value = 0;
       }

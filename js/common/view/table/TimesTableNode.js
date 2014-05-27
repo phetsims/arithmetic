@@ -19,7 +19,7 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
-  var TABLE_SIZE = new Dimension2( 400, 295 );
+  var TABLE_SIZE = new Dimension2( 434, 320 );
 
   function TimesTableNode( levelProperty, levels ) {
     var self = this;
@@ -84,7 +84,7 @@ define( function( require ) {
     } ) );
 
     levelProperty.link( function( levelNumberNext, levelNumberPrev ) {
-      // show next times table view for level
+      // show current times table view for level
       if ( self._viewForLevel[levelNumberNext] ) {
         self._viewForLevel[levelNumberNext].visible = true;
       }

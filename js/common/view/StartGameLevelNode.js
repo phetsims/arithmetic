@@ -48,7 +48,7 @@ define( function( require ) {
     this.addChild( chooseLevelTitle );
 
     // add select level buttons
-    var selectLevelButtons = new HBox( {spacing: 10} );
+    var selectLevelButtons = new HBox( {spacing: 50} );
     levels.forEach( function( level, levelIndex ) {
       selectLevelButtons.addChild( new LevelStartButton(
         new Image( level.icon ),
@@ -58,7 +58,12 @@ define( function( require ) {
         },
         scorePropertyArray[levelIndex],
         PERFECT_SCORE,
-        {backgroundColor: 'white', highlightedBackgroundColor: 'white'}
+        {
+          buttonWidth: 135,
+          buttonHeight: 135,
+          backgroundColor: 'white',
+          highlightedBackgroundColor: 'white'
+        }
       ) );
     } );
     selectLevelButtons.updateLayout();
