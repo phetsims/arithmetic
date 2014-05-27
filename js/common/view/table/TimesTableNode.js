@@ -21,17 +21,17 @@ define( function( require ) {
   // constants
   var TABLE_SIZE = new Dimension2( 400, 295 );
 
-  function TimesTableNode( levelProperty, levelNumber ) {
+  function TimesTableNode( levelProperty, levels ) {
     var self = this;
     Node.call( this );
 
     this._viewForLevel = [];
 
     // create view of times table for levels
-    _.times( levelNumber, function( levelIndex ) {
+    levels.forEach( function( level, levelIndex ) {
       var hBox,
         vBox = new VBox( {visible: false} ),
-        tableSize = 3 * (levelIndex + 2),
+        tableSize = level.tableSize,
         buttonWidth = TABLE_SIZE.width / (tableSize + 1),
         buttonHeight = TABLE_SIZE.height / (tableSize + 1),
         i,

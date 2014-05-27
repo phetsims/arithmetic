@@ -19,15 +19,18 @@ define( function( require ) {
   var levels = [
     // level 1
     {
-      icon: require( 'image!ARITHMETIC/phet-girl-icon-1.png' )
+      icon: require( 'image!ARITHMETIC/phet-girl-icon-1.png' ),
+      tableSize: 6
     },
     // level 2
     {
-      icon: require( 'image!ARITHMETIC/phet-girl-icon-2.png' )
+      icon: require( 'image!ARITHMETIC/phet-girl-icon-2.png' ),
+      tableSize: 9
     },
     // level 3
     {
-      icon: require( 'image!ARITHMETIC/phet-girl-icon-3.png' )
+      icon: require( 'image!ARITHMETIC/phet-girl-icon-3.png' ),
+      tableSize: 12
     }
   ];
 
