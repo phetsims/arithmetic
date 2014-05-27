@@ -50,7 +50,7 @@ define( function( require ) {
     this.addChild( new TimesTableNode(
         model.property( 'level' ),
         model.levels
-      ).mutate( {top: layoutBounds.maxY * 0.02, centerX: layoutBounds.width * 0.45} )
+      ).mutate( {top: layoutBounds.maxY * 0.02, centerX: layoutBounds.width * 0.43} )
     );
 
     // add equation
@@ -62,7 +62,8 @@ define( function( require ) {
 
     // add smile face
     this.addChild( new FaceWithScoreConfiguredNode(
-        model.game.property( 'scoreGame' )
+        model.game.property( 'scoreGame' ),
+        model.game.property( 'isFaceVisible' )
       ).mutate( {bottom: layoutBounds.maxY * 0.95, left: layoutBounds.maxX * 0.04} )
     );
 

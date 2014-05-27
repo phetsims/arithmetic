@@ -13,16 +13,12 @@ define( function( require ) {
   var FaceWithScoreNode = require( 'SCENERY_PHET/FaceWithScoreNode' );
   var inherit = require( 'PHET_CORE/inherit' );
 
-  /**
-   * @param scoreGameProperty
-   * @constructor
-   */
-  function FaceWithScoreConfiguredNode( scoreGameProperty ) {
+  function FaceWithScoreConfiguredNode( scoreGameProperty, isFaceVisibleProperty ) {
     var self = this;
     FaceWithScoreNode.call( this, {
       faceOpacity: 1,
       scoreAlignment: 'bottom',
-      scoreTextSize: 28,
+      scoreTextSize: 26,
       scoreFill: 'black'
     } );
 
@@ -32,6 +28,8 @@ define( function( require ) {
       self.setScore( scoreGame );
       self[scoreGame ? 'smile' : 'frown' ]();
     } );
+
+    isFaceVisibleProperty.linkAttribute( self, 'visible' );
   }
 
   return inherit( FaceWithScoreNode, FaceWithScoreConfiguredNode );
