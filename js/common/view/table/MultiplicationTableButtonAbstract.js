@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Times table abstract button node.
+ * Multiplication table abstract button node.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -16,7 +16,7 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
 
-  function TimesTableButtonAbstract( backgroundOptions ) {
+  function MultiplicationTableButtonAbstract( backgroundOptions ) {
     Node.call( this );
 
     // add background
@@ -38,7 +38,7 @@ define( function( require ) {
     this.addChild( this._text );
   }
 
-  return inherit( Node, TimesTableButtonAbstract, {
+  return inherit( Node, MultiplicationTableButtonAbstract, {
     setBackgoundFill: function( fill ) {
       this._background.fill = fill;
     },

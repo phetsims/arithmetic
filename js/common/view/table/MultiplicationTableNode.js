@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Times table node.
+ * Multiplication table node.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -14,14 +14,14 @@ define( function( require ) {
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
-  var TimesTableButtonMultiplierNode = require( 'ARITHMETIC/common/view/table/TimesTableButtonMultiplierNode' );
-  var TimesTableButtonProductNode = require( 'ARITHMETIC/common/view/table/TimesTableButtonProductNode' );
+  var MultiplicationTableButtonMultiplierNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableButtonMultiplierNode' );
+  var MultiplicationTableButtonProductNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableButtonProductNode' );
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
   var TABLE_SIZE = new Dimension2( 434, 320 );
 
-  function TimesTableNode( levelProperty, levels ) {
+  function MultiplicationTableNode( levelProperty, levels ) {
     var self = this;
     Node.call( this );
 
@@ -44,10 +44,10 @@ define( function( require ) {
           for ( j = 0; j <= tableSize; j++ ) {
             // first cell is 'X', other - multiplier numbers
             if ( j === 0 ) {
-              hBox.addChild( new TimesTableButtonMultiplierNode( 'X', buttonWidth, buttonHeight ) );
+              hBox.addChild( new MultiplicationTableButtonMultiplierNode( 'X', buttonWidth, buttonHeight ) );
             }
             else {
-              hBox.addChild( new TimesTableButtonMultiplierNode( j.toString(), buttonWidth, buttonHeight ) );
+              hBox.addChild( new MultiplicationTableButtonMultiplierNode( j.toString(), buttonWidth, buttonHeight ) );
             }
           }
         }
@@ -56,10 +56,10 @@ define( function( require ) {
           for ( j = 0; j <= tableSize; j++ ) {
             // first cell is multiplier number, other - product numbers
             if ( j === 0 ) {
-              hBox.addChild( new TimesTableButtonMultiplierNode( i.toString(), buttonWidth, buttonHeight ) );
+              hBox.addChild( new MultiplicationTableButtonMultiplierNode( i.toString(), buttonWidth, buttonHeight ) );
             }
             else {
-              hBox.addChild( new TimesTableButtonProductNode( (i * j).toString(), buttonWidth, buttonHeight ) );
+              hBox.addChild( new MultiplicationTableButtonProductNode( (i * j).toString(), buttonWidth, buttonHeight ) );
             }
           }
         }
@@ -96,7 +96,7 @@ define( function( require ) {
     } );
   }
 
-  return inherit( Node, TimesTableNode, {
+  return inherit( Node, MultiplicationTableNode, {
 
   } );
 } );

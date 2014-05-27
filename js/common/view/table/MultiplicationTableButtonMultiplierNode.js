@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Times table multiplier button node.
+ * Multiplication table multiplier button node.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -11,14 +11,14 @@ define( function( require ) {
 
   // imports
   var inherit = require( 'PHET_CORE/inherit' );
-  var TimesTableButtonAbstract = require( 'ARITHMETIC/common/view/table/TimesTableButtonAbstract' );
+  var MultiplicationTableButtonAbstract = require( 'ARITHMETIC/common/view/table/MultiplicationTableButtonAbstract' );
 
   // constants
   var SELECT_COLOR = 'rgb(244,133,9)';
   var NORMAL_COLOR = 'rgb(218,36,5)';
 
-  function TimesTableButtonMultiplierNode( contentText, width, height ) {
-    TimesTableButtonAbstract.call( this, {
+  function MultiplicationTableButtonMultiplierNode( contentText, width, height ) {
+    MultiplicationTableButtonAbstract.call( this, {
       fill: NORMAL_COLOR,
       width: width,
       height: height
@@ -27,7 +27,7 @@ define( function( require ) {
     this.setText( contentText );
   }
 
-  return inherit( TimesTableButtonAbstract, TimesTableButtonMultiplierNode, {
+  return inherit( MultiplicationTableButtonAbstract, MultiplicationTableButtonMultiplierNode, {
     select: function() {
       this.setBackgoundFill( SELECT_COLOR );
     },
