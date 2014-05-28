@@ -23,14 +23,14 @@ define( function( require ) {
    * @param titleString
    * @constructor
    */
-  function ArithmeticScreen( model, titleString ) {
+  function ArithmeticScreen( model, multiplicationTableNode, titleString ) {
     ScreenView.call( this );
 
     // add start game level buttons
     this.addChild( new StartGameLevelNode( model.levels, model.bestScores, model.property( 'level' ), titleString, model.simBounds ) );
 
     // add game components
-    this.addChild( new WorkspaceNode( model, this.layoutBounds ) );
+    this.addChild( new WorkspaceNode( model, multiplicationTableNode, this.layoutBounds ) );
 
     // add timer, sound and reset buttons
     var generalButtons = new VBox( {spacing: 5, children: [

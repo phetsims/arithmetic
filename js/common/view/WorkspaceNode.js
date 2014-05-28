@@ -16,9 +16,8 @@ define( function( require ) {
   var FaceWithScoreConfiguredNode = require( 'ARITHMETIC/common/view/FaceWithScoreConfiguredNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
-  var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
 
-  function WorkspaceNode( model, layoutBounds ) {
+  function WorkspaceNode( model, multiplicationTableNode, layoutBounds ) {
     var self = this;
     Node.call( this );
 
@@ -46,11 +45,9 @@ define( function( require ) {
       ).mutate( {left: layoutBounds.maxX * 0.02, top: layoutBounds.maxY * 0.02} )
     );
 
-    // add times table
-    this.addChild( new MultiplicationTableNode(
-        model.property( 'level' ),
-        model.levels
-      ).mutate( {top: layoutBounds.maxY * 0.02, centerX: layoutBounds.width * 0.43} )
+    // add multiplication table
+    this.addChild( multiplicationTableNode
+        .mutate( {top: layoutBounds.maxY * 0.02, centerX: layoutBounds.width * 0.43} )
     );
 
     // add equation

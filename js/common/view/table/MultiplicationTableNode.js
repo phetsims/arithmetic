@@ -25,7 +25,11 @@ define( function( require ) {
     var self = this;
     Node.call( this );
 
+    // array with views for each level
     this._viewForLevel = [];
+
+    // links to table cells. Indexes: [levelNumber][leftMultiplier][rightMultiplier]
+    this.cells = [];
 
     // create view of times table for levels
     levels.forEach( function( level, levelIndex ) {
@@ -37,17 +41,20 @@ define( function( require ) {
         i,
         j;
 
+      self.cells[levelIndex] = [];
+
       for ( i = 0; i <= tableSize; i++ ) {
         hBox = new HBox();
+        self.cells[levelIndex][i] = [];
         // first row
         if ( i === 0 ) {
           for ( j = 0; j <= tableSize; j++ ) {
             // first cell is 'X', other - multiplier numbers
             if ( j === 0 ) {
-              hBox.addChild( new MultiplicationTableButtonMultiplierNode( 'X', buttonWidth, buttonHeight ) );
+              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonMultiplierNode( 'X', buttonWidth, buttonHeight ) );
             }
             else {
-              hBox.addChild( new MultiplicationTableButtonMultiplierNode( j.toString(), buttonWidth, buttonHeight ) );
+              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonMultiplierNode( j.toString(), buttonWidth, buttonHeight ) );
             }
           }
         }
@@ -56,10 +63,10 @@ define( function( require ) {
           for ( j = 0; j <= tableSize; j++ ) {
             // first cell is multiplier number, other - product numbers
             if ( j === 0 ) {
-              hBox.addChild( new MultiplicationTableButtonMultiplierNode( i.toString(), buttonWidth, buttonHeight ) );
+              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonMultiplierNode( i.toString(), buttonWidth, buttonHeight ) );
             }
             else {
-              hBox.addChild( new MultiplicationTableButtonProductNode( (i * j).toString(), buttonWidth, buttonHeight ) );
+              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonProductNode( (i * j).toString(), buttonWidth, buttonHeight ) );
             }
           }
         }
@@ -76,27 +83,35 @@ define( function( require ) {
       self._viewForLevel[levelIndex + 1] = vBox;
     } );
 
-    // add stroke for all times table views
+    // add stroke for all multiplication table views
     this.addChild( new Rectangle( 0, 0, this.bounds.width, this.bounds.height, {
       stroke: 'black',
       lineWidth: 1,
       strokePosition: 'outside'
     } ) );
 
-    levelProperty.link( function( levelNumberNext, levelNumberPrev ) {
-      // show current times table view for level
-      if ( self._viewForLevel[levelNumberNext] ) {
-        self._viewForLevel[levelNumberNext].visible = true;
+    levelProperty.link( function( levelNumberCurrent, levelNumberPrev ) {
+      // show current multiplication table view for level
+      if ( self._viewForLevel[levelNumberCurrent] ) {
+        self._viewForLevel[levelNumberCurrent].visible = true;
       }
 
-      // hide previous times table view
+      // hide previous multiplication table view
       if ( self._viewForLevel[levelNumberPrev] ) {
         self._viewForLevel[levelNumberPrev].visible = false;
+        self.clearCells( levelNumberPrev );
       }
     } );
   }
 
   return inherit( Node, MultiplicationTableNode, {
-
+    // clear all cells for given level
+    clearCells: function( levelNumber ) {
+      this.cells[levelNumber - 1].forEach( function( multipliersLeft ) {
+        multipliersLeft.forEach( function( cell ) {
+          cell.normal();
+        } );
+      } );
+    }
   } );
 } );

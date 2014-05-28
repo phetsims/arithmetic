@@ -21,6 +21,9 @@ define( function( require ) {
       if ( levelNumber ) {
         self.setTask();
       }
+      else {
+        self.game.reset();
+      }
     } );
   }
 

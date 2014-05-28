@@ -11,6 +11,7 @@ define( function( require ) {
   // imports
   var ArithmeticScreen = require( 'ARITHMETIC/common/view/ArithmeticScreen' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var MultiplicationTableDivideNode = require( 'ARITHMETIC/divide/view/MultiplicationTableDivideNode' );
 
   // strings
   var divideString = require( 'string!ARITHMETIC/divide' );
@@ -20,7 +21,16 @@ define( function( require ) {
    * @constructor
    */
   function DivideScreen( model ) {
-    ArithmeticScreen.call( this, model, divideString );
+    ArithmeticScreen.call(
+      this,
+      model,
+      new MultiplicationTableDivideNode(
+        model.game,
+        model.property( 'level' ),
+        model.levels
+      ),
+      divideString
+    );
   }
 
   return inherit( ArithmeticScreen, DivideScreen );
