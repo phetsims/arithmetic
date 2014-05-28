@@ -14,17 +14,7 @@ define( function( require ) {
   var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
 
   function MultiplyModel() {
-    var self = this;
     ArithmeticModel.call( this );
-
-    this.property( 'level' ).lazyLink( function( levelNumber ) {
-      if ( levelNumber ) {
-        self.setTask();
-      }
-      else {
-        self.game.reset();
-      }
-    } );
   }
 
   return inherit( ArithmeticModel, MultiplyModel, {

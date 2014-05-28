@@ -14,14 +14,7 @@ define( function( require ) {
   var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
 
   function FactorModel() {
-    var self = this;
     ArithmeticModel.call( this );
-
-    this.property( 'level' ).lazyLink( function( levelNumber ) {
-      if ( levelNumber ) {
-        self.setTask();
-      }
-    } );
   }
 
   return inherit( ArithmeticModel, FactorModel, {

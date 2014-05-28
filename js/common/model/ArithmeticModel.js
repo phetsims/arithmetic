@@ -69,6 +69,15 @@ define( function( require ) {
         self.time = 0;
       }
     } );
+
+    this.property( 'level' ).lazyLink( function( levelNumber ) {
+      if ( levelNumber ) {
+        self.setTask();
+      }
+      else {
+        self.game.reset();
+      }
+    } );
   }
 
   return inherit( PropertySet, ArithmeticModel, {
