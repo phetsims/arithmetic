@@ -87,6 +87,8 @@ define( function( require ) {
         this.time += dt;
       }
     },
+    // should be defined in child constructors
+    setTask: function() {},
     checkInput: function() {},
     refreshLevel: function() {},
     reset: function() {
