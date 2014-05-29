@@ -9,7 +9,7 @@
 define( function( require ) {
   'use strict';
 
-  // imports
+  // modules
   var Dimension2 = require( 'DOT/Dimension2' );
 
   return {

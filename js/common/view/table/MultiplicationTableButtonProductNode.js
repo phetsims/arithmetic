@@ -9,7 +9,7 @@
 define( function( require ) {
   'use strict';
 
-  // imports
+  // modules
   var Constants = require( 'ARITHMETIC/common/model/Constants' ).MULTIPLICATION_TABLE.PRODUCT_BUTTON;
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableButtonAbstract = require( 'ARITHMETIC/common/view/table/MultiplicationTableButtonAbstract' );

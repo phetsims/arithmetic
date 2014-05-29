@@ -8,7 +8,7 @@
 define( function( require ) {
   'use strict';
 
-  // imports
+  // modules
   var inherit = require( 'PHET_CORE/inherit' );
   var GameModel = require( 'ARITHMETIC/common/model/GameModel' );
   var Property = require( 'AXON/Property' );

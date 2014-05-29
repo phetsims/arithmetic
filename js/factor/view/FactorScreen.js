@@ -8,7 +8,7 @@
 define( function( require ) {
   'use strict';
 
-  // imports
+  // modules
   var ArithmeticScreen = require( 'ARITHMETIC/common/view/ArithmeticScreen' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableFactorNode = require( 'ARITHMETIC/factor/view/MultiplicationTableFactorNode' );

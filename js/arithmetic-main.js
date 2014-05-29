@@ -8,7 +8,7 @@
 define( function( require ) {
   'use strict';
 
-  // imports
+  // modules
   var DivideModel = require( 'ARITHMETIC/divide/model/DivideModel' );
   var DivideScreen = require( 'ARITHMETIC/divide/view/DivideScreen' );
   var DivideScreenIconNode = require( 'ARITHMETIC/divide/view/DivideScreenIconNode' );

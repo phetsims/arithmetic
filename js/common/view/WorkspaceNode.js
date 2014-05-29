@@ -8,7 +8,7 @@
 define( function( require ) {
   'use strict';
 
-  // imports
+  // modules
   var BackButtonNode = require( 'ARITHMETIC/common/view/BackButtonNode' );
   var CalculatorNode = require( 'ARITHMETIC/common/view/CalculatorNode' );
   var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );

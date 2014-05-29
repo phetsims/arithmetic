@@ -8,7 +8,7 @@
 define( function( require ) {
   'use strict';
 
-  // imports
+  // modules
   var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
   var Constants = require( 'ARITHMETIC/common/model/Constants' ).CALCULATOR;
   var inherit = require( 'PHET_CORE/inherit' );
