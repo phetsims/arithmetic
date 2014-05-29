@@ -45,7 +45,8 @@ define( function( require ) {
         SELECT_COLOR: 'rgb(244,133,9)' // multiplier button select color
       },
       PRODUCT_BUTTON: {
-        HOVER_COLOR: 'rgb(145,145,254)', // product button hover color
+        ACTIVE_COLOR: 'rgb(145,145,254)', // product button active color
+        HOVER_COLOR: 'rgb(234,255,43)', // product button hover color
         NORMAL_COLOR: 'rgb(15,0,255)', // product button normal color
         SELECT_COLOR: 'rgb(14,12,70)' // product button select color
       },

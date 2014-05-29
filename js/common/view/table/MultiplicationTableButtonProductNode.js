@@ -26,14 +26,17 @@ define( function( require ) {
   }
 
   return inherit( MultiplicationTableButtonAbstract, MultiplicationTableButtonProductNode, {
-    select: function() {
-      this.setBackgoundFill( Constants.SELECT_COLOR );
+    active: function() {
+      this.setBackgoundFill( Constants.ACTIVE_COLOR );
     },
     hover: function() {
       this.setBackgoundFill( Constants.HOVER_COLOR );
     },
     normal: function() {
       this.setBackgoundFill( Constants.NORMAL_COLOR );
+    },
+    select: function() {
+      this.setBackgoundFill( Constants.SELECT_COLOR );
     }
   } );
 } );
