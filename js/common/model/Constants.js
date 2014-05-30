@@ -52,7 +52,6 @@ define( function( require ) {
       },
       SIZE: new Dimension2( 434, 320 ) // table size
     },
-    PERFECT_SCORE: 12, // perfect score
     SCREEN_ICON_SIZE: new Dimension2( 60, 40 ), // size of screen icons
     STAR_NUMBER: 5 // number of stars in select level buttons
   };

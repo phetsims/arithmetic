@@ -20,16 +20,19 @@ define( function( require ) {
     // level 1
     {
       icon: require( 'image!ARITHMETIC/phet-girl-icon-1.png' ),
+      perfectScore: 6 * 6,
       tableSize: 6
     },
     // level 2
     {
       icon: require( 'image!ARITHMETIC/phet-girl-icon-2.png' ),
+      perfectScore: 9 * 9,
       tableSize: 9
     },
     // level 3
     {
       icon: require( 'image!ARITHMETIC/phet-girl-icon-3.png' ),
+      perfectScore: 12 * 12,
       tableSize: 12
     }
   ];

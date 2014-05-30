@@ -20,7 +20,6 @@ define( function( require ) {
 
   // constants
   var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( {size: 24} );
-  var PERFECT_SCORE = Constants.PERFECT_SCORE;
   var STAR_NUMBER = Constants.STAR_NUMBER;
   var TAB_TITLE_FONT = new PhetFont( {size: 54} );
 
@@ -57,7 +56,7 @@ define( function( require ) {
           levelProperty.value = levelIndex + 1;
         },
         scorePropertyArray[levelIndex],
-        PERFECT_SCORE,
+        level.perfectScore,
         {
           buttonWidth: 135,
           buttonHeight: 135,
