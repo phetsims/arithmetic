@@ -29,8 +29,7 @@ define( function( require ) {
         model.property( 'level' ),
         model.levels
       ),
-      factorString
-    );
+      factorString );
   }
 
   return inherit( ArithmeticScreen, FactorScreen );
