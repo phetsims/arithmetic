@@ -65,7 +65,7 @@ define( function( require ) {
     );
 
     model.property( 'level' ).link( function( level ) {
-      self.visible = level;
+      self.visible = !!level;
     } );
   }
 
