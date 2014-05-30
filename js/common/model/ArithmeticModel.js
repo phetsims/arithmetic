@@ -90,18 +90,23 @@ define( function( require ) {
   }
 
   return inherit( PropertySet, ArithmeticModel, {
+    checkInput: function() {
+      // should be defined in child constructors
+    },
+    refreshLevel: function() {
+      // TODO
+    },
+    reset: function() {
+      PropertySet.prototype.reset.call( this );
+    },
+    setTask: function() {
+      // should be defined in child constructors
+    },
     step: function( dt ) {
       // if timer is on and level is select - add time
       if ( this.isTimer && this.level ) {
         this.time += dt;
       }
-    },
-    // should be defined in child constructors
-    setTask: function() {},
-    checkInput: function() {},
-    refreshLevel: function() {},
-    reset: function() {
-      PropertySet.prototype.reset.call( this );
     }
   } );
 } );

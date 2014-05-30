@@ -25,7 +25,7 @@ define( function( require ) {
     // add calculator
     this.addChild( new CalculatorNode(
         model.property( 'input' ),
-        model.checkInput
+        function() {model.checkInput();}
       ).mutate( {right: layoutBounds.maxX * 0.98, bottom: layoutBounds.maxY * 0.95} )
     );
 
@@ -55,7 +55,8 @@ define( function( require ) {
     this.addChild( new EquationNode(
       model.game.property( 'multiplierLeft' ),
       model.game.property( 'multiplierRight' ),
-      model.game.property( 'product' )
+      model.game.property( 'product' ),
+      model.property( 'input' )
     ).mutate( {bottom: layoutBounds.maxY * 0.95, centerX: layoutBounds.width * 0.45} ) );
 
     // add smile face

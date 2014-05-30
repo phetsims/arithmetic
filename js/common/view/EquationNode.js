@@ -23,7 +23,7 @@ define( function( require ) {
   var INPUT_SIZE = Constants.INPUT_SIZE;
   var SPACING = Constants.SPACING;
 
-  function EquationNode( leftMultiplierProperty, rightMultiplierProperty, productProperty ) {
+  function EquationNode( leftMultiplierProperty, rightMultiplierProperty, productProperty, inputProperty ) {
     HBox.call( this, {spacing: SPACING, children: [
       getInput( leftMultiplierProperty ),
       new Text( 'x', {font: FONT_VBOX} ),
