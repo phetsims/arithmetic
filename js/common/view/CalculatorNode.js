@@ -45,23 +45,20 @@ define( function( require ) {
         getButtonNumber( 3, inputProperty )
       ]} ),
       new HBox( {spacing: SPACING, children: [
-        getButtonEnter( enterCallback ),
+        getButtonBackspace( inputProperty ),
         getButtonNumber( 0, inputProperty ),
-        getButtonBackspace( inputProperty )
+        getButtonEnter( enterCallback )
       ]} )
     ]} );
   }
 
   // return backspace button
   var getButtonBackspace = function( inputProperty ) {
-    return getButtonDefault( new Node( {children: [
-      new ArrowNode( ARROW_SIZE / 2, 0, -ARROW_SIZE / 2, 0, {
-        headWidth: 6,
-        headHeight: 6,
-        tailWidth: 1
-      } ),
-      new Rectangle( ARROW_SIZE / 2 - 1, -ARROW_SIZE / 4, 2, ARROW_SIZE / 4, {fill: 'black'} )
-    ]} ), function() {
+    return getButtonDefault( new ArrowNode( ARROW_SIZE / 2, 0, -ARROW_SIZE / 2, 0, {
+      headWidth: 6,
+      headHeight: 6,
+      tailWidth: 1
+    } ), function() {
       inputProperty.value = inputProperty.value.substr( 0, inputProperty.value.length - 1 );
     } );
   };
@@ -79,11 +76,14 @@ define( function( require ) {
 
   // return enter button
   var getButtonEnter = function( callback ) {
-    return getButtonDefault( new ArrowNode( ARROW_SIZE / 2, 0, -ARROW_SIZE / 2, 0, {
-      headWidth: 6,
-      headHeight: 6,
-      tailWidth: 1
-    } ), callback );
+    return getButtonDefault( new Node( {children: [
+      new ArrowNode( ARROW_SIZE / 2, 0, -ARROW_SIZE / 2, 0, {
+        headWidth: 6,
+        headHeight: 6,
+        tailWidth: 1
+      } ),
+      new Rectangle( ARROW_SIZE / 2 - 1, -ARROW_SIZE / 4, 2, ARROW_SIZE / 4, {fill: 'black'} )
+    ]} ), callback );
   };
 
   // return number button
