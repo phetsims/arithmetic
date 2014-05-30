@@ -15,6 +15,7 @@ define( function( require ) {
   var EquationNode = require( 'ARITHMETIC/common/view/EquationNode' );
   var FaceWithScoreConfiguredNode = require( 'ARITHMETIC/common/view/FaceWithScoreConfiguredNode' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var LevelCompletedConfiguredNode = require( 'ARITHMETIC/common/view/LevelCompletedConfiguredNode' );
   var Node = require( 'SCENERY/nodes/Node' );
 
   function WorkspaceNode( model, multiplicationTableNode, layoutBounds ) {
@@ -62,6 +63,18 @@ define( function( require ) {
         model.game.property( 'scoreGame' ),
         model.game.property( 'isFaceVisible' )
       ).mutate( {bottom: layoutBounds.maxY * 0.95, left: layoutBounds.maxX * 0.04} )
+    );
+
+    // add node with statistic (will be shown after completing level)
+    this.addChild( new LevelCompletedConfiguredNode(
+        model.levels,
+        model.property( 'level' ),
+        model.property( 'isLevelCompleted' ),
+        model.property( 'scoreTotal' ),
+        model.property( 'isTimer' ),
+        model.property( 'time' ),
+        model.bestTimes
+      ).mutate( {centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2} )
     );
 
     model.property( 'level' ).link( function( level ) {

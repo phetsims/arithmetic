@@ -51,6 +51,7 @@ define( function( require ) {
       scoreTotal: 0, // total user score for current games
       time: 0, // current time
       input: '', // user's input value
+      isLevelCompleted: true, // flag of level completing. If true - show statistic node
       isSound: true, // is sound active
       isTimer: false // is time mode active
     } );
