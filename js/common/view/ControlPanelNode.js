@@ -34,10 +34,10 @@ define( function( require ) {
   var SPACING = Constants.SPACING;
 
   function ControlPanelNode( levelProperty, scoreProperty, timeProperty, isTimerProperty, isSoundProperty, refreshLevelCallback ) {
-    var background = new Rectangle( 0, 0, 0, 0, {fill: Constants.BACKGROUND.COLOR} ),
-      levelText = new Text( '?', {font: FONT} ),
-      scoreText = new Text( '?', {font: FONT} ),
-      timeText = new Text( '?', {font: FONT} );
+    var background = new Rectangle( 0, 0, 0, 0, {fill: Constants.BACKGROUND.COLOR} );
+    var levelText = new Text( '?', {font: FONT} );
+    var scoreText = new Text( '?', {font: FONT} );
+    var timeText = new Text( '?', {font: FONT} );
     Node.call( this );
 
     // add background
@@ -81,17 +81,16 @@ define( function( require ) {
     } );
 
     timeProperty.link( function( time ) {
-      var sec, min;
       time = Math.round( time );
 
       // find seconds
-      sec = (time % 60).toString();
+      var sec = (time % 60).toString();
       if ( sec.length < 2 ) {
         sec = '0' + sec;
       }
 
       // find minutes
-      min = Math.floor( time / 60 ).toString();
+      var min = Math.floor( time / 60 ).toString();
 
       // set time
       timeText.setText( StringUtils.format( pattern_0minute_1second, min, sec ) );

@@ -33,13 +33,13 @@ define( function( require ) {
 
     // create view of times table for levels
     levels.forEach( function( level, levelIndex ) {
-      var hBox,
-        vBox = new VBox( {visible: false} ),
-        tableSize = level.tableSize,
-        buttonWidth = TABLE_SIZE.width / (tableSize + 1),
-        buttonHeight = TABLE_SIZE.height / (tableSize + 1),
-        i,
-        j;
+      var hBox;
+      var vBox = new VBox( {visible: false} );
+      var tableSize = level.tableSize;
+      var buttonWidth = TABLE_SIZE.width / (tableSize + 1);
+      var buttonHeight = TABLE_SIZE.height / (tableSize + 1);
+      var i;
+      var j;
 
       self.cells[levelIndex] = [];
 
