@@ -20,6 +20,7 @@ define( function( require ) {
 
   /**
    * @param model
+   * @param multiplicationTableNode
    * @param titleString
    * @constructor
    */
