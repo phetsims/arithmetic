@@ -15,23 +15,28 @@ define( function( require ) {
   var PropertySet = require( 'AXON/PropertySet' );
   var ScreenView = require( 'JOIST/ScreenView' );
 
+  // images
+  var phetGirlIcon1Image = require( 'image!ARITHMETIC/phet-girl-icon-1.png' );
+  var phetGirlIcon2Image = require( 'image!ARITHMETIC/phet-girl-icon-2.png' );
+  var phetGirlIcon3Image = require( 'image!ARITHMETIC/phet-girl-icon-3.png' );
+
   // constants
   var levels = [
     // level 1
     {
-      icon: require( 'image!ARITHMETIC/phet-girl-icon-1.png' ),
+      icon: phetGirlIcon1Image,
       perfectScore: 6 * 6,
       tableSize: 6
     },
     // level 2
     {
-      icon: require( 'image!ARITHMETIC/phet-girl-icon-2.png' ),
+      icon: phetGirlIcon2Image,
       perfectScore: 9 * 9,
       tableSize: 9
     },
     // level 3
     {
-      icon: require( 'image!ARITHMETIC/phet-girl-icon-3.png' ),
+      icon: phetGirlIcon3Image,
       perfectScore: 12 * 12,
       tableSize: 12
     }
