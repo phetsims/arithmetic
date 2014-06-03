@@ -10,6 +10,7 @@ define( function( require ) {
 
   // modules
   var ArithmeticScreen = require( 'ARITHMETIC/common/view/ArithmeticScreen' );
+  var EquationMultiplyNode = require( 'ARITHMETIC/multiply/view/EquationMultiplyNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableMultiplyNode = require( 'ARITHMETIC/multiply/view/MultiplicationTableMultiplyNode' );
 
@@ -28,6 +29,12 @@ define( function( require ) {
         model.game,
         model.property( 'level' ),
         model.levels
+      ),
+      new EquationMultiplyNode(
+        model.game.property( 'multiplierLeft' ),
+        model.game.property( 'multiplierRight' ),
+        model.game.property( 'product' ),
+        model.property( 'input' )
       ),
       multiplyString
     );

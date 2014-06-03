@@ -12,13 +12,12 @@ define( function( require ) {
   var BackButtonNode = require( 'ARITHMETIC/common/view/BackButtonNode' );
   var CalculatorNode = require( 'ARITHMETIC/common/view/CalculatorNode' );
   var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
-  var EquationNode = require( 'ARITHMETIC/common/view/EquationNode' );
   var FaceWithScoreConfiguredNode = require( 'ARITHMETIC/common/view/FaceWithScoreConfiguredNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelCompletedConfiguredNode = require( 'ARITHMETIC/common/view/LevelCompletedConfiguredNode' );
   var Node = require( 'SCENERY/nodes/Node' );
 
-  function WorkspaceNode( model, multiplicationTableNode, layoutBounds ) {
+  function WorkspaceNode( model, multiplicationTableNode, equationNode, layoutBounds ) {
     var self = this;
     Node.call( this );
 
@@ -52,12 +51,9 @@ define( function( require ) {
     );
 
     // add equation
-    this.addChild( new EquationNode(
-      model.game.property( 'multiplierLeft' ),
-      model.game.property( 'multiplierRight' ),
-      model.game.property( 'product' ),
-      model.property( 'input' )
-    ).mutate( {bottom: layoutBounds.maxY * 0.95, centerX: layoutBounds.width * 0.45} ) );
+    this.addChild( equationNode
+        .mutate( {bottom: layoutBounds.maxY * 0.95, centerX: layoutBounds.width * 0.45} )
+    );
 
     // add smile face
     this.addChild( new FaceWithScoreConfiguredNode(

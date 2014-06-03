@@ -18,6 +18,9 @@ define( function( require ) {
   }
 
   return inherit( ArithmeticModel, MultiplyModel, {
+    checkInput: function() {
+      console.log( this.input );
+    },
     setTask: function() {
       // get available multipliers
       var multipliers = this.game.getAvailableMultipliers();

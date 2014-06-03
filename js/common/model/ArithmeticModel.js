@@ -20,6 +20,9 @@ define( function( require ) {
   var phetGirlIcon2Image = require( 'image!ARITHMETIC/phet-girl-icon-2.png' );
   var phetGirlIcon3Image = require( 'image!ARITHMETIC/phet-girl-icon-3.png' );
 
+  // audio
+  var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
+
   // constants
   var levels = [
     // level 1
@@ -61,6 +64,9 @@ define( function( require ) {
       isTimer: false // is time mode active
     } );
 
+    // hook up the audio player to the sound settings
+    this.gameAudioPlayer = new GameAudioPlayer( this.property( 'isSound' ) );
+
     // model for single game
     this.game = new GameModel( this.property( 'level' ), levels );
 
@@ -72,13 +78,14 @@ define( function( require ) {
       self.bestScores.push( new Property( 0 ) );
     } );
 
-    // clear time when timer off
-    this.property( 'isTimer' ).link( function( isTimer ) {
+    // clear time property when timer off
+    this.property( 'isTimer' ).lazyLink( function( isTimer ) {
       if ( !isTimer ) {
         self.time = 0;
       }
     } );
 
+    // init game after choosing level
     this.property( 'level' ).lazyLink( function( levelNumber ) {
       if ( levelNumber ) {
         self.setTask();
@@ -87,9 +94,39 @@ define( function( require ) {
         self.game.reset();
       }
     } );
+
+    this.game.property( 'multiplierLeft' ).lazyLink( this.checkNextTask.bind( this ) );
+    this.game.property( 'multiplierRight' ).lazyLink( this.checkNextTask.bind( this ) );
+    this.game.property( 'product' ).lazyLink( this.checkNextTask.bind( this ) );
   }
 
   return inherit( PropertySet, ArithmeticModel, {
+    checkNextTask: function() {
+      if ( this.checkAnswer() ) {
+        this.setTask();
+      }
+    },
+    checkAnswer: function() {
+      if ( this.game.multiplierLeft && this.game.multiplierRight && this.game.product ) {
+
+        // show smile face
+        this.game.isFaceVisible = true;
+
+        // correct answer
+        if ( this.game.multiplierLeft * this.game.multiplierRight === this.game.product ) {
+          this.scoreTotal += this.game.scoreGame;
+          this.gameAudioPlayer.correctAnswer();
+          return true;
+        }
+        // wrong answer
+        else {
+          this.game.scoreGame = 0;
+          this.gameAudioPlayer.wrongAnswer();
+          return false;
+        }
+      }
+      return false;
+    },
     checkInput: function() {
       // should be defined in child constructors
     },

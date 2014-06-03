@@ -23,7 +23,11 @@ define( function( require ) {
       var multipliers = this.game.getAvailableMultipliers();
 
       // set product
+      this.game.property( 'multiplierLeft' ).reset();
+      this.game.property( 'multiplierRight' ).reset();
       this.game.product = multipliers.multiplierLeft * multipliers.multiplierRight;
+
+      this.game.property( 'scoreGame' ).reset();
     }
   } );
 } );

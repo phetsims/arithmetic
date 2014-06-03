@@ -17,6 +17,7 @@ require.config( {
     text: '../../sherpa/text',
 
     // PhET plugins
+    audio: '../../chipper/requirejs-plugins/audio',
     image: '../../chipper/requirejs-plugins/image',
     string: '../../chipper/requirejs-plugins/string',
 
@@ -31,6 +32,7 @@ require.config( {
     PHETCOMMON: '../../phetcommon/js',
     SCENERY: '../../scenery/js',
     SCENERY_PHET: '../../scenery-phet/js',
+    SHERPA: '../../sherpa',
     SUN: '../../sun/js',
     VIBE: '../../vibe/js',
     VEGAS: '../../vegas/js',
