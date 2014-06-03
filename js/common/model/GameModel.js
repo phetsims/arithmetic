@@ -26,14 +26,6 @@ define( function( require ) {
 
     this.answerSheet = [];
 
-    // show smile face when properties multiplierLeft, multiplierRight and product are define
-    this.property( 'multiplierLeft' )
-      .and( this.property( 'multiplierRight' ) )
-      .and( this.property( 'product' ) )
-      .link( function() {
-        self.isFaceVisible = (!!self.multiplierLeft && !!self.multiplierRight && !!self.product);
-      } );
-
     // set new answer sheet changing level
     levelProperty.lazyLink( function( levelNumber ) {
       var answerSheetSize;
