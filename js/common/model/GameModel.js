@@ -60,11 +60,12 @@ define( function( require ) {
     reset: function() {
       PropertySet.prototype.reset.call( this );
     },
+    // return available left and right multipliers according to answer sheet
     getAvailableMultipliers: function() {
-      var availableLeftMultipliers = [],
-        availableRightMultipliers = [],
-        multiplierLeft,
-        multiplierRight;
+      var availableLeftMultipliers = [];
+      var availableRightMultipliers = [];
+      var multiplierLeft;
+      var multiplierRight;
 
       // find available left multipliers
       this.answerSheet.forEach( function( rightMultipliers, index ) {
