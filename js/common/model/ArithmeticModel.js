@@ -10,7 +10,6 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
-  var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
   var GameModel = require( 'ARITHMETIC/common/model/GameModel' );
   var Property = require( 'AXON/Property' );
   var PropertySet = require( 'AXON/PropertySet' );
@@ -25,7 +24,6 @@ define( function( require ) {
   var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
 
   // constants
-  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
   var levels = [
     // level 1
     {
@@ -61,6 +59,7 @@ define( function( require ) {
       scoreTotal: 0, // total user score for current games
       time: 0, // current time
       input: '', // user's input value
+      isLevelCompleted: false, // flag of level completing. If true - show statistic node
       isSound: true, // is sound active
       isTimer: false // is time mode active
     } );
@@ -70,8 +69,6 @@ define( function( require ) {
 
     // model for single game
     this.game = new GameModel( this.property( 'level' ), levels );
-
-    this.smileFace = new FaceModel();
 
     // best times and scores, equal to number of levels
     this.bestTimes = [];
@@ -91,55 +88,45 @@ define( function( require ) {
     // init game after choosing level
     this.property( 'level' ).lazyLink( function( levelNumber ) {
       if ( levelNumber ) {
-        self.game.state = GAME_STATE.NEXT_TASK;
+        self.setTask();
       }
       else {
         self.game.reset();
       }
     } );
 
-    // set next task if equation was filled
-    this.game.property( 'state' ).lazyLink( function( state ) {
-      if ( state === GAME_STATE.EQUATION_FILLED ) {
-        // show smile face
-        self.smileFace.isVisible = true;
-
-        // correct answer
-        if ( self.game.multiplierLeft * self.game.multiplierRight === self.game.product ) {
-
-          // increase total score
-          self.scoreTotal += self.game.scoreGame;
-
-          // set smile face view and play sound
-          self.smileFace.scoreFace = self.game.scoreGame;
-          self.smileFace.isSmile = true;
-          self.gameAudioPlayer.correctAnswer();
-
-          // mark answer in answer sheet
-          self.game.answerSheet[self.game.multiplierLeft - 1][self.game.multiplierRight - 1] = true;
-
-          // set next task
-          self.game.state = GAME_STATE.NEXT_TASK;
-        }
-        // wrong answer
-        else {
-
-          // player will not get points for this task
-          self.game.scoreGame = 0;
-
-          // set smile face view and play sound
-          self.smileFace.scoreFace = self.game.scoreGame;
-          self.smileFace.isSmile = false;
-          self.gameAudioPlayer.wrongAnswer();
-
-          // return to start state
-          self.game.state = GAME_STATE.START;
-        }
-      }
-    } );
+    this.game.property( 'multiplierLeft' ).lazyLink( this.checkNextTask.bind( this ) );
+    this.game.property( 'multiplierRight' ).lazyLink( this.checkNextTask.bind( this ) );
+    this.game.property( 'product' ).lazyLink( this.checkNextTask.bind( this ) );
   }
 
   return inherit( PropertySet, ArithmeticModel, {
+    checkNextTask: function() {
+      if ( this.checkAnswer() ) {
+        this.setTask();
+      }
+    },
+    checkAnswer: function() {
+      if ( this.game.multiplierLeft && this.game.multiplierRight && this.game.product ) {
+
+        // show smile face
+        this.game.isFaceVisible = true;
+
+        // correct answer
+        if ( this.game.multiplierLeft * this.game.multiplierRight === this.game.product ) {
+          this.scoreTotal += this.game.scoreGame;
+          this.gameAudioPlayer.correctAnswer();
+          return true;
+        }
+        // wrong answer
+        else {
+          this.game.scoreGame = 0;
+          this.gameAudioPlayer.wrongAnswer();
+          return false;
+        }
+      }
+      return false;
+    },
     checkInput: function() {
       // should be defined in child constructors
     },
@@ -148,6 +135,9 @@ define( function( require ) {
     },
     reset: function() {
       PropertySet.prototype.reset.call( this );
+    },
+    setTask: function() {
+      // should be defined in child constructors
     },
     step: function( dt ) {
       // if timer is on and level is select - add time
