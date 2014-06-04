@@ -25,9 +25,11 @@ define( function( require ) {
       // get available multipliers
       var multipliers = this.game.getAvailableMultipliers();
 
-      // set left and right multipliers
-      this.game.multiplierLeft = multipliers.multiplierLeft;
-      this.game.multiplierRight = multipliers.multiplierRight;
+      if ( multipliers ) {
+        // set left and right multipliers
+        this.game.multiplierLeft = multipliers.multiplierLeft;
+        this.game.multiplierRight = multipliers.multiplierRight;
+      }
     }
   } );
 } );

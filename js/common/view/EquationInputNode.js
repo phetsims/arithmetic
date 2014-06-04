@@ -75,6 +75,11 @@ define( function( require ) {
     },
     unfocus: function() {
       // TODO: stop blinking cursor
+    },
+    reset: function(){
+      this._inputText.setText( PLACEHOLDER );
+      updateBoxPosition( this._box );
+      this.disable();
     }
   } );
 } );

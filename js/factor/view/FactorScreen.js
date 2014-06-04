@@ -31,6 +31,7 @@ define( function( require ) {
         model.levels
       ),
       new EquationFactorNode(
+        model.game.property( 'state' ),
         model.game.property( 'multiplierLeft' ),
         model.game.property( 'multiplierRight' ),
         model.game.property( 'product' ),

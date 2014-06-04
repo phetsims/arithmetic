@@ -57,8 +57,7 @@ define( function( require ) {
 
     // add smile face
     this.addChild( new FaceWithScoreConfiguredNode(
-        model.game.property( 'scoreGame' ),
-        model.game.property( 'isFaceVisible' )
+        model.smileFace
       ).mutate( {bottom: layoutBounds.maxY * 0.95, left: layoutBounds.maxX * 0.04} )
     );
 
@@ -66,7 +65,7 @@ define( function( require ) {
     this.addChild( new LevelCompletedConfiguredNode(
         model.levels,
         model.property( 'level' ),
-        model.property( 'isLevelCompleted' ),
+        model.game.property( 'state' ),
         model.property( 'scoreTotal' ),
         model.property( 'isTimer' ),
         model.property( 'time' ),

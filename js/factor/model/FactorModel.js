@@ -13,21 +13,41 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
 
+  // constants
+  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+
   function FactorModel() {
+    var self = this;
     ArithmeticModel.call( this );
+
+    this.game.property( 'state' ).link( function( state ) {
+      console.log( state );
+    } );
+
+    // next task observer
+    this.game.property( 'state' ).link( function( state ) {
+      if ( state === GAME_STATE.NEXT_TASK ) {
+        // get available multipliers
+        var multipliers = self.game.getAvailableMultipliers();
+
+        if ( multipliers ) {
+          // reset multipliers and score properties
+          self.game.property( 'multiplierLeft' ).reset();
+          self.game.property( 'multiplierRight' ).reset();
+          self.game.property( 'scoreGame' ).reset();
+
+          // set product
+          self.game.product = multipliers.multiplierLeft * multipliers.multiplierRight;
+
+          // set start state
+          self.game.state = GAME_STATE.START;
+        }
+        else {
+          self.game.state = GAME_STATE.LEVEL_FINISHED;
+        }
+      }
+    } );
   }
 
-  return inherit( ArithmeticModel, FactorModel, {
-    setTask: function() {
-      // get available multipliers
-      var multipliers = this.game.getAvailableMultipliers();
-
-      // set product
-      this.game.property( 'multiplierLeft' ).reset();
-      this.game.property( 'multiplierRight' ).reset();
-      this.game.product = multipliers.multiplierLeft * multipliers.multiplierRight;
-
-      this.game.property( 'scoreGame' ).reset();
-    }
-  } );
+  return inherit( ArithmeticModel, FactorModel );
 } );

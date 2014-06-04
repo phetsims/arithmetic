@@ -19,9 +19,10 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
+  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
   var TABLE_SIZE = Constants.SIZE;
 
-  function MultiplicationTableNode( levelProperty, levels ) {
+  function MultiplicationTableNode( levelProperty, levels, gameModel ) {
     var self = this;
     Node.call( this );
 
@@ -100,6 +101,18 @@ define( function( require ) {
       if ( self._viewForLevel[levelNumberPrev] ) {
         self._viewForLevel[levelNumberPrev].visible = false;
         self.clearCells( levelNumberPrev );
+      }
+    } );
+
+    gameModel.property( 'state' ).link( function( state ) {
+      if ( state === GAME_STATE.NEXT_TASK ) {
+        gameModel.answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
+          multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
+            if ( isVisible ) {
+              self.cells[levelProperty.value - 1][multipliersLeftIndex + 1][multipliersRightIndex + 1].showText();
+            }
+          } );
+        } );
       }
     } );
   }

@@ -11,14 +11,16 @@ define( function( require ) {
 
   // modules
   var ButtonListener = require( 'SUN/buttons/ButtonListener' );
-  var PushButtonModel = require( 'SUN/buttons/PushButtonModel' );
-
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
+  var PushButtonModel = require( 'SUN/buttons/PushButtonModel' );
+
+  // constants
+  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
   function MultiplicationTableFactorNode( gameModel, levelProperty, levels ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, levels );
+    MultiplicationTableNode.call( this, levelProperty, levels, gameModel );
 
     // add 'hover' and 'down' listeners for each cell in table
     this.cells.forEach( function( tableForLevel ) {
@@ -49,6 +51,8 @@ define( function( require ) {
               buttonModel.property( 'down' ).onValue( true, function() {
                 gameModel.multiplierLeft = leftIndex;
                 gameModel.multiplierRight = rightIndex;
+
+                gameModel.state = GAME_STATE.EQUATION_FILLED;
               } );
             }
           } );

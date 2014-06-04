@@ -15,7 +15,7 @@ define( function( require ) {
 
   function MultiplicationTableDivideNode( gameModel, levelProperty, levels ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, levels );
+    MultiplicationTableNode.call( this, levelProperty, levels, gameModel );
 
     // set left multiplier selected
     gameModel.property( 'multiplierLeft' ).lazyLink( function() {

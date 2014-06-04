@@ -15,7 +15,7 @@ define( function( require ) {
 
   function MultiplicationTableMultiplyNode( gameModel, levelProperty, levels ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, levels );
+    MultiplicationTableNode.call( this, levelProperty, levels, gameModel );
 
     // set view for multiplication table after choosing left and right multipliers
     gameModel.property( 'multiplierRight' )

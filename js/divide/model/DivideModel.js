@@ -22,15 +22,17 @@ define( function( require ) {
       // get available multipliers
       var multipliers = this.game.getAvailableMultipliers();
 
-      // set product
-      this.game.product = multipliers.multiplierLeft * multipliers.multiplierRight;
+      if ( multipliers ) {
+        // set product
+        this.game.product = multipliers.multiplierLeft * multipliers.multiplierRight;
 
-      // set left or right multiplier
-      if ( Math.random() < 0.5 ) {
-        this.game.multiplierLeft = multipliers.multiplierLeft;
-      }
-      else {
-        this.game.multiplierRight = multipliers.multiplierRight;
+        // set left or right multiplier
+        if ( Math.random() < 0.5 ) {
+          this.game.multiplierLeft = multipliers.multiplierLeft;
+        }
+        else {
+          this.game.multiplierRight = multipliers.multiplierRight;
+        }
       }
     }
   } );

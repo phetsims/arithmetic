@@ -13,7 +13,7 @@ define( function( require ) {
   var FaceWithScoreNode = require( 'SCENERY_PHET/FaceWithScoreNode' );
   var inherit = require( 'PHET_CORE/inherit' );
 
-  function FaceWithScoreConfiguredNode( scoreGameProperty, isFaceVisibleProperty ) {
+  function FaceWithScoreConfiguredNode( smileFaceModel ) {
     var self = this;
     FaceWithScoreNode.call( this, {
       faceOpacity: 1,
@@ -23,13 +23,19 @@ define( function( require ) {
     } );
 
     // add observers
-    scoreGameProperty.link( function( scoreGame ) {
-      // set score and smile emotion
+
+    // set score of smile face
+    smileFaceModel.property( 'scoreFace' ).link( function( scoreGame ) {
       self.setScore( scoreGame );
-      self[scoreGame ? 'smile' : 'frown' ]();
     } );
 
-    isFaceVisibleProperty.linkAttribute( self, 'visible' );
+    // set smile face emotion
+    smileFaceModel.property( 'isSmile' ).link( function( isFaceSmile ) {
+      self[isFaceSmile ? 'smile' : 'frown' ]();
+    } );
+
+    // set visibility of smile face
+    smileFaceModel.property( 'isVisible' ).linkAttribute( self, 'visible' );
   }
 
   return inherit( FaceWithScoreNode, FaceWithScoreConfiguredNode );

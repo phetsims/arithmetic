@@ -15,12 +15,15 @@ define( function( require ) {
   var LevelCompletedNode = require( 'VEGAS/LevelCompletedNode' );
   var Node = require( 'SCENERY/nodes/Node' );
 
-  function LevelCompletedConfiguredNode( levels, levelProperty, isLevelCompletedProperty, scoreTotalProperty, isTimerProperty, timeProperty, bestTimes ) {
+  // constants
+  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+
+  function LevelCompletedConfiguredNode( levels, levelProperty, stateProperty, scoreTotalProperty, isTimerProperty, timeProperty, bestTimes ) {
     var self = this;
     Node.call( this );
 
-    isLevelCompletedProperty.lazyLink( function( isLevelCompleted ) {
-      if ( isLevelCompleted ) {
+    stateProperty.lazyLink( function( state ) {
+      if ( state === GAME_STATE.LEVEL_FINISHED ) {
         self.addChild( new LevelCompletedNode(
           levelProperty.value,
           scoreTotalProperty.value,

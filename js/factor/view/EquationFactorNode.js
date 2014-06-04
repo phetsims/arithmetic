@@ -12,8 +12,19 @@ define( function( require ) {
   var EquationNode = require( 'ARITHMETIC/common/view/EquationNode' );
   var inherit = require( 'PHET_CORE/inherit' );
 
-  function EquationFactorNode( multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty ) {
+  // constants
+  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+
+  function EquationFactorNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty ) {
+    var self = this;
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty );
+
+    stateProperty.link( function( state ) {
+      if ( state === GAME_STATE.START ) {
+        self.multiplierLeftInput.reset();
+        self.multiplierRightInput.reset();
+      }
+    } );
   }
 
   return inherit( EquationNode, EquationFactorNode );
