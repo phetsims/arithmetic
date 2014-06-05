@@ -18,7 +18,7 @@ define( function( require ) {
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
-  function LevelCompletedConfiguredNode( levels, levelProperty, stateProperty, scoreTotalProperty, isTimerProperty, timeProperty, bestTimes ) {
+  function LevelCompletedConfiguredNode( levels, levelProperty, stateProperty, scoreTotalProperty, isTimerProperty, timeProperty, bestTimes, continueCallback, layoutBounds ) {
     var self = this;
     Node.call( this );
 
@@ -32,10 +32,11 @@ define( function( require ) {
           isTimerProperty.value,
           timeProperty.value,
           bestTimes[levelProperty.value - 1],
-          (timeProperty.value < bestTimes[levelProperty.value - 1])
-        ) );
+          (timeProperty.value < bestTimes[levelProperty.value - 1]),
+          continueCallback
+        ).mutate( {centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2} ) );
       }
-      else {
+      else if ( state === GAME_STATE.START ) {
         self.removeAllChildren();
       }
     } );
