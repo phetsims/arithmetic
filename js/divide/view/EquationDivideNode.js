@@ -12,26 +12,33 @@ define( function( require ) {
   var EquationNode = require( 'ARITHMETIC/common/view/EquationNode' );
   var inherit = require( 'PHET_CORE/inherit' );
 
-  function EquationDivideNode( multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty ) {
-    var self = this;
-    EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty );
+  // constants
+  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
-    multiplierLeftProperty.link( function( multiplierLeft ) {
-      if ( multiplierLeft ) {
-        self.multiplierLeftInput.disable();
-      }
-      else {
-        setActiveInput( self.multiplierLeftInput );
+  function EquationDivideNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty ) {
+    var self = this;
+    var activeProperty;
+    EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
+
+    stateProperty.link( function( state ) {
+      if ( state === GAME_STATE.START ) {
+        inputProperty.value = '';
+
+        if ( multiplierLeftProperty.value ) {
+          activeProperty = multiplierRightProperty;
+          self.multiplierLeftInput.disable();
+          setActiveInput( self.multiplierRightInput );
+        }
+        else {
+          activeProperty = multiplierLeftProperty;
+          self.multiplierRightInput.disable();
+          setActiveInput( self.multiplierLeftInput );
+        }
       }
     } );
 
-    multiplierRightProperty.link( function( multiplierRight ) {
-      if ( multiplierRight ) {
-        self.multiplierRightInput.disable();
-      }
-      else {
-        setActiveInput( self.multiplierRightInput );
-      }
+    inputProperty.lazyLink( function( inputString ) {
+      activeProperty.value = parseInt( inputString, 10 );
     } );
   }
 
