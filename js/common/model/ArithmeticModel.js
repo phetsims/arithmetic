@@ -92,6 +92,7 @@ define( function( require ) {
     this.property( 'level' ).lazyLink( function( levelNumber ) {
       if ( levelNumber ) {
         self.game.state = GAME_STATE.NEXT_TASK;
+        self.time = 0;
       }
       else {
         self.game.reset();
