@@ -32,7 +32,7 @@ define( function( require ) {
 
     // update text when property changed
     property.lazyLink( function( value ) {
-      self._inputText.setText( value ? value : PLACEHOLDER );
+      self._inputText.setText( value );
       updateBoxPosition( self._box );
     } );
 
