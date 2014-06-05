@@ -20,10 +20,6 @@ define( function( require ) {
     var self = this;
     ArithmeticModel.call( this );
 
-    this.game.property( 'state' ).link( function( state ) {
-      console.log( state );
-    } );
-
     // next task observer
     this.game.property( 'state' ).link( function( state ) {
       if ( state === GAME_STATE.NEXT_TASK ) {
