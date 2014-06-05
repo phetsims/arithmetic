@@ -12,6 +12,9 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var PropertySet = require( 'AXON/PropertySet' );
 
+  // constants
+  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+
   function GameModel( levelProperty, levels ) {
     var self = this;
 
@@ -20,8 +23,6 @@ define( function( require ) {
       multiplierRight: undefined, // right multiplier
       product: undefined, // product of multiplication
       state: GAME_STATE.START, // current game state
-      //REVIEW: You might want to consider other values for the face node, like 'hidden', 'smiling', and 'grimacing'.
-      isFaceVisible: false, // flag of smile face visibility
       //REVIEW: Just wondering why the game starts off with a score of 1 and not zero.  Seems odd.
       scoreGame: 1 // score for current game
     } );
@@ -52,34 +53,40 @@ define( function( require ) {
 
   return inherit( PropertySet, GameModel, {
     reset: function() {
+      // reset properties
       PropertySet.prototype.reset.call( this );
     },
     // return available left and right multipliers according to answer sheet
     getAvailableMultipliers: function() {
-      var availableLeftMultipliers = [];
-      var availableRightMultipliers = [];
+      var availableMultipliersLeft = [];
+      var availableMultipliersRight = [];
       var multiplierLeft;
       var multiplierRight;
 
       // find available left multipliers
       this.answerSheet.forEach( function( rightMultipliers, index ) {
         if ( rightMultipliers.indexOf( false ) !== -1 ) {
-          availableLeftMultipliers.push( index + 1 );
+          availableMultipliersLeft.push( index + 1 );
         }
       } );
 
+      // no more available multipliers
+      if ( !availableMultipliersLeft.length ) {
+        return null;
+      }
+
       // set left multiplier
-      multiplierLeft = _.shuffle( availableLeftMultipliers )[0];
+      multiplierLeft = _.shuffle( availableMultipliersLeft )[0];
 
       // find available right multipliers
       this.answerSheet[multiplierLeft - 1].forEach( function( isRightMultiplierAnswered, index ) {
         if ( !isRightMultiplierAnswered ) {
-          availableRightMultipliers.push( index + 1 );
+          availableMultipliersRight.push( index + 1 );
         }
       } );
 
       // set right multiplier
-      multiplierRight = _.shuffle( availableRightMultipliers )[0];
+      multiplierRight = _.shuffle( availableMultipliersRight )[0];
 
       return {
         multiplierLeft: multiplierLeft,
