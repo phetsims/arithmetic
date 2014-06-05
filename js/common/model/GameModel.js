@@ -55,6 +55,13 @@ define( function( require ) {
     reset: function() {
       // reset properties
       PropertySet.prototype.reset.call( this );
+
+      // reset answer sheet
+      this.answerSheet.forEach( function( multipliersLeft ) {
+        for ( var i = 0; i < multipliersLeft.length; i++ ) {
+          multipliersLeft[i] = false;
+        }
+      } );
     },
     // return available left and right multipliers according to answer sheet
     getAvailableMultipliers: function() {
