@@ -108,9 +108,7 @@ define( function( require ) {
       if ( state === GAME_STATE.NEXT_TASK ) {
         gameModel.answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
           multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
-            if ( isVisible ) {
-              self.cells[levelProperty.value - 1][multipliersLeftIndex + 1][multipliersRightIndex + 1].showText();
-            }
+            self.cells[levelProperty.value - 1][multipliersLeftIndex + 1][multipliersRightIndex + 1][ isVisible ? 'showText' : 'hideText' ]();
           } );
         } );
       }
