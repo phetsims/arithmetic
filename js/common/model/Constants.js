@@ -38,6 +38,8 @@ define( function( require ) {
       INPUT_SIZE: new Dimension2( 60, 40 ), // size of input buttons
       SPACING: 10 // spacing between equation elements
     },
+    // max input length
+    INPUT_LENGTH_MAX: 2,
     // constants for multiplication table
     MULTIPLICATION_TABLE: {
       MULTIPLIER_BUTTON: {

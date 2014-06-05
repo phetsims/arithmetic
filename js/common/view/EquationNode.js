@@ -20,7 +20,7 @@ define( function( require ) {
   var FONT_VBOX = new PhetFont( 36 );
   var SPACING = Constants.SPACING;
 
-  function EquationNode( multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty ) {
+  function EquationNode( multiplierLeftProperty, multiplierRightProperty, productProperty ) {
 
     this.multiplierLeftInput = new EquationInputNode( multiplierLeftProperty );
     this.multiplierRightInput = new EquationInputNode( multiplierRightProperty );

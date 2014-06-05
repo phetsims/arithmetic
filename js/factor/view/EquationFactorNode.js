@@ -15,9 +15,9 @@ define( function( require ) {
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
-  function EquationFactorNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty ) {
+  function EquationFactorNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty ) {
     var self = this;
-    EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty );
+    EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
 
     stateProperty.link( function( state ) {
       if ( state === GAME_STATE.START ) {

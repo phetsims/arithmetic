@@ -31,9 +31,9 @@ define( function( require ) {
         model.levels
       ),
       new EquationMultiplyNode(
+        model.game.property( 'state' ),
         model.game.property( 'multiplierLeft' ),
         model.game.property( 'multiplierRight' ),
-        model.game.property( 'product' ),
         model.property( 'input' )
       ),
       multiplyString
