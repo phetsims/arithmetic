@@ -142,7 +142,18 @@ define( function( require ) {
       if ( state === GAME_STATE.LEVEL_FINISHED ) {
         var bestScore = self.bestScores[self.level - 1];
 
+        // set best score
         bestScore.value = Math.max( bestScore.value, self.scoreTotal );
+
+        // set best time
+        if ( self.isTimer ) {
+          if ( self.bestTimes[self.level - 1] === null ) {
+            self.bestTimes[self.level - 1] = self.time;
+          }
+          else {
+            self.bestTimes[self.level - 1] = Math.min( self.bestTimes[self.level - 1], self.time );
+          }
+        }
       }
     } );
   }
