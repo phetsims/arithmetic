@@ -22,6 +22,8 @@ define( function( require ) {
     var self = this;
     MultiplicationTableNode.call( this, levelProperty, levels, gameModel );
 
+    this._buttonModel = [];
+
     // add 'hover' and 'down' listeners for each cell in table
     this.cells.forEach( function( tableForLevel ) {
       tableForLevel.forEach( function( leftMultipliers, leftIndex ) {
@@ -40,24 +42,40 @@ define( function( require ) {
               button.addInputListener( buttonListener );
               button.cursor = 'pointer';
 
+              // store model for next execution
+              self._buttonModel.push( buttonModel );
+
               // add 'hover' listener
               buttonModel.property( 'over' ).onValue( true, function() {
-                self.clearCells( levelProperty.value );
-                self.setActiveRect( levelProperty.value, leftIndex, rightIndex );
-                button.hover();
+                if ( buttonModel.enabled ) {
+                  self.clearCells( levelProperty.value );
+                  self.setActiveRect( levelProperty.value, leftIndex, rightIndex );
+                  button.hover();
+                }
               } );
 
               // add 'down' listener
               buttonModel.property( 'down' ).onValue( true, function() {
-                gameModel.multiplierLeft = leftIndex;
-                gameModel.multiplierRight = rightIndex;
+                if ( buttonModel.enabled ) {
+                  gameModel.multiplierLeft = leftIndex;
+                  gameModel.multiplierRight = rightIndex;
 
-                gameModel.state = GAME_STATE.EQUATION_FILLED;
+                  gameModel.state = GAME_STATE.EQUATION_FILLED;
+                }
               } );
             }
           } );
         }
       } );
+    } );
+
+    gameModel.property( 'state' ).link( function( state ) {
+      if ( state === GAME_STATE.LEVEL_FINISHED ) {
+        self.disableAll( levelProperty.value );
+      }
+      else if ( state === GAME_STATE.START ) {
+        self.enableAll();
+      }
     } );
   }
 
@@ -72,6 +90,20 @@ define( function( require ) {
             }
           } );
         }
+      } );
+    },
+    // disable all buttons
+    disableAll: function( levelNumber ) {
+      this.clearCells( levelNumber );
+
+      this._buttonModel.forEach( function( buttonModel ) {
+        buttonModel.enabled = false;
+      } );
+    },
+    // enable all buttons
+    enableAll: function() {
+      this._buttonModel.forEach( function( buttonModel ) {
+        buttonModel.enabled = true;
       } );
     }
   } );
