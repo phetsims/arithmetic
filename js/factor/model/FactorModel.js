@@ -39,6 +39,7 @@ define( function( require ) {
           self.game.state = GAME_STATE.START;
         }
         else {
+          // set level finished state
           self.game.state = GAME_STATE.LEVEL_FINISHED;
         }
       }
