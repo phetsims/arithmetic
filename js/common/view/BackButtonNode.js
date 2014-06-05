@@ -17,7 +17,7 @@ define( function( require ) {
   // constants
   var ARROW_SIZE = Constants.ARROW_SIZE;
 
-  function BackButtonNode( levelProperty ) {
+  function BackButtonNode( backCallback ) {
     RectangularPushButton.call( this, {
       content: new ArrowNode( ARROW_SIZE / 2, 0, -ARROW_SIZE / 2, 0, {
         headWidth: 12,
@@ -27,9 +27,7 @@ define( function( require ) {
       baseColor: Constants.BASE_COLOR,
       xMargin: 10,
       yMargin: 8,
-      listener: function() {
-        levelProperty.value = 0;
-      }
+      listener: backCallback
     } );
   }
 
