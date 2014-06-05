@@ -17,6 +17,9 @@ define( function( require ) {
   var LevelCompletedConfiguredNode = require( 'ARITHMETIC/common/view/LevelCompletedConfiguredNode' );
   var Node = require( 'SCENERY/nodes/Node' );
 
+  // constants
+  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+
   function WorkspaceNode( model, multiplicationTableNode, equationNode, layoutBounds ) {
     var self = this;
     Node.call( this );
@@ -35,13 +38,18 @@ define( function( require ) {
         model.property( 'time' ),
         model.property( 'isTimer' ),
         model.property( 'isSound' ),
-        model.refreshLevel
+        function() {
+          model.refreshLevel();
+          model.game.state = GAME_STATE.NEXT_TASK;
+        }
       ).mutate( {right: layoutBounds.maxX * 0.98, top: layoutBounds.maxY * 0.02} )
     );
 
     // add back button
     this.addChild( new BackButtonNode(
-        model.property( 'level' )
+        function() {
+          model.back();
+        }
       ).mutate( {left: layoutBounds.maxX * 0.02, top: layoutBounds.maxY * 0.02} )
     );
 
@@ -69,8 +77,13 @@ define( function( require ) {
         model.property( 'scoreTotal' ),
         model.property( 'isTimer' ),
         model.property( 'time' ),
-        model.bestTimes
-      ).mutate( {centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2} )
+        model.bestTimes,
+        function() {
+          model.back();
+          model.refreshLevel();
+          model.game.state = GAME_STATE.START;
+        },
+        layoutBounds )
     );
 
     model.property( 'level' ).link( function( level ) {
