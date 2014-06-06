@@ -1,5 +1,6 @@
 // Copyright 2002-2013, University of Colorado Boulder
 
+//REVIEW Should make clear in header comment that this is essentially and abstract base class, not meant to be instantiated itself.
 /**
  * Main model for the 'Arithmetic' simulation.
  *
@@ -61,6 +62,7 @@ define( function( require ) {
       scoreTotal: 0, // total user score for current games
       time: 0, // current time
       input: '', // user's input value
+      //REVIEW - Please use 'soundEnabled' and 'timerEnabled', as these are more conventional for PhET.
       isSound: true, // is sound active
       isTimer: false // is time mode active
     } );
@@ -95,6 +97,7 @@ define( function( require ) {
         self.time = 0;
       }
       else {
+        //REVIEW - This seems odd.  The game is reset if level is set to undefined or null?  Seems rather indirect, and there should be a more direct way to do it.
         self.game.reset();
       }
     } );
@@ -163,6 +166,7 @@ define( function( require ) {
       this.level = 0;
     },
     checkInput: function() {
+      //REVIEW: Comment should probably say 'child types', since technically it's not the constructor where this is overridden.
       // should be defined in child constructors
     },
     refreshLevel: function() {
