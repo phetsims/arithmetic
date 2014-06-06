@@ -96,10 +96,6 @@ define( function( require ) {
         self.game.state = GAME_STATE.NEXT_TASK;
         self.time = 0;
       }
-      else {
-        //REVIEW - This seems odd.  The game is reset if level is set to undefined or null?  Seems rather indirect, and there should be a more direct way to do it.
-        self.game.reset();
-      }
     } );
 
     // set next task if equation was filled
@@ -164,6 +160,9 @@ define( function( require ) {
   return inherit( PropertySet, ArithmeticModel, {
     back: function() {
       this.level = 0;
+      this.scoreTotal = 0;
+      this.smileFace.reset();
+      this.game.reset();
     },
     checkInput: function() {
       //REVIEW: Comment should probably say 'child types', since technically it's not the constructor where this is overridden.
