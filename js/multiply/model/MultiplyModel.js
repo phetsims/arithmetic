@@ -31,7 +31,6 @@ define( function( require ) {
           self.game.property( 'multiplierLeft' ).reset();
           self.game.property( 'multiplierRight' ).reset();
           self.game.property( 'scoreTask' ).reset();
-          self.input = '';
 
           // set left and right multipliers
           self.game.multiplierLeft = multipliers.multiplierLeft;

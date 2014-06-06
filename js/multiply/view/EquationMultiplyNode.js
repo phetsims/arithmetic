@@ -22,8 +22,8 @@ define( function( require ) {
     stateProperty.link( function( state ) {
       if ( state === GAME_STATE.START ) {
         self.productInput.clear();
-        self.productInput.enable();
         self.productInput.focus();
+        inputProperty.value = '';
       }
     } );
   }
