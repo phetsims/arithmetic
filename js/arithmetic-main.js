@@ -36,5 +36,5 @@ define( function( require ) {
   }
 
   // Create and start the sim
-  new Sim( simTitleString, [ new DivideScreen(), new FactorScreen(), new MultiplyScreen() ], simOptions ).start();
+  new Sim( simTitleString, [ new MultiplyScreen(), new FactorScreen(), new DivideScreen() ], simOptions ).start();
 } );
