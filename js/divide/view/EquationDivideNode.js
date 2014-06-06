@@ -44,7 +44,6 @@ define( function( require ) {
 
   var setActiveInput = function( input ) {
     input.clear();
-    input.enable();
     input.focus();
   };
 

@@ -15,7 +15,7 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
-  //var Timer = require( 'JOIST/Timer' );
+  var Timer = require( 'JOIST/Timer' );
 
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).EQUATION;
@@ -35,11 +35,6 @@ define( function( require ) {
       self._inputText.setText( value );
       updateBoxPosition( self._box );
     } );
-
-    // TODO: blinking animation for cursor
-    /*Timer.setInterval( function() {
-     self._cursor.visible = !self._cursor.visible;
-     }, 500 );*/
 
     // add background
     this.addChild( new Rectangle( 0, 0, INPUT_SIZE.width, INPUT_SIZE.height, 5, 5, {fill: 'white', stroke: 'black', lineWidth: 1.5} ) );
@@ -64,19 +59,24 @@ define( function( require ) {
     },
     disable: function() {
       // TODO: add button behaviour
-      this._cursor.visible = false;
+      this.unfocus();
     },
     enable: function() {
       // TODO: add button behaviour
-      this._cursor.visible = true;
     },
     focus: function() {
-      // TODO: start blinking cursor
+      var self = this;
+
+      Timer.clearInterval( this._interval );
+      this._interval = Timer.setInterval( function() {
+        self._cursor.visible = !self._cursor.visible;
+      }, 500 );
     },
     unfocus: function() {
-      // TODO: stop blinking cursor
+      Timer.clearInterval( this._interval );
+      this._cursor.visible = false;
     },
-    reset: function(){
+    reset: function() {
       this._inputText.setText( PLACEHOLDER );
       updateBoxPosition( this._box );
       this.disable();
