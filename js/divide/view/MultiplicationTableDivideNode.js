@@ -24,6 +24,9 @@ define( function( require ) {
       // set view for multiplication table after choosing left and right multipliers
       if ( state === GAME_STATE.NEXT_TASK ) {
 
+        // clear cells before game
+        self.clearCells( levelProperty.value );
+
         // set select multipliers
         if ( gameModel.multiplierLeft ) {
           self.cells[levelProperty.value - 1][gameModel.multiplierLeft][0].select();
@@ -32,12 +35,7 @@ define( function( require ) {
           self.cells[levelProperty.value - 1][0][gameModel.multiplierRight].select();
         }
       }
-      // clear cells before game state
-      else if ( state === GAME_STATE.START ) {
-        self.clearCells( levelProperty.value );
-      }
     } );
-
   }
 
   return inherit( MultiplicationTableNode, MultiplicationTableDivideNode );
