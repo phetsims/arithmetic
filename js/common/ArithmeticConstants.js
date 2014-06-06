@@ -13,6 +13,7 @@ define( function( require ) {
   var Dimension2 = require( 'DOT/Dimension2' );
 
   return {
+    BACKGROUND_COLOR: 'rgb(255,245,236)',
     // constants for back button
     BACK_BUTTON: {
       ARROW_SIZE: 28, // arrow size of back button

@@ -9,24 +9,13 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var DivideModel = require( 'ARITHMETIC/divide/model/DivideModel' );
-  var DivideScreen = require( 'ARITHMETIC/divide/view/DivideScreen' );
-  var DivideScreenIconNode = require( 'ARITHMETIC/divide/view/DivideScreenIconNode' );
-  var FactorModel = require( 'ARITHMETIC/factor/model/FactorModel' );
-  var FactorScreen = require( 'ARITHMETIC/factor/view/FactorScreen' );
-  var FactorScreenIconNode = require( 'ARITHMETIC/factor/view/FactorScreenIconNode' );
-  var MultiplyModel = require( 'ARITHMETIC/multiply/model/MultiplyModel' );
-  var MultiplyScreen = require( 'ARITHMETIC/multiply/view/MultiplyScreen' );
-  var MultiplyScreenIconNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenIconNode' );
-  var Screen = require( 'JOIST/Screen' );
+  var DivideScreen = require( 'ARITHMETIC/divide/DivideScreen' );
+  var FactorScreen = require( 'ARITHMETIC/factor/FactorScreen' );
+  var MultiplyScreen = require( 'ARITHMETIC/multiply/MultiplyScreen' );
   var Sim = require( 'JOIST/Sim' );
-  var SimLauncher = require( 'JOIST/SimLauncher' );
 
   // strings and images
-  var simTitle = require( 'string!ARITHMETIC/arithmetic.name' );
-
-  // constants
-  var BACKGROUND_COLOR = 'rgb( 255, 245, 236 )';
+  var simTitleString = require( 'string!ARITHMETIC/arithmetic.name' );
 
   var simOptions = {
     credits: {
@@ -46,24 +35,6 @@ define( function( require ) {
     }, simOptions );
   }
 
-  SimLauncher.launch( function() {
-    // create and start the sim
-    new Sim( simTitle, [
-      new Screen( '', new MultiplyScreenIconNode(),
-        function() {return new MultiplyModel();},
-        function( model ) {return new MultiplyScreen( model );},
-        { backgroundColor: BACKGROUND_COLOR }
-      ),
-      new Screen( '', new FactorScreenIconNode(),
-        function() {return new FactorModel();},
-        function( model ) {return new FactorScreen( model );},
-        { backgroundColor: BACKGROUND_COLOR }
-      ),
-      new Screen( '', new DivideScreenIconNode(),
-        function() {return new DivideModel();},
-        function( model ) {return new DivideScreen( model );},
-        { backgroundColor: BACKGROUND_COLOR }
-      )
-    ], simOptions ).start();
-  } );
+  // Create and start the sim
+  new Sim( simTitleString, [ new DivideScreen(), new FactorScreen(), new MultiplyScreen() ], simOptions ).start();
 } );
