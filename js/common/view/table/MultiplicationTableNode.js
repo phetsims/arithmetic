@@ -9,18 +9,18 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var Constants = require( 'ARITHMETIC/common/model/Constants' ).MULTIPLICATION_TABLE;
   var inherit = require( 'PHET_CORE/inherit' );
   var HBox = require( 'SCENERY/nodes/HBox' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var MultiplicationTableButtonMultiplierNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableButtonMultiplierNode' );
   var MultiplicationTableButtonProductNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableButtonProductNode' );
+  var Node = require( 'SCENERY/nodes/Node' );
+  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
+  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).MULTIPLICATION_TABLE;
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
-  var TABLE_SIZE = Constants.SIZE;
+  var TABLE_SIZE = CONSTANTS.SIZE;
 
   function MultiplicationTableNode( levelProperty, levels, gameModel ) {
     var self = this;

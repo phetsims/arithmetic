@@ -9,7 +9,6 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var Constants = require( 'ARITHMETIC/common/model/Constants' ).CONTROL_PANEL;
   var inherit = require( 'PHET_CORE/inherit' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -29,12 +28,13 @@ define( function( require ) {
   var timeString = require( 'string!ARITHMETIC/time' );
 
   // constants
-  var BACKGROUND_MARGIN = Constants.BACKGROUND.MARGIN;
+  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).CONTROL_PANEL;
+  var BACKGROUND_MARGIN = CONSTANTS.BACKGROUND.MARGIN;
   var FONT = new PhetFont( 18 );
-  var SPACING = Constants.SPACING;
+  var SPACING = CONSTANTS.SPACING;
 
   function ControlPanelNode( levelProperty, scoreProperty, timeProperty, timerEnabledProperty, soundEnabledProperty, refreshLevelCallback ) {
-    var background = new Rectangle( 0, 0, 0, 0, {fill: Constants.BACKGROUND.COLOR} );
+    var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR} );
     var levelText = new Text( '?', {font: FONT} );
     var scoreText = new Text( '?', {font: FONT} );
     var timeText = new Text( '?', {font: FONT} );
@@ -49,7 +49,7 @@ define( function( require ) {
       levelText,
       // add refresh button
       new RefreshButton( {
-        baseColor: Constants.REFRESH_BUTTON_COLOR,
+        baseColor: CONSTANTS.REFRESH_BUTTON_COLOR,
         listener: refreshLevelCallback
       } ),
       new HBox( {spacing: SPACING, children: [

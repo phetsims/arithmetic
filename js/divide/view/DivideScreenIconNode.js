@@ -10,7 +10,6 @@ define( function( require ) {
 
   // modules
   var Circle = require( 'SCENERY/nodes/Circle' );
-  var Constants = require( 'ARITHMETIC/common/model/Constants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/rectangle' );
@@ -21,11 +20,12 @@ define( function( require ) {
   var divideString = require( 'string!ARITHMETIC/divide' );
 
   // constants
+  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var DIVIDE_SIGN_CENTRAL_RECT_HEIGHT = 1;
   var DIVIDE_SIGN_CENTRAL_RECT_WIDTH = 10;
   var DIVIDE_SIGN_POINT_RADIUS = 1;
+  var ICON_SIZE = CONSTANTS.SCREEN_ICON_SIZE;
   var FONT = new PhetFont( 12 );
-  var ICON_SIZE = Constants.SCREEN_ICON_SIZE;
 
   function DivideScreenIconNode() {
     Rectangle.call( this, 0, 0, ICON_SIZE.width, ICON_SIZE.height, {fill: 'white'} );

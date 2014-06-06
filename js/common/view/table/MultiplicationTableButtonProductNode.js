@@ -10,7 +10,6 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var Constants = require( 'ARITHMETIC/common/model/Constants' ).MULTIPLICATION_TABLE.PRODUCT_BUTTON;
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableButtonAbstract = require( 'ARITHMETIC/common/view/table/MultiplicationTableButtonAbstract' );
@@ -18,9 +17,12 @@ define( function( require ) {
   // images
   var pointingHandImage = require( 'image!ARITHMETIC/pointing-hand.png' );
 
+  // constants
+  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).MULTIPLICATION_TABLE.PRODUCT_BUTTON;
+
   function MultiplicationTableButtonProductNode( contentText, width, height ) {
     MultiplicationTableButtonAbstract.call( this, {
-      fill: Constants.NORMAL_COLOR,
+      fill: CONSTANTS.NORMAL_COLOR,
       width: width,
       height: height
     } );
@@ -42,19 +44,19 @@ define( function( require ) {
 
   return inherit( MultiplicationTableButtonAbstract, MultiplicationTableButtonProductNode, {
     active: function() {
-      this.setBackgoundFill( Constants.ACTIVE_COLOR );
+      this.setBackgoundFill( CONSTANTS.ACTIVE_COLOR );
       this._pointer.visible = false;
     },
     hover: function() {
-      this.setBackgoundFill( Constants.HOVER_COLOR );
+      this.setBackgoundFill( CONSTANTS.HOVER_COLOR );
       this._pointer.visible = true;
     },
     normal: function() {
-      this.setBackgoundFill( Constants.NORMAL_COLOR );
+      this.setBackgoundFill( CONSTANTS.NORMAL_COLOR );
       this._pointer.visible = false;
     },
     select: function() {
-      this.setBackgoundFill( Constants.SELECT_COLOR );
+      this.setBackgoundFill( CONSTANTS.SELECT_COLOR );
       this._pointer.visible = false;
     }
   } );

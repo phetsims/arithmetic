@@ -10,12 +10,12 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var Constants = require( 'ARITHMETIC/common/model/Constants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelCompletedNode = require( 'VEGAS/LevelCompletedNode' );
   var Node = require( 'SCENERY/nodes/Node' );
 
   // constants
+  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
   function LevelCompletedConfiguredNode( levels, levelProperty, stateProperty, scoreTotalProperty, timerEnabledProperty, timeProperty, bestTimes, continueCallback, layoutBounds ) {
@@ -28,7 +28,7 @@ define( function( require ) {
           levelProperty.value,
           scoreTotalProperty.value,
           levels[levelProperty.value - 1].perfectScore,
-          Constants.STAR_NUMBER,
+          CONSTANTS.STAR_NUMBER,
           timerEnabledProperty.value,
           timeProperty.value,
           bestTimes[levelProperty.value - 1],

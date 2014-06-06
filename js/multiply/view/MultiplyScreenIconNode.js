@@ -9,7 +9,6 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var Constants = require( 'ARITHMETIC/common/model/Constants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/rectangle' );
@@ -19,9 +18,10 @@ define( function( require ) {
   var multiplyString = require( 'string!ARITHMETIC/multiply' );
 
   // constants
+  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var FONT_TITLE = new PhetFont( 12 );
   var FONT_X = new PhetFont( 18 );
-  var ICON_SIZE = Constants.SCREEN_ICON_SIZE;
+  var ICON_SIZE = CONSTANTS.SCREEN_ICON_SIZE;
 
   function MultiplyScreenIconNode() {
     Rectangle.call( this, 0, 0, ICON_SIZE.width, ICON_SIZE.height, {fill: 'white'} );

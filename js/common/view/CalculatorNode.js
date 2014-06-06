@@ -10,7 +10,6 @@ define( function( require ) {
 
   // modules
   var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
-  var Constants = require( 'ARITHMETIC/common/model/Constants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -21,10 +20,11 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
-  var ARROW_SIZE = Constants.CALCULATOR.ARROW_SIZE;
-  var BUTTON_SIZE = Constants.CALCULATOR.BUTTON_SIZE;
+  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  var ARROW_SIZE = CONSTANTS.CALCULATOR.ARROW_SIZE;
+  var BUTTON_SIZE = CONSTANTS.CALCULATOR.BUTTON_SIZE;
   var FONT = new PhetFont( 24 );
-  var SPACING = Constants.CALCULATOR.SPACING;
+  var SPACING = CONSTANTS.CALCULATOR.SPACING;
 
   function CalculatorNode( inputProperty, enterCallback ) {
     // add buttons
@@ -90,7 +90,7 @@ define( function( require ) {
   var getButtonNumber = function( number, inputProperty ) {
     var numberString = number.toString();
     return getButtonDefault( new Text( numberString, {font: FONT} ), function() {
-      if ( inputProperty.value.length < Constants.INPUT_LENGTH_MAX ) {
+      if ( inputProperty.value.length < CONSTANTS.INPUT_LENGTH_MAX ) {
         inputProperty.value += numberString;
       }
     } );

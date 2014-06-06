@@ -10,13 +10,15 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var Constants = require( 'ARITHMETIC/common/model/Constants' ).MULTIPLICATION_TABLE.MULTIPLIER_BUTTON;
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableButtonAbstract = require( 'ARITHMETIC/common/view/table/MultiplicationTableButtonAbstract' );
 
+  // constants
+  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).MULTIPLICATION_TABLE.MULTIPLIER_BUTTON;
+
   function MultiplicationTableButtonMultiplierNode( contentText, width, height ) {
     MultiplicationTableButtonAbstract.call( this, {
-      fill: Constants.NORMAL_COLOR,
+      fill: CONSTANTS.NORMAL_COLOR,
       width: width,
       height: height
     } );
@@ -26,10 +28,10 @@ define( function( require ) {
 
   return inherit( MultiplicationTableButtonAbstract, MultiplicationTableButtonMultiplierNode, {
     select: function() {
-      this.setBackgoundFill( Constants.SELECT_COLOR );
+      this.setBackgoundFill( CONSTANTS.SELECT_COLOR );
     },
     normal: function() {
-      this.setBackgoundFill( Constants.NORMAL_COLOR );
+      this.setBackgoundFill( CONSTANTS.NORMAL_COLOR );
     }
   } );
 } );

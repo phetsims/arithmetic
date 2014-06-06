@@ -9,7 +9,6 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var Constants = require( 'ARITHMETIC/common/model/Constants' ).EQUATION;
   var inherit = require( 'PHET_CORE/inherit' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -19,9 +18,10 @@ define( function( require ) {
   //var Timer = require( 'JOIST/Timer' );
 
   // constants
-  var PLACEHOLDER = '?';
+  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).EQUATION;
   var FONT_TEXT = new PhetFont( 32 );
-  var INPUT_SIZE = Constants.INPUT_SIZE;
+  var INPUT_SIZE = CONSTANTS.INPUT_SIZE;
+  var PLACEHOLDER = '?';
 
   function EquationInputNode( property ) {
     var self = this;

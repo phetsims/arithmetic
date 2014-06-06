@@ -10,12 +10,12 @@ define( function( require ) {
 
   // modules
   var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
-  var Constants = require( 'ARITHMETIC/common/model/Constants' ).BACK_BUTTON;
   var inherit = require( 'PHET_CORE/inherit' );
   var RectangularPushButton = require( 'SUN/buttons/RectangularPushButton' );
 
   // constants
-  var ARROW_SIZE = Constants.ARROW_SIZE;
+  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).BACK_BUTTON;
+  var ARROW_SIZE = CONSTANTS.ARROW_SIZE;
 
   function BackButtonNode( backCallback ) {
     RectangularPushButton.call( this, {
@@ -24,7 +24,7 @@ define( function( require ) {
         headHeight: 12,
         tailWidth: 3
       } ),
-      baseColor: Constants.BASE_COLOR,
+      baseColor: CONSTANTS.BASE_COLOR,
       xMargin: 10,
       yMargin: 8,
       listener: backCallback

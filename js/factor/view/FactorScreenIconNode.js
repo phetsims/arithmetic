@@ -10,21 +10,21 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var Rectangle = require( 'SCENERY/nodes/rectangle' );
   var Line = require( 'SCENERY/nodes/Line' );
-  var Text = require( 'SCENERY/nodes/Text' );
+  var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var Constants = require( 'ARITHMETIC/common/model/Constants' );
+  var Rectangle = require( 'SCENERY/nodes/rectangle' );
+  var Text = require( 'SCENERY/nodes/Text' );
 
   // strings
   var factorString = require( 'string!ARITHMETIC/factor' );
 
   // constants
-  var ICON_SIZE = Constants.SCREEN_ICON_SIZE;
-  var LINE_LENGTH = ICON_SIZE.height / 8;
-  var FONT_TITLE = new PhetFont( 12 );
+  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  var ICON_SIZE = CONSTANTS.SCREEN_ICON_SIZE;
   var FONT_NUMBERS = new PhetFont( 10 );
+  var FONT_TITLE = new PhetFont( 12 );
+  var LINE_LENGTH = ICON_SIZE.height / 8;
 
   function FactorScreenIconNode() {
     var text6 = new Text( '6', {font: FONT_NUMBERS, centerX: 0} );
