@@ -18,7 +18,7 @@ define( function( require ) {
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
-  function LevelCompletedConfiguredNode( levels, levelProperty, stateProperty, scoreTotalProperty, isTimerProperty, timeProperty, bestTimes, continueCallback, layoutBounds ) {
+  function LevelCompletedConfiguredNode( levels, levelProperty, stateProperty, scoreTotalProperty, timerEnabledProperty, timeProperty, bestTimes, continueCallback, layoutBounds ) {
     var self = this;
     Node.call( this );
 
@@ -29,7 +29,7 @@ define( function( require ) {
           scoreTotalProperty.value,
           levels[levelProperty.value - 1].perfectScore,
           Constants.STAR_NUMBER,
-          isTimerProperty.value,
+          timerEnabledProperty.value,
           timeProperty.value,
           bestTimes[levelProperty.value - 1],
           (timeProperty.value < bestTimes[levelProperty.value - 1]),

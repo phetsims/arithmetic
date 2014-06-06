@@ -33,7 +33,7 @@ define( function( require ) {
   var FONT = new PhetFont( 18 );
   var SPACING = Constants.SPACING;
 
-  function ControlPanelNode( levelProperty, scoreProperty, timeProperty, isTimerProperty, isSoundProperty, refreshLevelCallback ) {
+  function ControlPanelNode( levelProperty, scoreProperty, timeProperty, timerEnabledProperty, soundEnabledProperty, refreshLevelCallback ) {
     var background = new Rectangle( 0, 0, 0, 0, {fill: Constants.BACKGROUND.COLOR} );
     var levelText = new Text( '?', {font: FONT} );
     var scoreText = new Text( '?', {font: FONT} );
@@ -57,13 +57,13 @@ define( function( require ) {
           new Text( timeString + ':', {font: FONT} ),
           new Text( scoreString + ':', {font: FONT} ),
           // add sound toggle button
-          new SoundToggleButton( isSoundProperty, {baseColor: 'white'} )
+          new SoundToggleButton( soundEnabledProperty, {baseColor: 'white'} )
         ]} ),
         new VBox( {spacing: SPACING, align: 'right', children: [
           timeText,
           scoreText,
           // add timer toggle button
-          new TimerToggleButton( isTimerProperty, {baseColor: 'white'} )
+          new TimerToggleButton( timerEnabledProperty, {baseColor: 'white'} )
         ]} )
       ]} )
     ]} ) );

@@ -36,8 +36,8 @@ define( function( require ) {
         model.property( 'level' ),
         model.property( 'scoreTotal' ),
         model.property( 'time' ),
-        model.property( 'isTimer' ),
-        model.property( 'isSound' ),
+        model.property( 'timerEnabled' ),
+        model.property( 'soundEnabled' ),
         function() {
           model.refreshLevel();
           model.game.state = GAME_STATE.NEXT_TASK;
@@ -75,7 +75,7 @@ define( function( require ) {
         model.property( 'level' ),
         model.game.property( 'state' ),
         model.property( 'scoreTotal' ),
-        model.property( 'isTimer' ),
+        model.property( 'timerEnabled' ),
         model.property( 'time' ),
         model.bestTimes,
         function() {

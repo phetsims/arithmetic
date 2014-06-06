@@ -35,8 +35,8 @@ define( function( require ) {
 
     // add timer, sound and reset buttons
     var generalButtons = new VBox( {spacing: 5, children: [
-      new TimerToggleButton( model.property( 'isTimer' ), {baseColor: 'white'} ),
-      new SoundToggleButton( model.property( 'isSound' ), {baseColor: 'white'} ),
+      new TimerToggleButton( model.property( 'timerEnabled' ), {baseColor: 'white'} ),
+      new SoundToggleButton( model.property( 'soundEnabled' ), {baseColor: 'white'} ),
       new ResetAllButton( {
         listener: function() {model.reset();}
       } )

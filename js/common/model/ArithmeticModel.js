@@ -63,12 +63,12 @@ define( function( require ) {
       time: 0, // current time
       input: '', // user's input value
       //REVIEW - Please use 'soundEnabled' and 'timerEnabled', as these are more conventional for PhET.
-      isSound: true, // is sound active
-      isTimer: false // is time mode active
+      soundEnabled: true, // is sound active
+      timerEnabled: false // is time mode active
     } );
 
     // hook up the audio player to the sound settings
-    this.gameAudioPlayer = new GameAudioPlayer( this.property( 'isSound' ) );
+    this.gameAudioPlayer = new GameAudioPlayer( this.property( 'soundEnabled' ) );
 
     // model for single game
     this.game = new GameModel( this.property( 'level' ), levels );
@@ -84,8 +84,8 @@ define( function( require ) {
     } );
 
     // clear time property when timer off
-    this.property( 'isTimer' ).lazyLink( function( isTimer ) {
-      if ( !isTimer ) {
+    this.property( 'timerEnabled' ).lazyLink( function( timerEnabled ) {
+      if ( !timerEnabled ) {
         self.time = 0;
       }
     } );
@@ -149,7 +149,7 @@ define( function( require ) {
         bestScore.value = Math.max( bestScore.value, self.scoreTotal );
 
         // set best time
-        if ( self.isTimer ) {
+        if ( self.timerEnabled ) {
           if ( self.bestTimes[self.level - 1] === null ) {
             self.bestTimes[self.level - 1] = self.time;
           }
@@ -179,7 +179,7 @@ define( function( require ) {
     },
     step: function( dt ) {
       // if timer is on and level is select - add time
-      if ( this.isTimer && this.level ) {
+      if ( this.timerEnabled && this.level ) {
         this.time += dt;
       }
     }
