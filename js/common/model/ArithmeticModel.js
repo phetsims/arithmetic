@@ -112,10 +112,10 @@ define( function( require ) {
         if ( self.game.multiplierLeft * self.game.multiplierRight === self.game.product ) {
 
           // increase total score
-          self.scoreTotal += self.game.scoreGame;
+          self.scoreTotal += self.game.scoreTask;
 
           // set smile face view and play sound
-          self.smileFace.scoreFace = self.game.scoreGame;
+          self.smileFace.scoreFace = self.game.scoreTask;
           self.smileFace.isSmile = true;
           self.gameAudioPlayer.correctAnswer();
 
@@ -129,10 +129,10 @@ define( function( require ) {
         else {
 
           // player will not get points for this task
-          self.game.scoreGame = 0;
+          self.game.scoreTask = 0;
 
           // set smile face view and play sound
-          self.smileFace.scoreFace = self.game.scoreGame;
+          self.smileFace.scoreFace = self.game.scoreTask;
           self.smileFace.isSmile = false;
           self.gameAudioPlayer.wrongAnswer();
 

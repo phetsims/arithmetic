@@ -31,7 +31,7 @@ define( function( require ) {
           self.game.property( 'multiplierLeft' ).reset();
           self.game.property( 'multiplierRight' ).reset();
           self.game.property( 'product' ).reset();
-          self.game.property( 'scoreGame' ).reset();
+          self.game.property( 'scoreTask' ).reset();
           self.input = '';
 
           // set product
