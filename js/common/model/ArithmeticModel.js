@@ -167,7 +167,7 @@ define( function( require ) {
     },
     checkInput: function() {
       //REVIEW: Comment should probably say 'child types', since technically it's not the constructor where this is overridden.
-      // should be defined in child constructors
+      // should be defined in child types
     },
     refreshLevel: function() {
       this.property( 'scoreTotal' ).reset();
