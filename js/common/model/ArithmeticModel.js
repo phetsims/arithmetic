@@ -2,7 +2,7 @@
 
 //REVIEW Should make clear in header comment that this is essentially and abstract base class, not meant to be instantiated itself.
 /**
- * Main model for the 'Arithmetic' simulation.
+ * Base type for models in the 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
  */
