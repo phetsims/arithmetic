@@ -20,11 +20,13 @@ define( function( require ) {
     var activeProperty;
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
 
-    stateProperty.link( function( state ) {
+    stateProperty.lazyLink( function( state ) {
       if ( state === GAME_STATE.START ) {
-        inputProperty.value = '';
 
-        if ( multiplierLeftProperty.value ) {
+        if ( multiplierLeftProperty.value && multiplierRightProperty.value ) {
+          inputProperty.value = '';
+        }
+        else if ( multiplierLeftProperty.value ) {
           activeProperty = multiplierRightProperty;
           self.multiplierLeftInput.disable();
           setActiveInput( self.multiplierRightInput );
@@ -38,7 +40,12 @@ define( function( require ) {
     } );
 
     inputProperty.lazyLink( function( inputString ) {
-      activeProperty.value = parseInt( inputString, 10 );
+      if ( inputString ) {
+        activeProperty.value = parseInt( inputString, 10 );
+      }
+      else {
+        activeProperty.value = '';
+      }
     } );
   }
 

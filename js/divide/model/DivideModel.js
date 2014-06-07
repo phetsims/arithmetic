@@ -28,11 +28,11 @@ define( function( require ) {
 
         if ( multipliers ) {
           // reset multipliers and score properties
+          self.input = '';
           self.game.property( 'multiplierLeft' ).reset();
           self.game.property( 'multiplierRight' ).reset();
           self.game.property( 'product' ).reset();
           self.game.property( 'scoreTask' ).reset();
-          self.input = '';
 
           // set product
           self.game.product = multipliers.multiplierLeft * multipliers.multiplierRight;
