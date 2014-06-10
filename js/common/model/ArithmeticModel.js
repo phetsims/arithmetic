@@ -186,6 +186,7 @@ define( function( require ) {
     },
     refreshLevel: function() {
       this.property( 'scoreTotal' ).reset();
+      this.property( 'time' ).reset();
       this.game.reset();
       this.smileFace.reset();
     },
