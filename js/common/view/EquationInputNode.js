@@ -18,44 +18,43 @@ define( function( require ) {
   var Timer = require( 'JOIST/Timer' );
 
   // constants
-  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).EQUATION;
   var FONT_TEXT = new PhetFont( 32 );
-  var INPUT_SIZE = CONSTANTS.INPUT_SIZE;
   var PLACEHOLDER = '?';
 
-  function EquationInputNode( property ) {
+  function EquationInputNode( property, inputSize ) {
     var self = this;
     Node.call( this );
 
     this._inputText = new Text( PLACEHOLDER, {font: FONT_TEXT} );
     this._cursor = new Rectangle( 0, 2, 1, this._inputText.getHeight() - 4, {fill: 'black'} );
+    this._inputSize = inputSize;
 
     // update text when property changed
     property.lazyLink( function( value ) {
       self._inputText.setText( value );
-      updateBoxPosition( self._box );
+      updateBoxPosition( self._box, inputSize );
     } );
 
     // add background
-    this.addChild( new Rectangle( 0, 0, INPUT_SIZE.width, INPUT_SIZE.height, 5, 5, {fill: 'white', stroke: 'black', lineWidth: 1.5} ) );
+    this.addChild( new Rectangle( 0, 0, inputSize.width, inputSize.height, 5, 5, {fill: 'white', stroke: 'black', lineWidth: 1.5} ) );
 
     // add text and cursor
-    this._box = new HBox( {children: [this._inputText, this._cursor], centerX: INPUT_SIZE.width / 2, centerY: INPUT_SIZE.height / 2} );
+    this._box = new HBox( {children: [this._inputText, this._cursor], centerX: inputSize.width / 2, centerY: inputSize.height / 2} );
     this.addChild( this._box );
 
     // disable by default
     this.disable();
   }
 
-  var updateBoxPosition = function( box ) {
-    box.centerX = INPUT_SIZE.width / 2;
-    box.centerY = INPUT_SIZE.height / 2;
+  var updateBoxPosition = function( box, inputSize ) {
+    box.centerX = inputSize.width / 2;
+    box.centerY = inputSize.height / 2;
   };
 
   return inherit( Node, EquationInputNode, {
     clear: function() {
       this._inputText.setText( '' );
-      updateBoxPosition( this._box );
+      updateBoxPosition( this._box, this._inputSize );
     },
     disable: function() {
       // TODO: add button behaviour
@@ -78,7 +77,7 @@ define( function( require ) {
     },
     reset: function() {
       this._inputText.setText( PLACEHOLDER );
-      updateBoxPosition( this._box );
+      updateBoxPosition( this._box, this._inputSize );
       this.disable();
     }
   } );

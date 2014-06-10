@@ -18,15 +18,14 @@ define( function( require ) {
 
   // constants
   var FONT_VBOX = new PhetFont( 36 );
-  var SPACING = CONSTANTS.SPACING;
 
   function EquationNode( multiplierLeftProperty, multiplierRightProperty, productProperty ) {
 
-    this.multiplierLeftInput = new EquationInputNode( multiplierLeftProperty );
-    this.multiplierRightInput = new EquationInputNode( multiplierRightProperty );
-    this.productInput = new EquationInputNode( productProperty );
+    this.multiplierLeftInput = new EquationInputNode( multiplierLeftProperty, CONSTANTS.INPUT_SIZE_MULTIPLIER );
+    this.multiplierRightInput = new EquationInputNode( multiplierRightProperty, CONSTANTS.INPUT_SIZE_MULTIPLIER );
+    this.productInput = new EquationInputNode( productProperty, CONSTANTS.INPUT_SIZE_PRODUCT );
 
-    HBox.call( this, {spacing: SPACING, children: [
+    HBox.call( this, {spacing: CONSTANTS.SPACING, children: [
       this.multiplierLeftInput,
       new Text( 'x', {font: FONT_VBOX} ),
       this.multiplierRightInput,
