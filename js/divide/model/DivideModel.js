@@ -58,7 +58,9 @@ define( function( require ) {
 
   return inherit( ArithmeticModel, DivideModel, {
     checkInput: function() {
-      this.game.state = GAME_STATE.EQUATION_FILLED;
+      if ( this.input ) {
+        this.game.state = GAME_STATE.EQUATION_FILLED;
+      }
     }
   } );
 } );
