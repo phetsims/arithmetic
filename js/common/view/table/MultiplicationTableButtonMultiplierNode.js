@@ -28,10 +28,10 @@ define( function( require ) {
 
   return inherit( MultiplicationTableButtonAbstract, MultiplicationTableButtonMultiplierNode, {
     select: function() {
-      this.setBackgoundFill( CONSTANTS.SELECT_COLOR );
+      this.setBackgroundFill( CONSTANTS.SELECT_COLOR );
     },
     normal: function() {
-      this.setBackgoundFill( CONSTANTS.NORMAL_COLOR );
+      this.setBackgroundFill( CONSTANTS.NORMAL_COLOR );
     }
   } );
 } );

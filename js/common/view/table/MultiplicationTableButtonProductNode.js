@@ -44,19 +44,19 @@ define( function( require ) {
 
   return inherit( MultiplicationTableButtonAbstract, MultiplicationTableButtonProductNode, {
     active: function() {
-      this.setBackgoundFill( CONSTANTS.ACTIVE_COLOR );
+      this.setBackgroundFill( CONSTANTS.ACTIVE_COLOR );
       this._pointer.visible = false;
     },
     hover: function() {
-      this.setBackgoundFill( CONSTANTS.HOVER_COLOR );
+      this.setBackgroundFill( CONSTANTS.HOVER_COLOR );
       this._pointer.visible = true;
     },
     normal: function() {
-      this.setBackgoundFill( CONSTANTS.NORMAL_COLOR );
+      this.setBackgroundFill( CONSTANTS.NORMAL_COLOR );
       this._pointer.visible = false;
     },
     select: function() {
-      this.setBackgoundFill( CONSTANTS.SELECT_COLOR );
+      this.setBackgroundFill( CONSTANTS.SELECT_COLOR );
       this._pointer.visible = false;
     }
   } );

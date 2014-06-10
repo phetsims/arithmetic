@@ -39,7 +39,7 @@ define( function( require ) {
   }
 
   return inherit( Node, MultiplicationTableButtonAbstract, {
-    setBackgoundFill: function( fill ) {
+    setBackgroundFill: function( fill ) {
       this._background.fill = fill;
     },
     setText: function( text ) {
