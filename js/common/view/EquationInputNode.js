@@ -25,8 +25,13 @@ define( function( require ) {
     var self = this;
     Node.call( this );
 
+    // create text and save link for further using
     this._inputText = new Text( PLACEHOLDER, {font: FONT_TEXT} );
+
+    // create cursor and save link for further using
     this._cursor = new Rectangle( 0, 2, 1, this._inputText.getHeight() - 4, {fill: 'black'} );
+
+    // save link to input size value for further using
     this._inputSize = inputSize;
 
     // update text when property changed
