@@ -95,7 +95,6 @@ define( function( require ) {
     this.property( 'level' ).lazyLink( function( levelNumber ) {
       if ( levelNumber ) {
         self.game.state = GAME_STATE.NEXT_TASK;
-        self.time = 0;
       }
     } );
 
@@ -164,9 +163,7 @@ define( function( require ) {
   return inherit( PropertySet, ArithmeticModel, {
     back: function() {
       this.level = 0;
-      this.scoreTotal = 0;
-      this.smileFace.reset();
-      this.game.reset();
+      this.refreshLevel();
     },
     checkInput: function() {
       //REVIEW: Comment should probably say 'child types', since technically it's not the constructor where this is overridden.
