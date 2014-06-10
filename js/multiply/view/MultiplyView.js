@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Screen for 'Multiply' tab in the 'Arithmetic' simulation.
+ * View for 'Multiply' tab in the 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var ArithmeticScreen = require( 'ARITHMETIC/common/view/ArithmeticScreen' );
+  var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
   var EquationMultiplyNode = require( 'ARITHMETIC/multiply/view/EquationMultiplyNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableMultiplyNode = require( 'ARITHMETIC/multiply/view/MultiplicationTableMultiplyNode' );
@@ -21,8 +21,8 @@ define( function( require ) {
    * @param model
    * @constructor
    */
-  function MultiplyScreen( model ) {
-    ArithmeticScreen.call(
+  function MultiplyView( model ) {
+    ArithmeticView.call(
       this,
       model,
       new MultiplicationTableMultiplyNode(
@@ -40,5 +40,5 @@ define( function( require ) {
     );
   }
 
-  return inherit( ArithmeticScreen, MultiplyScreen );
+  return inherit( ArithmeticView, MultiplyView );
 } );

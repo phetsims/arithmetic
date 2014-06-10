@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Base type for screens used in the 'Arithmetic' simulation.
+ * Base type for view used in the 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -21,17 +21,19 @@ define( function( require ) {
   /**
    * @param model
    * @param multiplicationTableNode
+   * @param equationNode
+   * @param isAddCalculatorNode
    * @param titleString
    * @constructor
    */
-  function ArithmeticScreen( model, multiplicationTableNode, equationNode, titleString ) {
+  function ArithmeticView( model, multiplicationTableNode, equationNode, isAddCalculatorNode, titleString ) {
     ScreenView.call( this );
 
     // add start game level buttons
     this.addChild( new StartGameLevelNode( model.levels, model.bestScores, model.property( 'level' ), titleString, model.simBounds ) );
 
     // add game components
-    this.addChild( new WorkspaceNode( model, multiplicationTableNode, equationNode, this.layoutBounds ) );
+    this.addChild( new WorkspaceNode( model, multiplicationTableNode, equationNode, isAddCalculatorNode, this.layoutBounds ) );
 
     // add timer, sound and reset buttons
     var generalButtons = new VBox( {spacing: 5, children: [
@@ -49,5 +51,5 @@ define( function( require ) {
     } );
   }
 
-  return inherit( ScreenView, ArithmeticScreen );
+  return inherit( ScreenView, ArithmeticView );
 } );

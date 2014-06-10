@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Screen for 'Divide' tab in the 'Arithmetic' simulation.
+ * View for 'Divide' tab in the 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var ArithmeticScreen = require( 'ARITHMETIC/common/view/ArithmeticScreen' );
+  var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
   var EquationDivideNode = require( 'ARITHMETIC/divide/view/EquationDivideNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableDivideNode = require( 'ARITHMETIC/divide/view/MultiplicationTableDivideNode' );
@@ -21,8 +21,8 @@ define( function( require ) {
    * @param model
    * @constructor
    */
-  function DivideScreen( model ) {
-    ArithmeticScreen.call(
+  function DivideView( model ) {
+    ArithmeticView.call(
       this,
       model,
       new MultiplicationTableDivideNode(
@@ -41,5 +41,5 @@ define( function( require ) {
     );
   }
 
-  return inherit( ArithmeticScreen, DivideScreen );
+  return inherit( ArithmeticView, DivideView );
 } );
