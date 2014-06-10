@@ -36,6 +36,7 @@ define( function( require ) {
         model.game.property( 'multiplierRight' ),
         model.property( 'input' )
       ),
+      true,
       multiplyString
     );
   }

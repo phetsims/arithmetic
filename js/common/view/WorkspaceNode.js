@@ -20,16 +20,18 @@ define( function( require ) {
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
-  function WorkspaceNode( model, multiplicationTableNode, equationNode, layoutBounds ) {
+  function WorkspaceNode( model, multiplicationTableNode, equationNode, isAddCalculatorNode, layoutBounds ) {
     var self = this;
     Node.call( this );
 
-    // add calculator
-    this.addChild( new CalculatorNode(
-        model.property( 'input' ),
-        function() {model.checkInput();}
-      ).mutate( {right: layoutBounds.maxX * 0.98, bottom: layoutBounds.maxY * 0.95} )
-    );
+    // add calculator if necessary
+    if ( isAddCalculatorNode ) {
+      this.addChild( new CalculatorNode(
+          model.property( 'input' ),
+          function() {model.checkInput();}
+        ).mutate( {right: layoutBounds.maxX * 0.98, bottom: layoutBounds.maxY * 0.95} )
+      );
+    }
 
     // add control panel
     this.addChild( new ControlPanelNode(

@@ -36,6 +36,7 @@ define( function( require ) {
         model.game.property( 'multiplierRight' ),
         model.game.property( 'product' )
       ),
+      false,
       factorString );
   }
 

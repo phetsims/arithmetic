@@ -37,6 +37,7 @@ define( function( require ) {
         model.game.property( 'product' ),
         model.property( 'input' )
       ),
+      true,
       divideString
     );
   }
