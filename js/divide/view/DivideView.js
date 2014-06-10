@@ -18,7 +18,7 @@ define( function( require ) {
   var divideString = require( 'string!ARITHMETIC/divide' );
 
   /**
-   * @param model
+   * @param model {Object} main model for screen
    * @constructor
    */
   function DivideView( model ) {
@@ -28,7 +28,7 @@ define( function( require ) {
       new MultiplicationTableDivideNode(
         model.game,
         model.property( 'level' ),
-        model.levels
+        model.levelDescriptions
       ),
       new EquationDivideNode(
         model.game.property( 'state' ),

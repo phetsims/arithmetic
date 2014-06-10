@@ -20,6 +20,16 @@ define( function( require ) {
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
+  /**
+   * @param model {Object} main model for screen
+   * @param multiplicationTableNode {Node} multiplication table node for given screen
+   * @param equationNode {Node} equation node for given screen
+   * @param isAddCalculatorNode {Boolean} flag for adding calculator node
+   * @param layoutBounds {Bounds2} bounds of main screen. Necessary for placing components
+   *
+   * @constructor
+   */
+
   function WorkspaceNode( model, multiplicationTableNode, equationNode, isAddCalculatorNode, layoutBounds ) {
     var self = this;
     Node.call( this );
@@ -73,7 +83,7 @@ define( function( require ) {
 
     // add node with statistic (will be shown after completing level)
     this.addChild( new LevelCompletedConfiguredNode(
-        model.levels,
+        model.levelDescriptions,
         model.property( 'level' ),
         model.game.property( 'state' ),
         model.property( 'scoreTotal' ),

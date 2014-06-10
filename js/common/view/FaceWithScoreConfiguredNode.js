@@ -13,6 +13,13 @@ define( function( require ) {
   var FaceWithScoreNode = require( 'SCENERY_PHET/FaceWithScoreNode' );
   var inherit = require( 'PHET_CORE/inherit' );
 
+  /**
+   * @param smileFaceModel {Object} model for smile face.
+   * Contains 'scoreFace', 'isSmile', 'isVisible' properties
+   *
+   * @constructor
+   */
+
   function FaceWithScoreConfiguredNode( smileFaceModel ) {
     var self = this;
     FaceWithScoreNode.call( this, {

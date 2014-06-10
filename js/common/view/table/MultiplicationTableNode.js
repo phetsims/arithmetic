@@ -22,7 +22,16 @@ define( function( require ) {
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
   var TABLE_SIZE = CONSTANTS.SIZE;
 
-  function MultiplicationTableNode( levelProperty, levels, gameModel ) {
+  /**
+   * @param levelDescriptions {Array} array of descriptions for each level.
+   * For each level will be created multiplication table node
+   * Necessary for representing best scores for each level
+   * @param levelProperty {Property} level difficulty property
+   * @param gameModel {Object} model for single task
+   *
+   * @constructor
+   */
+  function MultiplicationTableNode( levelProperty, levelDescriptions, gameModel ) {
     var self = this;
     Node.call( this );
 
@@ -33,7 +42,7 @@ define( function( require ) {
     this.cells = [];
 
     // create view of times table for levels
-    levels.forEach( function( level, levelIndex ) {
+    levelDescriptions.forEach( function( level, levelIndex ) {
       var hBox;
       var vBox = new VBox( {visible: false} );
       var tableSize = level.tableSize;

@@ -28,7 +28,7 @@ define( function( require ) {
 
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
-  var levels = [
+  var levelDescriptions = [
     // level 1
     {
       icon: phetGirlIcon1Image,
@@ -56,7 +56,7 @@ define( function( require ) {
     this.simBounds = ScreenView.DEFAULT_LAYOUT_BOUNDS;
 
     // array of levels with description
-    this.levels = levels;
+    this.levelDescriptions = levelDescriptions;
 
     PropertySet.call( this, {
       level: 0, // level difficulty, zero-based in the model, though levels appear to the user to start
@@ -72,14 +72,14 @@ define( function( require ) {
     this.gameAudioPlayer = new GameAudioPlayer( this.property( 'soundEnabled' ) );
 
     // model for single game
-    this.game = new GameModel( this.property( 'level' ), levels );
+    this.game = new GameModel( this.property( 'level' ), levelDescriptions );
 
     this.smileFace = new FaceModel();
 
     // best times and scores, equal to number of levels
     this.bestTimes = [];
     this.bestScores = [];
-    this.levels.forEach( function() {
+    this.levelDescriptions.forEach( function() {
       self.bestTimes.push( null );
       self.bestScores.push( new Property( 0 ) );
     } );

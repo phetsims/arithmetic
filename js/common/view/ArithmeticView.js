@@ -19,18 +19,19 @@ define( function( require ) {
   var WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
 
   /**
-   * @param model
-   * @param multiplicationTableNode
-   * @param equationNode
-   * @param isAddCalculatorNode
-   * @param titleString
+   * @param model {Object} main model for screen
+   * @param multiplicationTableNode {Node} multiplication table node for given screen
+   * @param equationNode {Node} equation node for given screen
+   * @param isAddCalculatorNode {Boolean} flag for adding calculator node
+   * @param titleString {String} title string for given screen
+   *
    * @constructor
    */
   function ArithmeticView( model, multiplicationTableNode, equationNode, isAddCalculatorNode, titleString ) {
     ScreenView.call( this );
 
     // add start game level buttons
-    this.addChild( new StartGameLevelNode( model.levels, model.bestScores, model.property( 'level' ), titleString, model.simBounds ) );
+    this.addChild( new StartGameLevelNode( model.levelDescriptions, model.bestScores, model.property( 'level' ), titleString, model.simBounds ) );
 
     // add game components
     this.addChild( new WorkspaceNode( model, multiplicationTableNode, equationNode, isAddCalculatorNode, this.layoutBounds ) );

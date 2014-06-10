@@ -33,6 +33,16 @@ define( function( require ) {
   var FONT = new PhetFont( 18 );
   var SPACING = CONSTANTS.SPACING;
 
+  /**
+   * @param levelProperty {Property} property for level displaying label
+   * @param scoreProperty {Property} property for score counter component
+   * @param timeProperty {Property} property for time counter component
+   * @param timerEnabledProperty {Property} property for time toggle button
+   * @param soundEnabledProperty {Property} property for sound toggle button
+   * @param refreshLevelCallback {Function} callback listener for refresh level button
+   *
+   * @constructor
+   */
   function ControlPanelNode( levelProperty, scoreProperty, timeProperty, timerEnabledProperty, soundEnabledProperty, refreshLevelCallback ) {
     var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR} );
     var levelText = new Text( '?', {font: FONT} );

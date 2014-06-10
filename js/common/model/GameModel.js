@@ -15,7 +15,15 @@ define( function( require ) {
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
-  function GameModel( levelProperty, levels ) {
+  /**
+   * @param levelProperty {Property} level difficulty property
+   * @param levelDescriptions {Array} array of descriptions for each level.
+   * Necessary for creating answer sheet for selected level.
+   *
+   * @constructor
+   */
+
+  function GameModel( levelProperty, levelDescriptions ) {
     var self = this;
 
     PropertySet.call( this, {
@@ -35,7 +43,7 @@ define( function( require ) {
       var answerSheetSize;
       if ( levelNumber ) {
         self.answerSheet = [];
-        answerSheetSize = levels[levelNumber - 1].tableSize;
+        answerSheetSize = levelDescriptions[levelNumber - 1].tableSize;
 
         // add arrays with right multipliers for every left multiplier
         _.times( answerSheetSize, function() {

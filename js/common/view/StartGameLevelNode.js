@@ -26,7 +26,18 @@ define( function( require ) {
   // strings
   var chooseYourLevelString = require( 'string!ARITHMETIC/chooseYourLevel' );
 
-  function StartGameLevelNode( levels, scorePropertyArray, levelProperty, titleString, simBounds ) {
+  /**
+   * @param levelDescriptions {Array} array of descriptions for each level.
+   * For each level will be created LevelStartButton node
+   * @param bestScorePropertyArray {Array} array of score properties.
+   * Necessary for representing best scores for each level
+   * @param levelProperty {Property} level difficulty property
+   * @param titleString {String} title string for given screen
+   * @param simBounds {Bounds2} bounds of simulation
+   *
+   * @constructor
+   */
+  function StartGameLevelNode( levelDescriptions, bestScorePropertyArray, levelProperty, titleString, simBounds ) {
     var self = this;
     Node.call( this );
 
@@ -48,14 +59,14 @@ define( function( require ) {
 
     // add select level buttons
     var selectLevelButtons = new HBox( {spacing: 50} );
-    levels.forEach( function( level, levelIndex ) {
+    levelDescriptions.forEach( function( level, levelIndex ) {
       selectLevelButtons.addChild( new LevelStartButton(
         new Image( level.icon ),
         STAR_NUMBER,
         function() {
           levelProperty.value = levelIndex + 1;
         },
-        scorePropertyArray[levelIndex],
+        bestScorePropertyArray[levelIndex],
         level.perfectScore,
         {
           buttonWidth: 135,

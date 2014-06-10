@@ -15,6 +15,15 @@ define( function( require ) {
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
+  /**
+   * @param stateProperty {Property} state of game property
+   * @param multiplierLeftProperty {Property} property necessary for creating left multiplier input
+   * @param multiplierRightProperty {Property} property necessary for creating right multiplier input
+   * @param productProperty {Property} property necessary for creating product input
+   * @param inputProperty {Property} input property
+   *
+   * @constructor
+   */
   function EquationDivideNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty ) {
     var self = this;
     var activeProperty;

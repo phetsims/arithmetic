@@ -15,6 +15,14 @@ define( function( require ) {
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
+  /**
+   * @param stateProperty {Property} state of game property
+   * @param multiplierLeftProperty {Property} property necessary for creating left multiplier input
+   * @param multiplierRightProperty {Property} property necessary for creating right multiplier input
+   * @param inputProperty {Property} input property
+   *
+   * @constructor
+   */
   function EquationMultiplyNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, inputProperty ) {
     var self = this;
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, inputProperty );

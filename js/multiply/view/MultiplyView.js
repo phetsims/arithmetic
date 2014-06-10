@@ -18,7 +18,7 @@ define( function( require ) {
   var multiplyString = require( 'string!ARITHMETIC/multiply' );
 
   /**
-   * @param model
+   * @param model {Object} main model for screen
    * @constructor
    */
   function MultiplyView( model ) {
@@ -28,7 +28,7 @@ define( function( require ) {
       new MultiplicationTableMultiplyNode(
         model.game,
         model.property( 'level' ),
-        model.levels
+        model.levelDescriptions
       ),
       new EquationMultiplyNode(
         model.game.property( 'state' ),

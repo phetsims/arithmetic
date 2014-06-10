@@ -19,6 +19,13 @@ define( function( require ) {
   // constants
   var FONT_VBOX = new PhetFont( 36 );
 
+  /**
+   * @param multiplierLeftProperty {Property} property necessary for creating left multiplier input
+   * @param multiplierRightProperty {Property} property necessary for creating right multiplier input
+   * @param productProperty {Property} property necessary for creating product input
+   *
+   * @constructor
+   */
   function EquationNode( multiplierLeftProperty, multiplierRightProperty, productProperty ) {
 
     this.multiplierLeftInput = new EquationInputNode( multiplierLeftProperty, CONSTANTS.INPUT_SIZE_MULTIPLIER );

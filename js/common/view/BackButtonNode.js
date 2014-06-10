@@ -17,6 +17,11 @@ define( function( require ) {
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).BACK_BUTTON;
   var ARROW_SIZE = CONSTANTS.ARROW_SIZE;
 
+  /**
+   * @param backCallback {Function} callback listener for button
+   *
+   * @constructor
+   */
   function BackButtonNode( backCallback ) {
     RectangularPushButton.call( this, {
       content: new ArrowNode( ARROW_SIZE / 2, 0, -ARROW_SIZE / 2, 0, {

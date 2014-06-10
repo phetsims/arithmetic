@@ -26,6 +26,13 @@ define( function( require ) {
   var FONT = new PhetFont( 24 );
   var SPACING = CONSTANTS.CALCULATOR.SPACING;
 
+  /**
+   * @param inputProperty {Property} input property for communication buttons of
+   * calculator with model
+   * @param enterCallback {Function} callback listener for enter button
+   *
+   * @constructor
+   */
   function CalculatorNode( inputProperty, enterCallback ) {
     // add buttons
     VBox.call( this, {spacing: SPACING, children: [

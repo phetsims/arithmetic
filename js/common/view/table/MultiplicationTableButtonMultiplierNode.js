@@ -16,6 +16,13 @@ define( function( require ) {
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).MULTIPLICATION_TABLE.MULTIPLIER_BUTTON;
 
+  /**
+   * @param contentText {Text} text label for button
+   * @param width {Number} width of product button
+   * @param height {Number} height of product button
+   *
+   * @constructor
+   */
   function MultiplicationTableButtonMultiplierNode( contentText, width, height ) {
     MultiplicationTableButtonAbstract.call( this, {
       fill: CONSTANTS.NORMAL_COLOR,

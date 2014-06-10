@@ -21,6 +21,12 @@ define( function( require ) {
   var FONT_TEXT = new PhetFont( 32 );
   var PLACEHOLDER = '?';
 
+  /**
+   * @param property {Property} property for observing and changing by input
+   * @param inputSize {Dimension2} size of input component
+   *
+   * @constructor
+   */
   function EquationInputNode( property, inputSize ) {
     var self = this;
     Node.call( this );

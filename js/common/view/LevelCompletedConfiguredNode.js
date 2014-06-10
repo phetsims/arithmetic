@@ -18,7 +18,21 @@ define( function( require ) {
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
-  function LevelCompletedConfiguredNode( levels, levelProperty, stateProperty, scoreTotalProperty, timerEnabledProperty, timeProperty, bestTimes, continueCallback, layoutBounds ) {
+  /**
+   * @param levelDescriptions {Array} array of descriptions for each level.
+   * Necessary to get perfect score for completed level
+   * @param levelProperty {Property} level difficulty property
+   * @param stateProperty {Property} state of game property
+   * @param scoreTotalProperty {Property} total score for this completed level
+   * @param timerEnabledProperty {Property} time enabling flag
+   * @param timeProperty {Property} time spend for level completing
+   * @param bestTimes {Array} best times spend for level completing
+   * @param continueCallback {Function} callback listener for continue button
+   * @param layoutBounds {Bounds2} bounds of main screen. Necessary for placing component
+   *
+   * @constructor
+   */
+  function LevelCompletedConfiguredNode( levelDescriptions, levelProperty, stateProperty, scoreTotalProperty, timerEnabledProperty, timeProperty, bestTimes, continueCallback, layoutBounds ) {
     var self = this;
     Node.call( this );
 
@@ -27,7 +41,7 @@ define( function( require ) {
         self.addChild( new LevelCompletedNode(
           levelProperty.value,
           scoreTotalProperty.value,
-          levels[levelProperty.value - 1].perfectScore,
+          levelDescriptions[levelProperty.value - 1].perfectScore,
           CONSTANTS.STAR_NUMBER,
           timerEnabledProperty.value,
           timeProperty.value,

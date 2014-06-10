@@ -18,7 +18,7 @@ define( function( require ) {
   var factorString = require( 'string!ARITHMETIC/factor' );
 
   /**
-   * @param model
+   * @param model {Object} main model for screen
    * @constructor
    */
   function FactorView( model ) {
@@ -28,7 +28,7 @@ define( function( require ) {
       new MultiplicationTableFactorNode(
         model.game,
         model.property( 'level' ),
-        model.levels
+        model.levelDescriptions
       ),
       new EquationFactorNode(
         model.game.property( 'state' ),

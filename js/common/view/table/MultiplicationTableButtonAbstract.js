@@ -16,6 +16,11 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
 
+  /**
+   * @param backgroundOptions {Object} background options for button
+   *
+   * @constructor
+   */
   function MultiplicationTableButtonAbstract( backgroundOptions ) {
     Node.call( this );
 
