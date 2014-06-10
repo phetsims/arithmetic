@@ -23,7 +23,7 @@ define( function( require ) {
     this._background = new Rectangle( 0, 0, backgroundOptions.width, backgroundOptions.height, _.extend( {
       fill: 'white',
       stroke: 'black',
-      strokePosition: 'inside',
+      strokePosition: 'outside',
       lineWidth: 1
     }, backgroundOptions ) );
     this.addChild( this._background );
@@ -32,7 +32,6 @@ define( function( require ) {
     this._text = new Text( '?', {
       font: new PhetFont( Math.round( this.bounds.height / 2 + 2 ) ),
       fill: 'white',
-      centerX: this.bounds.width / 2,
       centerY: this.bounds.height / 2
     } );
     this.addChild( this._text );
