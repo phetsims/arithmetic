@@ -168,6 +168,18 @@ define( function( require ) {
       //REVIEW: Comment should probably say 'child types', since technically it's not the constructor where this is overridden.
       // should be defined in child types
     },
+    clearBestTimesAndScores: function() {
+
+      // clear best times
+      for ( var i = 0; i < this.bestTimes.length; i++ ) {
+        this.bestTimes[i] = null;
+      }
+
+      // clear best scores
+      this.bestScores.forEach( function( scoreProperty ) {
+        scoreProperty.reset();
+      } );
+    },
     refreshLevel: function() {
       this.property( 'scoreTotal' ).reset();
       this.game.reset();
@@ -175,6 +187,9 @@ define( function( require ) {
     },
     reset: function() {
       PropertySet.prototype.reset.call( this );
+
+      // clear best times and scores
+      this.clearBestTimesAndScores();
     },
     step: function( dt ) {
       // if timer is on and level is select - add time
