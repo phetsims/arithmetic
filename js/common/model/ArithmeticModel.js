@@ -16,6 +16,7 @@ define( function( require ) {
   var Property = require( 'AXON/Property' );
   var PropertySet = require( 'AXON/PropertySet' );
   var ScreenView = require( 'JOIST/ScreenView' );
+  var Timer = require( 'JOIST/Timer' );
 
   // images
   var phetGirlIcon1Image = require( 'image!ARITHMETIC/phet-girl-icon-1.png' );
@@ -118,8 +119,11 @@ define( function( require ) {
           // mark answer in answer sheet
           self.game.answerSheet[self.game.multiplierLeft - 1][self.game.multiplierRight - 1] = true;
 
-          // set next task
-          self.game.state = GAME_STATE.NEXT_TASK;
+          // set next task and hide smile face
+          Timer.setTimeout( function() {
+            self.smileFace.isVisible = false;
+            self.game.state = GAME_STATE.NEXT_TASK;
+          }, 1000 );
         }
         // wrong answer
         else {
