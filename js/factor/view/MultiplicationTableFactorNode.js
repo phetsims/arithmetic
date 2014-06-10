@@ -47,8 +47,8 @@ define( function( require ) {
 
               // add 'hover' listener
               buttonModel.property( 'over' ).onValue( true, function() {
+                self.clearCells( levelProperty.value );
                 if ( buttonModel.enabled ) {
-                  self.clearCells( levelProperty.value );
                   self.setActiveRect( levelProperty.value, leftIndex, rightIndex );
                   button.hover();
                 }
@@ -57,6 +57,11 @@ define( function( require ) {
               // add 'down' listener
               buttonModel.property( 'down' ).onValue( true, function() {
                 if ( buttonModel.enabled ) {
+                  // disable button if correct answer
+                  if ( leftIndex * rightIndex === gameModel.product ) {
+                    buttonModel.enabled = false;
+                  }
+
                   gameModel.multiplierLeft = leftIndex;
                   gameModel.multiplierRight = rightIndex;
 
@@ -69,12 +74,12 @@ define( function( require ) {
       } );
     } );
 
-    gameModel.property( 'state' ).link( function( state ) {
-      if ( state === GAME_STATE.LEVEL_FINISHED ) {
-        self.disableAll( levelProperty.value );
-      }
-      else if ( state === GAME_STATE.START ) {
-        self.enableAll();
+    // enable buttons before level start
+    levelProperty.lazyLink( function( levelNumber ) {
+      if ( levelNumber ) {
+        self._buttonModel.forEach( function( buttonModel ) {
+          buttonModel.enabled = true;
+        } );
       }
     } );
   }
@@ -90,20 +95,6 @@ define( function( require ) {
             }
           } );
         }
-      } );
-    },
-    // disable all buttons
-    disableAll: function( levelNumber ) {
-      this.clearCells( levelNumber );
-
-      this._buttonModel.forEach( function( buttonModel ) {
-        buttonModel.enabled = false;
-      } );
-    },
-    // enable all buttons
-    enableAll: function() {
-      this._buttonModel.forEach( function( buttonModel ) {
-        buttonModel.enabled = true;
       } );
     }
   } );
