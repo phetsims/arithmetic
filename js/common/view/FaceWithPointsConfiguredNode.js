@@ -10,7 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var FaceWithScoreNode = require( 'SCENERY_PHET/FaceWithScoreNode' );
+  var FaceWithPointsNode = require( 'SCENERY_PHET/FaceWithPointsNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
 
@@ -21,9 +21,9 @@ define( function( require ) {
    * @constructor
    */
 
-  function FaceWithScoreConfiguredNode( smileFaceModel ) {
+  function FaceWithPointsConfiguredNode( smileFaceModel ) {
     var self = this;
-    FaceWithScoreNode.call( this, {
+    FaceWithPointsNode.call( this, {
       pointsFont: new PhetFont( { size: 26, weight: 'bold' } )
     } );
 
@@ -43,5 +43,5 @@ define( function( require ) {
     smileFaceModel.property( 'isVisible' ).linkAttribute( self, 'visible' );
   }
 
-  return inherit( FaceWithScoreNode, FaceWithScoreConfiguredNode );
+  return inherit( FaceWithPointsNode, FaceWithPointsConfiguredNode );
 } );

@@ -12,7 +12,7 @@ define( function( require ) {
   var BackButtonNode = require( 'ARITHMETIC/common/view/BackButtonNode' );
   var CalculatorNode = require( 'ARITHMETIC/common/view/CalculatorNode' );
   var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
-  var FaceWithScoreConfiguredNode = require( 'ARITHMETIC/common/view/FaceWithScoreConfiguredNode' );
+  var FaceWithPointsConfiguredNode = require( 'ARITHMETIC/common/view/FaceWithPointsConfiguredNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelCompletedConfiguredNode = require( 'ARITHMETIC/common/view/LevelCompletedConfiguredNode' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -76,7 +76,7 @@ define( function( require ) {
     );
 
     // add smile face
-    this.addChild( new FaceWithScoreConfiguredNode(
+    this.addChild( new FaceWithPointsConfiguredNode(
         model.smileFace
       ).mutate( {bottom: layoutBounds.maxY * 0.95, left: layoutBounds.maxX * 0.04} )
     );
