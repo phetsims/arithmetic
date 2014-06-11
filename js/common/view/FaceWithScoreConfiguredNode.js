@@ -12,6 +12,7 @@ define( function( require ) {
   // modules
   var FaceWithScoreNode = require( 'SCENERY_PHET/FaceWithScoreNode' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
 
   /**
    * @param smileFaceModel {Object} model for smile face.
@@ -24,8 +25,7 @@ define( function( require ) {
     var self = this;
     FaceWithScoreNode.call( this, {
       pointsAlignment: 'centerBottom',
-      pointsTextSize: 26,
-      pointsFill: 'black'
+      pointsFont: new PhetFont( { size: 26, weight: 'bold' } )
     } );
 
     // add observers
