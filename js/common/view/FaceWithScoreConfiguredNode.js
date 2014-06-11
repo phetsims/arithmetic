@@ -23,7 +23,6 @@ define( function( require ) {
   function FaceWithScoreConfiguredNode( smileFaceModel ) {
     var self = this;
     FaceWithScoreNode.call( this, {
-      faceOpacity: 1,
       pointsAlignment: 'centerBottom',
       pointsTextSize: 26,
       pointsFill: 'black'
