@@ -24,7 +24,7 @@ define( function( require ) {
     var self = this;
     FaceWithScoreNode.call( this, {
       faceOpacity: 1,
-      scoreAlignment: 'bottom',
+      scoreAlignment: 'centerBottom',
       scoreTextSize: 26,
       scoreFill: 'black'
     } );
