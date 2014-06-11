@@ -24,7 +24,6 @@ define( function( require ) {
   function FaceWithScoreConfiguredNode( smileFaceModel ) {
     var self = this;
     FaceWithScoreNode.call( this, {
-      pointsAlignment: 'centerBottom',
       pointsFont: new PhetFont( { size: 26, weight: 'bold' } )
     } );
 
