@@ -24,16 +24,16 @@ define( function( require ) {
     var self = this;
     FaceWithScoreNode.call( this, {
       faceOpacity: 1,
-      scoreAlignment: 'centerBottom',
-      scoreTextSize: 26,
-      scoreFill: 'black'
+      pointsAlignment: 'centerBottom',
+      pointsTextSize: 26,
+      pointsFill: 'black'
     } );
 
     // add observers
 
     // set score of smile face
-    smileFaceModel.property( 'scoreFace' ).link( function( scoreGame ) {
-      self.setScore( scoreGame );
+    smileFaceModel.property( 'scoreFace' ).link( function( points ) {
+      self.setPoints( points );
     } );
 
     // set smile face emotion
