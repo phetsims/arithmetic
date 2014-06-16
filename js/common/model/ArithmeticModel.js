@@ -165,7 +165,7 @@ define( function( require ) {
       this.level = 0;
       this.refreshLevel();
     },
-    checkInput: function() {
+    checkAnswer: function() {
       //REVIEW: Comment should probably say 'child types', since technically it's not the constructor where this is overridden.
       // should be defined in child types
     },

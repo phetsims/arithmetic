@@ -34,6 +34,8 @@ define( function( require ) {
    * @constructor
    */
   function CalculatorNode( inputProperty, enterCallback ) {
+    var buttonEnter;
+
     // add buttons
     VBox.call( this, {spacing: SPACING, children: [
       new HBox( {spacing: SPACING, children: [
@@ -54,9 +56,14 @@ define( function( require ) {
       new HBox( {spacing: SPACING, children: [
         getButtonBackspace( inputProperty ),
         getButtonNumber( 0, inputProperty ),
-        getButtonEnter( enterCallback )
+        buttonEnter = getButtonEnter( enterCallback )
       ]} )
     ]} );
+
+    // disable enter button if user has not entered number
+    inputProperty.link( function( inputString ) {
+      buttonEnter.enabled = !!inputString.length;
+    } );
   }
 
   // return backspace button
@@ -74,7 +81,8 @@ define( function( require ) {
   var getButtonDefault = function( content, listener ) {
     return new RectangularPushButton( {
       content: content,
-      baseColor: 'white',
+      baseColor: CONSTANTS.CALCULATOR.BASE_COLOR,
+      disabledBaseColor: CONSTANTS.CALCULATOR.DISABLE_BASE_COLOR,
       minHeight: BUTTON_SIZE.height,
       minWidth: BUTTON_SIZE.width,
       listener: listener

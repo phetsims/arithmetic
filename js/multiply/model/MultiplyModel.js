@@ -48,11 +48,9 @@ define( function( require ) {
   }
 
   return inherit( ArithmeticModel, MultiplyModel, {
-    checkInput: function() {
-      if ( this.input ) {
-        this.game.product = parseInt( this.input, 10 );
-        this.game.state = GAME_STATE.EQUATION_FILLED;
-      }
+    checkAnswer: function() {
+      this.game.product = parseInt( this.input, 10 );
+      this.game.state = GAME_STATE.EQUATION_FILLED;
     }
   } );
 } );

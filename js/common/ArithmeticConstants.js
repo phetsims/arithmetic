@@ -22,7 +22,9 @@ define( function( require ) {
     // constants for calculator
     CALCULATOR: {
       ARROW_SIZE: 28, // arrow size of enter and backspace
+      BASE_COLOR: 'white', // disable base color for all buttons
       BUTTON_SIZE: new Dimension2( 40, 40 ), // size of buttons
+      DISABLE_BASE_COLOR: 'rgb(234,255,43)', // disable base color for all buttons
       SPACING: 10 // spacing between buttons
     },
     // constants for control panel

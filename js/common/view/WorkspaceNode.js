@@ -38,7 +38,7 @@ define( function( require ) {
     if ( isAddCalculatorNode ) {
       this.addChild( new CalculatorNode(
           model.property( 'input' ),
-          function() {model.checkInput();}
+          function() {model.checkAnswer();}
         ).mutate( {right: layoutBounds.maxX * 0.98, bottom: layoutBounds.maxY * 0.95} )
       );
     }
