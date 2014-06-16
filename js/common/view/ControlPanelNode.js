@@ -48,6 +48,7 @@ define( function( require ) {
     var levelText = new Text( '?', {font: FONT} );
     var scoreText = new Text( '?', {font: FONT} );
     var timeText = new Text( '?', {font: FONT} );
+    var timerToggleButton;
     Node.call( this );
 
     // add background
@@ -73,10 +74,13 @@ define( function( require ) {
           timeText,
           scoreText,
           // add timer toggle button
-          new TimerToggleButton( timerEnabledProperty, {baseColor: 'white'} )
+          timerToggleButton = new TimerToggleButton( timerEnabledProperty, {baseColor: 'white'} )
         ]} )
       ]} )
     ]} ) );
+
+    // disable timer button in control panel to preventing incorrect behaviour
+    timerToggleButton.enabled = false;
 
     // add observers
     levelProperty.link( function( level ) {
