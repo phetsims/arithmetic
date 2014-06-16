@@ -13,6 +13,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
   var GameModel = require( 'ARITHMETIC/common/model/GameModel' );
+  var GameTimer = require( 'VEGAS/GameTimer' );
   var Property = require( 'AXON/Property' );
   var PropertySet = require( 'AXON/PropertySet' );
   var ScreenView = require( 'JOIST/ScreenView' );
@@ -61,7 +62,6 @@ define( function( require ) {
     PropertySet.call( this, {
       level: 0, // level difficulty, zero-based in the model, though levels appear to the user to start
       scoreTotal: 0, // total user score for current games
-      time: 0, // current time
       input: '', // user's input value
       //REVIEW - Please use 'soundEnabled' and 'timerEnabled', as these are more conventional for PhET.
       soundEnabled: true, // is sound active
@@ -70,6 +70,22 @@ define( function( require ) {
 
     // hook up the audio player to the sound settings
     this.gameAudioPlayer = new GameAudioPlayer( this.property( 'soundEnabled' ) );
+
+    // model for game timer
+    this.gameTimer = new GameTimer();
+
+    // start timer if level is select, stop timer time if level is not select
+    this.property( 'level' ).link( function( levelNumber ) {
+      if ( levelNumber && self.timerEnabled ) {
+        self.gameTimer.start();
+      }
+      else {
+        self.gameTimer.stop();
+
+        // clear time when timer off
+        self.gameTimer.elapsedTime = 0;
+      }
+    } );
 
     // model for single game
     this.game = new GameModel( this.property( 'level' ), levelDescriptions );
@@ -82,13 +98,6 @@ define( function( require ) {
     this.levelDescriptions.forEach( function() {
       self.bestTimes.push( null );
       self.bestScores.push( new Property( 0 ) );
-    } );
-
-    // clear time property when timer off
-    this.property( 'timerEnabled' ).lazyLink( function( timerEnabled ) {
-      if ( !timerEnabled ) {
-        self.time = 0;
-      }
     } );
 
     // init game after choosing level
@@ -149,13 +158,16 @@ define( function( require ) {
 
         // set best time
         if ( self.timerEnabled ) {
+          self.gameTimer.stop();
           if ( self.bestTimes[self.level - 1] === null ) {
-            self.bestTimes[self.level - 1] = self.time;
+            self.bestTimes[self.level - 1] = self.gameTimer.elapsedTime;
           }
           else {
-            self.bestTimes[self.level - 1] = Math.min( self.bestTimes[self.level - 1], self.time );
+            self.bestTimes[self.level - 1] = Math.min( self.bestTimes[self.level - 1], self.gameTimer.elapsedTime );
           }
         }
+
+        self.game.state = GAME_STATE.SHOW_STATISTICS;
       }
     } );
   }
@@ -183,7 +195,7 @@ define( function( require ) {
     },
     refreshLevel: function() {
       this.property( 'scoreTotal' ).reset();
-      this.property( 'time' ).reset();
+      this.gameTimer.elapsedTime = 0;
       this.game.reset();
       this.smileFace.reset();
     },
@@ -193,11 +205,6 @@ define( function( require ) {
       // clear best times and scores
       this.clearBestTimesAndScores();
     },
-    step: function( dt ) {
-      // if timer is on and level is select - add time
-      if ( this.timerEnabled && this.level ) {
-        this.time += dt;
-      }
-    }
+    step: function() {}
   } );
 } );

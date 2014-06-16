@@ -10,6 +10,7 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
+  var GameTimer = require( 'VEGAS/GameTimer' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -23,7 +24,6 @@ define( function( require ) {
 
   // strings
   var pattern_level_0levelNumber = require( 'string!ARITHMETIC/pattern.level.0levelNumber' );
-  var pattern_0minute_1second = require( 'string!ARITHMETIC/pattern.0minute.1second' );
   var scoreString = require( 'string!ARITHMETIC/score' );
   var timeString = require( 'string!ARITHMETIC/time' );
 
@@ -36,7 +36,7 @@ define( function( require ) {
   /**
    * @param levelProperty {Property} property for level displaying label
    * @param scoreProperty {Property} property for score counter component
-   * @param timeProperty {Property} property for time counter component
+   * @param timeProperty {Property} property for elapsed time
    * @param timerEnabledProperty {Property} property for time toggle button
    * @param soundEnabledProperty {Property} property for sound toggle button
    * @param refreshLevelCallback {Function} callback listener for refresh level button
@@ -78,9 +78,6 @@ define( function( require ) {
       ]} )
     ]} ) );
 
-    // set background size
-    background.setRect( -BACKGROUND_MARGIN / 2, -BACKGROUND_MARGIN / 2, this.bounds.width + BACKGROUND_MARGIN, this.bounds.height + BACKGROUND_MARGIN, 5, 5 );
-
     // add observers
     levelProperty.link( function( level ) {
       levelText.setText( StringUtils.format( pattern_level_0levelNumber, level.toString() ) );
@@ -91,20 +88,11 @@ define( function( require ) {
     } );
 
     timeProperty.link( function( time ) {
-      time = Math.round( time );
-
-      // find seconds
-      var sec = (time % 60).toString();
-      if ( sec.length < 2 ) {
-        sec = '0' + sec;
-      }
-
-      // find minutes
-      var min = Math.floor( time / 60 ).toString();
-
-      // set time
-      timeText.setText( StringUtils.format( pattern_0minute_1second, min, sec ) );
+      timeText.setText( GameTimer.formatTime( time ) );
     } );
+
+    // set background size
+    background.setRect( -BACKGROUND_MARGIN / 2, -BACKGROUND_MARGIN / 2, this.bounds.width + BACKGROUND_MARGIN, this.bounds.height + BACKGROUND_MARGIN, 5, 5 );
   }
 
   return inherit( Node, ControlPanelNode );

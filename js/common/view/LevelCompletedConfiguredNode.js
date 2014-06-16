@@ -37,7 +37,7 @@ define( function( require ) {
     Node.call( this );
 
     stateProperty.lazyLink( function( state ) {
-      if ( state === GAME_STATE.LEVEL_FINISHED ) {
+      if ( state === GAME_STATE.SHOW_STATISTICS ) {
         self.addChild( new LevelCompletedNode(
           levelProperty.value,
           scoreTotalProperty.value,

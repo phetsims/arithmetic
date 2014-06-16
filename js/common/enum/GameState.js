@@ -12,6 +12,7 @@ define( function() {
     EQUATION_FILLED: 'equationFilled',
     LEVEL_FINISHED: 'levelFinished',
     NEXT_TASK: 'nextTask',
+    SHOW_STATISTICS: 'showStatistics',
     START: 'start'
   } );
 } );

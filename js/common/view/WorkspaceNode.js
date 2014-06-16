@@ -47,7 +47,7 @@ define( function( require ) {
     this.addChild( new ControlPanelNode(
         model.property( 'level' ),
         model.property( 'scoreTotal' ),
-        model.property( 'time' ),
+        model.gameTimer.property( 'elapsedTime' ),
         model.property( 'timerEnabled' ),
         model.property( 'soundEnabled' ),
         function() {
@@ -88,7 +88,7 @@ define( function( require ) {
         model.game.property( 'state' ),
         model.property( 'scoreTotal' ),
         model.property( 'timerEnabled' ),
-        model.property( 'time' ),
+        model.gameTimer.property( 'elapsedTime' ),
         model.bestTimes,
         function() {
           model.back();
