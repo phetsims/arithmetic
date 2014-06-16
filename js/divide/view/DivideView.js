@@ -35,7 +35,8 @@ define( function( require ) {
         model.game.property( 'multiplierLeft' ),
         model.game.property( 'multiplierRight' ),
         model.game.property( 'product' ),
-        model.property( 'input' )
+        model.property( 'input' ),
+        model.property( 'inputCursorVisibility' )
       ),
       true,
       divideString

@@ -29,6 +29,7 @@ define( function( require ) {
 
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+  var BLINKING_INTERVAL = require( 'ARITHMETIC/common/ArithmeticConstants' ).EQUATION.BLINKING_INTERVAL;
   var levelDescriptions = [
     // level 1
     {
@@ -63,10 +64,14 @@ define( function( require ) {
       level: 0, // level difficulty, zero-based in the model, though levels appear to the user to start
       scoreTotal: 0, // total user score for current games
       input: '', // user's input value
+      inputCursorVisibility: false,
       //REVIEW - Please use 'soundEnabled' and 'timerEnabled', as these are more conventional for PhET.
       soundEnabled: true, // is sound active
       timerEnabled: false // is time mode active
     } );
+
+    // property necessary for tracing and changing inputCursorVisibility property
+    this.time = 0;
 
     // hook up the audio player to the sound settings
     this.gameAudioPlayer = new GameAudioPlayer( this.property( 'soundEnabled' ) );
@@ -205,6 +210,13 @@ define( function( require ) {
       // clear best times and scores
       this.clearBestTimesAndScores();
     },
-    step: function() {}
+    step: function( dt ) {
+      this.time += dt;
+
+      if ( this.time > BLINKING_INTERVAL ) {
+        this.inputCursorVisibility = !this.inputCursorVisibility;
+        this.time = 0;
+      }
+    }
   } );
 } );

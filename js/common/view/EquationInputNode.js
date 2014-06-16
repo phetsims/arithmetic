@@ -15,7 +15,6 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
-  var Timer = require( 'JOIST/Timer' );
 
   // constants
   var FONT_TEXT = new PhetFont( 32 );
@@ -24,10 +23,11 @@ define( function( require ) {
   /**
    * @param property {Property} property for observing and changing by input
    * @param inputSize {Dimension2} size of input component
+   * @param cursorVisibilityProperty {Property} property which switch true/false with given time interval
    *
    * @constructor
    */
-  function EquationInputNode( property, inputSize ) {
+  function EquationInputNode( property, cursorVisibilityProperty, inputSize ) {
     var self = this;
     Node.call( this );
 
@@ -36,6 +36,8 @@ define( function( require ) {
 
     // create cursor and save link for further using
     this._cursor = new Rectangle( 0, 2, 1, this._inputText.getHeight() - 4, {fill: 'black'} );
+    this._cursorContainer = new Node( {children: [this._cursor]} );
+
 
     // save link to input size value for further using
     this._inputSize = inputSize;
@@ -46,11 +48,18 @@ define( function( require ) {
       updateBoxPosition( self._box, inputSize );
     } );
 
+    // blinking animation for cursor
+    cursorVisibilityProperty.lazyLink( function( isCursorVisible ) {
+      if ( self._cursorContainer.visible ) {
+        self._cursor.visible = isCursorVisible;
+      }
+    } );
+
     // add background
     this.addChild( new Rectangle( 0, 0, inputSize.width, inputSize.height, 5, 5, {fill: 'white', stroke: 'black', lineWidth: 1.5} ) );
 
     // add text and cursor
-    this._box = new HBox( {children: [this._inputText, this._cursor], centerX: inputSize.width / 2, centerY: inputSize.height / 2} );
+    this._box = new HBox( {children: [this._inputText, this._cursorContainer], centerX: inputSize.width / 2, centerY: inputSize.height / 2} );
     this.addChild( this._box );
 
     // disable by default
@@ -75,16 +84,10 @@ define( function( require ) {
       // TODO: add button behaviour
     },
     focus: function() {
-      var self = this;
-
-      Timer.clearInterval( this._interval );
-      this._interval = Timer.setInterval( function() {
-        self._cursor.visible = !self._cursor.visible;
-      }, 500 );
+      this._cursorContainer.visible = true;
     },
     unfocus: function() {
-      Timer.clearInterval( this._interval );
-      this._cursor.visible = false;
+      this._cursorContainer.visible = false;
     },
     reset: function() {
       this._inputText.setText( PLACEHOLDER );

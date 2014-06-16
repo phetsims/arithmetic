@@ -21,13 +21,14 @@ define( function( require ) {
    * @param multiplierRightProperty {Property} property necessary for creating right multiplier input
    * @param productProperty {Property} property necessary for creating product input
    * @param inputProperty {Property} input property
+   * @param inputCursorVisibilityProperty {Property} property which switch true/false with given time interval
    *
    * @constructor
    */
-  function EquationDivideNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty ) {
+  function EquationDivideNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty, inputCursorVisibilityProperty ) {
     var self = this;
     var activeProperty;
-    EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
+    EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty, inputCursorVisibilityProperty );
 
     stateProperty.lazyLink( function( state ) {
       if ( state === GAME_STATE.START ) {

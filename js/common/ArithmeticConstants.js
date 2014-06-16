@@ -38,6 +38,7 @@ define( function( require ) {
     },
     // constants for equation
     EQUATION: {
+      BLINKING_INTERVAL: 0.5, // duration of animation in seconds
       INPUT_SIZE_MULTIPLIER: new Dimension2( 60, 40 ), // size of input buttons
       INPUT_SIZE_PRODUCT: new Dimension2( 80, 40 ), // size of input buttons
       SPACING: 10 // spacing between equation elements

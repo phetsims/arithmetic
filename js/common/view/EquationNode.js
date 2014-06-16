@@ -23,14 +23,15 @@ define( function( require ) {
    * @param multiplierLeftProperty {Property} property necessary for creating left multiplier input
    * @param multiplierRightProperty {Property} property necessary for creating right multiplier input
    * @param productProperty {Property} property necessary for creating product input
+   * @param inputCursorVisibilityProperty {Property} property which switch true/false with given time interval
    *
    * @constructor
    */
-  function EquationNode( multiplierLeftProperty, multiplierRightProperty, productProperty ) {
+  function EquationNode( multiplierLeftProperty, multiplierRightProperty, productProperty, inputCursorVisibilityProperty ) {
 
-    this.multiplierLeftInput = new EquationInputNode( multiplierLeftProperty, CONSTANTS.INPUT_SIZE_MULTIPLIER );
-    this.multiplierRightInput = new EquationInputNode( multiplierRightProperty, CONSTANTS.INPUT_SIZE_MULTIPLIER );
-    this.productInput = new EquationInputNode( productProperty, CONSTANTS.INPUT_SIZE_PRODUCT );
+    this.multiplierLeftInput = new EquationInputNode( multiplierLeftProperty, inputCursorVisibilityProperty, CONSTANTS.INPUT_SIZE_MULTIPLIER );
+    this.multiplierRightInput = new EquationInputNode( multiplierRightProperty, inputCursorVisibilityProperty, CONSTANTS.INPUT_SIZE_MULTIPLIER );
+    this.productInput = new EquationInputNode( productProperty, inputCursorVisibilityProperty, CONSTANTS.INPUT_SIZE_PRODUCT );
 
     HBox.call( this, {spacing: CONSTANTS.SPACING, children: [
       this.multiplierLeftInput,
