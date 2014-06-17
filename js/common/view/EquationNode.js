@@ -17,7 +17,8 @@ define( function( require ) {
   var Text = require( 'SCENERY/nodes/Text' );
 
   // constants
-  var FONT_VBOX = new PhetFont( 36 );
+  var FONT_EQUALS = new PhetFont( 40 );
+  var FONT_X = new PhetFont( 30 );
 
   /**
    * @param multiplierLeftProperty {Property} property necessary for creating left multiplier input
@@ -35,9 +36,9 @@ define( function( require ) {
 
     HBox.call( this, {spacing: CONSTANTS.SPACING, children: [
       this.multiplierLeftInput,
-      new Text( 'x', {font: FONT_VBOX} ),
+      new Text( 'X', {font: FONT_X, fill: 'yellow'} ),
       this.multiplierRightInput,
-      new Text( '=', {font: FONT_VBOX} ),
+      new Text( '=', {font: FONT_EQUALS, fill: 'yellow'} ),
       this.productInput
     ]} );
   }

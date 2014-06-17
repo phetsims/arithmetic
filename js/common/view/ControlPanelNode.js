@@ -55,10 +55,13 @@ define( function( require ) {
       levelText,
       // add refresh button
       new RefreshButton( {
-        baseColor: CONSTANTS.REFRESH_BUTTON_COLOR,
+        baseColor: CONSTANTS.REFRESH_BUTTON.BASE_COLOR,
+        stroke: CONSTANTS.REFRESH_BUTTON.STROKE,
+        xMargin: CONSTANTS.REFRESH_BUTTON.MARGIN.width,
+        yMargin: CONSTANTS.REFRESH_BUTTON.MARGIN.height,
         listener: refreshLevelCallback
-      } ),
-      new HBox( {spacing: SPACING, children: [
+      } ).mutate( {scale: 0.75} ),
+      new HBox( {spacing: 5, children: [
         new VBox( {spacing: SPACING, align: 'left', children: [
           new Text( timeString + ':', {font: FONT} ),
           new Text( scoreString + ':', {font: FONT} )

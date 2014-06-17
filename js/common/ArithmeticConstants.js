@@ -16,8 +16,10 @@ define( function( require ) {
     BACKGROUND_COLOR: 'rgb(255,245,236)',
     // constants for back button
     BACK_BUTTON: {
-      ARROW_SIZE: 28, // arrow size of back button
-      BASE_COLOR: 'rgb(243,238,103)' // base color of back button
+      BASE_COLOR: 'rgb(253,120,8)', // base color of back button
+      CORNER_RADIUS: 7, // corner radius of back button
+      STROKE: 'none', // stroke of back button
+      MARGIN: new Dimension2( 20, 10 ) // margin of background of back button
     },
     // constants for calculator
     CALCULATOR: {
@@ -30,36 +32,44 @@ define( function( require ) {
     // constants for control panel
     CONTROL_PANEL: {
       BACKGROUND: {
-        COLOR: 'rgb(254,208,153)', // color of control panel background
+        COLOR: 'rgb(93,152,253)', // color of control panel background
         MARGIN: new Dimension2( 20, 40 ) // size of margin from content
       },
-      REFRESH_BUTTON_COLOR: 'rgb(244,133,24)', // color of refresh button
+      REFRESH_BUTTON: {
+        BASE_COLOR: 'rgb(253,120,8)', // base color of back button
+        CORNER_RADIUS: 7, // corner radius of back button
+        STROKE: 'none', // stroke of back button
+        MARGIN: new Dimension2( 20, 10 ) // margin of background of back button
+      },
       SPACING: 18 // spacing between control panel elements
     },
     // constants for equation
     EQUATION: {
       BLINKING_INTERVAL: 0.5, // duration of animation in seconds
-      INPUT_SIZE_MULTIPLIER: new Dimension2( 60, 40 ), // size of input buttons
-      INPUT_SIZE_PRODUCT: new Dimension2( 80, 40 ), // size of input buttons
-      SPACING: 10 // spacing between equation elements
+      INPUT_SIZE_MULTIPLIER: new Dimension2( 70, 45 ), // size of input buttons
+      INPUT_SIZE_PRODUCT: new Dimension2( 80, 45 ), // size of input buttons
+      SPACING: 20 // spacing between equation elements
     },
     // max input length
     INPUT_LENGTH_MAX: 3,
     // constants for multiplication table
     MULTIPLICATION_TABLE: {
       MULTIPLIER_BUTTON: {
-        NORMAL_COLOR: 'rgb(218,36,5)', // multiplier button normal color
-        SELECT_COLOR: 'rgb(244,133,9)' // multiplier button select color
+        NORMAL_COLOR_BACKGROUND: 'rgb(239,0,15)', // multiplier button background normal color
+        SELECT_COLOR_BACKGROUND: 'rgb(3,0,205)', // multiplier button background select color
+        NORMAL_COLOR_TEXT: 'white',  // multiplier button text normal color
+        SELECT_COLOR_TEXT: 'yellow'  // multiplier button text select color
       },
       PRODUCT_BUTTON: {
-        ACTIVE_COLOR: 'rgb(145,145,254)', // product button active color
+        ACTIVE_COLOR: 'rgb(0,0,119)', // product button active color
         HOVER_COLOR: 'rgb(234,255,43)', // product button hover color
-        NORMAL_COLOR: 'rgb(15,0,255)', // product button normal color
+        NORMAL_COLOR: 'rgb(3,0,255)', // product button normal color
         SELECT_COLOR: 'rgb(14,12,70)' // product button select color
       },
       SIZE: new Dimension2( 434, 320 ) // table size
     },
     SCREEN_ICON_SIZE: new Dimension2( 60, 40 ), // size of screen icons
-    STAR_NUMBER: 5 // number of stars in select level buttons
+    STAR_NUMBER: 5, // number of stars in select level buttons
+    WORKSPACE_BACKGROUND_COLOR: 'rgb(16,88,253)'
   };
 } );

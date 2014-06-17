@@ -17,7 +17,7 @@ define( function( require ) {
   var Text = require( 'SCENERY/nodes/Text' );
 
   // constants
-  var FONT_TEXT = new PhetFont( 32 );
+  var FONT_TEXT = new PhetFont( {size: 32, family: 'Comic Sans MS'} );
   var PLACEHOLDER = '?';
 
   /**
@@ -56,7 +56,7 @@ define( function( require ) {
     } );
 
     // add background
-    this.addChild( new Rectangle( 0, 0, inputSize.width, inputSize.height, 5, 5, {fill: 'white', stroke: 'black', lineWidth: 1.5} ) );
+    this.addChild( new Rectangle( 0, 0, inputSize.width, inputSize.height, 5, 5, {fill: 'white'} ) );
 
     // add text and cursor
     this._box = new HBox( {children: [this._inputText, this._cursorContainer], centerX: inputSize.width / 2, centerY: inputSize.height / 2} );
@@ -77,12 +77,9 @@ define( function( require ) {
       updateBoxPosition( this._box, this._inputSize );
     },
     disable: function() {
-      // TODO: add button behaviour
       this.unfocus();
     },
-    enable: function() {
-      // TODO: add button behaviour
-    },
+    enable: function() {},
     focus: function() {
       this._cursorContainer.visible = true;
     },

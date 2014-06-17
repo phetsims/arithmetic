@@ -9,15 +9,18 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var BackButtonNode = require( 'ARITHMETIC/common/view/BackButtonNode' );
   var CalculatorNode = require( 'ARITHMETIC/common/view/CalculatorNode' );
   var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
   var FaceWithPointsConfiguredNode = require( 'ARITHMETIC/common/view/FaceWithPointsConfiguredNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelCompletedConfiguredNode = require( 'ARITHMETIC/common/view/LevelCompletedConfiguredNode' );
   var Node = require( 'SCENERY/nodes/Node' );
+  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
+  var ReturnToLevelSelectButton = require( 'SCENERY_PHET/ReturnToLevelSelectButton' );
 
   // constants
+  var BACK_BUTTON_CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).BACK_BUTTON;
+  var BACKGROUND_COLOR = require( 'ARITHMETIC/common/ArithmeticConstants' ).WORKSPACE_BACKGROUND_COLOR;
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
   /**
@@ -33,6 +36,9 @@ define( function( require ) {
   function WorkspaceNode( model, multiplicationTableNode, equationNode, isAddCalculatorNode, layoutBounds ) {
     var self = this;
     Node.call( this );
+
+    // add background for workspace
+    this.addChild( new Rectangle( -layoutBounds.width, -layoutBounds.height, 3 * layoutBounds.width, 3 * layoutBounds.height, {fill: BACKGROUND_COLOR} ) );
 
     // add calculator if necessary
     if ( isAddCalculatorNode ) {
@@ -55,12 +61,18 @@ define( function( require ) {
       ).mutate( {right: layoutBounds.maxX * 0.98, top: layoutBounds.maxY * 0.02} )
     );
 
-    // add back button
-    this.addChild( new BackButtonNode(
-        function() {
+    // add back to level select button
+    this.addChild( new ReturnToLevelSelectButton( {
+        baseColor: BACK_BUTTON_CONSTANTS.BASE_COLOR,
+        stroke: BACK_BUTTON_CONSTANTS.STROKE,
+        cornerRadius: BACK_BUTTON_CONSTANTS.CORNER_RADIUS,
+        xMargin: BACK_BUTTON_CONSTANTS.MARGIN.width,
+        yMargin: BACK_BUTTON_CONSTANTS.MARGIN.height,
+        listener: function() {
           model.back();
         }
-      ).mutate( {left: layoutBounds.maxX * 0.02, top: layoutBounds.maxY * 0.02} )
+      } )
+        .mutate( {scale: 0.75, left: layoutBounds.maxX * 0.02, top: layoutBounds.maxY * 0.02} )
     );
 
     // add multiplication table
@@ -70,7 +82,7 @@ define( function( require ) {
 
     // add equation
     this.addChild( equationNode
-        .mutate( {bottom: layoutBounds.maxY * 0.95, centerX: layoutBounds.width * 0.45} )
+        .mutate( {bottom: layoutBounds.maxY * 0.87, centerX: layoutBounds.width * 0.45} )
     );
 
     // add smile face

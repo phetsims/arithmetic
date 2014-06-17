@@ -33,6 +33,7 @@ define( function( require ) {
    */
   function MultiplicationTableNode( levelProperty, levelDescriptions, gameModel ) {
     var self = this;
+    var backgroundRect;
     Node.call( this );
 
     // array with views for each level
@@ -40,6 +41,14 @@ define( function( require ) {
 
     // links to table cells. Indexes: [levelNumber][leftMultiplier][rightMultiplier]
     this.cells = [];
+
+    // add stroke for all multiplication table views
+    this.addChild( backgroundRect = new Rectangle( 0, 0, 0, 0, {
+      fill: 'white',
+      stroke: 'white',
+      lineWidth: 2.5,
+      strokePosition: 'outside'
+    } ) );
 
     // create view of times table for levels
     levelDescriptions.forEach( function( level, levelIndex ) {
@@ -93,12 +102,9 @@ define( function( require ) {
       self._viewForLevel[levelIndex + 1] = vBox;
     } );
 
-    // add stroke for all multiplication table views
-    this.addChild( new Rectangle( 0, 0, this.bounds.width, this.bounds.height, {
-      stroke: 'black',
-      lineWidth: 1,
-      strokePosition: 'outside'
-    } ) );
+    // set background size
+    backgroundRect.setRectWidth( this.bounds.width );
+    backgroundRect.setRectHeight( this.bounds.height );
 
     levelProperty.link( function( levelNumberCurrent, levelNumberPrev ) {
       // show current multiplication table view for level

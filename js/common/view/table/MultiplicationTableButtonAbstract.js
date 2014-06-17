@@ -27,15 +27,15 @@ define( function( require ) {
     // add background
     this._background = new Rectangle( 0, 0, backgroundOptions.width, backgroundOptions.height, _.extend( {
       fill: 'white',
-      stroke: 'black',
+      stroke: 'white',
       strokePosition: 'outside',
-      lineWidth: 1
+      lineWidth: 2.5
     }, backgroundOptions ) );
     this.addChild( this._background );
 
     // add content text
     this._text = new Text( '?', {
-      font: new PhetFont( Math.round( this.bounds.height / 2 + 2 ) ),
+      font: new PhetFont( {size: Math.round( 3 * this.bounds.height / 5 + 2 ), family: 'Comic Sans MS'} ),
       fill: 'white',
       centerY: this.bounds.height / 2
     } );
@@ -49,6 +49,9 @@ define( function( require ) {
     setText: function( text ) {
       this._text.setText( text );
       this._text.centerX = this.bounds.width / 2;
+    },
+    setTextFill: function( fill ) {
+      this._text.setFill( fill );
     },
     showText: function() {
       this._text.visible = true;

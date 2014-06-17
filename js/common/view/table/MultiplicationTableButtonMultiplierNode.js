@@ -35,10 +35,12 @@ define( function( require ) {
 
   return inherit( MultiplicationTableButtonAbstract, MultiplicationTableButtonMultiplierNode, {
     select: function() {
-      this.setBackgroundFill( CONSTANTS.SELECT_COLOR );
+      this.setBackgroundFill( CONSTANTS.SELECT_COLOR_BACKGROUND );
+      this.setTextFill( CONSTANTS.SELECT_COLOR_TEXT );
     },
     normal: function() {
-      this.setBackgroundFill( CONSTANTS.NORMAL_COLOR );
+      this.setBackgroundFill( CONSTANTS.NORMAL_COLOR_BACKGROUND );
+      this.setTextFill( CONSTANTS.NORMAL_COLOR_TEXT );
     }
   } );
 } );
