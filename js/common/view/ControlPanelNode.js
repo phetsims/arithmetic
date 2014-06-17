@@ -16,10 +16,8 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var RefreshButton = require( 'SCENERY_PHET/RefreshButton' );
-  var SoundToggleButton = require( 'SCENERY_PHET/SoundToggleButton' );
   var StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   var Text = require( 'SCENERY/nodes/Text' );
-  var TimerToggleButton = require( 'SCENERY_PHET/TimerToggleButton' );
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
@@ -37,18 +35,15 @@ define( function( require ) {
    * @param levelProperty {Property} property for level displaying label
    * @param scoreProperty {Property} property for score counter component
    * @param timeProperty {Property} property for elapsed time
-   * @param timerEnabledProperty {Property} property for time toggle button
-   * @param soundEnabledProperty {Property} property for sound toggle button
    * @param refreshLevelCallback {Function} callback listener for refresh level button
    *
    * @constructor
    */
-  function ControlPanelNode( levelProperty, scoreProperty, timeProperty, timerEnabledProperty, soundEnabledProperty, refreshLevelCallback ) {
+  function ControlPanelNode( levelProperty, scoreProperty, timeProperty, refreshLevelCallback ) {
     var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR} );
     var levelText = new Text( '?', {font: FONT} );
     var scoreText = new Text( '?', {font: FONT} );
     var timeText = new Text( '?', {font: FONT} );
-    var timerToggleButton;
     Node.call( this );
 
     // add background
@@ -66,21 +61,14 @@ define( function( require ) {
       new HBox( {spacing: SPACING, children: [
         new VBox( {spacing: SPACING, align: 'left', children: [
           new Text( timeString + ':', {font: FONT} ),
-          new Text( scoreString + ':', {font: FONT} ),
-          // add sound toggle button
-          new SoundToggleButton( soundEnabledProperty, {baseColor: 'white'} )
+          new Text( scoreString + ':', {font: FONT} )
         ]} ),
         new VBox( {spacing: SPACING, align: 'right', children: [
           timeText,
-          scoreText,
-          // add timer toggle button
-          timerToggleButton = new TimerToggleButton( timerEnabledProperty, {baseColor: 'white'} )
+          scoreText
         ]} )
       ]} )
     ]} ) );
-
-    // disable timer button in control panel to preventing incorrect behaviour
-    timerToggleButton.enabled = false;
 
     // add observers
     levelProperty.link( function( level ) {
@@ -96,7 +84,7 @@ define( function( require ) {
     } );
 
     // set background size
-    background.setRect( -BACKGROUND_MARGIN / 2, -BACKGROUND_MARGIN / 2, this.bounds.width + BACKGROUND_MARGIN, this.bounds.height + BACKGROUND_MARGIN, 5, 5 );
+    background.setRect( -BACKGROUND_MARGIN.width / 2, -BACKGROUND_MARGIN.height / 2, this.bounds.width + BACKGROUND_MARGIN.width, this.bounds.height + BACKGROUND_MARGIN.height, 5, 5 );
   }
 
   return inherit( Node, ControlPanelNode );

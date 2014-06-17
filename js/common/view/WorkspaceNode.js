@@ -48,8 +48,6 @@ define( function( require ) {
         model.property( 'level' ),
         model.property( 'scoreTotal' ),
         model.gameTimer.property( 'elapsedTime' ),
-        model.property( 'timerEnabled' ),
-        model.property( 'soundEnabled' ),
         function() {
           model.refreshLevel();
           model.game.state = GAME_STATE.NEXT_TASK;

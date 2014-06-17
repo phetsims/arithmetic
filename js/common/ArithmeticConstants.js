@@ -31,7 +31,7 @@ define( function( require ) {
     CONTROL_PANEL: {
       BACKGROUND: {
         COLOR: 'rgb(254,208,153)', // color of control panel background
-        MARGIN: 20 // margin from content
+        MARGIN: new Dimension2( 20, 40 ) // size of margin from content
       },
       REFRESH_BUTTON_COLOR: 'rgb(244,133,24)', // color of refresh button
       SPACING: 18 // spacing between control panel elements
