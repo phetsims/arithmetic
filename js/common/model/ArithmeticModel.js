@@ -65,7 +65,6 @@ define( function( require ) {
       scoreTotal: 0, // total user score for current games
       input: '', // user's input value
       inputCursorVisibility: false,
-      //REVIEW - Please use 'soundEnabled' and 'timerEnabled', as these are more conventional for PhET.
       soundEnabled: true, // is sound active
       timerEnabled: false // is time mode active
     } );
