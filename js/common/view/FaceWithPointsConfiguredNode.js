@@ -36,7 +36,7 @@ define( function( require ) {
 
     // set smile face emotion
     smileFaceModel.property( 'isSmile' ).link( function( isFaceSmile ) {
-      self[isFaceSmile ? 'smile' : 'frown' ]();
+      self[ isFaceSmile ? 'smile' : 'grimace' ]();
     } );
 
     // set visibility of smile face
