@@ -44,7 +44,7 @@ define( function( require ) {
   function ControlPanelNode( levelProperty, scoreProperty, timerEnabledProperty, timeProperty, refreshLevelCallback ) {
     var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR} );
     var HSpacing = CONSTANTS.HSPASING;
-    var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), {font: FONT} );
+    var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), new PhetFont( { size: 18, family: 'Comic Sans MS', weight: 'bold' } ) );
     var scoreTextValue = new Text( scoreProperty.value.toString(), {font: FONT} );
     var scoreTextString = new Text( scoreString + ':', {font: FONT} );
     var timeBox;
@@ -60,28 +60,28 @@ define( function( require ) {
     this.addChild( background );
 
     // add control buttons
-    this.addChild( vBox = new VBox( {spacing: SPACING, children: [
-      // add level text
-      levelText,
-      // add refresh button
-      new RefreshButton( {
-        baseColor: CONSTANTS.REFRESH_BUTTON.BASE_COLOR,
-        stroke: CONSTANTS.REFRESH_BUTTON.STROKE,
-        xMargin: CONSTANTS.REFRESH_BUTTON.MARGIN.width,
-        yMargin: CONSTANTS.REFRESH_BUTTON.MARGIN.height,
-        listener: refreshLevelCallback
-      } ).mutate( {scale: 0.75} ),
-      timeBox = new HBox( {children: [
-        timeTextString,
-        new HStrut( maxTextWidth - timeTextString.getWidth() + HSpacing + maxValueWidth - timeTextValue.getWidth() ),
-        timeTextValue
-      ]} ),
-      new HBox( {children: [
-        scoreTextString,
-        new HStrut( maxTextWidth - scoreTextString.getWidth() + HSpacing + maxValueWidth - scoreTextValue.getWidth() ),
-        scoreTextValue
-      ]} )
-    ]} ) );
+    this.addChild( vBox = new VBox( {
+      spacing: SPACING, children: [
+        levelText,
+        new HBox( {children: [
+          scoreTextString,
+          new HStrut( maxTextWidth - scoreTextString.getWidth() + HSpacing + maxValueWidth - scoreTextValue.getWidth() ),
+          scoreTextValue
+        ]} ),
+        timeBox = new HBox( {children: [
+          timeTextString,
+          new HStrut( maxTextWidth - timeTextString.getWidth() + HSpacing + maxValueWidth - timeTextValue.getWidth() ),
+          timeTextValue
+        ]} ),
+        // add refresh button
+        new RefreshButton( {
+          baseColor: CONSTANTS.REFRESH_BUTTON.BASE_COLOR,
+          stroke: CONSTANTS.REFRESH_BUTTON.STROKE,
+          xMargin: CONSTANTS.REFRESH_BUTTON.MARGIN.width,
+          yMargin: CONSTANTS.REFRESH_BUTTON.MARGIN.height,
+          listener: refreshLevelCallback
+        } ).mutate( {scale: 0.75} )
+      ]} ) );
 
     // add observers
     levelProperty.lazyLink( function( level ) {
