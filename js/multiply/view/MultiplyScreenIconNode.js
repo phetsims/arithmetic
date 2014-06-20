@@ -20,7 +20,7 @@ define( function( require ) {
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var FONT_TITLE = new PhetFont( 12 );
-  var FONT_X = new PhetFont( 18 );
+  var FONT_X = new PhetFont( 22 );
   var ICON_SIZE = CONSTANTS.SCREEN_ICON_SIZE;
 
   function MultiplyScreenIconNode() {
@@ -30,7 +30,7 @@ define( function( require ) {
     this.addChild( new Text( multiplyString, {font: FONT_TITLE, centerX: ICON_SIZE.width / 2, centerY: ICON_SIZE.height / 4} ) );
 
     // add multiply sign
-    this.addChild( new Text( 'X', {font: FONT_X, centerX: ICON_SIZE.width / 2, centerY: 3 * ICON_SIZE.height / 4} ) );
+    this.addChild( new Text( '\u00D7', {font: FONT_X, centerX: ICON_SIZE.width / 2, centerY: 2 * ICON_SIZE.height / 3} ) );
   }
 
   return inherit( Rectangle, MultiplyScreenIconNode );

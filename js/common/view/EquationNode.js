@@ -18,7 +18,7 @@ define( function( require ) {
 
   // constants
   var FONT_EQUALS = new PhetFont( 40 );
-  var FONT_X = new PhetFont( 30 );
+  var FONT_X = new PhetFont( 50 );
 
   /**
    * @param multiplierLeftProperty {Property} property necessary for creating left multiplier input
@@ -36,7 +36,7 @@ define( function( require ) {
 
     HBox.call( this, {spacing: CONSTANTS.SPACING, children: [
       this.multiplierLeftInput,
-      new Text( 'X', {font: FONT_X, fill: 'yellow'} ),
+      new Text( '\u00D7', {font: FONT_X, fill: 'yellow'} ),
       this.multiplierRightInput,
       new Text( '=', {font: FONT_EQUALS, fill: 'yellow'} ),
       this.productInput
