@@ -78,15 +78,14 @@ define( function( require ) {
   };
 
   // return default rectangular button with common options. Necessary for other building other buttons
-  var getButtonDefault = function( content, listener ) {
-    return new RectangularPushButton( {
+  var getButtonDefault = function( content, listener, options ) {
+    return new RectangularPushButton( _.extend( {
       content: content,
       baseColor: CONSTANTS.CALCULATOR.BASE_COLOR,
-      disabledBaseColor: CONSTANTS.CALCULATOR.DISABLE_BASE_COLOR,
       minHeight: BUTTON_SIZE.height,
       minWidth: BUTTON_SIZE.width,
       listener: listener
-    } );
+    }, options ) );
   };
 
   // return enter button
@@ -98,7 +97,10 @@ define( function( require ) {
         tailWidth: 1
       } ),
       new Rectangle( ARROW_SIZE / 2 - 1, -ARROW_SIZE / 4, 2, ARROW_SIZE / 4, {fill: 'black'} )
-    ]} ), callback );
+    ]} ), callback, {
+      baseColor: CONSTANTS.CALCULATOR.DISABLE_BASE_COLOR,
+      disabledBaseColor: CONSTANTS.CALCULATOR.BASE_COLOR
+    } );
   };
 
   // return number button
