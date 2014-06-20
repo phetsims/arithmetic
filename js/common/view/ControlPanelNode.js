@@ -29,7 +29,7 @@ define( function( require ) {
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).CONTROL_PANEL;
   var BACKGROUND_MARGIN = CONSTANTS.BACKGROUND.MARGIN;
-  var FONT = new PhetFont( 18 );
+  var FONT = new PhetFont( { size: 18, family: 'Comic Sans MS' } );
   var SPACING = CONSTANTS.SPACING;
 
   /**
