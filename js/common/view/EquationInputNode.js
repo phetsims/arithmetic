@@ -38,13 +38,12 @@ define( function( require ) {
     this._cursor = new Rectangle( 0, 2, 1, this._inputText.getHeight() - 4, {fill: 'black'} );
     this._cursorContainer = new Node( {children: [this._cursor]} );
 
-
     // save link to input size value for further using
     this._inputSize = inputSize;
 
     // update text when property changed
     property.lazyLink( function( value ) {
-      self._inputText.setText( value );
+      self._inputText.setText( value || '' );
       updateBoxPosition( self._box, inputSize );
     } );
 
