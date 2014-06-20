@@ -35,7 +35,7 @@ define( function( require ) {
     this._inputText = new Text( PLACEHOLDER, {font: FONT_TEXT} );
 
     // create cursor and save link for further using
-    this._cursor = new Rectangle( 0, 2, 1, this._inputText.getHeight() - 4, {fill: 'black'} );
+    this._cursor = new Rectangle( 0, 2, 1, this._inputText.getHeight() - 16, {fill: 'black'} );
     this._cursorContainer = new Node( {children: [this._cursor]} );
 
     // save link to input size value for further using
