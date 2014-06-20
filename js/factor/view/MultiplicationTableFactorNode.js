@@ -84,12 +84,22 @@ define( function( require ) {
     // enable buttons before level start
     levelProperty.lazyLink( function( levelNumber ) {
       if ( levelNumber ) {
-        self._buttonModel.forEach( function( buttonModel ) {
-          buttonModel.enabled = true;
-        } );
+        enableAllButtons( self._buttonModel );
+      }
+    } );
+
+    gameModel.property( 'state' ).link( function( state ) {
+      if ( state === GAME_STATE.REFRESH_LEVEL ) {
+        enableAllButtons( self._buttonModel );
       }
     } );
   }
+
+  var enableAllButtons = function( buttonsModel ) {
+    buttonsModel.forEach( function( buttonModel ) {
+      buttonModel.enabled = true;
+    } );
+  };
 
   return inherit( MultiplicationTableNode, MultiplicationTableFactorNode, {
     // set 'active' state for all cell in given bounds

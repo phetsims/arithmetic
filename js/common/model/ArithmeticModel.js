@@ -153,7 +153,6 @@ define( function( require ) {
         }
       }
 
-      // set best score
       if ( state === GAME_STATE.LEVEL_FINISHED ) {
         var bestScore = self.bestScores[self.level - 1];
 
@@ -172,6 +171,11 @@ define( function( require ) {
         }
 
         self.game.state = GAME_STATE.SHOW_STATISTICS;
+      }
+
+      if ( state === GAME_STATE.REFRESH_LEVEL ) {
+        self.refreshLevel();
+        self.game.state = GAME_STATE.NEXT_TASK;
       }
     } );
   }

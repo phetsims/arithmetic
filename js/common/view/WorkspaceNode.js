@@ -56,8 +56,7 @@ define( function( require ) {
         model.property( 'timerEnabled' ),
         model.gameTimer.property( 'elapsedTime' ),
         function() {
-          model.refreshLevel();
-          model.game.state = GAME_STATE.NEXT_TASK;
+          model.game.state = GAME_STATE.REFRESH_LEVEL;
         }
       ).mutate( {right: layoutBounds.maxX * 0.98, top: layoutBounds.maxY * 0.02} )
     );
@@ -103,7 +102,6 @@ define( function( require ) {
         model.bestTimes,
         function() {
           model.back();
-          model.refreshLevel();
           model.game.state = GAME_STATE.START;
         },
         layoutBounds )
