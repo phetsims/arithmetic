@@ -43,7 +43,7 @@ define( function( require ) {
    */
   function ControlPanelNode( levelProperty, scoreProperty, timerEnabledProperty, timeProperty, refreshLevelCallback ) {
     var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR} );
-    var HSpacing = CONSTANTS.HSPASING;
+    var HSpacing = CONSTANTS.HSPACING;
     var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), new PhetFont( { size: 18, family: 'Comic Sans MS', weight: 'bold' } ) );
     var scoreTextValue = new Text( scoreProperty.value.toString(), {font: FONT} );
     var scoreTextString = new Text( scoreString + ':', {font: FONT} );
