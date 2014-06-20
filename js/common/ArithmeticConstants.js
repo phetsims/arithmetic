@@ -13,7 +13,7 @@ define( function( require ) {
   var Dimension2 = require( 'DOT/Dimension2' );
 
   return {
-    BACKGROUND_COLOR: 'rgb(255,245,236)',
+    BACKGROUND_COLOR: '#95bcff',
     // constants for back button
     BACK_BUTTON: {
       BASE_COLOR: '#ffcc43', // base color of back button
