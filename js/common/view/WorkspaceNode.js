@@ -53,6 +53,7 @@ define( function( require ) {
     this.addChild( new ControlPanelNode(
         model.property( 'level' ),
         model.property( 'scoreTotal' ),
+        model.property( 'timerEnabled' ),
         model.gameTimer.property( 'elapsedTime' ),
         function() {
           model.refreshLevel();

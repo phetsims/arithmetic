@@ -12,6 +12,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var GameTimer = require( 'VEGAS/GameTimer' );
   var HBox = require( 'SCENERY/nodes/HBox' );
+  var HStrut = require( 'SUN/HStrut' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
@@ -34,23 +35,32 @@ define( function( require ) {
   /**
    * @param levelProperty {Property} property for level displaying label
    * @param scoreProperty {Property} property for score counter component
+   * @param timerEnabledProperty {Property} time enabling flag
    * @param timeProperty {Property} property for elapsed time
    * @param refreshLevelCallback {Function} callback listener for refresh level button
    *
    * @constructor
    */
-  function ControlPanelNode( levelProperty, scoreProperty, timeProperty, refreshLevelCallback ) {
+  function ControlPanelNode( levelProperty, scoreProperty, timerEnabledProperty, timeProperty, refreshLevelCallback ) {
     var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR} );
-    var levelText = new Text( '?', {font: FONT} );
-    var scoreText = new Text( '?', {font: FONT} );
-    var timeText = new Text( '?', {font: FONT} );
+    var HSpacing = CONSTANTS.HSPASING;
+    var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), {font: FONT} );
+    var scoreTextValue = new Text( scoreProperty.value.toString(), {font: FONT} );
+    var scoreTextString = new Text( scoreString + ':', {font: FONT} );
+    var timeBox;
+    var timeTextValue = new Text( GameTimer.formatTime( timeProperty.value ), {font: FONT} );
+    var timeTextString = new Text( timeString + ':', {font: FONT} );
+    var maxTextWidth = Math.max( timeTextString.getWidth(), scoreTextString.getWidth() );
+    var maxValueWidth = Math.max( scoreTextValue.getWidth(), timeTextValue.getWidth() );
+    var vBox;
+
     Node.call( this );
 
     // add background
     this.addChild( background );
 
     // add control buttons
-    this.addChild( new VBox( {spacing: SPACING, children: [
+    this.addChild( vBox = new VBox( {spacing: SPACING, children: [
       // add level text
       levelText,
       // add refresh button
@@ -61,34 +71,48 @@ define( function( require ) {
         yMargin: CONSTANTS.REFRESH_BUTTON.MARGIN.height,
         listener: refreshLevelCallback
       } ).mutate( {scale: 0.75} ),
-      new HBox( {spacing: 5, children: [
-        new VBox( {spacing: SPACING, align: 'left', children: [
-          new Text( timeString + ':', {font: FONT} ),
-          new Text( scoreString + ':', {font: FONT} )
-        ]} ),
-        new VBox( {spacing: SPACING, align: 'right', children: [
-          timeText,
-          scoreText
-        ]} )
+      timeBox = new HBox( {children: [
+        timeTextString,
+        new HStrut( maxTextWidth - timeTextString.getWidth() + HSpacing + maxValueWidth - timeTextValue.getWidth() ),
+        timeTextValue
+      ]} ),
+      new HBox( {children: [
+        scoreTextString,
+        new HStrut( maxTextWidth - scoreTextString.getWidth() + HSpacing + maxValueWidth - scoreTextValue.getWidth() ),
+        scoreTextValue
       ]} )
     ]} ) );
 
     // add observers
-    levelProperty.link( function( level ) {
+    levelProperty.lazyLink( function( level ) {
       levelText.setText( StringUtils.format( pattern_level_0levelNumber, level.toString() ) );
     } );
 
-    scoreProperty.link( function( score ) {
-      scoreText.setText( score.toString() );
+    scoreProperty.lazyLink( function( score ) {
+      scoreTextValue.setText( score.toString() );
     } );
 
-    timeProperty.link( function( time ) {
-      timeText.setText( GameTimer.formatTime( time ) );
+    timeProperty.lazyLink( function( time ) {
+      timeTextValue.setText( GameTimer.formatTime( time ) );
     } );
 
-    // set background size
-    background.setRect( -BACKGROUND_MARGIN.width / 2, -BACKGROUND_MARGIN.height / 2, this.bounds.width + BACKGROUND_MARGIN.width, this.bounds.height + BACKGROUND_MARGIN.height, 5, 5 );
+    // add/remove timeBox and update background size
+    timerEnabledProperty.link( function( isTimerEnabled ) {
+      if ( isTimerEnabled ) {
+        vBox.insertChild( 2, timeBox ); // 2 - index of initial place for timeBox
+      }
+      else {
+        vBox.removeChild( timeBox );
+      }
+
+      updateBackgroundSize( background, vBox );
+    } );
   }
+
+  // set background size
+  var updateBackgroundSize = function( backgroundNode, controlPanelNode ) {
+    backgroundNode.setRect( -BACKGROUND_MARGIN.width / 2, -BACKGROUND_MARGIN.height / 2, controlPanelNode.bounds.width + BACKGROUND_MARGIN.width, controlPanelNode.bounds.height + BACKGROUND_MARGIN.height, 5, 5 );
+  };
 
   return inherit( Node, ControlPanelNode );
 } );

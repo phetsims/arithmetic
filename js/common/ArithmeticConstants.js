@@ -35,6 +35,7 @@ define( function( require ) {
         COLOR: 'rgb(93,152,253)', // color of control panel background
         MARGIN: new Dimension2( 20, 40 ) // size of margin from content
       },
+      HSPASING: 5, // spacing between text and values in bottom of control panel
       REFRESH_BUTTON: {
         BASE_COLOR: 'rgb(253,120,8)', // base color of back button
         CORNER_RADIUS: 7, // corner radius of back button
