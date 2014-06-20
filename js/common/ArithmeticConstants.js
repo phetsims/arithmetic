@@ -16,7 +16,7 @@ define( function( require ) {
     BACKGROUND_COLOR: 'rgb(255,245,236)',
     // constants for back button
     BACK_BUTTON: {
-      BASE_COLOR: 'rgb(253,120,8)', // base color of back button
+      BASE_COLOR: '#ffcc43', // base color of back button
       CORNER_RADIUS: 7, // corner radius of back button
       STROKE: 'none', // stroke of back button
       MARGIN: new Dimension2( 20, 10 ) // margin of background of back button
@@ -24,7 +24,7 @@ define( function( require ) {
     // constants for calculator
     CALCULATOR: {
       ARROW_SIZE: 28, // arrow size of enter and backspace
-      BASE_COLOR: 'white', // disable base color for all buttons
+      BASE_COLOR: '#ADEFFF', // base color for all buttons
       BUTTON_SIZE: new Dimension2( 40, 40 ), // size of buttons
       DISABLE_BASE_COLOR: 'rgb(234,255,43)', // disable base color for all buttons
       SPACING: 10 // spacing between buttons
@@ -32,12 +32,12 @@ define( function( require ) {
     // constants for control panel
     CONTROL_PANEL: {
       BACKGROUND: {
-        COLOR: 'rgb(93,152,253)', // color of control panel background
+        COLOR: '#95bcff', // color of control panel background
         MARGIN: new Dimension2( 20, 40 ) // size of margin from content
       },
       HSPASING: 5, // spacing between text and values in bottom of control panel
       REFRESH_BUTTON: {
-        BASE_COLOR: 'rgb(253,120,8)', // base color of back button
+        BASE_COLOR: '#ffcc43', // base color of back button
         CORNER_RADIUS: 7, // corner radius of back button
         STROKE: 'none', // stroke of back button
         MARGIN: new Dimension2( 20, 10 ) // margin of background of back button
