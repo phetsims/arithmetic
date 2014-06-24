@@ -18,9 +18,12 @@ define( function( require ) {
   // constants
   var BACKGROUND_COLOR = require( 'ARITHMETIC/common/ArithmeticConstants' ).BACKGROUND_COLOR;
 
+  // strings
+  var divideString = require( 'string!ARITHMETIC/divide' );
+
   function DivideScreen() {
     Screen.call( this,
-      '', new DivideScreenIconNode(),
+      divideString, new DivideScreenIconNode(),
       function() {return new DivideModel();},
       function( model ) {return new DivideView( model );},
       { backgroundColor: BACKGROUND_COLOR } );

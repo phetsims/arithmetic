@@ -18,9 +18,12 @@ define( function( require ) {
   // constants
   var BACKGROUND_COLOR = require( 'ARITHMETIC/common/ArithmeticConstants' ).BACKGROUND_COLOR;
 
+  // strings
+  var factorString = require( 'string!ARITHMETIC/factor' );
+
   function FactorScreen() {
     Screen.call( this,
-      '', new FactorScreenIconNode(),
+      factorString, new FactorScreenIconNode(),
       function() {return new FactorModel();},
       function( model ) {return new FactorView( model );},
       { backgroundColor: BACKGROUND_COLOR } );

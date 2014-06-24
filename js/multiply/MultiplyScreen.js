@@ -18,9 +18,12 @@ define( function( require ) {
   // constants
   var BACKGROUND_COLOR = require( 'ARITHMETIC/common/ArithmeticConstants' ).BACKGROUND_COLOR;
 
+  // strings
+  var multiplyString = require( 'string!ARITHMETIC/multiply' );
+
   function FactorScreen() {
     Screen.call( this,
-      '', new MultiplyScreenIconNode(),
+      multiplyString, new MultiplyScreenIconNode(),
       function() {return new MultiplyModel();},
       function( model ) {return new MultiplyView( model );},
       { backgroundColor: BACKGROUND_COLOR } );
