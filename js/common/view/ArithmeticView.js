@@ -36,19 +36,23 @@ define( function( require ) {
     // add game components
     this.addChild( new WorkspaceNode( model, multiplicationTableNode, equationNode, isAddCalculatorNode, this.layoutBounds ) );
 
-    // add timer, sound and reset buttons
-    var generalButtons = new VBox( {spacing: 5, children: [
-      new TimerToggleButton( model.property( 'timerEnabled' ), {baseColor: 'white'} ),
-      new SoundToggleButton( model.property( 'soundEnabled' ), {baseColor: 'white'} ),
-      new ResetAllButton( {
-        listener: function() {model.reset();}
-      } )
-    ]} ).mutate( {right: this.layoutBounds.maxX * 0.98, bottom: this.layoutBounds.maxY * 0.95} );
-    this.addChild( generalButtons );
+    // add timer and sound buttons
+    var soundAndTimerButtons = new VBox( {spacing: 5, children: [
+      new TimerToggleButton( model.property( 'timerEnabled' ) ),
+      new SoundToggleButton( model.property( 'soundEnabled' ) )
+    ]} ).mutate( {right: this.layoutBounds.maxX * 0.08, bottom: this.layoutBounds.maxY * 0.95} );
+    this.addChild( soundAndTimerButtons );
+
+    // add reset all button
+    var resetAllButton = new ResetAllButton( {
+      listener: function() {model.reset();}
+    } ).mutate( {right: this.layoutBounds.maxX * 0.98, bottom: this.layoutBounds.maxY * 0.95} );
+    this.addChild( resetAllButton );
 
     // observers
     model.property( 'level' ).link( function( level ) {
-      generalButtons.visible = !level;
+      soundAndTimerButtons.visible = !level;
+      resetAllButton.visible = !level;
     } );
   }
 
