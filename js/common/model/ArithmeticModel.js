@@ -158,10 +158,8 @@ define( function( require ) {
       }
 
       if ( state === GAME_STATE.LEVEL_FINISHED ) {
-        var bestScore = self.bestScores[self.level - 1];
-
         // set best score
-        bestScore.value = Math.max( bestScore.value, self.scoreTotal );
+        self.setBestScore();
 
         // set best time
         if ( self.timerEnabled ) {
@@ -186,8 +184,9 @@ define( function( require ) {
 
   return inherit( PropertySet, ArithmeticModel, {
     back: function() {
-      this.level = 0;
+      this.setBestScore();
       this.refreshLevel();
+      this.level = 0;
     },
     checkAnswer: function() {
       //REVIEW: Comment should probably say 'child types', since technically it's not the constructor where this is overridden.
@@ -216,6 +215,10 @@ define( function( require ) {
 
       // clear best times and scores
       this.clearBestTimesAndScores();
+    },
+    // set max score for current level
+    setBestScore: function() {
+      this.bestScores[this.level - 1].value = Math.max( this.bestScores[this.level - 1].value, this.scoreTotal );
     },
     step: function( dt ) {
       this.time += dt;
