@@ -9,10 +9,9 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var inherit = require( 'PHET_CORE/inherit' );
   var GameTimer = require( 'VEGAS/GameTimer' );
-  var HBox = require( 'SCENERY/nodes/HBox' );
   var HStrut = require( 'SUN/HStrut' );
+  var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
@@ -23,13 +22,14 @@ define( function( require ) {
 
   // strings
   var pattern_level_0levelNumber = require( 'string!ARITHMETIC/pattern.level.0levelNumber' );
-  var scoreString = require( 'string!ARITHMETIC/score' );
-  var timeString = require( 'string!ARITHMETIC/time' );
+  var scoreString = require( 'string!VEGAS/label.score' );
+  var timeString = require( 'string!VEGAS/label.time' );
 
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).CONTROL_PANEL;
   var BACKGROUND_MARGIN = CONSTANTS.BACKGROUND.MARGIN;
   var FONT = new PhetFont( { size: 18, family: 'Comic Sans MS' } );
+  var FONT_BOLD = new PhetFont( { size: 18, family: 'Comic Sans MS', weight: 'bold' } );
   var SPACING = CONSTANTS.SPACING;
 
   /**
@@ -43,16 +43,13 @@ define( function( require ) {
    */
   function ControlPanelNode( levelProperty, scoreProperty, timerEnabledProperty, timeProperty, refreshLevelCallback ) {
     var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR} );
-    var HSpacing = CONSTANTS.HSPACING;
-    var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), new PhetFont( { size: 18, family: 'Comic Sans MS', weight: 'bold' } ) );
-    var scoreTextValue = new Text( scoreProperty.value.toString(), {font: FONT} );
-    var scoreTextString = new Text( scoreString + ':', {font: FONT} );
-    var timeBox;
-    var timeTextValue = new Text( GameTimer.formatTime( timeProperty.value ), {font: FONT} );
-    var timeTextString = new Text( timeString + ':', {font: FONT} );
-    var maxTextWidth = Math.max( timeTextString.getWidth(), scoreTextString.getWidth() );
-    var maxValueWidth = Math.max( scoreTextValue.getWidth(), timeTextValue.getWidth() );
+    var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), FONT_BOLD );
+    var scoreText = new Text( StringUtils.format( scoreString, scoreProperty.value.toString() ), FONT );
+    var timeText = new Text( StringUtils.format( timeString, GameTimer.formatTime( timeProperty.value ) ), FONT );
+    var minWidth = Math.max( levelText.getWidth(), scoreText.getWidth(), timeText.getWidth() );
     var vBox;
+
+    minWidth += minWidth / 10;
 
     Node.call( this );
 
@@ -63,16 +60,8 @@ define( function( require ) {
     this.addChild( vBox = new VBox( {
       spacing: SPACING, children: [
         levelText,
-        new HBox( {children: [
-          scoreTextString,
-          new HStrut( maxTextWidth - scoreTextString.getWidth() + HSpacing + maxValueWidth - scoreTextValue.getWidth() ),
-          scoreTextValue
-        ]} ),
-        timeBox = new HBox( {children: [
-          timeTextString,
-          new HStrut( maxTextWidth - timeTextString.getWidth() + HSpacing + maxValueWidth - timeTextValue.getWidth() ),
-          timeTextValue
-        ]} ),
+        scoreText,
+        timeText,
         // add refresh button
         new RefreshButton( {
           baseColor: CONSTANTS.REFRESH_BUTTON.BASE_COLOR,
@@ -80,7 +69,8 @@ define( function( require ) {
           xMargin: CONSTANTS.REFRESH_BUTTON.MARGIN.width,
           yMargin: CONSTANTS.REFRESH_BUTTON.MARGIN.height,
           listener: refreshLevelCallback
-        } ).mutate( {scale: 0.75} )
+        } ).mutate( {scale: 0.75} ),
+        new HStrut( minWidth )
       ]} ) );
 
     // add observers
@@ -89,20 +79,20 @@ define( function( require ) {
     } );
 
     scoreProperty.lazyLink( function( score ) {
-      scoreTextValue.setText( score.toString() );
+      scoreText.setText( StringUtils.format( scoreString, score.toString() ) );
     } );
 
     timeProperty.lazyLink( function( time ) {
-      timeTextValue.setText( GameTimer.formatTime( time ) );
+      timeText.setText( StringUtils.format( timeString, GameTimer.formatTime( time ) ) );
     } );
 
     // add/remove timeBox and update background size
     timerEnabledProperty.link( function( isTimerEnabled ) {
       if ( isTimerEnabled ) {
-        vBox.insertChild( 2, timeBox ); // 2 - index of initial place for timeBox
+        vBox.insertChild( 2, timeText ); // 2 - index of initial place for timeBox
       }
       else {
-        vBox.removeChild( timeBox );
+        vBox.removeChild( timeText );
       }
 
       updateBackgroundSize( background, vBox );
@@ -111,7 +101,7 @@ define( function( require ) {
 
   // set background size
   var updateBackgroundSize = function( backgroundNode, controlPanelNode ) {
-    backgroundNode.setRect( -BACKGROUND_MARGIN.width / 2, -BACKGROUND_MARGIN.height / 2, controlPanelNode.bounds.width + BACKGROUND_MARGIN.width, controlPanelNode.bounds.height + BACKGROUND_MARGIN.height, 5, 5 );
+    backgroundNode.setRect( -BACKGROUND_MARGIN.width / 2, -BACKGROUND_MARGIN.height / 2, controlPanelNode.bounds.width + BACKGROUND_MARGIN.width, controlPanelNode.bounds.height + BACKGROUND_MARGIN.height - SPACING, 5, 5 );
   };
 
   return inherit( Node, ControlPanelNode );
