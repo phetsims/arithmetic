@@ -70,6 +70,7 @@ define( function( require ) {
       SIZE: new Dimension2( 434, 320 ) // table size
     },
     SCREEN_ICON_SIZE: new Dimension2( 60, 40 ), // size of screen icons
+    SMILE_DISAPPEAR_TIME: 1000, // time in milliseconds
     STAR_NUMBER: 5, // number of stars in select level buttons
     WORKSPACE_BACKGROUND_COLOR: 'rgb(28,119,250)'
   };

@@ -30,6 +30,7 @@ define( function( require ) {
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
   var BLINKING_INTERVAL = require( 'ARITHMETIC/common/ArithmeticConstants' ).EQUATION.BLINKING_INTERVAL;
+  var SMILE_DISAPPEAR_TIME = require( 'ARITHMETIC/common/ArithmeticConstants' ).SMILE_DISAPPEAR_TIME;
   var levelDescriptions = [
     // level 1
     {
@@ -135,7 +136,7 @@ define( function( require ) {
           Timer.setTimeout( function() {
             self.smileFace.isVisible = false;
             self.game.state = GAME_STATE.NEXT_TASK;
-          }, 1000 );
+          }, SMILE_DISAPPEAR_TIME );
         }
         // wrong answer
         else {
@@ -149,7 +150,10 @@ define( function( require ) {
           self.gameAudioPlayer.wrongAnswer();
 
           // return to start state
-          self.game.state = GAME_STATE.START;
+          Timer.setTimeout( function() {
+            self.smileFace.isVisible = false;
+            self.game.state = GAME_STATE.START;
+          }, SMILE_DISAPPEAR_TIME );
         }
       }
 
