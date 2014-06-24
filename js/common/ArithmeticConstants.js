@@ -18,7 +18,6 @@ define( function( require ) {
     BACK_BUTTON: {
       BASE_COLOR: 'rgb( 255, 204, 67 )', // base color of back button
       CORNER_RADIUS: 7, // corner radius of back button
-      STROKE: 'none', // stroke of back button
       MARGIN: new Dimension2( 20, 10 ) // margin of background of back button
     },
     // constants for calculator
@@ -39,7 +38,6 @@ define( function( require ) {
       REFRESH_BUTTON: {
         BASE_COLOR: 'rgb( 255, 204, 67 )', // base color of refresh button
         CORNER_RADIUS: 7, // corner radius of back button
-        STROKE: 'none', // stroke of back button
         MARGIN: new Dimension2( 20, 10 ) // margin of background of back button
       },
       SPACING: 18 // spacing between control panel elements

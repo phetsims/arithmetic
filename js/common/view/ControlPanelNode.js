@@ -65,7 +65,6 @@ define( function( require ) {
         // add refresh button
         new RefreshButton( {
           baseColor: CONSTANTS.REFRESH_BUTTON.BASE_COLOR,
-          stroke: CONSTANTS.REFRESH_BUTTON.STROKE,
           xMargin: CONSTANTS.REFRESH_BUTTON.MARGIN.width,
           yMargin: CONSTANTS.REFRESH_BUTTON.MARGIN.height,
           listener: refreshLevelCallback

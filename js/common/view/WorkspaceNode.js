@@ -64,7 +64,6 @@ define( function( require ) {
     // add back to level select button
     this.addChild( new ReturnToLevelSelectButton( {
         baseColor: BACK_BUTTON_CONSTANTS.BASE_COLOR,
-        stroke: BACK_BUTTON_CONSTANTS.STROKE,
         cornerRadius: BACK_BUTTON_CONSTANTS.CORNER_RADIUS,
         xMargin: BACK_BUTTON_CONSTANTS.MARGIN.width,
         yMargin: BACK_BUTTON_CONSTANTS.MARGIN.height,
