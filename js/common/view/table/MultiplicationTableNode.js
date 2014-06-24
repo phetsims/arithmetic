@@ -46,20 +46,26 @@ define( function( require ) {
     this.addChild( backgroundRect = new Rectangle( 0, 0, 0, 0, {
       fill: 'white',
       stroke: 'white',
-      lineWidth: 2.5,
       strokePosition: 'outside'
     } ) );
 
     // create view of times table for levels
     levelDescriptions.forEach( function( level, levelIndex ) {
-      var hBox;
-      var vBox = new VBox( {visible: false} );
       var tableSize = level.tableSize;
-      var buttonWidth = TABLE_SIZE.width / (tableSize + 1);
-      var buttonHeight = TABLE_SIZE.height / (tableSize + 1);
+      var buttonOptions = {
+        lineWidth: TABLE_SIZE.width / (tableSize + 1) / 25,
+        width: TABLE_SIZE.width / (tableSize + 1),
+        height: TABLE_SIZE.height / (tableSize + 1)
+      };
       var i;
       var j;
+      var hBox;
+      var vBox = new VBox( {visible: false} );
 
+      // set equal line width for background rectangle
+      backgroundRect.setLineWidth( buttonOptions.lineWidth );
+
+      // init store for cells
       self.cells[levelIndex] = [];
 
       for ( i = 0; i <= tableSize; i++ ) {
@@ -70,10 +76,10 @@ define( function( require ) {
           for ( j = 0; j <= tableSize; j++ ) {
             // first cell is 'X', other - multiplier numbers
             if ( j === 0 ) {
-              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonMultiplierNode( 'X', buttonWidth, buttonHeight ) );
+              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonMultiplierNode( 'X', buttonOptions ) );
             }
             else {
-              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonMultiplierNode( j.toString(), buttonWidth, buttonHeight ) );
+              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonMultiplierNode( j.toString(), buttonOptions ) );
             }
           }
         }
@@ -82,10 +88,10 @@ define( function( require ) {
           for ( j = 0; j <= tableSize; j++ ) {
             // first cell is multiplier number, other - product numbers
             if ( j === 0 ) {
-              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonMultiplierNode( i.toString(), buttonWidth, buttonHeight ) );
+              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonMultiplierNode( i.toString(), buttonOptions ) );
             }
             else {
-              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonProductNode( (i * j).toString(), buttonWidth, buttonHeight ) );
+              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonProductNode( (i * j).toString(), buttonOptions ) );
             }
           }
         }

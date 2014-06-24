@@ -22,25 +22,23 @@ define( function( require ) {
 
   /**
    * @param contentText {Text} text label for button
-   * @param width {Number} width of product button
-   * @param height {Number} height of product button
+   * @param options {Object} options of product button
    *
    * @constructor
    */
-  function MultiplicationTableButtonProductNode( contentText, width, height ) {
-    MultiplicationTableButtonAbstract.call( this, {
-      fill: CONSTANTS.NORMAL_COLOR,
-      width: width,
-      height: height
-    } );
+  function MultiplicationTableButtonProductNode( contentText, options ) {
+    options = _.extend( {
+      fill: CONSTANTS.NORMAL_COLOR
+    }, options );
+    MultiplicationTableButtonAbstract.call( this, options );
 
     // create pointer for active state
     this._pointer = new Image( pointingHandImage, {visible: false} );
 
     // set position and size for pointer
-    this._pointer.scale( width / this._pointer.getWidth() * 0.75, height / this._pointer.getHeight() * 0.75 );
-    this._pointer.centerX = width / 2;
-    this._pointer.centerY = height / 2;
+    this._pointer.scale( options.width / this._pointer.getWidth() * 0.75, options.height / this._pointer.getHeight() * 0.75 );
+    this._pointer.centerX = options.width / 2;
+    this._pointer.centerY = options.height / 2;
 
     // add pointer to node
     this.addChild( this._pointer );

@@ -18,17 +18,15 @@ define( function( require ) {
 
   /**
    * @param contentText {Text} text label for button
-   * @param width {Number} width of product button
-   * @param height {Number} height of product button
+   * @param options {Object} options of multiplier button
    *
    * @constructor
    */
-  function MultiplicationTableButtonMultiplierNode( contentText, width, height ) {
-    MultiplicationTableButtonAbstract.call( this, {
-      fill: CONSTANTS.NORMAL_COLOR,
-      width: width,
-      height: height
-    } );
+  function MultiplicationTableButtonMultiplierNode( contentText, options ) {
+    options = _.extend( {
+      fill: CONSTANTS.NORMAL_COLOR
+    }, options );
+    MultiplicationTableButtonAbstract.call( this, options );
 
     this.setText( contentText );
   }
