@@ -13,6 +13,11 @@ define( function( require ) {
   var FaceWithPointsNode = require( 'SCENERY_PHET/FaceWithPointsNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  var Timer = require( 'JOIST/Timer' );
+
+  // constants
+  var FADE_STEPS = 25;
+  var SMILE_DISAPPEAR_TIME = require( 'ARITHMETIC/common/ArithmeticConstants' ).SMILE_DISAPPEAR_TIME;
 
   /**
    * @param smileFaceModel {Object} model for smile face.
@@ -40,7 +45,20 @@ define( function( require ) {
     } );
 
     // set visibility of smile face
-    smileFaceModel.property( 'isVisible' ).linkAttribute( self, 'visible' );
+    smileFaceModel.property( 'isVisible' ).link( function( isVisible ) {
+      if ( isVisible ) {
+        self.opacity = 1;
+      }
+      else {
+        var intervalId = Timer.setInterval( function() {
+          self.opacity -= 1 / FADE_STEPS;
+          if ( self.opacity <= 0 ) {
+            self.opacity = 0;
+            Timer.clearInterval( intervalId );
+          }
+        }, SMILE_DISAPPEAR_TIME / FADE_STEPS );
+      }
+    } );
   }
 
   return inherit( FaceWithPointsNode, FaceWithPointsConfiguredNode );
