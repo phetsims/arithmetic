@@ -53,7 +53,7 @@ define( function( require ) {
     levelDescriptions.forEach( function( level, levelIndex ) {
       var tableSize = level.tableSize;
       var buttonOptions = {
-        lineWidth: TABLE_SIZE.width / (tableSize + 1) / 25,
+        lineWidth: 1,
         width: TABLE_SIZE.width / (tableSize + 1),
         height: TABLE_SIZE.height / (tableSize + 1)
       };
