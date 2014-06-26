@@ -81,13 +81,6 @@ define( function( require ) {
       } );
     } );
 
-    // enable buttons before level start
-    levelProperty.lazyLink( function( levelNumber ) {
-      if ( levelNumber ) {
-        enableAllButtons( self._buttonModel );
-      }
-    } );
-
     gameModel.property( 'state' ).link( function( state ) {
       if ( state === GAME_STATE.REFRESH_LEVEL ) {
         enableAllButtons( self._buttonModel );

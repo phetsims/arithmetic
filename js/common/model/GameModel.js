@@ -15,17 +15,7 @@ define( function( require ) {
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
-  /**
-   * @param levelProperty {Property} level difficulty property
-   * @param levelDescriptions {Array} array of descriptions for each level.
-   * Necessary for creating answer sheet for selected level.
-   *
-   * @constructor
-   */
-
-  function GameModel( levelProperty, levelDescriptions ) {
-    var self = this;
-
+  function GameModel() {
     PropertySet.call( this, {
       multiplierLeft: undefined, // left multiplier
       multiplierRight: undefined, // right multiplier
@@ -37,27 +27,6 @@ define( function( require ) {
     } );
 
     this.answerSheet = [];
-
-    // set new answer sheet changing level
-    levelProperty.lazyLink( function( levelNumber ) {
-      var answerSheetSize;
-      if ( levelNumber ) {
-        self.answerSheet = [];
-        answerSheetSize = levelDescriptions[levelNumber - 1].tableSize;
-
-        // add arrays with right multipliers for every left multiplier
-        _.times( answerSheetSize, function() {
-          self.answerSheet.push( [] );
-        } );
-
-        // fill arrays appropriate to right multipliers
-        self.answerSheet.forEach( function( el ) {
-          _.times( answerSheetSize, function() {
-            el.push( false );
-          } );
-        } );
-      }
-    } );
   }
 
   return inherit( PropertySet, GameModel, {
@@ -70,6 +39,23 @@ define( function( require ) {
         for ( var i = 0; i < multipliersLeft.length; i++ ) {
           multipliersLeft[i] = false;
         }
+      } );
+    },
+    // set new answer sheet changing level
+    initAnswerSheet: function( answerSheetSize ) {
+      var self = this;
+      this.answerSheet = [];
+
+      // add arrays with right multipliers for every left multiplier
+      _.times( answerSheetSize, function() {
+        self.answerSheet.push( [] );
+      } );
+
+      // fill arrays appropriate to right multipliers
+      this.answerSheet.forEach( function( el ) {
+        _.times( answerSheetSize, function() {
+          el.push( false );
+        } );
       } );
     },
     // return available left and right multipliers according to answer sheet

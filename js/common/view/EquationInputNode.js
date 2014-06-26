@@ -61,8 +61,8 @@ define( function( require ) {
     this._box = new HBox( {children: [this._inputText, this._cursorContainer], centerX: inputSize.width / 2, centerY: inputSize.height / 2} );
     this.addChild( this._box );
 
-    // disable by default
-    this.disable();
+    // unfocus state by default
+    this.unfocus();
   }
 
   var updateBoxPosition = function( box, inputSize ) {
@@ -75,20 +75,17 @@ define( function( require ) {
       this._inputText.setText( '' );
       updateBoxPosition( this._box, this._inputSize );
     },
-    disable: function() {
-      this.unfocus();
-    },
-    enable: function() {},
     focus: function() {
       this._cursorContainer.visible = true;
     },
     unfocus: function() {
       this._cursorContainer.visible = false;
     },
-    reset: function() {
+    setPlaceholder: function() {
       this._inputText.setText( PLACEHOLDER );
+    },
+    update: function() {
       updateBoxPosition( this._box, this._inputSize );
-      this.disable();
     }
   } );
 } );

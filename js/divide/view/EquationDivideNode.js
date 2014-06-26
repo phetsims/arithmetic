@@ -22,12 +22,12 @@ define( function( require ) {
    * @param productProperty {Property} property necessary for creating product input
    * @param inputProperty {Property} input property
    * @param inputCursorVisibilityProperty {Property} property which switch true/false with given time interval
+   * @param linkToActiveInputProperty {Property} link to active input
    *
    * @constructor
    */
-  function EquationDivideNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty, inputCursorVisibilityProperty ) {
+  function EquationDivideNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty, inputCursorVisibilityProperty, linkToActiveInputProperty ) {
     var self = this;
-    var activeProperty;
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty, inputCursorVisibilityProperty );
 
     stateProperty.lazyLink( function( state ) {
@@ -37,24 +37,31 @@ define( function( require ) {
           inputProperty.value = '';
         }
         else if ( multiplierLeftProperty.value ) {
-          activeProperty = multiplierRightProperty;
-          self.multiplierLeftInput.disable();
-          setActiveInput( self.multiplierRightInput );
+          linkToActiveInputProperty.value = multiplierRightProperty;
         }
         else {
-          activeProperty = multiplierLeftProperty;
-          self.multiplierRightInput.disable();
-          setActiveInput( self.multiplierLeftInput );
+          linkToActiveInputProperty.value = multiplierLeftProperty;
         }
+      }
+    } );
+
+    linkToActiveInputProperty.link( function( activeInput ) {
+      if ( activeInput === multiplierRightProperty ) {
+        self.multiplierLeftInput.unfocus();
+        setActiveInput( self.multiplierRightInput );
+      }
+      else if ( activeInput === multiplierLeftProperty ) {
+        self.multiplierRightInput.unfocus();
+        setActiveInput( self.multiplierLeftInput );
       }
     } );
 
     inputProperty.lazyLink( function( inputString ) {
       if ( inputString ) {
-        activeProperty.value = parseInt( inputString, 10 );
+        linkToActiveInputProperty.value.value = parseInt( inputString, 10 );
       }
       else {
-        activeProperty.value = '';
+        linkToActiveInputProperty.value.value = '';
       }
     } );
   }

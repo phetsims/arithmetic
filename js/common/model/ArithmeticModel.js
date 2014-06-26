@@ -61,11 +61,15 @@ define( function( require ) {
     // array of levels with description
     this.levelDescriptions = levelDescriptions;
 
+    // game level states
+    this.state = [];
+
     PropertySet.call( this, {
       level: 0, // level difficulty, zero-based in the model, though levels appear to the user to start
       scoreTotal: 0, // total user score for current games
       input: '', // user's input value
       inputCursorVisibility: false,
+      returnToLevelSelectButtonEnabled: true, // is return to level select button active
       soundEnabled: true, // is sound active
       timerEnabled: false // is time mode active
     } );
@@ -93,7 +97,7 @@ define( function( require ) {
     } );
 
     // model for single game
-    this.game = new GameModel( this.property( 'level' ), levelDescriptions );
+    this.game = new GameModel();
 
     this.smileFace = new FaceModel();
 
@@ -107,7 +111,11 @@ define( function( require ) {
 
     // init game after choosing level
     this.property( 'level' ).lazyLink( function( levelNumber ) {
-      if ( levelNumber ) {
+      if ( self.state[levelNumber - 1] ) {
+        self.restoreGameState();
+      }
+      else if ( levelNumber ) {
+        self.game.initAnswerSheet( levelDescriptions[levelNumber - 1].tableSize );
         self.game.state = GAME_STATE.NEXT_TASK;
       }
     } );
@@ -117,6 +125,9 @@ define( function( require ) {
       if ( state === GAME_STATE.EQUATION_FILLED ) {
         // show smile face
         self.smileFace.isVisible = true;
+
+        // disable return to level select button
+        self.returnToLevelSelectButtonEnabled = false;
 
         // correct answer
         if ( self.game.multiplierLeft * self.game.multiplierRight === self.game.product ) {
@@ -135,6 +146,7 @@ define( function( require ) {
           // set next task and hide smile face
           Timer.setTimeout( function() {
             self.smileFace.isVisible = false;
+            self.returnToLevelSelectButtonEnabled = true;
             self.game.state = GAME_STATE.NEXT_TASK;
           }, SMILE_DISAPPEAR_TIME );
         }
@@ -152,12 +164,12 @@ define( function( require ) {
           // return to start state
           Timer.setTimeout( function() {
             self.smileFace.isVisible = false;
+            self.returnToLevelSelectButtonEnabled = true;
             self.game.state = GAME_STATE.START;
           }, SMILE_DISAPPEAR_TIME );
         }
       }
-
-      if ( state === GAME_STATE.LEVEL_FINISHED ) {
+      else if ( state === GAME_STATE.LEVEL_FINISHED ) {
         // set best score
         self.setBestScore();
 
@@ -174,23 +186,51 @@ define( function( require ) {
 
         self.game.state = GAME_STATE.SHOW_STATISTICS;
       }
-
-      if ( state === GAME_STATE.REFRESH_LEVEL ) {
+      else if ( state === GAME_STATE.REFRESH_LEVEL ) {
         self.refreshLevel();
         self.game.state = GAME_STATE.NEXT_TASK;
       }
+    } );
+
+    // clear states if timer option was changed
+    this.property( 'timerEnabled' ).link( function() {
+      self.clearGameStates();
     } );
   }
 
   return inherit( PropertySet, ArithmeticModel, {
     back: function() {
+      // update best score value for current level
       this.setBestScore();
+
+      // save state of current level
+      this.saveGameState();
+
+      // refresh current level
       this.refreshLevel();
+
+      // show user start menu
       this.level = 0;
     },
     checkAnswer: function() {
       //REVIEW: Comment should probably say 'child types', since technically it's not the constructor where this is overridden.
       // should be defined in child types
+    },
+    finishLevel: function() {
+      // update best score value for current level
+      this.setBestScore();
+
+      // refresh current level
+      this.refreshLevel();
+
+      // clear game state for game state
+      this.clearGameState( this.level );
+
+      // set start state
+      this.game.state = GAME_STATE.START;
+
+      // show user start menu
+      this.level = 0;
     },
     clearBestTimesAndScores: function() {
 
@@ -215,6 +255,46 @@ define( function( require ) {
 
       // clear best times and scores
       this.clearBestTimesAndScores();
+
+      // clear game level states
+      this.clearGameStates();
+    },
+    clearGameState: function( levelNumber ) {
+      this.state[levelNumber - 1] = undefined;
+    },
+    // clear states of all levels
+    clearGameStates: function() {
+      this.state = [];
+    },
+    // restore game state of current level
+    restoreGameState: function() {
+      var state = this.state[this.level - 1];
+
+      this.scoreTotal = state.scoreTotal;
+      this.linkToActiveInput = state.linkToActiveInput;
+      this.input = state.input;
+      this.gameTimer.elapsedTime = state.elapsedTime;
+      this.game.multiplierLeft = state.multiplierLeft;
+      this.game.multiplierRight = state.multiplierRight;
+      this.game.product = state.product;
+      this.game.state = state.state;
+      this.game.scoreTask = state.scoreTask;
+      this.game.answerSheet = state.answerSheet;
+    },
+    // save game state of current level
+    saveGameState: function() {
+      this.state[this.level - 1] = {
+        scoreTotal: this.scoreTotal,
+        input: this.input,
+        elapsedTime: this.gameTimer.elapsedTime,
+        multiplierLeft: this.game.multiplierLeft,
+        multiplierRight: this.game.multiplierRight,
+        product: this.game.product,
+        state: this.game.state,
+        scoreTask: this.game.scoreTask,
+        answerSheet: _.cloneDeep( this.game.answerSheet ),
+        linkToActiveInput: this.linkToActiveInput
+      };
     },
     // set max score for current level
     setBestScore: function() {

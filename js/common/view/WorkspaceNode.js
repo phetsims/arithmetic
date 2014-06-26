@@ -62,7 +62,8 @@ define( function( require ) {
     );
 
     // add back to level select button
-    this.addChild( new ReturnToLevelSelectButton( {
+    var returnToLevelSelectButton;
+    this.addChild( returnToLevelSelectButton = new ReturnToLevelSelectButton( {
         baseColor: BACK_BUTTON_CONSTANTS.BASE_COLOR,
         cornerRadius: BACK_BUTTON_CONSTANTS.CORNER_RADIUS,
         xMargin: BACK_BUTTON_CONSTANTS.MARGIN.width,
@@ -100,14 +101,17 @@ define( function( require ) {
         model.gameTimer.property( 'elapsedTime' ),
         model.bestTimes,
         function() {
-          model.back();
-          model.game.state = GAME_STATE.START;
+          model.finishLevel();
         },
         layoutBounds )
     );
 
     model.property( 'level' ).link( function( level ) {
       self.visible = !!level;
+    } );
+
+    model.property( 'returnToLevelSelectButtonEnabled' ).link( function( isEnabled ) {
+      returnToLevelSelectButton.enabled = isEnabled;
     } );
   }
 

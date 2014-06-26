@@ -121,12 +121,11 @@ define( function( require ) {
       // hide previous multiplication table view
       if ( self._viewForLevel[levelNumberPrev] ) {
         self._viewForLevel[levelNumberPrev].visible = false;
-        self.clearCells( levelNumberPrev );
       }
     } );
 
     gameModel.property( 'state' ).link( function( state ) {
-      if ( state === GAME_STATE.NEXT_TASK ) {
+      if ( state === GAME_STATE.NEXT_TASK && levelProperty.value ) {
         gameModel.answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
           multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
             self.cells[levelProperty.value - 1][multipliersLeftIndex + 1][multipliersRightIndex + 1][ isVisible ? 'showText' : 'hideText' ]();
@@ -139,11 +138,13 @@ define( function( require ) {
   return inherit( Node, MultiplicationTableNode, {
     // clear all cells for given level
     clearCells: function( levelNumber ) {
-      this.cells[levelNumber - 1].forEach( function( multipliersLeft ) {
-        multipliersLeft.forEach( function( cell ) {
-          cell.normal();
+      if ( levelNumber ) {
+        this.cells[levelNumber - 1].forEach( function( multipliersLeft ) {
+          multipliersLeft.forEach( function( cell ) {
+            cell.normal();
+          } );
         } );
-      } );
+      }
     }
   } );
 } );

@@ -36,7 +36,8 @@ define( function( require ) {
         model.game.property( 'multiplierRight' ),
         model.game.property( 'product' ),
         model.property( 'input' ),
-        model.property( 'inputCursorVisibility' )
+        model.property( 'inputCursorVisibility' ),
+        model.property( 'linkToActiveInput' )
       ),
       true,
       divideString

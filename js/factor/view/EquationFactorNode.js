@@ -30,8 +30,11 @@ define( function( require ) {
 
     stateProperty.link( function( state ) {
       if ( state === GAME_STATE.START ) {
-        self.multiplierLeftInput.reset();
-        self.multiplierRightInput.reset();
+        self.multiplierLeftInput.setPlaceholder();
+        self.multiplierLeftInput.update();
+
+        self.multiplierRightInput.setPlaceholder();
+        self.multiplierRightInput.update();
       }
     } );
   }

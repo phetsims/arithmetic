@@ -20,6 +20,9 @@ define( function( require ) {
     var self = this;
     ArithmeticModel.call( this );
 
+    // point to multiplierLeft or multiplierRight
+    this.addProperty( 'linkToActiveInput', null );
+
     // next task observer
     this.game.property( 'state' ).link( function( state ) {
       if ( state === GAME_STATE.NEXT_TASK ) {
