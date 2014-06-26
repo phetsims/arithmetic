@@ -55,7 +55,7 @@ define( function( require ) {
     MULTIPLICATION_TABLE: {
       MULTIPLIER_BUTTON: {
         NORMAL_COLOR_BACKGROUND: 'rgb(220,60,33)', // multiplier button background normal color
-        SELECT_COLOR_BACKGROUND: 'rgb(14,51,211)', // multiplier button background select color
+        SELECT_COLOR_BACKGROUND: 'rgb(0,0,128)', // multiplier button background select color
         NORMAL_COLOR_TEXT: 'white',  // multiplier button text normal color
         SELECT_COLOR_TEXT: 'rgb(255,253,56)'  // multiplier button text select color
       },
