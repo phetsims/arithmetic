@@ -54,7 +54,7 @@ define( function( require ) {
     // constants for multiplication table
     MULTIPLICATION_TABLE: {
       MULTIPLIER_BUTTON: {
-        NORMAL_COLOR_BACKGROUND: 'rgb(242,38,33)', // multiplier button background normal color
+        NORMAL_COLOR_BACKGROUND: 'rgb(220,60,33)', // multiplier button background normal color
         SELECT_COLOR_BACKGROUND: 'rgb(14,51,211)', // multiplier button background select color
         NORMAL_COLOR_TEXT: 'white',  // multiplier button text normal color
         SELECT_COLOR_TEXT: 'rgb(255,253,56)'  // multiplier button text select color
@@ -62,8 +62,8 @@ define( function( require ) {
       PRODUCT_BUTTON: {
         ACTIVE_COLOR: 'rgb(3,18,136)', // product button active color
         HOVER_COLOR: 'rgb(238,253,77)', // product button hover color
-        NORMAL_COLOR: 'rgb(14,51,211)', // product button normal color
-        SELECT_COLOR: 'rgb(3,18,136)' // product button select color
+        NORMAL_COLOR: 'rgb(50,70,255)', // product button normal color
+        SELECT_COLOR: 'rgb(77,0,153)' // product button select color
       },
       SIZE: new Dimension2( 434, 320 ) // table size
     },
