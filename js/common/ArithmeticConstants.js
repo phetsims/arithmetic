@@ -23,7 +23,7 @@ define( function( require ) {
     // constants for calculator
     CALCULATOR: {
       ARROW_SIZE: 28, // arrow size of enter and backspace
-      BASE_COLOR: 'rgb( 173, 239, 255 )', // base color for all buttons
+      BASE_COLOR: 'white', // base color for all buttons
       BUTTON_SIZE: new Dimension2( 40, 40 ), // size of buttons
       DISABLE_BASE_COLOR: 'rgb(238,253,77)', // disable base color for all buttons
       SPACING: 10 // spacing between buttons
@@ -31,7 +31,7 @@ define( function( require ) {
     // constants for control panel
     CONTROL_PANEL: {
       BACKGROUND: {
-        COLOR: 'rgb( 149, 188, 255 )', // color of control panel background
+        COLOR: 'rgb( 173, 239, 255 )', // color of control panel background
         MARGIN: new Dimension2( 20, 40 ) // size of margin from content
       },
       HSPACING: 5, // spacing between text and values in bottom of control panel
