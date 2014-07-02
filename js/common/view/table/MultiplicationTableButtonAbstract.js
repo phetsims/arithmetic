@@ -18,10 +18,11 @@ define( function( require ) {
 
   /**
    * @param backgroundOptions {Object} background options for button
+   * @param textOptions {Object} text options for button
    *
    * @constructor
    */
-  function MultiplicationTableButtonAbstract( backgroundOptions ) {
+  function MultiplicationTableButtonAbstract( backgroundOptions, textOptions ) {
     Node.call( this );
 
     // add background
@@ -34,11 +35,11 @@ define( function( require ) {
     this.addChild( this._background );
 
     // add content text
-    this._text = new Text( '?', {
+    this._text = new Text( '?', _.extend( {
       font: new PhetFont( {size: Math.round( 3 * this.bounds.height / 5 + 2 ), family: 'Comic Sans MS'} ),
       fill: 'white',
       centerY: this.bounds.height / 2
-    } );
+    }, textOptions ) );
     this.addChild( this._text );
   }
 
