@@ -122,6 +122,7 @@ define( function( require ) {
       // show current multiplication table view for level
       if ( self._viewForLevel[levelNumberCurrent] ) {
         self._viewForLevel[levelNumberCurrent].visible = true;
+        self.clearCells( levelNumberCurrent );
       }
 
       // hide previous multiplication table view
