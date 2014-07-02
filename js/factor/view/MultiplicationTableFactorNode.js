@@ -75,6 +75,13 @@ define( function( require ) {
                   gameModel.state = GAME_STATE.EQUATION_FILLED;
                 }
               } );
+
+              // cancel hover for disabled button before next task
+              gameModel.property( 'state' ).lazyLink( function( state ) {
+                if ( state === GAME_STATE.NEXT_TASK && !buttonModel.enabled && buttonModel.over ) {
+                  self.clearCells( levelProperty.value );
+                }
+              } );
             }
           } );
         }
