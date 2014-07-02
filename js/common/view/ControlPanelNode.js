@@ -79,10 +79,12 @@ define( function( require ) {
 
     scoreProperty.lazyLink( function( score ) {
       scoreText.setText( StringUtils.format( scoreString, score.toString() ) );
+      updateBackgroundSize( background, vBox );
     } );
 
     timeProperty.lazyLink( function( time ) {
       timeText.setText( StringUtils.format( timeString, GameTimer.formatTime( time ) ) );
+      updateBackgroundSize( background, vBox );
     } );
 
     // add/remove timeBox and update background size
