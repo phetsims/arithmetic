@@ -66,7 +66,6 @@ define( function( require ) {
 
     PropertySet.call( this, {
       level: 0, // level difficulty, zero-based in the model, though levels appear to the user to start
-      scoreTotal: 0, // total user score for current games
       input: '', // user's input value
       inputCursorVisibility: false,
       soundEnabled: true, // is sound active
@@ -103,18 +102,33 @@ define( function( require ) {
     // best times and scores, equal to number of levels
     this.bestTimes = [];
     this.bestScores = [];
+    this.currentScores = []; // current score for each level
+    this.maxScores = []; // max score for current and best scores
+
     this.levelDescriptions.forEach( function() {
+      var maxScoreProperty = new Property( 0 );
+      var bestScoreProperty = new Property( 0 );
+      var currentScoreProperty = new Property( 0 );
+      var setMaxScore = function() {
+        maxScoreProperty.value = Math.max( bestScoreProperty.value, currentScoreProperty.value );
+      };
+
       self.bestTimes.push( null );
-      self.bestScores.push( new Property( 0 ) );
+      self.maxScores.push( maxScoreProperty );
+      self.bestScores.push( bestScoreProperty );
+      self.currentScores.push( currentScoreProperty );
+
+      bestScoreProperty.link( setMaxScore );
+      currentScoreProperty.link( setMaxScore );
     } );
 
     // init game after choosing level
-    this.property( 'level' ).lazyLink( function( levelNumber ) {
-      if ( self.state[levelNumber - 1] ) {
+    this.property( 'level' ).lazyLink( function( levelNumberNew ) {
+      if ( self.state[levelNumberNew - 1] ) {
         self.restoreGameState();
       }
-      else if ( levelNumber ) {
-        self.game.initAnswerSheet( levelDescriptions[levelNumber - 1].tableSize );
+      else if ( levelNumberNew ) {
+        self.game.initAnswerSheet( levelDescriptions[levelNumberNew - 1].tableSize );
         self.game.state = GAME_STATE.NEXT_TASK;
       }
     } );
@@ -129,7 +143,7 @@ define( function( require ) {
         if ( self.game.multiplierLeft * self.game.multiplierRight === self.game.product ) {
 
           // increase total score
-          self.scoreTotal += self.game.scoreTask;
+          self.currentScores[self.level - 1].value += self.game.scoreTask;
 
           // set smile face view and play sound
           self.smileFace.scoreFace = self.game.scoreTask;
@@ -196,14 +210,11 @@ define( function( require ) {
 
   return inherit( PropertySet, ArithmeticModel, {
     back: function() {
-      // update best score value for current level
-      this.setBestScore();
-
       // save state of current level
       this.saveGameState();
 
       // refresh current level
-      this.refreshLevel();
+      this.refreshLevel( true );
 
       // show user start menu
       this.level = 0;
@@ -240,8 +251,10 @@ define( function( require ) {
         scoreProperty.reset();
       } );
     },
-    refreshLevel: function() {
-      this.property( 'scoreTotal' ).reset();
+    refreshLevel: function( isWithoutScore ) {
+      if ( !isWithoutScore ) {
+        this.currentScores[this.level - 1].reset();
+      }
       this.gameTimer.elapsedTime = 0;
       this.game.reset();
       this.smileFace.reset();
@@ -266,7 +279,7 @@ define( function( require ) {
     restoreGameState: function() {
       var state = this.state[this.level - 1];
 
-      this.scoreTotal = state.scoreTotal;
+      this.currentScores[this.level - 1].value = state.currentScore;
       this.linkToActiveInput = state.linkToActiveInput;
       this.input = state.input;
       this.gameTimer.elapsedTime = state.elapsedTime;
@@ -280,13 +293,13 @@ define( function( require ) {
     // save game state of current level
     saveGameState: function() {
       this.state[this.level - 1] = {
-        scoreTotal: this.scoreTotal,
         input: this.input,
         elapsedTime: this.gameTimer.elapsedTime,
         multiplierLeft: this.game.multiplierLeft,
         multiplierRight: this.game.multiplierRight,
         product: this.game.product,
         state: this.game.state,
+        currentScore: this.currentScores[this.level - 1].value,
         scoreTask: this.game.scoreTask,
         answerSheet: _.cloneDeep( this.game.answerSheet ),
         linkToActiveInput: this.linkToActiveInput
@@ -294,7 +307,7 @@ define( function( require ) {
     },
     // set max score for current level
     setBestScore: function() {
-      this.bestScores[this.level - 1].value = Math.max( this.bestScores[this.level - 1].value, this.scoreTotal );
+      this.bestScores[this.level - 1].value = Math.max( this.bestScores[this.level - 1].value, this.currentScores[this.level - 1].value );
     },
     step: function( dt ) {
       this.time += dt;

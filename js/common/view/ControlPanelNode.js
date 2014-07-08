@@ -34,17 +34,17 @@ define( function( require ) {
 
   /**
    * @param levelProperty {Property} property for level displaying label
-   * @param scoreProperty {Property} property for score counter component
+   * @param scoreProperties {Array} array of properties for score counter component
    * @param timerEnabledProperty {Property} time enabling flag
    * @param timeProperty {Property} property for elapsed time
    * @param refreshLevelCallback {Function} callback listener for refresh level button
    *
    * @constructor
    */
-  function ControlPanelNode( levelProperty, scoreProperty, timerEnabledProperty, timeProperty, refreshLevelCallback ) {
+  function ControlPanelNode( levelProperty, scoreProperties, timerEnabledProperty, timeProperty, refreshLevelCallback ) {
     var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR} );
     var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), FONT_BOLD );
-    var scoreText = new Text( StringUtils.format( scoreString, scoreProperty.value.toString() ), FONT );
+    var scoreText = new Text( StringUtils.format( scoreString, '0' ), FONT );
     var timeText = new Text( StringUtils.format( timeString, GameTimer.formatTime( timeProperty.value ) ), FONT );
     var minWidth = Math.max( levelText.getWidth(), scoreText.getWidth(), timeText.getWidth() );
     var vBox;
@@ -73,14 +73,28 @@ define( function( require ) {
       ]} ) );
 
     // add observers
-    levelProperty.lazyLink( function( level ) {
-      levelText.setText( StringUtils.format( pattern_level_0levelNumber, level.toString() ) );
-    } );
-
-    scoreProperty.lazyLink( function( score ) {
+    var updateScore = function( score ) {
       scoreText.setText( StringUtils.format( scoreString, score.toString() ) );
       updateBackgroundSize( background, vBox );
+    };
+
+    levelProperty.lazyLink( function( level ) {
+      levelText.setText( StringUtils.format( pattern_level_0levelNumber, level.toString() ) );
+
+      scoreProperties.forEach( function( scoreProperty ) {
+        scoreProperty.unlink( updateScore );
+      } );
+
+      if ( level ) {
+        scoreProperties[level - 1].link( updateScore );
+      }
     } );
+
+
+    /*scoreProperty.lazyLink( function( score ) {
+     scoreText.setText( StringUtils.format( scoreString, score.toString() ) );
+     updateBackgroundSize( background, vBox );
+     } );*/
 
     timeProperty.lazyLink( function( time ) {
       timeText.setText( StringUtils.format( timeString, GameTimer.formatTime( time ) ) );

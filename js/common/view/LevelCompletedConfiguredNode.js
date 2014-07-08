@@ -23,7 +23,7 @@ define( function( require ) {
    * Necessary to get perfect score for completed level
    * @param levelProperty {Property} level difficulty property
    * @param stateProperty {Property} state of game property
-   * @param scoreTotalProperty {Property} total score for this completed level
+   * @param scoreProperties {Array} array of total scores for this completed level
    * @param timerEnabledProperty {Property} time enabling flag
    * @param timeProperty {Property} time spend for level completing
    * @param bestTimes {Array} best times spend for level completing
@@ -32,7 +32,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function LevelCompletedConfiguredNode( levelDescriptions, levelProperty, stateProperty, scoreTotalProperty, timerEnabledProperty, timeProperty, bestTimes, continueCallback, layoutBounds ) {
+  function LevelCompletedConfiguredNode( levelDescriptions, levelProperty, stateProperty, scoreProperties, timerEnabledProperty, timeProperty, bestTimes, continueCallback, layoutBounds ) {
     var self = this;
     Node.call( this );
 
@@ -40,7 +40,7 @@ define( function( require ) {
       if ( state === GAME_STATE.SHOW_STATISTICS ) {
         self.addChild( new LevelCompletedNode(
           levelProperty.value,
-          scoreTotalProperty.value,
+          scoreProperties[levelProperty.value - 1].value,
           levelDescriptions[levelProperty.value - 1].perfectScore,
           CONSTANTS.STAR_NUMBER,
           timerEnabledProperty.value,

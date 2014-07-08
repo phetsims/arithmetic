@@ -22,7 +22,7 @@ define( function( require ) {
       product: undefined, // product of multiplication
       state: GAME_STATE.START, // current game state
       //REVIEW: Just wondering why the game starts off with a score of 1 and not zero.  Seems odd.
-      // This is score points for each task. If task done correctly - add this points to 'scoreTotal' value.
+      // This is score points for each task. If task done correctly - add this points to 'currentScore' value.
       scoreTask: 1 // score for current task
     } );
 

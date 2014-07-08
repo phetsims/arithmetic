@@ -66,7 +66,7 @@ define( function( require ) {
     // add control panel
     var controlPanelNode = new ControlPanelNode(
       model.property( 'level' ),
-      model.property( 'scoreTotal' ),
+      model.currentScores,
       model.property( 'timerEnabled' ),
       model.gameTimer.property( 'elapsedTime' ),
       function() {
@@ -96,7 +96,7 @@ define( function( require ) {
         model.levelDescriptions,
         model.property( 'level' ),
         model.game.property( 'state' ),
-        model.property( 'scoreTotal' ),
+        model.currentScores,
         model.property( 'timerEnabled' ),
         model.gameTimer.property( 'elapsedTime' ),
         model.bestTimes,
