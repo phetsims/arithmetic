@@ -41,8 +41,7 @@ define( function( require ) {
     this.addChild( new Rectangle( -layoutBounds.width, -layoutBounds.height, 3 * layoutBounds.width, 3 * layoutBounds.height, {fill: BACKGROUND_COLOR} ) );
 
     // add back to level select button
-    var returnToLevelSelectButton;
-    this.addChild( returnToLevelSelectButton = new ReturnToLevelSelectButton( {
+    this.addChild( new ReturnToLevelSelectButton( {
         baseColor: BACK_BUTTON_CONSTANTS.BASE_COLOR,
         cornerRadius: BACK_BUTTON_CONSTANTS.CORNER_RADIUS,
         xMargin: BACK_BUTTON_CONSTANTS.MARGIN.width,
@@ -109,10 +108,6 @@ define( function( require ) {
 
     model.property( 'level' ).link( function( level ) {
       self.visible = !!level;
-    } );
-
-    model.property( 'returnToLevelSelectButtonEnabled' ).link( function( isEnabled ) {
-      returnToLevelSelectButton.enabled = isEnabled;
     } );
   }
 

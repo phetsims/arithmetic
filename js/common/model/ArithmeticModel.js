@@ -69,7 +69,6 @@ define( function( require ) {
       scoreTotal: 0, // total user score for current games
       input: '', // user's input value
       inputCursorVisibility: false,
-      returnToLevelSelectButtonEnabled: true, // is return to level select button active
       soundEnabled: true, // is sound active
       timerEnabled: false // is time mode active
     } );
@@ -126,9 +125,6 @@ define( function( require ) {
         // show smile face
         self.smileFace.isVisible = true;
 
-        // disable return to level select button
-        self.returnToLevelSelectButtonEnabled = false;
-
         // correct answer
         if ( self.game.multiplierLeft * self.game.multiplierRight === self.game.product ) {
 
@@ -143,11 +139,11 @@ define( function( require ) {
           // mark answer in answer sheet
           self.game.answerSheet[self.game.multiplierLeft - 1][self.game.multiplierRight - 1] = true;
 
+          self.game.state = GAME_STATE.NEXT_TASK;
+
           // set next task and hide smile face
           Timer.setTimeout( function() {
             self.smileFace.isVisible = false;
-            self.returnToLevelSelectButtonEnabled = true;
-            self.game.state = GAME_STATE.NEXT_TASK;
           }, SMILE_DISAPPEAR_TIME );
         }
         // wrong answer
@@ -161,11 +157,11 @@ define( function( require ) {
           self.smileFace.isSmile = false;
           self.gameAudioPlayer.wrongAnswer();
 
+          self.game.state = GAME_STATE.START;
+
           // return to start state
           Timer.setTimeout( function() {
             self.smileFace.isVisible = false;
-            self.returnToLevelSelectButtonEnabled = true;
-            self.game.state = GAME_STATE.START;
           }, SMILE_DISAPPEAR_TIME );
         }
       }
