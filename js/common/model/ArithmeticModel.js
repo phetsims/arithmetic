@@ -82,17 +82,6 @@ define( function( require ) {
     this.gameTimer = new GameTimer();
 
     // start timer if level is select, stop timer time if level is not select
-    this.property( 'level' ).link( function( levelNumber ) {
-      if ( levelNumber && self.timerEnabled ) {
-        self.gameTimer.start();
-      }
-      else {
-        self.gameTimer.stop();
-
-        // clear time when timer off
-        self.gameTimer.elapsedTime = 0;
-      }
-    } );
 
     // model for single game
     this.game = new GameModel();
@@ -123,12 +112,23 @@ define( function( require ) {
     } );
 
     // init game after choosing level
-    this.property( 'level' ).lazyLink( function( levelNumberNew ) {
-      if ( self.state[levelNumberNew - 1] ) {
+    this.property( 'level' ).lazyLink( function( levelNumber ) {
+      // add time which user spent on level selection screen to saved time in state
+      if ( self.timerEnabled ) {
+        if ( levelNumber && self.state[levelNumber - 1] ) {
+          self.state[levelNumber - 1].elapsedTime += self.gameTimer.elapsedTime;
+        }
+        else {
+          self.gameTimer.elapsedTime = 0;
+        }
+      }
+
+      // restore or init new state for game
+      if ( self.state[levelNumber - 1] ) {
         self.restoreGameState();
       }
-      else if ( levelNumberNew ) {
-        self.game.initAnswerSheet( levelDescriptions[levelNumberNew - 1].tableSize );
+      else if ( levelNumber ) {
+        self.game.initAnswerSheet( levelDescriptions[levelNumber - 1].tableSize );
         self.game.state = GAME_STATE.NEXT_TASK;
       }
     } );
@@ -203,8 +203,15 @@ define( function( require ) {
     } );
 
     // clear states if timer option was changed
-    this.property( 'timerEnabled' ).link( function() {
+    this.property( 'timerEnabled' ).link( function( isTimerEnabled ) {
       self.clearGameStates();
+
+      if ( isTimerEnabled ) {
+        self.gameTimer.start();
+      }
+      else {
+        self.gameTimer.stop();
+      }
     } );
   }
 
