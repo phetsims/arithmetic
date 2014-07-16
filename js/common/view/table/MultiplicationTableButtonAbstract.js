@@ -36,7 +36,7 @@ define( function( require ) {
 
     // add content text
     this._text = new Text( '?', _.extend( {
-      font: new PhetFont( {size: Math.round( 3 * this.bounds.height / 5 + 2 ), family: 'Comic Sans MS'} ),
+      font: new PhetFont( { size: Math.round( 3 * this.bounds.height / 5 + 2 ) } ),
       fill: 'white',
       centerY: this.bounds.height / 2
     }, textOptions ) );

@@ -17,7 +17,7 @@ define( function( require ) {
   var Text = require( 'SCENERY/nodes/Text' );
 
   // constants
-  var FONT_TEXT = new PhetFont( {size: 32, family: 'Comic Sans MS'} );
+  var FONT_TEXT = new PhetFont( { size: 32 } );
   var PLACEHOLDER = '?';
 
   /**

@@ -80,7 +80,6 @@ define( function( require ) {
               hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonMultiplierNode( '\u2715', buttonOptions, {
                 font: new PhetFont( {
                   size: Math.round( 3 * buttonOptions.height / 5 + 2 ),
-                  family: 'Comic Sans MS',
                   weight: 'bold'} )
               } ) );
             }

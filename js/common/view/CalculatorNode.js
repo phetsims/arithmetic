@@ -23,7 +23,7 @@ define( function( require ) {
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var ARROW_SIZE = CONSTANTS.CALCULATOR.ARROW_SIZE;
   var BUTTON_SIZE = CONSTANTS.CALCULATOR.BUTTON_SIZE;
-  var FONT = new PhetFont( {size: 24, family: 'Comic Sans MS'} );
+  var FONT = new PhetFont( {size: 24 } );
   var SPACING = CONSTANTS.CALCULATOR.SPACING;
 
   /**
