@@ -13,6 +13,7 @@ define( function( require ) {
   var FactorScreen = require( 'ARITHMETIC/factor/FactorScreen' );
   var MultiplyScreen = require( 'ARITHMETIC/multiply/MultiplyScreen' );
   var Sim = require( 'JOIST/Sim' );
+  var SimLauncher = require( 'JOIST/SimLauncher' );
 
   // strings and images
   var simTitleString = require( 'string!ARITHMETIC/arithmetic.name' );
@@ -35,6 +36,9 @@ define( function( require ) {
     }, simOptions );
   }
 
-  // Create and start the sim
-  new Sim( simTitleString, [ new MultiplyScreen(), new FactorScreen(), new DivideScreen() ], simOptions ).start();
+
+  SimLauncher.launch( function() {
+    // Create and start the sim
+    new Sim( simTitleString, [ new MultiplyScreen(), new FactorScreen(), new DivideScreen() ], simOptions ).start();
+  } );
 } );
