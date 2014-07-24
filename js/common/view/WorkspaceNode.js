@@ -15,12 +15,10 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelCompletedConfiguredNode = require( 'ARITHMETIC/common/view/LevelCompletedConfiguredNode' );
   var Node = require( 'SCENERY/nodes/Node' );
-  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var ReturnToLevelSelectButton = require( 'SCENERY_PHET/ReturnToLevelSelectButton' );
 
   // constants
   var BACK_BUTTON_CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).BACK_BUTTON;
-  var BACKGROUND_COLOR = require( 'ARITHMETIC/common/ArithmeticConstants' ).WORKSPACE_BACKGROUND_COLOR;
   var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
 
   /**
@@ -36,9 +34,6 @@ define( function( require ) {
   function WorkspaceNode( model, multiplicationTableNode, equationNode, isAddCalculatorNode, layoutBounds ) {
     var self = this;
     Node.call( this );
-
-    // add background for workspace
-    this.addChild( new Rectangle( -layoutBounds.width, -layoutBounds.height, 3 * layoutBounds.width, 3 * layoutBounds.height, {fill: BACKGROUND_COLOR} ) );
 
     // add back to level select button
     this.addChild( new ReturnToLevelSelectButton( {
