@@ -115,7 +115,7 @@ define( function( require ) {
     this.property( 'level' ).lazyLink( function( levelNumber ) {
       // add time which user spent on level selection screen to saved time in state
       if ( self.timerEnabled ) {
-        if ( levelNumber && self.state[levelNumber - 1] ) {
+        if ( levelNumber && self.state[levelNumber - 1] && self.state[levelNumber - 1].isGameTimerRunning ) {
           self.state[levelNumber - 1].elapsedTime += self.gameTimer.elapsedTime;
         }
         else {
@@ -129,13 +129,17 @@ define( function( require ) {
       }
       else if ( levelNumber ) {
         self.game.initAnswerSheet( levelDescriptions[levelNumber - 1].tableSize );
-        self.game.state = GAME_STATE.NEXT_TASK;
+        self.game.state = GAME_STATE.LEVEL_INIT;
       }
     } );
 
     // set next task if equation was filled
     this.game.property( 'state' ).lazyLink( function( state ) {
-      if ( state === GAME_STATE.EQUATION_FILLED ) {
+      if ( state === GAME_STATE.LEVEL_INIT ) {
+        self.gameTimer.start();
+        self.game.state = GAME_STATE.NEXT_TASK;
+      }
+      else if ( state === GAME_STATE.EQUATION_FILLED ) {
         // show smile face
         self.smileFace.isVisible = true;
 
@@ -160,7 +164,7 @@ define( function( require ) {
             self.smileFace.isVisible = false;
           }, SMILE_DISAPPEAR_TIME );
         }
-        // wrong answer
+        // incorrect answer
         else {
 
           // player will not get points for this task
@@ -201,18 +205,6 @@ define( function( require ) {
         self.game.state = GAME_STATE.NEXT_TASK;
       }
     } );
-
-    // clear states if timer option was changed
-    this.property( 'timerEnabled' ).link( function( isTimerEnabled ) {
-      self.clearGameStates();
-
-      if ( isTimerEnabled ) {
-        self.gameTimer.start();
-      }
-      else {
-        self.gameTimer.stop();
-      }
-    } );
   }
 
   return inherit( PropertySet, ArithmeticModel, {
@@ -240,14 +232,10 @@ define( function( require ) {
       // clear game state for game state
       this.clearGameState( this.level );
 
-      // set start state
-      this.game.state = GAME_STATE.START;
-
-      // show user start menu
+      // set level value equal to unselected
       this.level = 0;
     },
     clearBestTimesAndScores: function() {
-
       // clear best times
       for ( var i = 0; i < this.bestTimes.length; i++ ) {
         this.bestTimes[i] = null;
@@ -286,6 +274,13 @@ define( function( require ) {
     restoreGameState: function() {
       var state = this.state[this.level - 1];
 
+      if ( state.isGameTimerRunning ) {
+        this.gameTimer.start();
+      }
+      else {
+        this.gameTimer.stop();
+      }
+
       this.currentScores[this.level - 1].value = state.currentScore;
       this.linkToActiveInput = state.linkToActiveInput;
       this.input = state.input;
@@ -293,14 +288,15 @@ define( function( require ) {
       this.game.multiplierLeft = state.multiplierLeft;
       this.game.multiplierRight = state.multiplierRight;
       this.game.product = state.product;
-      this.game.state = state.state;
       this.game.scoreTask = state.scoreTask;
       this.game.answerSheet = state.answerSheet;
+      this.game.state = state.state;
     },
     // save game state of current level
     saveGameState: function() {
       this.state[this.level - 1] = {
         input: this.input,
+        isGameTimerRunning: this.gameTimer.isRunning,
         elapsedTime: this.gameTimer.elapsedTime,
         multiplierLeft: this.game.multiplierLeft,
         multiplierRight: this.game.multiplierRight,

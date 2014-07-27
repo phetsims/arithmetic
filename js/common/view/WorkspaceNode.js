@@ -36,7 +36,8 @@ define( function( require ) {
     Node.call( this );
 
     // add back to level select button
-    this.addChild( new ReturnToLevelSelectButton( {
+    var returnToLevelSelectButton;
+    this.addChild( returnToLevelSelectButton = new ReturnToLevelSelectButton( {
         baseColor: BACK_BUTTON_CONSTANTS.BASE_COLOR,
         cornerRadius: BACK_BUTTON_CONSTANTS.CORNER_RADIUS,
         xMargin: BACK_BUTTON_CONSTANTS.MARGIN.width,
@@ -101,8 +102,8 @@ define( function( require ) {
         layoutBounds )
     );
 
-    model.property( 'level' ).link( function( level ) {
-      self.visible = !!level;
+    model.game.property( 'state' ).link( function( state ) {
+      self.visible = ( state !== GAME_STATE.LEVEL_SELECT );
     } );
   }
 

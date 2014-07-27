@@ -29,6 +29,8 @@ define( function( require ) {
         if ( multipliers ) {
           // reset multipliers and score properties
           self.game.property( 'scoreTask' ).reset();
+          self.game.property( 'multiplierLeft' ).reset();
+          self.game.property( 'multiplierRight' ).reset();
 
           // set product
           self.game.product = multipliers.multiplierLeft * multipliers.multiplierRight;
@@ -40,10 +42,6 @@ define( function( require ) {
           // set level finished state
           self.game.state = GAME_STATE.LEVEL_FINISHED;
         }
-      }
-      else if ( state === GAME_STATE.START ) {
-        self.game.property( 'multiplierLeft' ).reset();
-        self.game.property( 'multiplierRight' ).reset();
       }
     } );
   }

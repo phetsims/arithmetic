@@ -10,7 +10,9 @@ define( function() {
 
   return Object.freeze( {
     EQUATION_FILLED: 'equationFilled',
+    LEVEL_INIT: 'levelInit',
     LEVEL_FINISHED: 'levelFinished',
+    LEVEL_SELECT: 'levelSelect',
     NEXT_TASK: 'nextTask',
     REFRESH_LEVEL: 'refreshLevel',
     SHOW_STATISTICS: 'showStatistics',

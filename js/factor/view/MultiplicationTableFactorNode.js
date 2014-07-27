@@ -89,7 +89,8 @@ define( function( require ) {
     } );
 
     gameModel.property( 'state' ).link( function( state ) {
-      if ( state === GAME_STATE.REFRESH_LEVEL || state === GAME_STATE.START ) {
+      if ( state === GAME_STATE.LEVEL_INIT ) {
+        self.clearCells( levelProperty.value );
         enableAllButtons( self._buttonModel );
       }
     } );

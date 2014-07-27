@@ -18,6 +18,9 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
   var WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
 
+  // constants
+  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+
   /**
    * @param model {Object} main model for screen
    * @param multiplicationTableNode {Node} multiplication table node for given screen
@@ -50,9 +53,14 @@ define( function( require ) {
     this.addChild( resetAllButton );
 
     // observers
-    model.property( 'level' ).link( function( level ) {
-      soundAndTimerButtons.visible = !level;
-      resetAllButton.visible = !level;
+    model.game.property( 'state' ).link( function( state ) {
+      if ( state === GAME_STATE.LEVEL_SELECT ) {
+        soundAndTimerButtons.visible = true;
+        resetAllButton.visible = true;
+      } else {
+        soundAndTimerButtons.visible = false;
+        resetAllButton.visible = false;
+      }
     } );
   }
 
