@@ -36,8 +36,7 @@ define( function( require ) {
     Node.call( this );
 
     // add back to level select button
-    var returnToLevelSelectButton;
-    this.addChild( returnToLevelSelectButton = new ReturnToLevelSelectButton( {
+    this.addChild( new ReturnToLevelSelectButton( {
         baseColor: BACK_BUTTON_CONSTANTS.BASE_COLOR,
         cornerRadius: BACK_BUTTON_CONSTANTS.CORNER_RADIUS,
         xMargin: BACK_BUTTON_CONSTANTS.MARGIN.width,
