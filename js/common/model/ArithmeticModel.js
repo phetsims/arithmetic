@@ -92,23 +92,17 @@ define( function( require ) {
     this.bestTimes = [];
     this.bestScores = [];
     this.currentScores = []; // current score for each level
-    this.maxScores = []; // max score for current and best scores
+    this.displayScores = []; // score displaying in level select buttons
 
     this.levelDescriptions.forEach( function() {
-      var maxScoreProperty = new Property( 0 );
+      var displayScoreProperty = new Property( 0 );
       var bestScoreProperty = new Property( 0 );
       var currentScoreProperty = new Property( 0 );
-      var setMaxScore = function() {
-        maxScoreProperty.value = Math.max( bestScoreProperty.value, currentScoreProperty.value );
-      };
 
       self.bestTimes.push( null );
-      self.maxScores.push( maxScoreProperty );
+      self.displayScores.push( displayScoreProperty );
       self.bestScores.push( bestScoreProperty );
       self.currentScores.push( currentScoreProperty );
-
-      bestScoreProperty.link( setMaxScore );
-      currentScoreProperty.link( setMaxScore );
     } );
 
     // init game after choosing level
@@ -136,7 +130,12 @@ define( function( require ) {
     // set next task if equation was filled
     this.game.property( 'state' ).lazyLink( function( state ) {
       if ( state === GAME_STATE.LEVEL_INIT ) {
+        // start timer
         self.gameTimer.start();
+
+        // update display score
+        self.displayScores[self.level - 1].value = self.currentScores[self.level - 1].value;
+
         self.game.state = GAME_STATE.NEXT_TASK;
       }
       else if ( state === GAME_STATE.EQUATION_FILLED ) {
@@ -148,6 +147,9 @@ define( function( require ) {
 
           // increase total score
           self.currentScores[self.level - 1].value += self.game.scoreTask;
+
+          // update display score
+          self.displayScores[self.level - 1].value = self.currentScores[self.level - 1].value;
 
           // set smile face view and play sound
           self.smileFace.scoreFace = self.game.scoreTask;
@@ -166,7 +168,6 @@ define( function( require ) {
         }
         // incorrect answer
         else {
-
           // player will not get points for this task
           self.game.scoreTask = 0;
 
@@ -204,6 +205,10 @@ define( function( require ) {
         self.refreshLevel();
         self.game.state = GAME_STATE.NEXT_TASK;
       }
+    } );
+
+    self.game.property( 'state' ).link( function( state ) {
+      console.log( state );
     } );
   }
 

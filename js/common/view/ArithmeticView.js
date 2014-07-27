@@ -34,7 +34,8 @@ define( function( require ) {
     ScreenView.call( this );
 
     // add start game level buttons
-    this.addChild( new StartGameLevelNode( model.levelDescriptions, model.maxScores, model.property( 'level' ), titleString, model.simBounds ) );
+    this.addChild( new StartGameLevelNode( model.levelDescriptions, model.displayScores, model.property( 'level' ), model.game.property( 'state' ),
+      titleString, model.simBounds ) );
 
     // add game components
     this.addChild( new WorkspaceNode( model, multiplicationTableNode, equationNode, isAddCalculatorNode, this.layoutBounds ) );
@@ -57,7 +58,8 @@ define( function( require ) {
       if ( state === GAME_STATE.LEVEL_SELECT ) {
         soundAndTimerButtons.visible = true;
         resetAllButton.visible = true;
-      } else {
+      }
+      else {
         soundAndTimerButtons.visible = false;
         resetAllButton.visible = false;
       }

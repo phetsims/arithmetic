@@ -20,6 +20,7 @@ define( function( require ) {
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( {size: 24} );
+  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
   var STAR_NUMBER = CONSTANTS.STAR_NUMBER;
   var TAB_TITLE_FONT = new PhetFont( {size: 54} );
 
@@ -29,15 +30,17 @@ define( function( require ) {
   /**
    * @param levelDescriptions {Array} array of descriptions for each level.
    * For each level will be created LevelStartButton node
-   * @param bestScorePropertyArray {Array} array of score properties.
+   * @param displayScorePropertyArray {Array} array of score properties for displaying
    * Necessary for representing best scores for each level
    * @param levelProperty {Property} level difficulty property
+   * @param stateProperty {Property} current state property.
+   * Need to control visibility of this component
    * @param titleString {String} title string for given screen
    * @param simBounds {Bounds2} bounds of simulation
    *
    * @constructor
    */
-  function StartGameLevelNode( levelDescriptions, bestScorePropertyArray, levelProperty, titleString, simBounds ) {
+  function StartGameLevelNode( levelDescriptions, displayScorePropertyArray, levelProperty, stateProperty, titleString, simBounds ) {
     var self = this;
     Node.call( this );
 
@@ -66,7 +69,7 @@ define( function( require ) {
         function() {
           levelProperty.value = levelIndex + 1;
         },
-        bestScorePropertyArray[levelIndex],
+        displayScorePropertyArray[levelIndex],
         level.perfectScore,
         {
           buttonWidth: 135,
@@ -81,8 +84,8 @@ define( function( require ) {
     selectLevelButtons.top = chooseLevelTitle.bounds.maxY + 20;
     this.addChild( selectLevelButtons );
 
-    levelProperty.link( function( level ) {
-      self.visible = !level;
+    stateProperty.link( function( state ) {
+      self.visible = ( state === GAME_STATE.LEVEL_SELECT );
     } );
   }
 
