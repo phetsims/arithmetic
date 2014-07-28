@@ -81,11 +81,10 @@ define( function( require ) {
     // model for game timer
     this.gameTimer = new GameTimer();
 
-    // start timer if level is select, stop timer time if level is not select
-
     // model for single game
     this.game = new GameModel();
 
+    // model for smile face
     this.smileFace = new FaceModel();
 
     // best times and scores, equal to number of levels
@@ -239,9 +238,19 @@ define( function( require ) {
     },
     clearBestTimesAndScores: function() {
       // clear best times
-      for ( var i = 0; i < this.bestTimes.length; i++ ) {
-        this.bestTimes[i] = null;
-      }
+      this.bestTimes.forEach( function( bestTimeProperty ) {
+        bestTimeProperty.reset();
+      } );
+
+      // clear current scores
+      this.currentScores.forEach( function( currentProperty ) {
+        currentProperty.reset();
+      } );
+
+      // clear display scores
+      this.displayScores.forEach( function( displayProperty ) {
+        displayProperty.reset();
+      } );
 
       // clear best scores
       this.bestScores.forEach( function( scoreProperty ) {
