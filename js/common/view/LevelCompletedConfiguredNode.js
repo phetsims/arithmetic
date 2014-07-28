@@ -45,7 +45,7 @@ define( function( require ) {
           CONSTANTS.STAR_NUMBER,
           timerEnabledProperty.value,
           timeProperty.value,
-          bestTimes[levelProperty.value - 1],
+          bestTimes[levelProperty.value - 1].value,
           (timeProperty.value < bestTimes[levelProperty.value - 1]),
           continueCallback
         ).mutate( {centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2} ) );

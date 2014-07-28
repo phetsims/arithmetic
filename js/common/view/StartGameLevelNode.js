@@ -35,12 +35,16 @@ define( function( require ) {
    * @param levelProperty {Property} level difficulty property
    * @param stateProperty {Property} current state property.
    * Need to control visibility of this component
+   * @param bestTimeProperties {Array} array of best score properties.
+   *  Necessary for representing best time for each level
+   * @param timerEnabledProperty {Property} timer enable property.
+   * Need to control visibility of best time label
    * @param titleString {String} title string for given screen
    * @param simBounds {Bounds2} bounds of simulation
    *
    * @constructor
    */
-  function StartGameLevelNode( levelDescriptions, displayScorePropertyArray, levelProperty, stateProperty, titleString, simBounds ) {
+  function StartGameLevelNode( levelDescriptions, displayScorePropertyArray, levelProperty, stateProperty, bestTimeProperties, timerEnabledProperty, titleString, simBounds ) {
     var self = this;
     Node.call( this );
 
@@ -75,7 +79,9 @@ define( function( require ) {
           buttonWidth: 135,
           buttonHeight: 135,
           backgroundColor: 'white',
-          highlightedBackgroundColor: 'white'
+          highlightedBackgroundColor: 'white',
+          bestTimeProperty: bestTimeProperties[levelIndex],
+          bestTimeVisibleProperty: timerEnabledProperty
         }
       ) );
     } );

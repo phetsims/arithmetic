@@ -98,8 +98,9 @@ define( function( require ) {
       var displayScoreProperty = new Property( 0 );
       var bestScoreProperty = new Property( 0 );
       var currentScoreProperty = new Property( 0 );
+      var bestTime = new Property( null );
 
-      self.bestTimes.push( null );
+      self.bestTimes.push( bestTime );
       self.displayScores.push( displayScoreProperty );
       self.bestScores.push( bestScoreProperty );
       self.currentScores.push( currentScoreProperty );
@@ -191,11 +192,11 @@ define( function( require ) {
         // set best time
         if ( self.timerEnabled ) {
           self.gameTimer.stop();
-          if ( self.bestTimes[self.level - 1] === null ) {
-            self.bestTimes[self.level - 1] = self.gameTimer.elapsedTime;
+          if ( self.bestTimes[self.level - 1].value === null ) {
+            self.bestTimes[self.level - 1].value = self.gameTimer.elapsedTime;
           }
           else {
-            self.bestTimes[self.level - 1] = Math.min( self.bestTimes[self.level - 1], self.gameTimer.elapsedTime );
+            self.bestTimes[self.level - 1].value = Math.min( self.bestTimes[self.level - 1].value, self.gameTimer.elapsedTime );
           }
         }
 
@@ -205,10 +206,6 @@ define( function( require ) {
         self.refreshLevel();
         self.game.state = GAME_STATE.NEXT_TASK;
       }
-    } );
-
-    self.game.property( 'state' ).link( function( state ) {
-      console.log( state );
     } );
   }
 
