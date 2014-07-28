@@ -32,7 +32,10 @@ define( function( require ) {
     this._buttonModel = [];
 
     // add 'hover' and 'down' listeners for each cell in table
-    this.cells.forEach( function( tableForLevel ) {
+    this.cells.forEach( function( tableForLevel, levelIndex ) {
+
+      self._buttonModel[levelIndex] = [];
+
       tableForLevel.forEach( function( leftMultipliers, leftIndex ) {
 
         // skip zero-index because it's column with multipliers
@@ -50,7 +53,7 @@ define( function( require ) {
               button.cursor = 'pointer';
 
               // store model for next execution
-              self._buttonModel.push( buttonModel );
+              self._buttonModel[levelIndex].push( buttonModel );
 
               // add 'hover' listener
               buttonModel.property( 'over' ).onValue( true, function() {
@@ -91,18 +94,18 @@ define( function( require ) {
     gameModel.property( 'state' ).link( function( state ) {
       if ( state === GAME_STATE.LEVEL_INIT ) {
         self.clearCells( levelProperty.value );
-        enableAllButtons( self._buttonModel );
+        self.enableButtons( levelProperty.value );
       }
     } );
   }
 
-  var enableAllButtons = function( buttonsModel ) {
-    buttonsModel.forEach( function( buttonModel ) {
-      buttonModel.enabled = true;
-    } );
-  };
-
   return inherit( MultiplicationTableNode, MultiplicationTableFactorNode, {
+    // enable all buttons for given level
+    enableButtons: function( levelNumber ) {
+      this._buttonModel[levelNumber - 1].forEach( function( buttonModel ) {
+        buttonModel.enabled = true;
+      } );
+    },
     // set 'active' state for all cell in given bounds and highlight multipliers
     setActiveRect: function( levelNumber, leftBound, rightBound ) {
       // highlight multipliers
