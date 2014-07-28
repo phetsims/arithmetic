@@ -90,12 +90,6 @@ define( function( require ) {
       }
     } );
 
-
-    /*scoreProperty.lazyLink( function( score ) {
-     scoreText.setText( StringUtils.format( scoreString, score.toString() ) );
-     updateBackgroundSize( background, vBox );
-     } );*/
-
     timeProperty.lazyLink( function( time ) {
       timeText.setText( StringUtils.format( timeString, GameTimer.formatTime( time ) ) );
       updateBackgroundSize( background, vBox );
@@ -116,7 +110,9 @@ define( function( require ) {
 
   // set background size
   var updateBackgroundSize = function( backgroundNode, controlPanelNode ) {
-    backgroundNode.setRect( -BACKGROUND_MARGIN.width / 2, -BACKGROUND_MARGIN.height / 2, controlPanelNode.bounds.width + BACKGROUND_MARGIN.width, controlPanelNode.bounds.height + BACKGROUND_MARGIN.height - SPACING, 5, 5 );
+    controlPanelNode.centerX = controlPanelNode.width / 2;
+    backgroundNode.setRect( -BACKGROUND_MARGIN.width / 2, -BACKGROUND_MARGIN.height / 2, controlPanelNode.bounds.width + BACKGROUND_MARGIN.width,
+        controlPanelNode.bounds.height + BACKGROUND_MARGIN.height - SPACING, 5, 5 );
   };
 
   return inherit( Node, ControlPanelNode );
