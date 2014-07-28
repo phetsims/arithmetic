@@ -49,7 +49,7 @@ define( function( require ) {
     },
     setText: function( text ) {
       this._text.setText( text );
-      this._text.centerX = this.bounds.width / 2;
+      this._text.centerX = this.bounds.width / 2 - 1;
     },
     setTextFill: function( fill ) {
       this._text.setFill( fill );
