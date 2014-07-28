@@ -182,6 +182,9 @@ define( function( require ) {
           Timer.setTimeout( function() {
             self.smileFace.isVisible = false;
           }, SMILE_DISAPPEAR_TIME );
+
+          // update input field
+          self.input = '';
         }
       }
       else if ( state === GAME_STATE.LEVEL_FINISHED ) {

@@ -32,7 +32,6 @@ define( function( require ) {
       if ( state === GAME_STATE.START ) {
         self.productInput.clear();
         self.productInput.focus();
-        inputProperty.value = '';
       }
     } );
   }

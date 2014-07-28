@@ -31,7 +31,6 @@ define( function( require ) {
         model.levelDescriptions
       ),
       new EquationDivideNode(
-        model.game.property( 'state' ),
         model.game.property( 'multiplierLeft' ),
         model.game.property( 'multiplierRight' ),
         model.game.property( 'product' ),

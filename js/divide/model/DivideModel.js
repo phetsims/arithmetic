@@ -43,9 +43,11 @@ define( function( require ) {
           // set left or right multiplier
           if ( Math.random() < 0.5 ) {
             self.game.multiplierLeft = multipliers.multiplierLeft;
+            self.linkToActiveInput = self.game.property( 'multiplierRight' );
           }
           else {
             self.game.multiplierRight = multipliers.multiplierRight;
+            self.linkToActiveInput = self.game.property( 'multiplierLeft' );
           }
 
           // set start state
@@ -61,6 +63,9 @@ define( function( require ) {
 
   return inherit( ArithmeticModel, DivideModel, {
     checkAnswer: function() {
+      this.game.multiplierRight = parseInt( this.game.multiplierRight, 10 );
+      this.game.multiplierLeft = parseInt( this.game.multiplierLeft, 10 );
+
       this.game.state = GAME_STATE.EQUATION_FILLED;
     }
   } );
