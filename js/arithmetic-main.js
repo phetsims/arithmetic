@@ -36,7 +36,6 @@ define( function( require ) {
     }, simOptions );
   }
 
-
   SimLauncher.launch( function() {
     // Create and start the sim
     new Sim( simTitleString, [ new MultiplyScreen(), new FactorScreen(), new DivideScreen() ], simOptions ).start();

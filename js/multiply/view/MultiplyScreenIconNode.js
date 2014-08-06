@@ -4,6 +4,7 @@
  * Screen icon node for 'Multiply' game.
  *
  * @author Andrey Zelenkov (MLearner)
+ * @author John Blanco (MLearner)
  */
 define( function( require ) {
   'use strict';
@@ -19,18 +20,19 @@ define( function( require ) {
 
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var FONT_TITLE = new PhetFont( 12 );
-  var FONT_X = new PhetFont( 22 );
   var ICON_SIZE = CONSTANTS.SCREEN_ICON_SIZE;
 
   function MultiplyScreenIconNode() {
-    Rectangle.call( this, 0, 0, ICON_SIZE.width, ICON_SIZE.height, {fill: 'white'} );
 
-    // add text
-    this.addChild( new Text( multiplyString, {font: FONT_TITLE, centerX: ICON_SIZE.width / 2, centerY: ICON_SIZE.height / 4} ) );
+    // create the background
+    Rectangle.call( this, 0, 0, ICON_SIZE.width, ICON_SIZE.height, { fill: CONSTANTS.ICON_BACKGROUND_COLOR } );
 
-    // add multiply sign
-    this.addChild( new Text( '\u00D7', {font: FONT_X, centerX: ICON_SIZE.width / 2, centerY: 2 * ICON_SIZE.height / 3} ) );
+    // add the multiply symbol
+    var multiplySymbol = new Text( '\u2715', { font: new PhetFont( { size: 20, weight: 'bold' } ), fill: '#FFF31E' } );
+    multiplySymbol.scale( ICON_SIZE.height / multiplySymbol.height );
+    multiplySymbol.centerX = ICON_SIZE.width / 2;
+    multiplySymbol.centerY = ICON_SIZE.height / 2;
+    this.addChild( multiplySymbol );
   }
 
   return inherit( Rectangle, MultiplyScreenIconNode );
