@@ -22,6 +22,7 @@ define( function( require ) {
 
     // next task observer
     this.game.property( 'state' ).link( function( state ) {
+      console.log( 'state = ' + state );
       if ( state === GAME_STATE.NEXT_TASK ) {
         // get available multipliers
         var multipliers = self.game.getAvailableMultipliers();
@@ -43,6 +44,9 @@ define( function( require ) {
           // set level finished state
           self.game.state = GAME_STATE.LEVEL_FINISHED;
         }
+      }
+      else if ( state === 'equationFilled' ) {
+        self.inputProperty.reset();
       }
     } );
   }
