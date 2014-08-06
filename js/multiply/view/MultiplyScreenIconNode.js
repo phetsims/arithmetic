@@ -28,7 +28,7 @@ define( function( require ) {
     Rectangle.call( this, 0, 0, ICON_SIZE.width, ICON_SIZE.height, { fill: CONSTANTS.ICON_BACKGROUND_COLOR } );
 
     // Add the multiply symbol.  Create our own rather than use the Unicode char, since this gives us more control.
-    var symbolWidth = ICON_SIZE.width * 0.35;
+    var symbolWidth = ICON_SIZE.width * 0.3;
     this.addChild( new Line( 0, 0, symbolWidth, symbolWidth, {
       stroke: SYMBOL_COLOR,
       lineWidth: 4, // empirically determined
