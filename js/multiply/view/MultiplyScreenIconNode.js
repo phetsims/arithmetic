@@ -11,25 +11,32 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  var Line = require( 'SCENERY/nodes/Line' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
-  var Text = require( 'SCENERY/nodes/Text' );
 
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var ICON_SIZE = CONSTANTS.SCREEN_ICON_SIZE;
+  var SYMBOL_COLOR = '#FFF31E';
+
 
   function MultiplyScreenIconNode() {
 
     // create the background
     Rectangle.call( this, 0, 0, ICON_SIZE.width, ICON_SIZE.height, { fill: CONSTANTS.ICON_BACKGROUND_COLOR } );
 
-    // add the multiply symbol
-    var multiplySymbol = new Text( '\u2715', { font: new PhetFont( { size: 20, weight: 'bold' } ), fill: '#FFF31E' } );
-    multiplySymbol.scale( ICON_SIZE.height / multiplySymbol.height );
-    multiplySymbol.centerX = ICON_SIZE.width / 2;
-    multiplySymbol.centerY = ICON_SIZE.height / 2;
-    this.addChild( multiplySymbol );
+    // Add the multiply symbol.  Create our own rather than use the Unicode char, since this gives us more control.
+    var symbolWidth = ICON_SIZE.width * 0.35;
+    this.addChild( new Line( 0, 0, symbolWidth, symbolWidth, {
+      stroke: SYMBOL_COLOR,
+      lineWidth: 4, // empirically determined
+      center: this.center
+    } ) );
+    this.addChild( new Line( symbolWidth, 0, 0, symbolWidth, {
+      stroke: SYMBOL_COLOR,
+      lineWidth: 4, // empirically determined
+      center: this.center
+    } ) );
   }
 
   return inherit( Rectangle, MultiplyScreenIconNode );
