@@ -42,7 +42,7 @@ define( function( require ) {
    * @constructor
    */
   function ControlPanelNode( levelProperty, scoreProperties, timerEnabledProperty, timeProperty, refreshLevelCallback ) {
-    var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR, stroke: 'black'} );
+    var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR, stroke: 'gray'} );
     var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), FONT_BOLD );
     var scoreText = new Text( StringUtils.format( scoreString, '0' ), FONT );
     var timeText = new Text( StringUtils.format( timeString, GameTimer.formatTime( timeProperty.value ) ), FONT );
