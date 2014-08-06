@@ -22,7 +22,6 @@ define( function( require ) {
 
     // next task observer
     this.game.property( 'state' ).link( function( state ) {
-      console.log( 'state = ' + state );
       if ( state === GAME_STATE.NEXT_TASK ) {
         // get available multipliers
         var multipliers = self.game.getAvailableMultipliers();
