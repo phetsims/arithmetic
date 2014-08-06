@@ -15,9 +15,6 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
 
-  // strings
-  var multiplyString = require( 'string!ARITHMETIC/multiply' );
-
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var ICON_SIZE = CONSTANTS.SCREEN_ICON_SIZE;
