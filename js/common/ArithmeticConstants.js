@@ -13,7 +13,7 @@ define( function( require ) {
   var Dimension2 = require( 'DOT/Dimension2' );
 
   return {
-    BACKGROUND_COLOR: 'rgb(130,181,252)',
+    BACKGROUND_COLOR: 'rgb( 173, 202, 255 )',
     // constants for back button
     BACK_BUTTON: {
       BASE_COLOR: 'rgb( 255, 204, 67 )', // base color of back button
@@ -68,7 +68,7 @@ define( function( require ) {
       SIZE: new Dimension2( 434, 320 ) // table size
     },
     SCREEN_ICON_SIZE: new Dimension2( 60, 40 ), // size of screen icons
-    ICON_BACKGROUND_COLOR: '#95BCFF',
+    ICON_BACKGROUND_COLOR: 'rgb( 173, 202, 255 )',
     SMILE_DISAPPEAR_TIME: 1000, // time in milliseconds
     STAR_NUMBER: 5, // number of stars in select level buttons
     WORKSPACE_BACKGROUND_COLOR: 'rgb(130,181,252)'
