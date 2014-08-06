@@ -19,7 +19,9 @@ define( function( require ) {
   var ICON_SIZE = CONSTANTS.SCREEN_ICON_SIZE;
   var SYMBOL_COLOR = '#FFF31E';
 
-
+  /**
+   * @constructor
+   */
   function MultiplyScreenIconNode() {
 
     // create the background
