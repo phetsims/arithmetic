@@ -21,8 +21,8 @@ define( function( require ) {
   var ICON_SIZE = CONSTANTS.SCREEN_ICON_SIZE;
   var CONNECTING_LINES_COLOR = '#FFF31E';
   var CONNECTING_LINE_WIDTH = 1.5;
-  var NUMBER_FONT = new PhetFont( 10 ); // Font size empirically determined
-  var QUESTION_MARK_FONT = new PhetFont( { size: 12, weight: 'bold' } ); // Font size empirically determined
+  var NUMBER_FONT = new PhetFont( 9 ); // Font size empirically determined
+  var QUESTION_MARK_FONT = new PhetFont( { size: 14, weight: 'bold' } ); // Font size empirically determined
   var BOX_VERTICAL_INSET = 3; // Empirically determined
   var CONNECTING_LINES_OPTIONS = {
     stroke: CONNECTING_LINES_COLOR,
