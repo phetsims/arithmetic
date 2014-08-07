@@ -182,10 +182,10 @@ define( function( require ) {
           Timer.setTimeout( function() {
             self.smileFace.isVisible = false;
           }, SMILE_DISAPPEAR_TIME );
-
-          // update input field
-          self.input = '';
         }
+
+        // reset input field
+        self.property( 'input' ).reset();
       }
       else if ( state === GAME_STATE.LEVEL_FINISHED ) {
         // set best score

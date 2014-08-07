@@ -44,9 +44,6 @@ define( function( require ) {
           self.game.state = GAME_STATE.LEVEL_FINISHED;
         }
       }
-      else if ( state === 'equationFilled' ) {
-        self.inputProperty.reset();
-      }
     } );
   }
 
