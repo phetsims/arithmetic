@@ -77,10 +77,8 @@ define( function( require ) {
           for ( j = 0; j <= tableSize; j++ ) {
             // first cell is 'X', other - multiplier numbers
             if ( j === 0 ) {
-              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonMultiplierNode( '\u2715', buttonOptions, {
-                font: new PhetFont( {
-                  size: Math.round( 3 * buttonOptions.height / 5 + 2 ),
-                  weight: 'bold'} )
+              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonMultiplierNode( '\u00D7', buttonOptions, {
+                font: new PhetFont( { size: 40 } ) // Size empirically determined
               } ) );
             }
             else {
