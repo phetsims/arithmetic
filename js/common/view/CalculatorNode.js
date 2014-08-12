@@ -10,6 +10,7 @@ define( function( require ) {
 
   // modules
   var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
+  var BackspaceIcon = require( 'SCENERY_PHET/BackspaceIcon' );
   var inherit = require( 'PHET_CORE/inherit' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -68,11 +69,9 @@ define( function( require ) {
 
   // return backspace button
   var getButtonBackspace = function( inputProperty ) {
-    return getButtonDefault( new ArrowNode( ARROW_SIZE / 2, 0, -ARROW_SIZE / 2, 0, {
-      headWidth: 6,
-      headHeight: 6,
-      tailWidth: 1
-    } ), function() {
+    var backspaceIcon = new BackspaceIcon();
+    backspaceIcon.scale( ( BUTTON_SIZE.width * 0.65 ) / backspaceIcon.bounds.width );
+    return getButtonDefault( backspaceIcon, function() {
       inputProperty.value = inputProperty.value.substr( 0, inputProperty.value.length - 1 );
     } );
   };
@@ -84,6 +83,7 @@ define( function( require ) {
       baseColor: CONSTANTS.CALCULATOR.BASE_COLOR,
       minHeight: BUTTON_SIZE.height,
       minWidth: BUTTON_SIZE.width,
+      xMargin: 2,
       listener: listener
     }, options ) );
   };
