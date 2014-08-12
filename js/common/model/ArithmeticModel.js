@@ -1,8 +1,8 @@
 // Copyright 2002-2013, University of Colorado Boulder
 
-//REVIEW Should make clear in header comment that this is essentially and abstract base class, not meant to be instantiated itself.
 /**
- * Base type for models in the 'Arithmetic' simulation.
+ * Base type for models in the 'Arithmetic' simulation.  This is used as an abstract base class for the model used in
+ * all of the screens.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -18,14 +18,12 @@ define( function( require ) {
   var PropertySet = require( 'AXON/PropertySet' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var Timer = require( 'JOIST/Timer' );
+  var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
 
   // images
   var phetGirlIcon1Image = require( 'image!ARITHMETIC/phet-girl-icon-1.png' );
   var phetGirlIcon2Image = require( 'image!ARITHMETIC/phet-girl-icon-2.png' );
   var phetGirlIcon3Image = require( 'image!ARITHMETIC/phet-girl-icon-3.png' );
-
-  // audio
-  var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
 
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
