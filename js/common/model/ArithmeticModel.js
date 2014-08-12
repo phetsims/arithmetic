@@ -29,26 +29,6 @@ define( function( require ) {
   var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
   var BLINKING_INTERVAL = require( 'ARITHMETIC/common/ArithmeticConstants' ).EQUATION.BLINKING_INTERVAL;
   var SMILE_DISAPPEAR_TIME = require( 'ARITHMETIC/common/ArithmeticConstants' ).SMILE_DISAPPEAR_TIME;
-  var levelDescriptions = [
-    // level 1
-    {
-      icon: phetGirlIcon1Image,
-      perfectScore: 6 * 6,
-      tableSize: 6
-    },
-    // level 2
-    {
-      icon: phetGirlIcon2Image,
-      perfectScore: 9 * 9,
-      tableSize: 9
-    },
-    // level 3
-    {
-      icon: phetGirlIcon3Image,
-      perfectScore: 12 * 12,
-      tableSize: 12
-    }
-  ];
 
   function ArithmeticModel() {
     var self = this;
@@ -57,7 +37,26 @@ define( function( require ) {
     this.simBounds = ScreenView.DEFAULT_LAYOUT_BOUNDS;
 
     // array of levels with description
-    this.levelDescriptions = levelDescriptions;
+    this.levelDescriptions = [
+      // level 1
+      {
+        icon: phetGirlIcon1Image,
+        perfectScore: 6 * 6,
+        tableSize: 6
+      },
+      // level 2
+      {
+        icon: phetGirlIcon2Image,
+        perfectScore: 9 * 9,
+        tableSize: 9
+      },
+      // level 3
+      {
+        icon: phetGirlIcon3Image,
+        perfectScore: 12 * 12,
+        tableSize: 12
+      }
+    ];
 
     // game level states
     this.state = [];
@@ -120,7 +119,7 @@ define( function( require ) {
         self.restoreGameState();
       }
       else if ( levelNumber ) {
-        self.game.initAnswerSheet( levelDescriptions[levelNumber - 1].tableSize );
+        self.game.initAnswerSheet( self.levelDescriptions[levelNumber - 1].tableSize );
         self.game.state = GAME_STATE.LEVEL_INIT;
       }
     } );
