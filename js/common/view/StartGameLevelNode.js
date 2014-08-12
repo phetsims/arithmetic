@@ -20,7 +20,7 @@ define( function( require ) {
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( {size: 24} );
-  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
   var STAR_NUMBER = CONSTANTS.STAR_NUMBER;
   var TAB_TITLE_FONT = new PhetFont( {size: 54} );
 

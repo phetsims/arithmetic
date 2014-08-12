@@ -13,7 +13,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
 
   // constants
-  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * @param stateProperty {Property} state of game property

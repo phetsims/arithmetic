@@ -14,7 +14,7 @@ define( function( require ) {
   var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
 
   // constants
-  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   function MultiplyModel() {
     var self = this;

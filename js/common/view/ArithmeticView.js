@@ -19,7 +19,7 @@ define( function( require ) {
   var WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
 
   // constants
-  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * @param model {Object} main model for screen

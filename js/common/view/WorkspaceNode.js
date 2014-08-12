@@ -19,7 +19,7 @@ define( function( require ) {
 
   // constants
   var BACK_BUTTON_CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).BACK_BUTTON;
-  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * @param model {Object} main model for screen

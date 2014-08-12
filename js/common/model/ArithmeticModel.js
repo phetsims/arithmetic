@@ -28,7 +28,7 @@ define( function( require ) {
   var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
 
   // constants
-  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
   var BLINKING_INTERVAL = require( 'ARITHMETIC/common/ArithmeticConstants' ).EQUATION.BLINKING_INTERVAL;
   var SMILE_DISAPPEAR_TIME = require( 'ARITHMETIC/common/ArithmeticConstants' ).SMILE_DISAPPEAR_TIME;
   var levelDescriptions = [

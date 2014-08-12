@@ -16,7 +16,7 @@ define( function( require ) {
 
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * @param levelDescriptions {Array} array of descriptions for each level.

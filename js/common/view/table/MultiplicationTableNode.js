@@ -20,7 +20,7 @@ define( function( require ) {
 
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).MULTIPLICATION_TABLE;
-  var GAME_STATE = require( 'ARITHMETIC/common/enum/GameState' );
+  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
   var TABLE_SIZE = CONSTANTS.SIZE;
 
   /**
