@@ -21,8 +21,6 @@ define( function( require ) {
       multiplierRight: undefined, // right multiplier
       product: undefined, // product of multiplication
       state: GAME_STATE.LEVEL_SELECT, // current game state
-      //REVIEW: Just wondering why the game starts off with a score of 1 and not zero.  Seems odd.
-      // This is score points for each task. If task done correctly - add this points to 'currentScore' value.
       scoreTask: 1 // score for current task
     } );
 
