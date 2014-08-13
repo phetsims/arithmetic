@@ -77,8 +77,9 @@ define( function( require ) {
           for ( j = 0; j <= tableSize; j++ ) {
             // first cell is 'X', other - multiplier numbers
             if ( j === 0 ) {
+              console.log( 'Math.round( buttonOptions.height * 0.85 ) = ' + Math.round( buttonOptions.height * 0.85 ) );
               hBox.addChild( self.cells[levelIndex][i][j] = new MultiplicationTableButtonMultiplierNode( '\u00D7', buttonOptions, {
-                font: new PhetFont( { size: 40 } ) // Size empirically determined
+                font: new PhetFont( { size: Math.round( buttonOptions.height * 0.85 ) } ) // Equation empirically determined, makes font smaller for larger tables.
               } ) );
             }
             else {
