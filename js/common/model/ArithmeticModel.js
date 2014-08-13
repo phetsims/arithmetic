@@ -188,6 +188,9 @@ define( function( require ) {
         // set best score
         self.setBestScore();
 
+        // play sound depend on result score
+        self.playLevelFinishedSound();
+
         // set best time
         if ( self.timerEnabled ) {
           self.gameTimer.stop();
@@ -256,6 +259,20 @@ define( function( require ) {
       this.bestScores.forEach( function( scoreProperty ) {
         scoreProperty.reset();
       } );
+    },
+    playLevelFinishedSound: function() {
+      var resultScore = this.currentScores[this.level - 1].value,
+        perfectScore = this.levelDescriptions[this.level - 1].perfectScore;
+
+      if ( resultScore === perfectScore ) {
+        this.gameAudioPlayer.gameOverPerfectScore();
+      }
+      else if ( resultScore === 0 ) {
+        this.gameAudioPlayer.gameOverZeroScore();
+      }
+      else {
+        this.gameAudioPlayer.gameOverImperfectScore();
+      }
     },
     refreshLevel: function( isWithoutScore ) {
       if ( !isWithoutScore ) {
