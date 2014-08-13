@@ -16,7 +16,6 @@ define( function( require ) {
   var GameTimer = require( 'VEGAS/GameTimer' );
   var Property = require( 'AXON/Property' );
   var PropertySet = require( 'AXON/PropertySet' );
-  var ScreenView = require( 'JOIST/ScreenView' );
   var Timer = require( 'JOIST/Timer' );
   var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
 
@@ -32,9 +31,6 @@ define( function( require ) {
 
   function ArithmeticModel() {
     var self = this;
-
-    // dimensions of the model's space
-    this.simBounds = ScreenView.DEFAULT_LAYOUT_BOUNDS;
 
     // array of levels with description
     this.levelDescriptions = [

@@ -21,6 +21,7 @@ define( function( require ) {
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( {size: 24} );
   var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
+  var SIM_BOUNDS = require( 'JOIST/ScreenView' ).DEFAULT_LAYOUT_BOUNDS;
   var STAR_NUMBER = CONSTANTS.STAR_NUMBER;
   var TAB_TITLE_FONT = new PhetFont( {size: 54} );
 
@@ -40,26 +41,25 @@ define( function( require ) {
    * @param timerEnabledProperty {Property} timer enable property.
    * Need to control visibility of best time label
    * @param titleString {String} title string for given screen
-   * @param simBounds {Bounds2} bounds of simulation
    *
    * @constructor
    */
-  function StartGameLevelNode( levelDescriptions, displayScorePropertyArray, levelProperty, stateProperty, bestTimeProperties, timerEnabledProperty, titleString, simBounds ) {
+  function StartGameLevelNode( levelDescriptions, displayScorePropertyArray, levelProperty, stateProperty, bestTimeProperties, timerEnabledProperty, titleString ) {
     var self = this;
     Node.call( this );
 
     // add title
     var tabTitle = new Text( titleString, {
       font: TAB_TITLE_FONT,
-      centerX: simBounds.width / 2,
-      centerY: simBounds.height / 4
+      centerX: SIM_BOUNDS.width / 2,
+      centerY: SIM_BOUNDS.height / 4
     } );
     this.addChild( tabTitle );
 
     // add choose level title
     var chooseLevelTitle = new Text( chooseYourLevelString, {
       font: CHOOSE_LEVEL_TITLE_FONT,
-      centerX: simBounds.width / 2,
+      centerX: SIM_BOUNDS.width / 2,
       centerY: tabTitle.bounds.maxY + 30
     } );
     this.addChild( chooseLevelTitle );
@@ -86,7 +86,7 @@ define( function( require ) {
       ) );
     } );
     selectLevelButtons.updateLayout();
-    selectLevelButtons.centerX = simBounds.width / 2;
+    selectLevelButtons.centerX = SIM_BOUNDS.width / 2;
     selectLevelButtons.top = chooseLevelTitle.bounds.maxY + 20;
     this.addChild( selectLevelButtons );
 
