@@ -58,7 +58,7 @@ define( function( require ) {
     this.state = [];
 
     PropertySet.call( this, {
-      level: 0, // level difficulty, zero-based in the model, though levels appear to the user to start
+      level: 0, // game level, 0 indicates the home screen
       input: '', // user's input value
       inputCursorVisibility: false,
       soundEnabled: true, // is sound active
@@ -99,11 +99,11 @@ define( function( require ) {
     } );
 
     // init game after choosing level
-    this.property( 'level' ).lazyLink( function( levelNumber ) {
+    this.property( 'level' ).lazyLink( function( level ) {
       // add time which user spent on level selection screen to saved time in state
       if ( self.timerEnabled ) {
-        if ( levelNumber && self.state[levelNumber - 1] && self.state[levelNumber - 1].isGameTimerRunning ) {
-          self.state[levelNumber - 1].elapsedTime += self.gameTimer.elapsedTime;
+        if ( level && self.state[level - 1] && self.state[level - 1].isGameTimerRunning ) {
+          self.state[level - 1].elapsedTime += self.gameTimer.elapsedTime;
         }
         else {
           self.gameTimer.elapsedTime = 0;
@@ -111,11 +111,11 @@ define( function( require ) {
       }
 
       // restore or init new state for game
-      if ( self.state[levelNumber - 1] ) {
+      if ( self.state[level - 1] ) {
         self.restoreGameState();
       }
-      else if ( levelNumber ) {
-        self.game.initAnswerSheet( self.levelDescriptions[levelNumber - 1].tableSize );
+      else if ( level ) {
+        self.game.initAnswerSheet( self.levelDescriptions[level - 1].tableSize );
         self.game.state = GAME_STATE.LEVEL_INIT;
       }
     } );
