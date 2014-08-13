@@ -120,7 +120,7 @@ define( function( require ) {
       }
     } );
 
-    // set next task if equation was filled
+    // handle game state transitions
     this.game.property( 'state' ).lazyLink( function( state ) {
       if ( state === GAME_STATE.LEVEL_INIT ) {
         // start timer
