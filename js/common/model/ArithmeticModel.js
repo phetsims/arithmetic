@@ -169,7 +169,7 @@ define( function( require ) {
           self.smileFace.isSmile = false;
           self.gameAudioPlayer.wrongAnswer();
 
-          self.game.state = GAME_STATE.START;
+          self.game.state = GAME_STATE.AWAITING_USER_INPUT;
 
           // return to start state
           Timer.setTimeout( function() {

@@ -50,7 +50,7 @@ define( function( require ) {
           continueCallback
         ).mutate( {centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2} ) );
       }
-      else if ( state === GAME_STATE.START ) {
+      else if ( state === GAME_STATE.AWAITING_USER_INPUT ) {
         self.removeAllChildren();
       }
     } );

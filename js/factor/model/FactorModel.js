@@ -36,7 +36,7 @@ define( function( require ) {
           self.game.product = multipliers.multiplierLeft * multipliers.multiplierRight;
 
           // set start state
-          self.game.state = GAME_STATE.START;
+          self.game.state = GAME_STATE.AWAITING_USER_INPUT;
         }
         else {
           // set level finished state

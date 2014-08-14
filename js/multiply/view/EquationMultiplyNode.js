@@ -29,7 +29,7 @@ define( function( require ) {
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, inputProperty, inputCursorVisibilityProperty );
 
     stateProperty.link( function( state ) {
-      if ( state === GAME_STATE.START ) {
+      if ( state === GAME_STATE.AWAITING_USER_INPUT ) {
         self.productInput.clear();
         self.productInput.focus();
       }

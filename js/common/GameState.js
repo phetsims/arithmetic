@@ -9,13 +9,13 @@ define( function() {
   'use strict';
 
   return Object.freeze( {
+    AWAITING_USER_INPUT: 'awaitingUserInput',
     EQUATION_FILLED: 'equationFilled',
     LEVEL_INIT: 'levelInit',
     LEVEL_FINISHED: 'levelFinished',
     LEVEL_SELECT: 'levelSelect',
     NEXT_TASK: 'nextTask',
     REFRESH_LEVEL: 'refreshLevel',
-    SHOW_STATISTICS: 'showStatistics',
-    START: 'start'
+    SHOW_STATISTICS: 'showStatistics'
   } );
 } );
