@@ -26,7 +26,7 @@ define( function( require ) {
    * @constructor
    */
 
-  function FaceWithPointsConfiguredNode( smileFaceModel ) {
+  function ArithmeticFaceWithPointsNode( smileFaceModel ) {
     var self = this;
     FaceWithPointsNode.call( this, {
       pointsFont: new PhetFont( { size: 26, weight: 'bold' } )
@@ -61,5 +61,5 @@ define( function( require ) {
     } );
   }
 
-  return inherit( FaceWithPointsNode, FaceWithPointsConfiguredNode );
+  return inherit( FaceWithPointsNode, ArithmeticFaceWithPointsNode );
 } );

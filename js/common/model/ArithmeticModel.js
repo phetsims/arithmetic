@@ -158,7 +158,7 @@ define( function( require ) {
           // set next task
           self.game.state = GAME_STATE.NEXT_TASK;
 
-          // After a little time, start fading out the smiling face.  See FaceWithPointsConfiguredNode.js for the fading.
+          // After a little time, start fading out the smiling face.  See ArithmeticFaceWithPointsNode.js for the fading.
           Timer.setTimeout( function() {
             self.smileFace.isVisible = false;
           }, ArithmeticConstants.SMILE_DISAPPEAR_TIME );
