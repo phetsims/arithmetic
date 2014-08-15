@@ -123,7 +123,7 @@ define( function( require ) {
       }
     } );
 
-    // handle game state transitions
+    // handles game state transitions that pertain to the model (does not require handling GAME_STATE.LEVEL_SELECT)
     this.game.property( 'state' ).lazyLink( function( state ) {
       if ( state === GAME_STATE.LEVEL_INIT ) {
         // start timer
