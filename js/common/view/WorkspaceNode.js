@@ -13,7 +13,7 @@ define( function( require ) {
   var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
   var FaceWithPointsConfiguredNode = require( 'ARITHMETIC/common/view/FaceWithPointsConfiguredNode' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var LevelCompletedConfiguredNode = require( 'ARITHMETIC/common/view/LevelCompletedConfiguredNode' );
+  var LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );
   var Node = require( 'SCENERY/nodes/Node' );
   var ReturnToLevelSelectButton = require( 'SCENERY_PHET/ReturnToLevelSelectButton' );
 
@@ -87,7 +87,7 @@ define( function( require ) {
     );
 
     // add node with statistic (will be shown after completing level)
-    this.addChild( new LevelCompletedConfiguredNode(
+    this.addChild( new LevelCompletedNodeWrapper(
         model.levelDescriptions,
         model.property( 'level' ),
         model.game.property( 'state' ),

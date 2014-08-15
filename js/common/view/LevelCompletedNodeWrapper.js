@@ -1,8 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Node with statistic shows after completing level.
- * It's represent score and time of current game and best game.
+ * This node shows the level completed node when the level complete state is reached.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -32,7 +31,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function LevelCompletedConfiguredNode( levelDescriptions, levelProperty, stateProperty, scoreProperties, timerEnabledProperty, timeProperty, bestTimes, continueCallback, layoutBounds ) {
+  function LevelCompletedNodeWrapper( levelDescriptions, levelProperty, stateProperty, scoreProperties, timerEnabledProperty, timeProperty, bestTimes, continueCallback, layoutBounds ) {
     var self = this;
     Node.call( this );
 
@@ -56,5 +55,5 @@ define( function( require ) {
     } );
   }
 
-  return inherit( Node, LevelCompletedConfiguredNode );
+  return inherit( Node, LevelCompletedNodeWrapper );
 } );
