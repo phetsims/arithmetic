@@ -10,14 +10,15 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
+  var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
   var GameModel = require( 'ARITHMETIC/common/model/GameModel' );
   var GameTimer = require( 'VEGAS/GameTimer' );
   var Property = require( 'AXON/Property' );
   var PropertySet = require( 'AXON/PropertySet' );
   var Timer = require( 'JOIST/Timer' );
-  var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
 
   // images
   var phetGirlIcon1Image = require( 'image!ARITHMETIC/phet-girl-icon-1.png' );
@@ -26,9 +27,11 @@ define( function( require ) {
 
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
-  var BLINKING_INTERVAL = require( 'ARITHMETIC/common/ArithmeticConstants' ).EQUATION.BLINKING_INTERVAL;
-  var SMILE_DISAPPEAR_TIME = require( 'ARITHMETIC/common/ArithmeticConstants' ).SMILE_DISAPPEAR_TIME;
 
+  /**
+   * Constructor for ArithmeticModel
+   * @constructor
+   */
   function ArithmeticModel() {
     var self = this;
 
@@ -62,7 +65,7 @@ define( function( require ) {
       input: '', // user's input value
       inputCursorVisibility: false,
       soundEnabled: true, // is sound active
-      timerEnabled: false // is time mode active
+      timerEnabled: false // is timer active
     } );
 
     // property necessary for tracing and changing inputCursorVisibility property
@@ -157,7 +160,7 @@ define( function( require ) {
           // set next task and hide smile face
           Timer.setTimeout( function() {
             self.smileFace.isVisible = false;
-          }, SMILE_DISAPPEAR_TIME );
+          }, ArithmeticConstants.SMILE_DISAPPEAR_TIME );
         }
         // incorrect answer
         else {
@@ -174,7 +177,7 @@ define( function( require ) {
           // return to start state
           Timer.setTimeout( function() {
             self.smileFace.isVisible = false;
-          }, SMILE_DISAPPEAR_TIME );
+          }, ArithmeticConstants.SMILE_DISAPPEAR_TIME );
         }
 
         // reset input field
@@ -339,7 +342,7 @@ define( function( require ) {
     step: function( dt ) {
       this.time += dt;
 
-      if ( this.time > BLINKING_INTERVAL ) {
+      if ( this.time > ArithmeticConstants.EQUATION.BLINKING_INTERVAL ) {
         this.inputCursorVisibility = !this.inputCursorVisibility;
         this.time = 0;
       }
