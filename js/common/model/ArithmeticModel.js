@@ -123,6 +123,14 @@ define( function( require ) {
       }
     } );
 
+    // When the smiling face has been shown and the user dismisses it,
+    // wait for a bit then, start fading out the smiling face.  The fading is done elsewhere (current ArithmeticFaceWithPointsNode.js)
+    var pauseThenFadeFace = function() {
+      Timer.setTimeout( function() {
+        self.smileFace.isVisible = false;
+      }, ArithmeticConstants.SMILE_DISAPPEAR_TIME );
+    };
+
     // handles game state transitions that pertain to the model (does not require handling GAME_STATE.LEVEL_SELECT)
     this.game.property( 'state' ).lazyLink( function( state ) {
       if ( state === GAME_STATE.LEVEL_INIT ) {
@@ -158,10 +166,7 @@ define( function( require ) {
           // set next task
           self.game.state = GAME_STATE.NEXT_TASK;
 
-          // After a little time, start fading out the smiling face.  See ArithmeticFaceWithPointsNode.js for the fading.
-          Timer.setTimeout( function() {
-            self.smileFace.isVisible = false;
-          }, ArithmeticConstants.SMILE_DISAPPEAR_TIME );
+          pauseThenFadeFace();
         }
         // incorrect answer
         else {
@@ -175,10 +180,7 @@ define( function( require ) {
 
           self.game.state = GAME_STATE.AWAITING_USER_INPUT;
 
-          // return to start state
-          Timer.setTimeout( function() {
-            self.smileFace.isVisible = false;
-          }, ArithmeticConstants.SMILE_DISAPPEAR_TIME );
+          pauseThenFadeFace();
         }
 
         // reset input field
