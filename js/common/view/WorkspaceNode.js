@@ -65,7 +65,7 @@ define( function( require ) {
       model.property( 'timerEnabled' ),
       model.gameTimer.property( 'elapsedTime' ),
       function() {
-        model.game.state = GAME_STATE.REFRESH_LEVEL;
+        model.gameModel.state = GAME_STATE.REFRESH_LEVEL;
       } );
     controlPanelNode.centerX = ( multiplicationTableNode.right + layoutBounds.maxX ) / 2;
     controlPanelNode.top = multiplicationTableNode.top;
@@ -90,7 +90,7 @@ define( function( require ) {
     this.addChild( new LevelCompletedNodeWrapper(
         model.levelDescriptions,
         model.property( 'level' ),
-        model.game.property( 'state' ),
+        model.gameModel.property( 'state' ),
         model.currentScores,
         model.property( 'timerEnabled' ),
         model.gameTimer.property( 'elapsedTime' ),
@@ -101,7 +101,7 @@ define( function( require ) {
         layoutBounds )
     );
 
-    model.game.property( 'state' ).link( function( state ) {
+    model.gameModel.property( 'state' ).link( function( state ) {
       self.visible = ( state !== GAME_STATE.LEVEL_SELECT );
     } );
   }

@@ -21,26 +21,26 @@ define( function( require ) {
     ArithmeticModel.call( this );
 
     // next task observer
-    this.game.property( 'state' ).link( function( state ) {
+    this.gameModel.property( 'state' ).link( function( state ) {
       if ( state === GAME_STATE.NEXT_TASK ) {
         // get available multipliers
-        var multipliers = self.game.getAvailableMultipliers();
+        var multipliers = self.gameModel.getAvailableMultipliers();
 
         if ( multipliers ) {
           // reset multipliers and score properties
-          self.game.property( 'scoreTask' ).reset();
-          self.game.property( 'multiplierLeft' ).reset();
-          self.game.property( 'multiplierRight' ).reset();
+          self.gameModel.property( 'scoreTask' ).reset();
+          self.gameModel.property( 'multiplierLeft' ).reset();
+          self.gameModel.property( 'multiplierRight' ).reset();
 
           // set product
-          self.game.product = multipliers.multiplierLeft * multipliers.multiplierRight;
+          self.gameModel.product = multipliers.multiplierLeft * multipliers.multiplierRight;
 
           // set start state
-          self.game.state = GAME_STATE.AWAITING_USER_INPUT;
+          self.gameModel.state = GAME_STATE.AWAITING_USER_INPUT;
         }
         else {
           // set level finished state
-          self.game.state = GAME_STATE.LEVEL_FINISHED;
+          self.gameModel.state = GAME_STATE.LEVEL_FINISHED;
         }
       }
     } );

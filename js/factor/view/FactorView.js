@@ -26,15 +26,15 @@ define( function( require ) {
       this,
       model,
       new MultiplicationTableFactorNode(
-        model.game,
+        model.gameModel,
         model.property( 'level' ),
         model.levelDescriptions
       ),
       new EquationFactorNode(
-        model.game.property( 'state' ),
-        model.game.property( 'multiplierLeft' ),
-        model.game.property( 'multiplierRight' ),
-        model.game.property( 'product' ),
+        model.gameModel.property( 'state' ),
+        model.gameModel.property( 'multiplierLeft' ),
+        model.gameModel.property( 'multiplierRight' ),
+        model.gameModel.property( 'product' ),
         model.property( 'inputCursorVisibility' )
       ),
       false,

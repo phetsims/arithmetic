@@ -26,14 +26,14 @@ define( function( require ) {
       this,
       model,
       new MultiplicationTableDivideNode(
-        model.game,
+        model.gameModel,
         model.property( 'level' ),
         model.levelDescriptions
       ),
       new EquationDivideNode(
-        model.game.property( 'multiplierLeft' ),
-        model.game.property( 'multiplierRight' ),
-        model.game.property( 'product' ),
+        model.gameModel.property( 'multiplierLeft' ),
+        model.gameModel.property( 'multiplierRight' ),
+        model.gameModel.property( 'product' ),
         model.property( 'input' ),
         model.property( 'inputCursorVisibility' ),
         model.property( 'linkToActiveInput' )

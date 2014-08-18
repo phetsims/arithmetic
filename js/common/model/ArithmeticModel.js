@@ -78,7 +78,7 @@ define( function( require ) {
     this.gameTimer = new GameTimer();
 
     // model for single game
-    this.game = new GameModel();
+    this.gameModel = new GameModel();
 
     // model for smile face
     this.smileFace = new FaceModel();
@@ -118,8 +118,8 @@ define( function( require ) {
         self.restoreGameState();
       }
       else if ( level ) {
-        self.game.initAnswerSheet( self.levelDescriptions[level - 1].tableSize );
-        self.game.state = GAME_STATE.LEVEL_INIT;
+        self.gameModel.initAnswerSheet( self.levelDescriptions[level - 1].tableSize );
+        self.gameModel.state = GAME_STATE.LEVEL_INIT;
       }
     } );
 
@@ -132,7 +132,7 @@ define( function( require ) {
     };
 
     // handles game state transitions that pertain to the model (does not require handling GAME_STATE.LEVEL_SELECT)
-    this.game.property( 'state' ).lazyLink( function( state ) {
+    this.gameModel.property( 'state' ).lazyLink( function( state ) {
       if ( state === GAME_STATE.LEVEL_INIT ) {
         // start timer
         self.gameTimer.start();
@@ -140,45 +140,45 @@ define( function( require ) {
         // update display score
         self.displayScores[self.level - 1].value = self.currentScores[self.level - 1].value;
 
-        self.game.state = GAME_STATE.NEXT_TASK;
+        self.gameModel.state = GAME_STATE.NEXT_TASK;
       }
       else if ( state === GAME_STATE.EQUATION_FILLED ) {
         // show smile face
         self.smileFace.isVisible = true;
 
         // correct answer
-        if ( self.game.multiplierLeft * self.game.multiplierRight === self.game.product ) {
+        if ( self.gameModel.multiplierLeft * self.gameModel.multiplierRight === self.gameModel.product ) {
 
           // increase total score
-          self.currentScores[self.level - 1].value += self.game.scoreTask;
+          self.currentScores[self.level - 1].value += self.gameModel.scoreTask;
 
           // update display score
           self.displayScores[self.level - 1].value = self.currentScores[self.level - 1].value;
 
           // set smile face view and play sound
-          self.smileFace.scoreFace = self.game.scoreTask;
+          self.smileFace.scoreFace = self.gameModel.scoreTask;
           self.smileFace.isSmile = true;
           self.gameAudioPlayer.correctAnswer();
 
           // mark answer in answer sheet
-          self.game.answerSheet[self.game.multiplierLeft - 1][self.game.multiplierRight - 1] = true;
+          self.gameModel.answerSheet[self.gameModel.multiplierLeft - 1][self.gameModel.multiplierRight - 1] = true;
 
           // set next task
-          self.game.state = GAME_STATE.NEXT_TASK;
+          self.gameModel.state = GAME_STATE.NEXT_TASK;
 
           pauseThenFadeFace();
         }
         // incorrect answer
         else {
           // player will not get points for this task
-          self.game.scoreTask = 0;
+          self.gameModel.scoreTask = 0;
 
           // set smile face view and play sound
-          self.smileFace.scoreFace = self.game.scoreTask;
+          self.smileFace.scoreFace = self.gameModel.scoreTask;
           self.smileFace.isSmile = false;
           self.gameAudioPlayer.wrongAnswer();
 
-          self.game.state = GAME_STATE.AWAITING_USER_INPUT;
+          self.gameModel.state = GAME_STATE.AWAITING_USER_INPUT;
 
           pauseThenFadeFace();
         }
@@ -204,11 +204,11 @@ define( function( require ) {
           }
         }
 
-        self.game.state = GAME_STATE.SHOW_STATISTICS;
+        self.gameModel.state = GAME_STATE.SHOW_STATISTICS;
       }
       else if ( state === GAME_STATE.REFRESH_LEVEL ) {
         self.refreshLevel();
-        self.game.state = GAME_STATE.NEXT_TASK;
+        self.gameModel.state = GAME_STATE.NEXT_TASK;
       }
     } );
   }
@@ -281,7 +281,7 @@ define( function( require ) {
         this.currentScores[this.level - 1].reset();
       }
       this.gameTimer.elapsedTime = 0;
-      this.game.reset();
+      this.gameModel.reset();
       this.smileFace.reset();
     },
     reset: function() {
@@ -315,12 +315,12 @@ define( function( require ) {
       this.linkToActiveInput = state.linkToActiveInput;
       this.input = state.input;
       this.gameTimer.elapsedTime = state.elapsedTime;
-      this.game.multiplierLeft = state.multiplierLeft;
-      this.game.multiplierRight = state.multiplierRight;
-      this.game.product = state.product;
-      this.game.scoreTask = state.scoreTask;
-      this.game.answerSheet = state.answerSheet;
-      this.game.state = state.state;
+      this.gameModel.multiplierLeft = state.multiplierLeft;
+      this.gameModel.multiplierRight = state.multiplierRight;
+      this.gameModel.product = state.product;
+      this.gameModel.scoreTask = state.scoreTask;
+      this.gameModel.answerSheet = state.answerSheet;
+      this.gameModel.state = state.state;
     },
     // save game state of current level
     saveGameState: function() {
@@ -328,13 +328,13 @@ define( function( require ) {
         input: this.input,
         isGameTimerRunning: this.gameTimer.isRunning,
         elapsedTime: this.gameTimer.elapsedTime,
-        multiplierLeft: this.game.multiplierLeft,
-        multiplierRight: this.game.multiplierRight,
-        product: this.game.product,
-        state: this.game.state,
+        multiplierLeft: this.gameModel.multiplierLeft,
+        multiplierRight: this.gameModel.multiplierRight,
+        product: this.gameModel.product,
+        state: this.gameModel.state,
         currentScore: this.currentScores[this.level - 1].value,
-        scoreTask: this.game.scoreTask,
-        answerSheet: _.cloneDeep( this.game.answerSheet ),
+        scoreTask: this.gameModel.scoreTask,
+        answerSheet: _.cloneDeep( this.gameModel.answerSheet ),
         linkToActiveInput: this.linkToActiveInput
       };
     },

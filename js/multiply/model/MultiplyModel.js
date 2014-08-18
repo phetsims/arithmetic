@@ -21,27 +21,27 @@ define( function( require ) {
     ArithmeticModel.call( this );
 
     // next task observer
-    this.game.property( 'state' ).link( function( state ) {
+    this.gameModel.property( 'state' ).link( function( state ) {
       if ( state === GAME_STATE.NEXT_TASK ) {
         // get available multipliers
-        var multipliers = self.game.getAvailableMultipliers();
+        var multipliers = self.gameModel.getAvailableMultipliers();
 
         if ( multipliers ) {
           // reset multipliers and score properties
-          self.game.property( 'multiplierLeft' ).reset();
-          self.game.property( 'multiplierRight' ).reset();
-          self.game.property( 'scoreTask' ).reset();
+          self.gameModel.property( 'multiplierLeft' ).reset();
+          self.gameModel.property( 'multiplierRight' ).reset();
+          self.gameModel.property( 'scoreTask' ).reset();
 
           // set left and right multipliers
-          self.game.multiplierLeft = multipliers.multiplierLeft;
-          self.game.multiplierRight = multipliers.multiplierRight;
+          self.gameModel.multiplierLeft = multipliers.multiplierLeft;
+          self.gameModel.multiplierRight = multipliers.multiplierRight;
 
           // set start state
-          self.game.state = GAME_STATE.AWAITING_USER_INPUT;
+          self.gameModel.state = GAME_STATE.AWAITING_USER_INPUT;
         }
         else {
           // set level finished state
-          self.game.state = GAME_STATE.LEVEL_FINISHED;
+          self.gameModel.state = GAME_STATE.LEVEL_FINISHED;
         }
       }
     } );
@@ -49,8 +49,8 @@ define( function( require ) {
 
   return inherit( ArithmeticModel, MultiplyModel, {
     checkAnswer: function() {
-      this.game.product = parseInt( this.input, 10 );
-      this.game.state = GAME_STATE.EQUATION_FILLED;
+      this.gameModel.product = parseInt( this.input, 10 );
+      this.gameModel.state = GAME_STATE.EQUATION_FILLED;
     }
   } );
 } );

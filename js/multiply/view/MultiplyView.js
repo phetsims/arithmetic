@@ -26,14 +26,14 @@ define( function( require ) {
       this,
       model,
       new MultiplicationTableMultiplyNode(
-        model.game,
+        model.gameModel,
         model.property( 'level' ),
         model.levelDescriptions
       ),
       new EquationMultiplyNode(
-        model.game.property( 'state' ),
-        model.game.property( 'multiplierLeft' ),
-        model.game.property( 'multiplierRight' ),
+        model.gameModel.property( 'state' ),
+        model.gameModel.property( 'multiplierLeft' ),
+        model.gameModel.property( 'multiplierRight' ),
         model.property( 'input' ),
         model.property( 'inputCursorVisibility' )
       ),
