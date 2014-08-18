@@ -50,12 +50,16 @@ define( function( require ) {
     } );
 
     // set visibility of smile face
+    var intervalId;
     faceModel.property( 'isVisible' ).link( function( isVisible ) {
+      // stop previous timer
+      Timer.clearInterval( intervalId );
+
       if ( isVisible ) {
         self.opacity = 1;
       }
       else {
-        var intervalId = Timer.setInterval( function() {
+        intervalId = Timer.setInterval( function() {
           self.opacity -= 1 / FADE_STEPS;
           if ( self.opacity <= 0 ) {
             self.opacity = 0;
