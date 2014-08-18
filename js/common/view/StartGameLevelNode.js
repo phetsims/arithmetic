@@ -49,9 +49,9 @@ define( function( require ) {
     this.addChild( chooseLevelTitle );
 
     // add select level buttons
-    var selectLevelButtons = new HBox( {spacing: 50} );
-    levelModels.forEach( function( level, levelIndex ) {
-      selectLevelButtons.addChild( new LevelStartButton(
+
+    var levelSelectButtons = levelModels.map( function( level, levelIndex ) {
+      return new LevelStartButton(
         new Image( level.icon ),
         STAR_NUMBER,
         function() {
@@ -67,17 +67,18 @@ define( function( require ) {
           bestTimeProperty: levelModels[levelIndex].property( 'bestTime' ),
           bestTimeVisibleProperty: timerEnabledProperty
         }
-      ) );
+      );
     } );
-    selectLevelButtons.updateLayout();
-    selectLevelButtons.top = chooseLevelTitle.bounds.maxY + 20;
-    this.addChild( selectLevelButtons );
+    var selectLevelButtonsHBox = new HBox( { spacing: 50, children: levelSelectButtons } );
+    selectLevelButtonsHBox.updateLayout();
+    selectLevelButtonsHBox.top = chooseLevelTitle.bounds.maxY + 20;
+    this.addChild( selectLevelButtonsHBox );
 
     // layout
-    tabTitle.centerX = selectLevelButtons.width / 2;
-    chooseLevelTitle.centerX = selectLevelButtons.width / 2;
+    tabTitle.centerX = selectLevelButtonsHBox.width / 2;
+    chooseLevelTitle.centerX = selectLevelButtonsHBox.width / 2;
     chooseLevelTitle.top = tabTitle.bottom + 20; // Spacing empirically determined
-    selectLevelButtons.top = chooseLevelTitle.bottom + 20;  // Spacing empirically determined
+    selectLevelButtonsHBox.top = chooseLevelTitle.bottom + 20;  // Spacing empirically determined
 
     stateProperty.link( function( state ) {
       self.visible = ( state === GAME_STATE.LEVEL_SELECT );
