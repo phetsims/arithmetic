@@ -28,7 +28,7 @@ define( function( require ) {
       new MultiplicationTableDivideNode(
         model.gameModel,
         model.property( 'level' ),
-        model.levelDescriptions
+        model.levelModels
       ),
       new EquationDivideNode(
         model.gameModel.property( 'multiplierLeft' ),

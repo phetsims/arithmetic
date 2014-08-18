@@ -24,7 +24,7 @@ define( function( require ) {
   var TABLE_SIZE = CONSTANTS.SIZE;
 
   /**
-   * @param levelDescriptions {Array} array of descriptions for each level.
+   * @param levelModels {Array} array of descriptions for each level.
    * For each level will be created multiplication table node
    * Necessary for representing best scores for each level
    * @param levelProperty {Property} level difficulty property
@@ -32,7 +32,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function MultiplicationTableNode( levelProperty, levelDescriptions, gameModel ) {
+  function MultiplicationTableNode( levelProperty, levelModels, gameModel ) {
     var self = this;
     var backgroundRect;
     Node.call( this );
@@ -51,7 +51,7 @@ define( function( require ) {
     } ) );
 
     // create view of times table for levels
-    levelDescriptions.forEach( function( level, levelIndex ) {
+    levelModels.forEach( function( level, levelIndex ) {
       var tableSize = level.tableSize;
       var buttonOptions = {
         lineWidth: 1,

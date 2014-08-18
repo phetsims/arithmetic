@@ -34,8 +34,8 @@ define( function( require ) {
     ScreenView.call( this );
 
     // add start game level buttons
-    this.addChild( new StartGameLevelNode( model.levelDescriptions, model.displayScores, model.property( 'level' ), model.gameModel.property( 'state' ),
-      model.bestTimes, model.property( 'timerEnabled' ), titleString ) );
+    this.addChild( new StartGameLevelNode( model.levelModels, model.property( 'level' ), model.gameModel.property( 'state' ),
+      model.property( 'timerEnabled' ), titleString ) );
 
     // add game components
     this.addChild( new WorkspaceNode( model, multiplicationTableNode, equationNode, isAddCalculatorNode, this.layoutBounds ) );

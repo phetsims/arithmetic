@@ -29,22 +29,18 @@ define( function( require ) {
   var chooseYourLevelString = require( 'string!ARITHMETIC/chooseYourLevel' );
 
   /**
-   * @param levelDescriptions {Array} array of descriptions for each level.
+   * @param levelModels {Array} array of descriptions for each level.
    * For each level will be created LevelStartButton node
-   * @param displayScorePropertyArray {Array} array of score properties for displaying
-   * Necessary for representing best scores for each level
    * @param levelProperty {Property} level difficulty property
    * @param stateProperty {Property} current state property.
    * Need to control visibility of this component
-   * @param bestTimeProperties {Array} array of best score properties.
-   *  Necessary for representing best time for each level
    * @param timerEnabledProperty {Property} timer enable property.
    * Need to control visibility of best time label
    * @param titleString {String} title string for given screen
    *
    * @constructor
    */
-  function StartGameLevelNode( levelDescriptions, displayScorePropertyArray, levelProperty, stateProperty, bestTimeProperties, timerEnabledProperty, titleString ) {
+  function StartGameLevelNode( levelModels, levelProperty, stateProperty, timerEnabledProperty, titleString ) {
     var self = this;
     Node.call( this );
 
@@ -66,21 +62,21 @@ define( function( require ) {
 
     // add select level buttons
     var selectLevelButtons = new HBox( {spacing: 50} );
-    levelDescriptions.forEach( function( level, levelIndex ) {
+    levelModels.forEach( function( level, levelIndex ) {
       selectLevelButtons.addChild( new LevelStartButton(
         new Image( level.icon ),
         STAR_NUMBER,
         function() {
           levelProperty.value = levelIndex + 1;
         },
-        displayScorePropertyArray[levelIndex],
+        levelModels[levelIndex].property( 'displayScore' ),
         level.perfectScore,
         {
           buttonWidth: 135,
           buttonHeight: 135,
           backgroundColor: 'white',
           highlightedBackgroundColor: 'white',
-          bestTimeProperty: bestTimeProperties[levelIndex],
+          bestTimeProperty: levelModels[levelIndex].property( 'bestTime' ),
           bestTimeVisibleProperty: timerEnabledProperty
         }
       ) );

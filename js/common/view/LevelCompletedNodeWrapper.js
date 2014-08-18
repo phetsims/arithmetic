@@ -18,20 +18,18 @@ define( function( require ) {
   var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
-   * @param levelDescriptions {Array} array of descriptions for each level.
+   * @param levelModels {Array} array of descriptions for each level.
    * Necessary to get perfect score for completed level
    * @param levelProperty {Property} level difficulty property
    * @param stateProperty {Property} state of game property
-   * @param scoreProperties {Array} array of total scores for this completed level
    * @param timerEnabledProperty {Property} time enabling flag
    * @param timeProperty {Property} time spend for level completing
-   * @param bestTimes {Array} best times spend for level completing
    * @param continueCallback {Function} callback listener for continue button
    * @param layoutBounds {Bounds2} bounds of main screen. Necessary for placing component
    *
    * @constructor
    */
-  function LevelCompletedNodeWrapper( levelDescriptions, levelProperty, stateProperty, scoreProperties, timerEnabledProperty, timeProperty, bestTimes, continueCallback, layoutBounds ) {
+  function LevelCompletedNodeWrapper( levelModels, levelProperty, stateProperty, timerEnabledProperty, timeProperty, continueCallback, layoutBounds ) {
     var self = this;
     Node.call( this );
 
@@ -39,13 +37,13 @@ define( function( require ) {
       if ( state === GAME_STATE.SHOW_STATISTICS ) {
         self.addChild( new LevelCompletedNode(
           levelProperty.value,
-          scoreProperties[levelProperty.value - 1].value,
-          levelDescriptions[levelProperty.value - 1].perfectScore,
+          levelModels[levelProperty.value - 1].currentScore,
+          levelModels[levelProperty.value - 1].perfectScore,
           CONSTANTS.STAR_NUMBER,
           timerEnabledProperty.value,
           timeProperty.value,
-          bestTimes[levelProperty.value - 1].value,
-          (timeProperty.value < bestTimes[levelProperty.value - 1]),
+          levelModels[levelProperty.value - 1].bestTime,
+          (timeProperty.value < levelModels[levelProperty.value - 1].bestTime),
           continueCallback
         ).mutate( {centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2} ) );
       }

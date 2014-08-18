@@ -28,7 +28,7 @@ define( function( require ) {
       new MultiplicationTableMultiplyNode(
         model.gameModel,
         model.property( 'level' ),
-        model.levelDescriptions
+        model.levelModels
       ),
       new EquationMultiplyNode(
         model.gameModel.property( 'state' ),

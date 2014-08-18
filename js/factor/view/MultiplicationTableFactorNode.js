@@ -21,13 +21,13 @@ define( function( require ) {
   /**
    * @param gameModel {Object} model for single task
    * @param levelProperty {Property} level difficulty property
-   * @param levelDescriptions {Array} array of descriptions for each level
+   * @param levelModels {Array} array of descriptions for each level
    *
    * @constructor
    */
-  function MultiplicationTableFactorNode( gameModel, levelProperty, levelDescriptions ) {
+  function MultiplicationTableFactorNode( gameModel, levelProperty, levelModels ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, levelDescriptions, gameModel );
+    MultiplicationTableNode.call( this, levelProperty, levelModels, gameModel );
 
     this._buttonModel = [];
 

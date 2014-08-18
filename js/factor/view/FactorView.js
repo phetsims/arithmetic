@@ -28,7 +28,7 @@ define( function( require ) {
       new MultiplicationTableFactorNode(
         model.gameModel,
         model.property( 'level' ),
-        model.levelDescriptions
+        model.levelModels
       ),
       new EquationFactorNode(
         model.gameModel.property( 'state' ),

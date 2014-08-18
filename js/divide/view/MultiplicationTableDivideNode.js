@@ -19,13 +19,13 @@ define( function( require ) {
   /**
    * @param gameModel {Object} model for single task
    * @param levelProperty {Property} level difficulty property
-   * @param levelDescriptions {Array} array of descriptions for each level
+   * @param levelModels {Array} array of descriptions for each level
    *
    * @constructor
    */
-  function MultiplicationTableDivideNode( gameModel, levelProperty, levelDescriptions ) {
+  function MultiplicationTableDivideNode( gameModel, levelProperty, levelModels ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, levelDescriptions, gameModel );
+    MultiplicationTableNode.call( this, levelProperty, levelModels, gameModel );
 
     gameModel.property( 'state' ).lazyLink( function( state ) {
       // set view for multiplication table after choosing left and right multipliers

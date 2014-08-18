@@ -34,14 +34,14 @@ define( function( require ) {
 
   /**
    * @param levelProperty {Property} property for level displaying label
-   * @param scoreProperties {Array} array of properties for score counter component
+   * @param levelModels {PropertySet} array of properties for score counter component
    * @param timerEnabledProperty {Property} time enabling flag
    * @param timeProperty {Property} property for elapsed time
    * @param refreshLevelCallback {Function} callback listener for refresh level button
    *
    * @constructor
    */
-  function ControlPanelNode( levelProperty, scoreProperties, timerEnabledProperty, timeProperty, refreshLevelCallback ) {
+  function ControlPanelNode( levelProperty, levelModels, timerEnabledProperty, timeProperty, refreshLevelCallback ) {
     var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR, stroke: 'gray'} );
     var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), FONT_BOLD );
     var scoreText = new Text( StringUtils.format( scoreString, '0' ), FONT );
@@ -81,12 +81,12 @@ define( function( require ) {
     levelProperty.lazyLink( function( level ) {
       levelText.setText( StringUtils.format( pattern_level_0levelNumber, level.toString() ) );
 
-      scoreProperties.forEach( function( scoreProperty ) {
-        scoreProperty.unlink( updateScore );
+      levelModels.forEach( function( levelModel ) {
+        levelModel.property( 'currentScore' ).unlink( updateScore );
       } );
 
       if ( level ) {
-        scoreProperties[level - 1].link( updateScore );
+        levelModels[level - 1].property( 'currentScore' ).link( updateScore );
       }
     } );
 

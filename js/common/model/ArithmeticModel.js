@@ -16,7 +16,7 @@ define( function( require ) {
   var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
   var GameModel = require( 'ARITHMETIC/common/model/GameModel' );
   var GameTimer = require( 'VEGAS/GameTimer' );
-  var Property = require( 'AXON/Property' );
+  var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
   var PropertySet = require( 'AXON/PropertySet' );
   var Timer = require( 'JOIST/Timer' );
 
@@ -36,25 +36,13 @@ define( function( require ) {
     var self = this;
 
     // array of levels with description
-    this.levelDescriptions = [
+    this.levelModels = [
       // level 1
-      {
-        icon: phetGirlIcon1Image,
-        perfectScore: 6 * 6,
-        tableSize: 6
-      },
+      new LevelModel( 6, phetGirlIcon1Image ),
       // level 2
-      {
-        icon: phetGirlIcon2Image,
-        perfectScore: 9 * 9,
-        tableSize: 9
-      },
+      new LevelModel( 9, phetGirlIcon2Image ),
       // level 3
-      {
-        icon: phetGirlIcon3Image,
-        perfectScore: 12 * 12,
-        tableSize: 12
-      }
+      new LevelModel( 12, phetGirlIcon3Image )
     ];
 
     // game level states
@@ -83,24 +71,6 @@ define( function( require ) {
     // model for smile face
     this.faceModel = new FaceModel();
 
-    // best times and scores, equal to number of levels
-    this.bestTimes = [];
-    this.bestScores = [];
-    this.currentScores = []; // current score for each level
-    this.displayScores = []; // score displaying in level select buttons
-
-    this.levelDescriptions.forEach( function() {
-      var displayScoreProperty = new Property( 0 );
-      var bestScoreProperty = new Property( 0 );
-      var currentScoreProperty = new Property( 0 );
-      var bestTime = new Property( null );
-
-      self.bestTimes.push( bestTime );
-      self.displayScores.push( displayScoreProperty );
-      self.bestScores.push( bestScoreProperty );
-      self.currentScores.push( currentScoreProperty );
-    } );
-
     // init game after choosing level
     this.property( 'level' ).lazyLink( function( level ) {
       // add time which user spent on level selection screen to saved time in state
@@ -118,7 +88,7 @@ define( function( require ) {
         self.restoreGameState();
       }
       else if ( level ) {
-        self.gameModel.initAnswerSheet( self.levelDescriptions[level - 1].tableSize );
+        self.gameModel.initAnswerSheet( self.levelModels[level - 1].tableSize );
         self.gameModel.state = GAME_STATE.LEVEL_INIT;
       }
     } );
@@ -138,7 +108,7 @@ define( function( require ) {
         self.gameTimer.start();
 
         // update display score
-        self.displayScores[self.level - 1].value = self.currentScores[self.level - 1].value;
+        self.levelModels[self.level - 1].displayScore = self.levelModels[self.level - 1].currentScore;
 
         self.gameModel.state = GAME_STATE.NEXT_TASK;
       }
@@ -150,10 +120,10 @@ define( function( require ) {
         if ( self.gameModel.multiplierLeft * self.gameModel.multiplierRight === self.gameModel.product ) {
 
           // increase total score
-          self.currentScores[self.level - 1].value += self.gameModel.scoreTask;
+          self.levelModels[self.level - 1].currentScore += self.gameModel.scoreTask;
 
           // update display score
-          self.displayScores[self.level - 1].value = self.currentScores[self.level - 1].value;
+          self.levelModels[self.level - 1].displayScore = self.levelModels[self.level - 1].currentScore;
 
           // set smile face view and play sound
           self.faceModel.scoreFace = self.gameModel.scoreTask;
@@ -187,20 +157,17 @@ define( function( require ) {
         self.property( 'input' ).reset();
       }
       else if ( state === GAME_STATE.LEVEL_FINISHED ) {
-        // set best score
-        self.setBestScore();
-
         // play sound depend on result score
         self.playLevelFinishedSound();
 
         // set best time
         if ( self.timerEnabled ) {
           self.gameTimer.stop();
-          if ( self.bestTimes[self.level - 1].value === null ) {
-            self.bestTimes[self.level - 1].value = self.gameTimer.elapsedTime;
+          if ( self.levelModels[self.level - 1].bestTime === null ) {
+            self.levelModels[self.level - 1].bestTime = self.gameTimer.elapsedTime;
           }
           else {
-            self.bestTimes[self.level - 1].value = Math.min( self.bestTimes[self.level - 1].value, self.gameTimer.elapsedTime );
+            self.levelModels[self.level - 1].bestTime = Math.min( self.levelModels[self.level - 1].bestTime, self.gameTimer.elapsedTime );
           }
         }
 
@@ -229,9 +196,6 @@ define( function( require ) {
       // should be defined in child types
     },
     finishLevel: function() {
-      // update best score value for current level
-      this.setBestScore();
-
       // refresh current level
       this.refreshLevel();
 
@@ -241,30 +205,14 @@ define( function( require ) {
       // set level value equal to unselected
       this.level = 0;
     },
-    clearBestTimesAndScores: function() {
-      // clear best times
-      this.bestTimes.forEach( function( bestTimeProperty ) {
-        bestTimeProperty.reset();
-      } );
-
-      // clear current scores
-      this.currentScores.forEach( function( currentProperty ) {
-        currentProperty.reset();
-      } );
-
-      // clear display scores
-      this.displayScores.forEach( function( displayProperty ) {
-        displayProperty.reset();
-      } );
-
-      // clear best scores
-      this.bestScores.forEach( function( scoreProperty ) {
-        scoreProperty.reset();
+    resetLevelModels: function() {
+      this.levelModels.forEach( function( levelModel ) {
+        levelModel.reset();
       } );
     },
     playLevelFinishedSound: function() {
-      var resultScore = this.currentScores[this.level - 1].value,
-        perfectScore = this.levelDescriptions[this.level - 1].perfectScore;
+      var resultScore = this.levelModels[this.level - 1].currentScore,
+        perfectScore = this.levelModels[this.level - 1].perfectScore;
 
       if ( resultScore === perfectScore ) {
         this.gameAudioPlayer.gameOverPerfectScore();
@@ -278,8 +226,9 @@ define( function( require ) {
     },
     refreshLevel: function( isWithoutScore ) {
       if ( !isWithoutScore ) {
-        this.currentScores[this.level - 1].reset();
+        this.levelModels[this.level - 1].property( 'currentScore' ).reset();
       }
+      this.property( 'input' ).reset();
       this.gameTimer.elapsedTime = 0;
       this.gameModel.reset();
       this.faceModel.reset();
@@ -287,8 +236,8 @@ define( function( require ) {
     reset: function() {
       PropertySet.prototype.reset.call( this );
 
-      // clear best times and scores
-      this.clearBestTimesAndScores();
+      // reset levels model
+      this.resetLevelModels();
 
       // clear game level states
       this.clearGameStates();
@@ -311,7 +260,7 @@ define( function( require ) {
         this.gameTimer.stop();
       }
 
-      this.currentScores[this.level - 1].value = state.currentScore;
+      this.levelModels[this.level - 1].currentScore = state.currentScore;
       this.linkToActiveInput = state.linkToActiveInput;
       this.input = state.input;
       this.gameTimer.elapsedTime = state.elapsedTime;
@@ -332,15 +281,11 @@ define( function( require ) {
         multiplierRight: this.gameModel.multiplierRight,
         product: this.gameModel.product,
         state: this.gameModel.state,
-        currentScore: this.currentScores[this.level - 1].value,
+        currentScore: this.levelModels[this.level - 1].currentScore,
         scoreTask: this.gameModel.scoreTask,
         answerSheet: _.cloneDeep( this.gameModel.answerSheet ),
         linkToActiveInput: this.linkToActiveInput
       };
-    },
-    // set max score for current level
-    setBestScore: function() {
-      this.bestScores[this.level - 1].value = Math.max( this.bestScores[this.level - 1].value, this.currentScores[this.level - 1].value );
     },
     step: function( dt ) {
       this.time += dt;
