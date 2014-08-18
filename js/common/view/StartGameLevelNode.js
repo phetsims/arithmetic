@@ -36,6 +36,7 @@ define( function( require ) {
    * @param timerEnabledProperty {Property} timer enable property.
    * Need to control visibility of best time label
    * @param titleString {String} title string for given screen
+   * @param options {Object} title string for given screen
    *
    * @constructor
    */
