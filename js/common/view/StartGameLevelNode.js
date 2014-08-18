@@ -21,7 +21,6 @@ define( function( require ) {
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( {size: 24} );
   var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
-  var SIM_BOUNDS = require( 'JOIST/ScreenView' ).DEFAULT_LAYOUT_BOUNDS;
   var STAR_NUMBER = CONSTANTS.STAR_NUMBER;
   var TAB_TITLE_FONT = new PhetFont( {size: 54} );
 
@@ -40,24 +39,16 @@ define( function( require ) {
    *
    * @constructor
    */
-  function StartGameLevelNode( levelModels, levelProperty, stateProperty, timerEnabledProperty, titleString ) {
+  function StartGameLevelNode( levelModels, levelProperty, stateProperty, timerEnabledProperty, titleString, options ) {
     var self = this;
     Node.call( this );
 
     // add title
-    var tabTitle = new Text( titleString, {
-      font: TAB_TITLE_FONT,
-      centerX: SIM_BOUNDS.width / 2,
-      centerY: SIM_BOUNDS.height / 4
-    } );
+    var tabTitle = new Text( titleString, { font: TAB_TITLE_FONT } );
     this.addChild( tabTitle );
 
     // add choose level title
-    var chooseLevelTitle = new Text( chooseYourLevelString, {
-      font: CHOOSE_LEVEL_TITLE_FONT,
-      centerX: SIM_BOUNDS.width / 2,
-      centerY: tabTitle.bounds.maxY + 30
-    } );
+    var chooseLevelTitle = new Text( chooseYourLevelString, { font: CHOOSE_LEVEL_TITLE_FONT } );
     this.addChild( chooseLevelTitle );
 
     // add select level buttons
@@ -82,13 +73,21 @@ define( function( require ) {
       ) );
     } );
     selectLevelButtons.updateLayout();
-    selectLevelButtons.centerX = SIM_BOUNDS.width / 2;
     selectLevelButtons.top = chooseLevelTitle.bounds.maxY + 20;
     this.addChild( selectLevelButtons );
+
+    // layout
+    tabTitle.centerX = selectLevelButtons.width / 2;
+    chooseLevelTitle.centerX = selectLevelButtons.width / 2;
+    chooseLevelTitle.top = tabTitle.bottom + 20; // Spacing empirically determined
+    selectLevelButtons.top = chooseLevelTitle.bottom + 20;  // Spacing empirically determined
 
     stateProperty.link( function( state ) {
       self.visible = ( state === GAME_STATE.LEVEL_SELECT );
     } );
+
+    // pass options through to superclass
+    this.mutate( options );
   }
 
   return inherit( Node, StartGameLevelNode );

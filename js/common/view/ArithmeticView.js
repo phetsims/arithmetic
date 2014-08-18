@@ -35,7 +35,7 @@ define( function( require ) {
 
     // add start game level buttons
     this.addChild( new StartGameLevelNode( model.levelModels, model.property( 'level' ), model.gameModel.property( 'state' ),
-      model.property( 'timerEnabled' ), titleString ) );
+      model.property( 'timerEnabled' ), titleString, { centerX: this.layoutBounds.centerX, centerY: this.layoutBounds.height * 0.4 } ) );
 
     // add game components
     this.addChild( new WorkspaceNode( model, multiplicationTableNode, equationNode, isAddCalculatorNode, this.layoutBounds ) );
