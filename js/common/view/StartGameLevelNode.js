@@ -28,16 +28,12 @@ define( function( require ) {
   var chooseYourLevelString = require( 'string!ARITHMETIC/chooseYourLevel' );
 
   /**
-   * @param levelModels {Array} array of descriptions for each level.
-   * For each level will be created LevelStartButton node
+   * @param levelModels {Array} An array of descriptions for each level, where one button is created for each level.
    * @param levelProperty {Property} level difficulty property
-   * @param stateProperty {Property} current state property.
-   * Need to control visibility of this component
-   * @param timerEnabledProperty {Property} timer enable property.
-   * Need to control visibility of best time label
+   * @param stateProperty {Property} Current state property, needed to control visibility of this component
+   * @param timerEnabledProperty {Property} timer enable property, needed to control visibility of best time label.
    * @param titleString {String} title string for given screen
    * @param options {Object} title string for given screen
-   *
    * @constructor
    */
   function StartGameLevelNode( levelModels, levelProperty, stateProperty, timerEnabledProperty, titleString, options ) {
