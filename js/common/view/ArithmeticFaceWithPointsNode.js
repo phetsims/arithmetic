@@ -29,7 +29,8 @@ define( function( require ) {
   function ArithmeticFaceWithPointsNode( faceModel ) {
     var self = this;
     FaceWithPointsNode.call( this, {
-      pointsFont: new PhetFont( { size: 26, weight: 'bold' } )
+      pointsFont: new PhetFont( { size: 26, weight: 'bold' } ),
+      opacity: faceModel.isVisible ? 1 : 0 // match initial visibility
     } );
 
     // add observers
@@ -51,7 +52,7 @@ define( function( require ) {
 
     // set visibility of smile face
     var intervalId = null;
-    faceModel.property( 'isVisible' ).link( function( isVisible ) {
+    faceModel.property( 'isVisible' ).lazyLink( function( isVisible ) {
 
       // stop previous timer (if present)
       if ( intervalId !== null ) {
