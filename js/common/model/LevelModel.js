@@ -22,6 +22,8 @@ define( function( require ) {
     this.tableSize = tableSize;
     this.perfectScore = tableSize * tableSize;
     this.icon = iconImage;
+
+    this.state = null;
   }
 
   return inherit( PropertySet, LevelModel, {
