@@ -20,13 +20,13 @@ define( function( require ) {
   var SMILE_DISAPPEAR_TIME = require( 'ARITHMETIC/common/ArithmeticConstants' ).SMILE_DISAPPEAR_TIME;
 
   /**
-   * @param smileFaceModel {Object} model for smile face.
+   * @param faceModel {Object} model for smile face.
    * Contains 'scoreFace', 'isSmile', 'isVisible' properties
    *
    * @constructor
    */
 
-  function ArithmeticFaceWithPointsNode( smileFaceModel ) {
+  function ArithmeticFaceWithPointsNode( faceModel ) {
     var self = this;
     FaceWithPointsNode.call( this, {
       pointsFont: new PhetFont( { size: 26, weight: 'bold' } )
@@ -35,12 +35,12 @@ define( function( require ) {
     // add observers
 
     // set score of smile face
-    smileFaceModel.property( 'scoreFace' ).link( function( points ) {
+    faceModel.property( 'scoreFace' ).link( function( points ) {
       self.setPoints( points );
     } );
 
     // set smile face emotion
-    smileFaceModel.property( 'isSmile' ).link( function( isFaceSmile ) {
+    faceModel.property( 'isSmile' ).link( function( isFaceSmile ) {
       if ( isFaceSmile ) {
         self.smile();
       }
@@ -50,7 +50,7 @@ define( function( require ) {
     } );
 
     // set visibility of smile face
-    smileFaceModel.property( 'isVisible' ).link( function( isVisible ) {
+    faceModel.property( 'isVisible' ).link( function( isVisible ) {
       if ( isVisible ) {
         self.opacity = 1;
       }

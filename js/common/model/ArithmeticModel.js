@@ -81,7 +81,7 @@ define( function( require ) {
     this.gameModel = new GameModel();
 
     // model for smile face
-    this.smileFace = new FaceModel();
+    this.faceModel = new FaceModel();
 
     // best times and scores, equal to number of levels
     this.bestTimes = [];
@@ -127,7 +127,7 @@ define( function( require ) {
     // wait for a bit then, start fading out the smiling face.  The fading is done elsewhere (current ArithmeticFaceWithPointsNode.js)
     var pauseThenFadeFace = function() {
       Timer.setTimeout( function() {
-        self.smileFace.isVisible = false;
+        self.faceModel.isVisible = false;
       }, ArithmeticConstants.SMILE_DISAPPEAR_TIME );
     };
 
@@ -144,7 +144,7 @@ define( function( require ) {
       }
       else if ( state === GAME_STATE.EQUATION_FILLED ) {
         // show smile face
-        self.smileFace.isVisible = true;
+        self.faceModel.isVisible = true;
 
         // correct answer
         if ( self.gameModel.multiplierLeft * self.gameModel.multiplierRight === self.gameModel.product ) {
@@ -156,8 +156,8 @@ define( function( require ) {
           self.displayScores[self.level - 1].value = self.currentScores[self.level - 1].value;
 
           // set smile face view and play sound
-          self.smileFace.scoreFace = self.gameModel.scoreTask;
-          self.smileFace.isSmile = true;
+          self.faceModel.scoreFace = self.gameModel.scoreTask;
+          self.faceModel.isSmile = true;
           self.gameAudioPlayer.correctAnswer();
 
           // mark answer in answer sheet
@@ -174,8 +174,8 @@ define( function( require ) {
           self.gameModel.scoreTask = 0;
 
           // set smile face view and play sound
-          self.smileFace.scoreFace = self.gameModel.scoreTask;
-          self.smileFace.isSmile = false;
+          self.faceModel.scoreFace = self.gameModel.scoreTask;
+          self.faceModel.isSmile = false;
           self.gameAudioPlayer.wrongAnswer();
 
           self.gameModel.state = GAME_STATE.AWAITING_USER_INPUT;
@@ -282,7 +282,7 @@ define( function( require ) {
       }
       this.gameTimer.elapsedTime = 0;
       this.gameModel.reset();
-      this.smileFace.reset();
+      this.faceModel.reset();
     },
     reset: function() {
       PropertySet.prototype.reset.call( this );

@@ -82,7 +82,7 @@ define( function( require ) {
 
     // add smile face
     this.addChild( new ArithmeticFaceWithPointsNode(
-        model.smileFace
+        model.faceModel
       ).mutate( {bottom: layoutBounds.maxY * 0.95, left: layoutBounds.maxX * 0.04} )
     );
 
