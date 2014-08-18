@@ -117,13 +117,13 @@ define( function( require ) {
         if ( self.gameModel.multiplierLeft * self.gameModel.multiplierRight === self.gameModel.product ) {
 
           // increase total score
-          self.levelModels[self.level - 1].currentScore += self.gameModel.scoreTask;
+          self.levelModels[self.level - 1].currentScore += self.gameModel.possiblePoints;
 
           // update display score
           self.levelModels[self.level - 1].displayScore = self.levelModels[self.level - 1].currentScore;
 
           // set smile face view and play sound
-          self.faceModel.scoreFace = self.gameModel.scoreTask;
+          self.faceModel.scoreFace = self.gameModel.possiblePoints;
           self.faceModel.isSmile = true;
           self.gameAudioPlayer.correctAnswer();
 
@@ -138,10 +138,10 @@ define( function( require ) {
         // incorrect answer
         else {
           // player will not get points for this task
-          self.gameModel.scoreTask = 0;
+          self.gameModel.possiblePoints = 0;
 
           // set smile face view and play sound
-          self.faceModel.scoreFace = self.gameModel.scoreTask;
+          self.faceModel.scoreFace = self.gameModel.possiblePoints;
           self.faceModel.isSmile = false;
           self.gameAudioPlayer.wrongAnswer();
 
@@ -265,7 +265,7 @@ define( function( require ) {
       this.gameModel.multiplierLeft = state.multiplierLeft;
       this.gameModel.multiplierRight = state.multiplierRight;
       this.gameModel.product = state.product;
-      this.gameModel.scoreTask = state.scoreTask;
+      this.gameModel.possiblePoints = state.possiblePoints;
       this.gameModel.answerSheet = state.answerSheet;
       this.gameModel.state = state.state;
       this.input = state.input;
@@ -281,7 +281,7 @@ define( function( require ) {
         product: this.gameModel.product,
         state: this.gameModel.state,
         currentScore: this.levelModels[this.level - 1].currentScore,
-        scoreTask: this.gameModel.scoreTask,
+        possiblePoints: this.gameModel.possiblePoints,
         answerSheet: _.cloneDeep( this.gameModel.answerSheet ),
         linkToActiveInput: this.linkToActiveInput
       };

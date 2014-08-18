@@ -21,10 +21,7 @@ define( function( require ) {
       multiplierRight: undefined, // right multiplier
       product: undefined, // product of multiplication
       state: GAME_STATE.LEVEL_SELECT, // current game state
-      // NOTE: initial value is equal to max points that player can get for completing one task
-      // scoreTask value will be added to currentScores value after completing single task
-      // in case of incorrect answer scoreTask value will be decreased
-      scoreTask: 1 // score for current task
+      possiblePoints: 1 // points for correct completion of current task, can go down on incorrect answers
     } );
 
     this.answerSheet = [];

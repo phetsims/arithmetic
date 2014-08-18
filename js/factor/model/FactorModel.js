@@ -28,7 +28,7 @@ define( function( require ) {
 
         if ( multipliers ) {
           // reset multipliers and score properties
-          self.gameModel.property( 'scoreTask' ).reset();
+          self.gameModel.property( 'possiblePoints' ).reset();
           self.gameModel.property( 'multiplierLeft' ).reset();
           self.gameModel.property( 'multiplierRight' ).reset();
 

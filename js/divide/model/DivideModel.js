@@ -35,7 +35,7 @@ define( function( require ) {
           self.gameModel.property( 'multiplierLeft' ).reset();
           self.gameModel.property( 'multiplierRight' ).reset();
           self.gameModel.property( 'product' ).reset();
-          self.gameModel.property( 'scoreTask' ).reset();
+          self.gameModel.property( 'possiblePoints' ).reset();
 
           // set product
           self.gameModel.product = multipliers.multiplierLeft * multipliers.multiplierRight;
