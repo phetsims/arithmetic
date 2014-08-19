@@ -166,7 +166,9 @@ define( function( require ) {
   return inherit( PropertySet, ArithmeticModel, {
 
     //Get the current level model, to make some of the code slightly more readable
-    get currentLevelModel() { return this.levelModels[this.level]; },
+    get currentLevelModel() {
+      return this.levelModels[this.level];
+    },
 
     back: function() {
       // save state of current level
