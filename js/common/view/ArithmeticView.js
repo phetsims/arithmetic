@@ -13,7 +13,7 @@ define( function( require ) {
   var ResetAllButton = require( 'SCENERY_PHET/ResetAllButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var SoundToggleButton = require( 'SCENERY_PHET/SoundToggleButton' );
-  var StartGameLevelNode = require( 'ARITHMETIC/common/view/StartGameLevelNode' );
+  var LevelSelectionNode = require( 'ARITHMETIC/common/view/LevelSelectionNode' );
   var TimerToggleButton = require( 'SCENERY_PHET/TimerToggleButton' );
   var VBox = require( 'SCENERY/nodes/VBox' );
   var WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
@@ -34,7 +34,7 @@ define( function( require ) {
     ScreenView.call( this );
 
     // add start game level buttons
-    this.addChild( new StartGameLevelNode( model.levelModels, model.property( 'level' ), model.gameModel.property( 'state' ),
+    this.addChild( new LevelSelectionNode( model.levelModels, model.property( 'level' ), model.gameModel.property( 'state' ),
       model.property( 'timerEnabled' ), titleString, { centerX: this.layoutBounds.centerX, centerY: this.layoutBounds.height * 0.4 } ) );
 
     // add game components

@@ -36,7 +36,7 @@ define( function( require ) {
    * @param {Object} options - Title string for given screen.
    * @constructor
    */
-  function StartGameLevelNode( levelModels, levelProperty, stateProperty, timerEnabledProperty, titleString, options ) {
+  function LevelSelectionNode( levelModels, levelProperty, stateProperty, timerEnabledProperty, titleString, options ) {
     var self = this;
     Node.call( this );
 
@@ -88,5 +88,5 @@ define( function( require ) {
     this.mutate( options );
   }
 
-  return inherit( Node, StartGameLevelNode );
+  return inherit( Node, LevelSelectionNode );
 } );
