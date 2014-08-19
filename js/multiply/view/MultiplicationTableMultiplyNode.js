@@ -17,9 +17,9 @@ define( function( require ) {
   var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
-   * @param gameModel {Object} model for single task
-   * @param levelProperty {Property} level difficulty property
-   * @param levelModels {Array} array of descriptions for each level
+   * @param {GameModel} gameModel - Model for single task.
+   * @param {Property} levelProperty - Level difficulty property.
+   * @param {Array} levelModels - Array of descriptions for each level.
    *
    * @constructor
    */

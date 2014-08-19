@@ -28,9 +28,8 @@ define( function( require ) {
   var SPACING = CONSTANTS.CALCULATOR.SPACING;
 
   /**
-   * @param inputProperty {Property} input property for communication buttons of
-   * calculator with model
-   * @param enterCallback {Function} callback listener for enter button
+   * @param {Property} inputProperty - Input property for communication buttons of calculator with model.
+   * @param {Function} enterCallback - Callback listener for enter button.
    *
    * @constructor
    */

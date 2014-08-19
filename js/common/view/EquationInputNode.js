@@ -21,9 +21,9 @@ define( function( require ) {
   var PLACEHOLDER = '?';
 
   /**
-   * @param property {Property} property for observing and changing by input
-   * @param inputSize {Dimension2} size of input component
-   * @param cursorVisibilityProperty {Property} property which switch true/false with given time interval
+   * @param {Property} property for observing and changing by input
+   * @param {Dimension2} inputSize - Size of input component.
+   * @param {Property} cursorVisibilityProperty - Property which switch true/false with given time interval.
    *
    * @constructor
    */

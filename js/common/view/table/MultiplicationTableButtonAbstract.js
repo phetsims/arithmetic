@@ -17,8 +17,8 @@ define( function( require ) {
   var Text = require( 'SCENERY/nodes/Text' );
 
   /**
-   * @param backgroundOptions {Object} background options for button
-   * @param textOptions {Object} text options for button
+   * @param {Object} backgroundOptions - Background options for button.
+   * @param {Object} textOptions - Text options for button.
    *
    * @constructor
    */

@@ -22,15 +22,14 @@ define( function( require ) {
   var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
-   * @param model {Object} main model for screen
-   * @param multiplicationTableNode {Node} multiplication table node for given screen
-   * @param equationNode {Node} equation node for given screen
-   * @param isAddCalculatorNode {Boolean} flag for adding calculator node
-   * @param layoutBounds {Bounds2} bounds of main screen. Necessary for placing components
+   * @param {ArithmeticModel} model - main model for screen.
+   * @param {Node} multiplicationTableNode - Multiplication table node for given screen.
+   * @param {Node} equationNode - Equation node for given screen.
+   * @param {Boolean} isAddCalculatorNode - Flag for adding calculator node.
+   * @param {Bounds2} layoutBounds - Bounds of main screen. Necessary for placing components.
    *
    * @constructor
    */
-
   function WorkspaceNode( model, multiplicationTableNode, equationNode, isAddCalculatorNode, layoutBounds ) {
     var self = this;
     Node.call( this );

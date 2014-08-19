@@ -25,11 +25,11 @@ define( function( require ) {
   var TABLE_SIZE = CONSTANTS.SIZE;
 
   /**
-   * @param levelModels {Array} array of descriptions for each level.
-   * For each level will be created multiplication table node
-   * Necessary for representing best scores for each level
-   * @param levelProperty {Property} level difficulty property
-   * @param gameModel {Object} model for single task
+   * @param {Array} levelModels - Array of descriptions for each level.
+   * For each level will be created multiplication table node.
+   * Necessary for representing best scores for each level.
+   * @param {Property} levelProperty - Level difficulty property.
+   * @param {GameModel} gameModel - Model for single task.
    *
    * @constructor
    */

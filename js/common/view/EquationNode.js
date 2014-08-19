@@ -21,10 +21,10 @@ define( function( require ) {
   var FONT_X = new PhetFont( 50 );
 
   /**
-   * @param multiplierLeftProperty {Property} property necessary for creating left multiplier input
-   * @param multiplierRightProperty {Property} property necessary for creating right multiplier input
-   * @param productProperty {Property} property necessary for creating product input
-   * @param inputCursorVisibilityProperty {Property} property which switch true/false with given time interval
+   * @param {Property} multiplierLeftProperty - Property necessary for creating left multiplier input.
+   * @param {Property} multiplierRightProperty - Property necessary for creating right multiplier input.
+   * @param {Property} productProperty - Property necessary for creating product input.
+   * @param {Property} inputCursorVisibilityProperty - Property which switch true/false with given time interval.
    *
    * @constructor
    */

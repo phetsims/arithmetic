@@ -34,10 +34,10 @@ define( function( require ) {
   var SPACING = CONSTANTS.SPACING;
 
   /**
-   * @param levelProperty {Property} property for level displaying label
-   * @param levelModels {PropertySet} array of properties for score counter component
-   * @param timerEnabledProperty {Property} time enabling flag
-   * @param refreshLevelCallback {Function} callback listener for refresh level button
+   * @param {Property} levelProperty - Property for level displaying label.
+   * @param {Array} levelModels - Array of properties for score counter component.
+   * @param {Property} timerEnabledProperty - Time enabling flag.
+   * @param {Function} refreshLevelCallback - Callback listener for refresh level button.
    *
    * @constructor
    */

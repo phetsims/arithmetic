@@ -18,7 +18,7 @@ define( function( require ) {
   var multiplyString = require( 'string!ARITHMETIC/multiply' );
 
   /**
-   * @param model {Object} main model for screen
+   * @param {MultiplyModel} model - Main model for screen.
    * @constructor
    */
   function MultiplyView( model ) {

@@ -18,7 +18,7 @@ define( function( require ) {
   var divideString = require( 'string!ARITHMETIC/divide' );
 
   /**
-   * @param model {Object} main model for screen
+   * @param {DivideModel} model - Main model for screen.
    * @constructor
    */
   function DivideView( model ) {

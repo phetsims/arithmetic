@@ -17,9 +17,9 @@ define( function( require ) {
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).MULTIPLICATION_TABLE.MULTIPLIER_BUTTON;
 
   /**
-   * @param contentText {Text} text label for button
-   * @param backgroundOptions {Object} background options for button
-   * @param textOptions {Object} text options for button
+   * @param {Text} contentText - Text label for button.
+   * @param {Object} backgroundOptions - Background options for button.
+   * @param {Object} textOptions - Text options for button.
    *
    * @constructor
    */

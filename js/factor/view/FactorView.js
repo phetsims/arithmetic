@@ -18,7 +18,7 @@ define( function( require ) {
   var factorString = require( 'string!ARITHMETIC/factor' );
 
   /**
-   * @param model {Object} main model for screen
+   * @param {FactorModel} model - Main model for screen.
    * @constructor
    */
   function FactorView( model ) {

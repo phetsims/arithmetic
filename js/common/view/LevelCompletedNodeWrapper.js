@@ -18,13 +18,13 @@ define( function( require ) {
   var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
-   * @param levelModels {Array} array of descriptions for each level.
-   * Necessary to get perfect score for completed level
-   * @param levelProperty {Property} level difficulty property
-   * @param stateProperty {Property} state of game property
-   * @param timerEnabledProperty {Property} time enabling flag
-   * @param continueCallback {Function} callback listener for continue button
-   * @param layoutBounds {Bounds2} bounds of main screen. Necessary for placing component
+   * @param {Array} levelModels - Array of descriptions for each level.
+   * Necessary to get perfect and current score for completed level.
+   * @param {Property} levelProperty - Level difficulty property.
+   * @param {Property} stateProperty - State of game property.
+   * @param {Property} timerEnabledProperty - Time enabling flag.
+   * @param {Function} continueCallback - Callback listener for continue button.
+   * @param {Bounds2} layoutBounds - Bounds of main screen. Necessary for placing component.
    *
    * @constructor
    */
