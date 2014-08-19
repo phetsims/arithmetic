@@ -88,10 +88,10 @@ define( function( require ) {
     this.gameModel.property( 'state' ).lazyLink( function( state ) {
       if ( state === GAME_STATE.LEVEL_INIT ) {
         // start timer
-        self.levelModels[self.level].gameTimer.start();
+        self.currentLevelModel.gameTimer.start();
 
         // update display score
-        self.levelModels[self.level].displayScore = self.levelModels[self.level].currentScore;
+        self.currentLevelModel.displayScore = self.currentLevelModel.currentScore;
 
         self.gameModel.state = GAME_STATE.NEXT_TASK;
       }
@@ -103,10 +103,10 @@ define( function( require ) {
         if ( self.gameModel.multiplierLeft * self.gameModel.multiplierRight === self.gameModel.product ) {
 
           // increase total score
-          self.levelModels[self.level].currentScore += self.gameModel.possiblePoints;
+          self.currentLevelModel.currentScore += self.gameModel.possiblePoints;
 
           // update display score
-          self.levelModels[self.level].displayScore = self.levelModels[self.level].currentScore;
+          self.currentLevelModel.displayScore = self.currentLevelModel.currentScore;
 
           // set smile face view and play sound
           self.faceModel.scoreFace = self.gameModel.possiblePoints;
@@ -145,13 +145,12 @@ define( function( require ) {
 
         // set best time
         if ( self.timerEnabled ) {
-          self.levelModels[self.level].gameTimer.stop();
-          if ( self.levelModels[self.level].bestTime === null ) {
-            self.levelModels[self.level].bestTime = self.levelModels[self.level].gameTimer.elapsedTime;
+          self.currentLevelModel.gameTimer.stop();
+          if ( self.currentLevelModel.bestTime === null ) {
+            self.currentLevelModel.bestTime = self.currentLevelModel.gameTimer.elapsedTime;
           }
           else {
-            self.levelModels[self.level].bestTime = Math.min( self.levelModels[self.level].bestTime,
-              self.levelModels[self.level].gameTimer.elapsedTime );
+            self.currentLevelModel.bestTime = Math.min( self.currentLevelModel.bestTime, self.currentLevelModel.gameTimer.elapsedTime );
           }
         }
 
@@ -165,6 +164,10 @@ define( function( require ) {
   }
 
   return inherit( PropertySet, ArithmeticModel, {
+
+    //Get the current level model, to make some of the code slightly more readable
+    get currentLevelModel() { return this.levelModels[this.level]; },
+
     back: function() {
       // save state of current level
       this.saveGameState();
@@ -195,8 +198,8 @@ define( function( require ) {
       } );
     },
     playLevelFinishedSound: function() {
-      var resultScore = this.levelModels[this.level].currentScore,
-        perfectScore = this.levelModels[this.level].perfectScore;
+      var resultScore = this.currentLevelModel.currentScore,
+        perfectScore = this.currentLevelModel.perfectScore;
 
       if ( resultScore === perfectScore ) {
         this.gameAudioPlayer.gameOverPerfectScore();
@@ -210,8 +213,8 @@ define( function( require ) {
     },
     refreshLevel: function( isWithoutScoreAndTime ) {
       if ( !isWithoutScoreAndTime ) {
-        this.levelModels[this.level].property( 'currentScore' ).reset();
-        this.levelModels[this.level].gameTimer.property( 'elapsedTime' ).reset();
+        this.currentLevelModel.property( 'currentScore' ).reset();
+        this.currentLevelModel.gameTimer.property( 'elapsedTime' ).reset();
       }
       this.property( 'input' ).reset();
       this.gameModel.reset();
@@ -237,9 +240,9 @@ define( function( require ) {
     },
     // restore game state of current level
     restoreGameState: function() {
-      var state = this.levelModels[this.level].state;
+      var state = this.currentLevelModel.state;
 
-      this.levelModels[this.level].currentScore = state.currentScore;
+      this.currentLevelModel.currentScore = state.currentScore;
       this.linkToActiveInput = state.linkToActiveInput;
       this.gameModel.multiplierLeft = state.multiplierLeft;
       this.gameModel.multiplierRight = state.multiplierRight;
@@ -251,13 +254,13 @@ define( function( require ) {
     },
     // save game state of current level
     saveGameState: function() {
-      this.levelModels[this.level].state = {
+      this.currentLevelModel.state = {
         input: this.input,
         multiplierLeft: this.gameModel.multiplierLeft,
         multiplierRight: this.gameModel.multiplierRight,
         product: this.gameModel.product,
         state: this.gameModel.state,
-        currentScore: this.levelModels[this.level].currentScore,
+        currentScore: this.currentLevelModel.currentScore,
         possiblePoints: this.gameModel.possiblePoints,
         answerSheet: _.cloneDeep( this.gameModel.answerSheet ),
         linkToActiveInput: this.linkToActiveInput
