@@ -36,10 +36,10 @@ define( function( require ) {
 
         // set select multipliers
         if ( gameModel.multiplierLeft ) {
-          self.cells[levelProperty.value - 1][gameModel.multiplierLeft][0].select();
+          self.cells[levelProperty.value][gameModel.multiplierLeft][0].select();
         }
         else {
-          self.cells[levelProperty.value - 1][0][gameModel.multiplierRight].select();
+          self.cells[levelProperty.value][0][gameModel.multiplierRight].select();
         }
       }
     } );

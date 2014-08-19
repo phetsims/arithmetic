@@ -55,7 +55,7 @@ define( function( require ) {
         new Image( level.icon ),
         STAR_NUMBER,
         function() {
-          levelProperty.value = levelIndex + 1;
+          levelProperty.value = levelIndex;
         },
         levelModels[levelIndex].property( 'displayScore' ),
         level.perfectScore,

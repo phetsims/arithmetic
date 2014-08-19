@@ -35,11 +35,11 @@ define( function( require ) {
         self.clearCells( levelProperty.value );
 
         // set view of selected multipliers
-        self.cells[levelProperty.value - 1][0][gameModel.multiplierRight].select();
-        self.cells[levelProperty.value - 1][gameModel.multiplierLeft][0].select();
+        self.cells[levelProperty.value][0][gameModel.multiplierRight].select();
+        self.cells[levelProperty.value][gameModel.multiplierLeft][0].select();
 
         // set view of selected products
-        self.cells[levelProperty.value - 1].forEach( function( multiplierLeft, index ) {
+        self.cells[levelProperty.value].forEach( function( multiplierLeft, index ) {
           if ( index && index <= gameModel.multiplierLeft ) {
             multiplierLeft.forEach( function( cell, index ) {
               if ( index && index <= gameModel.multiplierRight ) {

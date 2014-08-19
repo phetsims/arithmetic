@@ -36,13 +36,13 @@ define( function( require ) {
       if ( state === GAME_STATE.SHOW_STATISTICS ) {
         self.addChild( new LevelCompletedNode(
           levelProperty.value,
-          levelModels[levelProperty.value - 1].currentScore,
-          levelModels[levelProperty.value - 1].perfectScore,
+          levelModels[levelProperty.value].currentScore,
+          levelModels[levelProperty.value].perfectScore,
           CONSTANTS.STAR_NUMBER,
           timerEnabledProperty.value,
-          levelModels[levelProperty.value - 1].gameTimer.elapsedTime,
-          levelModels[levelProperty.value - 1].bestTime,
-          (levelModels[levelProperty.value - 1].gameTimer.elapsedTime < levelModels[levelProperty.value - 1].bestTime),
+          levelModels[levelProperty.value].gameTimer.elapsedTime,
+          levelModels[levelProperty.value].bestTime,
+          (levelModels[levelProperty.value].gameTimer.elapsedTime < levelModels[levelProperty.value].bestTime),
           continueCallback
         ).mutate( {centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2} ) );
       }

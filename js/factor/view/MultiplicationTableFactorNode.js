@@ -102,18 +102,18 @@ define( function( require ) {
   return inherit( MultiplicationTableNode, MultiplicationTableFactorNode, {
     // enable all buttons for given level
     enableButtons: function( levelNumber ) {
-      this._buttonModel[levelNumber - 1].forEach( function( buttonModel ) {
+      this._buttonModel[levelNumber].forEach( function( buttonModel ) {
         buttonModel.enabled = true;
       } );
     },
     // set 'active' state for all cell in given bounds and highlight multipliers
     setActiveRect: function( levelNumber, leftBound, rightBound ) {
       // highlight multipliers
-      this.cells[levelNumber - 1][0][rightBound].select();
-      this.cells[levelNumber - 1][leftBound][0].select();
+      this.cells[levelNumber][0][rightBound].select();
+      this.cells[levelNumber][leftBound][0].select();
 
       // set 'active' state for all cell in given bounds
-      this.cells[levelNumber - 1].forEach( function( multipliersLeft, leftIndex ) {
+      this.cells[levelNumber].forEach( function( multipliersLeft, leftIndex ) {
         if ( leftIndex && leftIndex <= leftBound ) {
           multipliersLeft.forEach( function( cell, rightIndex ) {
             if ( rightIndex && rightIndex <= rightBound ) {

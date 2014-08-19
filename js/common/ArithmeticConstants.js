@@ -51,6 +51,8 @@ define( function( require ) {
     },
     // max input length
     INPUT_LENGTH_MAX: 3,
+    // home screen index
+    HOME_SCREEN: -1,
     // constants for multiplication table
     MULTIPLICATION_TABLE: {
       MULTIPLIER_BUTTON: {

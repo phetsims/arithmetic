@@ -45,7 +45,7 @@ define( function( require ) {
     ];
 
     PropertySet.call( this, {
-      level: 0, // game level, 0 indicates the home screen
+      level: ArithmeticConstants.HOME_SCREEN, // game level
       input: '', // user's input value
       inputCursorVisibility: false,
       soundEnabled: true, // is sound active
@@ -67,11 +67,11 @@ define( function( require ) {
     // init game after choosing level
     this.property( 'level' ).lazyLink( function( level ) {
       // restore or init new state for game
-      if ( level && self.levelModels[level - 1].state ) {
+      if ( level !== ArithmeticConstants.HOME_SCREEN && self.levelModels[level].state ) {
         self.restoreGameState();
       }
-      else if ( level ) {
-        self.gameModel.initAnswerSheet( self.levelModels[level - 1].tableSize );
+      else if ( level !== ArithmeticConstants.HOME_SCREEN ) {
+        self.gameModel.initAnswerSheet( self.levelModels[level].tableSize );
         self.gameModel.state = GAME_STATE.LEVEL_INIT;
       }
     } );
@@ -88,10 +88,10 @@ define( function( require ) {
     this.gameModel.property( 'state' ).lazyLink( function( state ) {
       if ( state === GAME_STATE.LEVEL_INIT ) {
         // start timer
-        self.levelModels[self.level - 1].gameTimer.start();
+        self.levelModels[self.level].gameTimer.start();
 
         // update display score
-        self.levelModels[self.level - 1].displayScore = self.levelModels[self.level - 1].currentScore;
+        self.levelModels[self.level].displayScore = self.levelModels[self.level].currentScore;
 
         self.gameModel.state = GAME_STATE.NEXT_TASK;
       }
@@ -103,10 +103,10 @@ define( function( require ) {
         if ( self.gameModel.multiplierLeft * self.gameModel.multiplierRight === self.gameModel.product ) {
 
           // increase total score
-          self.levelModels[self.level - 1].currentScore += self.gameModel.possiblePoints;
+          self.levelModels[self.level].currentScore += self.gameModel.possiblePoints;
 
           // update display score
-          self.levelModels[self.level - 1].displayScore = self.levelModels[self.level - 1].currentScore;
+          self.levelModels[self.level].displayScore = self.levelModels[self.level].currentScore;
 
           // set smile face view and play sound
           self.faceModel.scoreFace = self.gameModel.possiblePoints;
@@ -145,13 +145,13 @@ define( function( require ) {
 
         // set best time
         if ( self.timerEnabled ) {
-          self.levelModels[self.level - 1].gameTimer.stop();
-          if ( self.levelModels[self.level - 1].bestTime === null ) {
-            self.levelModels[self.level - 1].bestTime = self.levelModels[self.level - 1].gameTimer.elapsedTime;
+          self.levelModels[self.level].gameTimer.stop();
+          if ( self.levelModels[self.level].bestTime === null ) {
+            self.levelModels[self.level].bestTime = self.levelModels[self.level].gameTimer.elapsedTime;
           }
           else {
-            self.levelModels[self.level - 1].bestTime = Math.min( self.levelModels[self.level - 1].bestTime,
-              self.levelModels[self.level - 1].gameTimer.elapsedTime );
+            self.levelModels[self.level].bestTime = Math.min( self.levelModels[self.level].bestTime,
+              self.levelModels[self.level].gameTimer.elapsedTime );
           }
         }
 
@@ -173,7 +173,7 @@ define( function( require ) {
       this.refreshLevel( true );
 
       // show user start menu
-      this.level = 0;
+      this.level = ArithmeticConstants.HOME_SCREEN;
     },
     checkAnswer: function() {
       //REVIEW: Comment should probably say 'child types', since technically it's not the constructor where this is overridden.
@@ -187,7 +187,7 @@ define( function( require ) {
       this.clearGameState( this.level );
 
       // set level value equal to unselected
-      this.level = 0;
+      this.level = ArithmeticConstants.HOME_SCREEN;
     },
     resetLevelModels: function() {
       this.levelModels.forEach( function( levelModel ) {
@@ -195,8 +195,8 @@ define( function( require ) {
       } );
     },
     playLevelFinishedSound: function() {
-      var resultScore = this.levelModels[this.level - 1].currentScore,
-        perfectScore = this.levelModels[this.level - 1].perfectScore;
+      var resultScore = this.levelModels[this.level].currentScore,
+        perfectScore = this.levelModels[this.level].perfectScore;
 
       if ( resultScore === perfectScore ) {
         this.gameAudioPlayer.gameOverPerfectScore();
@@ -210,8 +210,8 @@ define( function( require ) {
     },
     refreshLevel: function( isWithoutScoreAndTime ) {
       if ( !isWithoutScoreAndTime ) {
-        this.levelModels[this.level - 1].property( 'currentScore' ).reset();
-        this.levelModels[this.level - 1].gameTimer.property( 'elapsedTime' ).reset();
+        this.levelModels[this.level].property( 'currentScore' ).reset();
+        this.levelModels[this.level].gameTimer.property( 'elapsedTime' ).reset();
       }
       this.property( 'input' ).reset();
       this.gameModel.reset();
@@ -227,7 +227,7 @@ define( function( require ) {
       this.clearGameStates();
     },
     clearGameState: function( levelNumber ) {
-      this.levelModels[levelNumber - 1].state = null;
+      this.levelModels[levelNumber].state = null;
     },
     // clear states of all levels
     clearGameStates: function() {
@@ -237,9 +237,9 @@ define( function( require ) {
     },
     // restore game state of current level
     restoreGameState: function() {
-      var state = this.levelModels[this.level - 1].state;
+      var state = this.levelModels[this.level].state;
 
-      this.levelModels[this.level - 1].currentScore = state.currentScore;
+      this.levelModels[this.level].currentScore = state.currentScore;
       this.linkToActiveInput = state.linkToActiveInput;
       this.gameModel.multiplierLeft = state.multiplierLeft;
       this.gameModel.multiplierRight = state.multiplierRight;
@@ -251,13 +251,13 @@ define( function( require ) {
     },
     // save game state of current level
     saveGameState: function() {
-      this.levelModels[this.level - 1].state = {
+      this.levelModels[this.level].state = {
         input: this.input,
         multiplierLeft: this.gameModel.multiplierLeft,
         multiplierRight: this.gameModel.multiplierRight,
         product: this.gameModel.product,
         state: this.gameModel.state,
-        currentScore: this.levelModels[this.level - 1].currentScore,
+        currentScore: this.levelModels[this.level].currentScore,
         possiblePoints: this.gameModel.possiblePoints,
         answerSheet: _.cloneDeep( this.gameModel.answerSheet ),
         linkToActiveInput: this.linkToActiveInput

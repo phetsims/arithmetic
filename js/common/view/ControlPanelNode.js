@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var GameTimer = require( 'VEGAS/GameTimer' );
   var HStrut = require( 'SUN/HStrut' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -26,7 +27,7 @@ define( function( require ) {
   var timeString = require( 'string!VEGAS/label.time' );
 
   // constants
-  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).CONTROL_PANEL;
+  var CONSTANTS = ArithmeticConstants.CONTROL_PANEL;
   var BACKGROUND_MARGIN = CONSTANTS.BACKGROUND.MARGIN;
   var FONT = new PhetFont( { size: 18 } );
   var FONT_BOLD = new PhetFont( { size: 18, weight: 'bold' } );
@@ -90,9 +91,9 @@ define( function( require ) {
         levelModel.gameTimer.property( 'elapsedTime' ).unlink( updateTime );
       } );
 
-      if ( level ) {
-        levelModels[level - 1].property( 'currentScore' ).link( updateScore );
-        levelModels[level - 1].gameTimer.property( 'elapsedTime' ).link( updateTime );
+      if ( level !== ArithmeticConstants.HOME_SCREEN ) {
+        levelModels[level].property( 'currentScore' ).link( updateScore );
+        levelModels[level].gameTimer.property( 'elapsedTime' ).link( updateTime );
       }
     } );
 

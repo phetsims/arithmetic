@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var MultiplicationTableButtonMultiplierNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableButtonMultiplierNode' );
@@ -19,7 +20,7 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
-  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).MULTIPLICATION_TABLE;
+  var CONSTANTS = ArithmeticConstants.MULTIPLICATION_TABLE;
   var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
   var TABLE_SIZE = CONSTANTS.SIZE;
 
@@ -108,7 +109,7 @@ define( function( require ) {
       vBox.scale( TABLE_SIZE.width / vBox.bounds.width, TABLE_SIZE.height / vBox.bounds.height );
 
       // save view
-      self._viewForLevel[levelIndex + 1] = vBox;
+      self._viewForLevel[levelIndex] = vBox;
     } );
 
     // set background size
@@ -128,10 +129,10 @@ define( function( require ) {
     } );
 
     gameModel.property( 'state' ).link( function( state ) {
-      if ( state === GAME_STATE.NEXT_TASK && levelProperty.value ) {
+      if ( state === GAME_STATE.NEXT_TASK && levelProperty.value !== ArithmeticConstants.HOME_SCREEN ) {
         gameModel.answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
           multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
-            self.cells[levelProperty.value - 1][multipliersLeftIndex + 1][multipliersRightIndex + 1][ isVisible ? 'showText' : 'hideText' ]();
+            self.cells[levelProperty.value][multipliersLeftIndex + 1][multipliersRightIndex + 1][ isVisible ? 'showText' : 'hideText' ]();
           } );
         } );
       }
@@ -140,9 +141,9 @@ define( function( require ) {
 
   return inherit( Node, MultiplicationTableNode, {
     // clear all cells for given level
-    clearCells: function( levelNumber ) {
-      if ( levelNumber ) {
-        this.cells[levelNumber - 1].forEach( function( multipliersLeft ) {
+    clearCells: function( level ) {
+      if ( level !== ArithmeticConstants.HOME_SCREEN ) {
+        this.cells[level].forEach( function( multipliersLeft ) {
           multipliersLeft.forEach( function( cell ) {
             cell.normal();
           } );
