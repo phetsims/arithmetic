@@ -91,7 +91,7 @@ define( function( require ) {
         levelModel.gameTimer.property( 'elapsedTime' ).unlink( updateTime );
       } );
 
-      if ( level !== ArithmeticConstants.HOME_SCREEN ) {
+      if ( level !== ArithmeticConstants.LEVEL_SELECTION_SCREEN ) {
         levelModels[level].property( 'currentScore' ).link( updateScore );
         levelModels[level].gameTimer.property( 'elapsedTime' ).link( updateTime );
       }

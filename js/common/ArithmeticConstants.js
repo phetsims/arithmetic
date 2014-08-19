@@ -51,8 +51,8 @@ define( function( require ) {
     },
     // max input length
     INPUT_LENGTH_MAX: 3,
-    // home screen index
-    HOME_SCREEN: -1,
+    // Level selection screen is indexed at -1, so that level 1 is indexed 0, etc.
+    LEVEL_SELECTION_SCREEN: -1,
     // constants for multiplication table
     MULTIPLICATION_TABLE: {
       MULTIPLIER_BUTTON: {

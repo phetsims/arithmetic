@@ -41,7 +41,7 @@ define( function( require ) {
         xMargin: BACK_BUTTON_CONSTANTS.MARGIN.width,
         yMargin: BACK_BUTTON_CONSTANTS.MARGIN.height,
         listener: function() {
-          model.back();
+          model.returnToLevelSelectScreen();
         }
       } )
         .mutate( {scale: 0.75, left: layoutBounds.maxX * 0.02, top: layoutBounds.maxY * 0.02} )

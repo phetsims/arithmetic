@@ -45,7 +45,7 @@ define( function( require ) {
     ];
 
     PropertySet.call( this, {
-      level: ArithmeticConstants.HOME_SCREEN, // game level
+      level: ArithmeticConstants.LEVEL_SELECTION_SCREEN, // game level
       input: '', // user's input value
       inputCursorVisibility: false,
       soundEnabled: true, // is sound active
@@ -67,10 +67,10 @@ define( function( require ) {
     // init game after choosing level
     this.property( 'level' ).lazyLink( function( level ) {
       // restore or init new state for game
-      if ( level !== ArithmeticConstants.HOME_SCREEN && self.levelModels[level].state ) {
+      if ( level !== ArithmeticConstants.LEVEL_SELECTION_SCREEN && self.levelModels[level].state ) {
         self.restoreGameState();
       }
-      else if ( level !== ArithmeticConstants.HOME_SCREEN ) {
+      else if ( level !== ArithmeticConstants.LEVEL_SELECTION_SCREEN ) {
         self.gameModel.initAnswerSheet( self.levelModels[level].tableSize );
         self.gameModel.state = GAME_STATE.LEVEL_INIT;
       }
@@ -170,7 +170,7 @@ define( function( require ) {
       return this.levelModels[this.level];
     },
 
-    back: function() {
+    returnToLevelSelectScreen: function() {
       // save state of current level
       this.saveGameState();
 
@@ -178,7 +178,7 @@ define( function( require ) {
       this.refreshLevel( true );
 
       // show user start menu
-      this.level = ArithmeticConstants.HOME_SCREEN;
+      this.level = ArithmeticConstants.LEVEL_SELECTION_SCREEN;
     },
     checkAnswer: function() {
       //REVIEW: Comment should probably say 'child types', since technically it's not the constructor where this is overridden.
@@ -192,7 +192,7 @@ define( function( require ) {
       this.clearGameState( this.level );
 
       // set level value equal to unselected
-      this.level = ArithmeticConstants.HOME_SCREEN;
+      this.level = ArithmeticConstants.LEVEL_SELECTION_SCREEN;
     },
     resetLevelModels: function() {
       this.levelModels.forEach( function( levelModel ) {
