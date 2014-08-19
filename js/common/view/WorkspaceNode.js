@@ -73,7 +73,7 @@ define( function( require ) {
     if ( isAddCalculatorNode ) {
       this.addChild( new CalculatorNode(
           model.property( 'input' ),
-          function() {model.checkAnswer();}
+          function() {model.fillEquation();}
         ).mutate( {centerX: controlPanelNode.centerX, bottom: layoutBounds.maxY * 0.95} )
       );
     }

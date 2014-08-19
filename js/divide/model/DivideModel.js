@@ -18,7 +18,14 @@ define( function( require ) {
 
   function DivideModel() {
     var self = this;
-    ArithmeticModel.call( this );
+    ArithmeticModel.call( this, {
+      fillEquation: function() {
+        self.gameModel.multiplierRight = parseInt( self.gameModel.multiplierRight, 10 );
+        self.gameModel.multiplierLeft = parseInt( self.gameModel.multiplierLeft, 10 );
+
+        self.gameModel.state = GAME_STATE.EQUATION_FILLED;
+      }
+    } );
 
     // point to multiplierLeft or multiplierRight
     this.addProperty( 'linkToActiveInput', null );
@@ -61,12 +68,5 @@ define( function( require ) {
     } );
   }
 
-  return inherit( ArithmeticModel, DivideModel, {
-    checkAnswer: function() {
-      this.gameModel.multiplierRight = parseInt( this.gameModel.multiplierRight, 10 );
-      this.gameModel.multiplierLeft = parseInt( this.gameModel.multiplierLeft, 10 );
-
-      this.gameModel.state = GAME_STATE.EQUATION_FILLED;
-    }
-  } );
+  return inherit( ArithmeticModel, DivideModel );
 } );

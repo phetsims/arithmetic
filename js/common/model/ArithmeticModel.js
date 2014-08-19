@@ -31,8 +31,11 @@ define( function( require ) {
    * Constructor for ArithmeticModel
    * @constructor
    */
-  function ArithmeticModel() {
+  function ArithmeticModel( options ) {
     var self = this;
+
+    options = _.extend( {fillEquation: null}, options );
+    this.fillEquation = options.fillEquation;
 
     // array of levels with description
     this.levelModels = [
@@ -179,10 +182,6 @@ define( function( require ) {
 
       // show user start menu
       this.level = ArithmeticConstants.LEVEL_SELECTION_SCREEN;
-    },
-    checkAnswer: function() {
-      //REVIEW: Comment should probably say 'child types', since technically it's not the constructor where this is overridden.
-      // should be defined in child types
     },
     finishLevel: function() {
       // refresh current level

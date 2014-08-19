@@ -18,7 +18,13 @@ define( function( require ) {
 
   function MultiplyModel() {
     var self = this;
-    ArithmeticModel.call( this );
+    ArithmeticModel.call( this, {
+      fillEquation: function() {
+        self.gameModel.product = parseInt( self.input, 10 );
+
+        self.gameModel.state = GAME_STATE.EQUATION_FILLED;
+      }
+    } );
 
     // next task observer
     this.gameModel.property( 'state' ).link( function( state ) {
@@ -47,10 +53,5 @@ define( function( require ) {
     } );
   }
 
-  return inherit( ArithmeticModel, MultiplyModel, {
-    checkAnswer: function() {
-      this.gameModel.product = parseInt( this.input, 10 );
-      this.gameModel.state = GAME_STATE.EQUATION_FILLED;
-    }
-  } );
+  return inherit( ArithmeticModel, MultiplyModel );
 } );
