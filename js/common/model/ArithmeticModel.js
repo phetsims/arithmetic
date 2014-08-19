@@ -15,7 +15,6 @@ define( function( require ) {
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
   var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
   var GameModel = require( 'ARITHMETIC/common/model/GameModel' );
-  var GameTimer = require( 'VEGAS/GameTimer' );
   var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
   var PropertySet = require( 'AXON/PropertySet' );
   var Timer = require( 'JOIST/Timer' );
@@ -59,9 +58,6 @@ define( function( require ) {
     // hook up the audio player to the sound settings
     this.gameAudioPlayer = new GameAudioPlayer( this.property( 'soundEnabled' ) );
 
-    // model for game timer
-    this.gameTimer = new GameTimer();
-
     // model for single game
     this.gameModel = new GameModel();
 
@@ -70,16 +66,6 @@ define( function( require ) {
 
     // init game after choosing level
     this.property( 'level' ).lazyLink( function( level ) {
-      // add time which user spent on level selection screen to saved time in state
-      if ( self.timerEnabled ) {
-        if ( level && self.levelModels[level - 1].state && self.levelModels[level - 1].state.isGameTimerRunning ) {
-          self.levelModels[level - 1].state.elapsedTime += self.gameTimer.elapsedTime;
-        }
-        else {
-          self.gameTimer.elapsedTime = 0;
-        }
-      }
-
       // restore or init new state for game
       if ( level && self.levelModels[level - 1].state ) {
         self.restoreGameState();
@@ -102,7 +88,7 @@ define( function( require ) {
     this.gameModel.property( 'state' ).lazyLink( function( state ) {
       if ( state === GAME_STATE.LEVEL_INIT ) {
         // start timer
-        self.gameTimer.start();
+        self.levelModels[self.level - 1].gameTimer.start();
 
         // update display score
         self.levelModels[self.level - 1].displayScore = self.levelModels[self.level - 1].currentScore;
@@ -159,12 +145,13 @@ define( function( require ) {
 
         // set best time
         if ( self.timerEnabled ) {
-          self.gameTimer.stop();
+          self.levelModels[self.level - 1].gameTimer.stop();
           if ( self.levelModels[self.level - 1].bestTime === null ) {
-            self.levelModels[self.level - 1].bestTime = self.gameTimer.elapsedTime;
+            self.levelModels[self.level - 1].bestTime = self.levelModels[self.level - 1].gameTimer.elapsedTime;
           }
           else {
-            self.levelModels[self.level - 1].bestTime = Math.min( self.levelModels[self.level - 1].bestTime, self.gameTimer.elapsedTime );
+            self.levelModels[self.level - 1].bestTime = Math.min( self.levelModels[self.level - 1].bestTime,
+              self.levelModels[self.level - 1].gameTimer.elapsedTime );
           }
         }
 
@@ -221,12 +208,12 @@ define( function( require ) {
         this.gameAudioPlayer.gameOverImperfectScore();
       }
     },
-    refreshLevel: function( isWithoutScore ) {
-      if ( !isWithoutScore ) {
+    refreshLevel: function( isWithoutScoreAndTime ) {
+      if ( !isWithoutScoreAndTime ) {
         this.levelModels[this.level - 1].property( 'currentScore' ).reset();
+        this.levelModels[this.level - 1].gameTimer.property( 'elapsedTime' ).reset();
       }
       this.property( 'input' ).reset();
-      this.gameTimer.elapsedTime = 0;
       this.gameModel.reset();
       this.faceModel.reset();
     },
@@ -252,16 +239,8 @@ define( function( require ) {
     restoreGameState: function() {
       var state = this.levelModels[this.level - 1].state;
 
-      if ( state.isGameTimerRunning ) {
-        this.gameTimer.start();
-      }
-      else {
-        this.gameTimer.stop();
-      }
-
       this.levelModels[this.level - 1].currentScore = state.currentScore;
       this.linkToActiveInput = state.linkToActiveInput;
-      this.gameTimer.elapsedTime = state.elapsedTime;
       this.gameModel.multiplierLeft = state.multiplierLeft;
       this.gameModel.multiplierRight = state.multiplierRight;
       this.gameModel.product = state.product;
@@ -274,8 +253,6 @@ define( function( require ) {
     saveGameState: function() {
       this.levelModels[this.level - 1].state = {
         input: this.input,
-        isGameTimerRunning: this.gameTimer.isRunning,
-        elapsedTime: this.gameTimer.elapsedTime,
         multiplierLeft: this.gameModel.multiplierLeft,
         multiplierRight: this.gameModel.multiplierRight,
         product: this.gameModel.product,

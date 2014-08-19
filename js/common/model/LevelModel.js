@@ -11,6 +11,7 @@ define( function( require ) {
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
   var PropertySet = require( 'AXON/PropertySet' );
+  var GameTimer = require( 'VEGAS/GameTimer' );
 
   function LevelModel( tableSize, iconImage ) {
     PropertySet.call( this, {
@@ -23,12 +24,19 @@ define( function( require ) {
     this.perfectScore = tableSize * tableSize;
     this.icon = iconImage;
 
+    // model for game timer
+    this.gameTimer = new GameTimer();
+
     this.state = null;
   }
 
   return inherit( PropertySet, LevelModel, {
     reset: function() {
       PropertySet.prototype.reset.call( this );
+
+      // reset timer
+      this.gameTimer.stop();
+      this.gameTimer.elapsedTime = 0;
     }
   } );
 } );

@@ -36,16 +36,15 @@ define( function( require ) {
    * @param levelProperty {Property} property for level displaying label
    * @param levelModels {PropertySet} array of properties for score counter component
    * @param timerEnabledProperty {Property} time enabling flag
-   * @param timeProperty {Property} property for elapsed time
    * @param refreshLevelCallback {Function} callback listener for refresh level button
    *
    * @constructor
    */
-  function ControlPanelNode( levelProperty, levelModels, timerEnabledProperty, timeProperty, refreshLevelCallback ) {
+  function ControlPanelNode( levelProperty, levelModels, timerEnabledProperty, refreshLevelCallback ) {
     var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR, stroke: 'gray'} );
     var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), FONT_BOLD );
     var scoreText = new Text( StringUtils.format( scoreString, '0' ), FONT );
-    var timeText = new Text( StringUtils.format( timeString, GameTimer.formatTime( timeProperty.value ) ), FONT );
+    var timeText = new Text( StringUtils.format( timeString, GameTimer.formatTime( 0 ) ), FONT );
     var minWidth = Math.max( levelText.getWidth(), scoreText.getWidth(), timeText.getWidth() );
     var vBox;
 
@@ -78,21 +77,23 @@ define( function( require ) {
       updateBackgroundSize( background, vBox );
     };
 
+    var updateTime = function( time ) {
+      timeText.setText( StringUtils.format( timeString, GameTimer.formatTime( time ) ) );
+      updateBackgroundSize( background, vBox );
+    };
+
     levelProperty.lazyLink( function( level ) {
       levelText.setText( StringUtils.format( pattern_level_0levelNumber, level.toString() ) );
 
       levelModels.forEach( function( levelModel ) {
         levelModel.property( 'currentScore' ).unlink( updateScore );
+        levelModel.gameTimer.property( 'elapsedTime' ).unlink( updateTime );
       } );
 
       if ( level ) {
         levelModels[level - 1].property( 'currentScore' ).link( updateScore );
+        levelModels[level - 1].gameTimer.property( 'elapsedTime' ).link( updateTime );
       }
-    } );
-
-    timeProperty.lazyLink( function( time ) {
-      timeText.setText( StringUtils.format( timeString, GameTimer.formatTime( time ) ) );
-      updateBackgroundSize( background, vBox );
     } );
 
     // add/remove timeBox and update background size

@@ -63,7 +63,6 @@ define( function( require ) {
       model.property( 'level' ),
       model.levelModels,
       model.property( 'timerEnabled' ),
-      model.gameTimer.property( 'elapsedTime' ),
       function() {
         model.gameModel.state = GAME_STATE.REFRESH_LEVEL;
       } );
@@ -92,7 +91,6 @@ define( function( require ) {
         model.property( 'level' ),
         model.gameModel.property( 'state' ),
         model.property( 'timerEnabled' ),
-        model.gameTimer.property( 'elapsedTime' ),
         function() {
           model.finishLevel();
         },

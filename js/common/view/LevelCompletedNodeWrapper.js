@@ -23,13 +23,12 @@ define( function( require ) {
    * @param levelProperty {Property} level difficulty property
    * @param stateProperty {Property} state of game property
    * @param timerEnabledProperty {Property} time enabling flag
-   * @param timeProperty {Property} time spend for level completing
    * @param continueCallback {Function} callback listener for continue button
    * @param layoutBounds {Bounds2} bounds of main screen. Necessary for placing component
    *
    * @constructor
    */
-  function LevelCompletedNodeWrapper( levelModels, levelProperty, stateProperty, timerEnabledProperty, timeProperty, continueCallback, layoutBounds ) {
+  function LevelCompletedNodeWrapper( levelModels, levelProperty, stateProperty, timerEnabledProperty, continueCallback, layoutBounds ) {
     var self = this;
     Node.call( this );
 
@@ -41,9 +40,9 @@ define( function( require ) {
           levelModels[levelProperty.value - 1].perfectScore,
           CONSTANTS.STAR_NUMBER,
           timerEnabledProperty.value,
-          timeProperty.value,
+          levelModels[levelProperty.value - 1].gameTimer.elapsedTime,
           levelModels[levelProperty.value - 1].bestTime,
-          (timeProperty.value < levelModels[levelProperty.value - 1].bestTime),
+          (levelModels[levelProperty.value - 1].gameTimer.elapsedTime < levelModels[levelProperty.value - 1].bestTime),
           continueCallback
         ).mutate( {centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2} ) );
       }
