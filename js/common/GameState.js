@@ -8,6 +8,22 @@
 define( function() {
   'use strict';
 
+  /**                                                                                       correct answer
+   *                                                             ┌───────────────────────────────────────────────────────────────────────┐
+   *                                                             │                                                                       │
+   *                     load saved game state                   │                                                  incorrect answer     │
+   *                ┌───────────────────────────────────────────────────────────────────────────────────┐     ┌──────────────────────────┤
+   *                │                                            │                                      ↓     ↓                          │
+   *   LEVEL_SELECT ┤                                            │     ┌────────────────────────> AWAITING_USER_INPUT -> EQUATION_FILLED ┘
+   *        ↑       │                                            ↓     │
+   *        │       └────────────────────────> LEVEL_INIT -> NEXT_TASK ┤
+   *        │             init new level                               │
+   *        │                                                          └────────────────────────> LEVEL_FINISHED -> SHOW_STATISTICS ┐
+   *        │                                                                                                                       │
+   *        └───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+   *                                                        select new level
+   */
+
   return Object.freeze( {
     AWAITING_USER_INPUT: 'awaitingUserInput',
     EQUATION_FILLED: 'equationFilled',
