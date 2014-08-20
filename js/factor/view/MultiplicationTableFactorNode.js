@@ -92,7 +92,7 @@ define( function( require ) {
     } );
 
     gameModel.property( 'state' ).link( function( state ) {
-      if ( state === GAME_STATE.LEVEL_INIT ) {
+      if ( state === GAME_STATE.LEVEL_INIT || state === GAME_STATE.REFRESH_LEVEL ) {
         self.clearCells( levelProperty.value );
         self.enableButtons( levelProperty.value );
       }
