@@ -55,8 +55,8 @@ define( function( require ) {
       timerEnabled: false // is timer active
     } );
 
-    // property necessary for tracing and changing inputCursorVisibility property
-    this.time = 0;
+    // property necessary for tracking and changing inputCursorVisibility property
+    this.timeSinceCursorBlink = 0;
 
     // hook up the audio player to the sound settings
     this.gameAudioPlayer = new GameAudioPlayer( this.property( 'soundEnabled' ) );
@@ -180,38 +180,42 @@ define( function( require ) {
       // refresh current level
       this.refreshLevel( true );
 
-      // show user start menu
+      // set level value to indicate that level selection screen should be shown
       this.level = ArithmeticConstants.LEVEL_SELECTION_SCREEN;
     },
+
     finishLevel: function() {
       // refresh current level
       this.refreshLevel();
 
-      // clear game state for game state
+      // clear game state for current level
       this.clearGameState( this.level );
 
-      // set level value equal to unselected
+      // set level value to indicate that level selection screen should be shown
       this.level = ArithmeticConstants.LEVEL_SELECTION_SCREEN;
     },
+
     resetLevelModels: function() {
       this.levelModels.forEach( function( levelModel ) {
         levelModel.reset();
       } );
     },
-    playLevelFinishedSound: function() {
-      var resultScore = this.currentLevelModel.currentScore,
-        perfectScore = this.currentLevelModel.perfectScore;
 
-      if ( resultScore === perfectScore ) {
+    playLevelFinishedSound: function() {
+      var currentScore = this.currentLevelModel.currentScore;
+      var perfectScore = this.currentLevelModel.perfectScore;
+
+      if ( currentScore === perfectScore ) {
         this.gameAudioPlayer.gameOverPerfectScore();
       }
-      else if ( resultScore === 0 ) {
+      else if ( currentScore === 0 ) {
         this.gameAudioPlayer.gameOverZeroScore();
       }
       else {
         this.gameAudioPlayer.gameOverImperfectScore();
       }
     },
+
     refreshLevel: function( isWithoutScoreAndTime ) {
       if ( !isWithoutScoreAndTime ) {
         this.currentLevelModel.property( 'currentScore' ).reset();
@@ -221,24 +225,28 @@ define( function( require ) {
       this.gameModel.reset();
       this.faceModel.reset();
     },
+
     reset: function() {
       PropertySet.prototype.reset.call( this );
 
-      // reset levels model
+      // reset level models
       this.resetLevelModels();
 
       // clear game level states
       this.clearGameStates();
     },
+
     clearGameState: function( levelNumber ) {
       this.levelModels[levelNumber].state = null;
     },
+
     // clear states of all levels
     clearGameStates: function() {
       this.levelModels.forEach( function( levelModel ) {
         levelModel.state = null;
       } );
     },
+
     // restore game state of current level
     restoreGameState: function() {
       var state = this.currentLevelModel.state;
@@ -253,6 +261,7 @@ define( function( require ) {
       this.gameModel.state = state.state;
       this.input = state.input;
     },
+
     // save game state of current level
     saveGameState: function() {
       this.currentLevelModel.state = {
@@ -267,12 +276,13 @@ define( function( require ) {
         linkToActiveInput: this.linkToActiveInput
       };
     },
-    step: function( dt ) {
-      this.time += dt;
 
-      if ( this.time > ArithmeticConstants.EQUATION.BLINKING_INTERVAL ) {
+    step: function( dt ) {
+      this.timeSinceCursorBlink += dt;
+
+      if ( this.timeSinceCursorBlink > ArithmeticConstants.EQUATION.CURSOR_BLINK_INTERVAL ) {
         this.inputCursorVisibility = !this.inputCursorVisibility;
-        this.time = 0;
+        this.timeSinceCursorBlink = 0;
       }
     }
   } );
