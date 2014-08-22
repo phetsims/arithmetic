@@ -166,9 +166,13 @@ define( function( require ) {
       // save state of current level
       this.saveGameState();
 
-      // refresh current level
-      this.resetLevel();
+      // make sure the feedback face is hidden
+      this.faceModel.reset();
+
+      // reset the game model, which will send it back to the level selection state
+      this.gameModel.reset();
     },
+
     finishLevel: function() {
       // refresh current level
       this.resetLevel();
@@ -176,11 +180,13 @@ define( function( require ) {
       // clear game state for game state
       this.clearGameState( this.level );
     },
+
     resetLevelModels: function() {
       this.levelModels.forEach( function( levelModel ) {
         levelModel.reset();
       } );
     },
+
     playLevelFinishedSound: function() {
       var resultScore = this.currentLevelModel.currentScore,
         perfectScore = this.currentLevelModel.perfectScore;
@@ -195,6 +201,7 @@ define( function( require ) {
         this.gameAudioPlayer.gameOverImperfectScore();
       }
     },
+
     // init game after choosing level
     setLevel: function( level ) {
       this.level = level;
@@ -208,6 +215,7 @@ define( function( require ) {
         this.gameModel.state = GAME_STATE.LEVEL_INIT;
       }
     },
+
     resetLevel: function() {
       this.currentLevelModel.property( 'currentScore' ).reset();
       this.currentLevelModel.gameTimer.property( 'elapsedTime' ).reset();
@@ -215,6 +223,7 @@ define( function( require ) {
       this.gameModel.reset();
       this.faceModel.reset();
     },
+
     reset: function() {
       PropertySet.prototype.reset.call( this );
 
@@ -224,15 +233,18 @@ define( function( require ) {
       // clear game level states
       this.clearGameStates();
     },
+
     clearGameState: function( levelNumber ) {
       this.levelModels[levelNumber].state = null;
     },
+
     // clear states of all levels
     clearGameStates: function() {
       this.levelModels.forEach( function( levelModel ) {
         levelModel.state = null;
       } );
     },
+
     // restore game state of current level
     restoreGameState: function() {
       var state = this.currentLevelModel.state;
@@ -248,6 +260,7 @@ define( function( require ) {
       this.gameModel.state = state.state;
       this.input = state.input;
     },
+
     // save game state of current level
     saveGameState: function() {
       this.currentLevelModel.state = {
