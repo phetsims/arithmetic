@@ -31,7 +31,7 @@ define( function() {
     LEVEL_FINISHED: 'levelFinished',
     LEVEL_SELECT: 'levelSelect',
     NEXT_TASK: 'nextTask',
-    REFRESH_LEVEL: 'refreshLevel',
+    REFRESH_LEVEL: 'resetLevel',
     SHOW_STATISTICS: 'showStatistics'
   } );
 } );

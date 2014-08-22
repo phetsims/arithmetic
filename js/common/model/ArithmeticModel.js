@@ -148,7 +148,7 @@ define( function( require ) {
         self.gameModel.state = GAME_STATE.SHOW_STATISTICS;
       }
       else if ( state === GAME_STATE.REFRESH_LEVEL ) {
-        self.refreshLevel();
+        self.resetLevel();
         self.currentLevelModel.displayScore = 0;
         self.gameModel.state = GAME_STATE.NEXT_TASK;
       }
@@ -167,11 +167,11 @@ define( function( require ) {
       this.saveGameState();
 
       // refresh current level
-      this.refreshLevel( true );
+      this.resetLevel();
     },
     finishLevel: function() {
       // refresh current level
-      this.refreshLevel();
+      this.resetLevel();
 
       // clear game state for game state
       this.clearGameState( this.level );
@@ -208,11 +208,9 @@ define( function( require ) {
         this.gameModel.state = GAME_STATE.LEVEL_INIT;
       }
     },
-    refreshLevel: function( isWithoutScoreAndTime ) {
-      if ( !isWithoutScoreAndTime ) {
-        this.currentLevelModel.property( 'currentScore' ).reset();
-        this.currentLevelModel.gameTimer.property( 'elapsedTime' ).reset();
-      }
+    resetLevel: function() {
+      this.currentLevelModel.property( 'currentScore' ).reset();
+      this.currentLevelModel.gameTimer.property( 'elapsedTime' ).reset();
       this.property( 'input' ).reset();
       this.gameModel.reset();
       this.faceModel.reset();
@@ -240,6 +238,7 @@ define( function( require ) {
       var state = this.currentLevelModel.state;
 
       this.currentLevelModel.currentScore = state.currentScore;
+      this.currentLevelModel.gameTimer.elapsedTime = state.elapsedTime;
       this.linkToActiveInput = state.linkToActiveInput;
       this.gameModel.multiplierLeft = state.multiplierLeft;
       this.gameModel.multiplierRight = state.multiplierRight;
@@ -258,6 +257,7 @@ define( function( require ) {
         product: this.gameModel.product,
         state: this.gameModel.state,
         currentScore: this.currentLevelModel.currentScore,
+        elapsedTime: this.currentLevelModel.gameTimer.elapsedTime,
         possiblePoints: this.gameModel.possiblePoints,
         answerSheet: _.cloneDeep( this.gameModel.answerSheet ),
         linkToActiveInput: this.linkToActiveInput
