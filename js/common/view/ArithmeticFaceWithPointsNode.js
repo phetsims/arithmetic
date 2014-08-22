@@ -54,15 +54,17 @@ define( function( require ) {
     var intervalId = null;
     faceModel.property( 'isVisible' ).lazyLink( function( isVisible ) {
 
-      // stop previous timer (if present)
+      // stop previous fade timer (if present)
       if ( intervalId !== null ) {
         Timer.clearInterval( intervalId );
+        intervalId = null;
       }
 
       if ( isVisible ) {
         self.opacity = 1;
       }
       else {
+        // Fade out rather than going immediately invisible.
         intervalId = Timer.setInterval( function() {
           self.opacity -= 1 / FADE_STEPS;
           if ( self.opacity <= 0 ) {
