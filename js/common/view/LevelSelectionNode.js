@@ -29,14 +29,14 @@ define( function( require ) {
 
   /**
    * @param {Array} levelModels - An array of descriptions for each level, where one button is created for each level.
-   * @param {Property} levelProperty - level difficulty property.
    * @param {Property} stateProperty - Current state property, needed to control visibility of this component.
    * @param {Property} timerEnabledProperty - Timer enable property, needed to control visibility of best time label.
    * @param {String} titleString - Title string for given screen.
+   * @parem {Function} callback - Callback function call after pressing button.
    * @param {Object} options - Title string for given screen.
    * @constructor
    */
-  function LevelSelectionNode( levelModels, levelProperty, stateProperty, timerEnabledProperty, titleString, options ) {
+  function LevelSelectionNode( levelModels, stateProperty, timerEnabledProperty, titleString, callback, options ) {
     var self = this;
     Node.call( this );
 
@@ -55,7 +55,7 @@ define( function( require ) {
         new Image( level.icon ),
         STAR_NUMBER,
         function() {
-          levelProperty.value = levelIndex;
+          callback( levelIndex );
         },
         levelModels[levelIndex].property( 'displayScore' ),
         level.perfectScore,

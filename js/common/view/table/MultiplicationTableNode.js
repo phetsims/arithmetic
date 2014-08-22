@@ -129,7 +129,7 @@ define( function( require ) {
     } );
 
     gameModel.property( 'state' ).link( function( state ) {
-      if ( state === GAME_STATE.NEXT_TASK && levelProperty.value !== ArithmeticConstants.LEVEL_SELECTION_SCREEN ) {
+      if ( state === GAME_STATE.NEXT_TASK ) {
         gameModel.answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
           multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
             self.cells[levelProperty.value][multipliersLeftIndex + 1][multipliersRightIndex + 1][ isVisible ? 'showText' : 'hideText' ]();
@@ -142,13 +142,11 @@ define( function( require ) {
   return inherit( Node, MultiplicationTableNode, {
     // clear all cells for given level
     clearCells: function( level ) {
-      if ( level !== ArithmeticConstants.LEVEL_SELECTION_SCREEN ) {
-        this.cells[level].forEach( function( multipliersLeft ) {
-          multipliersLeft.forEach( function( cell ) {
-            cell.normal();
-          } );
+      this.cells[level].forEach( function( multipliersLeft ) {
+        multipliersLeft.forEach( function( cell ) {
+          cell.normal();
         } );
-      }
+      } );
     }
   } );
 } );

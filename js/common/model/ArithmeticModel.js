@@ -48,7 +48,7 @@ define( function( require ) {
     ];
 
     PropertySet.call( this, {
-      level: ArithmeticConstants.LEVEL_SELECTION_SCREEN, // game level
+      level: -1, // game level
       input: '', // user's input value
       inputCursorVisibility: false,
       soundEnabled: true, // is sound active
@@ -66,18 +66,6 @@ define( function( require ) {
 
     // model for smile face
     this.faceModel = new FaceModel();
-
-    // init game after choosing level
-    this.property( 'level' ).lazyLink( function( level ) {
-      // restore or init new state for game
-      if ( level !== ArithmeticConstants.LEVEL_SELECTION_SCREEN && self.levelModels[level].state ) {
-        self.restoreGameState();
-      }
-      else if ( level !== ArithmeticConstants.LEVEL_SELECTION_SCREEN ) {
-        self.gameModel.initAnswerSheet( self.levelModels[level].tableSize );
-        self.gameModel.state = GAME_STATE.LEVEL_INIT;
-      }
-    } );
 
     // When the smiling face has been shown and the user dismisses it,
     // wait for a bit then, start fading out the smiling face.  The fading is done elsewhere (current ArithmeticFaceWithPointsNode.js)
@@ -161,6 +149,7 @@ define( function( require ) {
       }
       else if ( state === GAME_STATE.REFRESH_LEVEL ) {
         self.refreshLevel();
+        self.currentLevelModel.displayScore = 0;
         self.gameModel.state = GAME_STATE.NEXT_TASK;
       }
     } );
@@ -179,43 +168,46 @@ define( function( require ) {
 
       // refresh current level
       this.refreshLevel( true );
-
-      // set level value to indicate that level selection screen should be shown
-      this.level = ArithmeticConstants.LEVEL_SELECTION_SCREEN;
     },
-
     finishLevel: function() {
       // refresh current level
       this.refreshLevel();
 
-      // clear game state for current level
+      // clear game state for game state
       this.clearGameState( this.level );
-
-      // set level value to indicate that level selection screen should be shown
-      this.level = ArithmeticConstants.LEVEL_SELECTION_SCREEN;
     },
-
     resetLevelModels: function() {
       this.levelModels.forEach( function( levelModel ) {
         levelModel.reset();
       } );
     },
-
     playLevelFinishedSound: function() {
-      var currentScore = this.currentLevelModel.currentScore;
-      var perfectScore = this.currentLevelModel.perfectScore;
+      var resultScore = this.currentLevelModel.currentScore,
+        perfectScore = this.currentLevelModel.perfectScore;
 
-      if ( currentScore === perfectScore ) {
+      if ( resultScore === perfectScore ) {
         this.gameAudioPlayer.gameOverPerfectScore();
       }
-      else if ( currentScore === 0 ) {
+      else if ( resultScore === 0 ) {
         this.gameAudioPlayer.gameOverZeroScore();
       }
       else {
         this.gameAudioPlayer.gameOverImperfectScore();
       }
     },
+    // init game after choosing level
+    setLevel: function( level ) {
+      this.level = level;
 
+      // restore or init new state for game
+      if ( this.levelModels[level].state ) {
+        this.restoreGameState();
+      }
+      else {
+        this.gameModel.initAnswerSheet( this.levelModels[level].tableSize );
+        this.gameModel.state = GAME_STATE.LEVEL_INIT;
+      }
+    },
     refreshLevel: function( isWithoutScoreAndTime ) {
       if ( !isWithoutScoreAndTime ) {
         this.currentLevelModel.property( 'currentScore' ).reset();
@@ -225,28 +217,24 @@ define( function( require ) {
       this.gameModel.reset();
       this.faceModel.reset();
     },
-
     reset: function() {
       PropertySet.prototype.reset.call( this );
 
-      // reset level models
+      // reset levels model
       this.resetLevelModels();
 
       // clear game level states
       this.clearGameStates();
     },
-
     clearGameState: function( levelNumber ) {
       this.levelModels[levelNumber].state = null;
     },
-
     // clear states of all levels
     clearGameStates: function() {
       this.levelModels.forEach( function( levelModel ) {
         levelModel.state = null;
       } );
     },
-
     // restore game state of current level
     restoreGameState: function() {
       var state = this.currentLevelModel.state;
@@ -261,7 +249,6 @@ define( function( require ) {
       this.gameModel.state = state.state;
       this.input = state.input;
     },
-
     // save game state of current level
     saveGameState: function() {
       this.currentLevelModel.state = {

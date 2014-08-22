@@ -60,6 +60,7 @@ define( function( require ) {
     // add control panel
     var controlPanelNode = new ControlPanelNode(
       model.property( 'level' ),
+      model.gameModel.property( 'state' ),
       model.levelModels,
       model.property( 'timerEnabled' ),
       function() {

@@ -31,17 +31,19 @@ define( function( require ) {
   var BACKGROUND_MARGIN = CONSTANTS.BACKGROUND.MARGIN;
   var FONT = new PhetFont( { size: 18 } );
   var FONT_BOLD = new PhetFont( { size: 18, weight: 'bold' } );
+  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
   var SPACING = CONSTANTS.SPACING;
 
   /**
    * @param {Property} levelProperty - Property for level displaying label.
+   * @param {Property} stateProperty - State of game property.
    * @param {Array} levelModels - Array of properties for score counter component.
    * @param {Property} timerEnabledProperty - Time enabling flag.
    * @param {Function} refreshLevelCallback - Callback listener for refresh level button.
    *
    * @constructor
    */
-  function ControlPanelNode( levelProperty, levelModels, timerEnabledProperty, refreshLevelCallback ) {
+  function ControlPanelNode( levelProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback ) {
     var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR, stroke: 'gray'} );
     var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), FONT_BOLD );
     var scoreText = new Text( StringUtils.format( scoreString, '0' ), FONT );
@@ -84,14 +86,14 @@ define( function( require ) {
     };
 
     levelProperty.lazyLink( function( level ) {
-      levelText.setText( StringUtils.format( pattern_level_0levelNumber, level.toString() ) );
+      levelText.setText( StringUtils.format( pattern_level_0levelNumber, (level + 1).toString() ) );
 
       levelModels.forEach( function( levelModel ) {
         levelModel.property( 'currentScore' ).unlink( updateScore );
         levelModel.gameTimer.property( 'elapsedTime' ).unlink( updateTime );
       } );
 
-      if ( level !== ArithmeticConstants.LEVEL_SELECTION_SCREEN ) {
+      if ( stateProperty.value === GAME_STATE.LEVEL_SELECT && levelModels[level] ) {
         levelModels[level].property( 'currentScore' ).link( updateScore );
         levelModels[level].gameTimer.property( 'elapsedTime' ).link( updateTime );
       }
