@@ -250,7 +250,6 @@ define( function( require ) {
       var state = this.currentLevelModel.state;
 
       this.currentLevelModel.currentScore = state.currentScore;
-      this.currentLevelModel.gameTimer.elapsedTime = state.elapsedTime;
       this.linkToActiveInput = state.linkToActiveInput;
       this.gameModel.multiplierLeft = state.multiplierLeft;
       this.gameModel.multiplierRight = state.multiplierRight;
@@ -259,6 +258,9 @@ define( function( require ) {
       this.gameModel.answerSheet = state.answerSheet;
       this.gameModel.state = state.state;
       this.input = state.input;
+
+      // Elapsed time must account for any time that has gone by since the state was saved.
+      this.currentLevelModel.gameTimer.elapsedTime = state.elapsedTime + ( new Date().getTime() - state.systemTimeWhenSaveOccurred ) / 1000;
     },
 
     // save game state of current level
@@ -271,6 +273,7 @@ define( function( require ) {
         state: this.gameModel.state,
         currentScore: this.currentLevelModel.currentScore,
         elapsedTime: this.currentLevelModel.gameTimer.elapsedTime,
+        systemTimeWhenSaveOccurred: new Date().getTime(),
         possiblePoints: this.gameModel.possiblePoints,
         answerSheet: _.cloneDeep( this.gameModel.answerSheet ),
         linkToActiveInput: this.linkToActiveInput
