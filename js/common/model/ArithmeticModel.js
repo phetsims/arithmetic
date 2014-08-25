@@ -260,7 +260,7 @@ define( function( require ) {
       this.input = state.input;
 
       // Elapsed time must account for any time that has gone by since the state was saved.
-      this.currentLevelModel.gameTimer.elapsedTime = state.elapsedTime + ( new Date().getTime() - state.systemTimeWhenSaveOccurred ) / 1000;
+      this.currentLevelModel.gameTimer.elapsedTime = state.elapsedTime + Math.floor( ( new Date().getTime() - state.systemTimeWhenSaveOccurred ) / 1000 );
     },
 
     // save game state of current level
