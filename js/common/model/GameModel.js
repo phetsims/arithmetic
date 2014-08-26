@@ -15,6 +15,9 @@ define( function( require ) {
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
+  /**
+   * @constructor
+   */
   function GameModel() {
     PropertySet.call( this, {
       multiplierLeft: undefined, // left multiplier
