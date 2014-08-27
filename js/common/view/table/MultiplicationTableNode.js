@@ -132,7 +132,12 @@ define( function( require ) {
       if ( state === GAME_STATE.NEXT_TASK ) {
         gameModel.answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
           multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
-            self.cells[levelProperty.value][multipliersLeftIndex + 1][multipliersRightIndex + 1][ isVisible ? 'showText' : 'hideText' ]();
+            if ( isVisible ) {
+              self.cells[levelProperty.value][multipliersLeftIndex + 1][multipliersRightIndex + 1].showText();
+            }
+            else {
+              self.cells[levelProperty.value][multipliersLeftIndex + 1][multipliersRightIndex + 1].hideText();
+            }
           } );
         } );
       }
