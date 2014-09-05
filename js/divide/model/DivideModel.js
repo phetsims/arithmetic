@@ -16,6 +16,9 @@ define( function( require ) {
   // constants
   var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
+  /**
+   * @constructor
+   */
   function DivideModel() {
     var self = this;
     ArithmeticModel.call( this, {

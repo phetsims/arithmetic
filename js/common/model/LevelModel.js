@@ -13,6 +13,11 @@ define( function( require ) {
   var PropertySet = require( 'AXON/PropertySet' );
   var GameTimer = require( 'VEGAS/GameTimer' );
 
+  /**
+   * @param tableSize
+   * @param iconImage
+   * @constructor
+   */
   function LevelModel( tableSize, iconImage ) {
     PropertySet.call( this, {
       bestTime: null,  // best time for level

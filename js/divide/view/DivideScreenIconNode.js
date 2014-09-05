@@ -21,6 +21,9 @@ define( function( require ) {
   var SYMBOL_COLOR = '#FFF31E';
   var CIRCLE_RADIUS = 3; // Empirically determined
 
+  /**
+   * @constructor
+   */
   function DivideScreenIconNode() {
 
     // create the background

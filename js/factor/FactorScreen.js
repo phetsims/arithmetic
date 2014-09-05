@@ -21,6 +21,9 @@ define( function( require ) {
   // strings
   var factorString = require( 'string!ARITHMETIC/factor' );
 
+  /**
+   * @constructor
+   */
   function FactorScreen() {
     Screen.call( this,
       factorString, new FactorScreenIconNode(),

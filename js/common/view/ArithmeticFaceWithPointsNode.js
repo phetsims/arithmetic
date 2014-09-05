@@ -20,12 +20,11 @@ define( function( require ) {
   var SMILE_DISAPPEAR_TIME = require( 'ARITHMETIC/common/ArithmeticConstants' ).SMILE_DISAPPEAR_TIME;
 
   /**
-   * @param faceModel {Object} model for smile face.
+   * @param {Object} faceModel model for smile face.
    * Contains 'pointsToDisplay', 'isSmile', 'isVisible' properties
    *
    * @constructor
    */
-
   function ArithmeticFaceWithPointsNode( faceModel ) {
     var self = this;
     FaceWithPointsNode.call( this, {
