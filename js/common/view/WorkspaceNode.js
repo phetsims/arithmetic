@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Contains all game components: times table, calculator, equation, smile face, etc.
+ * Contains all game components: times table, keypad, equation, smile face, etc.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var CalculatorNode = require( 'ARITHMETIC/common/view/CalculatorNode' );
+  var KeypadNode = require( 'ARITHMETIC/common/view/KeypadNode' );
   var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
   var ArithmeticFaceWithPointsNode = require( 'ARITHMETIC/common/view/ArithmeticFaceWithPointsNode' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -25,12 +25,12 @@ define( function( require ) {
    * @param {ArithmeticModel} model - main model for screen.
    * @param {Node} multiplicationTableNode - Multiplication table node for given screen.
    * @param {Node} equationNode - Equation node for given screen.
-   * @param {Boolean} isAddCalculatorNode - Flag for adding calculator node.
+   * @param {Boolean} isAddKeypadNode - Flag for adding keypad node.
    * @param {Bounds2} layoutBounds - Bounds of main screen. Necessary for placing components.
    *
    * @constructor
    */
-  function WorkspaceNode( model, multiplicationTableNode, equationNode, isAddCalculatorNode, layoutBounds ) {
+  function WorkspaceNode( model, multiplicationTableNode, equationNode, isAddKeypadNode, layoutBounds ) {
     var self = this;
     Node.call( this );
 
@@ -70,9 +70,9 @@ define( function( require ) {
     controlPanelNode.top = multiplicationTableNode.top;
     this.addChild( controlPanelNode );
 
-    // add calculator if necessary
-    if ( isAddCalculatorNode ) {
-      this.addChild( new CalculatorNode(
+    // add keypad if necessary
+    if ( isAddKeypadNode ) {
+      this.addChild( new KeypadNode(
           model.property( 'input' ),
           function() {model.fillEquation();}
         ).mutate( {centerX: controlPanelNode.centerX, bottom: layoutBounds.maxY * 0.95} )

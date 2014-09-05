@@ -25,12 +25,12 @@ define( function( require ) {
    * @param {ArithmeticModel} model - Main model for screen.
    * @param {Node} multiplicationTableNode - Multiplication table node for given screen.
    * @param {Node} equationNode - Equation node for given screen.
-   * @param {Boolean} isAddCalculatorNode - Flag for adding calculator node.
+   * @param {Boolean} isAddKeypadNode - Flag for adding the keypad node.
    * @param {String} titleString - Title string for given screen.
    *
    * @constructor
    */
-  function ArithmeticView( model, multiplicationTableNode, equationNode, isAddCalculatorNode, titleString ) {
+  function ArithmeticView( model, multiplicationTableNode, equationNode, isAddKeypadNode, titleString ) {
     ScreenView.call( this );
 
     // add start game level buttons
@@ -40,7 +40,7 @@ define( function( require ) {
       }, { centerX: this.layoutBounds.centerX, centerY: this.layoutBounds.height * 0.4 } ) );
 
     // add game components
-    this.addChild( new WorkspaceNode( model, multiplicationTableNode, equationNode, isAddCalculatorNode, this.layoutBounds ) );
+    this.addChild( new WorkspaceNode( model, multiplicationTableNode, equationNode, isAddKeypadNode, this.layoutBounds ) );
 
     // add timer and sound buttons
     var soundAndTimerButtons = new VBox( {spacing: 5, children: [

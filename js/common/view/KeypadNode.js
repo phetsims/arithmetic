@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Calculator node.
+ * Keypad node, allows the user to enter digits.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -22,18 +22,18 @@ define( function( require ) {
 
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var ARROW_SIZE = CONSTANTS.CALCULATOR.ARROW_SIZE;
-  var BUTTON_SIZE = CONSTANTS.CALCULATOR.BUTTON_SIZE;
+  var ARROW_SIZE = CONSTANTS.KEYPAD.ARROW_SIZE;
+  var BUTTON_SIZE = CONSTANTS.KEYPAD.BUTTON_SIZE;
   var FONT = new PhetFont( {size: 24 } );
-  var SPACING = CONSTANTS.CALCULATOR.SPACING;
+  var SPACING = CONSTANTS.KEYPAD.SPACING;
 
   /**
-   * @param {Property} inputProperty - Input property for communication buttons of calculator with model.
+   * @param {Property} inputProperty - Input property for communication buttons of keypad with the model.
    * @param {Function} enterCallback - Callback listener for enter button.
    *
    * @constructor
    */
-  function CalculatorNode( inputProperty, enterCallback ) {
+  function KeypadNode( inputProperty, enterCallback ) {
     var buttonEnter;
 
     // add buttons
@@ -79,7 +79,7 @@ define( function( require ) {
   var getButtonDefault = function( content, listener, options ) {
     return new RectangularPushButton( _.extend( {
       content: content,
-      baseColor: CONSTANTS.CALCULATOR.BASE_COLOR,
+      baseColor: CONSTANTS.KEYPAD.BASE_COLOR,
       minHeight: BUTTON_SIZE.height,
       minWidth: BUTTON_SIZE.width,
       xMargin: 2,
@@ -97,8 +97,8 @@ define( function( require ) {
       } ),
       new Rectangle( ARROW_SIZE / 2 - 1, -ARROW_SIZE / 4, 2, ARROW_SIZE / 4, {fill: 'black'} )
     ]} ), callback, {
-      baseColor: CONSTANTS.CALCULATOR.DISABLE_BASE_COLOR,
-      disabledBaseColor: CONSTANTS.CALCULATOR.BASE_COLOR
+      baseColor: CONSTANTS.KEYPAD.DISABLE_BASE_COLOR,
+      disabledBaseColor: CONSTANTS.KEYPAD.BASE_COLOR
     } );
   };
 
@@ -112,5 +112,5 @@ define( function( require ) {
     } );
   };
 
-  return inherit( VBox, CalculatorNode );
+  return inherit( VBox, KeypadNode );
 } );

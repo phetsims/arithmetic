@@ -20,8 +20,8 @@ define( function( require ) {
       CORNER_RADIUS: 7, // corner radius of back button
       MARGIN: new Dimension2( 20, 10 ) // margin of background of back button
     },
-    // constants for calculator
-    CALCULATOR: {
+    // constants for keypad
+    KEYPAD: {
       ARROW_SIZE: 20, // arrow size of enter and backspace
       BASE_COLOR: 'white', // base color for all buttons
       BUTTON_SIZE: new Dimension2( 40, 40 ), // size of buttons
