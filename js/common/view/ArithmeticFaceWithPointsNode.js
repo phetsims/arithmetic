@@ -1,8 +1,8 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Node that represents a smiling face with the additional points gained for
- * getting the answer correct shown immediately below it.
+ * Node that represents a smiling face with the additional points gained for getting the answer correct shown
+ * immediately below it.
  *
  * @author Andrey Zelenkov (MLearner)
  */
