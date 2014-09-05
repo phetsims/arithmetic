@@ -100,7 +100,7 @@ define( function( require ) {
           self.currentLevelModel.displayScore = self.currentLevelModel.currentScore;
 
           // set smile face view and play sound
-          self.faceModel.scoreFace = self.gameModel.possiblePoints;
+          self.faceModel.pointsToDisplay = self.gameModel.possiblePoints;
           self.faceModel.isSmile = true;
           self.gameAudioPlayer.correctAnswer();
 
@@ -118,7 +118,7 @@ define( function( require ) {
           self.gameModel.possiblePoints = 0;
 
           // set smile face view and play sound
-          self.faceModel.scoreFace = self.gameModel.possiblePoints;
+          self.faceModel.pointsToDisplay = self.gameModel.possiblePoints;
           self.faceModel.isSmile = false;
           self.gameAudioPlayer.wrongAnswer();
 

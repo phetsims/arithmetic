@@ -21,7 +21,7 @@ define( function( require ) {
 
   /**
    * @param faceModel {Object} model for smile face.
-   * Contains 'scoreFace', 'isSmile', 'isVisible' properties
+   * Contains 'pointsToDisplay', 'isSmile', 'isVisible' properties
    *
    * @constructor
    */
@@ -36,7 +36,7 @@ define( function( require ) {
     // add observers
 
     // set score of smile face
-    faceModel.property( 'scoreFace' ).link( function( points ) {
+    faceModel.property( 'pointsToDisplay' ).link( function( points ) {
       self.setPoints( points );
     } );
 

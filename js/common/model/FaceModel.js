@@ -1,7 +1,7 @@
 // Copyright 2002-2013, University of Colorado Boulder
 
 /**
- * Model for smile face in the 'Arithmetic' simulation.
+ * Model for cartoon face that is used to provide feedback in the 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -15,9 +15,15 @@ define( function( require ) {
   function FaceModel() {
     PropertySet.call( this, {
 
-      scoreFace: 1, // score to be displayed near the smile face.  In this simulation, you get 1 point if you get a challenge correct, and zero otherwise.
-      isVisible: false, // flag of smile face visibility
-      isSmile: true // flag of smile face emotion
+      // Points to be displayed near the face.  In this simulation, you get 1 point if you get a challenge correct on
+      // the first try, zero otherwise.
+      pointsToDisplay: 1,
+
+      // flag that indicates whether or not the face should be visible
+      isVisible: false,
+
+      // flag that controls the expression that the face should depict
+      isSmile: true
     } );
   }
 
