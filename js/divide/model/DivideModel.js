@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Model for divide game in 'Arithmetic' simulation.
+ * Model for divide game in the 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -23,9 +23,11 @@ define( function( require ) {
     var self = this;
     ArithmeticModel.call( this, {
       fillEquation: function() {
+        // Convert any strings entered by the user into numerical values.
         self.gameModel.multiplierRight = parseInt( self.gameModel.multiplierRight, 10 );
         self.gameModel.multiplierLeft = parseInt( self.gameModel.multiplierLeft, 10 );
 
+        // Advance to the next game state.
         self.gameModel.state = GAME_STATE.EQUATION_FILLED;
       }
     } );
