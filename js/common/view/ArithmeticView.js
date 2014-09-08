@@ -57,14 +57,8 @@ define( function( require ) {
 
     // observers
     model.gameModel.property( 'state' ).link( function( state ) {
-      if ( state === GAME_STATE.LEVEL_SELECT ) {
-        soundAndTimerButtons.visible = true;
-        resetAllButton.visible = true;
-      }
-      else {
-        soundAndTimerButtons.visible = false;
-        resetAllButton.visible = false;
-      }
+      soundAndTimerButtons.visible = state === GAME_STATE.LEVEL_SELECT;
+      resetAllButton.visible = state === GAME_STATE.LEVEL_SELECT;
     } );
   }
 
