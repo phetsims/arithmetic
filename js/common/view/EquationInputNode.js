@@ -1,7 +1,8 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Input node for equation node in 'Arithmetic' simulation.
+ * Node that represents an equation and which is used to gather input from the user.  Depending on the situation, the
+ * user may enter the product or one of the multiplicands.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -22,8 +23,8 @@ define( function( require ) {
 
   /**
    * @param {Property} property for observing and changing by input
+   * @param {Property} cursorVisibilityProperty - Property which switches true/false with given time interval.
    * @param {Dimension2} inputSize - Size of input component.
-   * @param {Property} cursorVisibilityProperty - Property which switch true/false with given time interval.
    *
    * @constructor
    */
@@ -49,9 +50,7 @@ define( function( require ) {
 
     // blinking animation for cursor
     cursorVisibilityProperty.lazyLink( function( isCursorVisible ) {
-      if ( self._cursorContainer.visible ) {
-        self._cursor.visible = isCursorVisible;
-      }
+      self._cursor.visible = isCursorVisible;
     } );
 
     // add background
@@ -61,7 +60,7 @@ define( function( require ) {
     this._box = new HBox( {children: [this._inputText, this._cursorContainer], centerX: inputSize.width / 2, centerY: inputSize.height / 2} );
     this.addChild( this._box );
 
-    // unfocus state by default
+    // unfocused state by default
     this.unfocus();
   }
 

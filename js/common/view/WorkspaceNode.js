@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Contains all game components: times table, keypad, equation, smile face, etc.
+ * A composite node that contains all game components: times table, keypad, equation, smile face, etc.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -25,12 +25,12 @@ define( function( require ) {
    * @param {ArithmeticModel} model - main model for screen.
    * @param {Node} multiplicationTableNode - Multiplication table node for given screen.
    * @param {Node} equationNode - Equation node for given screen.
-   * @param {Boolean} isAddKeypadNode - Flag for adding keypad node.
+   * @param {Boolean} showKeypad - Flag for adding keypad node.
    * @param {Bounds2} layoutBounds - Bounds of main screen. Necessary for placing components.
    *
    * @constructor
    */
-  function WorkspaceNode( model, multiplicationTableNode, equationNode, isAddKeypadNode, layoutBounds ) {
+  function WorkspaceNode( model, multiplicationTableNode, equationNode, showKeypad, layoutBounds ) {
     var self = this;
     Node.call( this );
 
@@ -71,7 +71,7 @@ define( function( require ) {
     this.addChild( controlPanelNode );
 
     // add keypad if necessary
-    if ( isAddKeypadNode ) {
+    if ( showKeypad ) {
       this.addChild( new KeypadNode(
           model.property( 'input' ),
           function() {model.fillEquation();}

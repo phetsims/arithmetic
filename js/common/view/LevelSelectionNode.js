@@ -32,7 +32,7 @@ define( function( require ) {
    * @param {Property} stateProperty - Current state property, needed to control visibility of this component.
    * @param {Property} timerEnabledProperty - Timer enable property, needed to control visibility of best time label.
    * @param {String} titleString - Title string for given screen.
-   * @parem {Function} callback - Callback function call after pressing button.
+   * @param {Function} callback - Callback function call after pressing button.
    * @param {Object} options - Title string for given screen.
    * @constructor
    */

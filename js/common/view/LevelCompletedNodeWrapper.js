@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * This node shows the level completed node when the level complete state is reached.
+ * This node shows the level completed node when the user completes a level.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -18,13 +18,13 @@ define( function( require ) {
   var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
-   * @param {Array} levelModels - Array of descriptions for each level.
-   * Necessary to get perfect and current score for completed level.
-   * @param {Property} levelProperty - Level difficulty property.
-   * @param {Property} stateProperty - State of game property.
-   * @param {Property} timerEnabledProperty - Time enabling flag.
+   * @param {Array} levelModels - Array of descriptions for each level. Necessary to get perfect and current score for
+   * completed level.
+   * @param {Property} levelProperty - Level property.
+   * @param {Property} stateProperty - Game state property.
+   * @param {Property} timerEnabledProperty - Timer enabled flag.
    * @param {Function} continueCallback - Callback listener for continue button.
-   * @param {Bounds2} layoutBounds - Bounds of main screen. Necessary for placing component.
+   * @param {Bounds2} layoutBounds - Bounds of main screen. Necessary for placing components.
    *
    * @constructor
    */

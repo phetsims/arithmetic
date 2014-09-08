@@ -9,7 +9,6 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).EQUATION;
   var EquationInputNode = require( 'ARITHMETIC/common/view/EquationInputNode' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -17,6 +16,7 @@ define( function( require ) {
   var Text = require( 'SCENERY/nodes/Text' );
 
   // constants
+  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).EQUATION;
   var FONT_EQUALS = new PhetFont( 40 );
   var FONT_X = new PhetFont( 50 );
 
