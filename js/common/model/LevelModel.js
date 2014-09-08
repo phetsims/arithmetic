@@ -14,8 +14,8 @@ define( function( require ) {
   var GameTimer = require( 'VEGAS/GameTimer' );
 
   /**
-   * @param tableSize
-   * @param iconImage
+   * @param {Number} tableSize - Size of table. Supposed that the table is square.
+   * @param {DOMNode} iconImage - Image icon for given level. Will be passed into Image constructor.
    * @constructor
    */
   function LevelModel( tableSize, iconImage ) {
