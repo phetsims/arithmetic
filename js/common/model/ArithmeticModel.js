@@ -164,7 +164,7 @@ define( function( require ) {
 
     returnToLevelSelectScreen: function() {
       // save state of current level
-      this.saveGameState();
+      this.saveGameEnvironment();
 
       // make sure the feedback face is hidden
       this.faceModel.reset();
@@ -178,7 +178,7 @@ define( function( require ) {
       this.resetLevel();
 
       // clear game state for game state
-      this.clearGameState( this.level );
+      this.clearGameEnvironment( this.level );
     },
 
     resetLevelModels: function() {
@@ -206,9 +206,9 @@ define( function( require ) {
     setLevel: function( level ) {
       this.level = level;
 
-      // restore or init new state for game
-      if ( this.levelModels[level].state ) {
-        this.restoreGameState();
+      // restore or init new environment for game
+      if ( this.levelModels[level].environment ) {
+        this.restoreGameEnvironment();
       }
       else {
         this.gameModel.initAnswerSheet( this.levelModels[level].tableSize );
@@ -231,41 +231,41 @@ define( function( require ) {
       this.resetLevelModels();
 
       // clear game level states
-      this.clearGameStates();
+      this.clearGameEnvironments();
     },
 
-    clearGameState: function( levelNumber ) {
-      this.levelModels[levelNumber].state = null;
+    clearGameEnvironment: function( levelNumber ) {
+      this.levelModels[levelNumber].environment = null;
     },
 
-    // clear states of all levels
-    clearGameStates: function() {
+    // clear environments of all levels
+    clearGameEnvironments: function() {
       this.levelModels.forEach( function( levelModel ) {
-        levelModel.state = null;
+        levelModel.environment = null;
       } );
     },
 
-    // restore game state of current level
-    restoreGameState: function() {
-      var state = this.currentLevelModel.state;
+    // restore game environment of current level
+    restoreGameEnvironment: function() {
+      var environment = this.currentLevelModel.environment;
 
-      this.currentLevelModel.currentScore = state.currentScore;
-      this.linkToActiveInput = state.linkToActiveInput;
-      this.gameModel.multiplierLeft = state.multiplierLeft;
-      this.gameModel.multiplierRight = state.multiplierRight;
-      this.gameModel.product = state.product;
-      this.gameModel.possiblePoints = state.possiblePoints;
-      this.gameModel.answerSheet = state.answerSheet;
-      this.gameModel.state = state.state;
-      this.input = state.input;
+      this.currentLevelModel.currentScore = environment.currentScore;
+      this.linkToActiveInput = environment.linkToActiveInput;
+      this.gameModel.multiplierLeft = environment.multiplierLeft;
+      this.gameModel.multiplierRight = environment.multiplierRight;
+      this.gameModel.product = environment.product;
+      this.gameModel.possiblePoints = environment.possiblePoints;
+      this.gameModel.answerSheet = environment.answerSheet;
+      this.gameModel.state = environment.state;
+      this.input = environment.input;
 
-      // Elapsed time must account for any time that has gone by since the state was saved.
-      this.currentLevelModel.gameTimer.elapsedTime = state.elapsedTime + Math.floor( ( new Date().getTime() - state.systemTimeWhenSaveOccurred ) / 1000 );
+      // Elapsed time must account for any time that has gone by since the environment was saved.
+      this.currentLevelModel.gameTimer.elapsedTime = environment.elapsedTime + Math.floor( ( new Date().getTime() - environment.systemTimeWhenSaveOccurred ) / 1000 );
     },
 
-    // save game state of current level
-    saveGameState: function() {
-      this.currentLevelModel.state = {
+    // save game environment of current level
+    saveGameEnvironment: function() {
+      this.currentLevelModel.environment = {
         input: this.input,
         multiplierLeft: this.gameModel.multiplierLeft,
         multiplierRight: this.gameModel.multiplierRight,

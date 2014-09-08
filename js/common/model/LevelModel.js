@@ -32,7 +32,7 @@ define( function( require ) {
     // model for game timer
     this.gameTimer = new GameTimer();
 
-    this.state = null;
+    this.environment = null;
   }
 
   return inherit( PropertySet, LevelModel, {
