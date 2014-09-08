@@ -11,7 +11,7 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
-  var MultiplicationTableButtonAbstract = require( 'ARITHMETIC/common/view/table/MultiplicationTableButtonAbstract' );
+  var AbstractCell = require( 'ARITHMETIC/common/view/table/AbstractCell' );
 
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).MULTIPLICATION_TABLE.MULTIPLIER_BUTTON;
@@ -27,12 +27,12 @@ define( function( require ) {
     backgroundOptions = _.extend( {
       fill: CONSTANTS.NORMAL_COLOR
     }, backgroundOptions );
-    MultiplicationTableButtonAbstract.call( this, backgroundOptions, textOptions );
+    AbstractCell.call( this, backgroundOptions, textOptions );
 
     this.setText( contentText );
   }
 
-  return inherit( MultiplicationTableButtonAbstract, MultiplicationTableButtonMultiplierNode, {
+  return inherit( AbstractCell, MultiplicationTableButtonMultiplierNode, {
     select: function() {
       this.setBackgroundFill( CONSTANTS.SELECT_COLOR_BACKGROUND );
       this.setTextFill( CONSTANTS.SELECT_COLOR_TEXT );

@@ -12,7 +12,7 @@ define( function( require ) {
   // modules
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var MultiplicationTableButtonAbstract = require( 'ARITHMETIC/common/view/table/MultiplicationTableButtonAbstract' );
+  var AbstractCell = require( 'ARITHMETIC/common/view/table/AbstractCell' );
 
   // images
   var pointingHandImage = require( 'image!ARITHMETIC/pointing-hand.png' );
@@ -31,7 +31,7 @@ define( function( require ) {
     backgroundOptions = _.extend( {
       fill: CONSTANTS.NORMAL_COLOR
     }, backgroundOptions );
-    MultiplicationTableButtonAbstract.call( this, backgroundOptions, textOptions );
+    AbstractCell.call( this, backgroundOptions, textOptions );
 
     // create pointer for active state
     this._pointer = new Image( pointingHandImage, {visible: false} );
@@ -48,7 +48,7 @@ define( function( require ) {
     this.hideText();
   }
 
-  return inherit( MultiplicationTableButtonAbstract, MultiplicationTableButtonProductNode, {
+  return inherit( AbstractCell, MultiplicationTableButtonProductNode, {
     active: function() {
       this.setBackgroundFill( CONSTANTS.ACTIVE_COLOR );
       this._pointer.visible = false;

@@ -22,7 +22,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function MultiplicationTableButtonAbstract( backgroundOptions, textOptions ) {
+  function AbstractCell( backgroundOptions, textOptions ) {
     Node.call( this );
 
     // add background
@@ -43,7 +43,7 @@ define( function( require ) {
     this.addChild( this._text );
   }
 
-  return inherit( Node, MultiplicationTableButtonAbstract, {
+  return inherit( Node, AbstractCell, {
     setBackgroundFill: function( fill ) {
       this._background.fill = fill;
     },
