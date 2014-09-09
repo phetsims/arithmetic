@@ -1,8 +1,9 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Node that represents an equation and which is used to gather input from the user.  Depending on the situation, the
- * user may enter the product or one of the multiplicands.
+ * Node that looks like an edit box and that is used to either display a fixed value or to show what the user has
+ * entered, depending on the particular challenge being presented to the user.  It has the capability to display a
+ * blinking cursor, which is generally used when this node is being used to show user-entered values.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -22,13 +23,13 @@ define( function( require ) {
   var PLACEHOLDER = '?';
 
   /**
-   * @param {Property} property for observing and changing by input
+   * @param {Property} valueProperty for observing and changing by input
    * @param {Property} cursorVisibilityProperty - Property which switches true/false with given time interval.
-   * @param {Dimension2} inputSize - Size of input component.
+   * @param {Dimension2} size - Dimensions of this input component.
    *
    * @constructor
    */
-  function EquationInputNode( property, cursorVisibilityProperty, inputSize ) {
+  function EquationInputNode( valueProperty, cursorVisibilityProperty, size ) {
     var self = this;
     Node.call( this );
 
@@ -40,12 +41,12 @@ define( function( require ) {
     this._cursorContainer = new Node( {children: [this._cursor]} );
 
     // save reference to input size value for use in public methods
-    this._inputSize = inputSize;
+    this._inputSize = size;
 
-    // update text when property changed
-    property.lazyLink( function( value ) {
+    // update text when the value changes
+    valueProperty.lazyLink( function( value ) {
       self._inputText.setText( value || '' );
-      updateBoxPosition( self._box, inputSize );
+      updateBoxPosition( self._box, size );
     } );
 
     // blinking animation for cursor
@@ -54,10 +55,10 @@ define( function( require ) {
     } );
 
     // add background
-    this.addChild( new Rectangle( 0, 0, inputSize.width, inputSize.height, 5, 5, {fill: 'white'} ) );
+    this.addChild( new Rectangle( 0, 0, size.width, size.height, 5, 5, {fill: 'white'} ) );
 
     // add text and cursor
-    this._box = new HBox( {children: [this._inputText, this._cursorContainer], centerX: inputSize.width / 2, centerY: inputSize.height / 2} );
+    this._box = new HBox( {children: [this._inputText, this._cursorContainer], centerX: size.width / 2, centerY: size.height / 2} );
     this.addChild( this._box );
 
     // unfocused state by default

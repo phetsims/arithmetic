@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Multiplication table node for "multiply" screen in 'Arithmetic' simulation.
+ * Multiplication table node for the 'Multiply' screen in the 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
  */

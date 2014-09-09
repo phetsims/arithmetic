@@ -1,7 +1,8 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * A scenery node that represents a multiplication equation, with two multipliers and a product, e.g. 2 x 3 = 6.
+ * Abstract base type for a scenery node that represents a multiplication equation, with two multipliers and a product,
+ * e.g. 2 x 3 = 6.
  *
  * @author Andrey Zelenkov (MLearner)
  */

@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Equation node for 'divide' screen in 'Arithmetic' simulation.
+ * Equation node for 'divide' screen in the 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
  */

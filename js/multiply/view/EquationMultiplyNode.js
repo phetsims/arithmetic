@@ -19,7 +19,7 @@ define( function( require ) {
    * @param {Property} stateProperty - State of game property.
    * @param {Property} multiplierLeftProperty - Property necessary for creating left multiplier input.
    * @param {Property} multiplierRightProperty - Property necessary for creating right multiplier input.
-   * @param {Property} inputProperty - Input property.
+   * @param {Property} inputProperty - Input property, which is the product, and is input by the user.
    * @param {Property} inputCursorVisibilityProperty - Property which switch true/false with given time interval.
    *
    * @constructor

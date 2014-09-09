@@ -45,8 +45,8 @@ define( function( require ) {
     // constants for equation
     EQUATION: {
       CURSOR_BLINK_INTERVAL: 0.5, // duration of animation in seconds
-      INPUT_SIZE_MULTIPLIER: new Dimension2( 70, 45 ), // size of input buttons
-      INPUT_SIZE_PRODUCT: new Dimension2( 80, 45 ), // size of input buttons
+      INPUT_SIZE_MULTIPLIER: new Dimension2( 70, 45 ), // size of input boxes for multiplier
+      INPUT_SIZE_PRODUCT: new Dimension2( 80, 45 ), // size of input box for product
       SPACING: 20 // spacing between equation elements
     },
     // max input length

@@ -38,7 +38,7 @@ define( function( require ) {
           // set product
           self.gameModel.product = multipliers.multiplierLeft * multipliers.multiplierRight;
 
-          // set start state
+          // update state
           self.gameModel.state = GAME_STATE.AWAITING_USER_INPUT;
         }
         else {

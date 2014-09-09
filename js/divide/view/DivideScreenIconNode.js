@@ -45,7 +45,6 @@ define( function( require ) {
       centerX: ICON_SIZE.width / 2,
       centerY: ICON_SIZE.height * 0.7
     } ) );
-
   }
 
   return inherit( Rectangle, DivideScreenIconNode );
