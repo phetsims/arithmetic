@@ -32,14 +32,14 @@ define( function( require ) {
     var self = this;
     Node.call( this );
 
-    // create text and save link for further using
+    // create text and save reference for use in public methods
     this._inputText = new Text( PLACEHOLDER, {font: FONT_TEXT} );
 
-    // create cursor and save link for further using
+    // create cursor and save reference for use in public methods
     this._cursor = new Rectangle( 0, 2, 1, this._inputText.getHeight() - 16, {fill: 'black'} );
     this._cursorContainer = new Node( {children: [this._cursor]} );
 
-    // save link to input size value for further using
+    // save reference to input size value for use in public methods
     this._inputSize = inputSize;
 
     // update text when property changed
