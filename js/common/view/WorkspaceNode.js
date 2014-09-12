@@ -1,7 +1,8 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * A composite node that contains all game components: times table, keypad, equation, smile face, etc.
+ * A composite node that contains all game components: times table, keypad, equation, smile face, etc.  Some of these
+ * are created here, others are passed in (when they need to be of different types), and all are laid out here.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -21,8 +22,12 @@ define( function( require ) {
 
   /**
    * @param {ArithmeticModel} model - main model for screen.
-   * @param {Node} multiplicationTableNode - Multiplication table node for given screen.
-   * @param {Node} equationNode - Equation node for given screen.
+   * @param {Node} multiplicationTableNode - Multiplication table node for given screen.  This can be (and generally is)
+   * different depending on the flavor of the game, i.e. multiplication, division, or factoring.  This is why it is
+   * passed in rather than locally created.
+   * @param {Node} equationNode - Equation node for given screen.  This can be (and generally is) different depending
+   * on the flavor of the game, i.e. multiplication, division, or factoring.  This is why it is passed in rather than
+   * locally created.
    * @param {Boolean} showKeypad - Flag for adding keypad node.
    * @param {Bounds2} layoutBounds - Bounds of main screen. Necessary for placing components.
    *

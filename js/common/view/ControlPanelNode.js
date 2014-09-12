@@ -48,10 +48,8 @@ define( function( require ) {
     var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), FONT_BOLD );
     var scoreText = new Text( StringUtils.format( scoreString, '0' ), FONT );
     var timeText = new Text( StringUtils.format( timeString, GameTimer.formatTime( 0 ) ), FONT );
-    var minWidth = Math.max( levelText.getWidth(), scoreText.getWidth(), timeText.getWidth() );
+    var minWidth = Math.max( levelText.getWidth(), scoreText.getWidth(), timeText.getWidth() ) * 1.1;
     var vBox;
-
-    minWidth += minWidth / 10;
 
     Node.call( this );
 
