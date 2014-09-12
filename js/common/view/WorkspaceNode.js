@@ -9,17 +9,15 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var KeypadNode = require( 'ARITHMETIC/common/view/KeypadNode' );
-  var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
   var ArithmeticFaceWithPointsNode = require( 'ARITHMETIC/common/view/ArithmeticFaceWithPointsNode' );
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
+  var GameState = require( 'ARITHMETIC/common/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var KeypadNode = require( 'ARITHMETIC/common/view/KeypadNode' );
   var LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );
   var Node = require( 'SCENERY/nodes/Node' );
   var ReturnToLevelSelectButton = require( 'SCENERY_PHET/ReturnToLevelSelectButton' );
-
-  // constants
-  var BACK_BUTTON_CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).BACK_BUTTON;
-  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * @param {ArithmeticModel} model - main model for screen.
@@ -36,15 +34,17 @@ define( function( require ) {
 
     // add back to level select button
     this.addChild( new ReturnToLevelSelectButton( {
-        baseColor: BACK_BUTTON_CONSTANTS.BASE_COLOR,
-        cornerRadius: BACK_BUTTON_CONSTANTS.CORNER_RADIUS,
-        xMargin: BACK_BUTTON_CONSTANTS.MARGIN.width,
-        yMargin: BACK_BUTTON_CONSTANTS.MARGIN.height,
+        baseColor: ArithmeticConstants.BACK_BUTTON.BASE_COLOR,
+        cornerRadius: ArithmeticConstants.BACK_BUTTON.CORNER_RADIUS,
+        xMargin: ArithmeticConstants.BACK_BUTTON.MARGIN.width,
+        yMargin: ArithmeticConstants.BACK_BUTTON.MARGIN.height,
+        scale: 0.75, // empirically determined
+        left: layoutBounds.maxX * 0.02,
+        top: layoutBounds.maxY * 0.02,
         listener: function() {
           model.returnToLevelSelectScreen();
         }
       } )
-        .mutate( {scale: 0.75, left: layoutBounds.maxX * 0.02, top: layoutBounds.maxY * 0.02} )
     );
 
     // add multiplication table
@@ -64,7 +64,7 @@ define( function( require ) {
       model.levelModels,
       model.property( 'timerEnabled' ),
       function() {
-        model.gameModel.state = GAME_STATE.REFRESH_LEVEL;
+        model.gameModel.state = GameState.REFRESH_LEVEL;
       } );
     controlPanelNode.centerX = ( multiplicationTableNode.right + layoutBounds.maxX ) / 2;
     controlPanelNode.top = multiplicationTableNode.top;
@@ -98,7 +98,7 @@ define( function( require ) {
     );
 
     model.gameModel.property( 'state' ).link( function( state ) {
-      self.visible = ( state !== GAME_STATE.LEVEL_SELECT );
+      self.visible = ( state !== GameState.LEVEL_SELECT );
     } );
   }
 
