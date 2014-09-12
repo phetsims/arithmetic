@@ -9,11 +9,9 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var GameState = require( 'ARITHMETIC/common/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PropertySet = require( 'AXON/PropertySet' );
-
-  // constants
-  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * @constructor
@@ -23,7 +21,7 @@ define( function( require ) {
       multiplierLeft: undefined, // left multiplier
       multiplierRight: undefined, // right multiplier
       product: undefined, // product of multiplication
-      state: GAME_STATE.LEVEL_SELECT, // current game state
+      state: GameState.LEVEL_SELECT, // current game state
       possiblePoints: 1 // points for correct completion of current task, can go down on incorrect answers
     } );
 

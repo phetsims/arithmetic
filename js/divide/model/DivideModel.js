@@ -12,9 +12,7 @@ define( function( require ) {
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
   var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
-
-  // constants
-  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
+  var GameState = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * @constructor
@@ -28,7 +26,7 @@ define( function( require ) {
         self.gameModel.multiplierLeft = parseInt( self.gameModel.multiplierLeft, 10 );
 
         // Advance to the next game state.
-        self.gameModel.state = GAME_STATE.EQUATION_FILLED;
+        self.gameModel.state = GameState.EQUATION_FILLED;
       }
     } );
 
@@ -37,7 +35,7 @@ define( function( require ) {
 
     // next task observer
     this.gameModel.property( 'state' ).link( function( state ) {
-      if ( state === GAME_STATE.NEXT_TASK ) {
+      if ( state === GameState.NEXT_TASK ) {
         // get available multipliers
         var multipliers = self.gameModel.getAvailableMultipliers();
 
@@ -63,11 +61,11 @@ define( function( require ) {
           }
 
           // set start state
-          self.gameModel.state = GAME_STATE.AWAITING_USER_INPUT;
+          self.gameModel.state = GameState.AWAITING_USER_INPUT;
         }
         else {
           // set level finished state
-          self.gameModel.state = GAME_STATE.LEVEL_FINISHED;
+          self.gameModel.state = GameState.LEVEL_FINISHED;
         }
       }
     } );

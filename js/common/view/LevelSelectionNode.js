@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var GameState = require( 'ARITHMETIC/common/GameState' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -20,7 +21,6 @@ define( function( require ) {
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( {size: 24} );
-  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
   var STAR_NUMBER = CONSTANTS.STAR_NUMBER;
   var TAB_TITLE_FONT = new PhetFont( {size: 54} );
 
@@ -81,7 +81,7 @@ define( function( require ) {
     selectLevelButtonsHBox.top = chooseLevelTitle.bottom + 20;  // Spacing empirically determined
 
     stateProperty.link( function( state ) {
-      self.visible = ( state === GAME_STATE.LEVEL_SELECT );
+      self.visible = ( state === GameState.LEVEL_SELECT );
     } );
 
     // pass options through to superclass

@@ -10,6 +10,7 @@ define( function( require ) {
 
   // modules
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  var GameState = require( 'ARITHMETIC/common/GameState' );
   var GameTimer = require( 'VEGAS/GameTimer' );
   var HStrut = require( 'SUN/HStrut' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -31,7 +32,6 @@ define( function( require ) {
   var BACKGROUND_MARGIN = CONSTANTS.BACKGROUND.MARGIN;
   var FONT = new PhetFont( { size: 18 } );
   var FONT_BOLD = new PhetFont( { size: 18, weight: 'bold' } );
-  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
   var SPACING = CONSTANTS.SPACING;
 
   /**
@@ -91,7 +91,7 @@ define( function( require ) {
         levelModel.gameTimer.property( 'elapsedTime' ).unlink( updateTime );
       } );
 
-      if ( stateProperty.value === GAME_STATE.LEVEL_SELECT && levelModels[level] ) {
+      if ( stateProperty.value === GameState.LEVEL_SELECT && levelModels[level] ) {
         levelModels[level].property( 'currentScore' ).link( updateScore );
         levelModels[level].gameTimer.property( 'elapsedTime' ).link( updateTime );
       }

@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var GameState = require( 'ARITHMETIC/common/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ResetAllButton = require( 'SCENERY_PHET/ResetAllButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
@@ -17,9 +18,6 @@ define( function( require ) {
   var TimerToggleButton = require( 'SCENERY_PHET/TimerToggleButton' );
   var VBox = require( 'SCENERY/nodes/VBox' );
   var WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
-
-  // constants
-  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * @param {ArithmeticModel} model - Main model for screen.
@@ -57,8 +55,8 @@ define( function( require ) {
 
     // observers
     model.gameModel.property( 'state' ).link( function( state ) {
-      soundAndTimerButtons.visible = state === GAME_STATE.LEVEL_SELECT;
-      resetAllButton.visible = state === GAME_STATE.LEVEL_SELECT;
+      soundAndTimerButtons.visible = state === GameState.LEVEL_SELECT;
+      resetAllButton.visible = state === GameState.LEVEL_SELECT;
     } );
   }
 

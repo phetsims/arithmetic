@@ -11,10 +11,8 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
+  var GameState = require( 'ARITHMETIC/common/GameState' );
   var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
-
-  // constants
-  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * @param {ArithmeticModel} gameModel - model for single task.
@@ -29,7 +27,7 @@ define( function( require ) {
 
     gameModel.property( 'state' ).lazyLink( function( state ) {
       // set view for multiplication table after choosing left and right multipliers
-      if ( state === GAME_STATE.NEXT_TASK ) {
+      if ( state === GameState.NEXT_TASK ) {
 
         // clear cells before game
         self.clearCells( levelProperty.value );

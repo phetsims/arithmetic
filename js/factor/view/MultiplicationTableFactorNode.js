@@ -11,12 +11,10 @@ define( function( require ) {
 
   // modules
   var ButtonListener = require( 'SUN/buttons/ButtonListener' );
+  var GameState = require( 'ARITHMETIC/common/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
   var PushButtonModel = require( 'SUN/buttons/PushButtonModel' );
-
-  // constants
-  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * @param {GameModel} gameModel - Model for single task.
@@ -75,13 +73,13 @@ define( function( require ) {
                   gameModel.multiplierLeft = leftIndex;
                   gameModel.multiplierRight = rightIndex;
 
-                  gameModel.state = GAME_STATE.EQUATION_FILLED;
+                  gameModel.state = GameState.EQUATION_FILLED;
                 }
               } );
 
               // cancel hover for disabled button before next task
               gameModel.property( 'state' ).lazyLink( function( state ) {
-                if ( state === GAME_STATE.NEXT_TASK && !buttonModel.enabled && buttonModel.over ) {
+                if ( state === GameState.NEXT_TASK && !buttonModel.enabled && buttonModel.over ) {
                   self.clearCells( levelProperty.value );
                 }
               } );
@@ -92,7 +90,7 @@ define( function( require ) {
     } );
 
     gameModel.property( 'state' ).link( function( state ) {
-      if ( state === GAME_STATE.LEVEL_INIT || state === GAME_STATE.REFRESH_LEVEL ) {
+      if ( state === GameState.LEVEL_INIT || state === GameState.REFRESH_LEVEL ) {
         self.clearCells( levelProperty.value );
         self.enableButtons( levelProperty.value );
       }

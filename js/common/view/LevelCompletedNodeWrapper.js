@@ -9,13 +9,13 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var GameState = require( 'ARITHMETIC/common/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelCompletedNode = require( 'VEGAS/LevelCompletedNode' );
   var Node = require( 'SCENERY/nodes/Node' );
 
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * @param {Array} levelModels - Array of descriptions for each level. Necessary to get perfect and current score for
@@ -33,7 +33,7 @@ define( function( require ) {
     Node.call( this );
 
     stateProperty.lazyLink( function( state ) {
-      if ( state === GAME_STATE.SHOW_STATISTICS ) {
+      if ( state === GameState.SHOW_STATISTICS ) {
         var levelModel = levelModels[levelProperty.value];
         self.addChild( new LevelCompletedNode(
           levelProperty.value,
@@ -47,7 +47,7 @@ define( function( require ) {
           continueCallback
         ).mutate( {centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2} ) );
       }
-      else if ( state === GAME_STATE.AWAITING_USER_INPUT ) {
+      else if ( state === GameState.AWAITING_USER_INPUT ) {
         self.removeAllChildren();
       }
     } );

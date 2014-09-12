@@ -10,11 +10,9 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var GameState = require( 'ARITHMETIC/common/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
-
-  // constants
-  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * @constructor
@@ -25,7 +23,7 @@ define( function( require ) {
 
     // next task observer
     this.gameModel.property( 'state' ).link( function( state ) {
-      if ( state === GAME_STATE.NEXT_TASK ) {
+      if ( state === GameState.NEXT_TASK ) {
         // get available multipliers
         var multipliers = self.gameModel.getAvailableMultipliers();
 
@@ -39,11 +37,11 @@ define( function( require ) {
           self.gameModel.product = multipliers.multiplierLeft * multipliers.multiplierRight;
 
           // update state
-          self.gameModel.state = GAME_STATE.AWAITING_USER_INPUT;
+          self.gameModel.state = GameState.AWAITING_USER_INPUT;
         }
         else {
           // set level finished state
-          self.gameModel.state = GAME_STATE.LEVEL_FINISHED;
+          self.gameModel.state = GameState.LEVEL_FINISHED;
         }
       }
     } );

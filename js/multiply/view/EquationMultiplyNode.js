@@ -10,10 +10,8 @@ define( function( require ) {
 
   // modules
   var EquationNode = require( 'ARITHMETIC/common/view/EquationNode' );
+  var GameState = require( 'ARITHMETIC/common/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
-
-  // constants
-  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * @param {Property} stateProperty - State of game property.
@@ -29,7 +27,7 @@ define( function( require ) {
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, inputProperty, inputCursorVisibilityProperty );
 
     stateProperty.link( function( state ) {
-      if ( state === GAME_STATE.AWAITING_USER_INPUT ) {
+      if ( state === GameState.AWAITING_USER_INPUT ) {
         self.productInput.clear();
         self.productInput.focus();
       }

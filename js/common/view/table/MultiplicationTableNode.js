@@ -10,8 +10,9 @@ define( function( require ) {
 
   // modules
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var inherit = require( 'PHET_CORE/inherit' );
+  var GameState = require( 'ARITHMETIC/common/GameState' );
   var HBox = require( 'SCENERY/nodes/HBox' );
+  var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableButtonMultiplierNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableButtonMultiplierNode' );
   var MultiplicationTableButtonProductNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableButtonProductNode' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -21,7 +22,6 @@ define( function( require ) {
 
   // constants
   var CONSTANTS = ArithmeticConstants.MULTIPLICATION_TABLE;
-  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
   var TABLE_SIZE = CONSTANTS.SIZE;
 
   /**
@@ -129,7 +129,7 @@ define( function( require ) {
     } );
 
     gameModel.property( 'state' ).link( function( state ) {
-      if ( state === GAME_STATE.NEXT_TASK ) {
+      if ( state === GameState.NEXT_TASK ) {
         gameModel.answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
           multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
             if ( isVisible ) {

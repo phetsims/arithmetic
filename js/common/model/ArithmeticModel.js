@@ -15,6 +15,7 @@ define( function( require ) {
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
   var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
   var GameModel = require( 'ARITHMETIC/common/model/GameModel' );
+  var GameState = require( 'ARITHMETIC/common/GameState' );
   var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
   var PropertySet = require( 'AXON/PropertySet' );
   var Timer = require( 'JOIST/Timer' );
@@ -23,9 +24,6 @@ define( function( require ) {
   var phetGirlIcon1Image = require( 'image!ARITHMETIC/phet-girl-icon-1.png' );
   var phetGirlIcon2Image = require( 'image!ARITHMETIC/phet-girl-icon-2.png' );
   var phetGirlIcon3Image = require( 'image!ARITHMETIC/phet-girl-icon-3.png' );
-
-  // constants
-  var GAME_STATE = require( 'ARITHMETIC/common/GameState' );
 
   /**
    * Constructor for ArithmeticModel
@@ -75,18 +73,18 @@ define( function( require ) {
       }, ArithmeticConstants.SMILE_DISAPPEAR_TIME );
     };
 
-    // handles game state transitions that pertain to the model (does not require handling GAME_STATE.LEVEL_SELECT)
+    // handles game state transitions that pertain to the model (does not require handling GameState.LEVEL_SELECT)
     this.gameModel.property( 'state' ).lazyLink( function( state ) {
-      if ( state === GAME_STATE.LEVEL_INIT ) {
+      if ( state === GameState.LEVEL_INIT ) {
         // start timer
         self.currentLevelModel.gameTimer.start();
 
         // update display score
         self.currentLevelModel.displayScore = self.currentLevelModel.currentScore;
 
-        self.gameModel.state = GAME_STATE.NEXT_TASK;
+        self.gameModel.state = GameState.NEXT_TASK;
       }
-      else if ( state === GAME_STATE.EQUATION_FILLED ) {
+      else if ( state === GameState.EQUATION_FILLED ) {
         // show smile face
         self.faceModel.isVisible = true;
 
@@ -108,7 +106,7 @@ define( function( require ) {
           self.gameModel.answerSheet[self.gameModel.multiplierLeft - 1][self.gameModel.multiplierRight - 1] = true;
 
           // set next task
-          self.gameModel.state = GAME_STATE.NEXT_TASK;
+          self.gameModel.state = GameState.NEXT_TASK;
 
           pauseThenFadeFace();
         }
@@ -122,7 +120,7 @@ define( function( require ) {
           self.faceModel.isSmile = false;
           self.gameAudioPlayer.wrongAnswer();
 
-          self.gameModel.state = GAME_STATE.AWAITING_USER_INPUT;
+          self.gameModel.state = GameState.AWAITING_USER_INPUT;
 
           pauseThenFadeFace();
         }
@@ -130,7 +128,7 @@ define( function( require ) {
         // reset input field
         self.property( 'input' ).reset();
       }
-      else if ( state === GAME_STATE.LEVEL_FINISHED ) {
+      else if ( state === GameState.LEVEL_FINISHED ) {
         // play sound depend on result score
         self.playLevelFinishedSound();
 
@@ -145,12 +143,12 @@ define( function( require ) {
           }
         }
 
-        self.gameModel.state = GAME_STATE.SHOW_STATISTICS;
+        self.gameModel.state = GameState.SHOW_STATISTICS;
       }
-      else if ( state === GAME_STATE.REFRESH_LEVEL ) {
+      else if ( state === GameState.REFRESH_LEVEL ) {
         self.resetLevel();
         self.currentLevelModel.displayScore = 0;
-        self.gameModel.state = GAME_STATE.NEXT_TASK;
+        self.gameModel.state = GameState.NEXT_TASK;
       }
     } );
   }
@@ -212,7 +210,7 @@ define( function( require ) {
       }
       else {
         this.gameModel.initAnswerSheet( this.levelModels[level].tableSize );
-        this.gameModel.state = GAME_STATE.LEVEL_INIT;
+        this.gameModel.state = GameState.LEVEL_INIT;
       }
     },
 
