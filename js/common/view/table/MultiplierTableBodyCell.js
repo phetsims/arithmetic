@@ -18,7 +18,10 @@ define( function( require ) {
   var pointingHandImage = require( 'image!ARITHMETIC/pointing-hand.png' );
 
   // constants
-  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).MULTIPLICATION_TABLE.PRODUCT_BUTTON;
+  var ACTIVE_COLOR = 'rgb(3,18,136)'; // active color
+  var HOVER_COLOR = 'rgb(238,253,77)'; // hover color
+  var NORMAL_COLOR = 'rgb(50,70,255)'; // normal color
+  var SELECT_COLOR = 'rgb(77,0,153)'; // select color
 
   /**
    * @param {Text} contentText - Text label for button.
@@ -29,7 +32,7 @@ define( function( require ) {
    */
   function MultiplierTableBodyCell( contentText, backgroundOptions, textOptions ) {
     backgroundOptions = _.extend( {
-      fill: CONSTANTS.NORMAL_COLOR
+      fill: NORMAL_COLOR
     }, backgroundOptions );
     AbstractCell.call( this, backgroundOptions, textOptions );
 
@@ -50,19 +53,19 @@ define( function( require ) {
 
   return inherit( AbstractCell, MultiplierTableBodyCell, {
     active: function() {
-      this.setBackgroundFill( CONSTANTS.ACTIVE_COLOR );
+      this.setBackgroundFill( ACTIVE_COLOR );
       this._pointer.visible = false;
     },
     hover: function() {
-      this.setBackgroundFill( CONSTANTS.HOVER_COLOR );
+      this.setBackgroundFill( HOVER_COLOR );
       this._pointer.visible = true;
     },
     normal: function() {
-      this.setBackgroundFill( CONSTANTS.NORMAL_COLOR );
+      this.setBackgroundFill( NORMAL_COLOR );
       this._pointer.visible = false;
     },
     select: function() {
-      this.setBackgroundFill( CONSTANTS.SELECT_COLOR );
+      this.setBackgroundFill( SELECT_COLOR );
       this._pointer.visible = false;
     }
   } );

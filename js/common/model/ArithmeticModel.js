@@ -281,7 +281,7 @@ define( function( require ) {
     step: function( dt ) {
       this.timeSinceCursorBlink += dt;
 
-      if ( this.timeSinceCursorBlink > ArithmeticConstants.EQUATION.CURSOR_BLINK_INTERVAL ) {
+      if ( this.timeSinceCursorBlink > ArithmeticConstants.CURSOR_BLINK_INTERVAL ) {
         this.inputCursorVisibility = !this.inputCursorVisibility;
         this.timeSinceCursorBlink = 0;
       }

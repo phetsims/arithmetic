@@ -11,14 +11,18 @@ define( function( require ) {
 
   // modules
   var ArithmeticFaceWithPointsNode = require( 'ARITHMETIC/common/view/ArithmeticFaceWithPointsNode' );
-  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
+  var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var KeypadNode = require( 'ARITHMETIC/common/view/KeypadNode' );
   var LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );
   var Node = require( 'SCENERY/nodes/Node' );
   var ReturnToLevelSelectButton = require( 'SCENERY_PHET/ReturnToLevelSelectButton' );
+
+  // constants
+  var BACK_BUTTON_BASE_COLOR = 'rgb( 255, 204, 67 )'; // base color of back button
+  var BACK_BUTTON_MARGIN = new Dimension2( 20, 10 ); // margin of background of back button
 
   /**
    * @param {ArithmeticModel} model - main model for screen.
@@ -39,10 +43,10 @@ define( function( require ) {
 
     // add back to level select button
     this.addChild( new ReturnToLevelSelectButton( {
-        baseColor: ArithmeticConstants.BACK_BUTTON.BASE_COLOR,
-        cornerRadius: ArithmeticConstants.BACK_BUTTON.CORNER_RADIUS,
-        xMargin: ArithmeticConstants.BACK_BUTTON.MARGIN.width,
-        yMargin: ArithmeticConstants.BACK_BUTTON.MARGIN.height,
+        baseColor: BACK_BUTTON_BASE_COLOR,
+        xMargin: BACK_BUTTON_MARGIN.width,
+        yMargin: BACK_BUTTON_MARGIN.height,
+        cornerRadius: 7,
         scale: 0.75, // empirically determined
         left: layoutBounds.maxX * 0.02,
         top: layoutBounds.maxY * 0.02,

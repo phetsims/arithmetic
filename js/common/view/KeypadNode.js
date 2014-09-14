@@ -11,6 +11,7 @@ define( function( require ) {
   // modules
   var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
   var BackspaceIcon = require( 'SCENERY_PHET/BackspaceIcon' );
+  var Dimension2 = require( 'DOT/Dimension2' );
   var inherit = require( 'PHET_CORE/inherit' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -22,10 +23,12 @@ define( function( require ) {
 
   // constants
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var ARROW_SIZE = CONSTANTS.KEYPAD.ARROW_SIZE;
-  var BUTTON_SIZE = CONSTANTS.KEYPAD.BUTTON_SIZE;
+  var ARROW_SIZE = 20; // arrow size of enter and backspace
+  var BASE_COLOR = 'white'; // base color for all buttons
+  var BUTTON_SIZE = new Dimension2( 40, 40 ); // size of buttons
+  var DISABLE_BASE_COLOR = 'rgb(238,253,77)'; // disable base color for all buttons
   var FONT = new PhetFont( {size: 24 } );
-  var SPACING = CONSTANTS.KEYPAD.SPACING;
+  var SPACING = 10; // spacing between buttons
 
   /**
    * @param {Property} inputProperty - Input property for communication buttons of keypad with the model.
@@ -79,7 +82,7 @@ define( function( require ) {
   var getButtonDefault = function( content, listener, options ) {
     return new RectangularPushButton( _.extend( {
       content: content,
-      baseColor: CONSTANTS.KEYPAD.BASE_COLOR,
+      baseColor: BASE_COLOR,
       minHeight: BUTTON_SIZE.height,
       minWidth: BUTTON_SIZE.width,
       xMargin: 2,
@@ -97,8 +100,8 @@ define( function( require ) {
       } ),
       new Rectangle( ARROW_SIZE / 2 - 1, -ARROW_SIZE / 4, 2, ARROW_SIZE / 4, {fill: 'black'} )
     ]} ), callback, {
-      baseColor: CONSTANTS.KEYPAD.DISABLE_BASE_COLOR,
-      disabledBaseColor: CONSTANTS.KEYPAD.BASE_COLOR
+      baseColor: DISABLE_BASE_COLOR,
+      disabledBaseColor: BASE_COLOR
     } );
   };
 

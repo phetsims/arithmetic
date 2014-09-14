@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/GameState' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -21,8 +21,7 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
-  var CONSTANTS = ArithmeticConstants.MULTIPLICATION_TABLE;
-  var TABLE_SIZE = CONSTANTS.SIZE;
+  var TABLE_SIZE = new Dimension2( 434, 320 ); // table size
 
   /**
    * @param {Array} levelModels - Array of descriptions for each level.

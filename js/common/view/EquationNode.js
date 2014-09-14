@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var Dimension2 = require( 'DOT/Dimension2' );
   var EquationInputNode = require( 'ARITHMETIC/common/view/EquationInputNode' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -20,6 +21,9 @@ define( function( require ) {
   var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).EQUATION;
   var FONT_EQUALS = new PhetFont( 40 );
   var FONT_X = new PhetFont( 50 );
+  var INPUT_SIZE_MULTIPLIER = new Dimension2( 70, 45 ); // size of input boxes for multiplier
+  var INPUT_SIZE_PRODUCT = new Dimension2( 80, 45 ); // size of input box for product
+  var SPACING = 20; // spacing between equation elements
 
   /**
    * @param {Property} multiplierLeftProperty - Property necessary for creating left multiplier input.
@@ -31,11 +35,11 @@ define( function( require ) {
    */
   function EquationNode( multiplierLeftProperty, multiplierRightProperty, productProperty, inputCursorVisibilityProperty ) {
 
-    this.multiplierLeftInput = new EquationInputNode( multiplierLeftProperty, inputCursorVisibilityProperty, CONSTANTS.INPUT_SIZE_MULTIPLIER );
-    this.multiplierRightInput = new EquationInputNode( multiplierRightProperty, inputCursorVisibilityProperty, CONSTANTS.INPUT_SIZE_MULTIPLIER );
-    this.productInput = new EquationInputNode( productProperty, inputCursorVisibilityProperty, CONSTANTS.INPUT_SIZE_PRODUCT );
+    this.multiplierLeftInput = new EquationInputNode( multiplierLeftProperty, inputCursorVisibilityProperty, INPUT_SIZE_MULTIPLIER );
+    this.multiplierRightInput = new EquationInputNode( multiplierRightProperty, inputCursorVisibilityProperty, INPUT_SIZE_MULTIPLIER );
+    this.productInput = new EquationInputNode( productProperty, inputCursorVisibilityProperty, INPUT_SIZE_PRODUCT );
 
-    HBox.call( this, {spacing: CONSTANTS.SPACING, children: [
+    HBox.call( this, {spacing: SPACING, children: [
       this.multiplierLeftInput,
       new Text( '\u00D7', {font: FONT_X, fill: 'yellow'} ),
       this.multiplierRightInput,

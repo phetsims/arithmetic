@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/GameState' );
   var GameTimer = require( 'VEGAS/GameTimer' );
   var HStrut = require( 'SUN/HStrut' );
@@ -28,11 +28,13 @@ define( function( require ) {
   var timeString = require( 'string!VEGAS/label.time' );
 
   // constants
-  var CONSTANTS = ArithmeticConstants.CONTROL_PANEL;
-  var BACKGROUND_MARGIN = CONSTANTS.BACKGROUND.MARGIN;
+  var BACKGROUND_COLOR = 'rgb( 173, 239, 255 )'; // color of control panel background
+  var BACKGROUND_MARGIN = new Dimension2( 20, 40 ); // size of margin from content
   var FONT = new PhetFont( { size: 18 } );
   var FONT_BOLD = new PhetFont( { size: 18, weight: 'bold' } );
-  var SPACING = CONSTANTS.SPACING;
+  var REFRESH_BUTTON_BASE_COLOR = 'rgb( 255, 204, 67 )';
+  var REFRESH_BUTTON_MARGIN = new Dimension2( 20, 10 );
+  var SPACING = 18;
 
   /**
    * @param {Property} levelProperty - Property for level displaying label.
@@ -44,7 +46,7 @@ define( function( require ) {
    * @constructor
    */
   function ControlPanelNode( levelProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback ) {
-    var background = new Rectangle( 0, 0, 0, 0, {fill: CONSTANTS.BACKGROUND.COLOR, stroke: 'gray'} );
+    var background = new Rectangle( 0, 0, 0, 0, {fill: BACKGROUND_COLOR, stroke: 'gray'} );
     var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), FONT_BOLD );
     var scoreText = new Text( StringUtils.format( scoreString, '0' ), FONT );
     var timeText = new Text( StringUtils.format( timeString, GameTimer.formatTime( 0 ) ), FONT );
@@ -64,9 +66,9 @@ define( function( require ) {
         timeText,
         // add refresh button
         new RefreshButton( {
-          baseColor: CONSTANTS.REFRESH_BUTTON.BASE_COLOR,
-          xMargin: CONSTANTS.REFRESH_BUTTON.MARGIN.width,
-          yMargin: CONSTANTS.REFRESH_BUTTON.MARGIN.height,
+          baseColor: REFRESH_BUTTON_BASE_COLOR,
+          xMargin: REFRESH_BUTTON_MARGIN.width,
+          yMargin: REFRESH_BUTTON_MARGIN.height,
           listener: refreshLevelCallback
         } ).mutate( {scale: 0.75} ),
         new HStrut( minWidth )
