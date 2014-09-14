@@ -27,7 +27,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function MultiplicationTableButtonProductNode( contentText, backgroundOptions, textOptions ) {
+  function MultiplierTableBodyCell( contentText, backgroundOptions, textOptions ) {
     backgroundOptions = _.extend( {
       fill: CONSTANTS.NORMAL_COLOR
     }, backgroundOptions );
@@ -48,7 +48,7 @@ define( function( require ) {
     this.hideText();
   }
 
-  return inherit( AbstractCell, MultiplicationTableButtonProductNode, {
+  return inherit( AbstractCell, MultiplierTableBodyCell, {
     active: function() {
       this.setBackgroundFill( CONSTANTS.ACTIVE_COLOR );
       this._pointer.visible = false;

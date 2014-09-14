@@ -23,7 +23,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function MultiplicationTableButtonMultiplierNode( contentText, backgroundOptions, textOptions ) {
+  function MultiplierTableHeaderCell( contentText, backgroundOptions, textOptions ) {
     backgroundOptions = _.extend( {
       fill: CONSTANTS.NORMAL_COLOR
     }, backgroundOptions );
@@ -32,7 +32,7 @@ define( function( require ) {
     this.setText( contentText );
   }
 
-  return inherit( AbstractCell, MultiplicationTableButtonMultiplierNode, {
+  return inherit( AbstractCell, MultiplierTableHeaderCell, {
     select: function() {
       this.setBackgroundFill( CONSTANTS.SELECT_COLOR_BACKGROUND );
       this.setTextFill( CONSTANTS.SELECT_COLOR_TEXT );
