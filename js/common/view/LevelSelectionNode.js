@@ -33,7 +33,7 @@ define( function( require ) {
    * @param {Property} timerEnabledProperty - Timer enable property, needed to control visibility of best time label.
    * @param {String} titleString - Title string for given screen.
    * @param {Function} callback - Callback function call after pressing button.
-   * @param {Object} options - Title string for given screen.
+   * @param {Object} [options] - Title string for given screen.
    * @constructor
    */
   function LevelSelectionNode( levelModels, stateProperty, timerEnabledProperty, titleString, callback, options ) {
