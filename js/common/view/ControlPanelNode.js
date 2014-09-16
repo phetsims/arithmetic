@@ -51,7 +51,6 @@ define( function( require ) {
     var scoreText = new Text( StringUtils.format( scoreString, '0' ), FONT );
     var timeText = new Text( StringUtils.format( timeString, GameTimer.formatTime( 0 ) ), FONT );
     var minWidth = Math.max( levelText.getWidth(), scoreText.getWidth(), timeText.getWidth() ) * 1.1;
-    var vBox;
 
     Node.call( this );
 
@@ -59,7 +58,7 @@ define( function( require ) {
     this.addChild( background );
 
     // add control buttons
-    this.addChild( vBox = new VBox( {
+    var vBox = new VBox( {
       spacing: SPACING, children: [
         levelText,
         scoreText,
@@ -72,7 +71,8 @@ define( function( require ) {
           listener: refreshLevelCallback
         } ).mutate( {scale: 0.75} ),
         new HStrut( minWidth )
-      ]} ) );
+      ]} );
+    this.addChild( vBox );
 
     // add observers
     var updateScore = function( score ) {
