@@ -58,7 +58,7 @@ define( function( require ) {
       } );
     },
     // return available left and right multipliers according to answer sheet
-    getAvailableMultipliers: function() {
+    selectUnusedMultiplierPair: function() {
       var availableMultipliersLeft = [];
       var availableMultipliersRight = [];
       var multiplierLeft;
