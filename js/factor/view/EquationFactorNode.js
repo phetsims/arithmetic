@@ -29,10 +29,7 @@ define( function( require ) {
     stateProperty.link( function( state ) {
       if ( state === GameState.AWAITING_USER_INPUT ) {
         self.multiplierLeftInput.setPlaceholder();
-        self.multiplierLeftInput.update();
-
         self.multiplierRightInput.setPlaceholder();
-        self.multiplierRightInput.update();
       }
     } );
   }

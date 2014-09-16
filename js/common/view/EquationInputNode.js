@@ -83,6 +83,7 @@ define( function( require ) {
     },
     setPlaceholder: function() {
       this._inputText.setText( PLACEHOLDER );
+      this.update();
     },
     update: function() {
       updateBoxPosition( this._box, this._inputSize );
