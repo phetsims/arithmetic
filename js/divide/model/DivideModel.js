@@ -30,9 +30,6 @@ define( function( require ) {
       }
     } );
 
-    // point to multiplierLeft or multiplierRight
-    this.addProperty( 'linkToActiveInput', null );
-
     // next task observer
     this.gameModel.property( 'state' ).link( function( state ) {
       if ( state === GameState.NEXT_TASK ) {
@@ -53,11 +50,11 @@ define( function( require ) {
           // set left or right multiplier
           if ( Math.random() < 0.5 ) {
             self.gameModel.multiplierLeft = multipliers.multiplierLeft;
-            self.linkToActiveInput = self.gameModel.property( 'multiplierRight' );
+            self.activeInput = 'right';
           }
           else {
             self.gameModel.multiplierRight = multipliers.multiplierRight;
-            self.linkToActiveInput = self.gameModel.property( 'multiplierLeft' );
+            self.activeInput = 'left';
           }
 
           // set start state

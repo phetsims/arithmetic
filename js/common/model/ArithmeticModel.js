@@ -49,6 +49,7 @@ define( function( require ) {
       level: -1, // game level
       input: '', // user's input value
       inputCursorVisibility: false,
+      activeInput: null, // point to multiplierLeft (if activeInput === 'left') or multiplierRight (if activeInput === 'right')
       soundEnabled: true, // is sound active
       timerEnabled: false // is timer active
     } );
@@ -248,7 +249,7 @@ define( function( require ) {
       var environment = this.currentLevelModel.environment;
 
       this.currentLevelModel.currentScore = environment.currentScore;
-      this.linkToActiveInput = environment.linkToActiveInput;
+      this.activeInput = environment.activeInput;
       this.gameModel.multiplierLeft = environment.multiplierLeft;
       this.gameModel.multiplierRight = environment.multiplierRight;
       this.gameModel.product = environment.product;
@@ -274,7 +275,7 @@ define( function( require ) {
         systemTimeWhenSaveOccurred: new Date().getTime(),
         possiblePoints: this.gameModel.possiblePoints,
         answerSheet: _.cloneDeep( this.gameModel.answerSheet ),
-        linkToActiveInput: this.linkToActiveInput
+        activeInput: this.activeInput
       };
     },
 

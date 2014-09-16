@@ -18,27 +18,32 @@ define( function( require ) {
    * @param {Property} productProperty - Property necessary for creating product input.
    * @param {Property} inputProperty - Input property.
    * @param {Property} inputCursorVisibilityProperty - Property which switch true/false with given time interval.
-   * @param {Property} linkToActiveInputProperty - Link to active input.
+   * @param {Property} activeInputProperty - Link to active input.
    *
    * @constructor
    */
-  function EquationDivideNode( multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty, inputCursorVisibilityProperty, linkToActiveInputProperty ) {
+  function EquationDivideNode( multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty, inputCursorVisibilityProperty, activeInputProperty ) {
     var self = this;
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty, inputCursorVisibilityProperty );
 
-    linkToActiveInputProperty.link( function( activeInput ) {
-      if ( activeInput === multiplierRightProperty ) {
+    activeInputProperty.link( function( activeInput ) {
+      if ( activeInput === 'right' ) {
         self.multiplierLeftInput.unfocus();
         setActiveInput( self.multiplierRightInput );
       }
-      else if ( activeInput === multiplierLeftProperty ) {
+      else if ( activeInput === 'left' ) {
         self.multiplierRightInput.unfocus();
         setActiveInput( self.multiplierLeftInput );
       }
     } );
 
     inputProperty.lazyLink( function( inputString ) {
-      linkToActiveInputProperty.value.value = inputString;
+      if ( activeInputProperty.value === 'left' ) {
+        multiplierLeftProperty.value = inputString;
+      }
+      else if ( activeInputProperty.value === 'right' ) {
+        multiplierRightProperty.value = inputString;
+      }
     } );
   }
 
