@@ -18,7 +18,6 @@ define( function( require ) {
   var Text = require( 'SCENERY/nodes/Text' );
 
   // constants
-  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' ).EQUATION;
   var FONT_EQUALS = new PhetFont( 40 );
   var FONT_X = new PhetFont( 50 );
   var INPUT_SIZE_MULTIPLIER = new Dimension2( 70, 45 ); // size of input boxes for multiplier
