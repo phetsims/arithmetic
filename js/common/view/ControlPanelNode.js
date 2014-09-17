@@ -12,11 +12,10 @@ define( function( require ) {
   var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/GameState' );
   var GameTimer = require( 'VEGAS/GameTimer' );
-  var HStrut = require( 'SUN/HStrut' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
+  var Panel = require( 'SUN/Panel' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var RefreshButton = require( 'SCENERY_PHET/RefreshButton' );
   var StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   var Text = require( 'SCENERY/nodes/Text' );
@@ -28,10 +27,15 @@ define( function( require ) {
   var timeString = require( 'string!VEGAS/label.time' );
 
   // constants
-  var BACKGROUND_COLOR = 'rgb( 173, 239, 255 )'; // color of control panel background
-  var BACKGROUND_MARGIN = new Dimension2( 20, 40 ); // size of margin from content
   var FONT = new PhetFont( { size: 18 } );
   var FONT_BOLD = new PhetFont( { size: 18, weight: 'bold' } );
+  var PANEL_OPTIONS = {
+    fill: 'rgb( 173, 239, 255 )',
+    lineWidth: 0.5,
+    xMargin: 23,
+    yMargin: 23,
+    cornerRadius: 5
+  };
   var REFRESH_BUTTON_BASE_COLOR = 'rgb( 255, 204, 67 )';
   var REFRESH_BUTTON_MARGIN = new Dimension2( 20, 10 );
   var SPACING = 18;
@@ -46,18 +50,13 @@ define( function( require ) {
    * @constructor
    */
   function ControlPanelNode( levelProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback ) {
-    var background = new Rectangle( 0, 0, 0, 0, {fill: BACKGROUND_COLOR, stroke: 'gray'} );
     var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), FONT_BOLD );
     var scoreText = new Text( StringUtils.format( scoreString, '0' ), FONT );
     var timeText = new Text( StringUtils.format( timeString, GameTimer.formatTime( 0 ) ), FONT );
-    var minWidth = Math.max( levelText.getWidth(), scoreText.getWidth(), timeText.getWidth() ) * 1.1;
 
     Node.call( this );
 
-    // add background
-    this.addChild( background );
-
-    // add control buttons
+    // add control panel components
     var vBox = new VBox( {
       spacing: SPACING, children: [
         levelText,
@@ -69,20 +68,17 @@ define( function( require ) {
           xMargin: REFRESH_BUTTON_MARGIN.width,
           yMargin: REFRESH_BUTTON_MARGIN.height,
           listener: refreshLevelCallback
-        } ).mutate( {scale: 0.75} ),
-        new HStrut( minWidth )
+        } ).mutate( {scale: 0.75} )
       ]} );
-    this.addChild( vBox );
+    this.addChild( new Panel( vBox, PANEL_OPTIONS ) );
 
     // add observers
     var updateScore = function( score ) {
       scoreText.setText( StringUtils.format( scoreString, score.toString() ) );
-      updateBackgroundSize( background, vBox );
     };
 
     var updateTime = function( time ) {
       timeText.setText( StringUtils.format( timeString, GameTimer.formatTime( time ) ) );
-      updateBackgroundSize( background, vBox );
     };
 
     levelProperty.lazyLink( function( level ) {
@@ -107,17 +103,8 @@ define( function( require ) {
       else {
         vBox.removeChild( timeText );
       }
-
-      updateBackgroundSize( background, vBox );
     } );
   }
-
-  // set background size
-  var updateBackgroundSize = function( backgroundNode, controlPanelNode ) {
-    controlPanelNode.centerX = controlPanelNode.width / 2;
-    backgroundNode.setRect( -BACKGROUND_MARGIN.width / 2, -BACKGROUND_MARGIN.height / 2, controlPanelNode.bounds.width + BACKGROUND_MARGIN.width,
-        controlPanelNode.bounds.height + BACKGROUND_MARGIN.height - SPACING, 5, 5 );
-  };
 
   return inherit( Node, ControlPanelNode );
 } );
