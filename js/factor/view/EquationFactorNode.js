@@ -18,13 +18,12 @@ define( function( require ) {
    * @param {Property} multiplierLeftProperty - Property necessary for creating left multiplier input.
    * @param {Property} multiplierRightProperty - Property necessary for creating right multiplier input.
    * @param {Property} productProperty - Property necessary for creating product input.
-   * @param {Property} inputCursorVisibilityProperty - Property which switch true/false with given time interval.
    *
    * @constructor
    */
-  function EquationFactorNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty, inputCursorVisibilityProperty ) {
+  function EquationFactorNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty ) {
     var self = this;
-    EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty, inputCursorVisibilityProperty );
+    EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
 
     stateProperty.link( function( state ) {
       if ( state === GameState.AWAITING_USER_INPUT ) {

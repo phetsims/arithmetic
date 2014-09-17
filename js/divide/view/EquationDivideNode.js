@@ -17,14 +17,13 @@ define( function( require ) {
    * @param {Property} multiplierRightProperty - Property necessary for creating right multiplier input.
    * @param {Property} productProperty - Property necessary for creating product input.
    * @param {Property} inputProperty - Input property.
-   * @param {Property} inputCursorVisibilityProperty - Property which switch true/false with given time interval.
    * @param {Property} activeInputProperty - Link to active input.
    *
    * @constructor
    */
-  function EquationDivideNode( multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty, inputCursorVisibilityProperty, activeInputProperty ) {
+  function EquationDivideNode( multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty, activeInputProperty ) {
     var self = this;
-    EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty, inputCursorVisibilityProperty );
+    EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
 
     activeInputProperty.link( function( activeInput ) {
       if ( activeInput === 'right' ) {

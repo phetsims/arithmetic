@@ -11,12 +11,14 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
+  var Timer = require( 'JOIST/Timer' );
 
   // constants
   var FONT_TEXT = new PhetFont( { size: 32 } );
@@ -24,12 +26,11 @@ define( function( require ) {
 
   /**
    * @param {Property} valueProperty for observing and changing by input
-   * @param {Property} cursorVisibilityProperty - Property which switches true/false with given time interval.
    * @param {Dimension2} size - Dimensions of this input component.
    *
    * @constructor
    */
-  function EquationInputNode( valueProperty, cursorVisibilityProperty, size ) {
+  function EquationInputNode( valueProperty, size ) {
     var self = this;
     Node.call( this );
 
@@ -49,10 +50,9 @@ define( function( require ) {
       updateBoxPosition( self._box, size );
     } );
 
-    // blinking animation for cursor
-    cursorVisibilityProperty.lazyLink( function( isCursorVisible ) {
-      self._cursor.visible = isCursorVisible;
-    } );
+    Timer.setInterval( function() {
+      self._cursor.visible = !self._cursor.visible;
+    }, ArithmeticConstants.CURSOR_BLINK_INTERVAL );
 
     // add background
     this.addChild( new Rectangle( 0, 0, size.width, size.height, 5, 5, {fill: 'white'} ) );

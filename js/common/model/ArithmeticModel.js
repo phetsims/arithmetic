@@ -48,14 +48,10 @@ define( function( require ) {
     PropertySet.call( this, {
       level: -1, // game level
       input: '', // user's input value
-      inputCursorVisibility: false,
       activeInput: null, // point to multiplierLeft (if activeInput === 'left') or multiplierRight (if activeInput === 'right')
       soundEnabled: true, // is sound active
       timerEnabled: false // is timer active
     } );
-
-    // property necessary for tracking and changing inputCursorVisibility property
-    this.timeSinceCursorBlink = 0;
 
     // hook up the audio player to the sound settings
     this.gameAudioPlayer = new GameAudioPlayer( this.property( 'soundEnabled' ) );
@@ -277,15 +273,6 @@ define( function( require ) {
         answerSheet: _.cloneDeep( this.gameModel.answerSheet ),
         activeInput: this.activeInput
       };
-    },
-
-    step: function( dt ) {
-      this.timeSinceCursorBlink += dt;
-
-      if ( this.timeSinceCursorBlink > ArithmeticConstants.CURSOR_BLINK_INTERVAL ) {
-        this.inputCursorVisibility = !this.inputCursorVisibility;
-        this.timeSinceCursorBlink = 0;
-      }
     }
   } );
 } );

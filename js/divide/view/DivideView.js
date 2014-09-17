@@ -35,7 +35,6 @@ define( function( require ) {
         model.gameModel.property( 'multiplierRight' ),
         model.gameModel.property( 'product' ),
         model.property( 'input' ),
-        model.property( 'inputCursorVisibility' ),
         model.property( 'activeInput' )
       ),
       true,

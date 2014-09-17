@@ -34,8 +34,7 @@ define( function( require ) {
         model.gameModel.property( 'state' ),
         model.gameModel.property( 'multiplierLeft' ),
         model.gameModel.property( 'multiplierRight' ),
-        model.property( 'input' ),
-        model.property( 'inputCursorVisibility' )
+        model.property( 'input' )
       ),
       true,
       multiplyString

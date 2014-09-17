@@ -14,7 +14,7 @@ define( function( require ) {
 
   return {
     BACKGROUND_COLOR: 'rgb( 173, 202, 255 )',
-    CURSOR_BLINK_INTERVAL: 0.5, // duration of animation in seconds
+    CURSOR_BLINK_INTERVAL: 500, // duration of animation in milliseconds
     INPUT_LENGTH_MAX: 3, // max input length
     SCREEN_ICON_SIZE: new Dimension2( 60, 40 ), // size of screen icons
     ICON_BACKGROUND_COLOR: 'rgb( 173, 202, 255 )',
