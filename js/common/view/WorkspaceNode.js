@@ -69,11 +69,11 @@ define( function( require ) {
     // add control panel
     var controlPanelNode = new ControlPanelNode(
       model.property( 'level' ),
-      model.gameModel.property( 'state' ),
+      model.property( 'state' ),
       model.levelModels,
       model.property( 'timerEnabled' ),
       function() {
-        model.gameModel.state = GameState.REFRESH_LEVEL;
+        model.state = GameState.REFRESH_LEVEL;
       } );
     controlPanelNode.centerX = ( multiplicationTableNode.right + layoutBounds.maxX ) / 2;
     controlPanelNode.top = multiplicationTableNode.top;
@@ -98,7 +98,7 @@ define( function( require ) {
     this.addChild( new LevelCompletedNodeWrapper(
         model.levelModels,
         model.property( 'level' ),
-        model.gameModel.property( 'state' ),
+        model.property( 'state' ),
         model.property( 'timerEnabled' ),
         function() {
           model.finishLevel();
@@ -106,7 +106,7 @@ define( function( require ) {
         layoutBounds )
     );
 
-    model.gameModel.property( 'state' ).link( function( state ) {
+    model.property( 'state' ).link( function( state ) {
       self.visible = ( state !== GameState.LEVEL_SELECT );
     } );
   }

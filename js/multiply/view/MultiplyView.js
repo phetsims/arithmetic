@@ -27,11 +27,12 @@ define( function( require ) {
       model,
       new MultiplicationTableMultiplyNode(
         model.gameModel,
+        model.property( 'state' ),
         model.property( 'level' ),
         model.levelModels
       ),
       new EquationMultiplyNode(
-        model.gameModel.property( 'state' ),
+        model.property( 'state' ),
         model.gameModel.property( 'multiplierLeft' ),
         model.gameModel.property( 'multiplierRight' ),
         model.property( 'input' )

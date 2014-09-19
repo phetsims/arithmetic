@@ -49,6 +49,7 @@ define( function( require ) {
       level: -1, // game level
       input: '', // user's input value
       activeInput: null, // point to multiplierLeft (if activeInput === 'left') or multiplierRight (if activeInput === 'right')
+      state: GameState.LEVEL_SELECT, // current game state
       soundEnabled: true, // is sound active
       timerEnabled: false // is timer active
     } );
@@ -71,7 +72,7 @@ define( function( require ) {
     };
 
     // handles game state transitions that pertain to the model (does not require handling GameState.LEVEL_SELECT)
-    this.gameModel.property( 'state' ).lazyLink( function( state ) {
+    this.property( 'state' ).lazyLink( function( state ) {
       if ( state === GameState.LEVEL_INIT ) {
         // start timer
         self.currentLevelModel.gameTimer.start();
@@ -79,7 +80,7 @@ define( function( require ) {
         // update display score
         self.currentLevelModel.displayScore = self.currentLevelModel.currentScore;
 
-        self.gameModel.state = GameState.NEXT_TASK;
+        self.state = GameState.NEXT_TASK;
       }
       else if ( state === GameState.EQUATION_FILLED ) {
         // show smile face
@@ -103,7 +104,7 @@ define( function( require ) {
           self.gameModel.answerSheet[self.gameModel.multiplierLeft - 1][self.gameModel.multiplierRight - 1] = true;
 
           // set next task
-          self.gameModel.state = GameState.NEXT_TASK;
+          self.state = GameState.NEXT_TASK;
 
           pauseThenFadeFace();
         }
@@ -117,7 +118,7 @@ define( function( require ) {
           self.faceModel.isSmile = false;
           self.gameAudioPlayer.wrongAnswer();
 
-          self.gameModel.state = GameState.AWAITING_USER_INPUT;
+          self.state = GameState.AWAITING_USER_INPUT;
 
           pauseThenFadeFace();
         }
@@ -140,12 +141,12 @@ define( function( require ) {
           }
         }
 
-        self.gameModel.state = GameState.SHOW_STATISTICS;
+        self.state = GameState.SHOW_STATISTICS;
       }
       else if ( state === GameState.REFRESH_LEVEL ) {
         self.resetLevel();
         self.currentLevelModel.displayScore = 0;
-        self.gameModel.state = GameState.NEXT_TASK;
+        self.state = GameState.NEXT_TASK;
       }
     } );
   }
@@ -166,6 +167,8 @@ define( function( require ) {
 
       // reset the game model, which will send it back to the level selection state
       this.gameModel.reset();
+
+      this.state = GameState.LEVEL_SELECT;
     },
 
     finishLevel: function() {
@@ -207,7 +210,7 @@ define( function( require ) {
       }
       else {
         this.gameModel.initAnswerSheet( this.levelModels[level].tableSize );
-        this.gameModel.state = GameState.LEVEL_INIT;
+        this.state = GameState.LEVEL_INIT;
       }
     },
 
@@ -251,7 +254,7 @@ define( function( require ) {
       this.gameModel.product = environment.product;
       this.gameModel.possiblePoints = environment.possiblePoints;
       this.gameModel.answerSheet = environment.answerSheet;
-      this.gameModel.state = environment.state;
+      this.state = environment.state;
       this.input = environment.input;
 
       // Elapsed time must account for any time that has gone by since the environment was saved.
@@ -265,7 +268,7 @@ define( function( require ) {
         multiplierLeft: this.gameModel.multiplierLeft,
         multiplierRight: this.gameModel.multiplierRight,
         product: this.gameModel.product,
-        state: this.gameModel.state,
+        state: this.state,
         currentScore: this.currentLevelModel.currentScore,
         elapsedTime: this.currentLevelModel.gameTimer.elapsedTime,
         systemTimeWhenSaveOccurred: new Date().getTime(),

@@ -19,13 +19,14 @@ define( function( require ) {
   /**
    * @param {GameModel} gameModel - Model for single task.
    * @param {Property} levelProperty - Level difficulty property.
+   * @param {Property} stateProperty - Current state property.
    * @param {Array} levelModels - Array of descriptions for each level.
    *
    * @constructor
    */
-  function MultiplicationTableFactorNode( gameModel, levelProperty, levelModels ) {
+  function MultiplicationTableFactorNode( gameModel, stateProperty, levelProperty, levelModels ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, levelModels, gameModel );
+    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, gameModel );
 
     this._buttonModel = [];
 
@@ -73,12 +74,12 @@ define( function( require ) {
                   gameModel.multiplierLeft = leftIndex;
                   gameModel.multiplierRight = rightIndex;
 
-                  gameModel.state = GameState.EQUATION_FILLED;
+                  stateProperty.value = GameState.EQUATION_FILLED;
                 }
               } );
 
               // cancel hover for disabled button before next task
-              gameModel.property( 'state' ).lazyLink( function( state ) {
+              stateProperty.lazyLink( function( state ) {
                 if ( state === GameState.NEXT_TASK && !buttonModel.enabled && buttonModel.over ) {
                   self.clearCells( levelProperty.value );
                 }
@@ -89,7 +90,7 @@ define( function( require ) {
       } );
     } );
 
-    gameModel.property( 'state' ).link( function( state ) {
+    stateProperty.link( function( state ) {
       if ( state === GameState.LEVEL_INIT || state === GameState.REFRESH_LEVEL ) {
         self.clearCells( levelProperty.value );
         self.enableButtons( levelProperty.value );

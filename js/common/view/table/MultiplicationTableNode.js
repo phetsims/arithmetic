@@ -28,11 +28,12 @@ define( function( require ) {
    * For each level will be created multiplication table node.
    * Necessary for representing best scores for each level.
    * @param {Property} levelProperty - Level difficulty property.
+   * @param {Property} stateProperty - Current state property.
    * @param {GameModel} gameModel - Model for single task.
    *
    * @constructor
    */
-  function MultiplicationTableNode( levelProperty, levelModels, gameModel ) {
+  function MultiplicationTableNode( levelProperty, stateProperty, levelModels, gameModel ) {
     var self = this;
     Node.call( this );
 
@@ -127,7 +128,7 @@ define( function( require ) {
       }
     } );
 
-    gameModel.property( 'state' ).link( function( state ) {
+    stateProperty.link( function( state ) {
       if ( state === GameState.NEXT_TASK ) {
         gameModel.answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
           multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {

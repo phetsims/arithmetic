@@ -32,7 +32,7 @@ define( function( require ) {
     ScreenView.call( this );
 
     // add start game level buttons
-    this.addChild( new LevelSelectionNode( model.levelModels, model.gameModel.property( 'state' ), model.property( 'timerEnabled' ), titleString,
+    this.addChild( new LevelSelectionNode( model.levelModels, model.property( 'state' ), model.property( 'timerEnabled' ), titleString,
       function( level ) {
         model.setLevel( level );
       }, { centerX: this.layoutBounds.centerX, centerY: this.layoutBounds.height * 0.4 } ) );
@@ -54,7 +54,7 @@ define( function( require ) {
     this.addChild( resetAllButton );
 
     // observers
-    model.gameModel.property( 'state' ).link( function( state ) {
+    model.property( 'state' ).link( function( state ) {
       soundAndTimerButtons.visible = state === GameState.LEVEL_SELECT;
       resetAllButton.visible = state === GameState.LEVEL_SELECT;
     } );
