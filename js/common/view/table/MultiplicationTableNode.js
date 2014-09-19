@@ -78,13 +78,14 @@ define( function( require ) {
           for ( j = 0; j <= tableSize; j++ ) {
             // first cell is 'X', other - multiplier numbers
             if ( j === 0 ) {
-              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplierTableHeaderCell( '\u00D7', buttonOptions, {
+              self.cells[levelIndex][i][j] = new MultiplierTableHeaderCell( '\u00D7', buttonOptions, {
                 font: new PhetFont( { size: Math.round( buttonOptions.height * 0.85 ) } ) // Equation empirically determined, makes font smaller for larger tables.
-              } ) );
+              } );
             }
             else {
-              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplierTableHeaderCell( j.toString(), buttonOptions ) );
+              self.cells[levelIndex][i][j] = new MultiplierTableHeaderCell( j.toString(), buttonOptions );
             }
+            hBox.addChild( self.cells[levelIndex][i][j] );
           }
         }
         // other rows
@@ -92,11 +93,12 @@ define( function( require ) {
           for ( j = 0; j <= tableSize; j++ ) {
             // first cell is multiplier number, other - product numbers
             if ( j === 0 ) {
-              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplierTableHeaderCell( i.toString(), buttonOptions ) );
+              self.cells[levelIndex][i][j] = new MultiplierTableHeaderCell( i.toString(), buttonOptions );
             }
             else {
-              hBox.addChild( self.cells[levelIndex][i][j] = new MultiplierTableBodyCell( (i * j).toString(), buttonOptions ) );
+              self.cells[levelIndex][i][j] = new MultiplierTableBodyCell( ( i * j ).toString(), buttonOptions );
             }
+            hBox.addChild( self.cells[levelIndex][i][j] );
           }
         }
         vBox.addChild( hBox );
