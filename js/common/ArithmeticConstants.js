@@ -1,7 +1,7 @@
 // Copyright 2002-2013, University of Colorado Boulder
 
 /**
- * Constants for the 'Arithmetic' simulation.
+ * Constants used in multiple locations within the 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
  */
