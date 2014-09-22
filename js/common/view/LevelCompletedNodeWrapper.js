@@ -44,8 +44,9 @@ define( function( require ) {
           levelModel.gameTimer.elapsedTime,
           levelModel.bestTime,
           (levelModel.gameTimer.elapsedTime < levelModel.bestTime),
-          continueCallback
-        ).mutate( {centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2} ) );
+          continueCallback,
+          {centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2}
+        ) );
       }
       else if ( state === GameState.AWAITING_USER_INPUT ) {
         self.removeAllChildren();

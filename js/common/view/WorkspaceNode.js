@@ -83,15 +83,17 @@ define( function( require ) {
     if ( showKeypad ) {
       this.addChild( new KeypadNode(
           model.property( 'input' ),
-          function() {model.fillEquation();}
-        ).mutate( {centerX: controlPanelNode.centerX, bottom: layoutBounds.maxY * 0.95} )
+          function() {model.fillEquation();},
+          {centerX: controlPanelNode.centerX, bottom: layoutBounds.maxY * 0.95}
+        )
       );
     }
 
     // add smile face
     this.addChild( new ArithmeticFaceWithPointsNode(
-        model.faceModel
-      ).mutate( {bottom: layoutBounds.maxY * 0.95, left: layoutBounds.maxX * 0.04} )
+        model.faceModel,
+        {bottom: layoutBounds.maxY * 0.95, left: layoutBounds.maxX * 0.04}
+      )
     );
 
     // add node with statistic (will be shown after completing level)

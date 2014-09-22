@@ -22,15 +22,16 @@ define( function( require ) {
   /**
    * @param {Object} faceModel model for smile face.
    * Contains 'pointsToDisplay', 'isSmile', 'isVisible' properties
+   * @param {Object} options for face node.
    *
    * @constructor
    */
-  function ArithmeticFaceWithPointsNode( faceModel ) {
+  function ArithmeticFaceWithPointsNode( faceModel, options ) {
     var self = this;
-    FaceWithPointsNode.call( this, {
+    FaceWithPointsNode.call( this, _.extend({
       pointsFont: new PhetFont( { size: 26, weight: 'bold' } ),
       opacity: faceModel.isVisible ? 1 : 0 // match initial visibility
-    } );
+    }, options) );
 
     // add observers
 

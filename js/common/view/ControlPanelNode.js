@@ -67,8 +67,9 @@ define( function( require ) {
           baseColor: REFRESH_BUTTON_BASE_COLOR,
           xMargin: REFRESH_BUTTON_MARGIN.width,
           yMargin: REFRESH_BUTTON_MARGIN.height,
-          listener: refreshLevelCallback
-        } ).mutate( {scale: 0.75} )
+          listener: refreshLevelCallback,
+          scale: 0.75
+        } )
       ]} );
     this.addChild( new Panel( vBox, PANEL_OPTIONS ) );
 

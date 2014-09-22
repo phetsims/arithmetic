@@ -44,13 +44,17 @@ define( function( require ) {
     var soundAndTimerButtons = new VBox( {spacing: 5, children: [
       new TimerToggleButton( model.property( 'timerEnabled' ) ),
       new SoundToggleButton( model.property( 'soundEnabled' ) )
-    ]} ).mutate( {right: this.layoutBounds.maxX * 0.08, bottom: this.layoutBounds.maxY * 0.95} );
+    ],
+      right: this.layoutBounds.maxX * 0.08,
+      bottom: this.layoutBounds.maxY * 0.95} );
     this.addChild( soundAndTimerButtons );
 
     // add reset all button
     var resetAllButton = new ResetAllButton( {
-      listener: function() {model.reset();}
-    } ).mutate( {right: this.layoutBounds.maxX * 0.98, bottom: this.layoutBounds.maxY * 0.95} );
+      listener: function() {model.reset();},
+      right: this.layoutBounds.maxX * 0.98,
+      bottom: this.layoutBounds.maxY * 0.95
+    } );
     this.addChild( resetAllButton );
 
     // observers

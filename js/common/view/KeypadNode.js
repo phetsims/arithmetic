@@ -33,14 +33,15 @@ define( function( require ) {
   /**
    * @param {Property} inputProperty - Input property for communication buttons of keypad with the model.
    * @param {Function} enterCallback - Callback listener for enter button.
+   * @param {Object} options for keypad node.
    *
    * @constructor
    */
-  function KeypadNode( inputProperty, enterCallback ) {
+  function KeypadNode( inputProperty, enterCallback, options ) {
     var buttonEnter;
 
     // add buttons
-    VBox.call( this, {spacing: SPACING, children: [
+    VBox.call( this, _.extend( {spacing: SPACING, children: [
       new HBox( {spacing: SPACING, children: [
         getButtonNumber( 7, inputProperty ),
         getButtonNumber( 8, inputProperty ),
@@ -61,7 +62,7 @@ define( function( require ) {
         getButtonNumber( 0, inputProperty ),
         buttonEnter = getButtonEnter( enterCallback )
       ]} )
-    ]} );
+    ]}, options ) );
 
     // disable enter button if user has not entered number
     inputProperty.link( function( inputString ) {
