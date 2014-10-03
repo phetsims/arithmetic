@@ -1,0 +1,4 @@
+phet-girl-icon-1.png source=PhET
+phet-girl-icon-2.png source=PhET
+phet-girl-icon-2.png source=PhET
+pointing-hand.png source=PhET author=Bryce Gruneich
