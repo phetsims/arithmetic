@@ -10,13 +10,13 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Line = require( 'SCENERY/nodes/Line' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
 
   // constants
-  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var ICON_SIZE = CONSTANTS.SCREEN_ICON_SIZE;
+  var ICON_SIZE = ArithmeticConstants.SCREEN_ICON_SIZE;
   var SYMBOL_COLOR = '#FFF31E';
 
   /**
@@ -25,7 +25,7 @@ define( function( require ) {
   function MultiplyScreenIconNode() {
 
     // create the background
-    Rectangle.call( this, 0, 0, ICON_SIZE.width, ICON_SIZE.height, { fill: CONSTANTS.ICON_BACKGROUND_COLOR } );
+    Rectangle.call( this, 0, 0, ICON_SIZE.width, ICON_SIZE.height, { fill: ArithmeticConstants.ICON_BACKGROUND_COLOR } );
 
     // Add the multiply symbol.  Create our own rather than use the Unicode char, since this gives us more control.
     var symbolWidth = ICON_SIZE.width * 0.3;

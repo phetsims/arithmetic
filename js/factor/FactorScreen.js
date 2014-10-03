@@ -9,14 +9,12 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var FactorModel = require( 'ARITHMETIC/factor/model/FactorModel' );
   var FactorView = require( 'ARITHMETIC/factor/view/FactorView' );
   var FactorScreenIconNode = require( 'ARITHMETIC/factor/view/FactorScreenIconNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Screen = require( 'JOIST/Screen' );
-
-  // constants
-  var BACKGROUND_COLOR = require( 'ARITHMETIC/common/ArithmeticConstants' ).BACKGROUND_COLOR;
 
   // strings
   var factorString = require( 'string!ARITHMETIC/factor' );
@@ -29,7 +27,7 @@ define( function( require ) {
       factorString, new FactorScreenIconNode(),
       function() {return new FactorModel();},
       function( model ) {return new FactorView( model );},
-      { backgroundColor: BACKGROUND_COLOR } );
+      { backgroundColor: ArithmeticConstants.BACKGROUND_COLOR } );
   }
 
   return inherit( Screen, FactorScreen );

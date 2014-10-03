@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
   var BackspaceIcon = require( 'SCENERY_PHET/BackspaceIcon' );
   var Dimension2 = require( 'DOT/Dimension2' );
@@ -22,7 +23,6 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
-  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var ARROW_SIZE = 20; // arrow size of enter and backspace
   var BASE_COLOR = 'white'; // base color for all buttons
   var BUTTON_SIZE = new Dimension2( 40, 40 ); // size of buttons
@@ -110,7 +110,7 @@ define( function( require ) {
   var getButtonNumber = function( number, inputProperty ) {
     var numberString = number.toString();
     return getButtonDefault( new Text( numberString, {font: FONT} ), function() {
-      if ( inputProperty.value.length < CONSTANTS.INPUT_LENGTH_MAX ) {
+      if ( inputProperty.value.length < ArithmeticConstants.INPUT_LENGTH_MAX ) {
         inputProperty.value += numberString;
       }
     } );

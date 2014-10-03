@@ -9,13 +9,11 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var GameState = require( 'ARITHMETIC/common/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelCompletedNode = require( 'VEGAS/LevelCompletedNode' );
   var Node = require( 'SCENERY/nodes/Node' );
-
-  // constants
-  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
 
   /**
    * @param {Array} levelModels - Array of descriptions for each level. Necessary to get perfect and current score for
@@ -39,7 +37,7 @@ define( function( require ) {
           levelProperty.value,
           levelModel.currentScore,
           levelModel.perfectScore,
-          CONSTANTS.STAR_NUMBER,
+          ArithmeticConstants.STAR_NUMBER,
           timerEnabledProperty.value,
           levelModel.gameTimer.elapsedTime,
           levelModel.bestTime,

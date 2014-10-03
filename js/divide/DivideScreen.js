@@ -9,14 +9,12 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var DivideModel = require( 'ARITHMETIC/divide/model/DivideModel' );
-  var DivideView = require( 'ARITHMETIC/divide/view/DivideView' );
   var DivideScreenIconNode = require( 'ARITHMETIC/divide/view/DivideScreenIconNode' );
+  var DivideView = require( 'ARITHMETIC/divide/view/DivideView' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Screen = require( 'JOIST/Screen' );
-
-  // constants
-  var BACKGROUND_COLOR = require( 'ARITHMETIC/common/ArithmeticConstants' ).BACKGROUND_COLOR;
 
   // strings
   var divideString = require( 'string!ARITHMETIC/divide' );
@@ -26,7 +24,7 @@ define( function( require ) {
       divideString, new DivideScreenIconNode(),
       function() {return new DivideModel();},
       function( model ) {return new DivideView( model );},
-      { backgroundColor: BACKGROUND_COLOR } );
+      { backgroundColor: ArithmeticConstants.BACKGROUND_COLOR } );
   }
 
   return inherit( Screen, DivideScreen );

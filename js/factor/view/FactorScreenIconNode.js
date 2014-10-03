@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Line = require( 'SCENERY/nodes/Line' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
@@ -17,8 +18,7 @@ define( function( require ) {
   var Text = require( 'SCENERY/nodes/Text' );
 
   // constants
-  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var ICON_SIZE = CONSTANTS.SCREEN_ICON_SIZE;
+  var ICON_SIZE = ArithmeticConstants.SCREEN_ICON_SIZE;
   var CONNECTING_LINES_COLOR = '#FFF31E';
   var CONNECTING_LINE_WIDTH = 1.5;
   var NUMBER_FONT = new PhetFont( 9 ); // Font size empirically determined
@@ -45,7 +45,7 @@ define( function( require ) {
   function FactorScreenIconNode() {
 
     // create the background
-    Rectangle.call( this, 0, 0, ICON_SIZE.width, ICON_SIZE.height, { fill: CONSTANTS.ICON_BACKGROUND_COLOR } );
+    Rectangle.call( this, 0, 0, ICON_SIZE.width, ICON_SIZE.height, { fill: ArithmeticConstants.ICON_BACKGROUND_COLOR } );
 
     // Create and position the boxes, but don't add them yet so that we can get the layering right.
     var topBox = createRectangleWithEnclosedText( '12', NUMBER_FONT, 3, 0 );

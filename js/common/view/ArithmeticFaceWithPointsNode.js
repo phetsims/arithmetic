@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var FaceWithPointsNode = require( 'SCENERY_PHET/FaceWithPointsNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -17,7 +18,6 @@ define( function( require ) {
 
   // constants
   var FADE_STEPS = 25;
-  var SMILE_DISAPPEAR_TIME = require( 'ARITHMETIC/common/ArithmeticConstants' ).SMILE_DISAPPEAR_TIME;
 
   /**
    * @param {Object} faceModel model for smile face.
@@ -72,7 +72,7 @@ define( function( require ) {
             Timer.clearInterval( intervalId );
             intervalId = null;
           }
-        }, SMILE_DISAPPEAR_TIME / FADE_STEPS );
+        }, ArithmeticConstants.SMILE_DISAPPEAR_TIME / FADE_STEPS );
       }
     } );
   }

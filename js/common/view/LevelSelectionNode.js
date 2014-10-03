@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var GameState = require( 'ARITHMETIC/common/GameState' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Image = require( 'SCENERY/nodes/Image' );
@@ -19,9 +20,7 @@ define( function( require ) {
   var Text = require( 'SCENERY/nodes/Text' );
 
   // constants
-  var CONSTANTS = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( {size: 24} );
-  var STAR_NUMBER = CONSTANTS.STAR_NUMBER;
   var TAB_TITLE_FONT = new PhetFont( {size: 54} );
 
   // strings
@@ -53,7 +52,7 @@ define( function( require ) {
     var levelSelectButtons = levelModels.map( function( level, levelIndex ) {
       return new LevelStartButton(
         new Image( level.icon ),
-        STAR_NUMBER,
+        ArithmeticConstants.STAR_NUMBER,
         function() {
           callback( levelIndex );
         },
