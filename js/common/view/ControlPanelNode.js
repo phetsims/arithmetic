@@ -82,17 +82,19 @@ define( function( require ) {
       timeText.setText( StringUtils.format( timeString, GameTimer.formatTime( time ) ) );
     };
 
-    levelProperty.lazyLink( function( level ) {
-      levelText.setText( StringUtils.format( pattern_level_0levelNumber, (level + 1).toString() ) );
+    levelProperty.lazyLink( function( levelNew, levelPrevious ) {
+      levelText.setText( StringUtils.format( pattern_level_0levelNumber, (levelNew + 1).toString() ) );
 
-      levelModels.forEach( function( levelModel ) {
-        levelModel.property( 'currentScore' ).unlink( updateScore );
-        levelModel.gameTimer.property( 'elapsedTime' ).unlink( updateTime );
-      } );
+      // unlink observers for previous level
+      if ( levelModels[levelPrevious] ) {
+        levelModels[levelPrevious].property( 'currentScore' ).unlink( updateScore );
+        levelModels[levelPrevious].gameTimer.property( 'elapsedTime' ).unlink( updateTime );
+      }
 
-      if ( stateProperty.value === GameState.LEVEL_SELECT && levelModels[level] ) {
-        levelModels[level].property( 'currentScore' ).link( updateScore );
-        levelModels[level].gameTimer.property( 'elapsedTime' ).link( updateTime );
+      // link observers for new level
+      if ( stateProperty.value === GameState.LEVEL_SELECT && levelModels[levelNew] ) {
+        levelModels[levelNew].property( 'currentScore' ).link( updateScore );
+        levelModels[levelNew].gameTimer.property( 'elapsedTime' ).link( updateTime );
       }
     } );
 
