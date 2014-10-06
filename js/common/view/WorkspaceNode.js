@@ -18,7 +18,7 @@ define( function( require ) {
   var KeypadNode = require( 'ARITHMETIC/common/view/KeypadNode' );
   var LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );
   var Node = require( 'SCENERY/nodes/Node' );
-  var ReturnToLevelSelectButton = require( 'SCENERY_PHET/ReturnToLevelSelectButton' );
+  var ReturnToLevelSelectButton = require( 'SCENERY_PHET/buttons/ReturnToLevelSelectButton' );
 
   // constants
   var BACK_BUTTON_BASE_COLOR = 'rgb( 255, 204, 67 )'; // base color of back button

@@ -11,11 +11,11 @@ define( function( require ) {
   // modules
   var GameState = require( 'ARITHMETIC/common/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var ResetAllButton = require( 'SCENERY_PHET/ResetAllButton' );
+  var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
-  var SoundToggleButton = require( 'SCENERY_PHET/SoundToggleButton' );
+  var SoundToggleButton = require( 'SCENERY_PHET/buttons/SoundToggleButton' );
   var LevelSelectionNode = require( 'ARITHMETIC/common/view/LevelSelectionNode' );
-  var TimerToggleButton = require( 'SCENERY_PHET/TimerToggleButton' );
+  var TimerToggleButton = require( 'SCENERY_PHET/buttons/TimerToggleButton' );
   var VBox = require( 'SCENERY/nodes/VBox' );
   var WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
 
