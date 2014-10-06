@@ -58,7 +58,8 @@ define( function( require ) {
 
     // add control panel components
     var vBox = new VBox( {
-      spacing: SPACING, children: [
+      spacing: SPACING,
+      children: [
         levelText,
         scoreText,
         timeText,
