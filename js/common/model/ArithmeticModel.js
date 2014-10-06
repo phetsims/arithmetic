@@ -1,8 +1,8 @@
 // Copyright 2002-2013, University of Colorado Boulder
 
 /**
- * Base type for models in the 'Arithmetic' simulation.  This is used as an abstract base class for the model used in
- * all of the screens.
+ * Base type for models in the 'Arithmetic' simulation.  Each of the three screens - multiplication, factoring, and
+ * division - has one of these models.  Each of these models tracks multiple levels.
  *
  * @author Andrey Zelenkov (MLearner)
  */
