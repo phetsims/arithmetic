@@ -18,7 +18,7 @@ define( function( require ) {
   var KeypadNode = require( 'ARITHMETIC/common/view/KeypadNode' );
   var LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );
   var Node = require( 'SCENERY/nodes/Node' );
-  var ReturnToLevelSelectButton = require( 'SCENERY_PHET/buttons/ReturnToLevelSelectButton' );
+  var ReturnToLevelSelectionButton = require( 'SCENERY_PHET/buttons/ReturnToLevelSelectionButton' );
 
   // constants
   var BACK_BUTTON_BASE_COLOR = 'rgb( 255, 204, 67 )'; // base color of back button
@@ -42,7 +42,7 @@ define( function( require ) {
     Node.call( this );
 
     // add back to level select button
-    this.addChild( new ReturnToLevelSelectButton( {
+    this.addChild( new ReturnToLevelSelectionButton( {
         baseColor: BACK_BUTTON_BASE_COLOR,
         xMargin: BACK_BUTTON_MARGIN.width,
         yMargin: BACK_BUTTON_MARGIN.height,
