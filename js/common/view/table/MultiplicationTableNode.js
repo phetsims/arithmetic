@@ -1,7 +1,8 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Multiplication table node.
+ * A Scenery node that represents the multiplication table.  It consists of a set of individual cells that comprise the
+ * headers and the body.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -21,7 +22,7 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
-  var TABLE_SIZE = new Dimension2( 434, 320 ); // table size
+  var TABLE_SIZE = new Dimension2( 434, 320 ); // table size, empirically determined
 
   /**
    * @param {Array} levelModels - Array of descriptions for each level.

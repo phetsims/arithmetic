@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Multiplication table abstract button node.
+ * Abstract base type for the cells that are used in the multiplcation table.
  *
  * @author Andrey Zelenkov (MLearner)
  */

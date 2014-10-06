@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Multiplication table product button node.
+ * This Scenery node represents one cell in the body (as opposed to the headers) of the multiplication table.
  *
  * @author Andrey Zelenkov (MLearner)
  */
