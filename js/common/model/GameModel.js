@@ -1,7 +1,8 @@
 // Copyright 2002-2013, University of Colorado Boulder
 
 /**
- * Model for single game in the 'Arithmetic' simulation.
+ * Model for single game in the 'Arithmetic' simulation. This model contains properties necessary for each challenge
+ * at the current level.  This works well as a component that can be passed to the various view elements.
  *
  * @author Andrey Zelenkov (MLearner)
  */
