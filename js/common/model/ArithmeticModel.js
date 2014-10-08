@@ -63,11 +63,11 @@ define( function( require ) {
     // model for smile face
     this.faceModel = new FaceModel();
 
-    // When the smiling face has been shown and the user dismisses it, wait for a bit then, start fading out the
-    // smiling face.  The fading is done elsewhere (current ArithmeticFaceWithPointsNode.js).
+    // When the smiling face has been shown and the user dismisses it, wait for a bit, then start fading out the
+    // smiling face.  The fading is initiated here, done elsewhere (current ArithmeticFaceWithPointsNode.js).
     var pauseThenFadeFace = function() {
       Timer.setTimeout( function() {
-        self.faceModel.isVisible = false;
+        self.faceModel.isVisible = false; // This kicks off the fade out.
       }, ArithmeticConstants.SMILE_DISAPPEAR_TIME );
     };
 
