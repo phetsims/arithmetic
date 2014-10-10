@@ -10,7 +10,6 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
   var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
@@ -18,7 +17,6 @@ define( function( require ) {
   var GameState = require( 'ARITHMETIC/common/GameState' );
   var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
   var PropertySet = require( 'AXON/PropertySet' );
-  var Timer = require( 'JOIST/Timer' );
 
   // images
   var phetGirlIcon1Image = require( 'image!ARITHMETIC/phet-girl-icon-1.png' );
@@ -63,14 +61,6 @@ define( function( require ) {
     // model for smile face
     this.faceModel = new FaceModel();
 
-    // When the smiling face has been shown and the user dismisses it, wait for a bit, then start fading out the
-    // smiling face.  The fading is initiated here, done elsewhere (current ArithmeticFaceWithPointsNode.js).
-    var pauseThenFadeFace = function() {
-      Timer.setTimeout( function() {
-        self.faceModel.isVisible = false; // This kicks off the fade out.
-      }, ArithmeticConstants.SMILE_DISAPPEAR_TIME );
-    };
-
     // handles game state transitions that pertain to the model (does not require handling GameState.LEVEL_SELECT)
     this.property( 'state' ).lazyLink( function( state ) {
       if ( state === GameState.LEVEL_INIT ) {
@@ -83,9 +73,6 @@ define( function( require ) {
         self.state = GameState.NEXT_TASK;
       }
       else if ( state === GameState.EQUATION_FILLED ) {
-        // show smile face
-        self.faceModel.isVisible = true;
-
         // correct answer
         if ( self.gameModel.multiplierLeft * self.gameModel.multiplierRight === self.gameModel.product ) {
 
@@ -105,8 +92,6 @@ define( function( require ) {
 
           // set next task
           self.state = GameState.NEXT_TASK;
-
-          pauseThenFadeFace();
         }
         // incorrect answer
         else {
@@ -119,9 +104,10 @@ define( function( require ) {
           self.gameAudioPlayer.wrongAnswer();
 
           self.state = GameState.AWAITING_USER_INPUT;
-
-          pauseThenFadeFace();
         }
+
+        // show smile face
+        self.faceModel.isVisible = true;
 
         // reset input field
         self.property( 'input' ).reset();

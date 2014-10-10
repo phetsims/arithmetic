@@ -10,13 +10,13 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var FaceWithPointsNode = require( 'SCENERY_PHET/FaceWithPointsNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Timer = require( 'JOIST/Timer' );
 
   // constants
+  var SMILE_DISAPPEAR_TIME = 1000; // time in milliseconds
   var FADE_STEPS = 25;
 
   /**
@@ -27,11 +27,13 @@ define( function( require ) {
    * @constructor
    */
   function ArithmeticFaceWithPointsNode( faceModel, options ) {
-    var self = this;
-    FaceWithPointsNode.call( this, _.extend({
+    var self = this,
+      isVisibleProperty = faceModel.property( 'isVisible' );
+
+    FaceWithPointsNode.call( this, _.extend( {
       pointsFont: new PhetFont( { size: 26, weight: 'bold' } ),
       opacity: faceModel.isVisible ? 1 : 0 // match initial visibility
-    }, options) );
+    }, options ) );
 
     // add observers
 
@@ -51,31 +53,38 @@ define( function( require ) {
     } );
 
     // set visibility of smile face
-    var intervalId = null;
-    faceModel.property( 'isVisible' ).lazyLink( function( isVisible ) {
-
-      // stop previous fade timer (if present)
-      if ( intervalId !== null ) {
-        Timer.clearInterval( intervalId );
-        intervalId = null;
-      }
-
+    this._intervalId = null;
+    isVisibleProperty.lazyLink( function( isVisible ) {
       if ( isVisible ) {
+        // make face visible
         self.opacity = 1;
+
+        // and fade out after pause
+        Timer.setTimeout( function() {
+          self._intervalId = Timer.setInterval( function() {
+            self.opacity -= 1 / FADE_STEPS;
+            if ( self.opacity <= 0 ) {
+              isVisibleProperty = false;
+            }
+          }, SMILE_DISAPPEAR_TIME / FADE_STEPS );
+        }, SMILE_DISAPPEAR_TIME );
       }
       else {
-        // Fade out rather than going immediately invisible.
-        intervalId = Timer.setInterval( function() {
-          self.opacity -= 1 / FADE_STEPS;
-          if ( self.opacity <= 0 ) {
-            self.opacity = 0;
-            Timer.clearInterval( intervalId );
-            intervalId = null;
-          }
-        }, ArithmeticConstants.SMILE_DISAPPEAR_TIME / FADE_STEPS );
+        hideFaceAndStopTimer( self );
       }
     } );
   }
+
+  var hideFaceAndStopTimer = function( face ) {
+    // stop timer
+    if ( face._intervalId !== null ) {
+      Timer.clearInterval( face._intervalId );
+      face._intervalId = null;
+    }
+
+    // hide face
+    face.opacity = 0;
+  };
 
   return inherit( FaceWithPointsNode, ArithmeticFaceWithPointsNode );
 } );
