@@ -177,6 +177,8 @@ define( function( require ) {
 
       // clear game state for game state
       this.clearGameEnvironment( this.level );
+
+      this.state = GameState.LEVEL_SELECT;
     },
 
     resetLevelModels: function() {
