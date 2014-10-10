@@ -162,11 +162,8 @@ define( function( require ) {
       // save state of current level
       this.saveGameEnvironment();
 
-      // make sure the feedback face is hidden
-      this.faceModel.reset();
-
-      // reset the game model, which will send it back to the level selection state
-      this.gameModel.reset();
+      // refresh current level
+      this.resetLevel();
 
       this.state = GameState.LEVEL_SELECT;
     },
