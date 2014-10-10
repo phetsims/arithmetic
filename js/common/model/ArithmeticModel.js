@@ -158,7 +158,7 @@ define( function( require ) {
       // refresh current level
       this.resetLevel();
 
-      // clear game state for game state
+      // clear game environment
       this.clearGameEnvironment( this.level );
 
       this.state = GameState.LEVEL_SELECT;
