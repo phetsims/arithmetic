@@ -32,7 +32,7 @@ define( function( require ) {
 
     FaceWithPointsNode.call( this, _.extend( {
       pointsFont: new PhetFont( { size: 26, weight: 'bold' } ),
-      opacity: faceModel.isVisible ? 1 : 0 // match initial visibility
+      opacity: isVisibleProperty.value ? 1 : 0 // match initial visibility
     }, options ) );
 
     // add observers
@@ -53,38 +53,34 @@ define( function( require ) {
     } );
 
     // set visibility of smile face
-    this._intervalId = null;
+    var intervalId = null;
     isVisibleProperty.lazyLink( function( isVisible ) {
+      // stop timer
+      if ( intervalId !== null ) {
+        Timer.clearInterval( intervalId );
+        intervalId = null;
+      }
+
       if ( isVisible ) {
         // make face visible
         self.opacity = 1;
 
         // and fade out after pause
         Timer.setTimeout( function() {
-          self._intervalId = Timer.setInterval( function() {
+          intervalId = Timer.setInterval( function() {
             self.opacity -= 1 / FADE_STEPS;
             if ( self.opacity <= 0 ) {
-              isVisibleProperty = false;
+              isVisibleProperty.value = false;
             }
           }, SMILE_DISAPPEAR_TIME / FADE_STEPS );
         }, SMILE_DISAPPEAR_TIME );
       }
       else {
-        hideFaceAndStopTimer( self );
+        // hide face
+        self.opacity = 0;
       }
     } );
   }
-
-  var hideFaceAndStopTimer = function( face ) {
-    // stop timer
-    if ( face._intervalId !== null ) {
-      Timer.clearInterval( face._intervalId );
-      face._intervalId = null;
-    }
-
-    // hide face
-    face.opacity = 0;
-  };
 
   return inherit( FaceWithPointsNode, ArithmeticFaceWithPointsNode );
 } );
