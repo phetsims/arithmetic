@@ -53,9 +53,15 @@ define( function( require ) {
     } );
 
     // set visibility of smile face
-    var intervalId = null;
+    var intervalId = null, timeoutId = null;
     isVisibleProperty.lazyLink( function( isVisible ) {
-      // stop timer
+      // stop timer timeout
+      if ( timeoutId !== null ) {
+        Timer.clearTimeout( timeoutId );
+        timeoutId = null;
+      }
+
+      // stop timer interval
       if ( intervalId !== null ) {
         Timer.clearInterval( intervalId );
         intervalId = null;
@@ -65,8 +71,8 @@ define( function( require ) {
         // make face visible
         self.opacity = 1;
 
-        // and fade out after pause
-        Timer.setTimeout( function() {
+        // and fade out it after pause
+        timeoutId = Timer.setTimeout( function() {
           intervalId = Timer.setInterval( function() {
             self.opacity -= 1 / FADE_STEPS;
             if ( self.opacity <= 0 ) {
