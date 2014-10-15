@@ -14,7 +14,7 @@ define( function( require ) {
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var LevelStartButton = require( 'VEGAS/LevelStartButton' );
+  var LevelStartButton = require( 'VEGAS/LevelStartButtonNew' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Text = require( 'SCENERY/nodes/Text' );
@@ -61,8 +61,7 @@ define( function( require ) {
         {
           buttonWidth: 135,
           buttonHeight: 135,
-          backgroundColor: 'white',
-          highlightedBackgroundColor: 'white',
+          baseColor: '#D8F58A',
           bestTimeProperty: levelModels[levelIndex].property( 'bestTime' ),
           bestTimeVisibleProperty: timerEnabledProperty
         }
