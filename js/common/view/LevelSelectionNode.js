@@ -14,7 +14,7 @@ define( function( require ) {
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var LevelStartButton = require( 'VEGAS/LevelStartButtonNew' );
+  var LevelSelectionButton = require( 'VEGAS/LevelSelectionButton' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Text = require( 'SCENERY/nodes/Text' );
@@ -50,7 +50,7 @@ define( function( require ) {
     // add select level buttons
 
     var levelSelectButtons = levelModels.map( function( level, levelIndex ) {
-      return new LevelStartButton(
+      return new LevelSelectionButton(
         new Image( level.icon ),
         ArithmeticConstants.STAR_NUMBER,
         function() {
