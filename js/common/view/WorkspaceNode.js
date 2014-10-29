@@ -11,6 +11,7 @@ define( function( require ) {
 
   // modules
   var ArithmeticFaceWithPointsNode = require( 'ARITHMETIC/common/view/ArithmeticFaceWithPointsNode' );
+  var BackButton = require( 'SCENERY_PHET/buttons/BackButton' );
   var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
   var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/GameState' );
@@ -18,7 +19,6 @@ define( function( require ) {
   var KeypadNode = require( 'ARITHMETIC/common/view/KeypadNode' );
   var LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );
   var Node = require( 'SCENERY/nodes/Node' );
-  var BackButton = require( 'ARITHMETIC/common/view/BackButton' );
 
   // constants
   var BACK_BUTTON_BASE_COLOR = 'rgb( 255, 204, 67 )'; // base color of back button
