@@ -16,6 +16,9 @@ define( function( require ) {
   var ScreenView = require( 'JOIST/ScreenView' );
   var WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
 
+  // constants
+  var ANIMATION_TIME = 750;
+
   /**
    * @param {ArithmeticModel} model - Main model for screen.
    * @param {Node} multiplicationTableNode - Multiplication table node for given screen.
@@ -26,6 +29,7 @@ define( function( require ) {
    * @constructor
    */
   function ArithmeticView( model, multiplicationTableNode, equationNode, isAddKeypadNode, titleString ) {
+    var self = this;
     ScreenView.call( this, { renderer: 'svg' } );
 
     // create and add the node that allows the user to select the game level
@@ -40,12 +44,41 @@ define( function( require ) {
 
     // add the game components
     var workspaceNode = new WorkspaceNode( model, multiplicationTableNode, equationNode, isAddKeypadNode, this.layoutBounds );
+    workspaceNode.left = this.layoutBounds.maxX;
+    workspaceNode.visible = false;
     this.addChild( workspaceNode );
 
+    // create the animators or 'tweens' that will slide the screens in and out.
+    var levelSelectionScreenAnimator = new TWEEN.Tween( levelSelectionNode ).easing( TWEEN.Easing.Cubic.InOut ).onComplete( function() {
+      levelSelectionNode.visible = ( levelSelectionNode.x === self.layoutBounds.minX );
+    } );
+
+    var workspaceNodeAnimator = new TWEEN.Tween( workspaceNode ).easing( TWEEN.Easing.Cubic.InOut ).onComplete( function() {
+      workspaceNode.visible = ( workspaceNode.x === self.layoutBounds.minX );
+    } );
+
     // observers
-    model.property( 'state' ).link( function( state ) {
-      levelSelectionNode.visible = state === GameState.LEVEL_SELECT;
-      workspaceNode.visible = state !== GameState.LEVEL_SELECT;
+    model.property( 'state' ).link( function( newState, oldState ) {
+      if ( newState === GameState.LEVEL_SELECT && oldState ) {
+
+        // Slide out the workspace node
+        workspaceNodeAnimator.stop().to( { x: self.layoutBounds.maxX }, ANIMATION_TIME ).start();
+
+        // Slide in the level selection screen
+        levelSelectionNode.visible = true;
+        levelSelectionScreenAnimator.stop().to( { x: self.layoutBounds.minX }, ANIMATION_TIME ).start();
+      }
+      else if ( newState !== GameState.LEVEL_SELECT && oldState === GameState.LEVEL_SELECT ) {
+
+        // Slide in the workspace node
+        workspaceNode.visible = true;
+        workspaceNodeAnimator.stop().to( { x: self.layoutBounds.minX }, ANIMATION_TIME ).start();
+
+        // Slide out the level selection screen
+        levelSelectionScreenAnimator.stop().to( { right: self.layoutBounds.minX }, ANIMATION_TIME ).start();
+      }
+//      levelSelectionNode.visible = newState === GameState.LEVEL_SELECT;
+//      workspaceNode.visible = newState !== GameState.LEVEL_SELECT;
     } );
   }
 
