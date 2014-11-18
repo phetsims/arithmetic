@@ -17,7 +17,11 @@ define( function( require ) {
   var LevelSelectionButton = require( 'VEGAS/LevelSelectionButton' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
+  var SoundToggleButton = require( 'SCENERY_PHET/buttons/SoundToggleButton' );
   var Text = require( 'SCENERY/nodes/Text' );
+  var TimerToggleButton = require( 'SCENERY_PHET/buttons/TimerToggleButton' );
+  var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
   var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( {size: 24} );
@@ -27,55 +31,77 @@ define( function( require ) {
   var chooseYourLevelString = require( 'string!ARITHMETIC/chooseYourLevel' );
 
   /**
-   * @param {Array} levelModels - An array of descriptions for each level, where one button is created for each level.
+   * @param {ArithmeticModel} model - Main model for screen.
    * @param {Property} timerEnabledProperty - Timer enable property, needed to control visibility of best time label.
    * @param {String} titleString - Title string for given screen.
    * @param {Function} callback - Callback function call after pressing button.
+   * @param {Bounds2} layoutBounds - Bounds of screen on which this will appear, used for layout
    * @param {Object} [options] - Title string for given screen.
    * @constructor
    */
-  function LevelSelectionNode( levelModels, timerEnabledProperty, titleString, callback, options ) {
+  function LevelSelectionNode( model, titleString, callback, layoutBounds, options ) {
     var self = this;
     Node.call( this );
 
     // add title
-    var tabTitle = new Text( titleString, { font: TAB_TITLE_FONT } );
+    var tabTitle = new Text( titleString, {
+      font: TAB_TITLE_FONT,
+      centerX: layoutBounds.centerX,
+      top: layoutBounds.height * 0.1
+    } );
     this.addChild( tabTitle );
 
     // add choose level title
-    var chooseLevelTitle = new Text( chooseYourLevelString, { font: CHOOSE_LEVEL_TITLE_FONT } );
+    var chooseLevelTitle = new Text( chooseYourLevelString, {
+      font: CHOOSE_LEVEL_TITLE_FONT,
+      centerX: layoutBounds.centerX,
+      top: tabTitle.bottom + 15
+    } );
     this.addChild( chooseLevelTitle );
 
     // add select level buttons
-
-    var levelSelectButtons = levelModels.map( function( level, levelIndex ) {
+    var levelSelectButtons = model.levelModels.map( function( level, levelIndex ) {
       return new LevelSelectionButton(
         new Image( level.icon ),
         ArithmeticConstants.STAR_NUMBER,
         function() {
           callback( levelIndex );
         },
-        levelModels[levelIndex].property( 'displayScore' ),
+        model.levelModels[levelIndex].property( 'displayScore' ),
         level.perfectScore,
         {
           buttonWidth: 135,
           buttonHeight: 135,
           baseColor: '#D8F58A',
-          bestTimeProperty: levelModels[levelIndex].property( 'bestTime' ),
-          bestTimeVisibleProperty: timerEnabledProperty
+          bestTimeProperty: model.levelModels[levelIndex].property( 'bestTime' ),
+          bestTimeVisibleProperty: model.property( 'timerEnabled' )
         }
       );
     } );
     var selectLevelButtonsHBox = new HBox( { spacing: 50, children: levelSelectButtons } );
-    selectLevelButtonsHBox.updateLayout();
-    selectLevelButtonsHBox.top = chooseLevelTitle.bounds.maxY + 20;
+    selectLevelButtonsHBox.updateLayout(); // TODO: Necessary?
+    selectLevelButtonsHBox.top = chooseLevelTitle.bottom + 15;
+    selectLevelButtonsHBox.centerX = chooseLevelTitle.centerX;
     this.addChild( selectLevelButtonsHBox );
 
-    // layout
-    tabTitle.centerX = selectLevelButtonsHBox.width / 2;
-    chooseLevelTitle.centerX = selectLevelButtonsHBox.width / 2;
-    chooseLevelTitle.top = tabTitle.bottom + 20; // Spacing empirically determined
-    selectLevelButtonsHBox.top = chooseLevelTitle.bottom + 20;  // Spacing empirically determined
+    // add timer and sound buttons
+    var soundAndTimerButtons = new VBox( {
+      spacing: 5,
+      children: [
+        new TimerToggleButton( model.property( 'timerEnabled' ) ),
+        new SoundToggleButton( model.property( 'soundEnabled' ) )
+      ],
+      right: layoutBounds.maxX * 0.08,
+      bottom: layoutBounds.maxY * 0.95} );
+    this.addChild( soundAndTimerButtons );
+
+    // add reset all button
+    var resetAllButton = new ResetAllButton( {
+      listener: function() {model.reset(); },
+      right: layoutBounds.maxX * 0.98,
+      bottom: layoutBounds.maxY * 0.95
+    } );
+    this.addChild( resetAllButton );
 
     // pass options through to superclass
     this.mutate( options );
