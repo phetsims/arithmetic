@@ -41,10 +41,12 @@ define( function( require ) {
     this.addChild( new WorkspaceNode( model, multiplicationTableNode, equationNode, isAddKeypadNode, this.layoutBounds ) );
 
     // add timer and sound buttons
-    var soundAndTimerButtons = new VBox( {spacing: 5, children: [
-      new TimerToggleButton( model.property( 'timerEnabled' ) ),
-      new SoundToggleButton( model.property( 'soundEnabled' ) )
-    ],
+    var soundAndTimerButtons = new VBox( {
+      spacing: 5,
+      children: [
+        new TimerToggleButton( model.property( 'timerEnabled' ) ),
+        new SoundToggleButton( model.property( 'soundEnabled' ) )
+      ],
       right: this.layoutBounds.maxX * 0.08,
       bottom: this.layoutBounds.maxY * 0.95} );
     this.addChild( soundAndTimerButtons );
