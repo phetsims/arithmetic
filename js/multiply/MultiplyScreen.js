@@ -19,7 +19,7 @@ define( function( require ) {
   // strings
   var multiplyString = require( 'string!ARITHMETIC/multiply' );
 
-  function FactorScreen() {
+  function MultiplyScreen() {
     Screen.call( this,
       multiplyString, new MultiplyScreenIconNode(),
       function() {return new MultiplyModel();},
@@ -27,5 +27,5 @@ define( function( require ) {
       { backgroundColor: ArithmeticConstants.BACKGROUND_COLOR } );
   }
 
-  return inherit( Screen, FactorScreen );
+  return inherit( Screen, MultiplyScreen );
 } );
