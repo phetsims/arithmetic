@@ -5,6 +5,7 @@
  * are created here, others are passed in (when they need to be of different types), and all are laid out here.
  *
  * @author Andrey Zelenkov (MLearner)
+ * @author John Blanco
  */
 define( function( require ) {
   'use strict';
@@ -41,7 +42,7 @@ define( function( require ) {
     var self = this;
     Node.call( this );
 
-    // add back to level select button
+    // add button for returning to the level select screen
     this.addChild( new BackButton( {
         baseColor: BACK_BUTTON_BASE_COLOR,
         xMargin: BACK_BUTTON_MARGIN.width,
@@ -57,14 +58,10 @@ define( function( require ) {
     );
 
     // add multiplication table
-    this.addChild( multiplicationTableNode
-        .mutate( {top: layoutBounds.maxY * 0.02, centerX: layoutBounds.width * 0.43} )
-    );
+    this.addChild( multiplicationTableNode.mutate( {top: layoutBounds.maxY * 0.02, centerX: layoutBounds.width * 0.43} ) );
 
     // add equation
-    this.addChild( equationNode
-        .mutate( {bottom: layoutBounds.maxY * 0.87, centerX: layoutBounds.width * 0.45} )
-    );
+    this.addChild( equationNode.mutate( {bottom: layoutBounds.maxY * 0.87, centerX: layoutBounds.width * 0.45} ) );
 
     // add control panel
     var controlPanelNode = new ControlPanelNode(
@@ -107,10 +104,6 @@ define( function( require ) {
         },
         layoutBounds )
     );
-
-    model.property( 'state' ).link( function( state ) {
-      self.visible = ( state !== GameState.LEVEL_SELECT );
-    } );
   }
 
   return inherit( Node, WorkspaceNode );

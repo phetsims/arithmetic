@@ -11,10 +11,11 @@ define( function( require ) {
   // modules
   var GameState = require( 'ARITHMETIC/common/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var LevelSelectionNode = require( 'ARITHMETIC/common/view/LevelSelectionNode' );
+  var Node = require( 'SCENERY/nodes/Node' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var SoundToggleButton = require( 'SCENERY_PHET/buttons/SoundToggleButton' );
-  var LevelSelectionNode = require( 'ARITHMETIC/common/view/LevelSelectionNode' );
   var TimerToggleButton = require( 'SCENERY_PHET/buttons/TimerToggleButton' );
   var VBox = require( 'SCENERY/nodes/VBox' );
   var WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
@@ -29,16 +30,17 @@ define( function( require ) {
    * @constructor
    */
   function ArithmeticView( model, multiplicationTableNode, equationNode, isAddKeypadNode, titleString ) {
+//    ScreenView.call( this, { renderer: 'svg' } );
     ScreenView.call( this );
 
+    // root of the level selection screen
+    var levelSelectionScreen = new Node();
+
     // add start game level buttons
-    this.addChild( new LevelSelectionNode( model.levelModels, model.property( 'state' ), model.property( 'timerEnabled' ), titleString,
+    levelSelectionScreen.addChild( new LevelSelectionNode( model.levelModels, model.property( 'timerEnabled' ), titleString,
       function( level ) {
         model.setLevel( level );
       }, { centerX: this.layoutBounds.centerX, centerY: this.layoutBounds.height * 0.4 } ) );
-
-    // add game components
-    this.addChild( new WorkspaceNode( model, multiplicationTableNode, equationNode, isAddKeypadNode, this.layoutBounds ) );
 
     // add timer and sound buttons
     var soundAndTimerButtons = new VBox( {
@@ -49,7 +51,7 @@ define( function( require ) {
       ],
       right: this.layoutBounds.maxX * 0.08,
       bottom: this.layoutBounds.maxY * 0.95} );
-    this.addChild( soundAndTimerButtons );
+    levelSelectionScreen.addChild( soundAndTimerButtons );
 
     // add reset all button
     var resetAllButton = new ResetAllButton( {
@@ -57,12 +59,17 @@ define( function( require ) {
       right: this.layoutBounds.maxX * 0.98,
       bottom: this.layoutBounds.maxY * 0.95
     } );
-    this.addChild( resetAllButton );
+    levelSelectionScreen.addChild( resetAllButton );
+    this.addChild( levelSelectionScreen );
+
+    // add game components
+    var workspaceNode = new WorkspaceNode( model, multiplicationTableNode, equationNode, isAddKeypadNode, this.layoutBounds );
+    this.addChild( workspaceNode );
 
     // observers
     model.property( 'state' ).link( function( state ) {
-      soundAndTimerButtons.visible = state === GameState.LEVEL_SELECT;
-      resetAllButton.visible = state === GameState.LEVEL_SELECT;
+      levelSelectionScreen.visible = state === GameState.LEVEL_SELECT;
+      workspaceNode.visible = state !== GameState.LEVEL_SELECT;
     } );
   }
 

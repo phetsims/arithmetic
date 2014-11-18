@@ -28,14 +28,13 @@ define( function( require ) {
 
   /**
    * @param {Array} levelModels - An array of descriptions for each level, where one button is created for each level.
-   * @param {Property} stateProperty - Current state property, needed to control visibility of this component.
    * @param {Property} timerEnabledProperty - Timer enable property, needed to control visibility of best time label.
    * @param {String} titleString - Title string for given screen.
    * @param {Function} callback - Callback function call after pressing button.
    * @param {Object} [options] - Title string for given screen.
    * @constructor
    */
-  function LevelSelectionNode( levelModels, stateProperty, timerEnabledProperty, titleString, callback, options ) {
+  function LevelSelectionNode( levelModels, timerEnabledProperty, titleString, callback, options ) {
     var self = this;
     Node.call( this );
 
@@ -77,10 +76,6 @@ define( function( require ) {
     chooseLevelTitle.centerX = selectLevelButtonsHBox.width / 2;
     chooseLevelTitle.top = tabTitle.bottom + 20; // Spacing empirically determined
     selectLevelButtonsHBox.top = chooseLevelTitle.bottom + 20;  // Spacing empirically determined
-
-    stateProperty.link( function( state ) {
-      self.visible = ( state === GameState.LEVEL_SELECT );
-    } );
 
     // pass options through to superclass
     this.mutate( options );
