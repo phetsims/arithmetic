@@ -19,7 +19,9 @@ define( function( require ) {
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
+  var ScreenView = require( 'JOIST/ScreenView' );
   var VBox = require( 'SCENERY/nodes/VBox' );
+  var Vector2 = require( 'DOT/Vector2' );
 
   // constants
   var TABLE_SIZE = new Dimension2( 434, 320 ); // table size, empirically determined
@@ -154,6 +156,47 @@ define( function( require ) {
         multipliersLeft.forEach( function( cell ) {
           cell.normal();
         } );
+      } );
+    },
+
+    /**
+     * Get the position, in global coordinates, of the specified cell.
+     *
+     * @param level
+     * @param column
+     * @param row
+     * @public
+     */
+    whereIsCellCenter: function( level, column, row ) {
+
+      // Find the parent screen by moving up the scene graph.
+      // TODO: If kept, the parent screen can be identified during construction, which would be more efficient.
+      var cell = this.cells[ level ][ row ][ column ];
+      var testNode = cell;
+      var parentScreen = null;
+      while ( testNode !== null ) {
+        if ( testNode instanceof ScreenView ) {
+          parentScreen = testNode;
+          break;
+        }
+        testNode = testNode.parents[0]; // Move up the scene graph by one level
+      }
+
+      return parentScreen.globalToLocalPoint( cell.parentToGlobalPoint( cell.center ) );
+    },
+
+    /**
+     * Set the 'delayedText' attribute for all cells, which means the text delays for a while before appearing.  This
+     * is used in conjunction with animation to make the answers appear to fly up to the cells.
+     * @param delayedText
+     */
+    setDelayedText: function( delayedText ) {
+      this.cells.forEach( function( level ) {
+        level.forEach( function( cellArray ) {
+          cellArray.forEach( function( cell ) {
+            cell.delayedText = delayedText;
+          } )
+        } )
       } );
     }
   } );

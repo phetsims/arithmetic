@@ -15,6 +15,7 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
+  var Timer = require( 'JOIST/Timer' );
 
   /**
    * @param {Object} backgroundOptions - Background options for button.
@@ -41,6 +42,9 @@ define( function( require ) {
       centerY: this.bounds.height / 2
     }, textOptions ) );
     this.addChild( this._text );
+
+    // flag for delaying text display
+    this.delayedText = false;
   }
 
   return inherit( Node, AbstractCell, {
@@ -55,7 +59,15 @@ define( function( require ) {
       this._text.setFill( fill );
     },
     showText: function() {
-      this._text.visible = true;
+      if ( !this._text.visible ) {
+        var self = this;
+        if ( this.delayedText ) {
+          Timer.setTimeout( function() { self._text.visible = true; }, 1000 );
+        }
+        else {
+          this._text.visible = true;
+        }
+      }
     },
     hideText: function() {
       this._text.visible = false;
