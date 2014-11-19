@@ -16,23 +16,22 @@ define( function( require ) {
   var Timer = require( 'JOIST/Timer' );
 
   // constants
-  var SMILE_DISAPPEAR_TIME = 1000; // time in milliseconds
+  var SMILE_OPAQUE_TIME = 1000; // time in milliseconds
+  var SMILE_FADE_TIME = 1000; // time in milliseconds
   var FADE_STEPS = 25;
 
   /**
    * @param {Object} faceModel model for smile face.
-   * Contains 'pointsToDisplay', 'isSmile', 'isVisible' properties
    * @param {Object} options for face node.
    *
    * @constructor
    */
   function ArithmeticFaceWithPointsNode( faceModel, options ) {
-    var self = this,
-      isVisibleProperty = faceModel.property( 'isVisible' );
+    var self = this;
 
     FaceWithPointsNode.call( this, _.extend( {
       pointsFont: new PhetFont( { size: 26, weight: 'bold' } ),
-      opacity: isVisibleProperty.value ? 1 : 0 // match initial visibility
+      visible: false // Initially invisible, must receive an showFace event to become visible.
     }, options ) );
 
     // add observers
@@ -42,7 +41,7 @@ define( function( require ) {
       self.setPoints( points );
     } );
 
-    // set smile face emotion
+    // set the facial expression
     faceModel.property( 'isSmile' ).link( function( isFaceSmile ) {
       if ( isFaceSmile ) {
         self.smile();
@@ -52,39 +51,43 @@ define( function( require ) {
       }
     } );
 
-    // set visibility of smile face
-    var intervalId = null, timeoutId = null;
-    isVisibleProperty.lazyLink( function( isVisible ) {
-      // stop timer timeout
-      if ( timeoutId !== null ) {
-        Timer.clearTimeout( timeoutId );
-        timeoutId = null;
+    // Timer IDs for pre-fade and fade timers.
+    var opaqueTimeID = null, fadeTimeID = null;
+
+    faceModel.on( 'showFace', function() {
+
+      // make face fully visible
+      self.visible = true;
+      self.opacity = 1;
+
+      // set up timers to leave the face as fully opaque for a bit, then fade out
+      opaqueTimeID = Timer.setTimeout( function() {
+        opaqueTimeID = null;
+        fadeTimeID = Timer.setInterval( function() {
+          self.opacity -= 1 / FADE_STEPS;
+          if ( self.opacity <= 0 ) {
+            Timer.clearInterval( fadeTimeID );
+            fadeTimeID = null;
+            self.visible = false;
+          }
+        }, SMILE_FADE_TIME / FADE_STEPS );
+      }, SMILE_OPAQUE_TIME );
+    } );
+
+    faceModel.on( 'hideFace', function() {
+
+      // Cancel the timers used to fade out the face.
+      if ( opaqueTimeID !== null ) {
+        Timer.clearTimeout( opaqueTimeID );
+        opaqueTimeID = null;
+      }
+      if ( fadeTimeID !== null ) {
+        Timer.clearInterval( fadeTimeID );
+        fadeTimeID = null;
       }
 
-      // stop timer interval
-      if ( intervalId !== null ) {
-        Timer.clearInterval( intervalId );
-        intervalId = null;
-      }
-
-      if ( isVisible ) {
-        // make face visible
-        self.opacity = 1;
-
-        // and fade out it after pause
-        timeoutId = Timer.setTimeout( function() {
-          intervalId = Timer.setInterval( function() {
-            self.opacity -= 1 / FADE_STEPS;
-            if ( self.opacity <= 0 ) {
-              isVisibleProperty.value = false;
-            }
-          }, SMILE_DISAPPEAR_TIME / FADE_STEPS );
-        }, SMILE_DISAPPEAR_TIME );
-      }
-      else {
-        // hide face
-        self.opacity = 0;
-      }
+      // Go completely invisible.
+      self.visible = false;
     } );
   }
 

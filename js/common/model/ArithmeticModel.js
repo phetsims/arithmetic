@@ -74,7 +74,7 @@ define( function( require ) {
       }
       else if ( state === GameState.EQUATION_FILLED ) {
         // hide smile face
-        self.faceModel.isVisible = false;
+        self.faceModel.hideFace();
 
         // correct answer
         if ( self.gameModel.multiplierLeft * self.gameModel.multiplierRight === self.gameModel.product ) {
@@ -110,7 +110,7 @@ define( function( require ) {
         }
 
         // show smile face
-        self.faceModel.isVisible = true;
+        self.faceModel.showFace();
 
         // reset input field
         self.property( 'input' ).reset();
