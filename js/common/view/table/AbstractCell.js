@@ -1,11 +1,10 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Abstract base type for the cells that are used in the multiplcation table.
+ * Abstract base type for the cells that are used in the multiplication table.
  *
  * @author Andrey Zelenkov (MLearner)
  */
-
 define( function( require ) {
   'use strict';
 
@@ -48,16 +47,20 @@ define( function( require ) {
   }
 
   return inherit( Node, AbstractCell, {
+
     setBackgroundFill: function( fill ) {
       this._background.fill = fill;
     },
+
     setText: function( text ) {
       this._text.setText( text );
       this._text.centerX = this.bounds.width / 2 - 1;
     },
+
     setTextFill: function( fill ) {
       this._text.setFill( fill );
     },
+
     showText: function() {
       if ( !this._text.visible ) {
         var self = this;
@@ -69,6 +72,7 @@ define( function( require ) {
         }
       }
     },
+
     hideText: function() {
       this._text.visible = false;
     }

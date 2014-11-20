@@ -188,7 +188,9 @@ define( function( require ) {
     /**
      * Set the 'delayedText' attribute for all cells, which means the text delays for a while before appearing.  This
      * is used in conjunction with animation to make the answers appear to fly up to the cells.
+     *
      * @param delayedText
+     * @public
      */
     setDelayedText: function( delayedText ) {
       this.cells.forEach( function( level ) {
@@ -198,6 +200,19 @@ define( function( require ) {
           } )
         } )
       } );
+    },
+
+    /**
+     * Get the size of the text used for the provided level.
+     *
+     * @param level
+     * @param column
+     * @param row
+     * @public
+     */
+    getTextWidth: function( level, column, row ) {
+      debugger;
+      return this.cells[ level ][ row ][ column ]._text.width;
     }
   } );
 } );
