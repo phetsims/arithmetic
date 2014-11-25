@@ -18,15 +18,16 @@ define( function( require ) {
 
   /**
    * @param {GameModel} gameModel - Model for single task.
+   * @param {Array} answerSheet - array that tracks which problems have and have not been answered.
    * @param {Property} levelProperty - Level difficulty property.
    * @param {Property} stateProperty - Current state property.
    * @param {Array} levelModels - Array of descriptions for each level.
    *
    * @constructor
    */
-  function MultiplicationTableFactorNode( gameModel, stateProperty, levelProperty, levelModels ) {
+  function MultiplicationTableFactorNode( gameModel, answerSheet, stateProperty, levelProperty, levelModels ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, gameModel );
+    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet );
 
     this._buttonModel = [];
 

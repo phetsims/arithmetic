@@ -32,11 +32,11 @@ define( function( require ) {
    * Necessary for representing best scores for each level.
    * @param {Property} levelProperty - Level difficulty property.
    * @param {Property} stateProperty - Current state property.
-   * @param {GameModel} gameModel - Model for single task.
+   * @param {Array} answerSheet - 2D array that tracks problems that have and haven't been answered
    *
    * @constructor
    */
-  function MultiplicationTableNode( levelProperty, stateProperty, levelModels, gameModel ) {
+  function MultiplicationTableNode( levelProperty, stateProperty, levelModels, answerSheet ) {
     var self = this;
     Node.call( this );
 
@@ -135,7 +135,7 @@ define( function( require ) {
 
     stateProperty.link( function( state ) {
       if ( state === GameState.NEXT_TASK ) {
-        gameModel.answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
+        answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
           multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
             if ( isVisible ) {
               self.cells[levelProperty.value][multipliersLeftIndex + 1][multipliersRightIndex + 1].showText();

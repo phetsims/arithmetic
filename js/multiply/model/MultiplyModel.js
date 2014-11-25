@@ -31,7 +31,7 @@ define( function( require ) {
     this.property( 'state' ).link( function( state ) {
       if ( state === GameState.NEXT_TASK ) {
         // get available multipliers
-        var multipliers = self.gameModel.selectUnusedMultiplierPair();
+        var multipliers = self.selectUnusedMultiplierPair();
 
         if ( multipliers ) {
           // reset multipliers and score properties

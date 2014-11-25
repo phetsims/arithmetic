@@ -52,6 +52,9 @@ define( function( require ) {
       timerEnabled: false // is timer active
     } );
 
+    // array that tracks which problems have been answered
+    this.answerSheet = [];
+
     // hook up the audio player to the sound settings
     this.gameAudioPlayer = new GameAudioPlayer( this.property( 'soundEnabled' ) );
 
@@ -91,7 +94,7 @@ define( function( require ) {
           self.gameAudioPlayer.correctAnswer();
 
           // mark answer in answer sheet
-          self.gameModel.answerSheet[self.gameModel.multiplierLeft - 1][self.gameModel.multiplierRight - 1] = true;
+          self.answerSheet[self.gameModel.multiplierLeft - 1][self.gameModel.multiplierRight - 1] = true;
 
           // set next task
           self.state = GameState.NEXT_TASK;
@@ -197,7 +200,7 @@ define( function( require ) {
         this.restoreGameEnvironment();
       }
       else {
-        this.gameModel.initAnswerSheet( this.levelModels[level].tableSize );
+        this.initAnswerSheet( this.levelModels[level].tableSize );
         this.state = GameState.LEVEL_INIT;
       }
     },
@@ -206,8 +209,73 @@ define( function( require ) {
       this.currentLevelModel.property( 'currentScore' ).reset();
       this.currentLevelModel.gameTimer.property( 'elapsedTime' ).reset();
       this.property( 'input' ).reset();
+      this.resetAnswerSheet();
       this.gameModel.reset();
       this.faceModel.reset();
+    },
+
+    // set new answer sheet changing level
+    initAnswerSheet: function( answerSheetSize ) {
+      var self = this;
+      this.answerSheet.length = 0; // clear the array, but keep the reference
+
+      // add arrays with right multipliers for every left multiplier
+      _.times( answerSheetSize, function() {
+        self.answerSheet.push( [] );
+      } );
+
+      // fill arrays appropriate to right multipliers
+      this.answerSheet.forEach( function( el ) {
+        _.times( answerSheetSize, function() {
+          el.push( false );
+        } );
+      } );
+    },
+
+    resetAnswerSheet: function() {
+      this.answerSheet.forEach( function( multipliersLeft ) {
+        for ( var i = 0; i < multipliersLeft.length; i++ ) {
+          multipliersLeft[i] = false;
+        }
+      } );
+    },
+
+    // return available left and right multipliers according to answer sheet
+    selectUnusedMultiplierPair: function() {
+      var availableMultipliersLeft = [];
+      var availableMultipliersRight = [];
+      var multiplierLeft;
+      var multiplierRight;
+
+      // find available left multipliers
+      this.answerSheet.forEach( function( rightMultipliers, index ) {
+        if ( rightMultipliers.indexOf( false ) !== -1 ) {
+          availableMultipliersLeft.push( index + 1 );
+        }
+      } );
+
+      // no more available multipliers
+      if ( !availableMultipliersLeft.length ) {
+        return null;
+      }
+
+      // set left multiplier
+      multiplierLeft = _.shuffle( availableMultipliersLeft )[0];
+
+      // find available right multipliers
+      this.answerSheet[multiplierLeft - 1].forEach( function( isRightMultiplierAnswered, index ) {
+        if ( !isRightMultiplierAnswered ) {
+          availableMultipliersRight.push( index + 1 );
+        }
+      } );
+
+      // set right multiplier
+      multiplierRight = _.sample( availableMultipliersRight );
+
+      return {
+        multiplierLeft: multiplierLeft,
+        multiplierRight: multiplierRight
+      };
     },
 
     reset: function() {
@@ -241,7 +309,7 @@ define( function( require ) {
       this.gameModel.multiplierRight = environment.multiplierRight;
       this.gameModel.product = environment.product;
       this.gameModel.possiblePoints = environment.possiblePoints;
-      this.gameModel.answerSheet = environment.answerSheet;
+      this.answerSheet.push.apply( this.answerSheet, environment.answerSheet );
       this.state = environment.state;
       this.input = environment.input;
 
@@ -261,7 +329,7 @@ define( function( require ) {
         elapsedTime: this.currentLevelModel.gameTimer.elapsedTime,
         systemTimeWhenSaveOccurred: new Date().getTime(),
         possiblePoints: this.gameModel.possiblePoints,
-        answerSheet: _.cloneDeep( this.gameModel.answerSheet ),
+        answerSheet: _.cloneDeep( this.answerSheet ),
         activeInput: this.activeInput
       };
     }

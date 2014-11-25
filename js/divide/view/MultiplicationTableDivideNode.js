@@ -16,15 +16,16 @@ define( function( require ) {
 
   /**
    * @param {ArithmeticModel} gameModel - model for single task.
+   * @param {Array} answerSheet - array that tracks which problems have and have not been answered.
    * @param {Property} levelProperty - Level difficulty property.
    * @param {Property} stateProperty - Current state property.
    * @param {Array} levelModels - Array of descriptions for each level.
    *
    * @constructor
    */
-  function MultiplicationTableDivideNode( gameModel, stateProperty, levelProperty, levelModels ) {
+  function MultiplicationTableDivideNode( gameModel, answerSheet, stateProperty, levelProperty, levelModels ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, gameModel );
+    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet );
 
     stateProperty.lazyLink( function( state ) {
       // set view for multiplication table after choosing left and right multipliers
