@@ -211,7 +211,6 @@ define( function( require ) {
      * @public
      */
     getTextWidth: function( level, column, row ) {
-      debugger;
       return this.cells[ level ][ row ][ column ]._text.width;
     }
   } );

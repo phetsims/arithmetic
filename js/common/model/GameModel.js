@@ -28,6 +28,7 @@ define( function( require ) {
   }
 
   return inherit( PropertySet, GameModel, {
+
     reset: function() {
       // reset properties
       PropertySet.prototype.reset.call( this );
@@ -39,6 +40,7 @@ define( function( require ) {
         }
       } );
     },
+
     // set new answer sheet changing level
     initAnswerSheet: function( answerSheetSize ) {
       var self = this;
@@ -56,6 +58,7 @@ define( function( require ) {
         } );
       } );
     },
+
     // return available left and right multipliers according to answer sheet
     selectUnusedMultiplierPair: function() {
       var availableMultipliersLeft = [];
@@ -86,7 +89,7 @@ define( function( require ) {
       } );
 
       // set right multiplier
-      multiplierRight = _.shuffle( availableMultipliersRight )[0];
+      multiplierRight = _.sample( availableMultipliersRight );
 
       return {
         multiplierLeft: multiplierLeft,
