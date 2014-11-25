@@ -94,8 +94,8 @@ define( function( require ) {
       if ( newState === GameState.NEXT_TASK ) {
         previousLeftMultiplier = currentLeftMultiplier;
         previousRightMultiplier = currentRightMultiplier;
-        currentLeftMultiplier = model.gameModel.multiplierLeft;
-        currentRightMultiplier = model.gameModel.multiplierRight;
+        currentLeftMultiplier = model.problemModel.multiplierLeft;
+        currentRightMultiplier = model.problemModel.multiplierRight;
       }
 
       // TODO: The following is code to prototype the feature for animating the answer up to the board.  It is

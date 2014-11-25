@@ -21,7 +21,7 @@ define( function( require ) {
     var self = this;
     ArithmeticModel.call( this, {
       fillEquation: function() {
-        self.gameModel.product = parseInt( self.input, 10 );
+        self.problemModel.product = parseInt( self.input, 10 );
 
         self.state = GameState.EQUATION_FILLED;
       }
@@ -35,13 +35,13 @@ define( function( require ) {
 
         if ( multipliers ) {
           // reset multipliers and score properties
-          self.gameModel.property( 'multiplierLeft' ).reset();
-          self.gameModel.property( 'multiplierRight' ).reset();
-          self.gameModel.property( 'possiblePoints' ).reset();
+          self.problemModel.property( 'multiplierLeft' ).reset();
+          self.problemModel.property( 'multiplierRight' ).reset();
+          self.problemModel.property( 'possiblePoints' ).reset();
 
           // set left and right multipliers
-          self.gameModel.multiplierLeft = multipliers.multiplierLeft;
-          self.gameModel.multiplierRight = multipliers.multiplierRight;
+          self.problemModel.multiplierLeft = multipliers.multiplierLeft;
+          self.problemModel.multiplierRight = multipliers.multiplierRight;
 
           // set start state
           self.state = GameState.AWAITING_USER_INPUT;

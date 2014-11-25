@@ -15,7 +15,7 @@ define( function( require ) {
   var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
 
   /**
-   * @param {ArithmeticModel} gameModel - model for single task.
+   * @param {ArithmeticModel} problemModel - model for single task.
    * @param {Array} answerSheet - array that tracks which problems have and have not been answered.
    * @param {Property} levelProperty - Level difficulty property.
    * @param {Property} stateProperty - Current state property.
@@ -23,7 +23,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function MultiplicationTableDivideNode( gameModel, answerSheet, stateProperty, levelProperty, levelModels ) {
+  function MultiplicationTableDivideNode( problemModel, answerSheet, stateProperty, levelProperty, levelModels ) {
     var self = this;
     MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet );
 
@@ -35,11 +35,11 @@ define( function( require ) {
         self.clearCells( levelProperty.value );
 
         // set select multipliers
-        if ( gameModel.multiplierLeft ) {
-          self.cells[levelProperty.value][gameModel.multiplierLeft][0].select();
+        if ( problemModel.multiplierLeft ) {
+          self.cells[levelProperty.value][problemModel.multiplierLeft][0].select();
         }
         else {
-          self.cells[levelProperty.value][0][gameModel.multiplierRight].select();
+          self.cells[levelProperty.value][0][problemModel.multiplierRight].select();
         }
       }
     } );

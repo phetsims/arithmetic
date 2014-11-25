@@ -15,7 +15,7 @@ define( function( require ) {
   var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
 
   /**
-   * @param {GameModel} gameModel - Model for single task.
+   * @param {ProblemModel} problemModel - Model for single task.
    * @param {Array} answerSheet - array that tracks which problems have and have not been answered.
    * @param {Property} levelProperty - Level difficulty property.
    * @param {Property} stateProperty - Current state property.
@@ -23,7 +23,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function MultiplicationTableMultiplyNode( gameModel, answerSheet, stateProperty, levelProperty, levelModels ) {
+  function MultiplicationTableMultiplyNode( problemModel, answerSheet, stateProperty, levelProperty, levelModels ) {
     var self = this;
     MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet );
 
@@ -38,14 +38,14 @@ define( function( require ) {
         self.clearCells( levelProperty.value );
 
         // set view of selected multipliers
-        self.cells[levelProperty.value][0][gameModel.multiplierRight].select();
-        self.cells[levelProperty.value][gameModel.multiplierLeft][0].select();
+        self.cells[levelProperty.value][0][problemModel.multiplierRight].select();
+        self.cells[levelProperty.value][problemModel.multiplierLeft][0].select();
 
         // set view of selected products
         self.cells[levelProperty.value].forEach( function( multiplierLeft, index ) {
-          if ( index && index <= gameModel.multiplierLeft ) {
+          if ( index && index <= problemModel.multiplierLeft ) {
             multiplierLeft.forEach( function( cell, index ) {
-              if ( index && index <= gameModel.multiplierRight ) {
+              if ( index && index <= problemModel.multiplierRight ) {
                 cell.select();
               }
             } );

@@ -22,8 +22,8 @@ define( function( require ) {
     ArithmeticModel.call( this, {
       fillEquation: function() {
         // Convert any strings entered by the user into numerical values.
-        self.gameModel.multiplierRight = parseInt( self.gameModel.multiplierRight, 10 );
-        self.gameModel.multiplierLeft = parseInt( self.gameModel.multiplierLeft, 10 );
+        self.problemModel.multiplierRight = parseInt( self.problemModel.multiplierRight, 10 );
+        self.problemModel.multiplierLeft = parseInt( self.problemModel.multiplierLeft, 10 );
 
         // Advance to the next game state.
         self.state = GameState.EQUATION_FILLED;
@@ -39,21 +39,21 @@ define( function( require ) {
         if ( multipliers ) {
           // reset multipliers and score properties
           self.input = '';
-          self.gameModel.property( 'multiplierLeft' ).reset();
-          self.gameModel.property( 'multiplierRight' ).reset();
-          self.gameModel.property( 'product' ).reset();
-          self.gameModel.property( 'possiblePoints' ).reset();
+          self.problemModel.property( 'multiplierLeft' ).reset();
+          self.problemModel.property( 'multiplierRight' ).reset();
+          self.problemModel.property( 'product' ).reset();
+          self.problemModel.property( 'possiblePoints' ).reset();
 
           // set product
-          self.gameModel.product = multipliers.multiplierLeft * multipliers.multiplierRight;
+          self.problemModel.product = multipliers.multiplierLeft * multipliers.multiplierRight;
 
           // set left or right multiplier
           if ( Math.random() < 0.5 ) {
-            self.gameModel.multiplierLeft = multipliers.multiplierLeft;
+            self.problemModel.multiplierLeft = multipliers.multiplierLeft;
             self.activeInput = 'right';
           }
           else {
-            self.gameModel.multiplierRight = multipliers.multiplierRight;
+            self.problemModel.multiplierRight = multipliers.multiplierRight;
             self.activeInput = 'left';
           }
 

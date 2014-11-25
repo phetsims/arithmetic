@@ -17,7 +17,7 @@ define( function( require ) {
   var PushButtonModel = require( 'SUN/buttons/PushButtonModel' );
 
   /**
-   * @param {GameModel} gameModel - Model for single task.
+   * @param {ProblemModel} problemModel - Model for single task.
    * @param {Array} answerSheet - array that tracks which problems have and have not been answered.
    * @param {Property} levelProperty - Level difficulty property.
    * @param {Property} stateProperty - Current state property.
@@ -25,7 +25,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function MultiplicationTableFactorNode( gameModel, answerSheet, stateProperty, levelProperty, levelModels ) {
+  function MultiplicationTableFactorNode( problemModel, answerSheet, stateProperty, levelProperty, levelModels ) {
     var self = this;
     MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet );
 
@@ -68,12 +68,12 @@ define( function( require ) {
               buttonModel.property( 'down' ).onValue( true, function() {
                 if ( buttonModel.enabled ) {
                   // disable button if correct answer
-                  if ( leftIndex * rightIndex === gameModel.product ) {
+                  if ( leftIndex * rightIndex === problemModel.product ) {
                     buttonModel.enabled = false;
                   }
 
-                  gameModel.multiplierLeft = leftIndex;
-                  gameModel.multiplierRight = rightIndex;
+                  problemModel.multiplierLeft = leftIndex;
+                  problemModel.multiplierRight = rightIndex;
 
                   stateProperty.value = GameState.EQUATION_FILLED;
                 }

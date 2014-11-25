@@ -13,7 +13,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
   var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
-  var GameModel = require( 'ARITHMETIC/common/model/GameModel' );
+  var ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
   var GameState = require( 'ARITHMETIC/common/GameState' );
   var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
   var PropertySet = require( 'AXON/PropertySet' );
@@ -52,14 +52,14 @@ define( function( require ) {
       timerEnabled: false // is timer active
     } );
 
-    // array that tracks which problems have been answered
+    // 2D array that tracks which problems have been answered
     this.answerSheet = [];
 
     // hook up the audio player to the sound settings
     this.gameAudioPlayer = new GameAudioPlayer( this.property( 'soundEnabled' ) );
 
     // model for single game
-    this.gameModel = new GameModel();
+    this.problemModel = new ProblemModel();
 
     // model for smile face
     this.faceModel = new FaceModel();
@@ -80,21 +80,21 @@ define( function( require ) {
         self.faceModel.hideFace();
 
         // correct answer
-        if ( self.gameModel.multiplierLeft * self.gameModel.multiplierRight === self.gameModel.product ) {
+        if ( self.problemModel.multiplierLeft * self.problemModel.multiplierRight === self.problemModel.product ) {
 
           // increase total score
-          self.currentLevelModel.currentScore += self.gameModel.possiblePoints;
+          self.currentLevelModel.currentScore += self.problemModel.possiblePoints;
 
           // update display score
           self.currentLevelModel.displayScore = self.currentLevelModel.currentScore;
 
           // set smile face view and play sound
-          self.faceModel.pointsToDisplay = self.gameModel.possiblePoints;
+          self.faceModel.pointsToDisplay = self.problemModel.possiblePoints;
           self.faceModel.isSmile = true;
           self.gameAudioPlayer.correctAnswer();
 
           // mark answer in answer sheet
-          self.answerSheet[self.gameModel.multiplierLeft - 1][self.gameModel.multiplierRight - 1] = true;
+          self.answerSheet[self.problemModel.multiplierLeft - 1][self.problemModel.multiplierRight - 1] = true;
 
           // set next task
           self.state = GameState.NEXT_TASK;
@@ -102,10 +102,10 @@ define( function( require ) {
         // incorrect answer
         else {
           // player will not get points for this task
-          self.gameModel.possiblePoints = 0;
+          self.problemModel.possiblePoints = 0;
 
           // set smile face view and play sound
-          self.faceModel.pointsToDisplay = self.gameModel.possiblePoints;
+          self.faceModel.pointsToDisplay = self.problemModel.possiblePoints;
           self.faceModel.isSmile = false;
           self.gameAudioPlayer.wrongAnswer();
 
@@ -210,7 +210,7 @@ define( function( require ) {
       this.currentLevelModel.gameTimer.property( 'elapsedTime' ).reset();
       this.property( 'input' ).reset();
       this.resetAnswerSheet();
-      this.gameModel.reset();
+      this.problemModel.reset();
       this.faceModel.reset();
     },
 
@@ -305,10 +305,11 @@ define( function( require ) {
 
       this.currentLevelModel.currentScore = environment.currentScore;
       this.activeInput = environment.activeInput;
-      this.gameModel.multiplierLeft = environment.multiplierLeft;
-      this.gameModel.multiplierRight = environment.multiplierRight;
-      this.gameModel.product = environment.product;
-      this.gameModel.possiblePoints = environment.possiblePoints;
+      this.problemModel.multiplierLeft = environment.multiplierLeft;
+      this.problemModel.multiplierRight = environment.multiplierRight;
+      this.problemModel.product = environment.product;
+      this.problemModel.possiblePoints = environment.possiblePoints;
+      this.answerSheet.length = 0;
       this.answerSheet.push.apply( this.answerSheet, environment.answerSheet );
       this.state = environment.state;
       this.input = environment.input;
@@ -321,14 +322,14 @@ define( function( require ) {
     saveGameEnvironment: function() {
       this.currentLevelModel.environment = {
         input: this.input,
-        multiplierLeft: this.gameModel.multiplierLeft,
-        multiplierRight: this.gameModel.multiplierRight,
-        product: this.gameModel.product,
+        multiplierLeft: this.problemModel.multiplierLeft,
+        multiplierRight: this.problemModel.multiplierRight,
+        product: this.problemModel.product,
         state: this.state,
         currentScore: this.currentLevelModel.currentScore,
         elapsedTime: this.currentLevelModel.gameTimer.elapsedTime,
         systemTimeWhenSaveOccurred: new Date().getTime(),
-        possiblePoints: this.gameModel.possiblePoints,
+        possiblePoints: this.problemModel.possiblePoints,
         answerSheet: _.cloneDeep( this.answerSheet ),
         activeInput: this.activeInput
       };

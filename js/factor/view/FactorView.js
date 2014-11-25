@@ -26,7 +26,7 @@ define( function( require ) {
       this,
       model,
       new MultiplicationTableFactorNode(
-        model.gameModel,
+        model.problemModel,
         model.answerSheet,
         model.property( 'state' ),
         model.property( 'level' ),
@@ -34,9 +34,9 @@ define( function( require ) {
       ),
       new EquationFactorNode(
         model.property( 'state' ),
-        model.gameModel.property( 'multiplierLeft' ),
-        model.gameModel.property( 'multiplierRight' ),
-        model.gameModel.property( 'product' )
+        model.problemModel.property( 'multiplierLeft' ),
+        model.problemModel.property( 'multiplierRight' ),
+        model.problemModel.property( 'product' )
       ),
       false,
       factorString );
