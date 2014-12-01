@@ -1,9 +1,10 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Possible game states in the 'Arithmetic'.
+ * Game states in the 'Arithmetic'.
  *
  * @author Andrey Zelenkov (Mlearner)
+ * @author John Blanco
  */
 define( function() {
   'use strict';
@@ -26,12 +27,12 @@ define( function() {
 
   return Object.freeze( {
     AWAITING_USER_INPUT: 'awaitingUserInput',
+    DISPLAYING_CORRECT_ANSWER_FEEDBACK: 'displayingCorrectAnswerFeedback',
     EQUATION_FILLED: 'equationFilled',
-    LEVEL_INIT: 'levelInit',
     LEVEL_FINISHED: 'levelFinished',
-    SELECTING_LEVEL: 'selectingLevel',
     NEXT_TASK: 'nextTask',
     REFRESH_LEVEL: 'resetLevel',
+    SELECTING_LEVEL: 'selectingLevel',
     SHOW_STATISTICS: 'showStatistics'
   } );
 } );

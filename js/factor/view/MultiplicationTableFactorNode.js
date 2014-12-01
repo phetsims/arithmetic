@@ -91,8 +91,9 @@ define( function( require ) {
       } );
     } );
 
-    stateProperty.link( function( state ) {
-      if ( state === GameState.LEVEL_INIT || state === GameState.REFRESH_LEVEL ) {
+    stateProperty.link( function( newState, oldState ) {
+      if ( ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) || newState === GameState.REFRESH_LEVEL ) {
+        // TODO: Why are the cells cleared here?  They should be cleared in the model, shouldn't they?
         self.clearCells( levelProperty.value );
         self.enableButtons( levelProperty.value );
       }

@@ -65,8 +65,8 @@ define( function( require ) {
     this.faceModel = new FaceModel();
 
     // handles game state transitions that pertain to the model (does not require handling GameState.SELECTING_LEVEL)
-    this.property( 'state' ).lazyLink( function( state ) {
-      if ( state === GameState.LEVEL_INIT ) {
+    this.property( 'state' ).lazyLink( function( newState, oldState ) {
+      if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
         // start timer
         self.currentLevelModel.gameTimer.start();
 
@@ -75,7 +75,7 @@ define( function( require ) {
 
         self.state = GameState.NEXT_TASK;
       }
-      else if ( state === GameState.EQUATION_FILLED ) {
+      else if ( newState === GameState.EQUATION_FILLED ) {
         // hide smile face
         self.faceModel.hideFace();
 
@@ -118,7 +118,7 @@ define( function( require ) {
         // reset input field
         self.property( 'input' ).reset();
       }
-      else if ( state === GameState.LEVEL_FINISHED ) {
+      else if ( newState === GameState.LEVEL_FINISHED ) {
         // play sound depend on result score
         self.playLevelFinishedSound();
 
@@ -135,7 +135,7 @@ define( function( require ) {
 
         self.state = GameState.SHOW_STATISTICS;
       }
-      else if ( state === GameState.REFRESH_LEVEL ) {
+      else if ( newState === GameState.REFRESH_LEVEL ) {
         self.resetLevel();
         self.currentLevelModel.displayScore = 0;
         self.state = GameState.NEXT_TASK;
@@ -201,7 +201,7 @@ define( function( require ) {
       }
       else {
         this.initAnswerSheet( this.levelModels[level].tableSize );
-        this.state = GameState.LEVEL_INIT;
+        this.state = GameState.AWAITING_USER_INPUT;
       }
     },
 
