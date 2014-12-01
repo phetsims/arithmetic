@@ -12,7 +12,7 @@ define( function( require ) {
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
   var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
-  var GameState = require( 'ARITHMETIC/common/GameState' );
+  var GameState = require( 'ARITHMETIC/common/model/GameState' );
 
   /**
    * @constructor

@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var EquationNode = require( 'ARITHMETIC/common/view/EquationNode' );
-  var GameState = require( 'ARITHMETIC/common/GameState' );
+  var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
 
   /**

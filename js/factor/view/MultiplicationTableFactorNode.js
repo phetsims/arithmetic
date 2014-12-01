@@ -11,7 +11,7 @@ define( function( require ) {
 
   // modules
   var ButtonListener = require( 'SUN/buttons/ButtonListener' );
-  var GameState = require( 'ARITHMETIC/common/GameState' );
+  var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
   var PushButtonModel = require( 'SUN/buttons/PushButtonModel' );

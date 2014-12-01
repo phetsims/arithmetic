@@ -14,7 +14,7 @@ define( function( require ) {
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
   var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
   var ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
-  var GameState = require( 'ARITHMETIC/common/GameState' );
+  var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
   var PropertySet = require( 'AXON/PropertySet' );
 
@@ -47,7 +47,7 @@ define( function( require ) {
       level: -1, // game level
       input: '', // user's input value
       activeInput: null, // point to multiplierLeft (if activeInput === 'left') or multiplierRight (if activeInput === 'right')
-      state: GameState.LEVEL_SELECT, // current game state
+      state: GameState.SELECTING_LEVEL, // current game state
       soundEnabled: true, // is sound active
       timerEnabled: false // is timer active
     } );
@@ -64,7 +64,7 @@ define( function( require ) {
     // model for smile face
     this.faceModel = new FaceModel();
 
-    // handles game state transitions that pertain to the model (does not require handling GameState.LEVEL_SELECT)
+    // handles game state transitions that pertain to the model (does not require handling GameState.SELECTING_LEVEL)
     this.property( 'state' ).lazyLink( function( state ) {
       if ( state === GameState.LEVEL_INIT ) {
         // start timer
@@ -157,7 +157,7 @@ define( function( require ) {
       // refresh current level
       this.resetLevel();
 
-      this.state = GameState.LEVEL_SELECT;
+      this.state = GameState.SELECTING_LEVEL;
     },
 
     finishLevel: function() {
@@ -167,7 +167,7 @@ define( function( require ) {
       // clear game environment
       this.clearGameEnvironment( this.level );
 
-      this.state = GameState.LEVEL_SELECT;
+      this.state = GameState.SELECTING_LEVEL;
     },
 
     resetLevelModels: function() {

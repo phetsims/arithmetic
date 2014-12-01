@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var GameState = require( 'ARITHMETIC/common/GameState' );
+  var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelSelectionNode = require( 'ARITHMETIC/common/view/LevelSelectionNode' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -72,7 +72,7 @@ define( function( require ) {
       console.log( 'newState = ' + newState );
 
       // animate the transition between the level select screen and the selected level
-      if ( newState === GameState.LEVEL_SELECT && oldState ) {
+      if ( newState === GameState.SELECTING_LEVEL && oldState ) {
 
         // Slide out the workspace node
         workspaceNodeAnimator.stop().to( { x: self.layoutBounds.maxX }, ANIMATION_TIME ).start();
@@ -81,7 +81,7 @@ define( function( require ) {
         levelSelectionNode.visible = true;
         levelSelectionScreenAnimator.stop().to( { x: self.layoutBounds.minX }, ANIMATION_TIME ).start();
       }
-      else if ( newState !== GameState.LEVEL_SELECT && oldState === GameState.LEVEL_SELECT ) {
+      else if ( newState !== GameState.SELECTING_LEVEL && oldState === GameState.SELECTING_LEVEL ) {
 
         // Slide in the workspace node
         workspaceNode.visible = true;

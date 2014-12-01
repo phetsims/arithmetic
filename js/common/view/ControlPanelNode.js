@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var Dimension2 = require( 'DOT/Dimension2' );
-  var GameState = require( 'ARITHMETIC/common/GameState' );
+  var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var GameTimer = require( 'VEGAS/GameTimer' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -93,7 +93,7 @@ define( function( require ) {
       }
 
       // link observers for new level
-      if ( stateProperty.value === GameState.LEVEL_SELECT && levelModels[levelNew] ) {
+      if ( stateProperty.value === GameState.SELECTING_LEVEL && levelModels[levelNew] ) {
         levelModels[levelNew].property( 'currentScore' ).link( updateScore );
         levelModels[levelNew].gameTimer.property( 'elapsedTime' ).link( updateTime );
       }

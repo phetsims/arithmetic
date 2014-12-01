@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var GameState = require( 'ARITHMETIC/common/GameState' );
+  var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelCompletedNode = require( 'VEGAS/LevelCompletedNode' );
   var Node = require( 'SCENERY/nodes/Node' );

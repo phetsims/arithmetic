@@ -15,7 +15,7 @@ define( function( require ) {
   var BackButton = require( 'SCENERY_PHET/buttons/BackButton' );
   var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
   var Dimension2 = require( 'DOT/Dimension2' );
-  var GameState = require( 'ARITHMETIC/common/GameState' );
+  var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var KeypadNode = require( 'ARITHMETIC/common/view/KeypadNode' );
   var LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );

@@ -14,7 +14,7 @@ define( function() {
    *                     load saved game state                   │                                                  incorrect answer     │
    *                ┌───────────────────────────────────────────────────────────────────────────────────┐     ┌──────────────────────────┤
    *                │                                            │                                      ↓     ↓                          │
-   *   LEVEL_SELECT ┤                                            │     ┌────────────────────────> AWAITING_USER_INPUT -> EQUATION_FILLED ┘
+   *   SELECTING_LEVEL ┤                                            │     ┌────────────────────────> AWAITING_USER_INPUT -> EQUATION_FILLED ┘
    *        ↑       │                                            ↓     │
    *        │       └────────────────────────> LEVEL_INIT -> NEXT_TASK ┤
    *        │             init new level                               │
@@ -29,7 +29,7 @@ define( function() {
     EQUATION_FILLED: 'equationFilled',
     LEVEL_INIT: 'levelInit',
     LEVEL_FINISHED: 'levelFinished',
-    LEVEL_SELECT: 'levelSelect',
+    SELECTING_LEVEL: 'selectingLevel',
     NEXT_TASK: 'nextTask',
     REFRESH_LEVEL: 'resetLevel',
     SHOW_STATISTICS: 'showStatistics'
