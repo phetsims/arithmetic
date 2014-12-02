@@ -25,14 +25,14 @@ define( function( require ) {
         self.problemModel.multiplierRight = parseInt( self.problemModel.multiplierRight, 10 );
         self.problemModel.multiplierLeft = parseInt( self.problemModel.multiplierLeft, 10 );
 
-        // Advance to the next game state.
-        self.state = GameState.EQUATION_FILLED;
+        // Submit this answer so that it can be checked.
+        self.submitAnswer();
       }
     } );
 
     // next task observer
     this.property( 'state' ).link( function( state ) {
-      if ( state === GameState.NEXT_TASK ) {
+      if ( state === GameState.AWAITING_USER_INPUT ) {
         // get available multipliers
         var multipliers = self.selectUnusedMultiplierPair();
 

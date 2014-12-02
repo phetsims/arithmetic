@@ -22,37 +22,35 @@ define( function( require ) {
     ArithmeticModel.call( this, {
       fillEquation: function() {
         self.problemModel.product = parseInt( self.input, 10 );
-
-        self.state = GameState.EQUATION_FILLED;
-      }
-    } );
-
-    // next task observer
-    this.property( 'state' ).link( function( state ) {
-      if ( state === GameState.NEXT_TASK ) {
-        // get available multipliers
-        var multipliers = self.selectUnusedMultiplierPair();
-
-        if ( multipliers ) {
-          // reset multipliers and score properties
-          self.problemModel.property( 'multiplierLeft' ).reset();
-          self.problemModel.property( 'multiplierRight' ).reset();
-          self.problemModel.property( 'possiblePoints' ).reset();
-
-          // set left and right multipliers
-          self.problemModel.multiplierLeft = multipliers.multiplierLeft;
-          self.problemModel.multiplierRight = multipliers.multiplierRight;
-
-          // set start state
-          self.state = GameState.AWAITING_USER_INPUT;
-        }
-        else {
-          // set level finished state
-          self.state = GameState.LEVEL_FINISHED;
-        }
+        self.submitAnswer();
       }
     } );
   }
 
-  return inherit( ArithmeticModel, MultiplyModel );
+  return inherit( ArithmeticModel, MultiplyModel, {
+
+    setUpUnansweredProblem: function() {
+
+      // get available multiplier pair
+      var multiplierPair = this.selectUnusedMultiplierPair();
+
+      if ( multiplierPair ) {
+
+        // reset multiplierPair and score properties
+        this.problemModel.property( 'multiplierLeft' ).reset();
+        this.problemModel.property( 'multiplierRight' ).reset();
+        this.problemModel.property( 'product' ).reset();
+        this.problemModel.property( 'possiblePoints' ).reset();
+
+        // set left and right multiplierPair
+        this.problemModel.multiplierLeft = multiplierPair.multiplierLeft;
+        this.problemModel.multiplierRight = multiplierPair.multiplierRight;
+
+        return true;
+      }
+
+      // All multiplier pairs have been used, so false is returned.
+      return false;
+    }
+  } );
 } );

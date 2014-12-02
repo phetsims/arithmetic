@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Multiplication table node for "multiply" screen in 'Arithmetic' simulation.
+ * Multiplication table node for 'divide' screen in 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -29,7 +29,7 @@ define( function( require ) {
 
     stateProperty.lazyLink( function( state ) {
       // set view for multiplication table after choosing left and right multipliers
-      if ( state === GameState.NEXT_TASK ) {
+      if ( state === GameState.AWAITING_USER_INPUT ) {
 
         // clear cells before game
         self.clearCells( levelProperty.value );

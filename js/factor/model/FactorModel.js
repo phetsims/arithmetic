@@ -23,7 +23,7 @@ define( function( require ) {
 
     // next task observer
     this.property( 'state' ).link( function( state ) {
-      if ( state === GameState.NEXT_TASK ) {
+      if ( state === GameState.AWAITING_USER_INPUT ) {
         // get available multipliers
         var multipliers = self.selectUnusedMultiplierPair();
 

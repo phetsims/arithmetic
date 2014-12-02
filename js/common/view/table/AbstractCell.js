@@ -41,9 +41,6 @@ define( function( require ) {
       centerY: this.bounds.height / 2
     }, textOptions ) );
     this.addChild( this._text );
-
-    // flag for delaying text display
-    this.delayedText = false;
   }
 
   return inherit( Node, AbstractCell, {
@@ -63,13 +60,7 @@ define( function( require ) {
 
     showText: function() {
       if ( !this._text.visible ) {
-        var self = this;
-        if ( this.delayedText ) {
-          Timer.setTimeout( function() { self._text.visible = true; }, 1000 );
-        }
-        else {
-          this._text.visible = true;
-        }
+        this._text.visible = true;
       }
     },
 

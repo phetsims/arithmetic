@@ -91,7 +91,8 @@ define( function( require ) {
         levelSelectionScreenAnimator.stop().to( { right: self.layoutBounds.minX }, ANIMATION_TIME ).start();
       }
 
-      if ( newState === GameState.NEXT_TASK ) {
+      if ( newState === GameState.AWAITING_USER_INPUT ) {
+        // Take a snapshot of the previous problem, used for animation.
         previousLeftMultiplier = currentLeftMultiplier;
         previousRightMultiplier = currentRightMultiplier;
         currentLeftMultiplier = model.problemModel.multiplierLeft;
@@ -100,7 +101,7 @@ define( function( require ) {
 
       // TODO: The following is code to prototype the feature for animating the answer up to the board.  It is
       // not production quality, and should be better integrated into the sim's architecture.
-      if ( oldState === GameState.EQUATION_FILLED && newState === GameState.NEXT_TASK && previousLeftMultiplier && previousRightMultiplier ) {
+      if ( oldState === GameState.EQUATION_FILLED && newState === GameState.AWAITING_USER_INPUT && previousLeftMultiplier && previousRightMultiplier ) {
         var animatingTextNode = new Text( model.input, {
           font: new PhetFont( { size: 30 } ),
           fill: 'white',

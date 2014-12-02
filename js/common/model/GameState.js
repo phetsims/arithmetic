@@ -19,7 +19,7 @@ define( function() {
    *        ↑       │                                            ↓     │
    *        │       └────────────────────────> LEVEL_INIT -> NEXT_TASK ┤
    *        │             init new level                               │
-   *        │                                                          └────────────────────────> LEVEL_FINISHED -> SHOW_STATISTICS ┐
+   *        │                                                          └────────────────────────> LEVEL_FINISHED -> SHOWING_LEVEL_RESULTS ┐
    *        │                                                                                                                       │
    *        └───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
    *                                                        select new level
@@ -28,11 +28,12 @@ define( function() {
   return Object.freeze( {
     AWAITING_USER_INPUT: 'awaitingUserInput',
     DISPLAYING_CORRECT_ANSWER_FEEDBACK: 'displayingCorrectAnswerFeedback',
+    DISPLAYING_INCORRECT_ANSWER_FEEDBACK: 'displayingIncorrectAnswerFeedback',
     EQUATION_FILLED: 'equationFilled',
     LEVEL_FINISHED: 'levelFinished',
     NEXT_TASK: 'nextTask',
     REFRESH_LEVEL: 'resetLevel',
     SELECTING_LEVEL: 'selectingLevel',
-    SHOW_STATISTICS: 'showStatistics'
+    SHOWING_LEVEL_RESULTS: 'showStatistics'
   } );
 } );

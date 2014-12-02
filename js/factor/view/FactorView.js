@@ -30,7 +30,8 @@ define( function( require ) {
         model.answerSheet,
         model.property( 'state' ),
         model.property( 'level' ),
-        model.levelModels
+        model.levelModels,
+        model.submitAnswer
       ),
       new EquationFactorNode(
         model.property( 'state' ),

@@ -133,8 +133,10 @@ define( function( require ) {
       }
     } );
 
+    // Update the visible answers each time the user gets a correct answer
     stateProperty.link( function( state ) {
-      if ( state === GameState.NEXT_TASK ) {
+      if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
+        // Update the answers that are displayed.
         answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
           multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
             if ( isVisible ) {
@@ -183,23 +185,6 @@ define( function( require ) {
       }
 
       return parentScreen.globalToLocalPoint( cell.parentToGlobalPoint( cell.center ) );
-    },
-
-    /**
-     * Set the 'delayedText' attribute for all cells, which means the text delays for a while before appearing.  This
-     * is used in conjunction with animation to make the answers appear to fly up to the cells.
-     *
-     * @param delayedText
-     * @public
-     */
-    setDelayedText: function( delayedText ) {
-      this.cells.forEach( function( level ) {
-        level.forEach( function( cellArray ) {
-          cellArray.forEach( function( cell ) {
-            cell.delayedText = delayedText;
-          } )
-        } )
-      } );
     },
 
     /**

@@ -22,10 +22,11 @@ define( function( require ) {
    * @param {Property} levelProperty - Level difficulty property.
    * @param {Property} stateProperty - Current state property.
    * @param {Array} levelModels - Array of descriptions for each level.
+   * @param {Function} submitAnswer - Function called to submit an answer
    *
    * @constructor
    */
-  function MultiplicationTableFactorNode( problemModel, answerSheet, stateProperty, levelProperty, levelModels ) {
+  function MultiplicationTableFactorNode( problemModel, answerSheet, stateProperty, levelProperty, levelModels, submitAnswer ) {
     var self = this;
     MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet );
 
@@ -75,13 +76,14 @@ define( function( require ) {
                   problemModel.multiplierLeft = leftIndex;
                   problemModel.multiplierRight = rightIndex;
 
-                  stateProperty.value = GameState.EQUATION_FILLED;
+                  // Submit the user's answer for checking.
+                  submitAnswer();
                 }
               } );
 
               // cancel hover for disabled button before next task
               stateProperty.lazyLink( function( state ) {
-                if ( state === GameState.NEXT_TASK && !buttonModel.enabled && buttonModel.over ) {
+                if ( state === GameState.AWAITING_USER_INPUT && !buttonModel.enabled && buttonModel.over ) {
                   self.clearCells( levelProperty.value );
                 }
               } );

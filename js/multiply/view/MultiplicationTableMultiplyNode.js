@@ -27,12 +27,9 @@ define( function( require ) {
     var self = this;
     MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet );
 
-    // Turn on delayed text so that the animation of the answer to the cell looks correct.
-    this.setDelayedText( true );
-
     stateProperty.lazyLink( function( state ) {
       // set view for multiplication table after choosing left and right multipliers
-      if ( state === GameState.NEXT_TASK ) {
+      if ( state === GameState.AWAITING_USER_INPUT ) {
 
         // clear cells before game
         self.clearCells( levelProperty.value );
