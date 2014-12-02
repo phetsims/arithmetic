@@ -30,6 +30,9 @@ define( function( require ) {
         self.productInput.clear();
         self.productInput.focus();
       }
+      else {
+        self.productInput.unfocus();
+      }
     } );
   }
 
