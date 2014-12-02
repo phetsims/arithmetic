@@ -99,9 +99,12 @@ define( function( require ) {
         currentRightMultiplier = model.problemModel.multiplierRight;
       }
 
-      // TODO: The following is code to prototype the feature for animating the answer up to the board.  It is
-      // not production quality, and should be better integrated into the sim's architecture.
-      if ( oldState === GameState.EQUATION_FILLED && newState === GameState.AWAITING_USER_INPUT && previousLeftMultiplier && previousRightMultiplier ) {
+      /*
+       // TODO:
+       // The following is code to prototype the feature for animating the answer up to the board.  It is
+       // not production quality, and should be better integrated into the sim's architecture.
+       // As of 12/2/2014 this was set aside to work on other things, but is kept for the animation example.  Delete when integrated.
+       if ( oldState === GameState.EQUATION_FILLED && newState === GameState.AWAITING_USER_INPUT && previousLeftMultiplier && previousRightMultiplier ) {
         var animatingTextNode = new Text( model.input, {
           font: new PhetFont( { size: 30 } ),
           fill: 'white',
@@ -115,6 +118,7 @@ define( function( require ) {
           onComplete( function() { self.removeChild( animatingTextNode ) } );
         tween.start();
       }
+       */
     } );
   }
 
