@@ -231,6 +231,15 @@ define( function( require ) {
     },
 
     /**
+     * Retry the currently presented problem.
+     * @public
+     */
+    retryProblem: function() {
+      this.inputProperty.reset();
+      this.state = GameState.AWAITING_USER_INPUT;
+    },
+
+    /**
      * Pick an unanswered problem and set it up in the model.  Must be overridden in sub-types, since the way problems
      * are set up varies.
      *

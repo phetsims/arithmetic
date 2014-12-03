@@ -20,6 +20,8 @@ define( function( require ) {
   var KeypadNode = require( 'ARITHMETIC/common/view/KeypadNode' );
   var LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );
   var Node = require( 'SCENERY/nodes/Node' );
+  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  var TextPushButton = require( 'SUN/buttons/TextPushButton' );
 
   // constants
   var BACK_BUTTON_BASE_COLOR = 'rgb( 255, 204, 67 )'; // base color of back button
@@ -58,7 +60,8 @@ define( function( require ) {
     );
 
     // add multiplication table
-    this.addChild( multiplicationTableNode.mutate( {top: layoutBounds.maxY * 0.02, centerX: layoutBounds.width * 0.43} ) );
+    multiplicationTableNode.mutate( { top: layoutBounds.maxY * 0.02, centerX: layoutBounds.width * 0.43 } );
+    this.addChild( multiplicationTableNode );
 
     // add equation
     this.addChild( equationNode.mutate( {bottom: layoutBounds.maxY * 0.87, centerX: layoutBounds.width * 0.45} ) );
@@ -87,11 +90,23 @@ define( function( require ) {
     }
 
     // add smile face
-    this.addChild( new ArithmeticFaceWithPointsNode(
-        model.faceModel,
-        {bottom: layoutBounds.maxY * 0.92, left: layoutBounds.maxX * 0.04}
-      )
-    );
+    this.addChild( new ArithmeticFaceWithPointsNode( model.faceModel, {
+      bottom: layoutBounds.maxY * 0.92,
+      left: layoutBounds.maxX * 0.04
+    } ) );
+
+    // add the 'try again' button
+    var tryAgainButton = new TextPushButton( 'Try Again', {
+      font: new PhetFont( { size: 20 } ),
+      top: equationNode.bottom + 10,
+      centerX: equationNode.x + equationNode.productInput.centerX,
+      baseColor: 'rgb( 255, 204, 67 )', // Color match the time and sound toggle buttons
+      listener: function() { model.retryProblem() }
+    } );
+    this.addChild( tryAgainButton );
+
+    // control the visibility of the 'Try Again' button
+    model.stateProperty.link( function( state ) { tryAgainButton.visible = state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK } );
 
     // add node with statistic (will be shown after completing level)
     this.addChild( new LevelCompletedNodeWrapper(
