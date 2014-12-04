@@ -25,7 +25,7 @@ define( function( require ) {
   var phetGirlIcon3Image = require( 'image!ARITHMETIC/phet-girl-icon-3.png' );
 
   // constants
-  var FEEDBACK_TIME = 2000; // length of time that feedback is shown before moving on, in milliseconds
+  var FEEDBACK_TIME = 1000; // length of time that feedback is shown before moving on, in milliseconds
 
   /**
    * Constructor for ArithmeticModel
