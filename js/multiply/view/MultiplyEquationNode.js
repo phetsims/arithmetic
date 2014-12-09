@@ -21,7 +21,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function EquationMultiplyNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, inputProperty ) {
+  function MultiplyEquationNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, inputProperty ) {
     var self = this;
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, inputProperty );
 
@@ -36,5 +36,5 @@ define( function( require ) {
     } );
   }
 
-  return inherit( EquationNode, EquationMultiplyNode );
+  return inherit( EquationNode, MultiplyEquationNode );
 } );

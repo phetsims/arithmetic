@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
-  var EquationDivideNode = require( 'ARITHMETIC/divide/view/EquationDivideNode' );
+  var DivideEquationNode = require( 'ARITHMETIC/divide/view/DivideEquationNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableDivideNode = require( 'ARITHMETIC/divide/view/MultiplicationTableDivideNode' );
 
@@ -32,7 +32,7 @@ define( function( require ) {
         model.property( 'level' ),
         model.levelModels
       ),
-      new EquationDivideNode(
+      new DivideEquationNode(
         model.problemModel.property( 'multiplierLeft' ),
         model.problemModel.property( 'multiplierRight' ),
         model.problemModel.property( 'product' ),

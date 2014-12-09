@@ -25,9 +25,10 @@ define( function( require ) {
   var SPACING = 20; // spacing between equation elements
 
   /**
-   * @param {Property} multiplierLeftProperty - Property necessary for creating left multiplier input.
-   * @param {Property} multiplierRightProperty - Property necessary for creating right multiplier input.
-   * @param {Property} productProperty - Property necessary for creating product input.
+   * @param {Property.<number>} multiplierLeftProperty - Property necessary for creating left multiplier input.
+   * @param {Property.<number>} multiplierRightProperty - Property necessary for creating right multiplier input.
+   * @param {Property.<number>} productProperty - Property necessary for creating product input.
+   * @param {Property.<number>} productProperty - Property necessary for creating product input.
    *
    * @constructor
    */

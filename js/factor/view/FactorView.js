@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
-  var EquationFactorNode = require( 'ARITHMETIC/factor/view/EquationFactorNode' );
+  var FactorEquationNode = require( 'ARITHMETIC/factor/view/FactorEquationNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableFactorNode = require( 'ARITHMETIC/factor/view/MultiplicationTableFactorNode' );
 
@@ -33,7 +33,7 @@ define( function( require ) {
         model.levelModels,
         model.submitAnswer
       ),
-      new EquationFactorNode(
+      new FactorEquationNode(
         model.property( 'state' ),
         model.problemModel.property( 'multiplierLeft' ),
         model.problemModel.property( 'multiplierRight' ),

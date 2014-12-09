@@ -21,7 +21,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function EquationDivideNode( multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty, activeInputProperty ) {
+  function DivideEquationNode( multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty, activeInputProperty ) {
     var self = this;
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
 
@@ -51,5 +51,5 @@ define( function( require ) {
     input.focus();
   };
 
-  return inherit( EquationNode, EquationDivideNode );
+  return inherit( EquationNode, DivideEquationNode );
 } );

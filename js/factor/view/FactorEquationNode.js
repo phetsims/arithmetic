@@ -21,7 +21,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function EquationFactorNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty ) {
+  function FactorEquationNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty ) {
     var self = this;
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
 
@@ -33,5 +33,5 @@ define( function( require ) {
     } );
   }
 
-  return inherit( EquationNode, EquationFactorNode );
+  return inherit( EquationNode, FactorEquationNode );
 } );
