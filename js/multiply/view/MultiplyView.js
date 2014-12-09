@@ -10,8 +10,10 @@ define( function( require ) {
 
   // modules
   var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
-  var MultiplyEquationNode = require( 'ARITHMETIC/multiply/view/MultiplyEquationNode' );
+  var DerivedProperty = require( 'AXON/DerivedProperty' );
+  var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var MultiplyEquationNode = require( 'ARITHMETIC/multiply/view/MultiplyEquationNode' );
   var MultiplicationTableMultiplyNode = require( 'ARITHMETIC/multiply/view/MultiplicationTableMultiplyNode' );
 
   // strings

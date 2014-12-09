@@ -34,18 +34,39 @@ define( function( require ) {
    */
   function EquationNode( multiplierLeftProperty, multiplierRightProperty, productProperty ) {
 
+    // Set up the three nodes that depict the numbers in the equation.
     this.multiplierLeftInput = new EquationInputNode( multiplierLeftProperty, INPUT_SIZE_MULTIPLIER );
     this.multiplierRightInput = new EquationInputNode( multiplierRightProperty, INPUT_SIZE_MULTIPLIER );
     this.productInput = new EquationInputNode( productProperty, INPUT_SIZE_PRODUCT );
 
-    HBox.call( this, {spacing: SPACING, children: [
-      this.multiplierLeftInput,
-      new Text( '\u00D7', {font: FONT_X, fill: 'yellow'} ),
-      this.multiplierRightInput,
-      new Text( '=', {font: FONT_EQUALS, fill: 'yellow'} ),
-      this.productInput
-    ]} );
+    // Set up the equals sign, which can potentially be changed to a not equals sign.
+    this.equalsSign = new Text( '', {font: FONT_EQUALS, fill: 'yellow'} );
+    this.setShowEqual( true ); // Default to equals equation until set otherwise.
+
+    // Perform the layout by placing everything in an HBox.
+    HBox.call( this, {
+      spacing: SPACING,
+      children: [
+        this.multiplierLeftInput,
+        new Text( '\u00D7', {font: FONT_X, fill: 'yellow'} ),
+        this.multiplierRightInput,
+        this.equalsSign,
+        this.productInput
+      ],
+      resize: false
+    } );
   }
 
-  return inherit( HBox, EquationNode );
+  return inherit( HBox, EquationNode, {
+
+    /**
+     * Set the equation to depict equals or not equals.
+     *
+     * @param {boolean} showEqual
+     * @protected
+     */
+    setShowEqual: function( showEqual ) {
+      this.equalsSign.text = showEqual ? '=' : '\u2260';
+    }
+  } );
 } );

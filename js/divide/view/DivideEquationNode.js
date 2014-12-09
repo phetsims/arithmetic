@@ -10,9 +10,11 @@ define( function( require ) {
 
   // modules
   var EquationNode = require( 'ARITHMETIC/common/view/EquationNode' );
+  var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
 
   /**
+   * @param {Property} stateProperty - State of game property.
    * @param {Property} multiplierLeftProperty - Property necessary for creating left multiplier input.
    * @param {Property} multiplierRightProperty - Property necessary for creating right multiplier input.
    * @param {Property} productProperty - Property necessary for creating product input.
@@ -21,7 +23,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function DivideEquationNode( multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty, activeInputProperty ) {
+  function DivideEquationNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty, activeInputProperty ) {
     var self = this;
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
 
@@ -43,6 +45,10 @@ define( function( require ) {
       else if ( activeInputProperty.value === 'right' ) {
         multiplierRightProperty.value = inputString;
       }
+    } );
+
+    stateProperty.link( function( state ) {
+      self.setShowEqual( state !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
     } );
   }
 
