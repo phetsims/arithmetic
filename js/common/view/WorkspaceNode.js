@@ -81,12 +81,34 @@ define( function( require ) {
 
     // add keypad if necessary
     if ( showKeypad ) {
-      this.addChild( new KeypadNode(
-          model.property( 'input' ),
-          function() {model.fillEquation();},
-          {centerX: controlPanelNode.centerX, bottom: layoutBounds.maxY * 0.95}
-        )
+      //TODO: Does this need to be on the object, or can it be just a local var?
+      this.keypad = new KeypadNode(
+        model.property( 'input' ),
+        function() { model.fillEquation(); },
+        {centerX: controlPanelNode.centerX, bottom: layoutBounds.maxY * 0.95}
       );
+      this.addChild( this.keypad );
+
+      // Monitor the game state and arm the keypad for auto-clear when showing incorrect feedback.  This is part of the
+      // feature where the user can simply start entering values again if they got the wrong answer initially.
+      model.property( 'state' ).link( function( gameState ) {
+        if ( gameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+          self.keypad.autoClearArmedProperty.value = true;
+        }
+        else if ( gameState !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK && self.keypad.autoClearArmedProperty.value ) {
+          // The user must have pressed the "try again" button, so un-arm the auto clear flag.
+          self.keypad.autoClearArmedProperty.value = false;
+        }
+      } );
+
+      // Monitor the string controlled from the keypad and, if the user starts entering something while in the state
+      // where they got a previous answer wrong, allow them to retry the problem.
+      model.property( 'input' ).link( function( input ) {
+        console.log( 'input = ' + input );
+        if ( model.state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+          model.retryProblem();
+        }
+      } );
     }
 
     // add smile face

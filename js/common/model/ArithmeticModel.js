@@ -235,7 +235,10 @@ define( function( require ) {
      * @public
      */
     retryProblem: function() {
-      this.inputProperty.reset();
+      //TODO: Is this clause necessary?  In other words, does resetting it after a reset cause another event or not? Try both ways to find out.
+      if ( this.inputProperty.value.length > 0 ) {
+        this.inputProperty.reset();
+      }
       this.state = GameState.AWAITING_USER_INPUT;
     },
 
