@@ -151,12 +151,6 @@ define( function( require ) {
        self.state = GameState.SHOWING_LEVEL_RESULTS;
        }
        */
-      else if ( newState === GameState.REFRESH_LEVEL ) {
-        // TODO: Shouldn't be a state transition, handle this better as state machine evolves.
-        self.resetLevel();
-        self.currentLevelModel.displayScore = 0;
-        self.refreshLevel();
-      }
     } );
   }
 
@@ -263,14 +257,17 @@ define( function( require ) {
       // save state of current level
       this.saveGameEnvironment();
 
-      // refresh current level
+      // reset current level
       this.resetLevel();
 
       this.state = GameState.SELECTING_LEVEL;
     },
 
     refreshLevel: function() {
-      throw new Error( 'Method not implemented' );
+      this.resetLevel();
+      this.currentLevelModel.displayScore = 0;
+      this.nextProblem();
+      this.trigger( 'refreshed' );
     },
 
     finishLevel: function() {

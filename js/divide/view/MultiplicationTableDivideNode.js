@@ -31,8 +31,8 @@ define( function( require ) {
       // set view for multiplication table after choosing left and right multipliers
       if ( state === GameState.AWAITING_USER_INPUT ) {
 
-        // clear cells before game
-        self.clearCells( levelProperty.value );
+        // clear cell colors prior to showing the problem
+        self.setCellsToDefaultColor( levelProperty.value );
 
         // set select multipliers
         if ( problemModel.multiplierLeft ) {

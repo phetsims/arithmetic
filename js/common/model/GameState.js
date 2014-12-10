@@ -14,7 +14,6 @@ define( function() {
     AWAITING_USER_INPUT: 'awaitingUserInput',
     DISPLAYING_CORRECT_ANSWER_FEEDBACK: 'displayingCorrectAnswerFeedback',
     DISPLAYING_INCORRECT_ANSWER_FEEDBACK: 'displayingIncorrectAnswerFeedback',
-    LEVEL_COMPLETED: 'levelCompleted',
-    REFRESH_LEVEL: 'resetLevel'
+    LEVEL_COMPLETED: 'levelCompleted'
   } );
 } );

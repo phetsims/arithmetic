@@ -39,8 +39,11 @@ define( function( require ) {
     var self = this;
     Node.call( this );
 
+    // level property needs to be available to sub-classes
+    this.levelProperty = levelProperty; // @protected
+
     // array with views for each level
-    this._viewForLevel = [];
+    this.viewForLevel = []; // @private
 
     // links to table cells. Indexes: [levelNumber][leftMultiplier][rightMultiplier]
     this.cells = [];
@@ -113,7 +116,7 @@ define( function( require ) {
       vBox.scale( TABLE_SIZE.width / vBox.bounds.width, TABLE_SIZE.height / vBox.bounds.height );
 
       // save view
-      self._viewForLevel[levelIndex] = vBox;
+      self.viewForLevel[levelIndex] = vBox;
     } );
 
     // set background size
@@ -122,17 +125,18 @@ define( function( require ) {
 
     levelProperty.link( function( levelNumberCurrent, levelNumberPrev ) {
       // show current multiplication table view for level
-      if ( self._viewForLevel[levelNumberCurrent] ) {
-        self._viewForLevel[levelNumberCurrent].visible = true;
+      if ( self.viewForLevel[levelNumberCurrent] ) {
+        self.viewForLevel[levelNumberCurrent].visible = true;
       }
 
       // hide previous multiplication table view
-      if ( self._viewForLevel[levelNumberPrev] ) {
-        self._viewForLevel[levelNumberPrev].visible = false;
+      if ( self.viewForLevel[levelNumberPrev] ) {
+        self.viewForLevel[levelNumberPrev].visible = false;
       }
     } );
 
     // Update the visible answers each time the user gets a correct answer
+    // TODO: This seems odd.  Why not just have each cell have a 'solved' property, and have that reflected in the view?
     stateProperty.link( function( state ) {
       if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
         // Update the answers that are displayed.
@@ -152,13 +156,40 @@ define( function( require ) {
 
   return inherit( Node, MultiplicationTableNode, {
 
-    // clear all cells for given level
-    clearCells: function( level ) {
+    /**
+     * Set all cells for given level to the default background color
+     * @param {number} level
+     * @public
+     */
+    setCellsToDefaultColor: function( level ) {
       this.cells[level].forEach( function( multipliersLeft ) {
         multipliersLeft.forEach( function( cell ) {
           cell.normal();
         } );
       } );
+    },
+
+    /**
+     * Clear all cells for the given level, meaning that the text is hidden and the background color is set to default.
+     * @param {number} level
+     * @public
+     */
+    clearCells: function( level ) {
+      this.setCellsToDefaultColor( level );
+      this.cells[level].forEach( function( cellRow, cellRowIndex ) {
+        if ( cellRowIndex > 0 ) {
+          cellRow.forEach( function( cell, index ) {
+            if ( index > 0 ) {
+              cell.hideText();
+            }
+          } );
+        }
+      } )
+    },
+
+    //TODO: May need to move down into sub-classes.
+    refreshLevel: function( level ) {
+      this.clearCells( level );
     },
 
     /**

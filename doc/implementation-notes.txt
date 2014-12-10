@@ -1,0 +1,19 @@
+
+Implementation Notes for Arithmetic
+===================================
+
+Here be Dragons
+
+The HTML5 code that defines this simulation was originally written by a
+contractor, then taken over by PhET.  The code from the contractor was, in
+this author's opinion, oddly structured.  I tried, I really did, to get it,
+to understand why certain design choices were made, and to roll with it.  In
+the end, however, some major restructuring was done in order to support the
+addition of new features.  As a result, the code is probably going to look a
+bit odd to anyone coming along to maintain this some years in the future,
+since I feel like there were two very different ideas of what constitutes good
+MVC-oriented software design, and good software design in general, in the
+minds of the two authors of this code.  Keeping this in mind may help when
+working to decipher what lies within.
+
+

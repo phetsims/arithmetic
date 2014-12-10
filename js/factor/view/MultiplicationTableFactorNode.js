@@ -58,7 +58,7 @@ define( function( require ) {
 
               // add 'hover' listener
               buttonModel.property( 'over' ).onValue( true, function() {
-                self.clearCells( levelProperty.value );
+                self.setCellsToDefaultColor( levelProperty.value );
                 if ( buttonModel.enabled ) {
                   self.setActiveRect( levelProperty.value, leftIndex, rightIndex );
                   button.hover();
@@ -84,7 +84,7 @@ define( function( require ) {
               // cancel hover for disabled button before next task
               stateProperty.lazyLink( function( state ) {
                 if ( state === GameState.AWAITING_USER_INPUT && !buttonModel.enabled && buttonModel.over ) {
-                  self.clearCells( levelProperty.value );
+                  self.setCellsToDefaultColor( levelProperty.value );
                 }
               } );
             }
@@ -94,9 +94,9 @@ define( function( require ) {
     } );
 
     stateProperty.link( function( newState, oldState ) {
-      if ( ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) || newState === GameState.REFRESH_LEVEL ) {
+      if ( ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) ) {
         // TODO: Why are the cells cleared here?  They should be cleared in the model, shouldn't they?
-        self.clearCells( levelProperty.value );
+        self.setCellsToDefaultColor( levelProperty.value );
         self.enableButtons( levelProperty.value );
       }
     } );

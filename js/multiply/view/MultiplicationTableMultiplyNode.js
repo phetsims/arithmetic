@@ -15,7 +15,7 @@ define( function( require ) {
   var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
 
   /**
-   * @param {ProblemModel} problemModel - Model for single task.
+   * @param {ProblemModel} problemModel - Model for single multiplication problem.
    * @param {Array} answerSheet - array that tracks which problems have and have not been answered.
    * @param {Property} levelProperty - Level difficulty property.
    * @param {Property} stateProperty - Current state property.
@@ -26,31 +26,43 @@ define( function( require ) {
   function MultiplicationTableMultiplyNode( problemModel, answerSheet, stateProperty, levelProperty, levelModels ) {
     var self = this;
     MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet );
+    this.problemModel = problemModel;
 
     stateProperty.lazyLink( function( state ) {
+
       // set view for multiplication table after choosing left and right multipliers
       if ( state === GameState.AWAITING_USER_INPUT ) {
-
-        // clear cells before game
-        self.clearCells( levelProperty.value );
-
-        // set view of selected multipliers
-        self.cells[levelProperty.value][0][problemModel.multiplierRight].select();
-        self.cells[levelProperty.value][problemModel.multiplierLeft][0].select();
-
-        // set view of selected products
-        self.cells[levelProperty.value].forEach( function( multiplierLeft, index ) {
-          if ( index && index <= problemModel.multiplierLeft ) {
-            multiplierLeft.forEach( function( cell, index ) {
-              if ( index && index <= problemModel.multiplierRight ) {
-                cell.select();
-              }
-            } );
-          }
-        } );
+        self.updateCellColors( levelProperty.value );
       }
     } );
   }
 
-  return inherit( MultiplicationTableNode, MultiplicationTableMultiplyNode );
+  return inherit( MultiplicationTableNode, MultiplicationTableMultiplyNode, {
+
+    refreshLevel: function( level ) {
+      this.clearCells( level );
+      this.updateCellColors( level );
+    },
+
+    //TODO: Not sure about this name. Does it work for all types of these tables?
+    updateCellColors: function( level ) {
+      var self = this;
+      this.setCellsToDefaultColor( level );
+
+      // set view of selected multipliers
+      this.cells[level][0][this.problemModel.multiplierRight].select();
+      this.cells[level][this.problemModel.multiplierLeft][0].select();
+
+      // set view of selected products
+      this.cells[level].forEach( function( multiplierLeft, index ) {
+        if ( index && index <= self.problemModel.multiplierLeft ) {
+          multiplierLeft.forEach( function( cell, index ) {
+            if ( index && index <= self.problemModel.multiplierRight ) {
+              cell.select();
+            }
+          } );
+        }
+      } );
+    }
+  } );
 } );

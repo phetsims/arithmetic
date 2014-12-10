@@ -63,6 +63,11 @@ define( function( require ) {
     multiplicationTableNode.mutate( { top: layoutBounds.maxY * 0.02, centerX: layoutBounds.width * 0.43 } );
     this.addChild( multiplicationTableNode );
 
+    // clear the multiplication table node on a refresh event. TODO if the refactor is done where cells track their own solved state, this will be unnecessary.
+    model.on( 'refreshed', function() {
+      multiplicationTableNode.refreshLevel( model.level );
+    } );
+
     // add equation
     this.addChild( equationNode.mutate( {bottom: layoutBounds.maxY * 0.87, centerX: layoutBounds.width * 0.45} ) );
 
@@ -73,7 +78,7 @@ define( function( require ) {
       model.levelModels,
       model.property( 'timerEnabled' ),
       function() {
-        model.state = GameState.REFRESH_LEVEL;
+        model.refreshLevel();
       } );
     controlPanelNode.centerX = ( multiplicationTableNode.right + layoutBounds.maxX ) / 2;
     controlPanelNode.top = multiplicationTableNode.top;
@@ -85,7 +90,7 @@ define( function( require ) {
       this.keypad = new KeypadNode(
         model.property( 'input' ),
         function() { model.fillEquation(); },
-        {centerX: controlPanelNode.centerX, bottom: layoutBounds.maxY * 0.95}
+        { centerX: controlPanelNode.centerX, bottom: layoutBounds.maxY * 0.95 }
       );
       this.addChild( this.keypad );
 
