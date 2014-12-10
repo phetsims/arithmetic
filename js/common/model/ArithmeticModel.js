@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticQueryParameters = require( 'ARITHMETIC/common/ArithmeticQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
   var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
@@ -342,6 +343,10 @@ define( function( require ) {
           el.push( false );
         } );
       } );
+
+      if ( ArithmeticQueryParameters.PREFILL_TABLE ) {
+        this.prefillAnswerSheet();
+      }
     },
 
     resetAnswerSheet: function() {
@@ -350,6 +355,21 @@ define( function( require ) {
           multipliersLeft[i] = false;
         }
       } );
+      if ( ArithmeticQueryParameters.PREFILL_TABLE ) {
+        this.prefillAnswerSheet();
+      }
+    },
+
+    // @private, fill out most of the answer sheet, generally used for debugging.
+    prefillAnswerSheet: function() {
+      this.answerSheet.forEach( function( multipliersLeft ) {
+        for ( var i = 0; i < multipliersLeft.length; i++ ) {
+          multipliersLeft[i] = true;
+        }
+      } );
+      this.answerSheet[ 1 ][ 1 ] = false;
+      this.currentLevelModel.currentScore = this.answerSheet.length * this.answerSheet.length - 1;
+      this.currentLevelModel.displayScore = this.currentLevelModel.currentScore;
     },
 
     // return available left and right multipliers according to answer sheet

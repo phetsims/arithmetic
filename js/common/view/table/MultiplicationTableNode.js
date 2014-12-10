@@ -30,10 +30,9 @@ define( function( require ) {
    * @param {Array} levelModels - Array of descriptions for each level.
    * For each level will be created multiplication table node.
    * Necessary for representing best scores for each level.
-   * @param {Property} levelProperty - Level difficulty property.
-   * @param {Property} stateProperty - Current state property.
+   * @param {Property.<number>} levelProperty - Level difficulty property.
+   * @param {Property.<GameState>} stateProperty - Current state property.
    * @param {Array} answerSheet - 2D array that tracks problems that have and haven't been answered
-   *
    * @constructor
    */
   function MultiplicationTableNode( levelProperty, stateProperty, levelModels, answerSheet ) {
@@ -138,6 +137,7 @@ define( function( require ) {
       if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
         // Update the answers that are displayed.
         answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
+          console.log( 'multipliersLeftIndex = ' + multipliersLeftIndex );
           multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
             if ( isVisible ) {
               self.cells[levelProperty.value][multipliersLeftIndex + 1][multipliersRightIndex + 1].showText();
@@ -152,6 +152,7 @@ define( function( require ) {
   }
 
   return inherit( Node, MultiplicationTableNode, {
+
     // clear all cells for given level
     clearCells: function( level ) {
       this.cells[level].forEach( function( multipliersLeft ) {
