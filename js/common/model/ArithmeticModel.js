@@ -225,8 +225,8 @@ define( function( require ) {
         this.state = GameState.AWAITING_USER_INPUT;
       }
       else {
-        // board must be full
-        this.state = GameState.SHOWING_LEVEL_RESULTS;
+        // board must be full, so the level is now complete
+        this.state = GameState.LEVEL_COMPLETED;
       }
     },
 

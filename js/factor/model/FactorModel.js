@@ -41,7 +41,7 @@ define( function( require ) {
         }
         else {
           // set level finished state
-          self.state = GameState.LEVEL_FINISHED;
+          self.state = GameState.LEVEL_COMPLETED;
         }
       }
     } );

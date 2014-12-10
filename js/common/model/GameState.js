@@ -10,12 +10,11 @@ define( function() {
   'use strict';
 
   return Object.freeze( {
+    SELECTING_LEVEL: 'selectingLevel',
     AWAITING_USER_INPUT: 'awaitingUserInput',
     DISPLAYING_CORRECT_ANSWER_FEEDBACK: 'displayingCorrectAnswerFeedback',
     DISPLAYING_INCORRECT_ANSWER_FEEDBACK: 'displayingIncorrectAnswerFeedback',
-    LEVEL_FINISHED: 'levelFinished',
-    REFRESH_LEVEL: 'resetLevel',
-    SELECTING_LEVEL: 'selectingLevel',
-    SHOWING_LEVEL_RESULTS: 'showStatistics'
+    LEVEL_COMPLETED: 'levelCompleted',
+    REFRESH_LEVEL: 'resetLevel'
   } );
 } );

@@ -104,7 +104,6 @@ define( function( require ) {
       // Monitor the string controlled from the keypad and, if the user starts entering something while in the state
       // where they got a previous answer wrong, allow them to retry the problem.
       model.property( 'input' ).link( function( input ) {
-        console.log( 'input = ' + input );
         if ( model.state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
           model.retryProblem();
         }

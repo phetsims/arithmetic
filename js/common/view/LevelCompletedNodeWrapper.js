@@ -30,8 +30,9 @@ define( function( require ) {
     var self = this;
     Node.call( this );
 
+    // Show this node only when the level has been completed.
     stateProperty.lazyLink( function( state ) {
-      if ( state === GameState.SHOWING_LEVEL_RESULTS ) {
+      if ( state === GameState.LEVEL_COMPLETED ) {
         var levelModel = levelModels[levelProperty.value];
         self.addChild( new LevelCompletedNode(
           levelProperty.value,
