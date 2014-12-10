@@ -137,7 +137,6 @@ define( function( require ) {
       if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
         // Update the answers that are displayed.
         answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
-          console.log( 'multipliersLeftIndex = ' + multipliersLeftIndex );
           multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
             if ( isVisible ) {
               self.cells[levelProperty.value][multipliersLeftIndex + 1][multipliersRightIndex + 1].showText();
