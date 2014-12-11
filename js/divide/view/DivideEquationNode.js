@@ -29,12 +29,10 @@ define( function( require ) {
 
     activeInputProperty.link( function( activeInput ) {
       if ( activeInput === 'right' ) {
-        self.multiplierLeftInput.unfocus();
-        setActiveInput( self.multiplierRightInput );
+        self.multiplierRightInput.clear();
       }
       else if ( activeInput === 'left' ) {
-        self.multiplierRightInput.unfocus();
-        setActiveInput( self.multiplierLeftInput );
+        self.multiplierLeftInput.clear();
       }
     } );
 
@@ -49,13 +47,20 @@ define( function( require ) {
 
     stateProperty.link( function( state ) {
       self.setShowEqual( state !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
+      if ( state === GameState.AWAITING_USER_INPUT ) {
+        if ( activeInputProperty.value === 'left' ) {
+          self.multiplierLeftInput.focus();
+        }
+        else {
+          self.multiplierRightInput.focus();
+        }
+      }
+      else {
+        self.multiplierLeftInput.unfocus();
+        self.multiplierRightInput.unfocus();
+      }
     } );
   }
-
-  var setActiveInput = function( input ) {
-    input.clear();
-    input.focus();
-  };
 
   return inherit( EquationNode, DivideEquationNode );
 } );
