@@ -21,6 +21,7 @@ define( function( require ) {
     var self = this;
     ArithmeticModel.call( this, {
       fillEquation: function() {
+
         // Convert any strings entered by the user into numerical values.
         self.problemModel.multiplierRight = parseInt( self.problemModel.multiplierRight, 10 );
         self.problemModel.multiplierLeft = parseInt( self.problemModel.multiplierLeft, 10 );
@@ -29,44 +30,41 @@ define( function( require ) {
         self.submitAnswer();
       }
     } );
-
-    // next task observer
-    this.property( 'state' ).link( function( state ) {
-      if ( state === GameState.AWAITING_USER_INPUT ) {
-        // get available multipliers
-        var multipliers = self.selectUnusedMultiplierPair();
-
-        if ( multipliers ) {
-          // reset multipliers and score properties
-          self.input = '';
-          self.problemModel.property( 'multiplierLeft' ).reset();
-          self.problemModel.property( 'multiplierRight' ).reset();
-          self.problemModel.property( 'product' ).reset();
-          self.problemModel.property( 'possiblePoints' ).reset();
-
-          // set product
-          self.problemModel.product = multipliers.multiplierLeft * multipliers.multiplierRight;
-
-          // set left or right multiplier
-          if ( Math.random() < 0.5 ) {
-            self.problemModel.multiplierLeft = multipliers.multiplierLeft;
-            self.activeInput = 'right';
-          }
-          else {
-            self.problemModel.multiplierRight = multipliers.multiplierRight;
-            self.activeInput = 'left';
-          }
-
-          // set start state
-          self.state = GameState.AWAITING_USER_INPUT;
-        }
-        else {
-          // set level finished state
-          self.state = GameState.LEVEL_COMPLETED;
-        }
-      }
-    } );
   }
 
-  return inherit( ArithmeticModel, DivideModel );
+  return inherit( ArithmeticModel, DivideModel, {
+
+    setUpUnansweredProblem: function() {
+
+      // get available multiplier pair
+      var multipliers = this.selectUnusedMultiplierPair();
+
+      if ( multipliers ) {
+
+        // reset multiplierPair and score properties
+        this.problemModel.property( 'multiplierLeft' ).reset();
+        this.problemModel.property( 'multiplierRight' ).reset();
+        this.problemModel.property( 'product' ).reset();
+        this.problemModel.property( 'possiblePoints' ).reset();
+
+        // set product
+        this.problemModel.product = multipliers.multiplierLeft * multipliers.multiplierRight;
+
+        // set left or right multiplier
+        if ( Math.random() < 0.5 ) {
+          this.problemModel.multiplierLeft = multipliers.multiplierLeft;
+          this.activeInput = 'right';
+        }
+        else {
+          this.problemModel.multiplierRight = multipliers.multiplierRight;
+          this.activeInput = 'left';
+        }
+
+        return true;
+      }
+
+      // All multiplier pairs have been used, so false is returned.
+      return false;
+    }
+  } );
 } );

@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Multiplication table node for 'divide' screen in 'Arithmetic' simulation.
+ * Multiplication table node for 'Divide' screen in 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -40,6 +40,16 @@ define( function( require ) {
         }
         else {
           self.cells[levelProperty.value][0][problemModel.multiplierRight].select();
+        }
+      }
+      else if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
+        // Make the cells that correspond to the answer change color.
+        self.cells[levelProperty.value][problemModel.multiplierLeft][0].select();
+        self.cells[levelProperty.value][0][problemModel.multiplierRight].select();
+        for ( var leftMultiplier = 1; leftMultiplier <= problemModel.multiplierLeft; leftMultiplier++ ) {
+          for ( var rightMultiplier = 1; rightMultiplier <= problemModel.multiplierRight; rightMultiplier++ ) {
+            self.cells[levelProperty.value][leftMultiplier][rightMultiplier].select();
+          }
         }
       }
     } );
