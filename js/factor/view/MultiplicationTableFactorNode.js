@@ -1,11 +1,10 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Multiplication table node for "factor" screen in 'Arithmetic' simulation.
+ * Multiplication table node for Factor screen in the Arithmetic simulation.
  *
  * @author Andrey Zelenkov (MLearner)
  */
-
 define( function( require ) {
     'use strict';
 
@@ -40,14 +39,14 @@ define( function( require ) {
 
         tableForLevel.forEach( function( leftMultipliers, leftIndex ) {
 
-          // skip zero-index because it's the column with the multipliers
+          // skip zero-index because it's the header column
           if ( leftIndex ) {
 
             leftMultipliers.forEach( function( button, rightIndex ) {
               var buttonModel;
               var buttonListener;
 
-              // skip zero-index because it's the row with the multipliers
+              // skip zero-index because it's the header row
               if ( rightIndex ) {
                 buttonModel = new PushButtonModel();
                 buttonListener = new ButtonListener( buttonModel );
@@ -75,6 +74,8 @@ define( function( require ) {
                 // add 'down' listener
                 buttonModel.property( 'down' ).onValue( true, function() {
                     if ( buttonModel.enabled ) {
+
+                      self.activeButton = button;
 
                       // If this answer is being submitted after getting the problem wrong, the selected region must be
                       // set (in other cases, this region is set as the user moves the mouse over the table).
