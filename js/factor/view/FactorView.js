@@ -39,8 +39,12 @@ define( function( require ) {
         model.problemModel.property( 'multiplierRight' ),
         model.problemModel.property( 'product' )
       ),
-      false,
-      factorString );
+      {
+        showKeypad: false,
+        titleString: factorString,
+        levelSelectButtonColor: '#FFA64D'
+      }
+    );
   }
 
   return inherit( ArithmeticView, FactorView );

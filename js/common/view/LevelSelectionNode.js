@@ -4,6 +4,7 @@
  * Screen that allows the user to select the game level that they wish to play.
  *
  * @author Andrey Zelenkov (MLearner)
+ * @author John Blanco
  */
 define( function( require ) {
   'use strict';
@@ -32,16 +33,19 @@ define( function( require ) {
 
   /**
    * @param {ArithmeticModel} model - Main model for screen.
-   * @param {Property} timerEnabledProperty - Timer enable property, needed to control visibility of best time label.
    * @param {String} titleString - Title string for given screen.
    * @param {Function} callback - Callback function call after pressing button.
    * @param {Bounds2} layoutBounds - Bounds of screen on which this will appear, used for layout
-   * @param {Object} [options] - Title string for given screen.
+   * @param {Object} [options]
    * @constructor
    */
   function LevelSelectionNode( model, titleString, callback, layoutBounds, options ) {
-    var self = this;
     Node.call( this );
+
+    // Default options
+    options = _.extend( {
+      buttonBaseColor: 'white'
+    }, options );
 
     // add title
     var tabTitle = new Text( titleString, {
@@ -72,7 +76,7 @@ define( function( require ) {
         {
           buttonWidth: 135,
           buttonHeight: 135,
-          baseColor: '#D8F58A',
+          baseColor: options.buttonBaseColor,
           bestTimeProperty: model.levelModels[levelIndex].property( 'bestTime' ),
           bestTimeVisibleProperty: model.property( 'timerEnabled' )
         }

@@ -25,27 +25,38 @@ define( function( require ) {
    * @param {ArithmeticModel} model - Main model for screen.
    * @param {Node} multiplicationTableNode - Multiplication table node for given screen.
    * @param {Node} equationNode - Equation node for given screen.
-   * @param {Boolean} isAddKeypadNode - Flag for adding the keypad node.
-   * @param {String} titleString - Title string for given screen.
+   * @param {object} options - Configuration and position options, see usage in code for details.
    *
    * @constructor
    */
-  function ArithmeticView( model, multiplicationTableNode, equationNode, isAddKeypadNode, titleString ) {
+//  function ArithmeticView( model, multiplicationTableNode, equationNode, isAddKeypadNode, titleString ) {
+  function ArithmeticView( model, multiplicationTableNode, equationNode, options ) {
     var self = this;
     ScreenView.call( this, { renderer: 'svg' } );
+
+    // defaults
+    options = _.extend( {
+      titleString: '',
+      showKeypad: true,
+      levelSelectButtonColor: 'white'
+    }, options );
 
     // create and add the node that allows the user to select the game level
     var levelSelectionNode = new LevelSelectionNode(
       model,
-      titleString,
+      options.titleString,
       function( level ) { model.setLevel( level ); },
       this.layoutBounds,
-      { centerX: this.layoutBounds.centerX, centerY: this.layoutBounds.centerY }
+      {
+        centerX: this.layoutBounds.centerX,
+        centerY: this.layoutBounds.centerY,
+        buttonBaseColor: options.levelSelectButtonColor
+      }
     );
     this.addChild( levelSelectionNode );
 
     // add the game components
-    var workspaceNode = new WorkspaceNode( model, multiplicationTableNode, equationNode, isAddKeypadNode, this.layoutBounds );
+    var workspaceNode = new WorkspaceNode( model, multiplicationTableNode, equationNode, options.showKeypad, this.layoutBounds );
     workspaceNode.left = this.layoutBounds.maxX;
     workspaceNode.visible = false;
     this.addChild( workspaceNode );

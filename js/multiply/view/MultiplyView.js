@@ -40,8 +40,10 @@ define( function( require ) {
         model.problemModel.property( 'multiplierRight' ),
         model.property( 'input' )
       ),
-      true,
-      multiplyString
+      {
+        titleString: multiplyString,
+        levelSelectButtonColor: '#D8F58A'
+      }
     );
   }
 

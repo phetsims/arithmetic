@@ -43,8 +43,10 @@ define( function( require ) {
         model.property( 'input' ),
         model.property( 'activeInput' )
       ),
-      true,
-      divideString
+      {
+        titleString: divideString,
+        levelSelectButtonColor: '#9D87C9'
+      }
     );
   }
 
