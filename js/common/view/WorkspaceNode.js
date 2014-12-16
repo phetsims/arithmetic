@@ -101,7 +101,7 @@ define( function( require ) {
           self.keypad.autoClearArmedProperty.value = true;
         }
         else if ( gameState !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK && self.keypad.autoClearArmedProperty.value ) {
-          // The user must have pressed the "try again" button, so un-arm the auto clear flag.
+          // The user must have pressed the 'try again' button, so un-arm the auto clear flag.
           self.keypad.autoClearArmedProperty.value = false;
         }
       } );

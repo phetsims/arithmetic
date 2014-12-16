@@ -18,34 +18,32 @@ define( function( require ) {
    * @constructor
    */
   function FactorModel() {
-    var self = this;
     ArithmeticModel.call( this );
-
-    // next task observer
-    this.property( 'state' ).link( function( state ) {
-      if ( state === GameState.AWAITING_USER_INPUT ) {
-        // get available multipliers
-        var multipliers = self.selectUnusedMultiplierPair();
-
-        if ( multipliers ) {
-          // reset multipliers and score properties
-          self.problemModel.property( 'possiblePoints' ).reset();
-          self.problemModel.property( 'multiplierLeft' ).reset();
-          self.problemModel.property( 'multiplierRight' ).reset();
-
-          // set product
-          self.problemModel.product = multipliers.multiplierLeft * multipliers.multiplierRight;
-
-          // update state
-          self.state = GameState.AWAITING_USER_INPUT;
-        }
-        else {
-          // set level finished state
-          self.state = GameState.LEVEL_COMPLETED;
-        }
-      }
-    } );
   }
 
-  return inherit( ArithmeticModel, FactorModel );
+  return inherit( ArithmeticModel, FactorModel, {
+
+    setUpUnansweredProblem: function() {
+
+      // get available multiplier pair
+      var multiplierPair = this.selectUnusedMultiplierPair();
+
+      if ( multiplierPair ) {
+
+        // reset multiplierPair and score properties
+        this.problemModel.property( 'possiblePoints' ).reset();
+        this.problemModel.property( 'multiplierLeft' ).reset();
+        this.problemModel.property( 'multiplierRight' ).reset();
+
+        // set product
+        this.problemModel.product = multiplierPair.multiplierLeft * multiplierPair.multiplierRight;
+
+        return true;
+      }
+
+      // All multiplier pairs have been used, so false is returned.
+      return false;
+    }
+
+  } );
 } );

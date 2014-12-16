@@ -26,7 +26,14 @@ define( function( require ) {
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
 
     stateProperty.link( function( state ) {
+      self.setShowEqual( state !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
       if ( state === GameState.AWAITING_USER_INPUT ) {
+
+        // Reset any previous answers from the user.
+        multiplierLeftProperty.reset();
+        multiplierRightProperty.reset();
+
+        // Show the placeholders
         self.multiplierLeftInput.setPlaceholder();
         self.multiplierRightInput.setPlaceholder();
       }

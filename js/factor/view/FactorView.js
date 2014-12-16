@@ -31,7 +31,7 @@ define( function( require ) {
         model.property( 'state' ),
         model.property( 'level' ),
         model.levelModels,
-        model.submitAnswer
+        model.submitAnswer.bind( model )
       ),
       new FactorEquationNode(
         model.property( 'state' ),
