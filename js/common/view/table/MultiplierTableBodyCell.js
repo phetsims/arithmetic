@@ -52,6 +52,7 @@ define( function( require ) {
   }
 
   return inherit( AbstractCell, MultiplierTableBodyCell, {
+    // TODO: active may no longer be needed
     active: function() {
       this.setBackgroundFill( ACTIVE_COLOR );
       this._pointer.visible = false;

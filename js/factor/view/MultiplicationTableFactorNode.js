@@ -4,6 +4,11 @@
  * Multiplication table node for Factor screen in the Arithmetic simulation.
  *
  * @author Andrey Zelenkov (MLearner)
+ * @author John Blanco
+ * TODO: I (jblanco) feel like the terms and naming in this file could use some work.  Why are the cells called
+ * buttons?  Because they're interactive?  Seems odd.  Also, the cell states of active and selected seems like it
+ * doesn't quite match what is going on.
+ *
  */
 define( function( require ) {
     'use strict';
@@ -176,6 +181,11 @@ define( function( require ) {
             } );
           }
         } );
+      },
+
+      refreshLevel: function( level ) {
+        MultiplicationTableNode.prototype.refreshLevel.call( this, level );
+        this.enableButtons( level );
       }
     } );
   }

@@ -36,6 +36,7 @@ define( function( require ) {
   }
 
   return inherit( AbstractCell, MultiplierTableHeaderCell, {
+    //TODO: Names are weird - some are verbs, some are adjectives.  Improve.  Coordinate with body cell.
     select: function() {
       this.setBackgroundFill( SELECT_COLOR_BACKGROUND );
       this.setTextFill( SELECT_COLOR_TEXT );
