@@ -11,7 +11,6 @@ define( function( require ) {
 
   // modules
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );

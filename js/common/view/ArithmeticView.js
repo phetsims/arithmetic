@@ -12,10 +12,7 @@ define( function( require ) {
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelSelectionNode = require( 'ARITHMETIC/common/view/LevelSelectionNode' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var ScreenView = require( 'JOIST/ScreenView' );
-  var Text = require( 'SCENERY/nodes/Text' );
   var WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
 
   // constants

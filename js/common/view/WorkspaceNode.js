@@ -127,12 +127,12 @@ define( function( require ) {
       top: equationNode.bottom + 10,
       centerX: equationNode.x + equationNode.productInput.centerX,
       baseColor: 'rgb( 255, 204, 67 )', // Color match the time and sound toggle buttons
-      listener: function() { model.retryProblem() }
+      listener: function() { model.retryProblem(); }
     } );
     this.addChild( tryAgainButton );
 
     // control the visibility of the 'Try Again' button
-    model.stateProperty.link( function( state ) { tryAgainButton.visible = state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK } );
+    model.stateProperty.link( function( state ) { tryAgainButton.visible = state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK; } );
 
     // add node with statistic (will be shown after completing level)
     this.addChild( new LevelCompletedNodeWrapper(

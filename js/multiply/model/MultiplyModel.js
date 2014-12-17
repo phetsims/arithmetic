@@ -11,7 +11,6 @@ define( function( require ) {
 
   // modules
   var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
-  var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
 
   /**

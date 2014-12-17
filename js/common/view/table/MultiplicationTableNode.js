@@ -21,7 +21,6 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var VBox = require( 'SCENERY/nodes/VBox' );
-  var Vector2 = require( 'DOT/Vector2' );
 
   // constants
   var TABLE_SIZE = new Dimension2( 434, 320 ); // table size, empirically determined
@@ -184,7 +183,7 @@ define( function( require ) {
             }
           } );
         }
-      } )
+      } );
     },
 
     //TODO: May need to move down into sub-classes.

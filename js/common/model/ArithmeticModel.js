@@ -86,62 +86,62 @@ define( function( require ) {
       /* TODO: Following code is deprecated, remove once finalized.
 
        else if ( newState === GameState.EQUATION_FILLED ) {
-        // hide smile face
-        self.faceModel.hideFace();
+       // hide smile face
+       self.faceModel.hideFace();
 
-        // correct answer
-        if ( self.problemModel.multiplierLeft * self.problemModel.multiplierRight === self.problemModel.product ) {
+       // correct answer
+       if ( self.problemModel.multiplierLeft * self.problemModel.multiplierRight === self.problemModel.product ) {
 
-          // increase total score
-          self.currentLevelModel.currentScore += self.problemModel.possiblePoints;
+       // increase total score
+       self.currentLevelModel.currentScore += self.problemModel.possiblePoints;
 
-          // update display score
-          self.currentLevelModel.displayScore = self.currentLevelModel.currentScore;
+       // update display score
+       self.currentLevelModel.displayScore = self.currentLevelModel.currentScore;
 
-          // set smile face view and play sound
-          self.faceModel.pointsToDisplay = self.problemModel.possiblePoints;
-          self.faceModel.isSmile = true;
-          self.gameAudioPlayer.correctAnswer();
+       // set smile face view and play sound
+       self.faceModel.pointsToDisplay = self.problemModel.possiblePoints;
+       self.faceModel.isSmile = true;
+       self.gameAudioPlayer.correctAnswer();
 
-          // mark answer in answer sheet
-          self.answerSheet[self.problemModel.multiplierLeft - 1][self.problemModel.multiplierRight - 1] = true;
+       // mark answer in answer sheet
+       self.answerSheet[self.problemModel.multiplierLeft - 1][self.problemModel.multiplierRight - 1] = true;
 
        // show the feedback that indicates a correct answer
        self.state = GameState.NEXT_TASK;
-        }
-        // incorrect answer
-        else {
-          // player will not get points for this task
-          self.problemModel.possiblePoints = 0;
+       }
+       // incorrect answer
+       else {
+       // player will not get points for this task
+       self.problemModel.possiblePoints = 0;
 
-          // set smile face view and play sound
-          self.faceModel.pointsToDisplay = self.problemModel.possiblePoints;
-          self.faceModel.isSmile = false;
-          self.gameAudioPlayer.wrongAnswer();
+       // set smile face view and play sound
+       self.faceModel.pointsToDisplay = self.problemModel.possiblePoints;
+       self.faceModel.isSmile = false;
+       self.gameAudioPlayer.wrongAnswer();
 
-          self.state = GameState.AWAITING_USER_INPUT;
-        }
+       self.state = GameState.AWAITING_USER_INPUT;
+       }
 
-        // show smile face
-        self.faceModel.showFace();
+       // show smile face
+       self.faceModel.showFace();
 
-        // reset input field
-        self.property( 'input' ).reset();
-      }
-      else if ( newState === GameState.LEVEL_FINISHED ) {
-        // play sound depend on result score
-        self.playLevelFinishedSound();
+       // reset input field
+       self.property( 'input' ).reset();
+       }
+       else if ( newState === GameState.LEVEL_FINISHED ) {
+       // play sound depend on result score
+       self.playLevelFinishedSound();
 
-        // set best time
-        if ( self.timerEnabled ) {
-          self.currentLevelModel.gameTimer.stop();
-          if ( self.currentLevelModel.bestTime === null ) {
-            self.currentLevelModel.bestTime = self.currentLevelModel.gameTimer.elapsedTime;
-          }
-          else {
-            self.currentLevelModel.bestTime = Math.min( self.currentLevelModel.bestTime, self.currentLevelModel.gameTimer.elapsedTime );
-          }
-        }
+       // set best time
+       if ( self.timerEnabled ) {
+       self.currentLevelModel.gameTimer.stop();
+       if ( self.currentLevelModel.bestTime === null ) {
+       self.currentLevelModel.bestTime = self.currentLevelModel.gameTimer.elapsedTime;
+       }
+       else {
+       self.currentLevelModel.bestTime = Math.min( self.currentLevelModel.bestTime, self.currentLevelModel.gameTimer.elapsedTime );
+       }
+       }
 
        self.state = GameState.SHOWING_LEVEL_RESULTS;
        }
@@ -186,7 +186,7 @@ define( function( require ) {
         this.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
 
         // start a timer that will set up the next problem
-        this.positiveFeedbackTimer = Timer.setTimeout( function() { self.nextProblem() }, FEEDBACK_TIME );
+        this.positiveFeedbackTimer = Timer.setTimeout( function() { self.nextProblem(); }, FEEDBACK_TIME );
       }
       // incorrect answer
       else {
