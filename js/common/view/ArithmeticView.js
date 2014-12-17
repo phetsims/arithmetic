@@ -80,9 +80,6 @@ define( function( require ) {
 
     // observers
     model.property( 'state' ).link( function( newState, oldState ) {
-      console.log( '------------------' );
-      console.log( 'oldState = ' + oldState );
-      console.log( 'newState = ' + newState );
 
       // animate the transition between the level select screen and the selected level
       if ( newState === GameState.SELECTING_LEVEL && oldState ) {
@@ -118,19 +115,19 @@ define( function( require ) {
        // not production quality, and should be better integrated into the sim's architecture.
        // As of 12/2/2014 this was set aside to work on other things, but is kept for the animation example.  Delete when integrated.
        if ( oldState === GameState.EQUATION_FILLED && newState === GameState.AWAITING_USER_INPUT && previousLeftMultiplier && previousRightMultiplier ) {
-        var animatingTextNode = new Text( model.input, {
-          font: new PhetFont( { size: 30 } ),
-          fill: 'white',
-          center: equationNode.leftTop.plus( equationNode.productInput.center )
-        } );
-        self.addChild( animatingTextNode );
-        var destination = multiplicationTableNode.whereIsCellCenter( model.level, previousRightMultiplier, previousLeftMultiplier );
-        var tween = new TWEEN.Tween( animatingTextNode ).
-          easing( TWEEN.Easing.Cubic.InOut ).
-          to( { centerX: destination.x, centerY: destination.y }, 1000 ).
-          onComplete( function() { self.removeChild( animatingTextNode ) } );
-        tween.start();
-      }
+       var animatingTextNode = new Text( model.input, {
+       font: new PhetFont( { size: 30 } ),
+       fill: 'white',
+       center: equationNode.leftTop.plus( equationNode.productInput.center )
+       } );
+       self.addChild( animatingTextNode );
+       var destination = multiplicationTableNode.whereIsCellCenter( model.level, previousRightMultiplier, previousLeftMultiplier );
+       var tween = new TWEEN.Tween( animatingTextNode ).
+       easing( TWEEN.Easing.Cubic.InOut ).
+       to( { centerX: destination.x, centerY: destination.y }, 1000 ).
+       onComplete( function() { self.removeChild( animatingTextNode ) } );
+       tween.start();
+       }
        */
     } );
   }
