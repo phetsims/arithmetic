@@ -15,10 +15,9 @@ define( function( require ) {
 
   /**
    * @param {Number} tableSize - Size of table. Supposed that the table is square.
-   * @param {DOMNode} iconImage - Image icon for given level. Will be passed into Image constructor.
    * @constructor
    */
-  function LevelModel( tableSize, iconImage ) {
+  function LevelModel( tableSize ) {
     PropertySet.call( this, {
       bestTime: null,  // best time for level
 
@@ -31,7 +30,6 @@ define( function( require ) {
 
     this.tableSize = tableSize;
     this.perfectScore = tableSize * tableSize;
-    this.icon = iconImage;
 
     // model for game timer
     this.gameTimer = new GameTimer();

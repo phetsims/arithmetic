@@ -45,7 +45,8 @@ define( function( require ) {
       ),
       {
         titleString: divideString,
-        levelSelectButtonColor: '#9D87C9'
+        levelSelectButtonColor: '#9D87C9',
+        levelSelectIconSet: 'divide'
       }
     );
   }

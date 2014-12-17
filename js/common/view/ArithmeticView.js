@@ -38,7 +38,8 @@ define( function( require ) {
     options = _.extend( {
       titleString: '',
       showKeypad: true,
-      levelSelectButtonColor: 'white'
+      levelSelectButtonColor: 'white',
+      levelSelectIconSet: 'multiply'
     }, options );
 
     // create and add the node that allows the user to select the game level
@@ -50,7 +51,8 @@ define( function( require ) {
       {
         centerX: this.layoutBounds.centerX,
         centerY: this.layoutBounds.centerY,
-        buttonBaseColor: options.levelSelectButtonColor
+        buttonBaseColor: options.levelSelectButtonColor,
+        iconSet: options.levelSelectIconSet
       }
     );
     this.addChild( levelSelectionNode );

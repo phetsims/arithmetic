@@ -28,6 +28,25 @@ define( function( require ) {
   var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( {size: 24} );
   var TAB_TITLE_FONT = new PhetFont( {size: 54} );
 
+  // icon sets, used to place on the buttons
+  var ICON_SETS = {
+    multiply: [
+      require( 'image!ARITHMETIC/multiply_level_1_icon.png' ),
+      require( 'image!ARITHMETIC/multiply_level_2_icon.png' ),
+      require( 'image!ARITHMETIC/multiply_level_3_icon.png' )
+    ],
+    factor: [
+      require( 'image!ARITHMETIC/factor_level_1_icon.png' ),
+      require( 'image!ARITHMETIC/factor_level_2_icon.png' ),
+      require( 'image!ARITHMETIC/factor_level_3_icon.png' )
+    ],
+    divide: [
+      require( 'image!ARITHMETIC/divide_level_1_icon.png' ),
+      require( 'image!ARITHMETIC/divide_level_2_icon.png' ),
+      require( 'image!ARITHMETIC/divide_level_3_icon.png' )
+    ]
+  };
+
   // strings
   var chooseYourLevelString = require( 'string!ARITHMETIC/chooseYourLevel' );
 
@@ -44,7 +63,8 @@ define( function( require ) {
 
     // Default options
     options = _.extend( {
-      buttonBaseColor: 'white'
+      buttonBaseColor: 'white',
+      iconSet: 'multiply' // valid values are 'multiply', 'factor', and 'divide'
     }, options );
 
     // add title
@@ -64,9 +84,10 @@ define( function( require ) {
     this.addChild( chooseLevelTitle );
 
     // add select level buttons
+    assert && assert( model.levelModels.length === ICON_SETS[ options.iconSet ].length, 'Number of icons doesn\'t match number of levels' );
     var levelSelectButtons = model.levelModels.map( function( level, levelIndex ) {
       return new LevelSelectionButton(
-        new Image( level.icon ),
+        new Image( ICON_SETS[ options.iconSet ][ levelIndex ] ),
         ArithmeticConstants.STAR_NUMBER,
         function() {
           callback( levelIndex );

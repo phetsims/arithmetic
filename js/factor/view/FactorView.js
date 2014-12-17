@@ -42,7 +42,8 @@ define( function( require ) {
       {
         showKeypad: false,
         titleString: factorString,
-        levelSelectButtonColor: '#FFA64D'
+        levelSelectButtonColor: '#FFA64D',
+        levelSelectIconSet: 'factor'
       }
     );
   }

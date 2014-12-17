@@ -1,7 +1,7 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * Screen icon node for 'Multiply' game.
+ * Icon node for 'Factor' screen.
  *
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco (MLearner)

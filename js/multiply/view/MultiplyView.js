@@ -42,7 +42,8 @@ define( function( require ) {
       ),
       {
         titleString: multiplyString,
-        levelSelectButtonColor: '#D8F58A'
+        levelSelectButtonColor: '#D8F58A',
+        levelSelectIconSet: 'multiply'
       }
     );
   }

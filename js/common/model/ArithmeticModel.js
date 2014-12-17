@@ -20,11 +20,6 @@ define( function( require ) {
   var PropertySet = require( 'AXON/PropertySet' );
   var Timer = require( 'JOIST/Timer' );
 
-  // images
-  var phetGirlIcon1Image = require( 'image!ARITHMETIC/phet-girl-icon-1.png' );
-  var phetGirlIcon2Image = require( 'image!ARITHMETIC/phet-girl-icon-2.png' );
-  var phetGirlIcon3Image = require( 'image!ARITHMETIC/phet-girl-icon-3.png' );
-
   // constants
   var FEEDBACK_TIME = 1000; // length of time that feedback is shown before moving on, in milliseconds
 
@@ -55,11 +50,11 @@ define( function( require ) {
     // array of levels with description
     this.levelModels = [
       // level 1
-      new LevelModel( 6, phetGirlIcon1Image ),
+      new LevelModel( 6 ),
       // level 2
-      new LevelModel( 9, phetGirlIcon2Image ),
+      new LevelModel( 9 ),
       // level 3
-      new LevelModel( 12, phetGirlIcon3Image )
+      new LevelModel( 12 )
     ];
 
     // 2D array that tracks which problems have been answered
