@@ -42,7 +42,7 @@ define( function( require ) {
       {
         showKeypad: false,
         titleString: factorString,
-        levelSelectButtonColor: '#FFA64D',
+        levelSelectButtonColor: '#FFC266',
         levelSelectIconSet: 'factor'
       }
     );
