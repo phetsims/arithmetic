@@ -62,7 +62,7 @@ define( function( require ) {
     this.addChild( this._box );
 
     // unfocused state by default
-    this.unfocus();
+    this.setFocus( false );
   }
 
   var updateBoxPosition = function( box, inputSize ) {
@@ -71,21 +71,33 @@ define( function( require ) {
   };
 
   return inherit( Node, EquationInputNode, {
+
+    /**
+     * Clear the textual value shown in this node.  This is done regardless of the value of the value property that is
+     * being monitored by this node.
+     * @public
+     */
     clear: function() {
       this._inputText.setText( '' );
       updateBoxPosition( this._box, this._inputSize );
     },
-    focus: function() {
-      this._cursorContainer.visible = true;
+
+    /**
+     * Set or remove focus, which for this component simply turns the blinking cursor on or off.
+     *
+     * @param {boolean} focus
+     * @public
+     */
+    setFocus: function( focus ) {
+      this._cursorContainer.visible = focus;
     },
-    unfocus: function() {
-      this._cursorContainer.visible = false;
-    },
+
+    /**
+     * Set the textual value of this node to a 'placeholder' value (a question mark at the time of this writing).
+     * @public
+     */
     setPlaceholder: function() {
       this._inputText.setText( PLACEHOLDER );
-      this.update();
-    },
-    update: function() {
       updateBoxPosition( this._box, this._inputSize );
     }
   } );

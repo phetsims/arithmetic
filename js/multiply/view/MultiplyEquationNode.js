@@ -18,11 +18,10 @@ define( function( require ) {
    * @param {Property} multiplierLeftProperty - Property necessary for creating left multiplier input.
    * @param {Property} multiplierRightProperty - Property necessary for creating right multiplier input.
    * @param {Property} inputProperty - Input property, which is the product, and is input by the user.
-   * @param {Property} showEqualProperty - Property that controls whether the equation shows equals or not equals
    *
    * @constructor
    */
-  function MultiplyEquationNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, inputProperty, showEqualProperty ) {
+  function MultiplyEquationNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, inputProperty ) {
     var self = this;
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, inputProperty );
 
@@ -31,11 +30,10 @@ define( function( require ) {
       // Set the state of the product portion of the equation.
       if ( state === GameState.AWAITING_USER_INPUT ) {
         self.productInput.clear();
-        self.productInput.focus();
       }
-      else {
-        self.productInput.unfocus();
-      }
+
+      // The input should only have focus (i.e. blinking cursor) when awaiting input from the user.
+      self.productInput.setFocus( state === GameState.AWAITING_USER_INPUT );
 
       // If the user got it wrong, the equation should depict a not equals sign.
       self.setShowEqual( state !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );

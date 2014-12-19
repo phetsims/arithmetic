@@ -49,15 +49,15 @@ define( function( require ) {
       self.setShowEqual( state !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
       if ( state === GameState.AWAITING_USER_INPUT ) {
         if ( activeInputProperty.value === 'left' ) {
-          self.multiplierLeftInput.focus();
+          self.multiplierLeftInput.setFocus( true );
         }
         else {
-          self.multiplierRightInput.focus();
+          self.multiplierRightInput.setFocus( true );
         }
       }
       else {
-        self.multiplierLeftInput.unfocus();
-        self.multiplierRightInput.unfocus();
+        self.multiplierLeftInput.setFocus( false );
+        self.multiplierRightInput.setFocus( false );
       }
     } );
   }

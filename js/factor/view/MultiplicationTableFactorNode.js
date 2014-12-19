@@ -92,8 +92,6 @@ define( function( require ) {
                       // Record the user's answer.
                       problemModel.multiplierLeft = leftIndex;
                       problemModel.multiplierRight = rightIndex;
-                      console.log( 'leftIndex = ' + leftIndex );
-                      console.log( 'rightIndex = ' + rightIndex );
 
                       // Disable this button if the user's answer is correct.
                       if ( leftIndex * rightIndex === problemModel.product ) {
