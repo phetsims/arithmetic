@@ -23,6 +23,8 @@ define( function( require ) {
   // constants
   var FONT_TEXT = new PhetFont( { size: 32 } );
   var PLACEHOLDER = '?';
+  var INTERACTIVE_FILL = 'white';
+  var NON_INTERACTIVE_FILL = '#eeeeee';
 
   /**
    * @param {Property} valueProperty for observing and changing by input
@@ -35,30 +37,32 @@ define( function( require ) {
     Node.call( this );
 
     // create text and save reference for use in public methods
-    this._inputText = new Text( PLACEHOLDER, {font: FONT_TEXT} );
+    this.inputText = new Text( PLACEHOLDER, {font: FONT_TEXT} ); // @private
 
     // create cursor and save reference for use in public methods
-    this._cursor = new Rectangle( 0, 2, 1, this._inputText.height - 12, {fill: 'black'} );
-    this._cursorContainer = new Node( {children: [this._cursor]} );
+    this.cursor = new Rectangle( 0, 2, 1, this.inputText.height - 12, { fill: 'black' } );
+    this.cursorContainer = new Node( {children: [this.cursor]} );
 
     // save reference to input size value for use in public methods
-    this._inputSize = size;
+    this.inputSize = size;
 
     // update text when the value changes
     valueProperty.lazyLink( function( value ) {
-      self._inputText.setText( value || '' );
+      self.inputText.setText( value || '' );
       updateBoxPosition( self._box, size );
     } );
 
+    // set up blinking of cursor
     Timer.setInterval( function() {
-      self._cursor.visible = !self._cursor.visible;
+      self.cursor.visible = !self.cursor.visible;
     }, ArithmeticConstants.CURSOR_BLINK_INTERVAL );
 
     // add background
-    this.addChild( new Rectangle( 0, 0, size.width, size.height, 5, 5, {fill: 'white'} ) );
+    this.background = new Rectangle( 0, 0, size.width, size.height, 5, 5, {fill: NON_INTERACTIVE_FILL } ); // @private
+    this.addChild( this.background );
 
     // add text and cursor
-    this._box = new HBox( {children: [this._inputText, this._cursorContainer], centerX: size.width / 2, centerY: size.height / 2} );
+    this._box = new HBox( {children: [this.inputText, this.cursorContainer], centerX: size.width / 2, centerY: size.height / 2} );
     this.addChild( this._box );
 
     // unfocused state by default
@@ -78,8 +82,8 @@ define( function( require ) {
      * @public
      */
     clear: function() {
-      this._inputText.setText( '' );
-      updateBoxPosition( this._box, this._inputSize );
+      this.inputText.setText( '' );
+      updateBoxPosition( this._box, this.inputSize );
     },
 
     /**
@@ -89,7 +93,17 @@ define( function( require ) {
      * @public
      */
     setFocus: function( focus ) {
-      this._cursorContainer.visible = focus;
+      this.cursorContainer.visible = focus;
+    },
+
+    /**
+     * Set the appearance of this node to indicate to the user that it is interactive, meaning that their actions are
+     * going to change its value.
+     * @param {boolean} interactive
+     * @public
+     */
+    setInteractiveAppearance: function( interactive ) {
+      this.background.fill = interactive ? INTERACTIVE_FILL : NON_INTERACTIVE_FILL;
     },
 
     /**
@@ -97,8 +111,8 @@ define( function( require ) {
      * @public
      */
     setPlaceholder: function() {
-      this._inputText.setText( PLACEHOLDER );
-      updateBoxPosition( this._box, this._inputSize );
+      this.inputText.setText( PLACEHOLDER );
+      updateBoxPosition( this._box, this.inputSize );
     }
   } );
 } );

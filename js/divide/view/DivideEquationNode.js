@@ -56,6 +56,8 @@ define( function( require ) {
       else if ( activeInput === 'left' ) {
         self.multiplierLeftInput.clear();
       }
+      self.multiplierLeftInput.setInteractiveAppearance( activeInput === 'left' );
+      self.multiplierRightInput.setInteractiveAppearance( activeInput === 'right' );
       updateFocus();
     } );
 

@@ -25,6 +25,10 @@ define( function( require ) {
     var self = this;
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, inputProperty );
 
+    // The product is always the interactive part for this equation, so set up the appearance now.
+    this.productInput.setInteractiveAppearance( true );
+
+    // Update contents and focus at the state changes.
     stateProperty.link( function( state ) {
 
       // Set the state of the product portion of the equation.

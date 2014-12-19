@@ -25,6 +25,11 @@ define( function( require ) {
     var self = this;
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
 
+    // The two multipliers are always interactive in the factor equation, so set this up now.
+    this.multiplierLeftInput.setInteractiveAppearance( true );
+    this.multiplierRightInput.setInteractiveAppearance( true );
+
+    // Update contents and focus at the state changes.
     stateProperty.link( function( state ) {
       self.setShowEqual( state !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
       if ( state === GameState.AWAITING_USER_INPUT ) {
