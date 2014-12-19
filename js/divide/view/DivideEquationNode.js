@@ -27,15 +27,7 @@ define( function( require ) {
     var self = this;
     EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
 
-    activeInputProperty.link( function( activeInput ) {
-      if ( activeInput === 'right' ) {
-        self.multiplierRightInput.clear();
-      }
-      else if ( activeInput === 'left' ) {
-        self.multiplierLeftInput.clear();
-      }
-    } );
-
+    // If the input value changes, it means that the user entered something, so put it in the appropriate equation node.
     inputProperty.lazyLink( function( inputString ) {
       if ( activeInputProperty.value === 'left' ) {
         multiplierLeftProperty.value = inputString;
@@ -45,20 +37,34 @@ define( function( require ) {
       }
     } );
 
-    stateProperty.link( function( state ) {
-      self.setShowEqual( state !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
-      if ( state === GameState.AWAITING_USER_INPUT ) {
-        if ( activeInputProperty.value === 'left' ) {
-          self.multiplierLeftInput.setFocus( true );
-        }
-        else {
-          self.multiplierRightInput.setFocus( true );
-        }
+    function updateFocus() {
+      if ( stateProperty.value === GameState.AWAITING_USER_INPUT ) {
+        self.multiplierRightInput.setFocus( activeInputProperty.value === 'right' );
+        self.multiplierLeftInput.setFocus( activeInputProperty.value === 'left' );
       }
       else {
-        self.multiplierLeftInput.setFocus( false );
+        // Not awaiting user input, so neither input gets focus.
         self.multiplierRightInput.setFocus( false );
+        self.multiplierLeftInput.setFocus( false );
       }
+    }
+
+    activeInputProperty.link( function( activeInput ) {
+      if ( activeInput === 'right' ) {
+        self.multiplierRightInput.clear();
+      }
+      else if ( activeInput === 'left' ) {
+        self.multiplierLeftInput.clear();
+      }
+      updateFocus();
+    } );
+
+    stateProperty.link( function( state ) {
+
+      // Display a not equal sign if the user input and incorrect answer.
+      self.setShowEqual( state !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
+
+      updateFocus();
     } );
   }
 
