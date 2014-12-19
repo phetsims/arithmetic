@@ -7,5 +7,6 @@
   "pattern.level.0levelNumber": "Level {0}",
   "score": "Score",
   "time": "Time",
-  "tryAgain": "Try Again"
+  "tryAgain": "Try Again",
+  "unknownValueIndicator": "?"
 }

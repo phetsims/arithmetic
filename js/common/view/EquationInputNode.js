@@ -20,9 +20,12 @@ define( function( require ) {
   var Text = require( 'SCENERY/nodes/Text' );
   var Timer = require( 'JOIST/Timer' );
 
+  // strings
+  var unknownValueIndicator = require( 'string!ARITHMETIC/unknownValueIndicator' );
+
   // constants
   var FONT_TEXT = new PhetFont( { size: 32 } );
-  var PLACEHOLDER = '?';
+  var PLACEHOLDER = unknownValueIndicator;
   var INTERACTIVE_FILL = 'white';
   var NON_INTERACTIVE_FILL = '#eeeeee';
 
