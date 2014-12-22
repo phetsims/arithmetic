@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var Bounds2 = require( 'DOT/Bounds2' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelSelectionNode = require( 'ARITHMETIC/common/view/LevelSelectionNode' );
@@ -29,7 +30,7 @@ define( function( require ) {
 //  function ArithmeticView( model, multiplicationTableNode, equationNode, isAddKeypadNode, titleString ) {
   function ArithmeticView( model, multiplicationTableNode, equationNode, options ) {
     var self = this;
-    ScreenView.call( this, { renderer: 'svg' } );
+    ScreenView.call( this, { renderer: 'svg', layoutBounds: new Bounds2(  0, 0, 768, 504 ) } );
 
     // defaults
     options = _.extend( {
