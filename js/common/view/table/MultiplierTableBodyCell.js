@@ -23,6 +23,7 @@ define( function( require ) {
   var NORMAL_COLOR = 'rgb(50,70,255)'; // normal color
   var SELECT_COLOR = 'rgb(77,0,153)'; // select color
 
+  //TODO: The options should either be consolidated or renamed, since the API makes it such that they can't both be optional.
   /**
    * @param {Text} contentText - Text label for button.
    * @param {Object} backgroundOptions - Background options for button.
@@ -37,6 +38,9 @@ define( function( require ) {
     AbstractCell.call( this, backgroundOptions, textOptions );
 
     // create pointer for active state
+    // TODO: Seems inefficient and unnecessary that there is an image node created for every cell when they are not used
+    // for the multiply and divide screens.  Consider having either an option for whether the pointer is used or a pool
+    // of pointers for the various sized needed.  Or both.
     this._pointer = new Image( pointingHandImage, {visible: false} );
 
     // set position and size for pointer
