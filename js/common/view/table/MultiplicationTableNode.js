@@ -23,14 +23,14 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
-  var TABLE_SIZE = new Dimension2( 434, 320 ); // table size, empirically determined
+  var TABLE_SIZE = new Dimension2( 434, 320 ); // table size in screen coordinates, empirically determined
 
   /**
-   * @param {Array} levelModels - Array of descriptions for each level.
    * For each level will be created multiplication table node.
    * Necessary for representing best scores for each level.
    * @param {Property.<number>} levelProperty - Level difficulty property.
    * @param {Property.<GameState>} stateProperty - Current state property.
+   * @param {Array} levelModels - Array of descriptions for each level.
    * @param {Array} answerSheet - 2D array that tracks problems that have and haven't been answered
    * @constructor
    */
@@ -44,7 +44,7 @@ define( function( require ) {
     // array with views for each level
     this.viewForLevel = []; // @private
 
-    // links to table cells. Indexes: [levelNumber][leftMultiplier][rightMultiplier]
+    // three-dimensional array of the cells, indexed by [levelNumber][leftMultiplier][rightMultiplier]
     this.cells = [];
 
     // add stroke for all multiplication table views
@@ -69,7 +69,7 @@ define( function( require ) {
       var vBox = new VBox( {visible: false} );
 
       // set equal line width for background rectangle
-      backgroundRect.setLineWidth( buttonOptions.lineWidth );
+      backgroundRect.lineWidth = buttonOptions.lineWidth;
 
       // init store for cells
       self.cells[levelIndex] = [];
