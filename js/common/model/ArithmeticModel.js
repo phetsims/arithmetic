@@ -20,6 +20,9 @@ define( function( require ) {
   var PropertySet = require( 'AXON/PropertySet' );
   var Timer = require( 'JOIST/Timer' );
 
+  // constants
+  var FEEDBACK_TIME = 1000; // in milliseconds
+
   /**
    * Constructor for ArithmeticModel
    * @constructor
@@ -114,6 +117,9 @@ define( function( require ) {
 
         // show the feedback that indicates a correct answer
         this.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
+
+        // start a timer that will set up the next problem
+        Timer.setTimeout( function() { self.nextProblem(); }, FEEDBACK_TIME );
       }
       // incorrect answer
       else {
