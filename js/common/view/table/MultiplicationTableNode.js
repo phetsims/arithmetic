@@ -1,8 +1,11 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * A Scenery node that represents the multiplication table.  It consists of a set of individual cells that comprise the
- * headers and the body.
+ * A Scenery node that represents the multiplication table.  It contains a table for each of the levels in the provided
+ * levelModels parameter, and handles the hiding and showing of the appropriate table based on the currently active
+ * level.
+ *
+ * Each table is made up of a set of cells that define the headers for and the body of the table.
  *
  * @author Andrey Zelenkov (MLearner)
  */
@@ -55,7 +58,7 @@ define( function( require ) {
     } );
     this.addChild( backgroundRect );
 
-    // create view of times table for levels
+    // create view of times table for each of the levels
     levelModels.forEach( function( level, levelIndex ) {
       var tableSize = level.tableSize;
       var buttonOptions = {
@@ -65,17 +68,17 @@ define( function( require ) {
       };
       var i;
       var j;
-      var hBox;
-      var vBox = new VBox( {visible: false} );
+      var hBoxChildren;
+      var vBoxChildren = [];
 
       // set equal line width for background rectangle
-      backgroundRect.lineWidth = buttonOptions.lineWidth;
+      backgroundRect.lineWidth = buttonOptions.lineWidth;  // TODO: Why is this set here multiple times?  Why not outside of loop?
 
       // init store for cells
       self.cells[levelIndex] = [];
 
       for ( i = 0; i <= tableSize; i++ ) {
-        hBox = new HBox();
+        hBoxChildren = [];
         self.cells[levelIndex][i] = [];
         // first row
         if ( i === 0 ) {
@@ -89,7 +92,7 @@ define( function( require ) {
             else {
               self.cells[levelIndex][i][j] = new MultiplierTableHeaderCell( j.toString(), buttonOptions );
             }
-            hBox.addChild( self.cells[levelIndex][i][j] );
+            hBoxChildren.push( self.cells[levelIndex][i][j] );
           }
         }
         // other rows
@@ -102,11 +105,13 @@ define( function( require ) {
             else {
               self.cells[levelIndex][i][j] = new MultiplierTableBodyCell( ( i * j ).toString(), buttonOptions );
             }
-            hBox.addChild( self.cells[levelIndex][i][j] );
+            hBoxChildren.push( self.cells[levelIndex][i][j] );
           }
         }
-        vBox.addChild( hBox );
+        vBoxChildren.push( new HBox( { children: hBoxChildren, resize: false } ) );
       }
+
+      var vBox = new VBox( { children: vBoxChildren, visible: false, resize: false } );
 
       // add view to node
       self.addChild( vBox );
