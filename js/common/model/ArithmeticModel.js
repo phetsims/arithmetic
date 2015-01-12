@@ -20,9 +20,6 @@ define( function( require ) {
   var PropertySet = require( 'AXON/PropertySet' );
   var Timer = require( 'JOIST/Timer' );
 
-  // constants
-  var FEEDBACK_TIME = 1000; // length of time that feedback is shown before moving on, in milliseconds
-
   /**
    * Constructor for ArithmeticModel
    * @constructor
@@ -43,9 +40,6 @@ define( function( require ) {
       soundEnabled: true, // is sound active
       timerEnabled: false // is timer active
     } );
-
-    // timer used for depicting positive and negative feedback, tracked so that it can be canceled if necessary
-    this.positiveFeedbackTimer = null;
 
     // array of levels with description
     this.levelModels = [
@@ -127,7 +121,7 @@ define( function( require ) {
         this.problemModel.possiblePoints = 0;
 
         // set face model state and play sound
-        // TODO: Sound should be played in view once all the state changes are sorted out.
+        // TODO: Sound should be played in view, and not here, once all the state changes are sorted out.
         this.faceModel.pointsToDisplay = this.problemModel.possiblePoints;
         this.faceModel.isSmile = false;
         this.faceModel.showFace();
