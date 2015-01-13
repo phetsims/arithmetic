@@ -25,7 +25,7 @@ define( function( require ) {
    */
   function MultiplicationTableMultiplyNode( problemModel, answerSheet, stateProperty, levelProperty, levelModels ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet );
+    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet, true );
     this.problemModel = problemModel;
 
     stateProperty.lazyLink( function( state ) {

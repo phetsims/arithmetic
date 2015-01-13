@@ -32,7 +32,7 @@ define( function( require ) {
      */
     function MultiplicationTableFactorNode( problemModel, answerSheet, stateProperty, levelProperty, levelModels, submitAnswer ) {
       var self = this;
-      MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet );
+      MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet, false );
 
       this.buttonModel = []; // @private
       this.activeButton = null; // @private

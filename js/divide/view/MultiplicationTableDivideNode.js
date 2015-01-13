@@ -20,12 +20,13 @@ define( function( require ) {
    * @param {Property} levelProperty - Level difficulty property.
    * @param {Property} stateProperty - Current state property.
    * @param {Array} levelModels - Array of descriptions for each level.
+   * answer appear to fly into the table.
    *
    * @constructor
    */
   function MultiplicationTableDivideNode( problemModel, answerSheet, stateProperty, levelProperty, levelModels ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet );
+    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet, true );
 
     stateProperty.lazyLink( function( state ) {
       // set view for multiplication table after choosing left and right multipliers

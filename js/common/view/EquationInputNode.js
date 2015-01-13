@@ -24,7 +24,6 @@ define( function( require ) {
   var unknownValueIndicator = require( 'string!ARITHMETIC/unknownValueIndicator' );
 
   // constants
-  var FONT_TEXT = new PhetFont( { size: 32 } );
   var PLACEHOLDER = unknownValueIndicator;
   var INTERACTIVE_FILL = 'white';
   var NON_INTERACTIVE_FILL = '#eeeeee';
@@ -40,7 +39,7 @@ define( function( require ) {
     Node.call( this );
 
     // create text and save reference for use in public methods
-    this.inputText = new Text( PLACEHOLDER, {font: FONT_TEXT} ); // @private
+    this.inputText = new Text( PLACEHOLDER, { font: ArithmeticConstants.EQUATION_FONT_TEXT } ); // @private
 
     // create cursor and save reference for use in public methods
     this.cursor = new Rectangle( 0, 2, 1, this.inputText.height - 12, { fill: 'black' } );

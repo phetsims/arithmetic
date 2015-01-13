@@ -13,6 +13,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var HBox = require( 'SCENERY/nodes/HBox' );
@@ -23,10 +24,13 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var ScreenView = require( 'JOIST/ScreenView' );
+  var Text = require( 'SCENERY/nodes/Text' );
   var VBox = require( 'SCENERY/nodes/VBox' );
+  var Vector2 = require( 'DOT/Vector2' );
 
   // constants
   var TABLE_SIZE = new Dimension2( 434, 320 ); // table size in screen coordinates, empirically determined
+  var ANIMATION_TIME = 800; // in milliseconds
 
   /**
    * For each level will be created multiplication table node.
@@ -35,11 +39,16 @@ define( function( require ) {
    * @param {Property.<GameState>} stateProperty - Current state property.
    * @param {Array} levelModels - Array of descriptions for each level.
    * @param {Array} answerSheet - 2D array that tracks problems that have and haven't been answered
+   * @param {boolean} animateAnswer - flag that controls whether answer appears to fly into the cell or just appears
+   *
    * @constructor
    */
-  function MultiplicationTableNode( levelProperty, stateProperty, levelModels, answerSheet ) {
+  function MultiplicationTableNode( levelProperty, stateProperty, levelModels, answerSheet, animateAnswer ) {
     var self = this;
     Node.call( this );
+    if ( typeof( animateAnswer ) === 'undefined' ) {
+      debugger;
+    }
 
     // level property needs to be available to sub-classes
     this.levelProperty = levelProperty; // @protected
@@ -48,7 +57,10 @@ define( function( require ) {
     this.viewForLevel = []; // @private
 
     // three-dimensional array of the cells, indexed by [levelNumber][leftMultiplier][rightMultiplier]
-    this.cells = [];
+    this.cells = []; // @private
+
+    // origin for the animation of answer values, only used if animation flag is set
+    this.animationOrigin = Vector2.ZERO; // @public
 
     // add stroke for all multiplication table views
     var backgroundRect = new Rectangle( 0, 0, 0, 0, {
@@ -139,6 +151,14 @@ define( function( require ) {
       }
     } );
 
+    // add the node that will be used to animate the answer moving from the equation to the location of the cell.
+    var flyingProduct = new Text( 'X', {
+      font: ArithmeticConstants.EQUATION_FONT_TEXT,
+      fill: 'white',
+      visible: false
+    } );
+    this.addChild( flyingProduct );
+
     // Update the visible answers each time the user gets a correct answer
     // TODO: This seems odd.  Why not just have each cell have a 'solved' property, and have that reflected in the view?
     stateProperty.link( function( state ) {
@@ -146,11 +166,28 @@ define( function( require ) {
         // Update the answers that are displayed.
         answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
           multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
+            var cell = self.cells[levelProperty.value][multipliersLeftIndex + 1][multipliersRightIndex + 1];
             if ( isVisible ) {
-              self.cells[levelProperty.value][multipliersLeftIndex + 1][multipliersRightIndex + 1].showText();
+              if ( animateAnswer && !cell.isTextVisible() ) {
+                flyingProduct.center = self.globalToLocalPoint( self.animationOrigin );
+                flyingProduct.text = cell.getTextString();
+                flyingProduct.visible = true;
+                var flyingProductDestination = self.globalToLocalPoint( cell.parentToGlobalPoint( cell.center ) );
+                new TWEEN.Tween( flyingProduct ).
+                  to( { centerX: flyingProductDestination.x, centerY: flyingProductDestination.y }, ANIMATION_TIME ).
+                  easing( TWEEN.Easing.Cubic.InOut ).
+                  onComplete( function() {
+                    cell.showText();
+                    flyingProduct.visible = false
+                  } ).
+                  start();
+              }
+              else {
+                cell.showText();
+              }
             }
             else {
-              self.cells[levelProperty.value][multipliersLeftIndex + 1][multipliersRightIndex + 1].hideText();
+              cell.hideText();
             }
           } );
         } );

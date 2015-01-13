@@ -65,6 +65,18 @@ define( function( require ) {
 
     hideText: function() {
       this._text.visible = false;
+    },
+
+    /**
+     * Get the text string contained in this cell (not the text node).
+     * @returns {string}
+     */
+    getTextString: function() {
+      return this._text.text;
+    },
+
+    isTextVisible: function() {
+      return this._text.visible;
     }
   } );
 } );
