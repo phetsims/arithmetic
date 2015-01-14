@@ -77,6 +77,10 @@ define( function( require ) {
 
     isTextVisible: function() {
       return this._text.visible;
+    },
+
+    getTextWidth: function() {
+      return this._text.width;
     }
   } );
 } );

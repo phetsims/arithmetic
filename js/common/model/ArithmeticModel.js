@@ -21,7 +21,7 @@ define( function( require ) {
   var Timer = require( 'JOIST/Timer' );
 
   // constants
-  var FEEDBACK_TIME = 1000; // in milliseconds
+  var FEEDBACK_TIME = 1200; // in milliseconds
 
   /**
    * Constructor for ArithmeticModel

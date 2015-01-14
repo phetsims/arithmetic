@@ -61,6 +61,10 @@ define( function( require ) {
     workspaceNode.visible = false;
     this.addChild( workspaceNode );
 
+    // set the origin of the answer animation in the multiplication table, which depends upon the newly set position of
+    // the equation node.
+    multiplicationTableNode.animationOrigin = equationNode.productInput.center;
+
     // create the animators or 'tweens' that will slide the screens in and out.
     var levelSelectionScreenAnimator = new TWEEN.Tween( levelSelectionNode ).easing( TWEEN.Easing.Cubic.InOut ).onComplete( function() {
       levelSelectionNode.visible = ( levelSelectionNode.x === self.layoutBounds.minX );

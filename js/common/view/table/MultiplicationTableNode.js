@@ -30,7 +30,12 @@ define( function( require ) {
 
   // constants
   var TABLE_SIZE = new Dimension2( 434, 320 ); // table size in screen coordinates, empirically determined
-  var ANIMATION_TIME = 800; // in milliseconds
+  var ANSWER_ANIMATION_TIME = 800; // in milliseconds
+
+  // Starting point for the animation of the answer.  It is not ideal that this is a constant, because it means that if
+  // the layout changes, this will need to be manually updated, but it's tricky to get it coordinated with the layout
+  // in some other way.
+  var ANSWER_ANIMATION_ORIGIN = new Vector2( 370, 380 );
 
   /**
    * For each level will be created multiplication table node.
@@ -46,9 +51,6 @@ define( function( require ) {
   function MultiplicationTableNode( levelProperty, stateProperty, levelModels, answerSheet, animateAnswer ) {
     var self = this;
     Node.call( this );
-    if ( typeof( animateAnswer ) === 'undefined' ) {
-      debugger;
-    }
 
     // level property needs to be available to sub-classes
     this.levelProperty = levelProperty; // @protected
@@ -58,9 +60,6 @@ define( function( require ) {
 
     // three-dimensional array of the cells, indexed by [levelNumber][leftMultiplier][rightMultiplier]
     this.cells = []; // @private
-
-    // origin for the animation of answer values, only used if animation flag is set
-    this.animationOrigin = Vector2.ZERO; // @public
 
     // add stroke for all multiplication table views
     var backgroundRect = new Rectangle( 0, 0, 0, 0, {
@@ -169,20 +168,39 @@ define( function( require ) {
             var cell = self.cells[levelProperty.value][multipliersLeftIndex + 1][multipliersRightIndex + 1];
             if ( isVisible ) {
               if ( animateAnswer && !cell.isTextVisible() ) {
-                flyingProduct.center = self.globalToLocalPoint( self.animationOrigin );
+
+                // Animate the product moving from the equation to the appropriate cell within the table.  We had to
+                // get a little tricky with this since the scale of each node is controlled by a function rather than
+                // a parameter.
                 flyingProduct.text = cell.getTextString();
-                flyingProduct.visible = true;
+                flyingProduct.setScaleMagnitude( 1 );
                 var flyingProductDestination = self.globalToLocalPoint( cell.parentToGlobalPoint( cell.center ) );
-                new TWEEN.Tween( flyingProduct ).
-                  to( { centerX: flyingProductDestination.x, centerY: flyingProductDestination.y }, ANIMATION_TIME ).
+                var flyingProducePositionAndScale = {
+                  centerX: ANSWER_ANIMATION_ORIGIN.x,
+                  centerY: ANSWER_ANIMATION_ORIGIN.y,
+                  scale: 1
+                };
+                var animationTween = new TWEEN.Tween( flyingProducePositionAndScale ).
+                  to( {
+                    centerX: flyingProductDestination.x,
+                    centerY: flyingProductDestination.y,
+                    scale: cell.getTextWidth() / flyingProduct.width
+                  }, ANSWER_ANIMATION_TIME ).
                   easing( TWEEN.Easing.Cubic.InOut ).
+                  onUpdate( function() {
+                    flyingProduct.centerX = flyingProducePositionAndScale.centerX;
+                    flyingProduct.centerY = flyingProducePositionAndScale.centerY;
+                    flyingProduct.setScaleMagnitude( flyingProducePositionAndScale.scale );
+                  } ).
                   onComplete( function() {
                     cell.showText();
                     flyingProduct.visible = false
-                  } ).
-                  start();
+                  } );
+                flyingProduct.visible = true;
+                animationTween.start();
               }
               else {
+                // So animation, so just show the text.
                 cell.showText();
               }
             }
