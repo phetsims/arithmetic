@@ -15,6 +15,7 @@ define( function( require ) {
 
     // modules
     var ButtonListener = require( 'SUN/buttons/ButtonListener' );
+    var ButtonListenerVariant = require( 'ARITHMETIC/factor/view/ButtonListenerVariant' );
     var GameState = require( 'ARITHMETIC/common/model/GameState' );
     var inherit = require( 'PHET_CORE/inherit' );
     var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
@@ -49,13 +50,18 @@ define( function( require ) {
 
             leftMultipliers.forEach( function( button, rightIndex ) {
               var buttonModel;
+              var buttonModel2;
               var buttonListener;
+              var buttonListener2;
 
               // skip zero-index because it's the header row
               if ( rightIndex ) {
                 buttonModel = new PushButtonModel();
+                buttonModel2 = new PushButtonModel();
                 buttonListener = new ButtonListener( buttonModel );
+                buttonListener2 = new ButtonListenerVariant( buttonModel2 );
                 button.addInputListener( buttonListener );
+                button.addInputListener( buttonListener2 );
                 button.cursor = 'pointer';
 
                 // store model for next execution
@@ -137,33 +143,14 @@ define( function( require ) {
 
     return inherit( MultiplicationTableNode, MultiplicationTableFactorNode, {
 
-      // enable all buttons for given level
+      // @private, enable all buttons for given level
       enableButtons: function( levelNumber ) {
         this.buttonModel[levelNumber].forEach( function( buttonModel ) {
           buttonModel.enabled = true;
         } );
       },
 
-      // TODO: Replacing this with setSelectedRect on 12/15/2014, remove if the resulting change is approved.
-      // set 'active' state for all cell in given bounds and highlight multipliers
-      setActiveRect: function( levelNumber, leftBound, rightBound ) {
-        // highlight multipliers
-        this.cells[levelNumber][0][rightBound].select();
-        this.cells[levelNumber][leftBound][0].select();
-
-        // set 'active' state for all cell in given bounds
-        this.cells[levelNumber].forEach( function( multipliersLeft, leftIndex ) {
-          if ( leftIndex && leftIndex <= leftBound ) {
-            multipliersLeft.forEach( function( cell, rightIndex ) {
-              if ( rightIndex && rightIndex <= rightBound ) {
-                cell.active();
-              }
-            } );
-          }
-        } );
-      },
-
-      // set 'selected' state for all cell in given bounds and highlight multipliers
+      // @private, set 'selected' state for all cells in given bounds and highlight the multipliers (i.e. header cells)
       setSelectedRect: function( levelNumber, leftBound, rightBound ) {
         // highlight multipliers
         this.cells[levelNumber][0][rightBound].select();
@@ -181,6 +168,7 @@ define( function( require ) {
         } );
       },
 
+      // @public
       refreshLevel: function( level ) {
         MultiplicationTableNode.prototype.refreshLevel.call( this, level );
         this.enableButtons( level );
