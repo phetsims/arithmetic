@@ -28,17 +28,30 @@ define( function( require ) {
     this.overPointer = null; // @private
     this.downPointer = null; // @private
 
+    // Track whether this listener was armed by a touch event.
+    this.armedByTouch = false;
+
     DownUpListener.call( this, {
         down: function( event, trail ) {
-          console.log( 'event.pointer.type = ' + event.pointer.type );
+
+          // make sure this isn't a 2nd pointer coming down on this button.
           if ( buttonListener.downPointer === null ) {
             buttonListener.downPointer = event.pointer;
-          }
-          if ( event.pointer === buttonListener.downPointer ) {
-            buttonModel.down = true;
-          }
-          if ( event.pointer.type === 'touch' ) {
 
+            // if this is a mouse event, set the down state on the button model
+            if ( event.pointer.type === 'mouse' ) {
+              buttonModel.down = true;
+            }
+            else if ( event.pointer.type === 'touch' ) {
+              // this is a touch event, so it either arms for the next event or sets button model down state
+              if ( buttonListener.armedByTouch ) {
+                buttonModel.down = true;
+                buttonListener.armedByTouch = false;
+              }
+              else {
+                buttonListener.armedByTouch = true;
+              }
+            }
           }
         },
 
@@ -53,6 +66,16 @@ define( function( require ) {
   }
 
   return inherit( DownUpListener, ButtonListener, {
+
+    /**
+     * Clears the 'armed' state.  This is used when the
+     * @param event
+     * @param trail
+     */
+    clearArmedByTouch: function() {
+      this.armedByTouch = false;
+    },
+
     /**
      * When this Button has focus, pressing a key down presses the button.  This is part of the accessibility feature set.
      * This API is subject to change (if we make a more specific ENTER/SPACE callback
@@ -78,6 +101,7 @@ define( function( require ) {
         this.exit( event, trail );
       }
     },
+
     enter: function( event, trail ) {
       if ( this.overPointer === null ) {
         this.overPointer = event.pointer;
