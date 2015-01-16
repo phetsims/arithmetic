@@ -41,7 +41,7 @@ define( function( require ) {
     // TODO: Seems inefficient and unnecessary that there is an image node created for every cell when they are not used
     // for the multiply and divide screens.  Consider having either an option for whether the pointer is used or a pool
     // of pointers for the various sized needed.  Or both.
-    this._pointer = new Image( pointingHandImage, {visible: false} );
+    this._pointer = new Image( pointingHandImage, { visible: false } );
 
     // set position and size for pointer
     this._pointer.scale( backgroundOptions.width / this._pointer.getWidth() * 0.75, backgroundOptions.height / this._pointer.getHeight() * 0.75 );

@@ -37,19 +37,19 @@ define( function( require ) {
 
         // set select multipliers
         if ( problemModel.multiplierLeft ) {
-          self.cells[levelProperty.value][problemModel.multiplierLeft][0].select();
+          self.cells[ levelProperty.value ][ problemModel.multiplierLeft ][ 0 ].select();
         }
         else {
-          self.cells[levelProperty.value][0][problemModel.multiplierRight].select();
+          self.cells[ levelProperty.value ][ 0 ][ problemModel.multiplierRight ].select();
         }
       }
       else if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
         // Make the cells that correspond to the answer change color.
-        self.cells[levelProperty.value][problemModel.multiplierLeft][0].select();
-        self.cells[levelProperty.value][0][problemModel.multiplierRight].select();
+        self.cells[ levelProperty.value ][ problemModel.multiplierLeft ][ 0 ].select();
+        self.cells[ levelProperty.value ][ 0 ][ problemModel.multiplierRight ].select();
         for ( var leftMultiplier = 1; leftMultiplier <= problemModel.multiplierLeft; leftMultiplier++ ) {
           for ( var rightMultiplier = 1; rightMultiplier <= problemModel.multiplierRight; rightMultiplier++ ) {
-            self.cells[levelProperty.value][leftMultiplier][rightMultiplier].select();
+            self.cells[ levelProperty.value ][ leftMultiplier ][ rightMultiplier ].select();
           }
         }
       }

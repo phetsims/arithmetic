@@ -86,24 +86,24 @@ define( function( require ) {
       backgroundRect.lineWidth = buttonOptions.lineWidth;  // TODO: Why is this set here multiple times?  Why not outside of loop?
 
       // init store for cells
-      self.cells[levelIndex] = [];
+      self.cells[ levelIndex ] = [];
 
       for ( i = 0; i <= tableSize; i++ ) {
         hBoxChildren = [];
-        self.cells[levelIndex][i] = [];
+        self.cells[ levelIndex ][ i ] = [];
         // first row
         if ( i === 0 ) {
           for ( j = 0; j <= tableSize; j++ ) {
             // first cell is 'X', other - multiplier numbers
             if ( j === 0 ) {
-              self.cells[levelIndex][i][j] = new MultiplierTableHeaderCell( '\u00D7', buttonOptions, {
+              self.cells[ levelIndex ][ i ][ j ] = new MultiplierTableHeaderCell( '\u00D7', buttonOptions, {
                 font: new PhetFont( { size: Math.round( buttonOptions.height * 0.85 ) } ) // Equation empirically determined, makes font smaller for larger tables.
               } );
             }
             else {
-              self.cells[levelIndex][i][j] = new MultiplierTableHeaderCell( j.toString(), buttonOptions );
+              self.cells[ levelIndex ][ i ][ j ] = new MultiplierTableHeaderCell( j.toString(), buttonOptions );
             }
-            hBoxChildren.push( self.cells[levelIndex][i][j] );
+            hBoxChildren.push( self.cells[ levelIndex ][ i ][ j ] );
           }
         }
         // other rows
@@ -111,12 +111,12 @@ define( function( require ) {
           for ( j = 0; j <= tableSize; j++ ) {
             // first cell is multiplier number, other - product numbers
             if ( j === 0 ) {
-              self.cells[levelIndex][i][j] = new MultiplierTableHeaderCell( i.toString(), buttonOptions );
+              self.cells[ levelIndex ][ i ][ j ] = new MultiplierTableHeaderCell( i.toString(), buttonOptions );
             }
             else {
-              self.cells[levelIndex][i][j] = new MultiplierTableBodyCell( ( i * j ).toString(), buttonOptions );
+              self.cells[ levelIndex ][ i ][ j ] = new MultiplierTableBodyCell( ( i * j ).toString(), buttonOptions );
             }
-            hBoxChildren.push( self.cells[levelIndex][i][j] );
+            hBoxChildren.push( self.cells[ levelIndex ][ i ][ j ] );
           }
         }
         vBoxChildren.push( new HBox( { children: hBoxChildren, resize: false } ) );
@@ -131,7 +131,7 @@ define( function( require ) {
       vBox.scale( TABLE_SIZE.width / vBox.bounds.width, TABLE_SIZE.height / vBox.bounds.height );
 
       // save view
-      self.viewForLevel[levelIndex] = vBox;
+      self.viewForLevel[ levelIndex ] = vBox;
     } );
 
     // set background size
@@ -140,13 +140,13 @@ define( function( require ) {
 
     levelProperty.link( function( levelNumberCurrent, levelNumberPrev ) {
       // show current multiplication table view for level
-      if ( self.viewForLevel[levelNumberCurrent] ) {
-        self.viewForLevel[levelNumberCurrent].visible = true;
+      if ( self.viewForLevel[ levelNumberCurrent ] ) {
+        self.viewForLevel[ levelNumberCurrent ].visible = true;
       }
 
       // hide previous multiplication table view
-      if ( self.viewForLevel[levelNumberPrev] ) {
-        self.viewForLevel[levelNumberPrev].visible = false;
+      if ( self.viewForLevel[ levelNumberPrev ] ) {
+        self.viewForLevel[ levelNumberPrev ].visible = false;
       }
     } );
 
@@ -165,7 +165,7 @@ define( function( require ) {
         // Update the answers that are displayed.
         answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
           multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
-            var cell = self.cells[levelProperty.value][multipliersLeftIndex + 1][multipliersRightIndex + 1];
+            var cell = self.cells[ levelProperty.value ][ multipliersLeftIndex + 1 ][ multipliersRightIndex + 1 ];
             if ( isVisible ) {
               if ( animateAnswer && !cell.isTextVisible() ) {
 
@@ -221,7 +221,7 @@ define( function( require ) {
      * @public
      */
     setCellsToDefaultColor: function( level ) {
-      this.cells[level].forEach( function( multipliersLeft ) {
+      this.cells[ level ].forEach( function( multipliersLeft ) {
         multipliersLeft.forEach( function( cell ) {
           cell.normal();
         } );
@@ -235,7 +235,7 @@ define( function( require ) {
      */
     clearCells: function( level ) {
       this.setCellsToDefaultColor( level );
-      this.cells[level].forEach( function( cellRow, cellRowIndex ) {
+      this.cells[ level ].forEach( function( cellRow, cellRowIndex ) {
         if ( cellRowIndex > 0 ) {
           cellRow.forEach( function( cell, index ) {
             if ( index > 0 ) {
@@ -271,7 +271,7 @@ define( function( require ) {
           parentScreen = testNode;
           break;
         }
-        testNode = testNode.parents[0]; // Move up the scene graph by one level
+        testNode = testNode.parents[ 0 ]; // Move up the scene graph by one level
       }
 
       return parentScreen.globalToLocalPoint( cell.parentToGlobalPoint( cell.center ) );

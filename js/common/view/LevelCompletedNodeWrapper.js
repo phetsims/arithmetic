@@ -33,7 +33,7 @@ define( function( require ) {
     // Show this node only when the level has been completed.
     stateProperty.lazyLink( function( state ) {
       if ( state === GameState.LEVEL_COMPLETED ) {
-        var levelModel = levelModels[levelProperty.value];
+        var levelModel = levelModels[ levelProperty.value ];
         self.addChild( new LevelCompletedNode(
           levelProperty.value,
           levelModel.currentScore,
@@ -44,7 +44,7 @@ define( function( require ) {
           levelModel.bestTime,
           (levelModel.gameTimer.elapsedTime < levelModel.bestTime),
           continueCallback,
-          {centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2}
+          { centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2 }
         ) );
       }
       else if ( state === GameState.AWAITING_USER_INPUT ) {

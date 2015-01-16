@@ -41,7 +41,7 @@ define( function( require ) {
       // add 'hover' and 'down' listeners for each cell in table
       this.cells.forEach( function( tableForLevel, levelIndex ) {
 
-        self.buttonModels[levelIndex] = [];
+        self.buttonModels[ levelIndex ] = [];
 
         tableForLevel.forEach( function( leftMultipliers, leftIndex ) {
 
@@ -66,7 +66,7 @@ define( function( require ) {
 
                 // store model for next execution
 //                self.buttonModel[levelIndex].push( buttonModel );
-                self.buttonModels[levelIndex].push( buttonModel2 );
+                self.buttonModels[ levelIndex ].push( buttonModel2 );
 
                 // add 'hover' listener
 //                buttonModel.property( 'over' ).onValue( true, function() {
@@ -199,7 +199,7 @@ define( function( require ) {
 
       // @private, enable all buttons for given level
       enableButtons: function( levelNumber ) {
-        this.buttonModels[levelNumber].forEach( function( buttonModel ) {
+        this.buttonModels[ levelNumber ].forEach( function( buttonModel ) {
           buttonModel.enabled = true;
         } );
       },
@@ -207,11 +207,11 @@ define( function( require ) {
       // @private, set 'selected' state for all cells in given bounds and highlight the multipliers (i.e. header cells)
       setSelectedRect: function( levelNumber, leftBound, rightBound ) {
         // highlight multipliers
-        this.cells[levelNumber][0][rightBound].select();
-        this.cells[levelNumber][leftBound][0].select();
+        this.cells[ levelNumber ][ 0 ][ rightBound ].select();
+        this.cells[ levelNumber ][ leftBound ][ 0 ].select();
 
         // set 'selected' state for all cell in given bounds
-        this.cells[levelNumber].forEach( function( multipliersLeft, leftIndex ) {
+        this.cells[ levelNumber ].forEach( function( multipliersLeft, leftIndex ) {
           if ( leftIndex && leftIndex <= leftBound ) {
             multipliersLeft.forEach( function( cell, rightIndex ) {
               if ( rightIndex && rightIndex <= rightBound ) {

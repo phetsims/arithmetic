@@ -43,7 +43,7 @@ define( function( require ) {
 
     // create cursor and save reference for use in public methods
     this.cursor = new Rectangle( 0, 2, 1, this.inputText.height - 12, { fill: 'black' } );
-    this.cursorContainer = new Node( {children: [this.cursor]} );
+    this.cursorContainer = new Node( { children: [ this.cursor ] } );
 
     // save reference to input size value for use in public methods
     this.inputSize = size;
@@ -60,11 +60,11 @@ define( function( require ) {
     }, ArithmeticConstants.CURSOR_BLINK_INTERVAL );
 
     // add background
-    this.background = new Rectangle( 0, 0, size.width, size.height, 5, 5, {fill: NON_INTERACTIVE_FILL } ); // @private
+    this.background = new Rectangle( 0, 0, size.width, size.height, 5, 5, { fill: NON_INTERACTIVE_FILL } ); // @private
     this.addChild( this.background );
 
     // add text and cursor
-    this._box = new HBox( {children: [this.inputText, this.cursorContainer], centerX: size.width / 2, centerY: size.height / 2} );
+    this._box = new HBox( { children: [ this.inputText, this.cursorContainer ], centerX: size.width / 2, centerY: size.height / 2 } );
     this.addChild( this._box );
 
     // unfocused state by default

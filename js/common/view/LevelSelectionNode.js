@@ -24,8 +24,8 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
-  var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( {size: 24} );
-  var TAB_TITLE_FONT = new PhetFont( {size: 54} );
+  var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( { size: 24 } );
+  var TAB_TITLE_FONT = new PhetFont( { size: 54 } );
 
   // icon sets, used to place on the buttons
   var ICON_SETS = {
@@ -91,13 +91,13 @@ define( function( require ) {
         function() {
           callback( levelIndex );
         },
-        model.levelModels[levelIndex].property( 'displayScore' ),
+        model.levelModels[ levelIndex ].property( 'displayScore' ),
         level.perfectScore,
         {
           buttonWidth: 135,
           buttonHeight: 135,
           baseColor: options.buttonBaseColor,
-          bestTimeProperty: model.levelModels[levelIndex].property( 'bestTime' ),
+          bestTimeProperty: model.levelModels[ levelIndex ].property( 'bestTime' ),
           bestTimeVisibleProperty: model.property( 'timerEnabled' )
         }
       );
@@ -115,8 +115,9 @@ define( function( require ) {
         new TimerToggleButton( model.property( 'timerEnabled' ) ),
         new SoundToggleButton( model.property( 'soundEnabled' ) )
       ],
-      right: layoutBounds.maxX * 0.08,
-      bottom: layoutBounds.maxY * 0.95} );
+      right:  layoutBounds.maxX * 0.08,
+      bottom: layoutBounds.maxY * 0.95
+    } );
     this.addChild( soundAndTimerButtons );
 
     // add reset all button

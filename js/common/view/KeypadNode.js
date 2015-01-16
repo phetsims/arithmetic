@@ -29,7 +29,7 @@ define( function( require ) {
   var BASE_COLOR = 'white'; // base color for all buttons except the enter button
   var BUTTON_SIZE = new Dimension2( 40, 40 ); // size of buttons
   var ENTER_BUTTON_BASE_COLOR = 'rgb( 238, 253, 77 )';
-  var FONT = new PhetFont( {size: 24 } );
+  var FONT = new PhetFont( { size: 24 } );
   var SPACING = 10; // spacing between buttons
 
   /**
@@ -49,28 +49,38 @@ define( function( require ) {
     this.autoClearArmedProperty = new Property( false ); // @public
 
     // add buttons
-    VBox.call( this, _.extend( {spacing: SPACING, children: [
-      new HBox( {spacing: SPACING, children: [
-        createNumberButton( 7, inputProperty, this.autoClearArmedProperty ),
-        createNumberButton( 8, inputProperty, this.autoClearArmedProperty ),
-        createNumberButton( 9, inputProperty, this.autoClearArmedProperty )
-      ]} ),
-      new HBox( {spacing: SPACING, children: [
-        createNumberButton( 4, inputProperty, this.autoClearArmedProperty ),
-        createNumberButton( 5, inputProperty, this.autoClearArmedProperty ),
-        createNumberButton( 6, inputProperty, this.autoClearArmedProperty )
-      ]} ),
-      new HBox( {spacing: SPACING, children: [
-        createNumberButton( 1, inputProperty, this.autoClearArmedProperty ),
-        createNumberButton( 2, inputProperty, this.autoClearArmedProperty ),
-        createNumberButton( 3, inputProperty, this.autoClearArmedProperty )
-      ]} ),
-      new HBox( {spacing: SPACING, children: [
-        backspaceButton = createBackspaceButton( inputProperty ),
-        createNumberButton( 0, inputProperty, this.autoClearArmedProperty ),
-        enterButton = createEnterButton( enterCallback )
-      ]} )
-    ]}, options ) );
+    VBox.call( this, _.extend( {
+      spacing: SPACING, children: [
+        new HBox( {
+          spacing: SPACING, children: [
+            createNumberButton( 7, inputProperty, this.autoClearArmedProperty ),
+            createNumberButton( 8, inputProperty, this.autoClearArmedProperty ),
+            createNumberButton( 9, inputProperty, this.autoClearArmedProperty )
+          ]
+        } ),
+        new HBox( {
+          spacing: SPACING, children: [
+            createNumberButton( 4, inputProperty, this.autoClearArmedProperty ),
+            createNumberButton( 5, inputProperty, this.autoClearArmedProperty ),
+            createNumberButton( 6, inputProperty, this.autoClearArmedProperty )
+          ]
+        } ),
+        new HBox( {
+          spacing: SPACING, children: [
+            createNumberButton( 1, inputProperty, this.autoClearArmedProperty ),
+            createNumberButton( 2, inputProperty, this.autoClearArmedProperty ),
+            createNumberButton( 3, inputProperty, this.autoClearArmedProperty )
+          ]
+        } ),
+        new HBox( {
+          spacing: SPACING, children: [
+            backspaceButton = createBackspaceButton( inputProperty ),
+            createNumberButton( 0, inputProperty, this.autoClearArmedProperty ),
+            enterButton = createEnterButton( enterCallback )
+          ]
+        } )
+      ]
+    }, options ) );
 
     // Control the enabled state of the enter and backspace buttons.
     var enterAndBackspaceEnabled = new DerivedProperty( [ inputProperty, this.autoClearArmedProperty ],
@@ -114,8 +124,9 @@ define( function( require ) {
             headHeight: 6,
             tailWidth: 1
           } ),
-          new Rectangle( ARROW_SIZE / 2 - 1, -ARROW_SIZE / 4, 2, ARROW_SIZE / 4, {fill: 'black'} )
-        ] } ),
+          new Rectangle( ARROW_SIZE / 2 - 1, -ARROW_SIZE / 4, 2, ARROW_SIZE / 4, { fill: 'black' } )
+        ]
+      } ),
       callback,
       { baseColor: ENTER_BUTTON_BASE_COLOR }
     );
@@ -124,7 +135,7 @@ define( function( require ) {
   // number button
   var createNumberButton = function( number, inputProperty, autoClearArmedProperty ) {
     var numberString = number.toString();
-    return createDefaultButton( new Text( numberString, {font: FONT} ), function() {
+    return createDefaultButton( new Text( numberString, { font: FONT } ), function() {
       if ( autoClearArmedProperty.value ) {
         inputProperty.reset();
         autoClearArmedProperty.value = false;

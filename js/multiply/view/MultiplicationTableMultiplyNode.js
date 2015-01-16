@@ -50,11 +50,11 @@ define( function( require ) {
       this.setCellsToDefaultColor( level );
 
       // set view of selected multipliers
-      this.cells[level][0][this.problemModel.multiplierRight].select();
-      this.cells[level][this.problemModel.multiplierLeft][0].select();
+      this.cells[ level ][ 0 ][ this.problemModel.multiplierRight ].select();
+      this.cells[ level ][ this.problemModel.multiplierLeft ][ 0 ].select();
 
       // set view of selected products
-      this.cells[level].forEach( function( multiplierLeft, index ) {
+      this.cells[ level ].forEach( function( multiplierLeft, index ) {
         if ( index && index <= self.problemModel.multiplierLeft ) {
           multiplierLeft.forEach( function( cell, index ) {
             if ( index && index <= self.problemModel.multiplierRight ) {

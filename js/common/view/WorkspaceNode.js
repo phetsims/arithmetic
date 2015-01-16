@@ -69,7 +69,7 @@ define( function( require ) {
     } );
 
     // add equation
-    this.addChild( equationNode.mutate( {bottom: layoutBounds.maxY * 0.87, centerX: layoutBounds.width * 0.45} ) );
+    this.addChild( equationNode.mutate( { bottom: layoutBounds.maxY * 0.87, centerX: layoutBounds.width * 0.45 } ) );
 
     // add control panel
     var controlPanelNode = new ControlPanelNode(

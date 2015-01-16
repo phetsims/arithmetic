@@ -40,7 +40,7 @@ define( function( require ) {
     this.productInput = new EquationInputNode( productProperty, INPUT_SIZE_PRODUCT );
 
     // Set up the equals sign, which can potentially be changed to a not equals sign.
-    this.equalsSign = new Text( '', {font: FONT_EQUALS, fill: 'yellow'} );
+    this.equalsSign = new Text( '', { font: FONT_EQUALS, fill: 'yellow' } );
     this.setShowEqual( true ); // Default to equals equation until set otherwise.
 
     // Perform the layout by placing everything in an HBox.
@@ -48,7 +48,7 @@ define( function( require ) {
       spacing: SPACING,
       children: [
         this.multiplierLeftInput,
-        new Text( '\u00D7', {font: FONT_X, fill: 'yellow'} ),
+        new Text( '\u00D7', { font: FONT_X, fill: 'yellow' } ),
         this.multiplierRightInput,
         this.equalsSign,
         this.productInput

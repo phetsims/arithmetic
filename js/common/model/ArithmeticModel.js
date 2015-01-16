@@ -86,7 +86,7 @@ define( function( require ) {
 
     //Get the current level model, to make some of the code slightly more readable
     get currentLevelModel() {
-      return this.levelModels[this.level];
+      return this.levelModels[ this.level ];
     },
 
     /**
@@ -113,7 +113,7 @@ define( function( require ) {
         this.gameAudioPlayer.correctAnswer();
 
         // mark this table entry as solved
-        this.answerSheet[this.problemModel.multiplierLeft - 1][this.problemModel.multiplierRight - 1] = true;
+        this.answerSheet[ this.problemModel.multiplierLeft - 1 ][ this.problemModel.multiplierRight - 1 ] = true;
 
         // show the feedback that indicates a correct answer
         this.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
@@ -234,11 +234,11 @@ define( function( require ) {
       this.level = level;
 
       // restore or init new environment for game
-      if ( this.levelModels[level].environment ) {
+      if ( this.levelModels[ level ].environment ) {
         this.restoreGameEnvironment();
       }
       else {
-        this.initAnswerSheet( this.levelModels[level].tableSize );
+        this.initAnswerSheet( this.levelModels[ level ].tableSize );
         this.nextProblem();
       }
     },
@@ -277,7 +277,7 @@ define( function( require ) {
     resetAnswerSheet: function() {
       this.answerSheet.forEach( function( multipliersLeft ) {
         for ( var i = 0; i < multipliersLeft.length; i++ ) {
-          multipliersLeft[i] = false;
+          multipliersLeft[ i ] = false;
         }
       } );
       if ( ArithmeticQueryParameters.PREFILL_TABLE ) {
@@ -289,7 +289,7 @@ define( function( require ) {
     prefillAnswerSheet: function() {
       this.answerSheet.forEach( function( multipliersLeft ) {
         for ( var i = 0; i < multipliersLeft.length; i++ ) {
-          multipliersLeft[i] = true;
+          multipliersLeft[ i ] = true;
         }
       } );
       this.answerSheet[ 1 ][ 1 ] = false;
@@ -317,10 +317,10 @@ define( function( require ) {
       }
 
       // set left multiplier
-      multiplierLeft = _.shuffle( availableMultipliersLeft )[0];
+      multiplierLeft = _.shuffle( availableMultipliersLeft )[ 0 ];
 
       // find available right multipliers
-      this.answerSheet[multiplierLeft - 1].forEach( function( isRightMultiplierAnswered, index ) {
+      this.answerSheet[ multiplierLeft - 1 ].forEach( function( isRightMultiplierAnswered, index ) {
         if ( !isRightMultiplierAnswered ) {
           availableMultipliersRight.push( index + 1 );
         }
@@ -346,7 +346,7 @@ define( function( require ) {
     },
 
     clearGameEnvironment: function( levelNumber ) {
-      this.levelModels[levelNumber].environment = null;
+      this.levelModels[ levelNumber ].environment = null;
     },
 
     // clear environments of all levels

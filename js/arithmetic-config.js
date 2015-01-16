@@ -9,7 +9,7 @@
 
 require.config( {
 
-  deps: ['arithmetic-main'],
+  deps: [ 'arithmetic-main' ],
 
   paths: {
 

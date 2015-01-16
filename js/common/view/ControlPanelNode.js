@@ -71,7 +71,8 @@ define( function( require ) {
           listener: refreshLevelCallback,
           scale: 0.75
         } )
-      ]} );
+      ]
+    } );
     this.addChild( new Panel( vBox, PANEL_OPTIONS ) );
 
     // add observers
@@ -87,15 +88,15 @@ define( function( require ) {
       levelText.setText( StringUtils.format( pattern_level_0levelNumber, (levelNew + 1).toString() ) );
 
       // unlink observers for previous level
-      if ( levelModels[levelPrevious] ) {
-        levelModels[levelPrevious].property( 'currentScore' ).unlink( updateScore );
-        levelModels[levelPrevious].gameTimer.property( 'elapsedTime' ).unlink( updateTime );
+      if ( levelModels[ levelPrevious ] ) {
+        levelModels[ levelPrevious ].property( 'currentScore' ).unlink( updateScore );
+        levelModels[ levelPrevious ].gameTimer.property( 'elapsedTime' ).unlink( updateTime );
       }
 
       // link observers for new level
-      if ( stateProperty.value === GameState.SELECTING_LEVEL && levelModels[levelNew] ) {
-        levelModels[levelNew].property( 'currentScore' ).link( updateScore );
-        levelModels[levelNew].gameTimer.property( 'elapsedTime' ).link( updateTime );
+      if ( stateProperty.value === GameState.SELECTING_LEVEL && levelModels[ levelNew ] ) {
+        levelModels[ levelNew ].property( 'currentScore' ).link( updateScore );
+        levelModels[ levelNew ].gameTimer.property( 'elapsedTime' ).link( updateTime );
       }
     } );
 
