@@ -14,7 +14,6 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
-  var Input = require( 'SCENERY/input/Input' );
   var PropertySet = require( 'AXON/PropertySet' );
 
   /**

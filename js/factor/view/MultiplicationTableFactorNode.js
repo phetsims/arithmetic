@@ -14,13 +14,10 @@ define( function( require ) {
     'use strict';
 
     // modules
-    var ButtonListener = require( 'SUN/buttons/ButtonListener' );
-    var ButtonListenerVariant = require( 'ARITHMETIC/factor/view/ButtonListenerVariant' );
     var CellInteractionListener = require( 'ARITHMETIC/factor/view/CellInteractionListener' );
     var GameState = require( 'ARITHMETIC/common/model/GameState' );
     var inherit = require( 'PHET_CORE/inherit' );
     var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
-    var PushButtonModel = require( 'SUN/buttons/PushButtonModel' );
 
     /**
      * @param {FactorModel} model - main model class for the factor screen

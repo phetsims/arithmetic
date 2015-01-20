@@ -195,7 +195,7 @@ define( function( require ) {
                   } ).
                   onComplete( function() {
                     cell.showText();
-                    flyingProduct.visible = false
+                    flyingProduct.visible = false;
                   } );
                 flyingProduct.visible = true;
                 animationTween.start();
