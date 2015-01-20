@@ -16,6 +16,7 @@ define( function( require ) {
     // modules
     var ButtonListener = require( 'SUN/buttons/ButtonListener' );
     var ButtonListenerVariant = require( 'ARITHMETIC/factor/view/ButtonListenerVariant' );
+    var CellInteractionListener = require( 'ARITHMETIC/factor/view/CellInteractionListener' );
     var GameState = require( 'ARITHMETIC/common/model/GameState' );
     var inherit = require( 'PHET_CORE/inherit' );
     var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
@@ -35,138 +36,105 @@ define( function( require ) {
       var self = this;
       MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet, false );
 
-      this.buttonModels = []; // @private
+      this.cellListeners = []; // @private
       this.activeButton = null; // @private
+      this.mouseDownCell = null; // @private
 
       // add 'hover' and 'down' listeners for each cell in table
       this.cells.forEach( function( tableForLevel, levelIndex ) {
 
-        self.buttonModels[ levelIndex ] = [];
+        self.cellListeners[ levelIndex ] = [];
 
         tableForLevel.forEach( function( leftMultipliers, leftIndex ) {
 
           // skip zero-index because it's the header column
           if ( leftIndex ) {
 
-            leftMultipliers.forEach( function( button, rightIndex ) {
-              var buttonModel;
-              var buttonModel2;
-              var buttonListener;
-              var buttonListener2;
+            leftMultipliers.forEach( function( cell, rightIndex ) {
+              var cellListener;
 
               // skip zero-index because it's the header row
               if ( rightIndex ) {
-                buttonModel = new PushButtonModel();
-                buttonModel2 = new PushButtonModel();
-                buttonListener = new ButtonListener( buttonModel );
-                buttonListener2 = new ButtonListenerVariant( buttonModel2 );
-                button.addInputListener( buttonListener );
-                button.addInputListener( buttonListener2 );
-                button.cursor = 'pointer';
+                cellListener = new CellInteractionListener();
+                cell.addInputListener( cellListener );
+                cell.cursor = 'pointer';
 
-                // store model for next execution
-//                self.buttonModel[levelIndex].push( buttonModel );
-                self.buttonModels[ levelIndex ].push( buttonModel2 );
+                // store cell listeners for each level
+                self.cellListeners[ levelIndex ].push( cellListener );
 
-                // add 'hover' listener
-//                buttonModel.property( 'over' ).onValue( true, function() {
-//                  if ( stateProperty.value === GameState.AWAITING_USER_INPUT ) {
-//                    self.setCellsToDefaultColor( levelProperty.value );
-//                    if ( buttonModel.enabled ) {
-//                      self.setSelectedRect( levelProperty.value, leftIndex, rightIndex );
-//                      button.hover();
-//                      if ( self.activeButton !== button ){
-//                        buttonListener2.clearArmedByTouch();
-//                      }
-//                      self.activeButton = button;
-//                    }
-//                    else {
-//                      self.activeButton = null;
-//                    }
-//                  }
-//                } );
-
-                // add 'hover' listener
-                buttonModel2.property( 'over' ).onValue( true, function() {
+                var updateHover = function() {
                   if ( stateProperty.value === GameState.AWAITING_USER_INPUT ) {
                     self.setCellsToDefaultColor( levelProperty.value );
-                    if ( buttonModel2.enabled ) {
+                    if ( cellListener.enabled ) {
                       self.setSelectedRect( levelProperty.value, leftIndex, rightIndex );
-                      button.hover();
-                      if ( self.activeButton !== button ) {
-                        buttonListener2.clearArmedByTouch();
-                      }
-                      self.activeButton = button;
+                      cell.hover();
+                      self.activeButton = cell;
                     }
                     else {
                       self.activeButton = null;
                     }
                   }
+                };
+
+                // add 'hover' listeners
+                cellListener.property( 'mouseOver' ).onValue( true, updateHover );
+                cellListener.property( 'touched' ).onValue( true, updateHover );
+
+                // When the user presses the mouse button, record it.
+                cellListener.on( 'mouseDown', function() {
+                  console.log( 'Mouse Down event received.' );
+                  self.mouseDownCell = cell;
+                  self.activeButton = cell;
+                  updateHover();
                 } );
 
-                // add 'down' listener
-//                buttonModel.property( 'down' ).onValue( true, function() {
-//                    if ( buttonModel.enabled ) {
-//
-//                      self.activeButton = button;
-//
-//                      // If this answer is being submitted after getting the problem wrong, the selected region must be
-//                      // set (in other cases, this region is set as the user moves the mouse over the table).
-//                      if ( stateProperty.value === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
-//                        self.setCellsToDefaultColor( levelProperty.value );
-//                        self.setSelectedRect( levelProperty.value, leftIndex, rightIndex );
-//                      }
-//
-//                      // Record the user's answer.
-//                      problemModel.multiplierLeft = leftIndex;
-//                      problemModel.multiplierRight = rightIndex;
-//
-//                      // Disable this button if the user's answer is correct.
-//                      if ( leftIndex * rightIndex === problemModel.product ) {
-//                        buttonModel.enabled = false;
-//                      }
-//
-//                      // Submit the user's answer for checking.
-//                      submitAnswer();
-//                    }
-//                  }
-//                );
+                // Define a function for submitting an answer that can be used by both mouse and the touch handlers.
+                var createAndSubmitAnswer = function() {
 
-                // add 'down' listener
-                buttonModel2.property( 'down' ).onValue( true, function() {
-                    if ( buttonModel2.enabled ) {
-
-                      self.activeButton = button;
-
-                      // If this answer is being submitted after getting the problem wrong, the selected region must be
-                      // set (in other cases, this region is set as the user moves the mouse over the table).
-                      if ( stateProperty.value === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
-                        self.setCellsToDefaultColor( levelProperty.value );
-                        self.setSelectedRect( levelProperty.value, leftIndex, rightIndex );
-                      }
-
-                      // Record the user's answer.
-                      problemModel.multiplierLeft = leftIndex;
-                      problemModel.multiplierRight = rightIndex;
-
-                      // Disable this button if the user's answer is correct.
-                      if ( leftIndex * rightIndex === problemModel.product ) {
-                        buttonModel.enabled = false;
-                        buttonModel2.enabled = false;
-                      }
-
-                      // Submit the user's answer for checking.
-                      submitAnswer();
-                    }
+                  // If this answer is being submitted after getting the problem wrong, the selected region must be
+                  // set (in other cases, this region is set as the user moves the mouse over the table).
+                  if ( stateProperty.value === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+                    self.setCellsToDefaultColor( levelProperty.value );
+                    self.setSelectedRect( levelProperty.value, leftIndex, rightIndex );
                   }
-                );
+
+                  // Record the user's answer.
+                  problemModel.multiplierLeft = leftIndex;
+                  problemModel.multiplierRight = rightIndex;
+
+                  // Disable this button if the user's answer is correct.
+                  if ( leftIndex * rightIndex === problemModel.product ) {
+                    cellListener.enabled = false;
+                  }
+
+                  // Submit the user's answer for checking.
+                  submitAnswer();
+                };
+
+                // When the user releases the mouse button, check that it's the same cell where the mouse down
+                // occurred, and fire if so.
+                cellListener.on( 'mouseUp', function() {
+                  console.log( 'Mouse up event received.' );
+                  if ( cellListener.enabled && self.mouseDownCell === cell ) {
+                    createAndSubmitAnswer();
+                  }
+                } );
+
+                // Add listener for handling the event where the user was touching and lifts their finger.
+                cellListener.on( 'touchUp', function() {
+                  console.log( 'Touch up event received.' );
+                  // It takes two touch up events in a row from the same cell to submit an answer.
+                  if ( self.touchUpCell === cell ) {
+                    createAndSubmitAnswer();
+                  }
+                  else {
+                    self.touchUpCell = cell;
+                  }
+                } );
 
                 // cancel hover for disabled button before next task
                 stateProperty.lazyLink( function( state ) {
-//                  if ( state === GameState.AWAITING_USER_INPUT && !buttonModel.enabled && buttonModel.over ) {
-//                    self.setCellsToDefaultColor( levelProperty.value );
-//                  }
-                  if ( state === GameState.AWAITING_USER_INPUT && !buttonModel2.enabled ) {
+                  if ( state === GameState.AWAITING_USER_INPUT && !cellListener.enabled ) {
                     self.setCellsToDefaultColor( levelProperty.value );
                   }
                 } );
@@ -178,7 +146,7 @@ define( function( require ) {
 
       stateProperty.link( function( newState, oldState ) {
         if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
-          // TODO: Why are the cells defaulted here?  Is this necessary given the other changes that have been made?
+          // TODO: Why are the cells defaulted here?  Is this still necessary given the other changes that have been made?
           self.setCellsToDefaultColor( levelProperty.value );
           self.enableButtons( levelProperty.value );
         }
@@ -193,14 +161,20 @@ define( function( require ) {
           self.setCellsToDefaultColor( levelProperty.value );
         }
       } );
+
+      // TODO: For debug, remove when factor touch behavior is debugged.
+      var Text = require( 'SCENERY/nodes/Text' );
+      var PhetFont = require( 'SCENERY_PHET/PhetFont' );
+      window.phet.debugText = new Text( 'blah blah', { font: new PhetFont( 20 ), top: 320 } );
+      this.addChild( window.phet.debugText );
     }
 
     return inherit( MultiplicationTableNode, MultiplicationTableFactorNode, {
 
       // @private, enable all buttons for given level
       enableButtons: function( levelNumber ) {
-        this.buttonModels[ levelNumber ].forEach( function( buttonModel ) {
-          buttonModel.enabled = true;
+        this.cellListeners[ levelNumber ].forEach( function( cellListener ) {
+          cellListener.enabled = true;
         } );
       },
 
