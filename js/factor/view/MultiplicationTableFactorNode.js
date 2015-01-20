@@ -16,8 +16,12 @@ define( function( require ) {
     // modules
     var CellInteractionListener = require( 'ARITHMETIC/factor/view/CellInteractionListener' );
     var GameState = require( 'ARITHMETIC/common/model/GameState' );
+    var Image = require( 'SCENERY/nodes/Image' );
     var inherit = require( 'PHET_CORE/inherit' );
     var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
+
+    // images
+    var transparentPointingHandImage = require( 'image!ARITHMETIC/transparent-pointing-hand.png' );
 
     /**
      * @param {FactorModel} model - main model class for the factor screen
@@ -28,6 +32,13 @@ define( function( require ) {
       var self = this;
       MultiplicationTableNode.call( this, model.property( 'level' ), model.property( 'state' ), model.levelModels, model.answerSheet, false );
 
+      // Create an image of a transparent hand that will cue the user that they need to interact with the table.
+      var handImage = new Image( transparentPointingHandImage );
+      handImage.scale( ( this.width / transparentPointingHandImage.width ) * 0.25 );
+      handImage.centerX = this.width * 0.55; // position empirically determined
+      handImage.centerY = this.height / 2;
+
+      // variable used to track cell interaction
       this.cellListeners = []; // @private
       this.activeButton = null; // @private
       this.mouseDownCell = null; // @private
@@ -75,6 +86,7 @@ define( function( require ) {
                     // The user has re-touched the grid after submitting an incorrect answer, so assume they want to retry.
                     model.retryProblem();
                   }
+                  handImage.visible = false; // stop showing hand after first interaction
                   updateHover();
                 } );
 
@@ -82,6 +94,7 @@ define( function( require ) {
                 cellListener.on( 'mouseDown', function() {
                   self.mouseDownCell = cell;
                   self.activeButton = cell;
+                  handImage.visible = false; // stop showing hand after first interaction
                   updateHover();
                 } );
 
@@ -141,6 +154,10 @@ define( function( require ) {
         } );
       } );
 
+      // Add the hand image here for proper layering.
+      this.addChild( handImage );
+
+      // Update the cell's appearance state as the game state changes.
       model.stateProperty.link( function( newState, oldState ) {
         if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
           // TODO: Why are the cells defaulted here?  Is this still necessary given the other changes that have been made?
