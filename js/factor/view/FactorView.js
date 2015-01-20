@@ -25,14 +25,7 @@ define( function( require ) {
     ArithmeticView.call(
       this,
       model,
-      new MultiplicationTableFactorNode(
-        model.problemModel,
-        model.answerSheet,
-        model.property( 'state' ),
-        model.property( 'level' ),
-        model.levelModels,
-        model.submitAnswer.bind( model )
-      ),
+      new MultiplicationTableFactorNode( model ),
       new FactorEquationNode(
         model.property( 'state' ),
         model.problemModel.property( 'multiplierLeft' ),
