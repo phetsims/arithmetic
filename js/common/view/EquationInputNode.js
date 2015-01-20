@@ -20,13 +20,10 @@ define( function( require ) {
   var Text = require( 'SCENERY/nodes/Text' );
   var Timer = require( 'JOIST/Timer' );
 
-  // strings
-  var unknownValueIndicator = require( 'string!ARITHMETIC/unknownValueIndicator' );
-
   // constants
-  var PLACEHOLDER = unknownValueIndicator;
+  var PLACEHOLDER = require( 'string!ARITHMETIC/unknownValueIndicator' );
   var INTERACTIVE_FILL = 'white';
-  var NON_INTERACTIVE_FILL = '#eeeeee';
+  var NON_INTERACTIVE_FILL = '#dddddd';
 
   /**
    * @param {Property} valueProperty for observing and changing by input

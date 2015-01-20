@@ -65,7 +65,8 @@ define( function( require ) {
     var backgroundRect = new Rectangle( 0, 0, 0, 0, {
       fill: 'white',
       stroke: 'white',
-      strokePosition: 'outside'
+      strokePosition: 'outside',
+      pickable: 'false'
     } );
     this.addChild( backgroundRect );
 

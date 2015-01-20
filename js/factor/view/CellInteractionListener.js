@@ -5,7 +5,7 @@
  * maintains various state variables and fires events that are meant to enable the various mouse and touch interactions
  * needed for the "Factor" screen.
  *
- * TODO: DOC states and events.
+ * This listener maintains three state variables and fires three events.  See the code for details.
  *
  * @author John Blanco
  */
@@ -13,22 +13,14 @@ define( function( require ) {
   'use strict';
 
   // modules
-  // TODO: Does using the down-up listener add any value?
-//  var DownUpListener = require( 'SCENERY/input/DownUpListener' );
-
   var inherit = require( 'PHET_CORE/inherit' );
   var Input = require( 'SCENERY/input/Input' );
   var PropertySet = require( 'AXON/PropertySet' );
-
-  var instanceCount = 0;
 
   /**
    * @constructor
    */
   function CellInteractionListener() {
-
-    // TODO: Instance is temporary for debug, remove when this is working.
-    this.instance = instanceCount++;
     PropertySet.call( this, {
       mouseOver: false,
       touched: false,
@@ -38,14 +30,7 @@ define( function( require ) {
 
   return inherit( PropertySet, CellInteractionListener, {
 
-    logMessage: function( message ) {
-      var fullMessage = 'instance ' + this.instance + ': ' + message;
-      window.phet.debugText.text = fullMessage;
-      console.log( fullMessage );
-    },
-
     enter: function( event, trail ) {
-      this.logMessage( 'enter, pointer type = ' + event.pointer.type );
       if ( event.pointer.type === 'mouse' ) {
         this.mouseOver = true;
       }
@@ -55,7 +40,6 @@ define( function( require ) {
     },
 
     exit: function( event, trail ) {
-      this.logMessage( 'exit, pointer type = ' + event.pointer.type );
       if ( event.pointer.type === 'mouse' ) {
         this.mouseOver = false;
       }
@@ -65,14 +49,12 @@ define( function( require ) {
     },
 
     down: function( event, trail ) {
-      this.logMessage( 'down, pointer type = ' + event.pointer.type );
       if ( event.pointer.type === 'mouse' ) {
         this.trigger( 'mouseDown' );
       }
     },
 
     up: function( event, trail ) {
-      this.logMessage( 'up, pointer type = ' + event.pointer.type );
       if ( event.pointer.type === 'mouse' ) {
         this.trigger( 'mouseUp' );
       }

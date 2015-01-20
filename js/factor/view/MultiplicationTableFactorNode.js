@@ -83,7 +83,6 @@ define( function( require ) {
 
                 // When the user presses the mouse button, record it.
                 cellListener.on( 'mouseDown', function() {
-                  console.log( 'Mouse Down event received.' );
                   self.mouseDownCell = cell;
                   self.activeButton = cell;
                   updateHover();
@@ -115,7 +114,6 @@ define( function( require ) {
                 // When the user releases the mouse button, check that it's the same cell where the mouse down
                 // occurred, and fire if so.
                 cellListener.on( 'mouseUp', function() {
-                  console.log( 'Mouse up event received.' );
                   if ( cellListener.enabled && self.mouseDownCell === cell ) {
                     submitAnswer();
                   }
@@ -123,7 +121,6 @@ define( function( require ) {
 
                 // Add listener for handling the event where the user was touching and lifts their finger.
                 cellListener.on( 'touchUp', function() {
-                  console.log( 'Touch up event received.' );
                   // It takes two touchUp events in a row from the same cell to submit an answer.
                   if ( cellListener.enabled ) {
                     if ( self.touchUpCell === cell ) {
@@ -164,12 +161,6 @@ define( function( require ) {
           self.setCellsToDefaultColor( model.level );
         }
       } );
-
-      // TODO: For debug, remove when factor touch behavior is debugged.
-      var Text = require( 'SCENERY/nodes/Text' );
-      var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-      window.phet.debugText = new Text( 'blah blah', { font: new PhetFont( 20 ), top: 320 } );
-      this.addChild( window.phet.debugText );
     }
 
     return inherit( MultiplicationTableNode, MultiplicationTableFactorNode, {
