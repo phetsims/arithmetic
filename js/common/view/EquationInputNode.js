@@ -38,8 +38,8 @@ define( function( require ) {
     this.inputText = new Text( PLACEHOLDER, { font: ArithmeticConstants.EQUATION_FONT_TEXT } ); // @private
 
     // create cursor and save reference for use in public methods
-    this.cursor = new Rectangle( 0, 2, 1, this.inputText.height - 12, { fill: 'black' } );
-    this.cursorContainer = new Node( { children: [ this.cursor ] } );
+    this.textCursor = new Rectangle( 0, 2, 1, this.inputText.height - 12, { fill: 'black' } );
+    this.cursorContainer = new Node( { children: [ this.textCursor ] } );
 
     // save reference to input size value for use in public methods
     this.inputSize = size;
@@ -52,7 +52,7 @@ define( function( require ) {
 
     // set up blinking of cursor
     Timer.setInterval( function() {
-      self.cursor.visible = !self.cursor.visible;
+      self.textCursor.visible = !self.textCursor.visible;
     }, ArithmeticConstants.CURSOR_BLINK_INTERVAL );
 
     // add background
