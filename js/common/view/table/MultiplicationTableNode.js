@@ -66,7 +66,7 @@ define( function( require ) {
       fill: 'white',
       stroke: 'white',
       strokePosition: 'outside',
-      pickable: 'false'
+      pickable: false
     } );
     this.addChild( backgroundRect );
 
