@@ -12,6 +12,7 @@ define( function( require ) {
 
   // modules
   var ArithmeticFaceWithPointsNode = require( 'ARITHMETIC/common/view/ArithmeticFaceWithPointsNode' );
+  var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var BackButton = require( 'SCENERY_PHET/buttons/BackButton' );
   var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
   var Dimension2 = require( 'DOT/Dimension2' );
@@ -76,7 +77,7 @@ define( function( require ) {
       model.property( 'level' ),
       model.property( 'state' ),
       model.levelModels,
-      model.property( 'timerEnabled' ),
+      ArithmeticGlobals.timerEnabledProperty,
       function() {
         model.refreshLevel();
       } );
@@ -139,7 +140,7 @@ define( function( require ) {
         model.levelModels,
         model.property( 'level' ),
         model.property( 'state' ),
-        model.property( 'timerEnabled' ),
+        ArithmeticGlobals.timerEnabledProperty,
         function() {
           model.finishLevel();
         },

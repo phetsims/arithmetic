@@ -11,6 +11,7 @@ define( function( require ) {
 
   // modules
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -98,7 +99,7 @@ define( function( require ) {
           buttonHeight: 135,
           baseColor: options.buttonBaseColor,
           bestTimeProperty: model.levelModels[ levelIndex ].property( 'bestTime' ),
-          bestTimeVisibleProperty: model.property( 'timerEnabled' )
+          bestTimeVisibleProperty: ArithmeticGlobals.timerEnabledProperty
         }
       );
     } );
@@ -112,8 +113,8 @@ define( function( require ) {
     var soundAndTimerButtons = new VBox( {
       spacing: 5,
       children: [
-        new TimerToggleButton( model.property( 'timerEnabled' ) ),
-        new SoundToggleButton( model.property( 'soundEnabled' ) )
+        new TimerToggleButton( ArithmeticGlobals.timerEnabledProperty ),
+        new SoundToggleButton( ArithmeticGlobals.soundEnabledProperty )
       ],
       right:  layoutBounds.maxX * 0.08,
       bottom: layoutBounds.maxY * 0.95

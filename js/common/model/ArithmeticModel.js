@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var ArithmeticQueryParameters = require( 'ARITHMETIC/common/ArithmeticQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
@@ -39,9 +40,7 @@ define( function( require ) {
       level: -1, // game level
       input: '', // user's input value
       activeInput: null, // point to multiplierLeft (if activeInput === 'left') or multiplierRight (if activeInput === 'right')
-      state: GameState.SELECTING_LEVEL, // current game state
-      soundEnabled: true, // is sound active
-      timerEnabled: false // is timer active
+      state: GameState.SELECTING_LEVEL // current game state
     } );
 
     // array of levels with description
@@ -58,7 +57,7 @@ define( function( require ) {
     this.answerSheet = [];
 
     // hook up the audio player to the sound settings
-    this.gameAudioPlayer = new GameAudioPlayer( this.property( 'soundEnabled' ) );
+    this.gameAudioPlayer = new GameAudioPlayer( ArithmeticGlobals.soundEnabledProperty );
 
     // model for single game
     this.problemModel = new ProblemModel();
