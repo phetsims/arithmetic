@@ -32,6 +32,9 @@ define( function( require ) {
       var self = this;
       MultiplicationTableNode.call( this, model.property( 'level' ), model.property( 'state' ), model.levelModels, model.answerSheet, false );
 
+      // convenience var
+      var gameState = model.property( 'state' );
+
       // Create an image of a transparent hand that will cue the user that they need to interact with the table.
       var handImage = new Image( transparentPointingHandImage );
       handImage.scale( ( this.width / transparentPointingHandImage.width ) * 0.25 );
@@ -124,7 +127,7 @@ define( function( require ) {
                 // When the user releases the mouse button, check that it's the same cell where the mouse down
                 // occurred, and fire if so.
                 cellListener.on( 'mouseUp', function() {
-                  if ( cellListener.enabled && self.mouseDownCell === cell ) {
+                  if ( cellListener.enabled && self.mouseDownCell === cell && gameState.value === GameState.AWAITING_USER_INPUT ) {
                     submitAnswer();
                   }
                 } );
@@ -133,7 +136,7 @@ define( function( require ) {
                 cellListener.on( 'touchUp', function() {
                   // It takes two touchUp events in a row from the same cell to submit an answer.
                   if ( cellListener.enabled ) {
-                    if ( self.touchUpCell === cell ) {
+                    if ( self.touchUpCell === cell && gameState.value === GameState.AWAITING_USER_INPUT ) {
                       submitAnswer();
                     }
                     else {
