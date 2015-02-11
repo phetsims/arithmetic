@@ -8,7 +8,7 @@
 define( function( require ) {
   'use strict';
 
-  var getQueryParameter = phet.phetcommon.getQueryParameter;
+  var getQueryParameter = phet.chipper.getQueryParameter;
 
   var PREFILL_ALLOWED = true; // TODO: this should be disabled in published sims so that no one ever stumbles on to it.
 
