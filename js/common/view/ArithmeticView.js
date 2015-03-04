@@ -30,7 +30,7 @@ define( function( require ) {
 //  function ArithmeticView( model, multiplicationTableNode, equationNode, isAddKeypadNode, titleString ) {
   function ArithmeticView( model, multiplicationTableNode, equationNode, options ) {
     var self = this;
-    ScreenView.call( this, { renderer: 'svg', layoutBounds: new Bounds2( 0, 0, 768, 504 ) } );
+    ScreenView.call( this, { layoutBounds: new Bounds2( 0, 0, 768, 504 ) } );
 
     // defaults
     options = _.extend( {
