@@ -23,7 +23,7 @@ define( function( require ) {
    * @param {ArithmeticModel} model - Main model for screen.
    * @param {Node} multiplicationTableNode - Multiplication table node for given screen.
    * @param {Node} equationNode - Equation node for given screen.
-   * @param {object} options - Configuration and position options, see usage in code for details.
+   * @param {Object} [options] - Configuration and position options, see usage in code for details.
    *
    * @constructor
    */

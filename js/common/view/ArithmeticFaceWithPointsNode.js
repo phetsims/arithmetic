@@ -24,7 +24,7 @@ define( function( require ) {
 
   /**
    * @param {Object} faceModel model for smile face.
-   * @param {Object} options for face node.
+   * @param {Object} [options] for face node.
    *
    * @constructor
    */

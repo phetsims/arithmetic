@@ -35,7 +35,7 @@ define( function( require ) {
   /**
    * @param {Property} inputProperty - Input property for communication buttons of keypad with the model.
    * @param {Function} enterCallback - Callback listener for enter button.
-   * @param {Object} options for keypad node.
+   * @param {Object} [options] for keypad node.
    *
    * @constructor
    */
