@@ -1,0 +1,32 @@
+{
+  "arithmetic.name": {
+    "value": "Arithmetic"
+  },
+  "chooseYourLevel": {
+    "value": "Choose your level"
+  },
+  "divide": {
+    "value": "Divide"
+  },
+  "factor": {
+    "value": "Factor"
+  },
+  "multiply": {
+    "value": "Multiply"
+  },
+  "pattern.level.0levelNumber": {
+    "value": "Level {0}"
+  },
+  "score": {
+    "value": "Score"
+  },
+  "time": {
+    "value": "Time"
+  },
+  "tryAgain": {
+    "value": "Try Again"
+  },
+  "unknownValueIndicator": {
+    "value": "?"
+  }
+}
