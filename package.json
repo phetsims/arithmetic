@@ -23,7 +23,7 @@
     "vibe"
   ],
   "preload": [
-    "../sherpa/Tween-r12.js"
+    "../sherpa/lib/Tween-r12.js"
   ],
   "repository": {
     "type": "git",
