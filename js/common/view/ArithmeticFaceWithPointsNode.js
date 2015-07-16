@@ -47,7 +47,7 @@ define( function( require ) {
         self.smile();
       }
       else {
-        self.grimace();
+        self.frown();
       }
     } );
 
