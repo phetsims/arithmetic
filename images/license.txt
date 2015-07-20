@@ -8,3 +8,4 @@ multiply_level_1_icon.png source=PhET
 multiply_level_2_icon.png source=PhET
 multiply_level_3_icon.png source=PhET
 pointing-hand.png source=PhET author=Bryce Gruneich
+transparent-pointing-hand.png source=PhET author=Bryce Gruneich
