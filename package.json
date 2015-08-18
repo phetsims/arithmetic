@@ -17,7 +17,6 @@
     "requirejsNamespace": "ARITHMETIC",
     "simTitleStringKey": "ARITHMETIC/arithmetic.name",
     "phetLibs": [
-      "arithmetic",
       "vegas",
       "vibe"
     ],
