@@ -68,10 +68,12 @@ define( function( require ) {
     // create the animators or 'tweens' that will slide the screens in and out.
     var levelSelectionScreenAnimator = new TWEEN.Tween( levelSelectionNode ).easing( TWEEN.Easing.Cubic.InOut ).onComplete( function() {
       levelSelectionNode.visible = ( levelSelectionNode.x === self.layoutBounds.minX );
+      levelSelectionNode.pickable = levelSelectionNode.visible; // prevent interaction during animation, see issue #137
     } );
 
     var workspaceNodeAnimator = new TWEEN.Tween( workspaceNode ).easing( TWEEN.Easing.Cubic.InOut ).onComplete( function() {
       workspaceNode.visible = ( workspaceNode.x === self.layoutBounds.minX );
+      workspaceNode.pickable = workspaceNode.visible; // prevent interaction during animation, see issue #137
     } );
 
     // variables for tracking the problem being worked on by the user.
@@ -87,6 +89,7 @@ define( function( require ) {
       if ( newState === GameState.SELECTING_LEVEL && oldState ) {
 
         // Slide out the workspace node
+        workspaceNode.pickable = false;
         workspaceNodeAnimator.stop().to( { x: self.layoutBounds.maxX }, ANIMATION_TIME ).start();
 
         // Slide in the level selection screen
@@ -100,6 +103,7 @@ define( function( require ) {
         workspaceNodeAnimator.stop().to( { x: self.layoutBounds.minX }, ANIMATION_TIME ).start();
 
         // Slide out the level selection screen
+        levelSelectionNode.pickable = false;
         levelSelectionScreenAnimator.stop().to( { right: self.layoutBounds.minX }, ANIMATION_TIME ).start();
       }
 
