@@ -16,7 +16,7 @@ define( function( require ) {
   var SimLauncher = require( 'JOIST/SimLauncher' );
 
   // strings and images
-  var simTitleString = require( 'string!ARITHMETIC/arithmetic.name' );
+  var simTitleString = require( 'string!ARITHMETIC/arithmetic.title' );
 
   var simOptions = {
     credits: {
