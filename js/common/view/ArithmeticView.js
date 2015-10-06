@@ -77,8 +77,8 @@ define( function( require ) {
     } );
 
     // variables for tracking the problem being worked on by the user.
-    var previousLeftMultiplier;
-    var previousRightMultiplier;
+    var previousLeftMultiplier; //eslint-disable-line no-unused-vars // TODO: Remove this directive once prototype below is complete
+    var previousRightMultiplier; //eslint-disable-line no-unused-vars // TODO: Remove this directive once prototype below is complete
     var currentLeftMultiplier;
     var currentRightMultiplier;
 
