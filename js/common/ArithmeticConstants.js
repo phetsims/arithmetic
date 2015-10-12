@@ -19,7 +19,7 @@ define( function( require ) {
     EQUATION_FONT_TEXT: new PhetFont( { size: 32 } ),
     ICON_BACKGROUND_COLOR: 'rgb( 173, 202, 255 )',
     INPUT_LENGTH_MAX: 3, // max input length
-    SCREEN_ICON_SIZE: Screen.NAVBAR_ICON_SIZE, // size of screen icons
+    SCREEN_ICON_SIZE: Screen.HOME_SCREEN_ICON_SIZE, // size of screen icons
     STAR_NUMBER: 5, // number of stars in select level buttons
     WORKSPACE_BACKGROUND_COLOR: 'rgb(130,181,252)'
   };

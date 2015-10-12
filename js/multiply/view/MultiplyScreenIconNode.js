@@ -18,6 +18,7 @@ define( function( require ) {
   // constants
   var ICON_SIZE = ArithmeticConstants.SCREEN_ICON_SIZE;
   var SYMBOL_COLOR = '#FFF31E';
+  var LINE_WIDTH = 30; // empirically determined
 
   /**
    * @constructor
@@ -31,12 +32,12 @@ define( function( require ) {
     var symbolWidth = ICON_SIZE.width * 0.3;
     this.addChild( new Line( 0, 0, symbolWidth, symbolWidth, {
       stroke: SYMBOL_COLOR,
-      lineWidth: 4, // empirically determined
+      lineWidth: LINE_WIDTH,
       center: this.center
     } ) );
     this.addChild( new Line( symbolWidth, 0, 0, symbolWidth, {
       stroke: SYMBOL_COLOR,
-      lineWidth: 4, // empirically determined
+      lineWidth: LINE_WIDTH, // empirically determined
       center: this.center
     } ) );
   }
