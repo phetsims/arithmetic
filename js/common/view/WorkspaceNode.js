@@ -28,6 +28,9 @@ define( function( require ) {
   var BACK_BUTTON_BASE_COLOR = 'rgb( 255, 204, 67 )'; // base color of back button
   var BACK_BUTTON_MARGIN = new Dimension2( 20, 10 ); // margin of background of back button
 
+  // strings
+  var tryAgainString = require( 'string!ARITHMETIC/tryAgain' );
+
   /**
    * @param {ArithmeticModel} model - main model for screen.
    * @param {Node} multiplicationTableNode - Multiplication table node for given screen.  This can be (and generally is)
@@ -123,7 +126,7 @@ define( function( require ) {
     } ) );
 
     // add the 'try again' button
-    var tryAgainButton = new TextPushButton( 'Try Again', {
+    var tryAgainButton = new TextPushButton( tryAgainString, {
       font: new PhetFont( { size: 20 } ),
       top: equationNode.bottom + 10,
       centerX: equationNode.x + equationNode.productInput.centerX,
