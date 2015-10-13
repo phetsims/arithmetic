@@ -18,7 +18,7 @@ define( function( require ) {
   var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var KeypadNode = require( 'ARITHMETIC/common/view/KeypadNode' );
+  var Keypad = require( 'SCENERY_PHET/Keypad' );
   var LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -96,7 +96,8 @@ define( function( require ) {
     if ( showKeypad ) {
       //TODO: Does this need to be on the object, or can it be just a local var?
       // create and add the keypad
-      this.keypad = new KeypadNode( model.inputProperty, {
+      this.keypad = new Keypad( {
+        digitStringProperty: model.inputProperty,
         centerX: controlPanelNode.centerX,
         bottom: layoutBounds.maxY * 0.85
       } );
@@ -104,13 +105,9 @@ define( function( require ) {
 
       // Monitor the game state and arm the keypad for auto-clear when showing incorrect feedback.  This is part of the
       // feature where the user can simply start entering values again if they got the wrong answer initially.
-      model.property( 'state' ).link( function( gameState ) {
+      model.stateProperty.link( function( gameState ) {
         if ( gameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
-          self.keypad.autoClearArmedProperty.value = true;
-        }
-        else if ( gameState !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK && self.keypad.autoClearArmedProperty.value ) {
-          // The user must have pressed the 'try again' button, so un-arm the auto clear flag.
-          self.keypad.autoClearArmedProperty.value = false;
+          self.keypad.armForNewEntry();
         }
       } );
 
