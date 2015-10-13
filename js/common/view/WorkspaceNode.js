@@ -27,8 +27,12 @@ define( function( require ) {
   // constants
   var BACK_BUTTON_BASE_COLOR = 'rgb( 255, 204, 67 )'; // base color of back button
   var BACK_BUTTON_MARGIN = new Dimension2( 20, 10 ); // margin of background of back button
+  var BUTTON_BASE_COLOR = 'rgb( 255, 204, 67 )'; // Color match the time and sound toggle buttons
+  var BUTTON_FONT = new PhetFont( { size: 20 } );
+  var BUTTON_INSET_FROM_BOTTOM = 20; // empirically determined
 
   // strings
+  var checkString = require( 'string!ARITHMETIC/check' );
   var tryAgainString = require( 'string!ARITHMETIC/tryAgain' );
 
   /**
@@ -91,11 +95,11 @@ define( function( require ) {
     // add keypad if necessary
     if ( showKeypad ) {
       //TODO: Does this need to be on the object, or can it be just a local var?
-      this.keypad = new KeypadNode(
-        model.property( 'input' ),
-        function() { model.fillEquation(); },
-        { centerX: controlPanelNode.centerX, bottom: layoutBounds.maxY * 0.95 }
-      );
+      // create and add the keypad
+      this.keypad = new KeypadNode( model.inputProperty, {
+        centerX: controlPanelNode.centerX,
+        bottom: layoutBounds.maxY * 0.85
+      } );
       this.addChild( this.keypad );
 
       // Monitor the game state and arm the keypad for auto-clear when showing incorrect feedback.  This is part of the
@@ -110,12 +114,31 @@ define( function( require ) {
         }
       } );
 
-      // Monitor the string controlled from the keypad and, if the user starts entering something while in the state
-      // where they got a previous answer wrong, allow them to retry the problem.
-      model.property( 'input' ).link( function( input ) {
+      // add the 'Check' button, which is only used in conjunction with the keypad
+      var checkButton = new TextPushButton( checkString, {
+        font: BUTTON_FONT,
+        bottom: layoutBounds.bottom - BUTTON_INSET_FROM_BOTTOM,
+        centerX: controlPanelNode.centerX,
+        baseColor: BUTTON_BASE_COLOR,
+        listener: function() { model.fillEquation(); }
+      } );
+      this.addChild( checkButton );
+
+      var updateCheckButtonState = function() {
+        checkButton.visible = ( model.state === GameState.AWAITING_USER_INPUT);
+        checkButton.enabled = model.input.length > 0;
+      };
+
+      // control the visibility of the 'Check' button
+      model.stateProperty.link( updateCheckButtonState );
+
+      // Monitor the string entered from the keypad and, if the user starts entering something immediately after
+      // receiving the feedback indicating an incorrect answer, allow them to retry the problem.
+      model.inputProperty.link( function( input ) {
         if ( model.state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
           model.retryProblem();
         }
+        updateCheckButtonState();
       } );
     }
 
@@ -127,16 +150,18 @@ define( function( require ) {
 
     // add the 'try again' button
     var tryAgainButton = new TextPushButton( tryAgainString, {
-      font: new PhetFont( { size: 20 } ),
-      top: equationNode.bottom + 10,
-      centerX: equationNode.x + equationNode.productInput.centerX,
-      baseColor: 'rgb( 255, 204, 67 )', // Color match the time and sound toggle buttons
+      font: BUTTON_FONT,
+      bottom: layoutBounds.bottom - BUTTON_INSET_FROM_BOTTOM,
+      centerX: controlPanelNode.centerX,
+      baseColor: BUTTON_BASE_COLOR,
       listener: function() { model.retryProblem(); }
     } );
     this.addChild( tryAgainButton );
 
     // control the visibility of the 'Try Again' button
-    model.stateProperty.link( function( state ) { tryAgainButton.visible = state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK; } );
+    model.stateProperty.link( function( state ) {
+      tryAgainButton.visible = ( state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
+    } );
 
     // add node with statistic (will be shown after completing level)
     this.addChild( new LevelCompletedNodeWrapper(

@@ -4,43 +4,37 @@
  * Keypad node, allows the user to enter digits.
  *
  * @author Andrey Zelenkov (MLearner)
+ * @author John Blanco
  */
 define( function( require ) {
   'use strict';
 
   // modules
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
   var BackspaceIcon = require( 'SCENERY_PHET/BackspaceIcon' );
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var Dimension2 = require( 'DOT/Dimension2' );
   var inherit = require( 'PHET_CORE/inherit' );
   var HBox = require( 'SCENERY/nodes/HBox' );
-  var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Property = require( 'AXON/Property' );
-  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var RectangularPushButton = require( 'SUN/buttons/RectangularPushButton' );
   var Text = require( 'SCENERY/nodes/Text' );
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
-  var ARROW_SIZE = 20; // arrow size of enter and backspace
-  var BASE_COLOR = 'white'; // base color for all buttons except the enter button
+  var BASE_COLOR = 'white'; // base color for all buttons
   var BUTTON_SIZE = new Dimension2( 40, 40 ); // size of buttons
-  var ENTER_BUTTON_BASE_COLOR = 'rgb( 238, 253, 77 )';
   var FONT = new PhetFont( { size: 24 } );
   var SPACING = 10; // spacing between buttons
 
   /**
-   * @param {Property} inputProperty - Input property for communication buttons of keypad with the model.
-   * @param {Function} enterCallback - Callback listener for enter button.
-   * @param {Object} [options] for keypad node.
+   * @param {Property.<string>} inputProperty - string property into which the user's entry is stored
+   * @param {Object} [options]
    *
    * @constructor
    */
-  function KeypadNode( inputProperty, enterCallback, options ) {
-    var enterButton;
+  function KeypadNode( inputProperty, options ) {
     var backspaceButton;
 
     // The following property is for arming the 'auto clear' functionality.  When set, this will cause the keypad to
@@ -74,33 +68,22 @@ define( function( require ) {
         } ),
         new HBox( {
           spacing: SPACING, children: [
-            backspaceButton = createBackspaceButton( inputProperty ),
             createNumberButton( 0, inputProperty, this.autoClearArmedProperty ),
-            enterButton = createEnterButton( enterCallback )
+            backspaceButton = createBackspaceButton( inputProperty )
           ]
         } )
       ]
     }, options ) );
 
-    // Control the enabled state of the enter and backspace buttons.
-    var enterAndBackspaceEnabled = new DerivedProperty( [ inputProperty, this.autoClearArmedProperty ],
+    // control the enabled state of the backspace button
+    var backspaceButtonEnabled = new DerivedProperty( [ inputProperty, this.autoClearArmedProperty ],
       function( inputString, autoClearArmed ) {
         return ( !autoClearArmed && inputString.length > 0 );
       }
     );
 
-    enterAndBackspaceEnabled.linkAttribute( backspaceButton, 'enabled' );
-    enterAndBackspaceEnabled.linkAttribute( enterButton, 'enabled' );
+    backspaceButtonEnabled.linkAttribute( backspaceButton, 'enabled' );
   }
-
-  // backspace button
-  var createBackspaceButton = function( inputProperty ) {
-    var backspaceIcon = new BackspaceIcon();
-    backspaceIcon.scale( ( BUTTON_SIZE.width * 0.65 ) / backspaceIcon.bounds.width );
-    return createDefaultButton( backspaceIcon, function() {
-      inputProperty.value = inputProperty.value.substr( 0, inputProperty.value.length - 1 );
-    } );
-  };
 
   // create default rectangular button with common options, necessary for other building other buttons
   var createDefaultButton = function( content, listener, options ) {
@@ -114,35 +97,30 @@ define( function( require ) {
     }, options ) );
   };
 
-  // enter button
-  var createEnterButton = function( callback ) {
+  // function to create number buttons, handles the zero button differently from others
+  var createNumberButton = function( number, inputProperty, autoClearArmedProperty ) {
+    var numberString = number.toString();
     return createDefaultButton(
-      new Node( {
-        children: [
-          new ArrowNode( ARROW_SIZE / 2, 0, -ARROW_SIZE / 2, 0, {
-            headWidth: 6,
-            headHeight: 6,
-            tailWidth: 1
-          } ),
-          new Rectangle( ARROW_SIZE / 2 - 1, -ARROW_SIZE / 4, 2, ARROW_SIZE / 4, { fill: 'black' } )
-        ]
-      } ),
-      callback,
-      { baseColor: ENTER_BUTTON_BASE_COLOR }
+      new Text( numberString, { font: FONT } ),
+      function() {
+        if ( autoClearArmedProperty.value ) {
+          inputProperty.reset();
+          autoClearArmedProperty.value = false;
+        }
+        if ( inputProperty.value.length < ArithmeticConstants.INPUT_LENGTH_MAX ) {
+          inputProperty.value += numberString;
+        }
+      },
+      { minWidth: number === 0 ? BUTTON_SIZE.width * 2 + SPACING : BUTTON_SIZE.width }
     );
   };
 
-  // number button
-  var createNumberButton = function( number, inputProperty, autoClearArmedProperty ) {
-    var numberString = number.toString();
-    return createDefaultButton( new Text( numberString, { font: FONT } ), function() {
-      if ( autoClearArmedProperty.value ) {
-        inputProperty.reset();
-        autoClearArmedProperty.value = false;
-      }
-      if ( inputProperty.value.length < ArithmeticConstants.INPUT_LENGTH_MAX ) {
-        inputProperty.value += numberString;
-      }
+  // backspace button
+  var createBackspaceButton = function( inputProperty ) {
+    var backspaceIcon = new BackspaceIcon();
+    backspaceIcon.scale( ( BUTTON_SIZE.width * 0.65 ) / backspaceIcon.bounds.width );
+    return createDefaultButton( backspaceIcon, function() {
+      inputProperty.value = inputProperty.value.substr( 0, inputProperty.value.length - 1 );
     } );
   };
 

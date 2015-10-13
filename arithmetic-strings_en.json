@@ -2,6 +2,9 @@
   "arithmetic.title": {
     "value": "Arithmetic"
   },
+  "check": {
+    "value": "Check"
+  },
   "chooseYourLevel": {
     "value": "Choose your level"
   },
