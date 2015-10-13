@@ -18,7 +18,7 @@ define( function( require ) {
   // constants
   var ICON_SIZE = ArithmeticConstants.SCREEN_ICON_SIZE;
   var SYMBOL_COLOR = '#FFF31E';
-  var LINE_WIDTH = 30; // empirically determined
+  var LINE_WIDTH = 33; // empirically determined
 
   /**
    * @constructor

@@ -19,7 +19,7 @@ define( function( require ) {
   // constants
   var ICON_SIZE = ArithmeticConstants.SCREEN_ICON_SIZE;
   var SYMBOL_COLOR = '#FFF31E';
-  var CIRCLE_RADIUS = 3; // Empirically determined
+  var CIRCLE_RADIUS = 30; // Empirically determined
 
   /**
    * @constructor
@@ -32,7 +32,7 @@ define( function( require ) {
     // Create and add the divide symbol.  We are doing our own, since the Unicode one doesn't look very good.
     this.addChild( new Line( 0, 0, ICON_SIZE.width * 0.4, 0, {
       stroke: SYMBOL_COLOR,
-      lineWidth: 4, // empirically determined
+      lineWidth: 33, // empirically determined
       center: this.center
     } ) );
     this.addChild( new Circle( CIRCLE_RADIUS, {
