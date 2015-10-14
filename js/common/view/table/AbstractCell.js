@@ -28,7 +28,6 @@ define( function( require ) {
     this._background = new Rectangle( 0, 0, backgroundOptions.width, backgroundOptions.height, _.extend( {
       fill: 'white',
       stroke: 'white',
-      strokePosition: 'outside',
       lineWidth: 2.5
     }, backgroundOptions ) );
     this.addChild( this._background );

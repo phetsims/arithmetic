@@ -36,7 +36,7 @@ define( function( require ) {
       var gameState = model.property( 'state' );
 
       // Create an image of a transparent hand that will cue the user that they need to interact with the table.
-      var handImage = new Image( transparentPointingHandImage );
+      var handImage = new Image( transparentPointingHandImage, { pickable: false } );
       handImage.scale( ( this.width / transparentPointingHandImage.width ) * 0.25 );
       handImage.centerX = this.width * 0.55; // position empirically determined
       handImage.centerY = this.height / 2;
