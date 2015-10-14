@@ -65,7 +65,7 @@ define( function( require ) {
     var backgroundRect = new Rectangle( 0, 0, 0, 0, {
       fill: 'white',
       stroke: 'white',
-      pickable: false
+      cursor: 'pointer' // this is done so that the cursor doesn't change when moving between cells
     } );
     this.addChild( backgroundRect );
 
