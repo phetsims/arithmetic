@@ -98,6 +98,7 @@ define( function( require ) {
       // create and add the keypad
       this.keypad = new Keypad( {
         digitStringProperty: model.inputProperty,
+        maxDigits: 3,
         centerX: controlPanelNode.centerX,
         bottom: layoutBounds.maxY * 0.85
       } );
