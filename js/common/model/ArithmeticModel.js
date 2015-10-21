@@ -181,6 +181,7 @@ define( function( require ) {
     },
 
     returnToLevelSelectScreen: function() {
+
       // save state of current level
       this.saveGameEnvironment();
 
@@ -245,10 +246,11 @@ define( function( require ) {
     resetLevel: function() {
       this.currentLevelModel.property( 'currentScore' ).reset();
       this.currentLevelModel.gameTimer.property( 'elapsedTime' ).reset();
-      this.property( 'input' ).reset();
+      this.inputProperty.reset();
       this.resetAnswerSheet();
       this.problemModel.reset();
       this.faceModel.reset();
+      this.faceModel.hideFace();
     },
 
     // set new answer sheet changing level
