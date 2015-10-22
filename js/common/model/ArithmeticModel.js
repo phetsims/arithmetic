@@ -180,6 +180,18 @@ define( function( require ) {
       return true;
     },
 
+    /**
+     * Automatically answer most of the problems for this level.  This is useful for testing, since it can save time
+     * when testing how the sim behaves when a user finishing answering all questions for a level.
+     * <p>
+     * IMPORTANT: We need to be VERY CAREFUL that this is never available in the published sim.
+     * <p>
+     * @protected
+     */
+    autoAnswer: function() {
+      // does nothing in the base class, override in descendent classes if desired
+    },
+
     returnToLevelSelectScreen: function() {
 
       // save state of current level
@@ -240,6 +252,10 @@ define( function( require ) {
       else {
         this.initAnswerSheet( this.levelModels[ level ].tableSize );
         this.nextProblem();
+
+        if ( assert && window.phet.chipper.getQueryParameters().hasOwnProperty( 'autoAnswer' ) ) {
+          this.autoAnswer();
+        }
       }
     },
 
