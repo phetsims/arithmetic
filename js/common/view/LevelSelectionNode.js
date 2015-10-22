@@ -27,6 +27,7 @@ define( function( require ) {
   // constants
   var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( { size: 24 } );
   var TAB_TITLE_FONT = new PhetFont( { size: 54 } );
+  var BUTTON_LENGTH = 150;
 
   // icon sets, used to place on the buttons
   var ICON_SETS = {
@@ -95,8 +96,8 @@ define( function( require ) {
         model.levelModels[ levelIndex ].property( 'displayScore' ),
         level.perfectScore,
         {
-          buttonWidth: 135,
-          buttonHeight: 135,
+          buttonWidth: BUTTON_LENGTH,
+          buttonHeight: BUTTON_LENGTH,
           baseColor: options.buttonBaseColor,
           bestTimeProperty: model.levelModels[ levelIndex ].property( 'bestTime' ),
           bestTimeVisibleProperty: ArithmeticGlobals.timerEnabledProperty
