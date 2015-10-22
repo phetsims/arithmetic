@@ -31,19 +31,19 @@ define( function( require ) {
   // icon sets, used to place on the buttons
   var ICON_SETS = {
     multiply: [
-      require( 'image!ARITHMETIC/multiply_level_1_icon.png' ),
-      require( 'image!ARITHMETIC/multiply_level_2_icon.png' ),
-      require( 'image!ARITHMETIC/multiply_level_3_icon.png' )
+      require( 'mipmap!ARITHMETIC/multiply_level_1_icon.png' ),
+      require( 'mipmap!ARITHMETIC/multiply_level_2_icon.png' ),
+      require( 'mipmap!ARITHMETIC/multiply_level_3_icon.png' )
     ],
     factor: [
-      require( 'image!ARITHMETIC/factor_level_1_icon.png' ),
-      require( 'image!ARITHMETIC/factor_level_2_icon.png' ),
-      require( 'image!ARITHMETIC/factor_level_3_icon.png' )
+      require( 'mipmap!ARITHMETIC/factor_level_1_icon.png' ),
+      require( 'mipmap!ARITHMETIC/factor_level_2_icon.png' ),
+      require( 'mipmap!ARITHMETIC/factor_level_3_icon.png' )
     ],
     divide: [
-      require( 'image!ARITHMETIC/divide_level_1_icon.png' ),
-      require( 'image!ARITHMETIC/divide_level_2_icon.png' ),
-      require( 'image!ARITHMETIC/divide_level_3_icon.png' )
+      require( 'mipmap!ARITHMETIC/divide_level_1_icon.png' ),
+      require( 'mipmap!ARITHMETIC/divide_level_2_icon.png' ),
+      require( 'mipmap!ARITHMETIC/divide_level_3_icon.png' )
     ]
   };
 
