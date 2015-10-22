@@ -104,12 +104,19 @@ define( function( require ) {
       } );
       this.addChild( this.keypad );
 
-      // Monitor the game state and arm the keypad for auto-clear when showing incorrect feedback.  This is part of the
-      // feature where the user can simply start entering values again if they got the wrong answer initially.
+      // Update the keypad state based on the game state.
       model.stateProperty.link( function( gameState ) {
+
         if ( gameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+          // Arm the keypad for auto-clear when showing incorrect feedback.  This is part of the feature where the user
+          // can simply start entering values again if they got the wrong answer initially.
           self.keypad.armForNewEntry();
         }
+
+        // Only allow the user to input digits when expecting them.  We use 'pickable' here instead of 'enabled' so that
+        // we don't gray out the keypad, which might visually draw attention to it.
+        self.keypad.pickable = gameState === GameState.AWAITING_USER_INPUT ||
+                               gameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK;
       } );
 
       // add the 'Check' button, which is only used in conjunction with the keypad
