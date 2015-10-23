@@ -2,18 +2,17 @@
 Implementation Notes for Arithmetic
 ===================================
 
-Here be Dragons
+The HTML5 code that defines this simulation was originally written by an outside contractor, then taken over by PhET.
+Some elements of the code from the contractor were structured a bit differently than they would have been had they been
+implemented by PhET from the outset.  Some of the code, such as the nature of the state transitions, was rewritten in
+order to make it more maintainable and extensible.  Other portions were left as they were in the interests of getting
+the sim published in a timely manner.  As a result, the code is probably going to look a bit odd to anyone coming along
+to maintain this some years in the future, since there were two very different ideas of what constitutes good MVC-
+oriented software design, and good software design in general, in the minds of the two primary authors of this code.
+Keeping this in mind may help when working to decipher what lies within.
 
-The HTML5 code that defines this simulation was originally written by a
-contractor, then taken over by PhET.  The code from the contractor was, in
-this author's opinion, oddly structured.  I tried, I really did, to get it,
-to understand why certain design choices were made, and to roll with it.  In
-the end, however, some major restructuring was done in order to support the
-addition of new features.  As a result, the code is probably going to look a
-bit odd to anyone coming along to maintain this some years in the future,
-since I feel like there were two very different ideas of what constitutes good
-MVC-oriented software design, and good software design in general, in the
-minds of the two authors of this code.  Keeping this in mind may help when
-working to decipher what lies within.
+
+
+
 
 
