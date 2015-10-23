@@ -32,7 +32,12 @@ define( function( require ) {
 
       // set view for multiplication table after choosing left and right multipliers
       if ( state === GameState.AWAITING_USER_INPUT ) {
+        // select the cells that correspond to the current problem
         self.updateCellColors( levelProperty.value );
+      }
+      else if ( state === GameState.LEVEL_COMPLETED ) {
+        // set all cells to default conditions when the table has been filled
+        self.setCellsToDefaultColor( levelProperty.value );
       }
     } );
   }
