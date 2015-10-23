@@ -29,10 +29,16 @@ define( function( require ) {
    * @param {Property.<number>} multiplierRightProperty - Property necessary for creating right multiplier input.
    * @param {Property.<number>} productProperty - Property necessary for creating product input.
    * @param {Property.<number>} productProperty - Property necessary for creating product input.
+   * @param {Object} [options]
    *
    * @constructor
    */
-  function EquationNode( multiplierLeftProperty, multiplierRightProperty, productProperty ) {
+  function EquationNode( multiplierLeftProperty, multiplierRightProperty, productProperty, options ) {
+
+    options = _.extend( {
+      spacing: SPACING,
+      resize: false
+    }, options );
 
     // Set up the three nodes that depict the numbers in the equation.
     this.multiplierLeftInput = new EquationInputNode( multiplierLeftProperty, INPUT_SIZE_MULTIPLIER );
@@ -43,18 +49,16 @@ define( function( require ) {
     this.equalsSign = new Text( '', { font: FONT_EQUALS, fill: 'yellow' } );
     this.setShowEqual( true ); // Default to equals equation until set otherwise.
 
+    options.children = [
+      this.multiplierLeftInput,
+      new Text( '\u00D7', { font: FONT_X, fill: 'yellow' } ),
+      this.multiplierRightInput,
+      this.equalsSign,
+      this.productInput
+    ];
+
     // Perform the layout by placing everything in an HBox.
-    HBox.call( this, {
-      spacing: SPACING,
-      children: [
-        this.multiplierLeftInput,
-        new Text( '\u00D7', { font: FONT_X, fill: 'yellow' } ),
-        this.multiplierRightInput,
-        this.equalsSign,
-        this.productInput
-      ],
-      resize: false
-    } );
+    HBox.call( this, options );
   }
 
   return inherit( HBox, EquationNode, {

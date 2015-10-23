@@ -77,7 +77,14 @@ define( function( require ) {
     } );
 
     // add equation
-    this.addChild( equationNode.mutate( { bottom: layoutBounds.maxY * 0.87, centerX: layoutBounds.width * 0.45 } ) );
+    equationNode.bottom = layoutBounds.maxY * 0.87;
+    equationNode.centerX = layoutBounds.width * 0.45;
+    this.addChild( equationNode );
+
+    // hide the equation node when the level has been completed
+    model.stateProperty.link( function( gameState ) {
+      equationNode.visible = gameState !== GameState.LEVEL_COMPLETED;
+    } );
 
     // add control panel
     var controlPanelNode = new ControlPanelNode(
@@ -117,6 +124,9 @@ define( function( require ) {
         // we don't gray out the keypad, which might visually draw attention to it.
         self.keypad.pickable = gameState === GameState.AWAITING_USER_INPUT ||
                                gameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK;
+
+        // Don't show the keypad after the level has been completed.
+        self.keypad.visible = gameState !== GameState.LEVEL_COMPLETED;
       } );
 
       // add the 'Check' button, which is only used in conjunction with the keypad
@@ -168,14 +178,14 @@ define( function( require ) {
       tryAgainButton.visible = ( state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
     } );
 
-    // add node with statistic (will be shown after completing level)
+    // add the dialog that indicates that the level has been completed
     this.addChild( new LevelCompletedNodeWrapper(
         model.levelModels,
         model.property( 'level' ),
         model.property( 'state' ),
         ArithmeticGlobals.timerEnabledProperty,
         function() {
-          model.finishLevel();
+          model.state = GameState.LEVEL_COMPLETED;
         },
         layoutBounds )
     );

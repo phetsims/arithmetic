@@ -148,7 +148,7 @@ define( function( require ) {
       }
       else {
         // board must be full, so the level is now complete
-        this.state = GameState.LEVEL_COMPLETED;
+        this.state = GameState.SHOWING_LEVEL_COMPLETED_DIALOG;
       }
     },
 
@@ -208,16 +208,6 @@ define( function( require ) {
       this.currentLevelModel.displayScore = 0;
       this.nextProblem();
       this.trigger( 'refreshed' );
-    },
-
-    finishLevel: function() {
-      // refresh current level
-      this.resetLevel();
-
-      // clear game environment
-      this.clearGameEnvironment( this.level );
-
-      this.state = GameState.SELECTING_LEVEL;
     },
 
     resetLevelModels: function() {

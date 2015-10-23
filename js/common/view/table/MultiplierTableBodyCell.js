@@ -18,10 +18,10 @@ define( function( require ) {
   var pointingHandImage = require( 'image!ARITHMETIC/pointing-hand.png' );
 
   // constants
-  var ACTIVE_COLOR = 'rgb(3,18,136)'; // active color
-  var HOVER_COLOR = 'rgb(238,253,77)'; // hover color
-  var NORMAL_COLOR = 'rgb(50,70,255)'; // normal color
-  var SELECT_COLOR = 'rgb(77,0,153)'; // select color
+  var ACTIVE_COLOR = 'rgb(3,18,136)';
+  var HOVER_COLOR = 'rgb(238,253,77)';
+  var NORMAL_COLOR = 'rgb(50,70,255)';
+  var SELECT_COLOR = 'rgb(77,0,153)';
 
   //TODO: The options should either be consolidated or renamed, since the API makes it such that they can't both be optional.
   /**
