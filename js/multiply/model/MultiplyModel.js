@@ -67,7 +67,7 @@ define( function( require ) {
       }
       var self = this;
       var numQuestions = this.answerSheet.length * this.answerSheet[ 0 ].length;
-      var numQuestionsToAnswer = numQuestions - 2;
+      var numQuestionsToAnswer = numQuestions - 1;
       console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
       _.times( numQuestionsToAnswer, function() {
         self.problemModel.product = self.problemModel.multiplierLeft * self.problemModel.multiplierRight;
