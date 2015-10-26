@@ -217,8 +217,8 @@ define( function( require ) {
     },
 
     playLevelFinishedSound: function() {
-      var resultScore = this.currentLevelModel.currentScore,
-        perfectScore = this.currentLevelModel.perfectScore;
+      var resultScore = this.currentLevelModel.currentScore;
+      var perfectScore = this.currentLevelModel.perfectScore;
 
       if ( resultScore === perfectScore ) {
         this.gameAudioPlayer.gameOverPerfectScore();
