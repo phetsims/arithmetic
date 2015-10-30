@@ -197,9 +197,7 @@ define( function( require ) {
       // save state of current level
       this.saveGameEnvironment();
 
-      // reset current level
-      this.resetLevel();
-
+      // go back to the level selection screen
       this.state = GameState.SELECTING_LEVEL;
     },
 
