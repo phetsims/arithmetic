@@ -18,7 +18,7 @@ define( function( require ) {
   var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var Keypad = require( 'SCENERY_PHET/Keypad' );
+  var NumberKeypad = require( 'SCENERY_PHET/NumberKeypad' );
   var LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -103,7 +103,7 @@ define( function( require ) {
     if ( showKeypad ) {
       //TODO: Does this need to be on the object, or can it be just a local var?
       // create and add the keypad
-      this.keypad = new Keypad( {
+      this.keypad = new NumberKeypad( {
         digitStringProperty: model.inputProperty,
         maxDigits: 3,
         centerX: controlPanelNode.centerX,
