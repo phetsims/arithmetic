@@ -53,6 +53,10 @@ define( function( require ) {
           }
         }
       }
+      else if ( state === GameState.LEVEL_COMPLETED ) {
+        // set all cells to default conditions when the table has been filled
+        self.setCellsToDefaultColor( levelProperty.value );
+      }
     } );
   }
 
