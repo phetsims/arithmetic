@@ -163,17 +163,20 @@ define( function( require ) {
       // Update the cell's appearance state as the game state changes.
       model.stateProperty.link( function( newState, oldState ) {
         if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
-          // TODO: Why are the cells defaulted here?  Is this still necessary given the other changes that have been made?
           self.setCellsToDefaultColor( model.level );
           self.enableButtons( model.level );
         }
-        if ( ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ||
+        else if ( ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ||
                newState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) &&
              self.activeButton !== null ) {
+
           // Cancel hover when showing feedback
           self.activeButton.select();
         }
-        if ( oldState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK && newState === GameState.AWAITING_USER_INPUT ) {
+        if ( newState === GameState.LEVEL_COMPLETED ||
+             ( oldState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK &&
+               newState === GameState.AWAITING_USER_INPUT ) ) {
+
           // clear previously selected region
           self.setCellsToDefaultColor( model.level );
         }
