@@ -82,8 +82,14 @@ define( function( require ) {
     this.addChild( equationNode );
 
     // hide the equation node when the level has been completed
-    model.stateProperty.link( function( gameState ) {
-      equationNode.visible = gameState !== GameState.LEVEL_COMPLETED;
+    model.stateProperty.link( function( newGameState, oldGameState ) {
+
+      // Hide the equation node then the level has been completed and when returning to the level selection screen
+      // after the level is complete.
+      equationNode.visible = !( newGameState === GameState.LEVEL_COMPLETED ||
+                                ( oldGameState === GameState.LEVEL_COMPLETED &&
+                                  newGameState === GameState.SELECTING_LEVEL ) );
+
     } );
 
     // add control panel
@@ -112,9 +118,9 @@ define( function( require ) {
       this.addChild( this.keypad );
 
       // Update the keypad state based on the game state.
-      model.stateProperty.link( function( gameState ) {
+      model.stateProperty.link( function( newGameState, oldGameState ) {
 
-        if ( gameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+        if ( newGameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
           // Arm the keypad for auto-clear when showing incorrect feedback.  This is part of the feature where the user
           // can simply start entering values again if they got the wrong answer initially.
           self.keypad.armForNewEntry();
@@ -122,11 +128,14 @@ define( function( require ) {
 
         // Only allow the user to input digits when expecting them.  We use 'pickable' here instead of 'enabled' so that
         // we don't gray out the keypad, which might visually draw attention to it.
-        self.keypad.pickable = gameState === GameState.AWAITING_USER_INPUT ||
-                               gameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK;
+        self.keypad.pickable = newGameState === GameState.AWAITING_USER_INPUT ||
+                               newGameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK;
 
-        // Don't show the keypad after the level has been completed.
-        self.keypad.visible = gameState !== GameState.LEVEL_COMPLETED;
+        // The keypad should be invisible once the level is completed, and should stay invisible on transition to the
+        // SELECTING_LEVEL state.
+        self.keypad.visible = !( newGameState === GameState.LEVEL_COMPLETED ||
+                                 ( oldGameState === GameState.LEVEL_COMPLETED &&
+                                   newGameState === GameState.SELECTING_LEVEL ) );
       } );
 
       // add the 'Check' button, which is only used in conjunction with the keypad
