@@ -10,8 +10,9 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var inherit = require( 'PHET_CORE/inherit' );
   var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
+  var GameState = require( 'ARITHMETIC/common/model/GameState' );
+  var inherit = require( 'PHET_CORE/inherit' );
 
   /**
    * @constructor
@@ -64,6 +65,40 @@ define( function( require ) {
 
       // All multiplier pairs have been used, so false is returned.
       return false;
+    },
+
+    /**
+     * Automatically answer most of the questions.  This is useful for testing, since it can save time when testing
+     * how the sim behaves when a user finishing answering all questions for a level.  We need to be very careful that
+     * this is never available in the published sim.
+     * @override
+     * @protected
+     */
+    autoAnswer: function() {
+      if ( !assert ) {
+        throw new Error( 'the autoAnswer function was called in a built version, this should never occur' );
+      }
+      var self = this;
+      var numQuestions = this.answerSheet.length * this.answerSheet[ 0 ].length;
+      var numQuestionsToAnswer = numQuestions - 1;
+      console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
+      _.times( numQuestionsToAnswer, function() {
+        if ( self.problemModel.multiplierLeft === undefined ) {
+          self.problemModel.multiplierLeft = self.problemModel.product / self.problemModel.multiplierRight;
+        }
+        else if ( self.problemModel.multiplierRight === undefined ) {
+          self.problemModel.multiplierRight = self.problemModel.product / self.problemModel.multiplierLeft;
+        }
+        else {
+          throw new Error( 'unexpected problem structure' );
+        }
+        self.currentLevelModel.currentScore += self.problemModel.possiblePoints;
+        self.currentLevelModel.displayScore = self.currentLevelModel.currentScore;
+        self.answerSheet[ self.problemModel.multiplierLeft - 1 ][ self.problemModel.multiplierRight - 1 ] = true;
+        self.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
+        self.nextProblem();
+      } );
     }
   } );
+
 } );
