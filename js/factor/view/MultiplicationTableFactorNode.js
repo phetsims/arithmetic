@@ -180,6 +180,9 @@ define( function( require ) {
           // clear previously selected region
           self.setCellsToDefaultColor( model.level );
         }
+
+        // don't allow interaction when displaying a completed board
+        self.pickable = newState !== GameState.LEVEL_COMPLETED;
       } );
     }
 

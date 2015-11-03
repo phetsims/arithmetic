@@ -24,10 +24,8 @@ define( function( require ) {
    * @param {Node} multiplicationTableNode - Multiplication table node for given screen.
    * @param {Node} equationNode - Equation node for given screen.
    * @param {Object} [options] - Configuration and position options, see usage in code for details.
-   *
    * @constructor
    */
-//  function ArithmeticView( model, multiplicationTableNode, equationNode, isAddKeypadNode, titleString ) {
   function ArithmeticView( model, multiplicationTableNode, equationNode, options ) {
     var self = this;
     ScreenView.call( this, { layoutBounds: new Bounds2( 0, 0, 768, 504 ) } );
