@@ -86,7 +86,6 @@ define( function( require ) {
 
     // variables for tracking the problem being worked on by the user.
     // TODO: Remove this directive once prototype below is complete
-    // TODO: Remove this directive once prototype below is complete
     var previousLeftMultiplier; //eslint-disable-line no-unused-vars
     var previousRightMultiplier; //eslint-disable-line no-unused-vars
     var currentLeftMultiplier;
@@ -114,7 +113,7 @@ define( function( require ) {
 
         // Slide out the level selection screen
         levelSelectionNode.pickable = false;
-        levelSelectionScreenAnimator.stop().to( { right: self.layoutBounds.minX }, ANIMATION_TIME ).start();
+        levelSelectionScreenAnimator.stop().to( { x: self.layoutBounds.minX - levelSelectionNode.width }, ANIMATION_TIME ).start();
       }
 
       if ( newState === GameState.AWAITING_USER_INPUT ) {
