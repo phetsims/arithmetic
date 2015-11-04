@@ -15,6 +15,11 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
 
+  // constants
+  var SMALL_FONT = new PhetFont( 17 );
+  var MEDIUM_FONT = new PhetFont( 22 );
+  var LARGE_FONT = new PhetFont( 30 );
+
   /**
    * @param {Object} backgroundOptions - Background options for button.
    * @param {Object} textOptions - Text options for button.
@@ -32,9 +37,22 @@ define( function( require ) {
     }, backgroundOptions ) );
     this.addChild( this._background );
 
+    // Choose the font.  This is an optimization done so that the font doesn't have to be recreated for each cell.  The
+    // thresholds and the font sizes were empirically determined.
+    var font;
+    if ( this.bounds.height < 27 ) {
+      font = SMALL_FONT;
+    }
+    else if ( this.bounds.height < 35 ) {
+      font = MEDIUM_FONT;
+    }
+    else {
+      font = LARGE_FONT;
+    }
+
     // add content text
     this._text = new Text( '?', _.extend( {
-      font: new PhetFont( { size: Math.round( 3 * this.bounds.height / 5 + 2 ) } ),
+      font: font,
       fill: 'white',
       centerY: this.bounds.height / 2
     }, textOptions ) );
