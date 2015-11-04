@@ -53,9 +53,6 @@ define( function( require ) {
      * @protected
      */
     autoAnswer: function() {
-      if ( !assert ) {
-        throw new Error( 'the autoAnswer function was called in a built version, this should never occur' );
-      }
       var self = this;
       var numQuestions = this.answerSheet.length * this.answerSheet[ 0 ].length;
       var numQuestionsToAnswer = numQuestions - 1;

@@ -241,7 +241,8 @@ define( function( require ) {
         this.initAnswerSheet( this.levelModels[ level ].tableSize );
         this.nextProblem();
 
-        if ( assert && window.phet.chipper.getQueryParameters().hasOwnProperty( 'autoAnswer' ) ) {
+        // enable auto answer if specified in the query params, but only if this is not a production release
+        if ( window.phet.joist.sim.version.indexOf( '-' ) > 0 && window.phet.chipper.getQueryParameter( 'autoAnswer' ) ) {
           this.autoAnswer();
         }
       }
