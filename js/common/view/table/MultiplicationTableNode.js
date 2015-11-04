@@ -45,10 +45,11 @@ define( function( require ) {
    * @param {Array} levelModels - Array of descriptions for each level.
    * @param {Array} answerSheet - 2D array that tracks problems that have and haven't been answered
    * @param {boolean} animateAnswer - flag that controls whether answer appears to fly into the cell or just appears
+   * @param {boolean} pointerUsedInCells - flag that indicates whether the cells need to support a pointer finger when highlighted
    *
    * @constructor
    */
-  function MultiplicationTableNode( levelProperty, stateProperty, levelModels, answerSheet, animateAnswer ) {
+  function MultiplicationTableNode( levelProperty, stateProperty, levelModels, answerSheet, animateAnswer, pointerUsedInCells ) {
     var self = this;
     Node.call( this );
 
@@ -114,7 +115,11 @@ define( function( require ) {
               self.cells[ levelIndex ][ i ][ j ] = new MultiplierTableHeaderCell( i.toString(), buttonOptions );
             }
             else {
-              self.cells[ levelIndex ][ i ][ j ] = new MultiplierTableBodyCell( ( i * j ).toString(), buttonOptions );
+              self.cells[ levelIndex ][ i ][ j ] = new MultiplierTableBodyCell(
+                ( i * j ).toString(),
+                pointerUsedInCells,
+                buttonOptions
+              );
             }
             hBoxChildren.push( self.cells[ levelIndex ][ i ][ j ] );
           }

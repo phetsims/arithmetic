@@ -30,7 +30,7 @@ define( function( require ) {
      */
     function MultiplicationTableFactorNode( model ) {
       var self = this;
-      MultiplicationTableNode.call( this, model.property( 'level' ), model.property( 'state' ), model.levelModels, model.answerSheet, false );
+      MultiplicationTableNode.call( this, model.property( 'level' ), model.property( 'state' ), model.levelModels, model.answerSheet, false, true );
 
       // convenience var
       var gameState = model.property( 'state' );

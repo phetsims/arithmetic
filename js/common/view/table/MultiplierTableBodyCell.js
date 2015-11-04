@@ -26,30 +26,30 @@ define( function( require ) {
   //TODO: The options should either be consolidated or renamed, since the API makes it such that they can't both be optional.
   /**
    * @param {Text} contentText - Text label for button.
+   * @param {boolean} pointerUsed - Flag that indicates whether the point hand should be available in this cell.
    * @param {Object} backgroundOptions - Background options for button.
    * @param {Object} textOptions - Text options for button.
    *
    * @constructor
    */
-  function MultiplierTableBodyCell( contentText, backgroundOptions, textOptions ) {
+  function MultiplierTableBodyCell( contentText, pointerUsed, backgroundOptions, textOptions ) {
     backgroundOptions = _.extend( {
       fill: NORMAL_COLOR
     }, backgroundOptions );
     AbstractCell.call( this, backgroundOptions, textOptions );
 
-    // create pointer for active state
-    // TODO: Seems inefficient and unnecessary that there is an image node created for every cell when they are not used
-    // for the multiply and divide screens.  Consider having either an option for whether the pointer is used or a pool
-    // of pointers for the various sized needed.  Or both.
-    this._pointer = new Image( pointingHandImage, { visible: false } );
+    if ( pointerUsed ) {
+      // create pointer for active state
+      this._pointer = new Image( pointingHandImage, { visible: false } );
 
-    // set position and size for pointer
-    this._pointer.scale( backgroundOptions.width / this._pointer.getWidth() * 0.75, backgroundOptions.height / this._pointer.getHeight() * 0.75 );
-    this._pointer.centerX = backgroundOptions.width / 2;
-    this._pointer.centerY = backgroundOptions.height / 2;
+      // set position and size for pointer
+      this._pointer.scale( backgroundOptions.width / this._pointer.getWidth() * 0.75, backgroundOptions.height / this._pointer.getHeight() * 0.75 );
+      this._pointer.centerX = backgroundOptions.width / 2;
+      this._pointer.centerY = backgroundOptions.height / 2;
 
-    // add pointer to node
-    this.addChild( this._pointer );
+      // add pointer to node
+      this.addChild( this._pointer );
+    }
 
     this.setText( contentText );
     this.hideText();
@@ -59,19 +59,19 @@ define( function( require ) {
     // TODO: active may no longer be needed
     active: function() {
       this.setBackgroundFill( ACTIVE_COLOR );
-      this._pointer.visible = false;
+      this._pointer && ( this._pointer.visible = false );
     },
     hover: function() {
       this.setBackgroundFill( HOVER_COLOR );
-      this._pointer.visible = true;
+      this._pointer && ( this._pointer.visible = true );
     },
     normal: function() {
       this.setBackgroundFill( NORMAL_COLOR );
-      this._pointer.visible = false;
+      this._pointer && ( this._pointer.visible = false );
     },
     select: function() {
       this.setBackgroundFill( SELECT_COLOR );
-      this._pointer.visible = false;
+      this._pointer && ( this._pointer.visible = false );
     }
   } );
 } );
