@@ -19,8 +19,10 @@ define( function( require ) {
   var Text = require( 'SCENERY/nodes/Text' );
   var Timer = require( 'JOIST/Timer' );
 
+  // strings
+  var unknownValueIndicatorString = require( 'string!ARITHMETIC/unknownValueIndicator' );
+
   // constants
-  var PLACEHOLDER = require( 'string!ARITHMETIC/unknownValueIndicator' );
   var INTERACTIVE_FILL = 'white';
   var NON_INTERACTIVE_FILL = '#dddddd';
 
@@ -35,7 +37,7 @@ define( function( require ) {
     Node.call( this );
 
     // create text and save reference for use in public methods
-    this.inputText = new Text( PLACEHOLDER, { font: ArithmeticConstants.EQUATION_FONT_TEXT } ); // @private
+    this.inputText = new Text( unknownValueIndicatorString, { font: ArithmeticConstants.EQUATION_FONT_TEXT } ); // @private
 
     // create cursor and save reference for use in public methods
     this.textCursor = new Rectangle( 0, 2, 1, this.inputText.height - 12, { fill: 'black' } );
@@ -109,7 +111,7 @@ define( function( require ) {
      * @public
      */
     setPlaceholder: function() {
-      this.inputText.setText( PLACEHOLDER );
+      this.inputText.setText( unknownValueIndicatorString );
       updateBoxPosition( this._box, this.inputSize );
     }
   } );

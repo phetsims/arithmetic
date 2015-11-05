@@ -22,9 +22,9 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var pattern_level_0levelNumber = require( 'string!ARITHMETIC/pattern.level.0levelNumber' );
-  var scoreString = require( 'string!VEGAS/label.score' );
-  var timeString = require( 'string!VEGAS/label.time' );
+  var patternLevel0LevelNumberString = require( 'string!ARITHMETIC/pattern.level.0levelNumber' );
+  var labelScoreString = require( 'string!VEGAS/label.score' );
+  var labelTimeString = require( 'string!VEGAS/label.time' );
 
   // constants
   var FONT = new PhetFont( { size: 18 } );
@@ -50,9 +50,9 @@ define( function( require ) {
    * @constructor
    */
   function ControlPanelNode( levelProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback ) {
-    var levelText = new Text( StringUtils.format( pattern_level_0levelNumber, levelProperty.value.toString() ), FONT_BOLD );
-    var scoreText = new Text( StringUtils.format( scoreString, '0' ), FONT );
-    var timeText = new Text( StringUtils.format( timeString, GameTimer.formatTime( 0 ) ), FONT );
+    var levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, levelProperty.value.toString() ), FONT_BOLD );
+    var scoreText = new Text( StringUtils.format( labelScoreString, '0' ), FONT );
+    var timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), FONT );
 
     Node.call( this );
 
@@ -77,15 +77,15 @@ define( function( require ) {
 
     // add observers
     var updateScore = function( score ) {
-      scoreText.setText( StringUtils.format( scoreString, score.toString() ) );
+      scoreText.setText( StringUtils.format( labelScoreString, score.toString() ) );
     };
 
     var updateTime = function( time ) {
-      timeText.setText( StringUtils.format( timeString, GameTimer.formatTime( time ) ) );
+      timeText.setText( StringUtils.format( labelTimeString, GameTimer.formatTime( time ) ) );
     };
 
     levelProperty.lazyLink( function( levelNew, levelPrevious ) {
-      levelText.setText( StringUtils.format( pattern_level_0levelNumber, (levelNew + 1).toString() ) );
+      levelText.setText( StringUtils.format( patternLevel0LevelNumberString, (levelNew + 1).toString() ) );
 
       // unlink observers for previous level
       if ( levelModels[ levelPrevious ] ) {
