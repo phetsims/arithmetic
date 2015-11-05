@@ -51,7 +51,7 @@ define( function( require ) {
     }
 
     // add content text
-    this._text = new Text( '?', _.extend( {
+    this._text = new Text( '', _.extend( {
       font: font,
       fill: 'white',
       centerY: this.bounds.height / 2
