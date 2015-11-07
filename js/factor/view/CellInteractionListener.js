@@ -1,4 +1,4 @@
-// Copyright 2002-2015, University of Colorado Boulder
+// Copyright 2015, University of Colorado Boulder
 
 /**
  * This is a Scenery input listener that is meant to be attached to the cells of the multiplication table.  It

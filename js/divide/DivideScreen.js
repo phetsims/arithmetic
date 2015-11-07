@@ -1,4 +1,4 @@
-// Copyright 2002-2014, University of Colorado Boulder
+// Copyright 2014, University of Colorado Boulder
 
 /**
  * The 'Divide' screen. Conforms to the contract specified in joist/Screen.
