@@ -17,7 +17,6 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
-  var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
@@ -38,15 +37,11 @@ define( function( require ) {
    * @constructor
    */
   function AbstractCell( backgroundOptions, textOptions ) {
-    Node.call( this );
-
-    // @private - add background
-    this._background = new Rectangle( 0, 0, backgroundOptions.width, backgroundOptions.height, _.extend( {
+    Rectangle.call( this, 0, 0, backgroundOptions.width, backgroundOptions.height, _.extend( {
       fill: 'white',
       stroke: 'white',
       lineWidth: 2.5
     }, backgroundOptions ) );
-    this.addChild( this._background );
 
     // @private - save/define text options for when the text node is created
     this._textOptions = _.extend( {
@@ -56,13 +51,13 @@ define( function( require ) {
       initiallyVisible: true
     }, textOptions );
 
-    // @private - define the _text variable, but create it only when needed in order to save time
+    // @private - define the _text variable, but create it only when needed in order to save time during startup
     this._textNode = null;
 
     // @private - string to be displayed, used to support lazy creation of the node
     this._text = '';
 
-    // if the text is initially visible, create the text node now, otherwise wait
+    // if the text is initially visible, create the text node now, otherwise wait until it is shown
     if ( this._textOptions.initiallyVisible ) {
       createTextNodeIfNeeded( this );
     }
@@ -97,10 +92,10 @@ define( function( require ) {
     cell.addChild( cell._textNode );
   }
 
-  return inherit( Node, AbstractCell, {
+  return inherit( Rectangle, AbstractCell, {
 
     setBackgroundFill: function( fill ) {
-      this._background.fill = fill;
+      this.fill = fill;
     },
 
     setText: function( text ) {
