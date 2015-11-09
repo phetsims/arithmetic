@@ -37,26 +37,29 @@ define( function( require ) {
     }, backgroundOptions ) );
     this.addChild( this._background );
 
-    // Choose the font.  This is an optimization done so that the font doesn't have to be recreated for each cell.  The
-    // thresholds and the font sizes were empirically determined.
+    // add content text
+    this._text = new Text( '', _.extend( {
+      font: chooseFont( this.bounds.height ),
+      fill: 'white',
+      centerY: this.bounds.height / 2
+    }, textOptions ) );
+    this.addChild( this._text );
+  }
+
+  // convenience function for choosing the font for the cell based on the cell height, done to avoid creating new font
+  // for each cell
+  function chooseFont( cellHeight ) {
     var font;
-    if ( this.bounds.height < 27 ) {
+    if ( cellHeight < 27 ) {
       font = SMALL_FONT;
     }
-    else if ( this.bounds.height < 35 ) {
+    else if ( cellHeight < 35 ) {
       font = MEDIUM_FONT;
     }
     else {
       font = LARGE_FONT;
     }
-
-    // add content text
-    this._text = new Text( '', _.extend( {
-      font: font,
-      fill: 'white',
-      centerY: this.bounds.height / 2
-    }, textOptions ) );
-    this.addChild( this._text );
+    return font;
   }
 
   return inherit( Node, AbstractCell, {
