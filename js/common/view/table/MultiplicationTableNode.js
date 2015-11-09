@@ -1,4 +1,4 @@
-// Copyright 2014-2015, University of Colorado Boulder
+// Copyright 2002-2014, University of Colorado Boulder
 
 /**
  * A Scenery node that represents the multiplication table.  It contains a table for each of the levels in the provided
@@ -189,7 +189,7 @@ define( function( require ) {
                   to( {
                     centerX: flyingProductDestination.x,
                     centerY: flyingProductDestination.y,
-                    scale: cell.getTextWidth() / flyingProduct.width
+                    scale: cell.getTextHeight() / flyingProduct.height
                   }, ANSWER_ANIMATION_TIME ).
                   easing( TWEEN.Easing.Cubic.InOut ).
                   onUpdate( function() {
@@ -280,18 +280,7 @@ define( function( require ) {
       }
 
       return parentScreen.globalToLocalPoint( cell.parentToGlobalPoint( cell.center ) );
-    },
-
-    /**
-     * Get the size of the text used for the provided level.
-     *
-     * @param level
-     * @param column
-     * @param row
-     * @public
-     */
-    getTextWidth: function( level, column, row ) {
-      return this.cells[ level ][ row ][ column ]._text.width;
     }
+
   } );
 } );

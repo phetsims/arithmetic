@@ -1,9 +1,10 @@
-// Copyright 2014-2015, University of Colorado Boulder
+// Copyright 2002-2014, University of Colorado Boulder
 
 /**
  * This Scenery node represents one cell in the body (as opposed to the headers) of the multiplication table.
  *
  * @author Andrey Zelenkov (MLearner)
+ * @author John Blanco
  */
 
 define( function( require ) {
@@ -23,20 +24,17 @@ define( function( require ) {
   var NORMAL_COLOR = 'rgb(50,70,255)';
   var SELECT_COLOR = 'rgb(77,0,153)';
 
-  //TODO: The options should either be consolidated or renamed, since the API makes it such that they can't both be optional.
   /**
    * @param {Text} contentText - Text label for button.
    * @param {boolean} pointerUsed - Flag that indicates whether the point hand should be available in this cell.
    * @param {Object} backgroundOptions - Background options for button.
-   * @param {Object} textOptions - Text options for button.
-   *
    * @constructor
    */
-  function MultiplierTableBodyCell( contentText, pointerUsed, backgroundOptions, textOptions ) {
+  function MultiplierTableBodyCell( contentText, pointerUsed, backgroundOptions ) {
     backgroundOptions = _.extend( {
       fill: NORMAL_COLOR
     }, backgroundOptions );
-    AbstractCell.call( this, backgroundOptions, textOptions );
+    AbstractCell.call( this, backgroundOptions, { initiallyVisible: false } );
 
     if ( pointerUsed ) {
       // create pointer for active state
@@ -52,7 +50,6 @@ define( function( require ) {
     }
 
     this.setText( contentText );
-    this.hideText();
   }
 
   return inherit( AbstractCell, MultiplierTableBodyCell, {
