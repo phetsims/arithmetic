@@ -10,6 +10,7 @@ define( function( require ) {
 
   // modules
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  var Color = require( 'SCENERY/util/Color' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelCompletedNode = require( 'VEGAS/LevelCompletedNode' );
@@ -44,7 +45,7 @@ define( function( require ) {
           levelModel.bestTime,
           (levelModel.gameTimer.elapsedTime < levelModel.bestTime),
           continueCallback,
-          { centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2 }
+          { fill: new Color( 255, 235, 205 ), centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2 }
         ) );
       }
       else if ( state === GameState.AWAITING_USER_INPUT || state === GameState.LEVEL_COMPLETED ) {
