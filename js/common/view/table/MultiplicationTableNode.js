@@ -58,12 +58,11 @@ define( function( require ) {
     this.viewForLevel = []; // @private
 
     // three-dimensional array of the cells, indexed by [levelNumber][leftMultiplier][rightMultiplier]
-    this.cells = []; // @private
+    this.cells = new Array( levelModels.length ); // @private
 
     // add stroke for all multiplication table views
     var backgroundRect = new Rectangle( 0, 0, 0, 0, {
       fill: 'white',
-      stroke: 'white',
       cursor: 'pointer' // this is done so that the cursor doesn't change when moving between cells
     } );
     this.addChild( backgroundRect );
@@ -72,19 +71,16 @@ define( function( require ) {
     levelModels.forEach( function( level, levelIndex ) {
       var tableSize = level.tableSize;
       var cellOptions = {
-        lineWidth: 1,
-        width: TABLE_SIZE.width / (tableSize + 1),
-        height: TABLE_SIZE.height / (tableSize + 1)
+        lineWidth: Math.max( Math.ceil( ( TABLE_SIZE.width / ( tableSize + 1 ) ) / 40 ), 2 ),
+        width: TABLE_SIZE.width / ( tableSize + 1 ),
+        height: TABLE_SIZE.height / ( tableSize + 1 )
       };
       var levelRootNode = new Node( { visible: false } ); // root node for a single level
       var row;
       var column;
 
-      // set the background line width to match that of the cells for this level
-      backgroundRect.lineWidth = cellOptions.lineWidth;
-
       // init store for cells
-      self.cells[ levelIndex ] = [];
+      self.cells[ levelIndex ] = new Array( tableSize + 1 );
 
       var cell;
       var cellTop = 0;
@@ -92,7 +88,7 @@ define( function( require ) {
 
       // create the table row by row
       for ( row = 0; row <= tableSize; row++ ) {
-        self.cells[ levelIndex ][ row ] = [];
+        self.cells[ levelIndex ][ row ] = new Array( tableSize + 1 );
 
         // first row
         if ( row === 0 ) {
