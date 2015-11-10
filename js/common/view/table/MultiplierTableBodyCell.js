@@ -37,6 +37,7 @@ define( function( require ) {
     AbstractCell.call( this, backgroundOptions, { initiallyVisible: false } );
 
     if ( pointerUsed ) {
+
       // create pointer for active state
       this._pointer = new Image( pointingHandImage, { visible: false } );
 
@@ -53,22 +54,31 @@ define( function( require ) {
   }
 
   return inherit( AbstractCell, MultiplierTableBodyCell, {
+
     // TODO: active may no longer be needed
+    // @public
     active: function() {
       this.setBackgroundFill( ACTIVE_COLOR );
       this._pointer && ( this._pointer.visible = false );
     },
+
+    // @public - set cell into the state that indicates that the user is hovering over it
     hover: function() {
       this.setBackgroundFill( HOVER_COLOR );
       this._pointer && ( this._pointer.visible = true );
     },
+
+    // @public - set cell to normal, default appearance state
     normal: function() {
       this.setBackgroundFill( NORMAL_COLOR );
       this._pointer && ( this._pointer.visible = false );
     },
+
+    // @public - set cell to the selected state
     select: function() {
       this.setBackgroundFill( SELECT_COLOR );
       this._pointer && ( this._pointer.visible = false );
     }
+
   } );
 } );

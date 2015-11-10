@@ -5,9 +5,10 @@
  * levelModels parameter, and handles the hiding and showing of the appropriate table based on the currently active
  * level.
  *
- * Each table is made up of a set of cells that define the headers for and the body of the table.
+ * Each table is made up of a set of cells that define the headers and the body of the table.
  *
  * @author Andrey Zelenkov (MLearner)
+ * @author John Blanco
  */
 define( function( require ) {
   'use strict';
@@ -16,7 +17,6 @@ define( function( require ) {
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
-  var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplierTableHeaderCell = require( 'ARITHMETIC/common/view/table/MultiplierTableHeaderCell' );
   var MultiplierTableBodyCell = require( 'ARITHMETIC/common/view/table/MultiplierTableBodyCell' );
@@ -25,7 +25,6 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var Text = require( 'SCENERY/nodes/Text' );
-  var VBox = require( 'SCENERY/nodes/VBox' );
   var Vector2 = require( 'DOT/Vector2' );
 
   // constants
@@ -46,7 +45,6 @@ define( function( require ) {
    * @param {Array} answerSheet - 2D array that tracks problems that have and haven't been answered
    * @param {boolean} animateAnswer - flag that controls whether answer appears to fly into the cell or just appears
    * @param {boolean} pointerUsedInCells - flag that indicates whether the cells need to support a pointer finger when highlighted
-   *
    * @constructor
    */
   function MultiplicationTableNode( levelProperty, stateProperty, levelModels, answerSheet, animateAnswer, pointerUsedInCells ) {
@@ -73,70 +71,82 @@ define( function( require ) {
     // create view of times table for each of the levels
     levelModels.forEach( function( level, levelIndex ) {
       var tableSize = level.tableSize;
-      var buttonOptions = {
+      var cellOptions = {
         lineWidth: 1,
         width: TABLE_SIZE.width / (tableSize + 1),
         height: TABLE_SIZE.height / (tableSize + 1)
       };
-      var i;
-      var j;
-      var hBoxChildren;
-      var vBoxChildren = [];
+      var levelRootNode = new Node( { visible: false } ); // root node for a single level
+      var row;
+      var column;
 
-      // set equal line width for background rectangle
-      backgroundRect.lineWidth = buttonOptions.lineWidth;  // TODO: Why is this set here multiple times?  Why not outside of loop?
+      // set the background line width to match that of the cells for this level
+      backgroundRect.lineWidth = cellOptions.lineWidth;
 
       // init store for cells
       self.cells[ levelIndex ] = [];
 
-      for ( i = 0; i <= tableSize; i++ ) {
-        hBoxChildren = [];
-        self.cells[ levelIndex ][ i ] = [];
+      var cell;
+      var cellTop = 0;
+      var cellLeft = 0;
+
+      // create the table row by row
+      for ( row = 0; row <= tableSize; row++ ) {
+        self.cells[ levelIndex ][ row ] = [];
+
         // first row
-        if ( i === 0 ) {
-          for ( j = 0; j <= tableSize; j++ ) {
-            // first cell is 'X', other - multiplier numbers
-            if ( j === 0 ) {
-              self.cells[ levelIndex ][ i ][ j ] = new MultiplierTableHeaderCell( '\u00D7', buttonOptions, {
-                font: new PhetFont( { size: Math.round( buttonOptions.height * 0.85 ) } ) // Equation empirically determined, makes font smaller for larger tables.
+        if ( row === 0 ) {
+          for ( column = 0; column <= tableSize; column++ ) {
+
+            // first cell is the multiplier operator, others are multipliers
+            if ( column === 0 ) {
+              cell = new MultiplierTableHeaderCell( '\u00D7', cellOptions, {
+                font: new PhetFont( { size: Math.round( cellOptions.height * 0.85 ) } ) // Equation empirically determined, makes font smaller for larger tables.
               } );
             }
             else {
-              self.cells[ levelIndex ][ i ][ j ] = new MultiplierTableHeaderCell( j.toString(), buttonOptions );
+              cell = new MultiplierTableHeaderCell( column.toString(), cellOptions );
             }
-            hBoxChildren.push( self.cells[ levelIndex ][ i ][ j ] );
+            cell.top = cellTop;
+            cell.left = cellLeft;
+            cellLeft += cellOptions.width;
+            levelRootNode.addChild( cell );
+            self.cells[ levelIndex ][ row ][ column ] = cell;
           }
         }
+
         // other rows
         else {
-          for ( j = 0; j <= tableSize; j++ ) {
-            // first cell is multiplier number, other - product numbers
-            if ( j === 0 ) {
-              self.cells[ levelIndex ][ i ][ j ] = new MultiplierTableHeaderCell( i.toString(), buttonOptions );
+          for ( column = 0; column <= tableSize; column++ ) {
+
+            // first cell in each row is a multiplier, others are products
+            if ( column === 0 ) {
+              cell = new MultiplierTableHeaderCell( row.toString(), cellOptions );
             }
             else {
-              self.cells[ levelIndex ][ i ][ j ] = new MultiplierTableBodyCell(
-                ( i * j ).toString(),
+              cell = new MultiplierTableBodyCell(
+                ( row * column ).toString(),
                 pointerUsedInCells,
-                buttonOptions
+                cellOptions
               );
             }
-            hBoxChildren.push( self.cells[ levelIndex ][ i ][ j ] );
+            cell.top = cellTop;
+            cell.left = cellLeft;
+            cellLeft += cellOptions.width;
+            levelRootNode.addChild( cell );
+            self.cells[ levelIndex ][ row ][ column ] = cell;
           }
         }
-        vBoxChildren.push( new HBox( { children: hBoxChildren, resize: false } ) );
+        cellTop += cellOptions.height;
+        cellLeft = 0;
       }
 
-      var vBox = new VBox( { children: vBoxChildren, visible: false, resize: false } );
 
       // add view to node
-      self.addChild( vBox );
-
-      // scale for appropriate size
-      vBox.scale( TABLE_SIZE.width / vBox.bounds.width, TABLE_SIZE.height / vBox.bounds.height );
+      self.addChild( levelRootNode );
 
       // save view
-      self.viewForLevel[ levelIndex ] = vBox;
+      self.viewForLevel[ levelIndex ] = levelRootNode;
     } );
 
     // set background size
@@ -144,7 +154,8 @@ define( function( require ) {
     backgroundRect.setRectHeight( this.bounds.height );
 
     levelProperty.link( function( levelNumberCurrent, levelNumberPrev ) {
-      // show current multiplication table view for level
+
+      // show multiplication table view for the current level
       if ( self.viewForLevel[ levelNumberCurrent ] ) {
         self.viewForLevel[ levelNumberCurrent ].visible = true;
       }
@@ -163,7 +174,7 @@ define( function( require ) {
     } );
     this.addChild( flyingProduct );
 
-    // Update the visible answers each time the user gets a correct answer
+    // update the visible answers each time the user gets a correct answer
     // TODO: This seems odd.  Why not just have each cell have a 'solved' property, and have that reflected in the view?
     stateProperty.link( function( state ) {
       if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
