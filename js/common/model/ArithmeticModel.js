@@ -53,7 +53,7 @@ define( function( require ) {
       new LevelModel( 12 )
     ];
 
-    // 2D array that tracks which problems have been answered
+    // @public - 2D array that tracks which problems have been answered
     this.answerSheet = [];
 
     // hook up the audio player to the sound settings
