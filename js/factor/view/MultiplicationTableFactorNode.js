@@ -1,14 +1,14 @@
 // Copyright 2014-2015, University of Colorado Boulder
 
 /**
- * Multiplication table node for Factor screen in the Arithmetic simulation.
+ * Multiplication table node for 'Factor' screen.
  *
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco
  * TODO: I (jblanco) feel like the terms and naming in this file could use some work.  Why are the cells called
  * buttons?  Because they're interactive?  Seems odd.  Also, the cell states of active and selected seems like it
- * doesn't quite match what is going on.
- *
+ * doesn't quite match what is going on. UPDATE 11/11/2015 - I changed the term 'button' to 'cell', but the cell state
+ * names still need to be addressed.
  */
 define( function( require ) {
     'use strict';
@@ -25,7 +25,6 @@ define( function( require ) {
 
     /**
      * @param {FactorModel} model - main model class for the factor screen
-     *
      * @constructor
      */
     function MultiplicationTableFactorNode( model ) {
@@ -43,7 +42,7 @@ define( function( require ) {
 
       // variable used to track cell interaction
       this.cellListeners = []; // @private
-      this.activeButton = null; // @private
+      this.activeCell = null; // @private
       this.mouseDownCell = null; // @private
 
       // add 'hover' and 'down' listeners for each cell in table
@@ -74,10 +73,10 @@ define( function( require ) {
                     if ( cellListener.enabled ) {
                       self.setSelectedRect( model.level, leftIndex, rightIndex );
                       cell.hover();
-                      self.activeButton = cell;
+                      self.activeCell = cell;
                     }
                     else {
-                      self.activeButton = null;
+                      self.activeCell = null;
                     }
                   }
                 };
@@ -96,7 +95,7 @@ define( function( require ) {
                 // When the user presses the mouse button, record it.
                 cellListener.on( 'mouseDown', function() {
                   self.mouseDownCell = cell;
-                  self.activeButton = cell;
+                  self.activeCell = cell;
                   handImage.visible = false; // stop showing hand after first interaction
                   updateHover();
                 } );
@@ -115,7 +114,7 @@ define( function( require ) {
                   model.problemModel.multiplierLeft = leftIndex;
                   model.problemModel.multiplierRight = rightIndex;
 
-                  // Disable this button if the user's answer is correct.
+                  // Disable this cell if the user's answer is correct.
                   if ( leftIndex * rightIndex === model.problemModel.product ) {
                     cellListener.enabled = false;
                   }
@@ -145,7 +144,7 @@ define( function( require ) {
                   }
                 } );
 
-                // cancel hover for disabled button before next task
+                // cancel hover for disabled cell before next task
                 model.stateProperty.lazyLink( function( state ) {
                   if ( state === GameState.AWAITING_USER_INPUT && !cellListener.enabled ) {
                     self.setCellsToDefaultColor( model.level );
@@ -164,14 +163,14 @@ define( function( require ) {
       model.stateProperty.link( function( newState, oldState ) {
         if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
           self.setCellsToDefaultColor( model.level );
-          self.enableButtons( model.level );
+          self.enableCells( model.level );
         }
         else if ( ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ||
                newState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) &&
-             self.activeButton !== null ) {
+                  self.activeCell !== null ) {
 
           // Cancel hover when showing feedback
-          self.activeButton.select();
+          self.activeCell.select();
         }
         if ( newState === GameState.LEVEL_COMPLETED ||
              ( oldState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK &&
@@ -188,8 +187,8 @@ define( function( require ) {
 
     return inherit( MultiplicationTableNode, MultiplicationTableFactorNode, {
 
-      // @private, enable all buttons for given level
-      enableButtons: function( levelNumber ) {
+      // @private, enable all cells for given level
+      enableCells: function( levelNumber ) {
         this.cellListeners[ levelNumber ].forEach( function( cellListener ) {
           cellListener.enabled = true;
         } );
@@ -216,7 +215,7 @@ define( function( require ) {
       // @public
       refreshLevel: function( level ) {
         MultiplicationTableNode.prototype.refreshLevel.call( this, level );
-        this.enableButtons( level );
+        this.enableCells( level );
       }
     } );
   }
