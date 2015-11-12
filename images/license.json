@@ -47,6 +47,14 @@
     "license": "contact phethelp@colorado.edu",
     "notes": ""
   },
+  "large-pointing-hand.png": {
+    "text": [
+      "Copyright 2002-2015 University of Colorado Boulder"
+    ],
+    "projectURL": "http://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "created by Bryce Gruneich"
+  },
   "multiply_level_1_icon.png": {
     "text": [
       "Copyright 2002-2015 University of Colorado Boulder"
@@ -71,20 +79,12 @@
     "license": "contact phethelp@colorado.edu",
     "notes": ""
   },
-  "pointing-hand.png": {
+  "small-pointing-hand.png": {
     "text": [
       "Copyright 2002-2015 University of Colorado Boulder"
     ],
     "projectURL": "http://phet.colorado.edu",
     "license": "contact phethelp@colorado.edu",
-    "notes": "created by Bryce Gruneich"
-  },
-  "transparent-pointing-hand.png": {
-    "text": [
-      "Copyright 2002-2015 University of Colorado Boulder"
-    ],
-    "projectURL": "http://phet.colorado.edu",
-    "license": "contact phethelp@colorado.edu",
-    "notes": "created by Bryce Gruneich"
+    "notes": "created by Bryce Gruneich and John Blanco"
   }
 }
