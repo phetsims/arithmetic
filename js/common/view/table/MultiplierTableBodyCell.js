@@ -11,12 +11,8 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
   var AbstractCell = require( 'ARITHMETIC/common/view/table/AbstractCell' );
-
-  // images
-  var pointingHandImage = require( 'image!ARITHMETIC/pointing-hand.png' );
 
   // constants
   var ACTIVE_COLOR = 'rgb(3,18,136)';
@@ -26,29 +22,14 @@ define( function( require ) {
 
   /**
    * @param {Text} contentText - Text label for button.
-   * @param {boolean} pointerUsed - Flag that indicates whether the point hand should be available in this cell.
    * @param {Object} backgroundOptions - Background options for button.
    * @constructor
    */
-  function MultiplierTableBodyCell( contentText, pointerUsed, backgroundOptions ) {
+  function MultiplierTableBodyCell( contentText, backgroundOptions ) {
     backgroundOptions = _.extend( {
       fill: NORMAL_COLOR
     }, backgroundOptions );
     AbstractCell.call( this, backgroundOptions, { initiallyVisible: false } );
-
-    if ( pointerUsed ) {
-
-      // create pointer for active state
-      this._pointer = new Image( pointingHandImage, { visible: false } );
-
-      // set position and size for pointer
-      this._pointer.scale( backgroundOptions.width / this._pointer.getWidth() * 0.75, backgroundOptions.height / this._pointer.getHeight() * 0.75 );
-      this._pointer.centerX = backgroundOptions.width / 2;
-      this._pointer.centerY = backgroundOptions.height / 2;
-
-      // add pointer to node
-      this.addChild( this._pointer );
-    }
 
     this.setText( contentText );
   }
@@ -59,25 +40,21 @@ define( function( require ) {
     // @public
     active: function() {
       this.setBackgroundFill( ACTIVE_COLOR );
-      this._pointer && ( this._pointer.visible = false );
     },
 
     // @public - set cell into the state that indicates that the user is hovering over it
     hover: function() {
       this.setBackgroundFill( HOVER_COLOR );
-      this._pointer && ( this._pointer.visible = true );
     },
 
     // @public - set cell to normal, default appearance state
     normal: function() {
       this.setBackgroundFill( NORMAL_COLOR );
-      this._pointer && ( this._pointer.visible = false );
     },
 
     // @public - set cell to the selected state
     select: function() {
       this.setBackgroundFill( SELECT_COLOR );
-      this._pointer && ( this._pointer.visible = false );
     }
 
   } );

@@ -26,7 +26,7 @@ define( function( require ) {
    */
   function MultiplicationTableDivideNode( problemModel, answerSheet, stateProperty, levelProperty, levelModels ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet, true, false );
+    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet, true );
 
     stateProperty.lazyLink( function( state ) {
       // set view for multiplication table after choosing left and right multipliers

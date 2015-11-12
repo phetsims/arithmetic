@@ -21,6 +21,7 @@ define( function( require ) {
     var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
 
     // images
+    var pointingHandImage = require( 'image!ARITHMETIC/pointing-hand.png' );
     var transparentPointingHandImage = require( 'image!ARITHMETIC/transparent-pointing-hand.png' );
 
     /**
@@ -29,7 +30,8 @@ define( function( require ) {
      */
     function MultiplicationTableFactorNode( model ) {
       var self = this;
-      MultiplicationTableNode.call( this, model.property( 'level' ), model.property( 'state' ), model.levelModels, model.answerSheet, false, true );
+      MultiplicationTableNode.call( this, model.property( 'level' ), model.property( 'state' ), model.levelModels,
+        model.answerSheet, false );
 
       // convenience var
       var gameState = model.property( 'state' );
@@ -39,6 +41,12 @@ define( function( require ) {
       handImage.scale( ( this.width / transparentPointingHandImage.width ) * 0.25 );
       handImage.centerX = this.width * 0.55; // position empirically determined
       handImage.centerY = this.height / 2;
+
+      // Create another hand that will appear over each cell to indicate that the user can click on it.  This was
+      // originally handled in the individual cells, but caused startup to be long due to the large number of images
+      // created, so was moved here.
+      this.cellPointer = new Image( pointingHandImage, { pickable: false } );
+      this.addChild( this.cellPointer );
 
       // variable used to track cell interaction
       this.cellListeners = []; // @private
@@ -73,6 +81,16 @@ define( function( require ) {
                     if ( cellListener.enabled ) {
                       self.setSelectedRect( model.level, leftIndex, rightIndex );
                       cell.hover();
+                      self.cellPointer.visible = true;
+
+                      if ( Math.abs( self.cellPointer.height - cell.height * 0.8 ) > 0.01 ) {
+                        console.log( 'scaled' );
+
+                        self.cellPointer.setScaleMagnitude( 1 );
+                        self.cellPointer.setScaleMagnitude( cell.height * 0.8 / self.cellPointer.height );
+                      }
+                      self.cellPointer.centerX = cell.centerX;
+                      self.cellPointer.centerY = cell.centerY;
                       self.activeCell = cell;
                     }
                     else {
@@ -82,8 +100,8 @@ define( function( require ) {
                 };
 
                 // add 'hover' listeners
-                cellListener.property( 'mouseOver' ).onValue( true, updateHover );
-                cellListener.property( 'touched' ).onValue( true, function() {
+                cellListener.mouseOverProperty.link( updateHover );
+                cellListener.touchedProperty.onValue( true, function() {
                   if ( model.state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
                     // The user has re-touched the grid after submitting an incorrect answer, so assume they want to retry.
                     model.retryProblem();
@@ -161,6 +179,7 @@ define( function( require ) {
 
       // Update the cell's appearance state as the game state changes.
       model.stateProperty.link( function( newState, oldState ) {
+
         if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
           self.setCellsToDefaultColor( model.level );
           self.enableCells( model.level );
@@ -172,12 +191,19 @@ define( function( require ) {
           // Cancel hover when showing feedback
           self.activeCell.select();
         }
+
         if ( newState === GameState.LEVEL_COMPLETED ||
              ( oldState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK &&
                newState === GameState.AWAITING_USER_INPUT ) ) {
 
           // clear previously selected region
           self.setCellsToDefaultColor( model.level );
+        }
+
+        // hide the pointer when showing correct or incorrect answer feedback
+        if ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ||
+             newState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+          self.cellPointer.visible = false;
         }
 
         // don't allow interaction when displaying a completed board
@@ -210,6 +236,12 @@ define( function( require ) {
             } );
           }
         } );
+      },
+
+      // @public, @override
+      setCellsToDefaultColor: function( level ) {
+        this.cellPointer.visible = false;
+        MultiplicationTableNode.prototype.setCellsToDefaultColor.call( this, level );
       },
 
       // @public
