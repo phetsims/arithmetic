@@ -83,11 +83,11 @@ define( function( require ) {
                       cell.hover();
                       self.cellPointer.visible = true;
 
-                      if ( Math.abs( self.cellPointer.height - cell.height * 0.8 ) > 0.01 ) {
+                      if ( Math.abs( self.cellPointer.height - cell.height * 0.7 ) > 0.01 ) {
                         console.log( 'scaled' );
 
                         self.cellPointer.setScaleMagnitude( 1 );
-                        self.cellPointer.setScaleMagnitude( cell.height * 0.8 / self.cellPointer.height );
+                        self.cellPointer.setScaleMagnitude( cell.height * 0.7 / self.cellPointer.height );
                       }
                       self.cellPointer.centerX = cell.centerX;
                       self.cellPointer.centerY = cell.centerY;
