@@ -21,8 +21,8 @@ define( function( require ) {
     var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
 
     // images
-    var pointingHandImage = require( 'image!ARITHMETIC/pointing-hand.png' );
-    var transparentPointingHandImage = require( 'image!ARITHMETIC/transparent-pointing-hand.png' );
+    var cellPointerHandImage = require( 'image!ARITHMETIC/small-pointing-hand.png' );
+    var overlayPointingHandImage = require( 'image!ARITHMETIC/large-pointing-hand.png' );
 
     /**
      * @param {FactorModel} model - main model class for the factor screen
@@ -37,15 +37,15 @@ define( function( require ) {
       var gameState = model.property( 'state' );
 
       // Create an image of a transparent hand that will cue the user that they need to interact with the table.
-      var handImage = new Image( transparentPointingHandImage, { pickable: false } );
-      handImage.scale( ( this.width / transparentPointingHandImage.width ) * 0.25 );
+      var handImage = new Image( overlayPointingHandImage, { pickable: false } );
+      handImage.scale( ( this.width / overlayPointingHandImage.width ) * 0.25 );
       handImage.centerX = this.width * 0.55; // position empirically determined
       handImage.centerY = this.height / 2;
 
       // Create another hand that will appear over each cell to indicate that the user can click on it.  This was
       // originally handled in the individual cells, but caused startup to be long due to the large number of images
       // created, so was moved here.
-      this.cellPointer = new Image( pointingHandImage, { pickable: false } );
+      this.cellPointer = new Image( cellPointerHandImage, { pickable: false } );
       this.addChild( this.cellPointer );
 
       // variable used to track cell interaction
