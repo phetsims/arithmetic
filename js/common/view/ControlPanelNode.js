@@ -30,7 +30,7 @@ define( function( require ) {
   var FONT = new PhetFont( { size: 18 } );
   var FONT_BOLD = new PhetFont( { size: 18, weight: 'bold' } );
   var PANEL_OPTIONS = {
-    fill: 'rgb( 173, 239, 255 )',
+    fill: '#dddddd',
     lineWidth: 0.5,
     xMargin: 23,
     yMargin: 23,
