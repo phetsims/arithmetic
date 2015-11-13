@@ -36,7 +36,7 @@ define( function( require ) {
     yMargin: 23,
     cornerRadius: 5
   };
-  var REFRESH_BUTTON_BASE_COLOR = 'rgb( 255, 204, 67 )';
+  var REFRESH_BUTTON_BASE_COLOR = '#F2E916';
   var REFRESH_BUTTON_MARGIN = new Dimension2( 20, 10 );
   var SPACING = 18;
 

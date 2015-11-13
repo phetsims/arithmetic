@@ -25,9 +25,9 @@ define( function( require ) {
   var TextPushButton = require( 'SUN/buttons/TextPushButton' );
 
   // constants
-  var BACK_BUTTON_BASE_COLOR = 'rgb( 255, 204, 67 )'; // base color of back button
+  var BACK_BUTTON_BASE_COLOR = '#F2E916'; // base color of back button
   var BACK_BUTTON_MARGIN = new Dimension2( 20, 10 ); // margin of background of back button
-  var BUTTON_BASE_COLOR = 'rgb( 255, 204, 67 )'; // Color match the time and sound toggle buttons
+  var BUTTON_BASE_COLOR = '#F2E916';
   var BUTTON_FONT = new PhetFont( { size: 20 } );
   var BUTTON_INSET_FROM_BOTTOM = 20; // empirically determined
 
@@ -57,7 +57,6 @@ define( function( require ) {
         baseColor: BACK_BUTTON_BASE_COLOR,
         xMargin: BACK_BUTTON_MARGIN.width,
         yMargin: BACK_BUTTON_MARGIN.height,
-        cornerRadius: 7,
         scale: 0.75, // empirically determined
         left: layoutBounds.maxX * 0.02,
         top: layoutBounds.maxY * 0.02,
