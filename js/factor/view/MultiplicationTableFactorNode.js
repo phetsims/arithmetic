@@ -142,7 +142,9 @@ define( function( require ) {
                 // When the user releases the mouse button, check that it's the same cell where the mouse down
                 // occurred, and fire if so.
                 cellListener.on( 'mouseUp', function() {
-                  if ( cellListener.enabled && self.mouseDownCell === cell && gameState.value === GameState.AWAITING_USER_INPUT ) {
+                  if ( cellListener.enabled && self.mouseDownCell === cell &&
+                       ( gameState.value === GameState.AWAITING_USER_INPUT ||
+                         gameState.value === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) ) {
                     submitAnswer();
                   }
                 } );
@@ -183,7 +185,7 @@ define( function( require ) {
           self.enableCells( model.level );
         }
         else if ( ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ||
-               newState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) &&
+                    newState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) &&
                   self.activeCell !== null ) {
 
           // Cancel hover when showing feedback
