@@ -5,6 +5,7 @@
  * division - has one of these models.  Each of these models tracks multiple levels.
  *
  * @author Andrey Zelenkov (MLearner)
+ * @author John Blanco
  */
 define( function( require ) {
   'use strict';
@@ -22,7 +23,7 @@ define( function( require ) {
   var Timer = require( 'JOIST/Timer' );
 
   // constants
-  var FEEDBACK_TIME = 1200; // in milliseconds
+  var FEEDBACK_TIME = 1200; // in milliseconds, time that the feedback is presented before moving to next problem
 
   /**
    * Constructor for ArithmeticModel
@@ -31,8 +32,7 @@ define( function( require ) {
   function ArithmeticModel( options ) {
     var self = this;
 
-    // TODO: Fill equation shouldn't be optional.  Also, should be documented.  It's the equation that is used to
-    // take the user's input and fill in the unanswered parts of the problem.
+    // set up the 'fillEquation' function, which is used to fill in the missing portion(s) based on the user's inputs
     options = _.extend( { fillEquation: null }, options );
     this.fillEquation = options.fillEquation;
 
@@ -53,7 +53,7 @@ define( function( require ) {
       new LevelModel( 12 )
     ];
 
-    // @public - 2D array that tracks which problems have been answered
+    // @public - a multi-dimensional array that tracks which problems have been answered
     this.answerSheet = [];
 
     // hook up the audio player to the sound settings
@@ -83,7 +83,7 @@ define( function( require ) {
 
   return inherit( PropertySet, ArithmeticModel, {
 
-    //Get the current level model, to make some of the code slightly more readable
+    // @protected - get the current level model, use this to make the code more readable
     get currentLevelModel() {
       return this.levelModels[ this.level ];
     },
@@ -92,6 +92,7 @@ define( function( require ) {
      * Check whether the answer submitted by the user is correct.  The user's answer must have been stored in the
      * appropriate portion of the problem model before this method is invoked.  Doing it this way allows this general
      * method to be used to verify the answer.
+     * @public
      */
     submitAnswer: function() {
       var self = this;
@@ -147,7 +148,7 @@ define( function( require ) {
         this.state = GameState.AWAITING_USER_INPUT;
       }
       else {
-        // board must be full, so the level is now complete
+        // all problems have been answered, the level is now complete
         this.state = GameState.SHOWING_LEVEL_COMPLETED_DIALOG;
       }
     },
@@ -174,10 +175,7 @@ define( function( require ) {
      * @protected
      */
     setUpUnansweredProblem: function() {
-      // TODO: Implement in subclasses.
-      // TODO: Uncomment this line when subclasses are doing their thing.
-      //throw new Error( 'this function must be overridden in sub-classes' );
-      return true;
+      throw new Error( 'this function must be overridden in sub-classes' );
     },
 
     /**
@@ -291,7 +289,7 @@ define( function( require ) {
       }
     },
 
-    // @private, fill out most of the answer sheet, generally used for debugging.
+    // @private, fill out most of the answer sheet, used only for testing and debugging
     prefillAnswerSheet: function() {
       this.answerSheet.forEach( function( multipliersLeft ) {
         for ( var i = 0; i < multipliersLeft.length; i++ ) {
