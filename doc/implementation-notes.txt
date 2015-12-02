@@ -11,6 +11,9 @@ to maintain this some years in the future, since there were two very different i
 oriented software design, and good software design in general, in the minds of the two primary authors of this code.
 Keeping this in mind may help when working to decipher what lies within.
 
+Note to self (jblanco) - the items below this line have been added as I thought of them, and should be edited into a
+coherent narrative before this simulation is first published.
+
 Terminology: The sim uses the terms multiplicand, multiplier, and product when referring to an equation.  This seems to
 be the common terminology used based on what was seen when researching this on line.  For the equation 4 * 5 = 20, 4 is
 the multiplicand, 5 is the multiplier, and 20 is the product.
@@ -18,6 +21,12 @@ the multiplicand, 5 is the multiplier, and 20 is the product.
 There is no model element corresponding to an individual cell.  Instead, there are simply arrays that track whether a
 given cell is used or not, and there is a built-in assumption that the cells correspond to the appropriate position
 in a square multiplication table.
+
+There seems to have been a number of things done in anticipation of performance issues, and these have made the code a
+bit harder to read.
+
+It's weird that the tables are actually three tables.  Why not do them separately, and have the parent class switch
+them in and out based on the level?
 
 
 
