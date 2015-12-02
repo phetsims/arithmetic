@@ -25,15 +25,15 @@ define( function( require ) {
   var SPACING = 20; // spacing between equation elements
 
   /**
-   * @param {Property.<number>} multiplierLeftProperty - Property necessary for creating left multiplier input.
-   * @param {Property.<number>} multiplierRightProperty - Property necessary for creating right multiplier input.
+   * @param {Property.<number>} multiplicandProperty - Property necessary for creating multiplicand input.
+   * @param {Property.<number>} multiplierProperty - Property necessary for creating multiplier input.
    * @param {Property.<number>} productProperty - Property necessary for creating product input.
    * @param {Property.<number>} productProperty - Property necessary for creating product input.
    * @param {Object} [options]
    *
    * @constructor
    */
-  function EquationNode( multiplierLeftProperty, multiplierRightProperty, productProperty, options ) {
+  function EquationNode( multiplicandProperty, multiplierProperty, productProperty, options ) {
 
     options = _.extend( {
       spacing: SPACING,
@@ -41,8 +41,8 @@ define( function( require ) {
     }, options );
 
     // Set up the three nodes that depict the numbers in the equation.
-    this.multiplierLeftInput = new EquationInputNode( multiplierLeftProperty, INPUT_SIZE_MULTIPLIER );
-    this.multiplierRightInput = new EquationInputNode( multiplierRightProperty, INPUT_SIZE_MULTIPLIER );
+    this.multiplicandInput = new EquationInputNode( multiplicandProperty, INPUT_SIZE_MULTIPLIER );
+    this.multiplierInput = new EquationInputNode( multiplierProperty, INPUT_SIZE_MULTIPLIER );
     this.productInput = new EquationInputNode( productProperty, INPUT_SIZE_PRODUCT );
 
     // Set up the equals sign, which can potentially be changed to a not equals sign.
@@ -50,9 +50,9 @@ define( function( require ) {
     this.setShowEqual( true ); // Default to equals equation until set otherwise.
 
     options.children = [
-      this.multiplierLeftInput,
+      this.multiplicandInput,
       new Text( '\u00D7', { font: FONT_X, fill: 'yellow' } ),
-      this.multiplierRightInput,
+      this.multiplierInput,
       this.equalsSign,
       this.productInput
     ];

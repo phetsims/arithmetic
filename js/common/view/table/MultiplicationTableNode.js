@@ -56,7 +56,7 @@ define( function( require ) {
     // array with views for each level
     this.viewForLevel = []; // @private
 
-    // three-dimensional array of the cells, indexed by [levelNumber][leftMultiplier][rightMultiplier]
+    // three-dimensional array of the cells, indexed by [levelNumber][multiplicand][multiplier]
     this.cells = new Array( levelModels.length ); // @private
 
     // add stroke for all multiplication table views
@@ -173,9 +173,9 @@ define( function( require ) {
     stateProperty.link( function( state ) {
       if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
         // Update the answers that are displayed.
-        answerSheet.forEach( function( multipliersLeft, multipliersLeftIndex ) {
-          multipliersLeft.forEach( function( isVisible, multipliersRightIndex ) {
-            var cell = self.cells[ levelProperty.value ][ multipliersLeftIndex + 1 ][ multipliersRightIndex + 1 ];
+        answerSheet.forEach( function( multiplicands, multiplicandsIndex ) {
+          multiplicands.forEach( function( isVisible, multiplierIndex ) {
+            var cell = self.cells[ levelProperty.value ][ multiplicandsIndex + 1 ][ multiplierIndex + 1 ];
             if ( isVisible ) {
               if ( animateAnswer && !cell.isTextVisible() ) {
 
@@ -231,8 +231,8 @@ define( function( require ) {
      * @public
      */
     setCellsToDefaultColor: function( level ) {
-      this.cells[ level ].forEach( function( multipliersLeft ) {
-        multipliersLeft.forEach( function( cell ) {
+      this.cells[ level ].forEach( function( multiplicands ) {
+        multiplicands.forEach( function( cell ) {
           cell.normal();
         } );
       } );

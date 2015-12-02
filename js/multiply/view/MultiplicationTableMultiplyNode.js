@@ -30,7 +30,7 @@ define( function( require ) {
 
     stateProperty.lazyLink( function( state ) {
 
-      // set view for multiplication table after choosing left and right multipliers
+      // set view for multiplication table after choosing multiplicand and multiplier
       if ( state === GameState.AWAITING_USER_INPUT ) {
         // select the cells that correspond to the current problem
         self.updateCellColors( levelProperty.value );
@@ -55,14 +55,14 @@ define( function( require ) {
       this.setCellsToDefaultColor( level );
 
       // set view of selected multipliers
-      this.cells[ level ][ 0 ][ this.problemModel.multiplierRight ].select();
-      this.cells[ level ][ this.problemModel.multiplierLeft ][ 0 ].select();
+      this.cells[ level ][ 0 ][ this.problemModel.multiplier ].select();
+      this.cells[ level ][ this.problemModel.multiplicand ][ 0 ].select();
 
       // set view of selected products
-      this.cells[ level ].forEach( function( multiplierLeft, index ) {
-        if ( index && index <= self.problemModel.multiplierLeft ) {
-          multiplierLeft.forEach( function( cell, index ) {
-            if ( index && index <= self.problemModel.multiplierRight ) {
+      this.cells[ level ].forEach( function( multiplicand, index ) {
+        if ( index && index <= self.problemModel.multiplicand ) {
+          multiplicand.forEach( function( cell, index ) {
+            if ( index && index <= self.problemModel.multiplier ) {
               cell.select();
             }
           } );

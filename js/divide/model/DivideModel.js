@@ -23,8 +23,8 @@ define( function( require ) {
       fillEquation: function() {
 
         // Convert any strings entered by the user into numerical values.
-        self.problemModel.multiplierRight = parseInt( self.problemModel.multiplierRight, 10 );
-        self.problemModel.multiplierLeft = parseInt( self.problemModel.multiplierLeft, 10 );
+        self.problemModel.multiplier = parseInt( self.problemModel.multiplier, 10 );
+        self.problemModel.multiplicand = parseInt( self.problemModel.multiplicand, 10 );
 
         // Submit this answer so that it can be checked.
         self.submitAnswer();
@@ -42,22 +42,22 @@ define( function( require ) {
       if ( multipliers ) {
 
         // reset multiplierPair and score properties
-        this.problemModel.property( 'multiplierLeft' ).reset();
-        this.problemModel.property( 'multiplierRight' ).reset();
+        this.problemModel.property( 'multiplicand' ).reset();
+        this.problemModel.property( 'multiplier' ).reset();
         this.problemModel.property( 'product' ).reset();
         this.problemModel.property( 'possiblePoints' ).reset();
 
         // set product
-        this.problemModel.product = multipliers.multiplierLeft * multipliers.multiplierRight;
+        this.problemModel.product = multipliers.multiplicand * multipliers.multiplier;
 
-        // set left or right multiplier
+        // set multiplicand or multiplier
         if ( Math.random() < 0.5 ) {
-          this.problemModel.multiplierLeft = multipliers.multiplierLeft;
-          this.activeInput = 'right';
+          this.problemModel.multiplicand = multipliers.multiplicand;
+          this.activeInput = 'multiplier';
         }
         else {
-          this.problemModel.multiplierRight = multipliers.multiplierRight;
-          this.activeInput = 'left';
+          this.problemModel.multiplier = multipliers.multiplier;
+          this.activeInput = 'multiplicand';
         }
 
         return true;
@@ -80,18 +80,18 @@ define( function( require ) {
       var numQuestionsToAnswer = numQuestions - 1;
       console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
       _.times( numQuestionsToAnswer, function() {
-        if ( self.problemModel.multiplierLeft === undefined ) {
-          self.problemModel.multiplierLeft = self.problemModel.product / self.problemModel.multiplierRight;
+        if ( self.problemModel.multiplicand === undefined ) {
+          self.problemModel.multiplicand = self.problemModel.product / self.problemModel.multiplier;
         }
-        else if ( self.problemModel.multiplierRight === undefined ) {
-          self.problemModel.multiplierRight = self.problemModel.product / self.problemModel.multiplierLeft;
+        else if ( self.problemModel.multiplier === undefined ) {
+          self.problemModel.multiplier = self.problemModel.product / self.problemModel.multiplicand;
         }
         else {
           throw new Error( 'unexpected problem structure' );
         }
         self.activeLevelModel.currentScore += self.problemModel.possiblePoints;
         self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
-        self.answerSheet[ self.problemModel.multiplierLeft - 1 ][ self.problemModel.multiplierRight - 1 ] = true;
+        self.answerSheet[ self.problemModel.multiplicand - 1 ][ self.problemModel.multiplier - 1 ] = true;
         self.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
         self.nextProblem();
       } );

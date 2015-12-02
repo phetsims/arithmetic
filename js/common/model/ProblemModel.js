@@ -18,8 +18,8 @@ define( function( require ) {
    */
   function ProblemModel() {
     PropertySet.call( this, {
-      multiplierLeft: undefined, // left multiplier
-      multiplierRight: undefined, // right multiplier
+      multiplicand: undefined,
+      multiplier: undefined,
       product: undefined, // product of multiplication
       possiblePoints: 1 // points for correct completion of current task, can go down on incorrect answers
     } );

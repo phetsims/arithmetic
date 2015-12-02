@@ -58,16 +58,16 @@ define( function( require ) {
 
         self.cellListeners[ levelIndex ] = [];
 
-        tableForLevel.forEach( function( leftMultipliers, leftIndex ) {
+        tableForLevel.forEach( function( multiplicands, multiplicandIndex ) {
 
           // skip zero-index because it's the header column
-          if ( leftIndex ) {
+          if ( multiplicandIndex ) {
 
-            leftMultipliers.forEach( function( cell, rightIndex ) {
+            multiplicands.forEach( function( cell, multiplierIndex ) {
               var cellListener;
 
               // skip zero-index because it's the header row
-              if ( rightIndex ) {
+              if ( multiplierIndex ) {
                 cellListener = new CellInteractionListener();
                 cell.addInputListener( cellListener );
                 cell.cursor = 'pointer';
@@ -79,7 +79,7 @@ define( function( require ) {
                   if ( model.state === GameState.AWAITING_USER_INPUT ) {
                     self.setCellsToDefaultColor( model.level );
                     if ( cellListener.enabled ) {
-                      self.setSelectedRect( model.level, leftIndex, rightIndex );
+                      self.setSelectedRect( model.level, multiplicandIndex, multiplierIndex );
                       cell.hover();
                       self.cellPointer.visible = true;
 
@@ -123,15 +123,15 @@ define( function( require ) {
                   // set (in other cases, this region is set as the user moves the mouse over the table).
                   if ( model.state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
                     self.setCellsToDefaultColor( model.level );
-                    self.setSelectedRect( model.level, leftIndex, rightIndex );
+                    self.setSelectedRect( model.level, multiplicandIndex, multiplierIndex );
                   }
 
                   // Record the user's answer.
-                  model.problemModel.multiplierLeft = leftIndex;
-                  model.problemModel.multiplierRight = rightIndex;
+                  model.problemModel.multiplicand = multiplicandIndex;
+                  model.problemModel.multiplier = multiplierIndex;
 
                   // Disable this cell if the user's answer is correct.
-                  if ( leftIndex * rightIndex === model.problemModel.product ) {
+                  if ( multiplicandIndex * multiplierIndex === model.problemModel.product ) {
                     cellListener.enabled = false;
                   }
 
@@ -227,10 +227,10 @@ define( function( require ) {
         this.cells[ levelNumber ][ leftBound ][ 0 ].select();
 
         // set 'selected' state for all cell in given bounds
-        this.cells[ levelNumber ].forEach( function( multipliersLeft, leftIndex ) {
-          if ( leftIndex && leftIndex <= leftBound ) {
-            multipliersLeft.forEach( function( cell, rightIndex ) {
-              if ( rightIndex && rightIndex <= rightBound ) {
+        this.cells[ levelNumber ].forEach( function( multiplicands, multiplicandIndex ) {
+          if ( multiplicandIndex && multiplicandIndex <= leftBound ) {
+            multiplicands.forEach( function( cell, multiplierIndex ) {
+              if ( multiplierIndex && multiplierIndex <= rightBound ) {
                 cell.select();
               }
             } );

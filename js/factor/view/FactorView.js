@@ -28,8 +28,8 @@ define( function( require ) {
       new MultiplicationTableFactorNode( model ),
       new FactorEquationNode(
         model.property( 'state' ),
-        model.problemModel.property( 'multiplierLeft' ),
-        model.problemModel.property( 'multiplierRight' ),
+        model.problemModel.property( 'multiplicand' ),
+        model.problemModel.property( 'multiplier' ),
         model.problemModel.property( 'product' )
       ),
       {

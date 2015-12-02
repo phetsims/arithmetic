@@ -35,8 +35,8 @@ define( function( require ) {
       ),
       new DivideEquationNode(
         model.property( 'state' ),
-        model.problemModel.property( 'multiplierLeft' ),
-        model.problemModel.property( 'multiplierRight' ),
+        model.problemModel.property( 'multiplicand' ),
+        model.problemModel.property( 'multiplier' ),
         model.problemModel.property( 'product' ),
         model.property( 'input' ),
         model.property( 'activeInput' )

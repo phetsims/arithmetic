@@ -39,7 +39,7 @@ define( function( require ) {
     PropertySet.call( this, {
       level: -1, // game level
       input: '', // user's input value
-      activeInput: null, // point to multiplierLeft (if activeInput === 'left') or multiplierRight (if activeInput === 'right')
+      activeInput: null, // point to multiplicand (if activeInput === 'multiplicand') or multiplier (if activeInput === 'multiplier')
       state: GameState.SELECTING_LEVEL // current game state
     } );
 
@@ -96,7 +96,7 @@ define( function( require ) {
      */
     submitAnswer: function() {
       var self = this;
-      if ( this.problemModel.multiplierLeft * this.problemModel.multiplierRight === this.problemModel.product ) {
+      if ( this.problemModel.multiplicand * this.problemModel.multiplier === this.problemModel.product ) {
 
         // add the problem value to the total score
         this.activeLevelModel.currentScore += this.problemModel.possiblePoints;
@@ -113,7 +113,7 @@ define( function( require ) {
         this.gameAudioPlayer.correctAnswer();
 
         // mark this table entry as solved
-        this.answerSheet[ this.problemModel.multiplierLeft - 1 ][ this.problemModel.multiplierRight - 1 ] = true;
+        this.answerSheet[ this.problemModel.multiplicand - 1 ][ this.problemModel.multiplier - 1 ] = true;
 
         // show the feedback that indicates a correct answer
         this.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
@@ -261,12 +261,12 @@ define( function( require ) {
       var self = this;
       this.answerSheet.length = 0; // clear the array, but keep the reference
 
-      // add arrays with right multipliers for every left multiplier
+      // add arrays with multipliers for every multiplicand
       _.times( answerSheetSize, function() {
         self.answerSheet.push( [] );
       } );
 
-      // fill arrays appropriate to right multipliers
+      // fill arrays appropriate to multipliers
       this.answerSheet.forEach( function( el ) {
         _.times( answerSheetSize, function() {
           el.push( false );
@@ -279,9 +279,9 @@ define( function( require ) {
     },
 
     resetAnswerSheet: function() {
-      this.answerSheet.forEach( function( multipliersLeft ) {
-        for ( var i = 0; i < multipliersLeft.length; i++ ) {
-          multipliersLeft[ i ] = false;
+      this.answerSheet.forEach( function( multiplicands ) {
+        for ( var i = 0; i < multiplicands.length; i++ ) {
+          multiplicands[ i ] = false;
         }
       } );
       if ( ArithmeticQueryParameters.PREFILL_TABLE ) {
@@ -291,9 +291,9 @@ define( function( require ) {
 
     // @private, fill out most of the answer sheet, used only for testing and debugging
     prefillAnswerSheet: function() {
-      this.answerSheet.forEach( function( multipliersLeft ) {
-        for ( var i = 0; i < multipliersLeft.length; i++ ) {
-          multipliersLeft[ i ] = true;
+      this.answerSheet.forEach( function( multiplicands ) {
+        for ( var i = 0; i < multiplicands.length; i++ ) {
+          multiplicands[ i ] = true;
         }
       } );
       this.answerSheet[ 1 ][ 1 ] = false;
@@ -301,41 +301,41 @@ define( function( require ) {
       this.activeLevelModel.displayScore = this.activeLevelModel.currentScore;
     },
 
-    // return available left and right multipliers according to answer sheet
+    // return available multiplicands and multipliers according to answer sheet
     selectUnusedMultiplierPair: function() {
-      var availableMultipliersLeft = [];
-      var availableMultipliersRight = [];
-      var multiplierLeft;
-      var multiplierRight;
+      var availableMultiplicands = [];
+      var availableMultipliers = [];
+      var multiplicand;
+      var multiplier;
 
-      // find available left multipliers
-      this.answerSheet.forEach( function( rightMultipliers, index ) {
-        if ( rightMultipliers.indexOf( false ) !== -1 ) {
-          availableMultipliersLeft.push( index + 1 );
+      // find available multiplicands
+      this.answerSheet.forEach( function( multipliers, index ) {
+        if ( multipliers.indexOf( false ) !== -1 ) {
+          availableMultiplicands.push( index + 1 );
         }
       } );
 
       // no more available multipliers
-      if ( !availableMultipliersLeft.length ) {
+      if ( !availableMultiplicands.length ) {
         return null;
       }
 
-      // set left multiplier
-      multiplierLeft = _.shuffle( availableMultipliersLeft )[ 0 ];
+      // set multiplicand
+      multiplicand = _.shuffle( availableMultiplicands )[ 0 ];
 
-      // find available right multipliers
-      this.answerSheet[ multiplierLeft - 1 ].forEach( function( isRightMultiplierAnswered, index ) {
-        if ( !isRightMultiplierAnswered ) {
-          availableMultipliersRight.push( index + 1 );
+      // find available multipliers
+      this.answerSheet[ multiplicand - 1 ].forEach( function( isProblemAnswered, index ) {
+        if ( !isProblemAnswered ) {
+          availableMultipliers.push( index + 1 );
         }
       } );
 
-      // set right multiplier
-      multiplierRight = _.sample( availableMultipliersRight );
+      // set multiplier
+      multiplier = _.sample( availableMultipliers );
 
       return {
-        multiplierLeft: multiplierLeft,
-        multiplierRight: multiplierRight
+        multiplicand: multiplicand,
+        multiplier: multiplier
       };
     },
 
@@ -364,8 +364,8 @@ define( function( require ) {
     restoreGameEnvironment: function( environment ) {
       this.activeLevelModel.currentScore = environment.currentScore;
       this.activeInput = environment.activeInput;
-      this.problemModel.multiplierLeft = environment.multiplierLeft;
-      this.problemModel.multiplierRight = environment.multiplierRight;
+      this.problemModel.multiplicand = environment.multiplicand;
+      this.problemModel.multiplier = environment.multiplier;
       this.problemModel.product = environment.product;
       this.problemModel.possiblePoints = environment.possiblePoints;
       this.answerSheet.length = 0;
@@ -381,8 +381,8 @@ define( function( require ) {
     saveGameEnvironment: function() {
       this.activeLevelModel.environment = {
         input: this.input,
-        multiplierLeft: this.problemModel.multiplierLeft,
-        multiplierRight: this.problemModel.multiplierRight,
+        multiplicand: this.problemModel.multiplicand,
+        multiplier: this.problemModel.multiplier,
         product: this.problemModel.product,
         state: this.state,
         currentScore: this.activeLevelModel.currentScore,

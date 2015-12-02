@@ -29,27 +29,27 @@ define( function( require ) {
     MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet, true );
 
     stateProperty.lazyLink( function( state ) {
-      // set view for multiplication table after choosing left and right multipliers
+      // set view for multiplication table after choosing multiplicand and multiplier
       if ( state === GameState.AWAITING_USER_INPUT ) {
 
         // clear cell colors prior to showing the problem
         self.setCellsToDefaultColor( levelProperty.value );
 
         // set select multipliers
-        if ( problemModel.multiplierLeft ) {
-          self.cells[ levelProperty.value ][ problemModel.multiplierLeft ][ 0 ].select();
+        if ( problemModel.multiplicand ) {
+          self.cells[ levelProperty.value ][ problemModel.multiplicand ][ 0 ].select();
         }
         else {
-          self.cells[ levelProperty.value ][ 0 ][ problemModel.multiplierRight ].select();
+          self.cells[ levelProperty.value ][ 0 ][ problemModel.multiplier ].select();
         }
       }
       else if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
         // Make the cells that correspond to the answer change color.
-        self.cells[ levelProperty.value ][ problemModel.multiplierLeft ][ 0 ].select();
-        self.cells[ levelProperty.value ][ 0 ][ problemModel.multiplierRight ].select();
-        for ( var leftMultiplier = 1; leftMultiplier <= problemModel.multiplierLeft; leftMultiplier++ ) {
-          for ( var rightMultiplier = 1; rightMultiplier <= problemModel.multiplierRight; rightMultiplier++ ) {
-            self.cells[ levelProperty.value ][ leftMultiplier ][ rightMultiplier ].select();
+        self.cells[ levelProperty.value ][ problemModel.multiplicand ][ 0 ].select();
+        self.cells[ levelProperty.value ][ 0 ][ problemModel.multiplier ].select();
+        for ( var multiplicand = 1; multiplicand <= problemModel.multiplicand; multiplicand++ ) {
+          for ( var multiplier = 1; multiplier <= problemModel.multiplier; multiplier++ ) {
+            self.cells[ levelProperty.value ][ multiplicand ][ multiplier ].select();
           }
         }
       }

@@ -34,8 +34,8 @@ define( function( require ) {
       ),
       new MultiplyEquationNode(
         model.property( 'state' ),
-        model.problemModel.property( 'multiplierLeft' ),
-        model.problemModel.property( 'multiplierRight' ),
+        model.problemModel.property( 'multiplicand' ),
+        model.problemModel.property( 'multiplier' ),
         model.property( 'input' )
       ),
       {

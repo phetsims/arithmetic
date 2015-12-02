@@ -51,21 +51,21 @@ define( function( require ) {
     var topBox = createRectangleWithEnclosedText( '12', NUMBER_FONT, 15, 5 );
     topBox.centerX = this.width / 2;
     topBox.top = BOX_VERTICAL_INSET;
-    var leftBox = createRectangleWithEnclosedText( '?', QUESTION_MARK_FONT, 20, 5 );
-    leftBox.centerX = ICON_SIZE.width * 0.3;
-    leftBox.bottom = ICON_SIZE.height - BOX_VERTICAL_INSET;
-    var rightBox = createRectangleWithEnclosedText( '?', QUESTION_MARK_FONT, 20, 5 );
-    rightBox.centerX = ICON_SIZE.width * 0.7;
-    rightBox.bottom = leftBox.bottom;
+    var multiplicandBox = createRectangleWithEnclosedText( '?', QUESTION_MARK_FONT, 20, 5 );
+    multiplicandBox.centerX = ICON_SIZE.width * 0.3;
+    multiplicandBox.bottom = ICON_SIZE.height - BOX_VERTICAL_INSET;
+    var multiplierBox = createRectangleWithEnclosedText( '?', QUESTION_MARK_FONT, 20, 5 );
+    multiplierBox.centerX = ICON_SIZE.width * 0.7;
+    multiplierBox.bottom = multiplicandBox.bottom;
 
     // Add the connecting lines
-    this.addChild( new Line( topBox.centerX, topBox.bottom, leftBox.centerX, leftBox.top, CONNECTING_LINES_OPTIONS ) );
-    this.addChild( new Line( topBox.centerX, topBox.bottom, rightBox.centerX, rightBox.top, CONNECTING_LINES_OPTIONS ) );
+    this.addChild( new Line( topBox.centerX, topBox.bottom, multiplicandBox.centerX, multiplicandBox.top, CONNECTING_LINES_OPTIONS ) );
+    this.addChild( new Line( topBox.centerX, topBox.bottom, multiplierBox.centerX, multiplierBox.top, CONNECTING_LINES_OPTIONS ) );
 
     // Add the text boxes
     this.addChild( topBox );
-    this.addChild( leftBox );
-    this.addChild( rightBox );
+    this.addChild( multiplicandBox );
+    this.addChild( multiplierBox );
   }
 
   return inherit( Rectangle, FactorScreenIconNode );

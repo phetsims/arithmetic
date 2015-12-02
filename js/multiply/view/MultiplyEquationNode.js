@@ -15,15 +15,15 @@ define( function( require ) {
 
   /**
    * @param {Property} stateProperty - State of game property.
-   * @param {Property} multiplierLeftProperty - Property necessary for creating left multiplier input.
-   * @param {Property} multiplierRightProperty - Property necessary for creating right multiplier input.
+   * @param {Property} multiplicandProperty - Property necessary for creating multiplicand input.
+   * @param {Property} multiplierProperty - Property necessary for creating multiplier input.
    * @param {Property} inputProperty - Input property, which is the product, and is input by the user.
    *
    * @constructor
    */
-  function MultiplyEquationNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, inputProperty ) {
+  function MultiplyEquationNode( stateProperty, multiplicandProperty, multiplierProperty, inputProperty ) {
     var self = this;
-    EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, inputProperty );
+    EquationNode.call( this, multiplicandProperty, multiplierProperty, inputProperty );
 
     // The product is always the interactive part for this equation, so set up the appearance now.
     this.productInput.setInteractiveAppearance( true );

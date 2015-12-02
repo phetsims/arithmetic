@@ -37,15 +37,15 @@ define( function( require ) {
 
       if ( multiplierPair ) {
 
-        // reset multiplierPair and score properties
-        this.problemModel.property( 'multiplierLeft' ).reset();
-        this.problemModel.property( 'multiplierRight' ).reset();
+        // reset the problem and score properties
+        this.problemModel.property( 'multiplicand' ).reset();
+        this.problemModel.property( 'multiplier' ).reset();
         this.problemModel.property( 'product' ).reset();
         this.problemModel.property( 'possiblePoints' ).reset();
 
-        // set left and right multiplierPair
-        this.problemModel.multiplierLeft = multiplierPair.multiplierLeft;
-        this.problemModel.multiplierRight = multiplierPair.multiplierRight;
+        // set up the problem
+        this.problemModel.multiplicand = multiplierPair.multiplicand;
+        this.problemModel.multiplier = multiplierPair.multiplier;
 
         return true;
       }
@@ -67,10 +67,10 @@ define( function( require ) {
       var numQuestionsToAnswer = numQuestions - 1;
       console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
       _.times( numQuestionsToAnswer, function() {
-        self.problemModel.product = self.problemModel.multiplierLeft * self.problemModel.multiplierRight;
+        self.problemModel.product = self.problemModel.multiplicand * self.problemModel.multiplier;
         self.activeLevelModel.currentScore += self.problemModel.possiblePoints;
         self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
-        self.answerSheet[ self.problemModel.multiplierLeft - 1 ][ self.problemModel.multiplierRight - 1 ] = true;
+        self.answerSheet[ self.problemModel.multiplicand - 1 ][ self.problemModel.multiplier - 1 ] = true;
         self.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
         self.nextProblem();
       } );

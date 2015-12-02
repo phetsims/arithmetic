@@ -15,49 +15,49 @@ define( function( require ) {
 
   /**
    * @param {Property} stateProperty - State of game property.
-   * @param {Property} multiplierLeftProperty - Property necessary for creating left multiplier input.
-   * @param {Property} multiplierRightProperty - Property necessary for creating right multiplier input.
+   * @param {Property} multiplicandProperty - Property necessary for creating multiplicand input.
+   * @param {Property} multiplierProperty - Property necessary for creating multiplier input.
    * @param {Property} productProperty - Property necessary for creating product input.
    * @param {Property} inputProperty - Input property.
    * @param {Property} activeInputProperty - Link to active input.
    *
    * @constructor
    */
-  function DivideEquationNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty, inputProperty, activeInputProperty ) {
+  function DivideEquationNode( stateProperty, multiplicandProperty, multiplierProperty, productProperty, inputProperty, activeInputProperty ) {
     var self = this;
-    EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
+    EquationNode.call( this, multiplicandProperty, multiplierProperty, productProperty );
 
     // If the input value changes, it means that the user entered something, so put it in the appropriate equation node.
     inputProperty.lazyLink( function( inputString ) {
-      if ( activeInputProperty.value === 'left' ) {
-        multiplierLeftProperty.value = inputString;
+      if ( activeInputProperty.value === 'multiplicand' ) {
+        multiplicandProperty.value = inputString;
       }
-      else if ( activeInputProperty.value === 'right' ) {
-        multiplierRightProperty.value = inputString;
+      else if ( activeInputProperty.value === 'multiplier' ) {
+        multiplierProperty.value = inputString;
       }
     } );
 
     function updateFocus() {
       if ( stateProperty.value === GameState.AWAITING_USER_INPUT ) {
-        self.multiplierRightInput.setFocus( activeInputProperty.value === 'right' );
-        self.multiplierLeftInput.setFocus( activeInputProperty.value === 'left' );
+        self.multiplierInput.setFocus( activeInputProperty.value === 'multiplier' );
+        self.multiplicandInput.setFocus( activeInputProperty.value === 'multiplicand' );
       }
       else {
         // Not awaiting user input, so neither input gets focus.
-        self.multiplierRightInput.setFocus( false );
-        self.multiplierLeftInput.setFocus( false );
+        self.multiplierInput.setFocus( false );
+        self.multiplicandInput.setFocus( false );
       }
     }
 
     activeInputProperty.link( function( activeInput ) {
-      if ( activeInput === 'right' ) {
-        self.multiplierRightInput.clear();
+      if ( activeInput === 'multiplier' ) {
+        self.multiplierInput.clear();
       }
-      else if ( activeInput === 'left' ) {
-        self.multiplierLeftInput.clear();
+      else if ( activeInput === 'multiplicand' ) {
+        self.multiplicandInput.clear();
       }
-      self.multiplierLeftInput.setInteractiveAppearance( activeInput === 'left' );
-      self.multiplierRightInput.setInteractiveAppearance( activeInput === 'right' );
+      self.multiplicandInput.setInteractiveAppearance( activeInput === 'multiplicand' );
+      self.multiplierInput.setInteractiveAppearance( activeInput === 'multiplier' );
       updateFocus();
     } );
 

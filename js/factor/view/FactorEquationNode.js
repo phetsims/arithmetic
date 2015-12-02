@@ -15,19 +15,19 @@ define( function( require ) {
 
   /**
    * @param {Property} stateProperty - State of game property.
-   * @param {Property} multiplierLeftProperty - Property necessary for creating left multiplier input.
-   * @param {Property} multiplierRightProperty - Property necessary for creating right multiplier input.
+   * @param {Property} multiplicandProperty - Property necessary for creating multiplicand input.
+   * @param {Property} multiplierProperty - Property necessary for creating multiplier input.
    * @param {Property} productProperty - Property necessary for creating product input.
    *
    * @constructor
    */
-  function FactorEquationNode( stateProperty, multiplierLeftProperty, multiplierRightProperty, productProperty ) {
+  function FactorEquationNode( stateProperty, multiplicandProperty, multiplierProperty, productProperty ) {
     var self = this;
-    EquationNode.call( this, multiplierLeftProperty, multiplierRightProperty, productProperty );
+    EquationNode.call( this, multiplicandProperty, multiplierProperty, productProperty );
 
     // The two multipliers are always interactive in the factor equation, so set this up now.
-    this.multiplierLeftInput.setInteractiveAppearance( true );
-    this.multiplierRightInput.setInteractiveAppearance( true );
+    this.multiplicandInput.setInteractiveAppearance( true );
+    this.multiplierInput.setInteractiveAppearance( true );
 
     // Update contents and focus at the state changes.
     stateProperty.link( function( state ) {
@@ -35,12 +35,12 @@ define( function( require ) {
       if ( state === GameState.AWAITING_USER_INPUT ) {
 
         // Reset any previous answers from the user.
-        multiplierLeftProperty.reset();
-        multiplierRightProperty.reset();
+        multiplicandProperty.reset();
+        multiplierProperty.reset();
 
         // Show the placeholders
-        self.multiplierLeftInput.setPlaceholder();
-        self.multiplierRightInput.setPlaceholder();
+        self.multiplicandInput.setPlaceholder();
+        self.multiplierInput.setPlaceholder();
       }
     } );
   }

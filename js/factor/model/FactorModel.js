@@ -32,11 +32,11 @@ define( function( require ) {
 
         // reset multiplierPair and score properties
         this.problemModel.property( 'possiblePoints' ).reset();
-        this.problemModel.property( 'multiplierLeft' ).reset();
-        this.problemModel.property( 'multiplierRight' ).reset();
+        this.problemModel.property( 'multiplicand' ).reset();
+        this.problemModel.property( 'multiplier' ).reset();
 
         // set product
-        this.problemModel.product = multiplierPair.multiplierLeft * multiplierPair.multiplierRight;
+        this.problemModel.product = multiplierPair.multiplicand * multiplierPair.multiplier;
 
         return true;
       }
