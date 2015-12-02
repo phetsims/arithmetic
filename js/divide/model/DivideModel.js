@@ -89,8 +89,8 @@ define( function( require ) {
         else {
           throw new Error( 'unexpected problem structure' );
         }
-        self.currentLevelModel.currentScore += self.problemModel.possiblePoints;
-        self.currentLevelModel.displayScore = self.currentLevelModel.currentScore;
+        self.activeLevelModel.currentScore += self.problemModel.possiblePoints;
+        self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
         self.answerSheet[ self.problemModel.multiplierLeft - 1 ][ self.problemModel.multiplierRight - 1 ] = true;
         self.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
         self.nextProblem();

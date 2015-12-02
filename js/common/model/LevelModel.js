@@ -34,7 +34,7 @@ define( function( require ) {
     // model for game timer
     this.gameTimer = new GameTimer();
 
-    this.environment = null;
+    this.environment = null; // @public - storage area used for saving and restoring this level
   }
 
   return inherit( PropertySet, LevelModel, {

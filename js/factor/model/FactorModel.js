@@ -68,8 +68,8 @@ define( function( require ) {
             }
           }
         }
-        self.currentLevelModel.currentScore += self.problemModel.possiblePoints;
-        self.currentLevelModel.displayScore = self.currentLevelModel.currentScore;
+        self.activeLevelModel.currentScore += self.problemModel.possiblePoints;
+        self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
         self.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
         self.nextProblem();
       } );

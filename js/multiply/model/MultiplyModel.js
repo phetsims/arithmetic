@@ -55,8 +55,8 @@ define( function( require ) {
     },
 
     /**
-     * Automatically answer most of the questions.  This is useful for testing, since it can save time when testing
-     * how the sim behaves when a user finishing answering all questions for a level.  We need to be very careful that
+     * Automatically answer most of the problems.  This is useful for testing, since it can save time when evaluating
+     * how the sim behaves when a user finishes answering all questions for a level.  We need to be very careful that
      * this is never available in the published sim.
      * @override
      * @protected
@@ -68,8 +68,8 @@ define( function( require ) {
       console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
       _.times( numQuestionsToAnswer, function() {
         self.problemModel.product = self.problemModel.multiplierLeft * self.problemModel.multiplierRight;
-        self.currentLevelModel.currentScore += self.problemModel.possiblePoints;
-        self.currentLevelModel.displayScore = self.currentLevelModel.currentScore;
+        self.activeLevelModel.currentScore += self.problemModel.possiblePoints;
+        self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
         self.answerSheet[ self.problemModel.multiplierLeft - 1 ][ self.problemModel.multiplierRight - 1 ] = true;
         self.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
         self.nextProblem();

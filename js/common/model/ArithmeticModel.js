@@ -43,7 +43,7 @@ define( function( require ) {
       state: GameState.SELECTING_LEVEL // current game state
     } );
 
-    // array of levels with description
+    // array of levels
     this.levelModels = [
       // level 1
       new LevelModel( 6 ),
@@ -70,10 +70,10 @@ define( function( require ) {
       if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
 
         // start (or restart) the game timer
-        self.currentLevelModel.gameTimer.start();
+        self.activeLevelModel.gameTimer.start();
 
         // update display score
-        self.currentLevelModel.displayScore = self.currentLevelModel.currentScore;
+        self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
 
         // set up the initial problem
         self.setUpUnansweredProblem();
@@ -84,7 +84,7 @@ define( function( require ) {
   return inherit( PropertySet, ArithmeticModel, {
 
     // @protected - get the current level model, use this to make the code more readable
-    get currentLevelModel() {
+    get activeLevelModel() {
       return this.levelModels[ this.level ];
     },
 
@@ -99,10 +99,10 @@ define( function( require ) {
       if ( this.problemModel.multiplierLeft * this.problemModel.multiplierRight === this.problemModel.product ) {
 
         // add the problem value to the total score
-        this.currentLevelModel.currentScore += this.problemModel.possiblePoints;
+        this.activeLevelModel.currentScore += this.problemModel.possiblePoints;
 
         // update the displayed score
-        this.currentLevelModel.displayScore = this.currentLevelModel.currentScore;
+        this.activeLevelModel.displayScore = this.activeLevelModel.currentScore;
 
         // set the face to smile
         this.faceModel.pointsToDisplay = this.problemModel.possiblePoints;
@@ -187,7 +187,7 @@ define( function( require ) {
      * @protected
      */
     autoAnswer: function() {
-      // does nothing in the base class, override in descendent classes if desired
+      // does nothing in the base class, override in descendant classes if desired
     },
 
     returnToLevelSelectScreen: function() {
@@ -201,7 +201,7 @@ define( function( require ) {
 
     refreshLevel: function() {
       this.resetLevel();
-      this.currentLevelModel.displayScore = 0;
+      this.activeLevelModel.displayScore = 0;
       this.nextProblem();
       this.trigger( 'refreshed' );
     },
@@ -213,8 +213,8 @@ define( function( require ) {
     },
 
     playLevelFinishedSound: function() {
-      var resultScore = this.currentLevelModel.currentScore;
-      var perfectScore = this.currentLevelModel.perfectScore;
+      var resultScore = this.activeLevelModel.currentScore;
+      var perfectScore = this.activeLevelModel.perfectScore;
 
       if ( resultScore === perfectScore ) {
         this.gameAudioPlayer.gameOverPerfectScore();
@@ -233,7 +233,7 @@ define( function( require ) {
 
       // restore or init new environment for game
       if ( this.levelModels[ level ].environment ) {
-        this.restoreGameEnvironment();
+        this.restoreGameEnvironment( this.levelModels[ level ].environment );
       }
       else {
         this.initAnswerSheet( this.levelModels[ level ].tableSize );
@@ -247,8 +247,8 @@ define( function( require ) {
     },
 
     resetLevel: function() {
-      this.currentLevelModel.property( 'currentScore' ).reset();
-      this.currentLevelModel.gameTimer.property( 'elapsedTime' ).reset();
+      this.activeLevelModel.property( 'currentScore' ).reset();
+      this.activeLevelModel.gameTimer.property( 'elapsedTime' ).reset();
       this.inputProperty.reset();
       this.resetAnswerSheet();
       this.problemModel.reset();
@@ -297,8 +297,8 @@ define( function( require ) {
         }
       } );
       this.answerSheet[ 1 ][ 1 ] = false;
-      this.currentLevelModel.currentScore = this.answerSheet.length * this.answerSheet.length - 1;
-      this.currentLevelModel.displayScore = this.currentLevelModel.currentScore;
+      this.activeLevelModel.currentScore = this.answerSheet.length * this.answerSheet.length - 1;
+      this.activeLevelModel.displayScore = this.activeLevelModel.currentScore;
     },
 
     // return available left and right multipliers according to answer sheet
@@ -360,11 +360,9 @@ define( function( require ) {
       } );
     },
 
-    // restore game environment of current level
-    restoreGameEnvironment: function() {
-      var environment = this.currentLevelModel.environment;
-
-      this.currentLevelModel.currentScore = environment.currentScore;
+    // @private - set the 'game environment', generally used when switching to a different level
+    restoreGameEnvironment: function( environment ) {
+      this.activeLevelModel.currentScore = environment.currentScore;
       this.activeInput = environment.activeInput;
       this.problemModel.multiplierLeft = environment.multiplierLeft;
       this.problemModel.multiplierRight = environment.multiplierRight;
@@ -376,19 +374,19 @@ define( function( require ) {
       this.input = environment.input;
 
       // Elapsed time must account for any time that has gone by since the environment was saved.
-      this.currentLevelModel.gameTimer.elapsedTime = environment.elapsedTime + Math.floor( ( new Date().getTime() - environment.systemTimeWhenSaveOccurred ) / 1000 );
+      this.activeLevelModel.gameTimer.elapsedTime = environment.elapsedTime + Math.floor( ( new Date().getTime() - environment.systemTimeWhenSaveOccurred ) / 1000 );
     },
 
     // save game environment of current level
     saveGameEnvironment: function() {
-      this.currentLevelModel.environment = {
+      this.activeLevelModel.environment = {
         input: this.input,
         multiplierLeft: this.problemModel.multiplierLeft,
         multiplierRight: this.problemModel.multiplierRight,
         product: this.problemModel.product,
         state: this.state,
-        currentScore: this.currentLevelModel.currentScore,
-        elapsedTime: this.currentLevelModel.gameTimer.elapsedTime,
+        currentScore: this.activeLevelModel.currentScore,
+        elapsedTime: this.activeLevelModel.gameTimer.elapsedTime,
         systemTimeWhenSaveOccurred: new Date().getTime(),
         possiblePoints: this.problemModel.possiblePoints,
         answerSheet: _.cloneDeep( this.answerSheet ),

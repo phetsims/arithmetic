@@ -11,6 +11,9 @@ to maintain this some years in the future, since there were two very different i
 oriented software design, and good software design in general, in the minds of the two primary authors of this code.
 Keeping this in mind may help when working to decipher what lies within.
 
+Terminology: The sim uses the terms multiplicand, multiplier, and product when referring to an equation.  This seems to
+be the common terminology used based on what was seen when researching this on line.  For the equation 4 * 5 = 20, 4 is
+the multiplicand, 5 is the multiplier, and 20 is the product.
 
 
 
