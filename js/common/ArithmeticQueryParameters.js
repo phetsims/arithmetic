@@ -10,12 +10,11 @@ define( function( require ) {
 
   var getQueryParameter = phet.chipper.getQueryParameter;
 
-  var PREFILL_ALLOWED = true; // TODO: this should be disabled in published sims so that no one ever stumbles on to it.
-
   return {
 
-    // pre-fills the multiplication table to enable faster testing of level completion.
-    PREFILL_TABLE: PREFILL_ALLOWED ? !!getQueryParameter( 'prefill' ) || false : false
+    // Automatically answer most problems to enable faster testing of level completion.  The test for the presence of
+    // a dash in the version number is intended to prevent this feature from being present in released versions.
+    AUTO_ANSWER: !!getQueryParameter( 'autoAnswer' )
 
   };
 } );

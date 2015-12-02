@@ -53,7 +53,7 @@ define( function( require ) {
       new LevelModel( 12 )
     ];
 
-    // @public - a multi-dimensional array that tracks which problems have been answered
+    // @public - a 2D array that tracks which problems have been answered
     this.answerSheet = [];
 
     // hook up the audio player to the sound settings
@@ -240,7 +240,7 @@ define( function( require ) {
         this.nextProblem();
 
         // enable auto answer if specified in the query params, but only if this is not a production release
-        if ( window.phet.joist.sim.version.indexOf( '-' ) > 0 && window.phet.chipper.getQueryParameter( 'autoAnswer' ) ) {
+        if ( ArithmeticQueryParameters.AUTO_ANSWER && window.phet.joist.sim.version.indexOf( '-' ) > 0 ) {
           this.autoAnswer();
         }
       }
@@ -256,7 +256,7 @@ define( function( require ) {
       this.faceModel.hideFace();
     },
 
-    // set new answer sheet changing level
+    // set new answer sheet changing level TODO: improve this comment
     initAnswerSheet: function( answerSheetSize ) {
       var self = this;
       this.answerSheet.length = 0; // clear the array, but keep the reference
@@ -272,33 +272,14 @@ define( function( require ) {
           el.push( false );
         } );
       } );
-
-      if ( ArithmeticQueryParameters.PREFILL_TABLE ) {
-        this.prefillAnswerSheet();
-      }
     },
 
     resetAnswerSheet: function() {
-      this.answerSheet.forEach( function( multiplicands ) {
-        for ( var i = 0; i < multiplicands.length; i++ ) {
-          multiplicands[ i ] = false;
+      this.answerSheet.forEach( function( multiplicandRow ) {
+        for ( var i = 0; i < multiplicandRow.length; i++ ) {
+          multiplicandRow[ i ] = false;
         }
       } );
-      if ( ArithmeticQueryParameters.PREFILL_TABLE ) {
-        this.prefillAnswerSheet();
-      }
-    },
-
-    // @private, fill out most of the answer sheet, used only for testing and debugging
-    prefillAnswerSheet: function() {
-      this.answerSheet.forEach( function( multiplicands ) {
-        for ( var i = 0; i < multiplicands.length; i++ ) {
-          multiplicands[ i ] = true;
-        }
-      } );
-      this.answerSheet[ 1 ][ 1 ] = false;
-      this.activeLevelModel.currentScore = this.answerSheet.length * this.answerSheet.length - 1;
-      this.activeLevelModel.displayScore = this.activeLevelModel.currentScore;
     },
 
     // return available multiplicands and multipliers according to answer sheet
