@@ -16,16 +16,15 @@ define( function( require ) {
 
   /**
    * @param {ProblemModel} problemModel - Model for single multiplication problem.
-   * @param {Array} answerSheet - array that tracks which problems have and have not been answered.
    * @param {Property} levelProperty - Level difficulty property.
    * @param {Property} stateProperty - Current state property.
    * @param {Array} levelModels - Array of descriptions for each level.
    *
    * @constructor
    */
-  function MultiplicationTableMultiplyNode( problemModel, answerSheet, stateProperty, levelProperty, levelModels ) {
+  function MultiplicationTableMultiplyNode( problemModel, stateProperty, levelProperty, levelModels ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, answerSheet, true );
+    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, true );
     this.problemModel = problemModel;
 
     stateProperty.lazyLink( function( state ) {

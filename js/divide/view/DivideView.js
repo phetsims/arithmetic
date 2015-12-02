@@ -28,7 +28,6 @@ define( function( require ) {
       model,
       new MultiplicationTableDivideNode(
         model.problemModel,
-        model.answerSheet,
         model.property( 'state' ),
         model.property( 'level' ),
         model.levelModels

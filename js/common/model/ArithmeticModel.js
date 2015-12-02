@@ -53,9 +53,6 @@ define( function( require ) {
       new LevelModel( 12 )
     ];
 
-    // @public - a 2D array that tracks which problems have been answered
-    this.answerSheet = [];
-
     // hook up the audio player to the sound settings
     this.gameAudioPlayer = new GameAudioPlayer( ArithmeticGlobals.soundEnabledProperty );
 
@@ -113,7 +110,7 @@ define( function( require ) {
         this.gameAudioPlayer.correctAnswer();
 
         // mark this table entry as solved
-        this.answerSheet[ this.problemModel.multiplicand - 1 ][ this.problemModel.multiplier - 1 ] = true;
+        this.activeLevelModel.cellUsedStates[ this.problemModel.multiplicand - 1 ][ this.problemModel.multiplier - 1 ] = true;
 
         // show the feedback that indicates a correct answer
         this.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
@@ -236,7 +233,6 @@ define( function( require ) {
         this.restoreGameEnvironment( this.levelModels[ level ].environment );
       }
       else {
-        this.initAnswerSheet( this.levelModels[ level ].tableSize );
         this.nextProblem();
 
         // enable auto answer if specified in the query params, but only if this is not a production release
@@ -247,39 +243,14 @@ define( function( require ) {
     },
 
     resetLevel: function() {
-      this.activeLevelModel.property( 'currentScore' ).reset();
-      this.activeLevelModel.gameTimer.property( 'elapsedTime' ).reset();
+      this.activeLevelModel.reset();
+      // TODO: Get rid of commented out code below once verified that direct reset of level works
+      //this.activeLevelModel.property( 'currentScore' ).reset();
+      //this.activeLevelModel.gameTimer.property( 'elapsedTime' ).reset();
       this.inputProperty.reset();
-      this.resetAnswerSheet();
       this.problemModel.reset();
       this.faceModel.reset();
       this.faceModel.hideFace();
-    },
-
-    // set new answer sheet changing level TODO: improve this comment
-    initAnswerSheet: function( answerSheetSize ) {
-      var self = this;
-      this.answerSheet.length = 0; // clear the array, but keep the reference
-
-      // add arrays with multipliers for every multiplicand
-      _.times( answerSheetSize, function() {
-        self.answerSheet.push( [] );
-      } );
-
-      // fill arrays appropriate to multipliers
-      this.answerSheet.forEach( function( el ) {
-        _.times( answerSheetSize, function() {
-          el.push( false );
-        } );
-      } );
-    },
-
-    resetAnswerSheet: function() {
-      this.answerSheet.forEach( function( multiplicandRow ) {
-        for ( var i = 0; i < multiplicandRow.length; i++ ) {
-          multiplicandRow[ i ] = false;
-        }
-      } );
     },
 
     // return available multiplicands and multipliers according to answer sheet
@@ -290,7 +261,7 @@ define( function( require ) {
       var multiplier;
 
       // find available multiplicands
-      this.answerSheet.forEach( function( multipliers, index ) {
+      this.activeLevelModel.cellUsedStates.forEach( function( multipliers, index ) {
         if ( multipliers.indexOf( false ) !== -1 ) {
           availableMultiplicands.push( index + 1 );
         }
@@ -305,7 +276,7 @@ define( function( require ) {
       multiplicand = _.shuffle( availableMultiplicands )[ 0 ];
 
       // find available multipliers
-      this.answerSheet[ multiplicand - 1 ].forEach( function( isProblemAnswered, index ) {
+      this.activeLevelModel.cellUsedStates[ multiplicand - 1 ].forEach( function( isProblemAnswered, index ) {
         if ( !isProblemAnswered ) {
           availableMultipliers.push( index + 1 );
         }
@@ -349,8 +320,6 @@ define( function( require ) {
       this.problemModel.multiplier = environment.multiplier;
       this.problemModel.product = environment.product;
       this.problemModel.possiblePoints = environment.possiblePoints;
-      this.answerSheet.length = 0;
-      this.answerSheet.push.apply( this.answerSheet, environment.answerSheet );
       this.state = environment.state;
       this.input = environment.input;
 
@@ -370,7 +339,6 @@ define( function( require ) {
         elapsedTime: this.activeLevelModel.gameTimer.elapsedTime,
         systemTimeWhenSaveOccurred: new Date().getTime(),
         possiblePoints: this.problemModel.possiblePoints,
-        answerSheet: _.cloneDeep( this.answerSheet ),
         activeInput: this.activeInput
       };
     }

@@ -54,17 +54,18 @@ define( function( require ) {
      */
     autoAnswer: function() {
       var self = this;
-      var numQuestions = this.answerSheet.length * this.answerSheet[ 0 ].length;
+      var cellUsedStates = this.activeLevelModel.cellUsedStates;
+      var numQuestions = cellUsedStates.length * cellUsedStates[ 0 ].length;
       var numQuestionsToAnswer = numQuestions - 1;
       console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
       _.times( numQuestionsToAnswer, function( index ) {
         // do a brute-force factoring method, since performance isn't really an issue here
         var answerFound = false;
-        for ( var i = 0; i < self.answerSheet.length && !answerFound; i++ ) {
-          for ( var j = 0; j < self.answerSheet[ 0 ].length && !answerFound; j++ ) {
-            if ( ( i + 1 ) * ( j + 1 ) === self.problemModel.product && self.answerSheet[ i ][ j ] === false ) {
+        for ( var i = 0; i < cellUsedStates.length && !answerFound; i++ ) {
+          for ( var j = 0; j < cellUsedStates[ 0 ].length && !answerFound; j++ ) {
+            if ( ( i + 1 ) * ( j + 1 ) === self.problemModel.product && cellUsedStates[ i ][ j ] === false ) {
               answerFound = true;
-              self.answerSheet[ i ][ j ] = true;
+              cellUsedStates[ i ][ j ] = true;
             }
           }
         }

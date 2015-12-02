@@ -1,9 +1,9 @@
 // Copyright 2002-2014, University of Colorado Boulder
 
 /**
- * A Scenery node that represents the multiplication table.  It contains a table for each of the levels in the provided
- * levelModels parameter, and handles the hiding and showing of the appropriate table based on the currently active
- * level.
+ * A Scenery node that represents a set of multiplication tables.  It contains a table for each of the levels in the
+ * provided levelModels parameter, and handles the hiding and showing of the appropriate table based on the currently
+ * active level.
  *
  * Each table is made up of a set of cells that define the headers and the body of the table.
  *
@@ -37,16 +37,13 @@ define( function( require ) {
   var ANSWER_ANIMATION_ORIGIN = new Vector2( 370, 380 );
 
   /**
-   * For each level will be created multiplication table node.
-   * Necessary for representing best scores for each level.
    * @param {Property.<number>} levelProperty - Level difficulty property.
    * @param {Property.<GameState>} stateProperty - Current state property.
-   * @param {Array} levelModels - Array of descriptions for each level.
-   * @param {Array} answerSheet - 2D array that tracks problems that have and haven't been answered
+   * @param {Array.<LevelModel>} levelModels - Array of descriptions for each level.
    * @param {boolean} animateAnswer - flag that controls whether answer appears to fly into the cell or just appears
    * @constructor
    */
-  function MultiplicationTableNode( levelProperty, stateProperty, levelModels, answerSheet, animateAnswer ) {
+  function MultiplicationTableNode( levelProperty, stateProperty, levelModels, animateAnswer ) {
     var self = this;
     Node.call( this );
 
@@ -66,7 +63,7 @@ define( function( require ) {
     } );
     this.addChild( backgroundRect );
 
-    // create view of times table for each of the levels
+    // create view of multiplication table for each of the levels
     levelModels.forEach( function( level, levelIndex ) {
       var tableSize = level.tableSize;
       var cellOptions = {
@@ -172,8 +169,9 @@ define( function( require ) {
     // TODO: This seems odd.  Why not just have each cell have a 'solved' property, and have that reflected in the view?
     stateProperty.link( function( state ) {
       if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
-        // Update the answers that are displayed.
-        answerSheet.forEach( function( multiplicands, multiplicandsIndex ) {
+
+        // make sure the appropriate cells are displaying their numerical values
+        levelModels[ levelProperty.value ].cellUsedStates.forEach( function( multiplicands, multiplicandsIndex ) {
           multiplicands.forEach( function( isVisible, multiplierIndex ) {
             var cell = self.cells[ levelProperty.value ][ multiplicandsIndex + 1 ][ multiplierIndex + 1 ];
             if ( isVisible ) {
@@ -210,7 +208,7 @@ define( function( require ) {
                 animationTween.start();
               }
               else {
-                // So animation, so just show the text.
+                // No animation, so just show the text.
                 cell.showText();
               }
             }
