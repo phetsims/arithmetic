@@ -11,8 +11,8 @@ define( function( require ) {
   // modules
   var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
   var DivideEquationNode = require( 'ARITHMETIC/divide/view/DivideEquationNode' );
+  var DivideScreenTableNode = require( 'ARITHMETIC/divide/view/DivideScreenTableNode' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var MultiplicationTableDivideNode = require( 'ARITHMETIC/divide/view/MultiplicationTableDivideNode' );
 
   // strings
   var divideString = require( 'string!ARITHMETIC/divide' );
@@ -26,7 +26,7 @@ define( function( require ) {
     ArithmeticView.call(
       this,
       model,
-      new MultiplicationTableDivideNode(
+      new DivideScreenTableNode(
         model.problemModel,
         model.property( 'state' ),
         model.property( 'level' ),

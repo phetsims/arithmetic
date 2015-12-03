@@ -22,7 +22,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function MultiplicationTableDivideNode( problemModel, stateProperty, levelProperty, levelModels ) {
+  function DivideScreenTableNode( problemModel, stateProperty, levelProperty, levelModels ) {
     var self = this;
     MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, true );
 
@@ -58,5 +58,5 @@ define( function( require ) {
     } );
   }
 
-  return inherit( MultiplicationTableNode, MultiplicationTableDivideNode );
+  return inherit( MultiplicationTableNode, DivideScreenTableNode );
 } );

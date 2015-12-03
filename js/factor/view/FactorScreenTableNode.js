@@ -28,7 +28,7 @@ define( function( require ) {
      * @param {FactorModel} model - main model class for the factor screen
      * @constructor
      */
-    function MultiplicationTableFactorNode( model ) {
+    function FactorScreenTableNode( model ) {
       var self = this;
       MultiplicationTableNode.call( this, model.property( 'level' ), model.property( 'state' ), model.levelModels, false );
 
@@ -210,7 +210,7 @@ define( function( require ) {
       } );
     }
 
-    return inherit( MultiplicationTableNode, MultiplicationTableFactorNode, {
+    return inherit( MultiplicationTableNode, FactorScreenTableNode, {
 
       // @private, enable all cells for given level
       enableCells: function( levelNumber ) {

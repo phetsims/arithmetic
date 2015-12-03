@@ -11,8 +11,8 @@ define( function( require ) {
   // modules
   var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
   var FactorEquationNode = require( 'ARITHMETIC/factor/view/FactorEquationNode' );
+  var FactorScreenTableNode = require( 'ARITHMETIC/factor/view/FactorScreenTableNode' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var MultiplicationTableFactorNode = require( 'ARITHMETIC/factor/view/MultiplicationTableFactorNode' );
 
   // strings
   var factorString = require( 'string!ARITHMETIC/factor' );
@@ -25,7 +25,7 @@ define( function( require ) {
     ArithmeticView.call(
       this,
       model,
-      new MultiplicationTableFactorNode( model ),
+      new FactorScreenTableNode( model ),
       new FactorEquationNode(
         model.property( 'state' ),
         model.problemModel.property( 'multiplicand' ),
