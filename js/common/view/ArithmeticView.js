@@ -4,6 +4,7 @@
  * Base type for view used in the 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
+ * @author John Blanco
  */
 define( function( require ) {
   'use strict';

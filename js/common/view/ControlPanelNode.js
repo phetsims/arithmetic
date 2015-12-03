@@ -4,6 +4,7 @@
  * Control panel node. Contains refresh button, sound and timer toggle buttons.
  *
  * @author Andrey Zelenkov (MLearner)
+ * @author John Blanco
  */
 define( function( require ) {
   'use strict';

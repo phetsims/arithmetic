@@ -1,7 +1,7 @@
 // Copyright 2014-2015, University of Colorado Boulder
 
 /**
- * Multiplication table multiplier button node.
+ * Multiplication table header cell.
  *
  * @author Andrey Zelenkov (MLearner)
  */

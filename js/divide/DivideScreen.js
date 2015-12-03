@@ -3,7 +3,8 @@
 /**
  * The 'Divide' screen. Conforms to the contract specified in joist/Screen.
  *
- * @author John Blanco, Andrey Zelenkov (MLearner)
+ * Andrey Zelenkov (MLearner)
+ * @author John Blanco
  */
 define( function( require ) {
   'use strict';

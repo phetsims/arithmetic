@@ -4,6 +4,7 @@
  * Model for divide game in the 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
+ * @author John Blanco
  */
 
 define( function( require ) {

@@ -253,7 +253,7 @@ define( function( require ) {
       this.faceModel.hideFace();
     },
 
-    // return available multiplicands and multipliers according to answer sheet
+    // @public - select an unused multiplican-multiplier pair
     selectUnusedMultiplierPair: function() {
       return this.activeLevelModel.selectUnusedMultiplierPair();
     },

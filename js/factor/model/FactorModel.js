@@ -4,6 +4,7 @@
  * Model for factor game in 'Arithmetic' simulation.
  *
  * @author Andrey Zelenkov (MLearner)
+ * @author John Blanco
  */
 
 define( function( require ) {
