@@ -18,8 +18,8 @@ define( function( require ) {
   var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var MultiplierTableHeaderCell = require( 'ARITHMETIC/common/view/table/MultiplierTableHeaderCell' );
-  var MultiplierTableBodyCell = require( 'ARITHMETIC/common/view/table/MultiplierTableBodyCell' );
+  var MultiplicationTableHeaderCell = require( 'ARITHMETIC/common/view/table/MultiplicationTableHeaderCell' );
+  var MultiplicationTableBodyCell = require( 'ARITHMETIC/common/view/table/MultiplicationTableBodyCell' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
@@ -92,12 +92,12 @@ define( function( require ) {
 
             // first cell is the multiplier operator, others are multipliers
             if ( column === 0 ) {
-              cell = new MultiplierTableHeaderCell( '\u00D7', cellOptions, {
+              cell = new MultiplicationTableHeaderCell( '\u00D7', cellOptions, {
                 font: new PhetFont( { size: Math.round( cellOptions.height * 0.85 ) } ) // Equation empirically determined, makes font smaller for larger tables.
               } );
             }
             else {
-              cell = new MultiplierTableHeaderCell( column.toString(), cellOptions );
+              cell = new MultiplicationTableHeaderCell( column.toString(), cellOptions );
             }
             cell.top = cellTop;
             cell.left = cellLeft;
@@ -113,10 +113,10 @@ define( function( require ) {
 
             // first cell in each row is a multiplier, others are products
             if ( column === 0 ) {
-              cell = new MultiplierTableHeaderCell( row.toString(), cellOptions );
+              cell = new MultiplicationTableHeaderCell( row.toString(), cellOptions );
             }
             else {
-              cell = new MultiplierTableBodyCell(
+              cell = new MultiplicationTableBodyCell(
                 ( row * column ).toString(),
                 cellOptions
               );

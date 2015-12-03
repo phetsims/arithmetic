@@ -25,7 +25,7 @@ define( function( require ) {
    * @param {Object} backgroundOptions - Background options for button.
    * @constructor
    */
-  function MultiplierTableBodyCell( contentText, backgroundOptions ) {
+  function MultiplicationTableBodyCell( contentText, backgroundOptions ) {
     backgroundOptions = _.extend( {
       fill: NORMAL_COLOR
     }, backgroundOptions );
@@ -34,7 +34,7 @@ define( function( require ) {
     this.setText( contentText );
   }
 
-  return inherit( AbstractCell, MultiplierTableBodyCell, {
+  return inherit( AbstractCell, MultiplicationTableBodyCell, {
 
     // TODO: active may no longer be needed
     // @public

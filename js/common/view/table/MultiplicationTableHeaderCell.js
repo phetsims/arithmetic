@@ -26,7 +26,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function MultiplierTableHeaderCell( contentText, backgroundOptions, textOptions ) {
+  function MultiplicationTableHeaderCell( contentText, backgroundOptions, textOptions ) {
     backgroundOptions = _.extend( {
       fill: NORMAL_COLOR_BACKGROUND
     }, backgroundOptions );
@@ -35,7 +35,7 @@ define( function( require ) {
     this.setText( contentText );
   }
 
-  return inherit( AbstractCell, MultiplierTableHeaderCell, {
+  return inherit( AbstractCell, MultiplicationTableHeaderCell, {
     //TODO: Names are weird - some are verbs, some are adjectives.  Improve.  Coordinate with body cell.
     select: function() {
       this.setBackgroundFill( SELECT_COLOR_BACKGROUND );
