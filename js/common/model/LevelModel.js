@@ -25,14 +25,14 @@ define( function( require ) {
       displayScore: 0 // @public - score for displaying in level select buttons
     } );
 
-    this.tableSize = tableSize; // @public
-    this.perfectScore = tableSize * tableSize; // @public
+    this.tableSize = tableSize; // @public, read only
+    this.perfectScore = tableSize * tableSize; // @public, read only
 
     // @public - timer for this level
     this.gameTimer = new GameTimer();
 
-    // @public - 2d array that tracks the 'used' state of each of the cells for this level
-    // TODO: Consider making this private and having methods to mark cell state.  This will hide the 0/1 index issue
+    // @private - 2d array that tracks the 'used' state of each of the cells in the multiplication table for this level,
+    // accessed through methods defined below.
     this.cellUsedStates = new Array( tableSize );
     for ( var i = 0; i < tableSize; i++ ) {
       this.cellUsedStates[ i ] = new Array( tableSize );
@@ -64,6 +64,54 @@ define( function( require ) {
           this.cellUsedStates[ i ][ j ] = false;
         }
       }
+    },
+
+    // @public - mark the cell associated with the provided multiplicand and multiplier as used
+    markCellAsUsed: function( multiplicand, multiplier ) {
+      this.cellUsedStates[ multiplicand - 1 ][ multiplier - 1 ] = true;
+    },
+
+    // @public - get the usage state for the requested cell
+    isCellUsed: function( multiplicand, multiplier ) {
+      return this.cellUsedStates[ multiplicand - 1 ][ multiplier - 1 ];
+    },
+
+    // @public - chose a multiplicand-multiplier pair randomly from those that are available
+    selectUnusedMultiplierPair: function() {
+      var availableMultiplicands = [];
+      var availableMultipliers = [];
+      var multiplicand;
+      var multiplier;
+
+      // find available multiplicand rows with at least one unused cell
+      this.cellUsedStates.forEach( function( multipliers, index ) {
+        if ( multipliers.indexOf( false ) !== -1 ) {
+          availableMultiplicands.push( index + 1 );
+        }
+      } );
+
+      // no more available multipliers
+      if ( !availableMultiplicands.length ) {
+        return null;
+      }
+
+      // set multiplicand
+      multiplicand = _.shuffle( availableMultiplicands )[ 0 ];
+
+      // find available multipliers
+      this.cellUsedStates[ multiplicand - 1 ].forEach( function( isProblemAnswered, index ) {
+        if ( !isProblemAnswered ) {
+          availableMultipliers.push( index + 1 );
+        }
+      } );
+
+      // set multiplier
+      multiplier = _.sample( availableMultipliers );
+
+      return {
+        multiplicand: multiplicand,
+        multiplier: multiplier
+      };
     }
   } );
 } );

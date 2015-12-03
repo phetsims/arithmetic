@@ -15,12 +15,17 @@ Note to self (jblanco) - the items below this line have been added as I thought 
 coherent narrative before this simulation is first published.
 
 Terminology: The sim uses the terms multiplicand, multiplier, and product when referring to an equation.  This seems to
-be the common terminology used based on what was seen when researching this on line.  For the equation 4 * 5 = 20, 4 is
-the multiplicand, 5 is the multiplier, and 20 is the product.
+be the common terminology used based on what was seen when researching this on line.  As an example, for the equation
+4 * 5 = 20, 4 is the multiplicand, 5 is the multiplier, and 20 is the product.
 
 There is no model element corresponding to an individual cell.  Instead, there are simply arrays that track whether a
 given cell is used or not, and there is a built-in assumption that the cells correspond to the appropriate position
-in a square multiplication table.
+in a square multiplication table.  An alternative approach would have been to have each cell exist in the model, and
+have a property that indicates whether it should be shown in the table.  I (jblanco) believe that the original
+developer did what he did because of concerns about the performance impact of creating so many properties and then
+linking them to an attribute that controlled the visibility.
+
+The model just tracks whether a cell is used, size of table.
 
 There seems to have been a number of things done in anticipation of performance issues, and these have made the code a
 bit harder to read.

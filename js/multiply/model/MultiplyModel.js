@@ -63,16 +63,14 @@ define( function( require ) {
      */
     autoAnswer: function() {
       var self = this;
-      var cellUsedStates = this.activeLevelModel.cellUsedStates;
-      var numQuestions = cellUsedStates.length * cellUsedStates[ 0 ].length;
+      var numQuestions = this.activeLevelModel.tableSize * this.activeLevelModel.tableSize;
       var numQuestionsToAnswer = numQuestions - 1;
       console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
       _.times( numQuestionsToAnswer, function() {
         self.problemModel.product = self.problemModel.multiplicand * self.problemModel.multiplier;
         self.activeLevelModel.currentScore += self.problemModel.possiblePoints;
         self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
-        cellUsedStates[ self.problemModel.multiplicand - 1 ][ self.problemModel.multiplier - 1 ] = true;
-        self.activeLevelModel.cellUsedStates[ self.problemModel.multiplicand - 1 ][ self.problemModel.multiplier - 1 ] = true;
+        self.activeLevelModel.markCellAsUsed( self.problemModel.multiplicand, self.problemModel.multiplier );
         self.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
         self.nextProblem();
       } );

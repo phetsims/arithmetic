@@ -54,23 +54,24 @@ define( function( require ) {
      */
     autoAnswer: function() {
       var self = this;
-      var cellUsedStates = this.activeLevelModel.cellUsedStates;
-      var numQuestions = cellUsedStates.length * cellUsedStates[ 0 ].length;
+      var tableSize = this.activeLevelModel.tableSize;
+      var numQuestions = tableSize * tableSize;
       var numQuestionsToAnswer = numQuestions - 1;
+      var levelModel = this.activeLevelModel; // convenience var
       console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
       _.times( numQuestionsToAnswer, function( index ) {
         // do a brute-force factoring method, since performance isn't really an issue here
         var answerFound = false;
-        for ( var i = 0; i < cellUsedStates.length && !answerFound; i++ ) {
-          for ( var j = 0; j < cellUsedStates[ 0 ].length && !answerFound; j++ ) {
-            if ( ( i + 1 ) * ( j + 1 ) === self.problemModel.product && cellUsedStates[ i ][ j ] === false ) {
+        for ( var multiplicand = 1; multiplicand <= tableSize && !answerFound; multiplicand++ ) {
+          for ( var multiplier = 1; multiplier <= tableSize && !answerFound; multiplier++ ) {
+            if ( multiplicand * multiplier === self.problemModel.product && !levelModel.isCellUsed( multiplicand, multiplier ) ) {
               answerFound = true;
-              cellUsedStates[ i ][ j ] = true;
+              levelModel.markCellAsUsed( multiplicand, multiplier );
             }
           }
         }
-        self.activeLevelModel.currentScore += self.problemModel.possiblePoints;
-        self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
+        levelModel.currentScore += self.problemModel.possiblePoints;
+        levelModel.displayScore = self.activeLevelModel.currentScore;
         self.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
         self.nextProblem();
       } );

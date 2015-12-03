@@ -166,46 +166,53 @@ define( function( require ) {
     this.addChild( flyingProduct );
 
     // update the visible answers each time the user gets a correct answer
-    // TODO: This seems odd.  Why not just have each cell have a 'solved' property, and have that reflected in the view?
     stateProperty.link( function( state ) {
       if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
 
+        var level = levelProperty.value; // convenience var
+        var levelModel = levelModels[ level ]; // convenience var
+
         // make sure the appropriate cells are displaying their numerical values
-        levelModels[ levelProperty.value ].cellUsedStates.forEach( function( multiplicands, multiplicandsIndex ) {
-          multiplicands.forEach( function( isVisible, multiplierIndex ) {
-            var cell = self.cells[ levelProperty.value ][ multiplicandsIndex + 1 ][ multiplierIndex + 1 ];
-            if ( isVisible ) {
+        for ( var multiplicand = 1; multiplicand <= levelModel.tableSize; multiplicand++ ) {
+          for ( var multiplier = 1; multiplier <= levelModel.tableSize; multiplier++ ) {
+            var cell = self.cells[ levelProperty.value ][ multiplicand ][ multiplier ];
+            if ( levelModel.isCellUsed( multiplicand, multiplier ) ) {
+
+              // If the cell is marked as used but the text is not yet visible, animate the product to the cell.
               if ( animateAnswer && !cell.isTextVisible() ) {
 
                 // Animate the product moving from the equation to the appropriate cell within the table.  We had to
                 // get a little tricky with this since the scale of each node is controlled by a function rather than
                 // a parameter.
-                flyingProduct.text = cell.getTextString();
-                flyingProduct.setScaleMagnitude( 1 );
-                var flyingProductDestination = self.globalToLocalPoint( cell.parentToGlobalPoint( cell.center ) );
-                var flyingProducePositionAndScale = {
-                  centerX: ANSWER_ANIMATION_ORIGIN.x,
-                  centerY: ANSWER_ANIMATION_ORIGIN.y,
-                  scale: 1
-                };
-                var animationTween = new TWEEN.Tween( flyingProducePositionAndScale ).
-                  to( {
-                    centerX: flyingProductDestination.x,
-                    centerY: flyingProductDestination.y,
-                    scale: cell.getTextHeight() / flyingProduct.height
-                  }, ANSWER_ANIMATION_TIME ).
-                  easing( TWEEN.Easing.Cubic.InOut ).
-                  onUpdate( function() {
-                    flyingProduct.centerX = flyingProducePositionAndScale.centerX;
-                    flyingProduct.centerY = flyingProducePositionAndScale.centerY;
-                    flyingProduct.setScaleMagnitude( flyingProducePositionAndScale.scale );
-                  } ).
-                  onComplete( function() {
-                    cell.showText();
-                    flyingProduct.visible = false;
-                  } );
-                flyingProduct.visible = true;
-                animationTween.start();
+                (function() {
+                  var destinationCell = cell;
+                  flyingProduct.text = destinationCell.getTextString();
+                  flyingProduct.setScaleMagnitude( 1 );
+                  var flyingProductDestination = self.globalToLocalPoint( destinationCell.parentToGlobalPoint( destinationCell.center ) );
+                  var flyingProductPositionAndScale = {
+                    centerX: ANSWER_ANIMATION_ORIGIN.x,
+                    centerY: ANSWER_ANIMATION_ORIGIN.y,
+                    scale: 1
+                  };
+                  var animationTween = new TWEEN.Tween( flyingProductPositionAndScale ).
+                    to( {
+                      centerX: flyingProductDestination.x,
+                      centerY: flyingProductDestination.y,
+                      scale: destinationCell.getTextHeight() / flyingProduct.height
+                    }, ANSWER_ANIMATION_TIME ).
+                    easing( TWEEN.Easing.Cubic.InOut ).
+                    onUpdate( function() {
+                      flyingProduct.centerX = flyingProductPositionAndScale.centerX;
+                      flyingProduct.centerY = flyingProductPositionAndScale.centerY;
+                      flyingProduct.setScaleMagnitude( flyingProductPositionAndScale.scale );
+                    } ).
+                    onComplete( function() {
+                      destinationCell.showText();
+                      flyingProduct.visible = false;
+                    } );
+                  flyingProduct.visible = true;
+                  animationTween.start();
+                })();
               }
               else {
                 // No animation, so just show the text.
@@ -215,8 +222,8 @@ define( function( require ) {
             else {
               cell.hideText();
             }
-          } );
-        } );
+          }
+        }
       }
     } );
   }

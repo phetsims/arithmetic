@@ -110,7 +110,7 @@ define( function( require ) {
         this.gameAudioPlayer.correctAnswer();
 
         // mark this table entry as solved
-        this.activeLevelModel.cellUsedStates[ this.problemModel.multiplicand - 1 ][ this.problemModel.multiplier - 1 ] = true;
+        this.activeLevelModel.markCellAsUsed( this.problemModel.multiplicand, this.problemModel.multiplier );
 
         // show the feedback that indicates a correct answer
         this.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
@@ -178,9 +178,9 @@ define( function( require ) {
     /**
      * Automatically answer most of the problems for this level.  This is useful for testing, since it can save time
      * when testing how the sim behaves when a user finishing answering all questions for a level.
-     * <p>
+     *
      * IMPORTANT: We need to be VERY CAREFUL that this is never available in the published sim.
-     * <p>
+     *
      * @protected
      */
     autoAnswer: function() {
@@ -255,40 +255,7 @@ define( function( require ) {
 
     // return available multiplicands and multipliers according to answer sheet
     selectUnusedMultiplierPair: function() {
-      var availableMultiplicands = [];
-      var availableMultipliers = [];
-      var multiplicand;
-      var multiplier;
-
-      // find available multiplicands
-      this.activeLevelModel.cellUsedStates.forEach( function( multipliers, index ) {
-        if ( multipliers.indexOf( false ) !== -1 ) {
-          availableMultiplicands.push( index + 1 );
-        }
-      } );
-
-      // no more available multipliers
-      if ( !availableMultiplicands.length ) {
-        return null;
-      }
-
-      // set multiplicand
-      multiplicand = _.shuffle( availableMultiplicands )[ 0 ];
-
-      // find available multipliers
-      this.activeLevelModel.cellUsedStates[ multiplicand - 1 ].forEach( function( isProblemAnswered, index ) {
-        if ( !isProblemAnswered ) {
-          availableMultipliers.push( index + 1 );
-        }
-      } );
-
-      // set multiplier
-      multiplier = _.sample( availableMultipliers );
-
-      return {
-        multiplicand: multiplicand,
-        multiplier: multiplier
-      };
+      return this.activeLevelModel.selectUnusedMultiplierPair();
     },
 
     reset: function() {

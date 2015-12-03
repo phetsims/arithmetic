@@ -2,10 +2,10 @@
 
 /**
  * Abstract base type for the cells that are used in the multiplication table.
- * <p>
+ *
  * Since many cells are created during the startup of the Arithmetic simulation, this type has been optimized to create
  * the text node 'lazily' (i.e. not until it is needed).
- * <p>
+ *
  * Another optimization is that a fixed set fonts is pre-allocated, and the font is chosen from this list rather than
  * creating a new one for each cell.
  *
