@@ -25,6 +25,8 @@ define( function( require ) {
   function DivideScreenTableNode( problemModel, stateProperty, levelProperty, levelModels ) {
     var self = this;
     MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, true );
+    this.problemModel = problemModel;
+    this.levelProperty = levelProperty;
 
     stateProperty.lazyLink( function( state ) {
       // set view for multiplication table after choosing multiplicand and multiplier
@@ -42,6 +44,7 @@ define( function( require ) {
         }
       }
       else if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
+
         // Make the cells that correspond to the answer change color.
         self.cells[ levelProperty.value ][ problemModel.multiplicand ][ 0 ].select();
         self.cells[ levelProperty.value ][ 0 ][ problemModel.multiplier ].select();
@@ -52,11 +55,26 @@ define( function( require ) {
         }
       }
       else if ( state === GameState.LEVEL_COMPLETED ) {
+
         // set all cells to default conditions when the table has been filled
         self.setCellsToDefaultColor( levelProperty.value );
       }
     } );
   }
 
-  return inherit( MultiplicationTableNode, DivideScreenTableNode );
+  return inherit( MultiplicationTableNode, DivideScreenTableNode, {
+
+    // @public, @override
+    refreshLevel: function() {
+      MultiplicationTableNode.prototype.refreshLevel.call( this, this.levelProperty.value );
+
+      // highlight the appropriate header cell
+      if ( this.problemModel.multiplicand ) {
+        this.cells[ this.levelProperty.value ][ this.problemModel.multiplicand ][ 0 ].select();
+      }
+      else {
+        this.cells[ this.levelProperty.value ][ 0 ][ this.problemModel.multiplier ].select();
+      }
+    }
+  } );
 } );
