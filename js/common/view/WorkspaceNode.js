@@ -83,7 +83,7 @@ define( function( require ) {
     // hide the equation node when the level has been completed
     model.stateProperty.link( function( newGameState, oldGameState ) {
 
-      // Hide the equation node then the level has been completed and when returning to the level selection screen
+      // Hide the equation node when the level has been completed and when returning to the level selection screen
       // after the level is complete.
       equationNode.visible = !( newGameState === GameState.LEVEL_COMPLETED ||
                                 ( oldGameState === GameState.LEVEL_COMPLETED &&
@@ -123,6 +123,9 @@ define( function( require ) {
           // Arm the keypad for auto-clear when showing incorrect feedback.  This is part of the feature where the user
           // can simply start entering values again if they got the wrong answer initially.
           self.keypad.armForNewEntry();
+        }
+        else if ( newGameState === GameState.AWAITING_USER_INPUT ) {
+          self.keypad.clear();
         }
 
         // Only allow the user to input digits when expecting them.  We use 'pickable' here instead of 'enabled' so that

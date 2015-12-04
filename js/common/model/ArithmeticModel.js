@@ -71,9 +71,6 @@ define( function( require ) {
 
         // update display score
         self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
-
-        // set up the initial problem
-        self.setUpUnansweredProblem();
       }
     } );
   }
@@ -116,12 +113,10 @@ define( function( require ) {
         this.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
 
         // start a timer that will set up the next problem
-        this.timerActive = true;
-        Timer.setTimeout(
+        this.feedbackTimer = Timer.setTimeout(
           function() {
-            if ( self.state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
-              self.nextProblem();
-            }
+            self.feedbackTimer = null;
+            self.nextProblem();
           },
           FEEDBACK_TIME
         );
@@ -200,11 +195,19 @@ define( function( require ) {
       // save state of current level
       this.saveGameEnvironment();
 
+      // if there is a timer running for displaying feedback, cancel it
+      if ( this.feedbackTimer ) {
+        Timer.clearTimeout( this.feedbackTimer );
+      }
+
       // go back to the level selection screen
       this.state = GameState.SELECTING_LEVEL;
     },
 
     refreshLevel: function() {
+      if ( this.feedbackTimer ) {
+        Timer.clearTimeout( this.feedbackTimer );
+      }
       this.resetLevel();
       this.activeLevelModel.displayScore = 0;
       this.nextProblem();
@@ -239,6 +242,12 @@ define( function( require ) {
       // restore or init new environment for game
       if ( this.levelModels[ level ].environment ) {
         this.restoreGameEnvironment( this.levelModels[ level ].environment );
+        if ( this.state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
+
+          // The user hit the back button before the feedback timer expired, so the next problem wasn't set up.  We need
+          // to set it up now.  See https://github.com/phetsims/arithmetic/issues/145
+          this.nextProblem();
+        }
       }
       else {
         this.nextProblem();
