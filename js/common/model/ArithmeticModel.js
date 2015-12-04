@@ -281,6 +281,10 @@ define( function( require ) {
 
       // clear game level states
       this.clearGameEnvironments();
+
+      // reset sound and timer on/off settings
+      ArithmeticGlobals.soundEnabledProperty.reset();
+      ArithmeticGlobals.timerEnabledProperty.reset();
     },
 
     clearGameEnvironment: function( levelNumber ) {
