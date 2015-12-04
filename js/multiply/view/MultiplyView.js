@@ -12,7 +12,7 @@ define( function( require ) {
   var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplyEquationNode = require( 'ARITHMETIC/multiply/view/MultiplyEquationNode' );
-  var MutiplyScreenTableNode = require( 'ARITHMETIC/multiply/view/MutiplyScreenTableNode' );
+  var MultiplyScreenTableNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenTableNode' );
 
   // strings
   var multiplyString = require( 'string!ARITHMETIC/multiply' );
@@ -25,7 +25,7 @@ define( function( require ) {
     ArithmeticView.call(
       this,
       model,
-      new MutiplyScreenTableNode(
+      new MultiplyScreenTableNode(
         model.problemModel,
         model.stateProperty,
         model.levelProperty,

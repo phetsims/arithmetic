@@ -255,6 +255,7 @@ define( function( require ) {
       return this.activeLevelModel.selectUnusedMultiplierPair();
     },
 
+    // @public - reset the scores, clear the boards
     reset: function() {
       PropertySet.prototype.reset.call( this );
 

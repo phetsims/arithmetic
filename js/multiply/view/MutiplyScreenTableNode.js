@@ -22,7 +22,7 @@ define( function( require ) {
    *
    * @constructor
    */
-  function MutiplyScreenTableNode( problemModel, stateProperty, levelProperty, levelModels ) {
+  function MultiplyScreenTableNode( problemModel, stateProperty, levelProperty, levelModels ) {
     var self = this;
     MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, true );
     this.problemModel = problemModel;
@@ -43,7 +43,7 @@ define( function( require ) {
     } );
   }
 
-  return inherit( MultiplicationTableNode, MutiplyScreenTableNode, {
+  return inherit( MultiplicationTableNode, MultiplyScreenTableNode, {
 
     refreshLevel: function( level ) {
       this.clearCells( level );
