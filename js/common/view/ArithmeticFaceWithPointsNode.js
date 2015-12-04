@@ -37,12 +37,12 @@ define( function( require ) {
     }, options ) );
 
     // set score of smile face
-    faceModel.property( 'pointsToDisplay' ).link( function( points ) {
+    faceModel.pointsToDisplayProperty.link( function( points ) {
       self.setPoints( points );
     } );
 
     // set the facial expression
-    faceModel.property( 'isSmile' ).link( function( isFaceSmile ) {
+    faceModel.isSmileProperty.link( function( isFaceSmile ) {
       if ( isFaceSmile ) {
         self.smile();
       }

@@ -90,14 +90,14 @@ define( function( require ) {
 
       // unlink observers for previous level
       if ( levelModels[ levelPrevious ] ) {
-        levelModels[ levelPrevious ].property( 'currentScore' ).unlink( updateScore );
-        levelModels[ levelPrevious ].gameTimer.property( 'elapsedTime' ).unlink( updateTime );
+        levelModels[ levelPrevious ].currentScoreProperty.unlink( updateScore );
+        levelModels[ levelPrevious ].gameTimer.elapsedTimeProperty.unlink( updateTime );
       }
 
       // link observers for new level
       if ( stateProperty.value === GameState.SELECTING_LEVEL && levelModels[ levelNew ] ) {
-        levelModels[ levelNew ].property( 'currentScore' ).link( updateScore );
-        levelModels[ levelNew ].gameTimer.property( 'elapsedTime' ).link( updateTime );
+        levelModels[ levelNew ].currentScoreProperty.link( updateScore );
+        levelModels[ levelNew ].gameTimer.elapsedTimeProperty.link( updateTime );
       }
     } );
 

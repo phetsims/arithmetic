@@ -27,15 +27,15 @@ define( function( require ) {
       model,
       new MutiplyScreenTableNode(
         model.problemModel,
-        model.property( 'state' ),
-        model.property( 'level' ),
+        model.stateProperty,
+        model.levelProperty,
         model.levelModels
       ),
       new MultiplyEquationNode(
-        model.property( 'state' ),
-        model.problemModel.property( 'multiplicand' ),
-        model.problemModel.property( 'multiplier' ),
-        model.property( 'input' )
+        model.stateProperty,
+        model.problemModel.multiplicandProperty,
+        model.problemModel.multiplierProperty,
+        model.inputProperty
       ),
       {
         titleString: multiplyString,

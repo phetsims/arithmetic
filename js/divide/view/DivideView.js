@@ -28,17 +28,17 @@ define( function( require ) {
       model,
       new DivideScreenTableNode(
         model.problemModel,
-        model.property( 'state' ),
-        model.property( 'level' ),
+        model.stateProperty,
+        model.levelProperty,
         model.levelModels
       ),
       new DivideEquationNode(
-        model.property( 'state' ),
-        model.problemModel.property( 'multiplicand' ),
-        model.problemModel.property( 'multiplier' ),
-        model.problemModel.property( 'product' ),
-        model.property( 'input' ),
-        model.property( 'activeInput' )
+        model.stateProperty,
+        model.problemModel.multiplicandProperty,
+        model.problemModel.multiplierProperty,
+        model.problemModel.productProperty,
+        model.inputProperty,
+        model.activeInputProperty
       ),
       {
         titleString: divideString,

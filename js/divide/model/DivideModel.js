@@ -43,10 +43,10 @@ define( function( require ) {
       if ( multipliers ) {
 
         // reset multiplierPair and score properties
-        this.problemModel.property( 'multiplicand' ).reset();
-        this.problemModel.property( 'multiplier' ).reset();
-        this.problemModel.property( 'product' ).reset();
-        this.problemModel.property( 'possiblePoints' ).reset();
+        this.problemModel.multiplicandProperty.reset();
+        this.problemModel.multiplierProperty.reset();
+        this.problemModel.productProperty.reset();
+        this.problemModel.possiblePointsProperty.reset();
 
         // set product
         this.problemModel.product = multipliers.multiplicand * multipliers.multiplier;

@@ -32,9 +32,9 @@ define( function( require ) {
       if ( multiplierPair ) {
 
         // reset multiplierPair and score properties
-        this.problemModel.property( 'possiblePoints' ).reset();
-        this.problemModel.property( 'multiplicand' ).reset();
-        this.problemModel.property( 'multiplier' ).reset();
+        this.problemModel.possiblePointsProperty.reset();
+        this.problemModel.multiplicandProperty.reset();
+        this.problemModel.multiplierProperty.reset();
 
         // set product
         this.problemModel.product = multiplierPair.multiplicand * multiplierPair.multiplier;

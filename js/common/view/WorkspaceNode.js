@@ -93,8 +93,8 @@ define( function( require ) {
 
     // add control panel
     var controlPanelNode = new ControlPanelNode(
-      model.property( 'level' ),
-      model.property( 'state' ),
+      model.levelProperty,
+      model.stateProperty,
       model.levelModels,
       ArithmeticGlobals.timerEnabledProperty,
       function() {
@@ -189,8 +189,8 @@ define( function( require ) {
     // add the dialog that indicates that the level has been completed
     this.addChild( new LevelCompletedNodeWrapper(
         model.levelModels,
-        model.property( 'level' ),
-        model.property( 'state' ),
+        model.levelProperty,
+        model.stateProperty,
         ArithmeticGlobals.timerEnabledProperty,
         function() {
           model.state = GameState.LEVEL_COMPLETED;

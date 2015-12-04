@@ -30,10 +30,10 @@ define( function( require ) {
      */
     function FactorScreenTableNode( model ) {
       var self = this;
-      MultiplicationTableNode.call( this, model.property( 'level' ), model.property( 'state' ), model.levelModels, false );
+      MultiplicationTableNode.call( this, model.levelProperty, model.stateProperty, model.levelModels, false );
 
       // convenience var
-      var gameState = model.property( 'state' );
+      var gameState = model.stateProperty;
 
       // Create an image of a transparent hand that will cue the user that they need to interact with the table.
       var handImage = new Image( overlayPointingHandImage, { pickable: false } );

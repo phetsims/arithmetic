@@ -93,13 +93,13 @@ define( function( require ) {
         function() {
           callback( levelIndex );
         },
-        model.levelModels[ levelIndex ].property( 'displayScore' ),
+        model.levelModels[ levelIndex ].displayScoreProperty,
         level.perfectScore,
         {
           buttonWidth: BUTTON_LENGTH,
           buttonHeight: BUTTON_LENGTH,
           baseColor: options.buttonBaseColor,
-          bestTimeProperty: model.levelModels[ levelIndex ].property( 'bestTime' ),
+          bestTimeProperty: model.levelModels[ levelIndex ].bestTimeProperty,
           bestTimeVisibleProperty: ArithmeticGlobals.timerEnabledProperty
         }
       );

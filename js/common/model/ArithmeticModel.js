@@ -63,7 +63,7 @@ define( function( require ) {
     this.faceModel = new FaceModel();
 
     // handles game state transitions that pertain to the model (does not require handling GameState.SELECTING_LEVEL)
-    this.property( 'state' ).lazyLink( function( newState, oldState ) {
+    this.stateProperty.lazyLink( function( newState, oldState ) {
       if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
 
         // start (or restart) the game timer
@@ -244,9 +244,6 @@ define( function( require ) {
 
     resetLevel: function() {
       this.activeLevelModel.reset();
-      // TODO: Get rid of commented out code below once verified that direct reset of level works
-      //this.activeLevelModel.property( 'currentScore' ).reset();
-      //this.activeLevelModel.gameTimer.property( 'elapsedTime' ).reset();
       this.inputProperty.reset();
       this.problemModel.reset();
       this.faceModel.reset();

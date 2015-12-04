@@ -86,7 +86,7 @@ define( function( require ) {
       } );
 
     // observers
-    model.property( 'state' ).link( function( newState, oldState ) {
+    model.stateProperty.link( function( newState, oldState ) {
 
       // animate the transition between the level select screen and the selected level
       if ( newState === GameState.SELECTING_LEVEL && oldState ) {

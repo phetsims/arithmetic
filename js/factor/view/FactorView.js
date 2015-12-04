@@ -27,10 +27,10 @@ define( function( require ) {
       model,
       new FactorScreenTableNode( model ),
       new FactorEquationNode(
-        model.property( 'state' ),
-        model.problemModel.property( 'multiplicand' ),
-        model.problemModel.property( 'multiplier' ),
-        model.problemModel.property( 'product' )
+        model.stateProperty,
+        model.problemModel.multiplicandProperty,
+        model.problemModel.multiplierProperty,
+        model.problemModel.productProperty
       ),
       {
         showKeypad: false,
