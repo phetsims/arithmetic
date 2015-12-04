@@ -150,6 +150,7 @@ define( function( require ) {
       else {
         // all problems have been answered, the level is now complete
         this.state = GameState.SHOWING_LEVEL_COMPLETED_DIALOG;
+        this.activeLevelModel.gameTimer.stop();
       }
     },
 
@@ -211,6 +212,7 @@ define( function( require ) {
       this.resetLevel();
       this.activeLevelModel.displayScore = 0;
       this.nextProblem();
+      this.activeLevelModel.gameTimer.start(); // may already be running, if so this is a no-op
       this.trigger( 'refreshed' );
     },
 
@@ -308,9 +310,14 @@ define( function( require ) {
       this.problemModel.possiblePoints = environment.possiblePoints;
       this.state = environment.state;
       this.input = environment.input;
+      this.activeLevelModel.gameTimer.elapsedTime = environment.elapsedTime;
 
       // Elapsed time must account for any time that has gone by since the environment was saved.
-      this.activeLevelModel.gameTimer.elapsedTime = environment.elapsedTime + Math.floor( ( new Date().getTime() - environment.systemTimeWhenSaveOccurred ) / 1000 );
+      if ( this.state !== GameState.LEVEL_COMPLETED && this.state !== GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
+        this.activeLevelModel.gameTimer.elapsedTime =
+          this.activeLevelModel.gameTimer.elapsedTime +
+          Math.floor( ( new Date().getTime() - environment.systemTimeWhenSaveOccurred ) / 1000 );
+      }
     },
 
     // save game environment of current level
