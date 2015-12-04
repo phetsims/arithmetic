@@ -23,6 +23,7 @@ define( function( require ) {
   var INPUT_SIZE_MULTIPLIER = new Dimension2( 70, 45 ); // size of input boxes for multiplier
   var INPUT_SIZE_PRODUCT = new Dimension2( 80, 45 ); // size of input box for product
   var SPACING = 20; // spacing between equation elements
+  var SYMBOL_COLOR = '#FFFF00';
 
   /**
    * @param {Property.<number>} multiplicandProperty - Property necessary for creating multiplicand input.
@@ -46,12 +47,12 @@ define( function( require ) {
     this.productInput = new EquationInputNode( productProperty, INPUT_SIZE_PRODUCT );
 
     // Set up the equals sign, which can potentially be changed to a not equals sign.
-    this.equalsSign = new Text( '', { font: FONT_EQUALS, fill: 'yellow' } );
+    this.equalsSign = new Text( '', { font: FONT_EQUALS, fill: SYMBOL_COLOR } );
     this.setShowEqual( true ); // Default to equals equation until set otherwise.
 
     options.children = [
       this.multiplicandInput,
-      new Text( '\u00D7', { font: FONT_X, fill: 'yellow' } ),
+      new Text( '\u00D7', { font: FONT_X, fill: SYMBOL_COLOR } ),
       this.multiplierInput,
       this.equalsSign,
       this.productInput
