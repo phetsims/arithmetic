@@ -243,7 +243,7 @@ define( function( require ) {
         MultiplicationTableNode.prototype.setCellsToDefaultColor.call( this, level );
       },
 
-      // @public
+      // @public, @override
       refreshLevel: function( level ) {
         MultiplicationTableNode.prototype.refreshLevel.call( this, level );
         this.enableCells( level );

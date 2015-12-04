@@ -3,9 +3,9 @@
 /**
  * A Scenery node that represents a set of multiplication tables.  It contains a table for each of the levels in the
  * provided levelModels parameter, and handles the hiding and showing of the appropriate table based on the currently
- * active level.
+ * active level.  Each table is made up of a set of cells that define the headers and the body of the table.
  *
- * Each table is made up of a set of cells that define the headers and the body of the table.
+ * This is generally used as a base class, and more specialized behavior is added in the descendent classes.
  *
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco
@@ -37,9 +37,9 @@ define( function( require ) {
   var ANSWER_ANIMATION_ORIGIN = new Vector2( 370, 380 );
 
   /**
-   * @param {Property.<number>} levelProperty - Level difficulty property.
-   * @param {Property.<GameState>} stateProperty - Current state property.
-   * @param {Array.<LevelModel>} levelModels - Array of descriptions for each level.
+   * @param {Property.<number>} levelProperty - level property.
+   * @param {Property.<GameState>} stateProperty - current state property
+   * @param {Array.<LevelModel>} levelModels - array of models for each level
    * @param {boolean} animateAnswer - flag that controls whether answer appears to fly into the cell or just appears
    * @constructor
    */
@@ -51,7 +51,7 @@ define( function( require ) {
     this.levelProperty = levelProperty; // @protected
 
     // array with views for each level
-    this.viewForLevel = []; // @private
+    this.viewForLevel = new Array( levelModels.length ); // @private
 
     // three-dimensional array of the cells, indexed by [levelNumber][multiplicand][multiplier]
     this.cells = new Array( levelModels.length ); // @private
@@ -157,13 +157,16 @@ define( function( require ) {
       }
     } );
 
-    // add the node that will be used to animate the answer moving from the equation to the location of the cell.
-    var flyingProduct = new Text( 'X', {
+    // @private - add the node that will be used to animate the answer moving from the equation to the location of the cell.
+    this.flyingProduct = new Text( 'X', {
       font: ArithmeticConstants.EQUATION_FONT_TEXT,
       fill: 'white',
       visible: false
     } );
-    this.addChild( flyingProduct );
+    this.addChild( this.flyingProduct );
+
+    // @private - define the animation that will move the flying product
+    this.flyingProductAnimation = null;
 
     // update the visible answers each time the user gets a correct answer
     stateProperty.link( function( newState, oldState ) {
@@ -186,32 +189,33 @@ define( function( require ) {
                 // a parameter.
                 (function() {
                   var destinationCell = cell;
-                  flyingProduct.text = destinationCell.getTextString();
-                  flyingProduct.setScaleMagnitude( 1 );
+                  self.flyingProduct.text = destinationCell.getTextString();
+                  self.flyingProduct.setScaleMagnitude( 1 );
                   var flyingProductDestination = self.globalToLocalPoint( destinationCell.parentToGlobalPoint( destinationCell.center ) );
                   var flyingProductPositionAndScale = {
                     centerX: ANSWER_ANIMATION_ORIGIN.x,
                     centerY: ANSWER_ANIMATION_ORIGIN.y,
                     scale: 1
                   };
-                  var animationTween = new TWEEN.Tween( flyingProductPositionAndScale ).
+                  self.flyingProductAnimation = new TWEEN.Tween( flyingProductPositionAndScale ).
                     to( {
                       centerX: flyingProductDestination.x,
                       centerY: flyingProductDestination.y,
-                      scale: destinationCell.getTextHeight() / flyingProduct.height
+                      scale: destinationCell.getTextHeight() / self.flyingProduct.height
                     }, ANSWER_ANIMATION_TIME ).
                     easing( TWEEN.Easing.Cubic.InOut ).
                     onUpdate( function() {
-                      flyingProduct.centerX = flyingProductPositionAndScale.centerX;
-                      flyingProduct.centerY = flyingProductPositionAndScale.centerY;
-                      flyingProduct.setScaleMagnitude( flyingProductPositionAndScale.scale );
+                      self.flyingProduct.centerX = flyingProductPositionAndScale.centerX;
+                      self.flyingProduct.centerY = flyingProductPositionAndScale.centerY;
+                      self.flyingProduct.setScaleMagnitude( flyingProductPositionAndScale.scale );
                     } ).
                     onComplete( function() {
                       destinationCell.showText();
-                      flyingProduct.visible = false;
+                      self.flyingProduct.visible = false;
+                      self.flyingProductAnimation = null;
                     } );
-                  flyingProduct.visible = true;
-                  animationTween.start();
+                  self.flyingProduct.visible = true;
+                  self.flyingProductAnimation.start();
                 })();
               }
               else {
@@ -249,6 +253,7 @@ define( function( require ) {
      * @public
      */
     clearCells: function( level ) {
+      // TODO: This whole method could essentially be removed if we used an event to signal changes to cells and updated when said event occurred.
       this.setCellsToDefaultColor( level );
       this.cells[ level ].forEach( function( cellRow, cellRowIndex ) {
         if ( cellRowIndex > 0 ) {
@@ -261,8 +266,16 @@ define( function( require ) {
       } );
     },
 
-    //TODO: May need to move down into sub-classes.
+    // @public - refresh the level, may need additional behavior added by subclasses
     refreshLevel: function( level ) {
+      if ( this.flyingProductAnimation ) {
+
+        // A refresh was initiated while the animation was in progress.  This is a race condition, and details about
+        // it can be seen in https://github.com/phetsims/arithmetic/issues/148.  The animation should be cancelled.
+        this.flyingProductAnimation.stop();
+        self.flyingProductAnimation = null;
+        this.flyingProduct.visible = false;
+      }
       this.clearCells( level );
     },
 

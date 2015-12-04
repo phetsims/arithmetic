@@ -45,8 +45,9 @@ define( function( require ) {
 
   return inherit( MultiplicationTableNode, MultiplyScreenTableNode, {
 
+    // @public, @override
     refreshLevel: function( level ) {
-      this.clearCells( level );
+      MultiplicationTableNode.prototype.refreshLevel.call( this, level );
       this.updateCellColors( level );
     },
 
