@@ -116,7 +116,15 @@ define( function( require ) {
         this.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
 
         // start a timer that will set up the next problem
-        Timer.setTimeout( function() { self.nextProblem(); }, FEEDBACK_TIME );
+        this.timerActive = true;
+        Timer.setTimeout(
+          function() {
+            if ( self.state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
+              self.nextProblem();
+            }
+          },
+          FEEDBACK_TIME
+        );
       }
       // incorrect answer
       else {
