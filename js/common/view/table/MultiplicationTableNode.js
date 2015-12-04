@@ -166,8 +166,8 @@ define( function( require ) {
     this.addChild( flyingProduct );
 
     // update the visible answers each time the user gets a correct answer
-    stateProperty.link( function( state ) {
-      if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
+    stateProperty.link( function( newState, oldState ) {
+      if ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK || oldState === GameState.SELECTING_LEVEL ) {
 
         var level = levelProperty.value; // convenience var
         var levelModel = levelModels[ level ]; // convenience var
