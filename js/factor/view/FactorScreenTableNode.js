@@ -181,7 +181,6 @@ define( function( require ) {
 
         if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
           self.setCellsToDefaultColor( model.level );
-          self.enableCells( model.level );
         }
         else if ( ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ||
                     newState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) &&
