@@ -71,7 +71,7 @@ define( function( require ) {
     multiplicationTableNode.mutate( { top: layoutBounds.maxY * 0.02, centerX: layoutBounds.width * 0.43 } );
     this.addChild( multiplicationTableNode );
 
-    // clear the multiplication table node on a refresh event. TODO if the refactor is done where cells track their own solved state, this will be unnecessary.
+    // clear the multiplication table node on a refresh event.
     model.on( 'refreshed', function() {
       multiplicationTableNode.refreshLevel( model.level );
     } );
