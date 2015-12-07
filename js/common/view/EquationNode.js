@@ -18,7 +18,7 @@ define( function( require ) {
   var Text = require( 'SCENERY/nodes/Text' );
 
   // constants
-  var FONT_EQUALS = new PhetFont( 40 );
+  var FONT_EQUALS = new PhetFont( 45 );
   var FONT_X = new PhetFont( 50 );
   var INPUT_SIZE_MULTIPLIER = new Dimension2( 70, 45 ); // size of input boxes for multiplier
   var INPUT_SIZE_PRODUCT = new Dimension2( 80, 45 ); // size of input box for product
@@ -71,7 +71,6 @@ define( function( require ) {
      */
     setShowEqual: function( showEqual ) {
       this.equalsSign.text = showEqual ? '=' : '\u2260';
-//      this.equalsSign.fontSize = showEqual ? 40 : 50; //TODO: AP requested that the equal sign grow, needs to be finished.
     }
   } );
 } );
