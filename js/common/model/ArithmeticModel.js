@@ -119,8 +119,7 @@ define( function( require ) {
         // player will not get points for this task
         this.problemModel.possiblePoints = 0;
 
-        // set face model state and play sound
-        // TODO: Sound should be played in view, and not here, once all the state changes are sorted out.
+        // set face model state
         this.faceModel.pointsToDisplay = this.problemModel.possiblePoints;
         this.faceModel.isSmile = false;
         this.faceModel.showFace();
@@ -151,10 +150,7 @@ define( function( require ) {
      * @public
      */
     retryProblem: function() {
-      //TODO: Is this clause necessary?  In other words, does resetting it after a reset cause another event or not? Try both ways to find out.
-      if ( this.inputProperty.value.length > 0 ) {
-        this.inputProperty.reset();
-      }
+      this.inputProperty.reset();
       this.state = GameState.AWAITING_USER_INPUT;
     },
 
