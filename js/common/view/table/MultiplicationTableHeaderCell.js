@@ -37,15 +37,14 @@ define( function( require ) {
 
   return inherit( AbstractCell, MultiplicationTableHeaderCell, {
 
-    //TODO: Names are weird - some are verbs, some are adjectives.  Improve.  Coordinate with body cell.
     // @public
-    select: function() {
+    setSelected: function() {
       this.setBackgroundFill( SELECT_COLOR_BACKGROUND );
       this.setTextFill( SELECT_COLOR_TEXT );
     },
 
     // @public
-    normal: function() {
+    setNormal: function() {
       this.setBackgroundFill( NORMAL_COLOR_BACKGROUND );
       this.setTextFill( NORMAL_COLOR_TEXT );
     }

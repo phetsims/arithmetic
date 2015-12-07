@@ -239,7 +239,7 @@ define( function( require ) {
     setCellsToDefaultColor: function( level ) {
       this.cells[ level ].forEach( function( multiplicands ) {
         multiplicands.forEach( function( cell ) {
-          cell.normal();
+          cell.setNormal();
         } );
       } );
     },

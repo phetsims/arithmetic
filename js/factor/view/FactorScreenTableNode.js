@@ -79,7 +79,7 @@ define( function( require ) {
                     self.setCellsToDefaultColor( model.level );
                     if ( cellListener.enabled ) {
                       self.setSelectedRect( model.level, multiplicandIndex, multiplierIndex );
-                      cell.hover();
+                      cell.setHover();
                       self.cellPointer.visible = true;
 
                       if ( Math.abs( self.cellPointer.height - cell.height * 0.7 ) > 0.01 ) {
@@ -187,7 +187,7 @@ define( function( require ) {
                   self.activeCell !== null ) {
 
           // Cancel hover when showing feedback
-          self.activeCell.select();
+          self.activeCell.setSelected();
         }
 
         if ( newState === GameState.LEVEL_COMPLETED ||
@@ -221,15 +221,15 @@ define( function( require ) {
       // @private, set 'selected' state for all cells in given bounds and highlight the multipliers (i.e. header cells)
       setSelectedRect: function( levelNumber, leftBound, rightBound ) {
         // highlight multipliers
-        this.cells[ levelNumber ][ 0 ][ rightBound ].select();
-        this.cells[ levelNumber ][ leftBound ][ 0 ].select();
+        this.cells[ levelNumber ][ 0 ][ rightBound ].setSelected();
+        this.cells[ levelNumber ][ leftBound ][ 0 ].setSelected();
 
         // set 'selected' state for all cell in given bounds
         this.cells[ levelNumber ].forEach( function( multiplicands, multiplicandIndex ) {
           if ( multiplicandIndex && multiplicandIndex <= leftBound ) {
             multiplicands.forEach( function( cell, multiplierIndex ) {
               if ( multiplierIndex && multiplierIndex <= rightBound ) {
-                cell.select();
+                cell.setSelected();
               }
             } );
           }

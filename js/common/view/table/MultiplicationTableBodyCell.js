@@ -36,17 +36,17 @@ define( function( require ) {
   return inherit( AbstractCell, MultiplicationTableBodyCell, {
 
     // @public - set cell into the state that indicates that the user is hovering over it
-    hover: function() {
+    setHover: function() {
       this.setBackgroundFill( HOVER_COLOR );
     },
 
     // @public - set cell to normal, default appearance state
-    normal: function() {
+    setNormal: function() {
       this.setBackgroundFill( NORMAL_COLOR );
     },
 
     // @public - set cell to the selected state
-    select: function() {
+    setSelected: function() {
       this.setBackgroundFill( SELECT_COLOR );
     }
 

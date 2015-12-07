@@ -57,15 +57,15 @@ define( function( require ) {
       this.setCellsToDefaultColor( level );
 
       // set view of selected multipliers
-      this.cells[ level ][ 0 ][ this.problemModel.multiplier ].select();
-      this.cells[ level ][ this.problemModel.multiplicand ][ 0 ].select();
+      this.cells[ level ][ 0 ][ this.problemModel.multiplier ].setSelected();
+      this.cells[ level ][ this.problemModel.multiplicand ][ 0 ].setSelected();
 
       // set view of selected products
       this.cells[ level ].forEach( function( multiplicand, index ) {
         if ( index && index <= self.problemModel.multiplicand ) {
           multiplicand.forEach( function( cell, index ) {
             if ( index && index <= self.problemModel.multiplier ) {
-              cell.select();
+              cell.setSelected();
             }
           } );
         }

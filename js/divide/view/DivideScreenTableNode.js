@@ -37,20 +37,20 @@ define( function( require ) {
 
         // set select multipliers
         if ( problemModel.multiplicand ) {
-          self.cells[ levelProperty.value ][ problemModel.multiplicand ][ 0 ].select();
+          self.cells[ levelProperty.value ][ problemModel.multiplicand ][ 0 ].setSelected();
         }
         else {
-          self.cells[ levelProperty.value ][ 0 ][ problemModel.multiplier ].select();
+          self.cells[ levelProperty.value ][ 0 ][ problemModel.multiplier ].setSelected();
         }
       }
       else if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
 
         // Make the cells that correspond to the answer change color.
-        self.cells[ levelProperty.value ][ problemModel.multiplicand ][ 0 ].select();
-        self.cells[ levelProperty.value ][ 0 ][ problemModel.multiplier ].select();
+        self.cells[ levelProperty.value ][ problemModel.multiplicand ][ 0 ].setSelected();
+        self.cells[ levelProperty.value ][ 0 ][ problemModel.multiplier ].setSelected();
         for ( var multiplicand = 1; multiplicand <= problemModel.multiplicand; multiplicand++ ) {
           for ( var multiplier = 1; multiplier <= problemModel.multiplier; multiplier++ ) {
-            self.cells[ levelProperty.value ][ multiplicand ][ multiplier ].select();
+            self.cells[ levelProperty.value ][ multiplicand ][ multiplier ].setSelected();
           }
         }
       }
@@ -70,10 +70,10 @@ define( function( require ) {
 
       // highlight the appropriate header cell
       if ( this.problemModel.multiplicand ) {
-        this.cells[ this.levelProperty.value ][ this.problemModel.multiplicand ][ 0 ].select();
+        this.cells[ this.levelProperty.value ][ this.problemModel.multiplicand ][ 0 ].setSelected();
       }
       else {
-        this.cells[ this.levelProperty.value ][ 0 ][ this.problemModel.multiplier ].select();
+        this.cells[ this.levelProperty.value ][ 0 ][ this.problemModel.multiplier ].setSelected();
       }
     }
   } );
