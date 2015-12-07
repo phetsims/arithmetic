@@ -47,14 +47,11 @@ define( function( require ) {
     var self = this;
     Node.call( this );
 
-    // level property needs to be available to sub-classes
-    this.levelProperty = levelProperty; // @protected
+    this.levelProperty = levelProperty; // @protected - needs to be available to sub-classes
+    this.viewForLevel = new Array( levelModels.length ); // @private - array with views for each level
 
-    // array with views for each level
-    this.viewForLevel = new Array( levelModels.length ); // @private
-
-    // three-dimensional array of the cells, indexed by [levelNumber][multiplicand][multiplier]
-    this.cells = new Array( levelModels.length ); // @private
+    // @private - three-dimensional array of the cells, indexed by [levelNumber][multiplicand][multiplier]
+    this.cells = new Array( levelModels.length );
 
     // add stroke for all multiplication table views
     var backgroundRect = new Rectangle( 0, 0, 0, 0, {
@@ -157,7 +154,7 @@ define( function( require ) {
       }
     } );
 
-    // @private - add the node that will be used to animate the answer moving from the equation to the location of the cell.
+    // @private - node that will be used to animate the answer moving from the equation to the location of the cell.
     this.flyingProduct = new Text( 'X', {
       font: ArithmeticConstants.EQUATION_FONT_TEXT,
       fill: 'white',
@@ -301,7 +298,6 @@ define( function( require ) {
         }
         testNode = testNode.parents[ 0 ]; // Move up the scene graph by one level
       }
-
       return parentScreen.globalToLocalPoint( cell.parentToGlobalPoint( cell.center ) );
     }
 

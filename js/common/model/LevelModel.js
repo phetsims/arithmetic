@@ -27,12 +27,10 @@ define( function( require ) {
 
     this.tableSize = tableSize; // @public, read only
     this.perfectScore = tableSize * tableSize; // @public, read only
-
-    // @public - timer for this level
-    this.gameTimer = new GameTimer();
+    this.gameTimer = new GameTimer(); // @public - timer for this level
 
     // @private - 2d array that tracks the 'used' state of each of the cells in the multiplication table for this level,
-    // accessed through methods defined below.
+    // accessed through methods defined in the inherit block
     this.cellUsedStates = new Array( tableSize );
     for ( var i = 0; i < tableSize; i++ ) {
       this.cellUsedStates[ i ] = new Array( tableSize );

@@ -9,6 +9,7 @@
 define( function() {
   'use strict';
 
+  // @public
   return Object.freeze( {
     SELECTING_LEVEL: 'SELECTING_LEVEL',
     AWAITING_USER_INPUT: 'AWAITING_USER_INPUT',

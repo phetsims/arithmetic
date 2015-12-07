@@ -18,6 +18,8 @@ define( function( require ) {
    */
   function ProblemModel() {
     PropertySet.call( this, {
+
+      // @public (all fields)
       multiplicand: undefined,
       multiplier: undefined,
       product: undefined, // product of multiplication

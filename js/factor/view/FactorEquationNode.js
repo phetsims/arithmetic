@@ -18,7 +18,6 @@ define( function( require ) {
    * @param {Property} multiplicandProperty - Property necessary for creating multiplicand input.
    * @param {Property} multiplierProperty - Property necessary for creating multiplier input.
    * @param {Property} productProperty - Property necessary for creating product input.
-   *
    * @constructor
    */
   function FactorEquationNode( stateProperty, multiplicandProperty, multiplierProperty, productProperty ) {

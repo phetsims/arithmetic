@@ -15,7 +15,6 @@ define( function( require ) {
   var AbstractCell = require( 'ARITHMETIC/common/view/table/AbstractCell' );
 
   // constants
-  var ACTIVE_COLOR = 'rgb(3,18,136)';
   var HOVER_COLOR = 'rgb(238,253,77)';
   var NORMAL_COLOR = 'rgb(50,70,255)';
   var SELECT_COLOR = 'rgb(77,0,153)';
@@ -35,12 +34,6 @@ define( function( require ) {
   }
 
   return inherit( AbstractCell, MultiplicationTableBodyCell, {
-
-    // TODO: active may no longer be needed
-    // @public
-    active: function() {
-      this.setBackgroundFill( ACTIVE_COLOR );
-    },
 
     // @public - set cell into the state that indicates that the user is hovering over it
     hover: function() {

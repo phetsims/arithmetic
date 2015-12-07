@@ -30,6 +30,7 @@ define( function( require ) {
 
   return inherit( ArithmeticModel, MultiplyModel, {
 
+    // @public
     setUpUnansweredProblem: function() {
 
       // get available multiplier pair

@@ -24,7 +24,6 @@ define( function( require ) {
    * @param {Property} timerEnabledProperty - Timer enabled flag.
    * @param {Function} continueCallback - Callback listener for continue button.
    * @param {Bounds2} layoutBounds - Bounds of main screen. Necessary for placing components.
-   *
    * @constructor
    */
   function LevelCompletedNodeWrapper( levelModels, levelProperty, stateProperty, timerEnabledProperty, continueCallback, layoutBounds ) {

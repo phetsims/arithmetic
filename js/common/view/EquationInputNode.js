@@ -44,11 +44,11 @@ define( function( require ) {
       maxWidth: size.width - 2 * MIN_X_MARGIN
     } );
 
-    // create cursor and save reference for use in public methods
+    // @private - create cursor and save reference for use in public methods
     this.textCursor = new Rectangle( 0, 2, 1, CURSOR_HEIGHT, { fill: 'black' } );
     this.cursorContainer = new Node( { children: [ this.textCursor ] } );
 
-    // save reference to input size value for use in public methods
+    // @private - save reference to input size value for use in public methods
     this.inputSize = size;
 
     // update text when the value changes
@@ -62,11 +62,11 @@ define( function( require ) {
       self.textCursor.visible = !self.textCursor.visible;
     }, ArithmeticConstants.CURSOR_BLINK_INTERVAL );
 
-    // add background
-    this.background = new Rectangle( 0, 0, size.width, size.height, 5, 5, { fill: NON_INTERACTIVE_FILL } ); // @private
+    // @private - background of this input box
+    this.background = new Rectangle( 0, 0, size.width, size.height, 5, 5, { fill: NON_INTERACTIVE_FILL } );
     this.addChild( this.background );
 
-    // add text and cursor
+    // @private - horizontal box containing the input text and the cursor
     this._box = new HBox( {
       children: [ this.inputText, this.cursorContainer ],
       centerX: size.width / 2,
@@ -97,7 +97,6 @@ define( function( require ) {
 
     /**
      * Set or remove focus, which for this component simply turns the blinking cursor on or off.
-     *
      * @param {boolean} focus
      * @public
      */

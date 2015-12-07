@@ -29,6 +29,7 @@ define( function( require ) {
 
   return inherit( PropertySet, CellInteractionListener, {
 
+    // @public
     enter: function( event, trail ) {
       if ( event.pointer.type === 'mouse' ) {
         this.mouseOver = true;
@@ -38,6 +39,7 @@ define( function( require ) {
       }
     },
 
+    // @public
     exit: function( event, trail ) {
       if ( event.pointer.type === 'mouse' ) {
         this.mouseOver = false;
@@ -47,12 +49,14 @@ define( function( require ) {
       }
     },
 
+    // @public
     down: function( event, trail ) {
       if ( event.pointer.type === 'mouse' ) {
         this.trigger( 'mouseDown' );
       }
     },
 
+    // @public
     up: function( event, trail ) {
       if ( event.pointer.type === 'mouse' ) {
         this.trigger( 'mouseUp' );

@@ -89,7 +89,6 @@ define( function( require ) {
       equationNode.visible = !( newGameState === GameState.LEVEL_COMPLETED ||
                                 ( oldGameState === GameState.LEVEL_COMPLETED &&
                                   newGameState === GameState.SELECTING_LEVEL ) );
-
     } );
 
     // define the width of the control panel so that it fits between the table and the bounds with some margin
@@ -116,15 +115,14 @@ define( function( require ) {
 
     // add keypad if necessary
     if ( showKeypad ) {
-      //TODO: Does this need to be on the object, or can it be just a local var?
       // create and add the keypad
-      this.keypad = new NumberKeypad( {
+      var keypad = new NumberKeypad( {
         digitStringProperty: model.inputProperty,
         maxDigits: 3,
         centerX: controlPanelNode.centerX,
         bottom: layoutBounds.maxY * 0.85
       } );
-      this.addChild( this.keypad );
+      this.addChild( keypad );
 
       // Update the keypad state based on the game state.
       model.stateProperty.link( function( newGameState, oldGameState ) {
@@ -132,20 +130,20 @@ define( function( require ) {
         if ( newGameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
           // Arm the keypad for auto-clear when showing incorrect feedback.  This is part of the feature where the user
           // can simply start entering values again if they got the wrong answer initially.
-          self.keypad.armForNewEntry();
+          keypad.armForNewEntry();
         }
         else if ( newGameState === GameState.AWAITING_USER_INPUT ) {
-          self.keypad.clear();
+          keypad.clear();
         }
 
         // Only allow the user to input digits when expecting them.  We use 'pickable' here instead of 'enabled' so that
         // we don't gray out the keypad, which might visually draw attention to it.
-        self.keypad.pickable = newGameState === GameState.AWAITING_USER_INPUT ||
+        keypad.pickable = newGameState === GameState.AWAITING_USER_INPUT ||
                                newGameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK;
 
         // The keypad should be invisible once the level is completed, and should stay invisible on transition to the
         // SELECTING_LEVEL state.
-        self.keypad.visible = !( newGameState === GameState.LEVEL_COMPLETED ||
+        keypad.visible = !( newGameState === GameState.LEVEL_COMPLETED ||
                                  ( oldGameState === GameState.LEVEL_COMPLETED &&
                                    newGameState === GameState.SELECTING_LEVEL ) );
       } );

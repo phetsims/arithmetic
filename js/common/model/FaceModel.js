@@ -15,8 +15,8 @@ define( function( require ) {
   function FaceModel() {
     PropertySet.call( this, {
 
-      // Points to be displayed near the face.  In this simulation, you get 1 point if you get a challenge correct on
-      // the first try, zero otherwise.
+      // @public - Points to be displayed near the face.  In this simulation, the user gets 1 point when they get a
+      // challenge correct on the first try, zero otherwise.
       pointsToDisplay: 1,
 
       // flag that controls the expression that the face should depict
@@ -26,13 +26,15 @@ define( function( require ) {
 
   return inherit( PropertySet, FaceModel, {
 
+    // @public
     showFace: function() {
       // Use a trigger to show the face rather than a property, since by design it is shown and then fades.
       this.trigger( 'showFace' );
     },
 
+    // @public
     hideFace: function() {
-      // Trigger the face to be hidden, should be ignored if it is not shown.
+      // Trigger the face to be hidden, should be ignored if the face is not currently shown.
       this.trigger( 'hideFace' );
     }
   } );

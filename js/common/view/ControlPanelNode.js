@@ -49,7 +49,6 @@ define( function( require ) {
    * @param {Property} timerEnabledProperty - Time enabling flag.
    * @param {Function} refreshLevelCallback - Callback listener for refresh level button.
    * @param {Object} options - optional parameters that control the appearance and behavior of the panel
-   *
    * @constructor
    */
   function ControlPanelNode( levelProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback, options ) {
@@ -82,15 +81,15 @@ define( function( require ) {
 
     // add observers
     var updateScore = function( score ) {
-      scoreText.setText( StringUtils.format( labelScoreString, score.toString() ) );
+      scoreText.text = StringUtils.format( labelScoreString, score.toString() );
     };
 
     var updateTime = function( time ) {
-      timeText.setText( StringUtils.format( labelTimeString, GameTimer.formatTime( time ) ) );
+      timeText.text = StringUtils.format( labelTimeString, GameTimer.formatTime( time ) );
     };
 
     levelProperty.lazyLink( function( levelNew, levelPrevious ) {
-      levelText.setText( StringUtils.format( patternLevel0LevelNumberString, (levelNew + 1).toString() ) );
+      levelText.text = StringUtils.format( patternLevel0LevelNumberString, (levelNew + 1).toString() );
 
       // unlink observers for previous level
       if ( levelModels[ levelPrevious ] ) {
@@ -105,10 +104,10 @@ define( function( require ) {
       }
     } );
 
-    // add/remove timeBox and update background size
+    // add/remove time readout
     timerEnabledProperty.link( function( isTimerEnabled ) {
       if ( isTimerEnabled ) {
-        vBox.insertChild( 2, timeText ); // 2 - index of initial place for timeBox
+        vBox.insertChild( 2, timeText ); // 2 - index of initial place for time
       }
       else {
         vBox.removeChild( timeText );

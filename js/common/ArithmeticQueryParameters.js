@@ -12,9 +12,7 @@ define( function( require ) {
 
   return {
 
-    // Automatically answer most problems to enable faster testing of level completion.  The test for the presence of
-    // a dash in the version number is intended to prevent this feature from being present in released versions.
+    // Automatically answer most problems to enable faster testing of level completion.
     AUTO_ANSWER: !!getQueryParameter( 'autoAnswer' )
-
   };
 } );

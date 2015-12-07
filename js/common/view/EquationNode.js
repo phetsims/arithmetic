@@ -31,7 +31,6 @@ define( function( require ) {
    * @param {Property.<number>} productProperty - Property necessary for creating product input.
    * @param {Property.<number>} productProperty - Property necessary for creating product input.
    * @param {Object} [options]
-   *
    * @constructor
    */
   function EquationNode( multiplicandProperty, multiplierProperty, productProperty, options ) {
@@ -41,12 +40,12 @@ define( function( require ) {
       resize: false
     }, options );
 
-    // Set up the three nodes that depict the numbers in the equation.
+    // @public - Set up the three nodes that depict the numbers in the equation.
     this.multiplicandInput = new EquationInputNode( multiplicandProperty, INPUT_SIZE_MULTIPLIER );
     this.multiplierInput = new EquationInputNode( multiplierProperty, INPUT_SIZE_MULTIPLIER );
     this.productInput = new EquationInputNode( productProperty, INPUT_SIZE_PRODUCT );
 
-    // Set up the equals sign, which can potentially be changed to a not equals sign.
+    // @private - Set up the equals sign, which can potentially be changed to a not equals sign.
     this.equalsSign = new Text( '', { font: FONT_EQUALS, fill: SYMBOL_COLOR } );
     this.setShowEqual( true ); // Default to equals equation until set otherwise.
 

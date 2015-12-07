@@ -34,16 +34,16 @@ define( function( require ) {
 
     // set up the 'fillEquation' function, which is used to fill in the missing portion(s) based on the user's inputs
     options = _.extend( { fillEquation: null }, options );
-    this.fillEquation = options.fillEquation;
+    this.fillEquation = options.fillEquation; // @public
 
     PropertySet.call( this, {
-      level: -1, // game level
-      input: '', // user's input value
-      activeInput: null, // point to multiplicand (if activeInput === 'multiplicand') or multiplier (if activeInput === 'multiplier')
-      state: GameState.SELECTING_LEVEL // current game state
+      level: -1, // @public - active game level, -1 represents none
+      input: '', // @public - user's input value
+      activeInput: null, // @public - reference to the portion of the equation that is awaiting input from the user
+      state: GameState.SELECTING_LEVEL // @public - current game state
     } );
 
-    // array of levels
+    // @public - array of models that correspond to a given difficulty level
     this.levelModels = [
       // level 1
       new LevelModel( 6 ),
@@ -53,13 +53,13 @@ define( function( require ) {
       new LevelModel( 12 )
     ];
 
-    // hook up the audio player to the sound settings
+    // @private - audio player that is used to produce the feedback sounds for the game
     this.gameAudioPlayer = new GameAudioPlayer( ArithmeticGlobals.soundEnabledProperty );
 
-    // model for single game
+    // @public - portion of the model that represents a single problem
     this.problemModel = new ProblemModel();
 
-    // model for smile face
+    // @public - model for smile face
     this.faceModel = new FaceModel();
 
     // handles game state transitions that pertain to the model (does not require handling GameState.SELECTING_LEVEL)
@@ -151,6 +151,7 @@ define( function( require ) {
         // all problems have been answered, the level is now complete
         this.state = GameState.SHOWING_LEVEL_COMPLETED_DIALOG;
         this.activeLevelModel.gameTimer.stop();
+        this.playLevelCompletedSound();
       }
     },
 
@@ -191,6 +192,7 @@ define( function( require ) {
       // does nothing in the base class, override in descendant classes if desired
     },
 
+    // @public
     returnToLevelSelectScreen: function() {
 
       // save state of current level
@@ -205,6 +207,7 @@ define( function( require ) {
       this.state = GameState.SELECTING_LEVEL;
     },
 
+    // @public
     refreshLevel: function() {
       if ( this.feedbackTimer ) {
         Timer.clearTimeout( this.feedbackTimer );
@@ -216,13 +219,15 @@ define( function( require ) {
       this.trigger( 'refreshed' );
     },
 
+    // @private
     resetLevelModels: function() {
       this.levelModels.forEach( function( levelModel ) {
         levelModel.reset();
       } );
     },
 
-    playLevelFinishedSound: function() {
+    // @private
+    playLevelCompletedSound: function() {
       var resultScore = this.activeLevelModel.currentScore;
       var perfectScore = this.activeLevelModel.perfectScore;
 
@@ -237,7 +242,7 @@ define( function( require ) {
       }
     },
 
-    // init game after choosing level
+    // @public - set the level to be played, initializing or restoring the level as appropriate
     setLevel: function( level ) {
       this.level = level;
 
@@ -261,6 +266,7 @@ define( function( require ) {
       }
     },
 
+    // @private
     resetLevel: function() {
       this.activeLevelModel.reset();
       this.inputProperty.reset();

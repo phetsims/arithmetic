@@ -33,7 +33,6 @@ define( function( require ) {
   /**
    * @param {Object} backgroundOptions - Background options for button.
    * @param {Object} textOptions - Text options for button.
-   *
    * @constructor
    */
   function AbstractCell( backgroundOptions, textOptions ) {
@@ -94,10 +93,12 @@ define( function( require ) {
 
   return inherit( Rectangle, AbstractCell, {
 
+    // @public
     setBackgroundFill: function( fill ) {
       this.fill = fill;
     },
 
+    // @protected
     setText: function( text ) {
       this._text = text;
       if ( this._textNode ) {
@@ -106,16 +107,19 @@ define( function( require ) {
       }
     },
 
+    // @public
     setTextFill: function( fill ) {
       createTextNodeIfNeeded( this );
       this._textNode.setFill( fill );
     },
 
+    // @public
     showText: function() {
       createTextNodeIfNeeded( this );
       this._textNode.visible = true;
     },
 
+    // @public
     hideText: function() {
       if ( this._textNode ) {
         this._textNode.visible = false;
@@ -124,16 +128,19 @@ define( function( require ) {
 
     /**
      * Get the text string contained in this cell (not the text node).
+     * @public
      * @returns {string}
      */
     getTextString: function() {
       return this._text;
     },
 
+    // @public
     isTextVisible: function() {
       return this._textNode ? this._textNode.visible : false;
     },
 
+    // @public
     getTextHeight: function() {
       var height;
       switch( this._textOptions.font ) {

@@ -36,7 +36,7 @@ define( function( require ) {
       var gameState = model.stateProperty;
 
       // Create an image of a transparent hand that will cue the user that they need to interact with the table.
-      var handImage = new Image( overlayPointingHandImage, { pickable: false } );
+      var handImage = new Image( overlayPointingHandImage, { pickable: false } ); // @private
       handImage.scale( ( this.width / overlayPointingHandImage.width ) * 0.25 );
       handImage.centerX = this.width * 0.55; // position empirically determined
       handImage.centerY = this.height / 2;
@@ -44,7 +44,7 @@ define( function( require ) {
       // Create another hand that will appear over each cell to indicate that the user can click on it.  This was
       // originally handled in the individual cells, but caused startup to be long due to the large number of images
       // created, so was moved here.
-      this.cellPointer = new Image( cellPointerHandImage, { pickable: false } );
+      this.cellPointer = new Image( cellPointerHandImage, { pickable: false } ); // @private
       this.addChild( this.cellPointer );
 
       // variable used to track cell interaction

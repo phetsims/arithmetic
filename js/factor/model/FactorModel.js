@@ -24,6 +24,7 @@ define( function( require ) {
 
   return inherit( ArithmeticModel, FactorModel, {
 
+    // @public
     setUpUnansweredProblem: function() {
 
       // get available multiplier pair

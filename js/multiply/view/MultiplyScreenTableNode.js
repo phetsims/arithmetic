@@ -25,7 +25,7 @@ define( function( require ) {
   function MultiplyScreenTableNode( problemModel, stateProperty, levelProperty, levelModels ) {
     var self = this;
     MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, true );
-    this.problemModel = problemModel;
+    this.problemModel = problemModel; // @private
 
     stateProperty.lazyLink( function( state ) {
 
