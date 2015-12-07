@@ -105,7 +105,6 @@ define( function( require ) {
       );
     } );
     var selectLevelButtonsHBox = new HBox( { spacing: 50, children: levelSelectButtons } );
-    selectLevelButtonsHBox.updateLayout(); // TODO: Necessary?
     selectLevelButtonsHBox.top = chooseLevelTitle.bottom + 15;
     selectLevelButtonsHBox.centerX = chooseLevelTitle.centerX;
     this.addChild( selectLevelButtonsHBox );
