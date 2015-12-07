@@ -72,7 +72,7 @@ define( function( require ) {
      */
     setShowEqual: function( showEqual ) {
       this.equalsSign.text = showEqual ? '=' : '\u2260';
-//      this.equalsSign.fontSize = showEqual ? 40 : 50; //TODO: AP requested that not equal sign grow, needs to be finished.
+//      this.equalsSign.fontSize = showEqual ? 40 : 50; //TODO: AP requested that the equal sign grow, needs to be finished.
     }
   } );
 } );

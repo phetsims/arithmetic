@@ -25,6 +25,8 @@ define( function( require ) {
   // constants
   var INTERACTIVE_FILL = 'white';
   var NON_INTERACTIVE_FILL = '#dddddd';
+  var MIN_X_MARGIN = 5;
+  var CURSOR_HEIGHT = new Text( '8', { font: ArithmeticConstants.EQUATION_FONT_TEXT } ).height * 0.7;
 
   /**
    * @param {Property} valueProperty for observing and changing by input
@@ -36,11 +38,14 @@ define( function( require ) {
     var self = this;
     Node.call( this );
 
-    // create text and save reference for use in public methods
-    this.inputText = new Text( unknownValueIndicatorString, { font: ArithmeticConstants.EQUATION_FONT_TEXT } ); // @private
+    // @private - create text and save reference for use in public methods
+    this.inputText = new Text( unknownValueIndicatorString, {
+      font: ArithmeticConstants.EQUATION_FONT_TEXT,
+      maxWidth: size.width - 2 * MIN_X_MARGIN
+    } );
 
     // create cursor and save reference for use in public methods
-    this.textCursor = new Rectangle( 0, 2, 1, this.inputText.height - 12, { fill: 'black' } );
+    this.textCursor = new Rectangle( 0, 2, 1, CURSOR_HEIGHT, { fill: 'black' } );
     this.cursorContainer = new Node( { children: [ this.textCursor ] } );
 
     // save reference to input size value for use in public methods
@@ -62,7 +67,11 @@ define( function( require ) {
     this.addChild( this.background );
 
     // add text and cursor
-    this._box = new HBox( { children: [ this.inputText, this.cursorContainer ], centerX: size.width / 2, centerY: size.height / 2 } );
+    this._box = new HBox( {
+      children: [ this.inputText, this.cursorContainer ],
+      centerX: size.width / 2,
+      centerY: size.height / 2
+    } );
     this.addChild( this._box );
 
     // unfocused state by default

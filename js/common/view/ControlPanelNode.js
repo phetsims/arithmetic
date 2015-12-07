@@ -35,25 +35,29 @@ define( function( require ) {
     lineWidth: 0.5,
     xMargin: 23,
     yMargin: 23,
-    cornerRadius: 5
+    cornerRadius: 5,
+    align: 'center'
   };
   var REFRESH_BUTTON_BASE_COLOR = '#F2E916';
   var REFRESH_BUTTON_MARGIN = new Dimension2( 20, 10 );
   var SPACING = 18;
 
   /**
-   * @param {Property} levelProperty - Property for level displaying label.
+   * @param {Property} levelProperty - property for level displaying label.
    * @param {Property} stateProperty - State of game property.
-   * @param {Array} levelModels - Array of properties for score counter component.
+   * @param {Array.<LevelModel>} levelModels - Array of properties for score counter component.
    * @param {Property} timerEnabledProperty - Time enabling flag.
    * @param {Function} refreshLevelCallback - Callback listener for refresh level button.
+   * @param {Object} options - optional parameters that control the appearance and behavior of the panel
    *
    * @constructor
    */
-  function ControlPanelNode( levelProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback ) {
+  function ControlPanelNode( levelProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback, options ) {
     var levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, levelProperty.value.toString() ), FONT_BOLD );
     var scoreText = new Text( StringUtils.format( labelScoreString, '0' ), FONT );
     var timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), FONT );
+
+    var panelOptions = _.extend( {}, PANEL_OPTIONS, options );
 
     Node.call( this );
 
@@ -74,7 +78,7 @@ define( function( require ) {
         } )
       ]
     } );
-    this.addChild( new Panel( vBox, PANEL_OPTIONS ) );
+    this.addChild( new Panel( vBox, panelOptions ) );
 
     // add observers
     var updateScore = function( score ) {

@@ -53,18 +53,19 @@ define( function( require ) {
     Node.call( this );
 
     // add button for returning to the level select screen
-    this.addChild( new BackButton( {
-        baseColor: BACK_BUTTON_BASE_COLOR,
-        xMargin: BACK_BUTTON_MARGIN.width,
-        yMargin: BACK_BUTTON_MARGIN.height,
-        scale: 0.75, // empirically determined
-        left: layoutBounds.maxX * 0.02,
-        top: layoutBounds.maxY * 0.02,
-        listener: function() {
-          model.returnToLevelSelectScreen();
-        }
-      } )
-    );
+    var backButton = new BackButton( {
+      baseColor: BACK_BUTTON_BASE_COLOR,
+      xMargin: BACK_BUTTON_MARGIN.width,
+      yMargin: BACK_BUTTON_MARGIN.height,
+      scale: 0.75, // empirically determined
+      left: layoutBounds.maxX * 0.02,
+      top: layoutBounds.maxY * 0.02,
+      listener: function() {
+        model.returnToLevelSelectScreen();
+      }
+    } );
+
+    this.addChild( backButton );
 
     // add multiplication table
     multiplicationTableNode.mutate( { top: layoutBounds.maxY * 0.02, centerX: layoutBounds.width * 0.43 } );
@@ -91,6 +92,9 @@ define( function( require ) {
 
     } );
 
+    // define the width of the control panel so that it fits between the table and the bounds with some margin
+    var controlPanelWidth = layoutBounds.maxX - multiplicationTableNode.right - 60;
+
     // add control panel
     var controlPanelNode = new ControlPanelNode(
       model.levelProperty,
@@ -99,8 +103,14 @@ define( function( require ) {
       ArithmeticGlobals.timerEnabledProperty,
       function() {
         model.refreshLevel();
-      } );
-    controlPanelNode.centerX = ( multiplicationTableNode.right + layoutBounds.maxX ) / 2;
+      },
+      {
+        minWidth: controlPanelWidth,
+        maxWidth: controlPanelWidth,
+        centerX: ( multiplicationTableNode.right + layoutBounds.maxX ) / 2,
+        top: backButton.top
+      }
+    );
     controlPanelNode.top = multiplicationTableNode.top;
     this.addChild( controlPanelNode );
 
@@ -146,6 +156,7 @@ define( function( require ) {
         bottom: layoutBounds.bottom - BUTTON_INSET_FROM_BOTTOM,
         centerX: controlPanelNode.centerX,
         baseColor: BUTTON_BASE_COLOR,
+        maxWidth: controlPanelWidth,
         listener: function() { model.fillEquation(); }
       } );
       this.addChild( checkButton );
@@ -180,6 +191,7 @@ define( function( require ) {
       bottom: layoutBounds.bottom - BUTTON_INSET_FROM_BOTTOM,
       centerX: controlPanelNode.centerX,
       baseColor: BUTTON_BASE_COLOR,
+      maxWidth: controlPanelWidth,
       listener: function() { model.retryProblem(); }
     } );
     this.addChild( tryAgainButton );
