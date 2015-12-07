@@ -23,7 +23,9 @@ given cell is used or not, and there is a built-in assumption that the cells cor
 in a square multiplication table.  An alternative approach would have been to have each cell exist in the model, and
 have a property that indicates whether it should be shown in the table.  I (jblanco) believe that the original
 developer did what he did because of concerns about the performance impact of creating so many properties and then
-linking them to an attribute that controlled the visibility.
+linking them to an attribute that controlled the visibility.  This also means that all the color changes done to the
+cells as they are selected/deslected are done strictly in the view, not in the model.  Again, this was probably done
+for performance reasons, but it may be a little surprising to any would be maintainers of this sim.
 
 The model just tracks whether a cell is used, size of table.
 
