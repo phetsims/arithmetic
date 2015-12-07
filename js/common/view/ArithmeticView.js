@@ -10,7 +10,9 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var Bounds2 = require( 'DOT/Bounds2' );
+  var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelSelectionNode = require( 'ARITHMETIC/common/view/LevelSelectionNode' );
@@ -60,6 +62,9 @@ define( function( require ) {
     workspaceNode.visible = false;
     this.addChild( workspaceNode );
 
+    // audio player that is used to produce the feedback sounds for the game
+    var gameAudioPlayer = new GameAudioPlayer( ArithmeticGlobals.soundEnabledProperty );
+
     // set the origin of the answer animation in the multiplication table, which depends upon the newly set position of
     // the equation node.
     multiplicationTableNode.animationOrigin = equationNode.productInput.center;
@@ -108,6 +113,30 @@ define( function( require ) {
         // Slide out the level selection screen
         levelSelectionNode.pickable = false;
         levelSelectionScreenAnimator.stop().to( { x: self.layoutBounds.minX - levelSelectionNode.width }, ANIMATION_TIME ).start();
+      }
+
+      // play the appropriate audio
+      if ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
+        // play the correct answer sound
+        gameAudioPlayer.correctAnswer();
+      }
+      else if ( newState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+        // play the incorrect answer sound
+        gameAudioPlayer.wrongAnswer();
+      }
+      else if ( newState === GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
+        var resultScore = model.activeLevelModel.currentScore;
+        var perfectScore = model.activeLevelModel.perfectScore;
+
+        if ( resultScore === perfectScore ) {
+          gameAudioPlayer.gameOverPerfectScore();
+        }
+        else if ( resultScore === 0 ) {
+          gameAudioPlayer.gameOverZeroScore();
+        }
+        else {
+          gameAudioPlayer.gameOverImperfectScore();
+        }
       }
     } );
   }

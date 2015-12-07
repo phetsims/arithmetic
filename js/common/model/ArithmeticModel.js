@@ -13,12 +13,11 @@ define( function( require ) {
   // modules
   var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var ArithmeticQueryParameters = require( 'ARITHMETIC/common/ArithmeticQueryParameters' );
-  var inherit = require( 'PHET_CORE/inherit' );
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
-  var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
-  var ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
+  var inherit = require( 'PHET_CORE/inherit' );
   var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
+  var ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
   var PropertySet = require( 'AXON/PropertySet' );
   var Timer = require( 'JOIST/Timer' );
 
@@ -52,9 +51,6 @@ define( function( require ) {
       // level 3
       new LevelModel( 12 )
     ];
-
-    // @private - audio player that is used to produce the feedback sounds for the game
-    this.gameAudioPlayer = new GameAudioPlayer( ArithmeticGlobals.soundEnabledProperty );
 
     // @public - portion of the model that represents a single problem
     this.problemModel = new ProblemModel();
@@ -103,9 +99,6 @@ define( function( require ) {
         this.faceModel.isSmile = true;
         this.faceModel.showFace();
 
-        // play the correct answer sound
-        this.gameAudioPlayer.correctAnswer();
-
         // mark this table entry as solved
         this.activeLevelModel.markCellAsUsed( this.problemModel.multiplicand, this.problemModel.multiplier );
 
@@ -131,7 +124,6 @@ define( function( require ) {
         this.faceModel.pointsToDisplay = this.problemModel.possiblePoints;
         this.faceModel.isSmile = false;
         this.faceModel.showFace();
-        this.gameAudioPlayer.wrongAnswer();
 
         // set the appropriate state
         this.state = GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK;
@@ -151,7 +143,6 @@ define( function( require ) {
         // all problems have been answered, the level is now complete
         this.state = GameState.SHOWING_LEVEL_COMPLETED_DIALOG;
         this.activeLevelModel.gameTimer.stop();
-        this.playLevelCompletedSound();
       }
     },
 
@@ -224,22 +215,6 @@ define( function( require ) {
       this.levelModels.forEach( function( levelModel ) {
         levelModel.reset();
       } );
-    },
-
-    // @private
-    playLevelCompletedSound: function() {
-      var resultScore = this.activeLevelModel.currentScore;
-      var perfectScore = this.activeLevelModel.perfectScore;
-
-      if ( resultScore === perfectScore ) {
-        this.gameAudioPlayer.gameOverPerfectScore();
-      }
-      else if ( resultScore === 0 ) {
-        this.gameAudioPlayer.gameOverZeroScore();
-      }
-      else {
-        this.gameAudioPlayer.gameOverImperfectScore();
-      }
     },
 
     // @public - set the level to be played, initializing or restoring the level as appropriate

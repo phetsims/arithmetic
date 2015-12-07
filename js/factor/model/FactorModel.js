@@ -11,6 +11,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -55,6 +56,12 @@ define( function( require ) {
      * @protected
      */
     autoAnswer: function() {
+
+      // make sure that sound is off, since otherwise it dings for every solved problem
+      var soundState = ArithmeticGlobals.soundEnabledProperty.value;
+      ArithmeticGlobals.soundEnabledProperty.value = false;
+
+      // answer the questions
       var self = this;
       var tableSize = this.activeLevelModel.tableSize;
       var numQuestions = tableSize * tableSize;
@@ -77,7 +84,9 @@ define( function( require ) {
         self.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
         self.nextProblem();
       } );
-    }
 
+      // restore the original sound state
+      ArithmeticGlobals.soundEnabledProperty.value = soundState;
+    }
   } );
 } );
