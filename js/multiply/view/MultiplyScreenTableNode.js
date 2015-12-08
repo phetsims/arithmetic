@@ -33,7 +33,7 @@ define( function( require ) {
       if ( state === GameState.AWAITING_USER_INPUT ) {
 
         // select the cells that correspond to the current problem
-        self.updateCellColors( levelProperty.value );
+        self.setCellAppearanceForProblem( levelProperty.value );
       }
       else if ( state === GameState.LEVEL_COMPLETED ) {
 
@@ -48,19 +48,20 @@ define( function( require ) {
     // @public, @override
     refreshLevel: function( level ) {
       MultiplicationTableNode.prototype.refreshLevel.call( this, level );
-      this.updateCellColors( level );
+      this.setCellAppearanceForProblem( level );
     },
 
-    //TODO: Not sure about this name. Does it work for all types of these tables?
-    updateCellColors: function( level ) {
+    // @private, set the appearance of the cells based on the currently presented problem
+    setCellAppearanceForProblem: function( level ) {
       var self = this;
       this.setCellsToDefaultColor( level );
 
-      // set view of selected multipliers
+      // set the header cells for this problem to the selected state
       this.cells[ level ][ 0 ][ this.problemModel.multiplier ].setSelected();
       this.cells[ level ][ this.problemModel.multiplicand ][ 0 ].setSelected();
 
-      // set view of selected products
+      // create a rectangle of selected body cells with a width defined by the multiplier and a height defined by the
+      // multplicand
       this.cells[ level ].forEach( function( multiplicand, index ) {
         if ( index && index <= self.problemModel.multiplicand ) {
           multiplicand.forEach( function( cell, index ) {

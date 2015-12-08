@@ -250,7 +250,6 @@ define( function( require ) {
      * @public
      */
     clearCells: function( level ) {
-      // TODO: This whole method could essentially be removed if we used an event to signal changes to cells and updated when said event occurred.
       this.setCellsToDefaultColor( level );
       this.cells[ level ].forEach( function( cellRow, cellRowIndex ) {
         if ( cellRowIndex > 0 ) {
@@ -287,7 +286,6 @@ define( function( require ) {
     whereIsCellCenter: function( level, column, row ) {
 
       // Find the parent screen by moving up the scene graph.
-      // TODO: If kept, the parent screen can be identified during construction, which would be more efficient.
       var cell = this.cells[ level ][ row ][ column ];
       var testNode = cell;
       var parentScreen = null;

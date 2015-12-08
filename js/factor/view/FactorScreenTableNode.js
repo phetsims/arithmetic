@@ -5,10 +5,6 @@
  *
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco
- * TODO: I (jblanco) feel like the terms and naming in this file could use some work.  Why are the cells called
- * buttons?  Because they're interactive?  Seems odd.  Also, the cell states of active and selected seems like it
- * doesn't quite match what is going on. UPDATE 11/11/2015 - I changed the term 'button' to 'cell', but the cell state
- * names still need to be addressed.
  */
 define( function( require ) {
     'use strict';
@@ -138,8 +134,8 @@ define( function( require ) {
                   model.submitAnswer();
                 };
 
-                // When the user releases the mouse button, check that it's the same cell where the mouse down
-                // occurred, and fire if so.
+                // When the user releases the mouse button, check that it's the same cell where the mouse down occurred,
+                // and fire if so.
                 cellListener.on( 'mouseUp', function() {
                   if ( cellListener.enabled && self.mouseDownCell === cell &&
                        ( gameState.value === GameState.AWAITING_USER_INPUT ||
