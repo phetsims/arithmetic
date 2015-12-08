@@ -27,6 +27,8 @@ linking them to an attribute that controlled the visibility.  This also means th
 cells as they are selected/deslected are done strictly in the view, not in the model.  Again, this was probably done
 for performance reasons, but it may be a little surprising to any would be maintainers of this sim.
 
+For each screen, the state of the cells shown in a view is maintained through a three dimensional array
+
 The model just tracks whether a cell is used, size of table.
 
 There seems to have been a number of things done in anticipation of performance issues, and these have made the code a
