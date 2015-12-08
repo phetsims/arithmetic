@@ -49,7 +49,6 @@ define( function( require ) {
    * @constructor
    */
   function WorkspaceNode( model, multiplicationTableNode, equationNode, showKeypad, layoutBounds ) {
-    var self = this;
     Node.call( this );
 
     // add button for returning to the level select screen
