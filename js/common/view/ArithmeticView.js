@@ -115,16 +115,16 @@ define( function( require ) {
         levelSelectionScreenAnimator.stop().to( { x: self.layoutBounds.minX - levelSelectionNode.width }, ANIMATION_TIME ).start();
       }
 
-      // play the appropriate audio
-      if ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
+      // play the appropriate audio, if any, for this state transition
+      if ( oldState === GameState.AWAITING_USER_INPUT && newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
         // play the correct answer sound
         gameAudioPlayer.correctAnswer();
       }
-      else if ( newState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+      else if ( oldState === GameState.AWAITING_USER_INPUT && newState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
         // play the incorrect answer sound
         gameAudioPlayer.wrongAnswer();
       }
-      else if ( newState === GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
+      else if ( oldState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK && newState === GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
         var resultScore = model.activeLevelModel.currentScore;
         var perfectScore = model.activeLevelModel.perfectScore;
 
