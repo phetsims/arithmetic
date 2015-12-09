@@ -182,6 +182,11 @@ define( function( require ) {
     // @public
     returnToLevelSelectScreen: function() {
 
+      if ( this.state === GameState.AWAITING_USER_INPUT ) {
+        // reset any partial input that the user may have entered
+        this.inputProperty.reset();
+      }
+
       // save state of current level
       this.saveGameEnvironment();
 
