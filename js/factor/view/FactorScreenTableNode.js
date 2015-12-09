@@ -53,12 +53,12 @@ define( function( require ) {
 
         self.cellListeners[ levelIndex ] = [];
 
-        tableForLevel.forEach( function( multiplicands, multiplicandIndex ) {
+        tableForLevel.forEach( function( multiplicandRow, multiplicandRowIndex ) {
 
           // skip zero-index because it's the header column
-          if ( multiplicandIndex ) {
+          if ( multiplicandRowIndex ) {
 
-            multiplicands.forEach( function( cell, multiplierIndex ) {
+            multiplicandRow.forEach( function( cell, multiplierIndex ) {
               var cellListener;
 
               // skip zero-index because it's the header row
@@ -74,7 +74,7 @@ define( function( require ) {
                   if ( model.state === GameState.AWAITING_USER_INPUT ) {
                     self.setCellsToDefaultColor( model.level );
                     if ( cellListener.enabled ) {
-                      self.setSelectedRect( model.level, multiplicandIndex, multiplierIndex );
+                      self.setSelectedRect( model.level, multiplicandRowIndex, multiplierIndex );
                       cell.setHover();
                       self.cellPointer.visible = true;
 
@@ -118,15 +118,15 @@ define( function( require ) {
                   // set (in other cases, this region is set as the user moves the mouse over the table).
                   if ( model.state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
                     self.setCellsToDefaultColor( model.level );
-                    self.setSelectedRect( model.level, multiplicandIndex, multiplierIndex );
+                    self.setSelectedRect( model.level, multiplicandRowIndex, multiplierIndex );
                   }
 
                   // Record the user's answer.
-                  model.problemModel.multiplicand = multiplicandIndex;
+                  model.problemModel.multiplicand = multiplicandRowIndex;
                   model.problemModel.multiplier = multiplierIndex;
 
                   // Disable this cell if the user's answer is correct.
-                  if ( multiplicandIndex * multiplierIndex === model.problemModel.product ) {
+                  if ( multiplicandRowIndex * multiplierIndex === model.problemModel.product ) {
                     cellListener.enabled = false;
                   }
 
@@ -172,11 +172,12 @@ define( function( require ) {
       // Add the hand image here for proper layering.
       this.addChild( handImage );
 
-      // Update the cell's appearance state as the game state changes.
+      // Update the cell's appearance and state as the game state changes.
       model.stateProperty.link( function( newState, oldState ) {
 
         if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
           self.setCellsToDefaultColor( model.level );
+          self.updateCellListenerEnabledStates( model.level, model.activeLevelModel );
         }
         else if ( ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ||
                     newState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) &&
@@ -208,10 +209,21 @@ define( function( require ) {
     return inherit( MultiplicationTableNode, FactorScreenTableNode, {
 
       // @private, enable all cells for given level
-      enableCells: function( levelNumber ) {
+      enableAllCells: function( levelNumber ) {
         this.cellListeners[ levelNumber ].forEach( function( cellListener ) {
           cellListener.enabled = true;
         } );
+      },
+
+      // @private, enabled or disable the cell listeners based on whether or not the cell has been used
+      updateCellListenerEnabledStates: function( levelNumber, levelModel ) {
+        var self = this;
+        var tableSize = levelModel.tableSize;
+        for ( var multiplicand = 1; multiplicand <= tableSize; multiplicand++ ) {
+          for ( var multiplier = 1; multiplier <= tableSize; multiplier++ ) {
+            self.cellListeners[ levelNumber ][ ( multiplicand - 1 ) * tableSize + ( multiplier - 1 ) ].enabled = !levelModel.isCellUsed( multiplicand, multiplier );
+          }
+        }
       },
 
       // @private, set 'selected' state for all cells in given bounds and highlight the multipliers (i.e. header cells)
@@ -241,7 +253,7 @@ define( function( require ) {
       // @public, @override
       refreshLevel: function( level ) {
         MultiplicationTableNode.prototype.refreshLevel.call( this, level );
-        this.enableCells( level );
+        this.enableAllCells( level );
       }
     } );
   }
