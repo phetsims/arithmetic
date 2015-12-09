@@ -52,7 +52,7 @@ define( function( require ) {
    * @constructor
    */
   function ControlPanelNode( levelProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback, options ) {
-    var levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, levelProperty.value.toString() ), FONT_BOLD );
+    var levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, '' ), FONT_BOLD );
     var scoreText = new Text( StringUtils.format( labelScoreString, '0' ), FONT );
     var timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), FONT );
 
@@ -89,7 +89,12 @@ define( function( require ) {
     };
 
     levelProperty.lazyLink( function( levelNew, levelPrevious ) {
-      levelText.text = StringUtils.format( patternLevel0LevelNumberString, (levelNew + 1).toString() );
+      if ( levelNew !== null ) {
+        levelText.text = StringUtils.format( patternLevel0LevelNumberString, ( levelNew + 1 ).toString() );
+      }
+      else {
+        levelText.text = '';
+      }
 
       // unlink observers for previous level
       if ( levelModels[ levelPrevious ] ) {

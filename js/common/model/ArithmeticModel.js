@@ -36,7 +36,7 @@ define( function( require ) {
     this.fillEquation = options.fillEquation; // @public
 
     PropertySet.call( this, {
-      level: -1, // @public - active game level, -1 represents none
+      level: null, // @public - active game level, null represents none
       input: '', // @public - user's input value
       activeInput: null, // @public - reference to the portion of the equation that is awaiting input from the user
       state: GameState.SELECTING_LEVEL // @public - current game state
