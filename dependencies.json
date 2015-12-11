@@ -1,11 +1,11 @@
 {
-  "comment": "# arithmetic 1.0.0-dev.17 Wed Dec 09 2015 10:14:12 GMT-0700 (Mountain Standard Time)",
+  "comment": "# arithmetic 1.0.0-rc.1 Fri Dec 11 2015 12:04:37 GMT-0700 (Mountain Standard Time)",
   "arithmetic": {
-    "sha": "29429c62ad46524eea4f9628bd691f44d39a7d37",
-    "branch": "master"
+    "sha": "f6b9b3424d586a729b8be321b8056c44cf76acf4",
+    "branch": "1.0"
   },
   "assert": {
-    "sha": "3921bc3784dc67e9cbfa31cdec52b582fcfc68e7",
+    "sha": "d4909677d27ed571d5d859d709a0612bf7811db8",
     "branch": "master"
   },
   "axon": {
@@ -17,7 +17,7 @@
     "branch": "master"
   },
   "chipper": {
-    "sha": "1184b061bd3d0f735030dd54332b1666bee34693",
+    "sha": "d18a2538e68fff26d80d6e0cfa2beca4b032dc79",
     "branch": "master"
   },
   "dot": {
@@ -25,7 +25,7 @@
     "branch": "master"
   },
   "joist": {
-    "sha": "f73eef15ccb0356570915f9da1d536aed17e7ca5",
+    "sha": "7bb4d829471190203fe7e7b6c26b304eb40146a7",
     "branch": "master"
   },
   "kite": {
@@ -41,11 +41,11 @@
     "branch": "master"
   },
   "scenery": {
-    "sha": "495895024f964aaef080bb76586e32e882650925",
+    "sha": "98ea2eeb998282b37da86e961bc939c3942265aa",
     "branch": "master"
   },
   "scenery-phet": {
-    "sha": "a62aafce23e67d3dbfd3ce1b823066c3182e0711",
+    "sha": "956aff92df92cc0d004e46299e06387edc2cb153",
     "branch": "master"
   },
   "sherpa": {
@@ -53,7 +53,7 @@
     "branch": "master"
   },
   "sun": {
-    "sha": "ac884e18153c4cd883046d617bca662f9c7b6685",
+    "sha": "125fa62cda0eb2ead0c4c3a208a55dce5aab98de",
     "branch": "master"
   },
   "tandem": {
