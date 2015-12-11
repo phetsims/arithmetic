@@ -88,15 +88,15 @@ define( function( require ) {
       var numQuestions = this.activeLevelModel.tableSize * this.activeLevelModel.tableSize;
       var numQuestionsToAnswer = numQuestions - 1;
       console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
-      _.times( numQuestionsToAnswer, function() {
-        if ( self.problemModel.multiplicand === undefined ) {
+      _.times( numQuestionsToAnswer, function( index ) {
+        if ( !self.problemModel.multiplicand ) {
           self.problemModel.multiplicand = self.problemModel.product / self.problemModel.multiplier;
         }
-        else if ( self.problemModel.multiplier === undefined ) {
+        else if ( !self.problemModel.multiplier ) {
           self.problemModel.multiplier = self.problemModel.product / self.problemModel.multiplicand;
         }
         else {
-          throw new Error( 'unexpected problem structure' );
+          throw new Error( 'unexpected problem structure for problem', index );
         }
         self.activeLevelModel.currentScore += self.problemModel.possiblePoints;
         self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
