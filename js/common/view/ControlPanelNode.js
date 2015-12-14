@@ -64,6 +64,7 @@ define( function( require ) {
     var vBox = new VBox( {
       spacing: SPACING,
       children: [
+        new Text( 'Multiply', { font: FONT_BOLD } ),
         levelText,
         scoreText,
         timeText,
