@@ -14,7 +14,7 @@ define( function( require ) {
   var ArithmeticFaceWithPointsNode = require( 'ARITHMETIC/common/view/ArithmeticFaceWithPointsNode' );
   var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var BackButton = require( 'SCENERY_PHET/buttons/BackButton' );
-  var ControlPanelNode = require( 'ARITHMETIC/common/view/ControlPanelNode' );
+  var ScoreboardNode = require( 'ARITHMETIC/common/view/ScoreboardNode' );
   var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -43,13 +43,18 @@ define( function( require ) {
    * @param {Node} equationNode - Equation node for given screen.  This can be (and generally is) different depending
    * on the flavor of the game, i.e. multiplication, division, or factoring.  This is why it is passed in rather than
    * locally created.
-   * @param {Boolean} showKeypad - Flag for adding keypad node.
    * @param {Bounds2} layoutBounds - Bounds of main screen. Necessary for placing components.
+   * @param {Object} options
    *
    * @constructor
    */
-  function WorkspaceNode( model, multiplicationTableNode, equationNode, showKeypad, layoutBounds ) {
+  function WorkspaceNode( model, multiplicationTableNode, equationNode, layoutBounds, options ) {
     Node.call( this );
+
+    options = _.extend( {
+      scoreboardTitle: '',
+      showKeypad: true
+    }, options );
 
     // add button for returning to the level select screen
     var backButton = new BackButton( {
@@ -94,7 +99,7 @@ define( function( require ) {
     var controlPanelWidth = layoutBounds.maxX - multiplicationTableNode.right - 60;
 
     // add control panel
-    var controlPanelNode = new ControlPanelNode(
+    var controlPanelNode = new ScoreboardNode(
       model.levelProperty,
       model.stateProperty,
       model.levelModels,
@@ -103,6 +108,7 @@ define( function( require ) {
         model.refreshLevel();
       },
       {
+        title: options.scoreboardTitle,
         minWidth: controlPanelWidth,
         maxWidth: controlPanelWidth,
         centerX: ( multiplicationTableNode.right + layoutBounds.maxX ) / 2,
@@ -113,7 +119,7 @@ define( function( require ) {
     this.addChild( controlPanelNode );
 
     // add keypad if necessary
-    if ( showKeypad ) {
+    if ( options.showKeypad ) {
       // create and add the keypad
       var keypad = new NumberKeypad( {
         digitStringProperty: model.inputProperty,

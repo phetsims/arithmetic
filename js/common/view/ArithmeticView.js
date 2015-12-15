@@ -57,7 +57,13 @@ define( function( require ) {
     this.addChild( levelSelectionNode );
 
     // add the game components
-    var workspaceNode = new WorkspaceNode( model, multiplicationTableNode, equationNode, options.showKeypad, this.layoutBounds );
+    var workspaceNode = new WorkspaceNode(
+      model,
+      multiplicationTableNode,
+      equationNode,
+      this.layoutBounds,
+      { showKeypad: options.showKeypad, scoreboardTitle: options.titleString }
+    );
     workspaceNode.left = this.layoutBounds.maxX;
     workspaceNode.visible = false;
     this.addChild( workspaceNode );
