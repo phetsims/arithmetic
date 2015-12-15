@@ -153,13 +153,16 @@ define( function( require ) {
                                    newGameState === GameState.SELECTING_LEVEL ) );
       } );
 
+      var buttonYCenter = ( equationNode.bottom + layoutBounds.maxY ) / 2 - 5; // tweaked a bit empirically
+      var maxButtonWidth = layoutBounds.maxX - multiplicationTableNode.bounds.maxX;
+
       // add the 'Check' button, which is only used in conjunction with the keypad
       var checkButton = new TextPushButton( checkString, {
         font: BUTTON_FONT,
-        bottom: layoutBounds.bottom - BUTTON_INSET_FROM_BOTTOM,
+        centerY: buttonYCenter,
         centerX: controlPanelNode.centerX,
         baseColor: BUTTON_BASE_COLOR,
-        maxWidth: controlPanelWidth,
+        maxWidth: maxButtonWidth,
         listener: function() { model.fillEquation(); }
       } );
       this.addChild( checkButton );
@@ -191,10 +194,10 @@ define( function( require ) {
     // add the 'try again' button
     var tryAgainButton = new TextPushButton( tryAgainString, {
       font: BUTTON_FONT,
-      bottom: layoutBounds.bottom - BUTTON_INSET_FROM_BOTTOM,
+      centerY: buttonYCenter,
       centerX: controlPanelNode.centerX,
       baseColor: BUTTON_BASE_COLOR,
-      maxWidth: controlPanelWidth,
+      maxWidth: maxButtonWidth,
       listener: function() { model.retryProblem(); }
     } );
     this.addChild( tryAgainButton );
