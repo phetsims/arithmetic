@@ -40,7 +40,7 @@ define( function( require ) {
   };
   var REFRESH_BUTTON_BASE_COLOR = '#F2E916';
   var REFRESH_BUTTON_MARGIN = new Dimension2( 20, 10 );
-  var SPACING = 18;
+  var SPACING = 16;
 
   /**
    * @param {Property} levelProperty - property for level displaying label.
