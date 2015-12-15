@@ -118,6 +118,10 @@ define( function( require ) {
     controlPanelNode.top = multiplicationTableNode.top;
     this.addChild( controlPanelNode );
 
+    // set up some variables needed for positioning the buttons
+    var buttonYCenter = ( equationNode.bottom + layoutBounds.maxY ) / 2 - 5; // tweaked a bit empirically
+    var maxButtonWidth = layoutBounds.maxX - multiplicationTableNode.bounds.maxX;
+
     // add keypad if necessary
     if ( options.showKeypad ) {
       // create and add the keypad
@@ -152,9 +156,6 @@ define( function( require ) {
                                  ( oldGameState === GameState.LEVEL_COMPLETED &&
                                    newGameState === GameState.SELECTING_LEVEL ) );
       } );
-
-      var buttonYCenter = ( equationNode.bottom + layoutBounds.maxY ) / 2 - 5; // tweaked a bit empirically
-      var maxButtonWidth = layoutBounds.maxX - multiplicationTableNode.bounds.maxX;
 
       // add the 'Check' button, which is only used in conjunction with the keypad
       var checkButton = new TextPushButton( checkString, {

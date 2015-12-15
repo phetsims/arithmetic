@@ -122,7 +122,8 @@ define( function( require ) {
       }
 
       // play the appropriate audio, if any, for this state transition
-      if ( oldState === GameState.AWAITING_USER_INPUT && newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
+      if ( ( oldState === GameState.AWAITING_USER_INPUT || oldState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK )
+           && newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
         // play the correct answer sound
         gameAudioPlayer.correctAnswer();
       }
