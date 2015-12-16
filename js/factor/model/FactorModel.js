@@ -49,6 +49,30 @@ define( function( require ) {
     },
 
     /**
+     * Submit an answer for the currently active problem.  This override exists to handle one very special case on the
+     * Factor screen: the situation where the user submits two or more incorrect answers in a row without pressing the
+     * "Try Again" button in between.  In this case, there is no natural state transition, so the feedback sound is
+     * never played.  This override forces the state transition.
+     *
+     * See https://github.com/phetsims/arithmetic/issues/160#issuecomment-164507798 for more.
+     *
+     * @override
+     * @public
+     */
+    submitAnswer: function() {
+      if ( this.state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+
+        // force a change to the AWAITING_USER_INPUT state before checking the answer
+        var multiplicand = this.problemModel.multiplicand;
+        var multiplier = this.problemModel.multiplier;
+        this.retryProblem();
+        this.problemModel.multiplicand = multiplicand;
+        this.problemModel.multiplier = multiplier;
+      }
+      ArithmeticModel.prototype.submitAnswer.call( this );
+    },
+
+    /**
      * Automatically answer most of the questions.  This is useful for testing, since it can save time when testing
      * how the sim behaves when a user finishing answering all questions for a level.  We need to be very careful that
      * this is never available in the published sim.
