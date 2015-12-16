@@ -64,18 +64,21 @@ define( function( require ) {
       // Set the countdown to the total for the opaque time and the fade time.
       var countdown = OPAQUE_TIME + FADE_TIME;
 
-      // If the timer isn't already running, start it up.
-      if ( timerID === null ) {
-        timerID = Timer.setInterval( function() {
-          countdown -= UPDATE_PERIOD;
-          self.opacity = Util.clamp( countdown / FADE_TIME, 0, 1 );
-          if ( self.opacity === 0 ) {
-            Timer.clearInterval( timerID );
-            timerID = null;
-            self.visible = false;
-          }
-        }, UPDATE_PERIOD );
+      // cancel previous timer if it exists
+      if ( timerID !== null ) {
+        Timer.clearInterval( timerID );
       }
+
+      // start up the new timer
+      timerID = Timer.setInterval( function() {
+        countdown -= UPDATE_PERIOD;
+        self.opacity = Util.clamp( countdown / FADE_TIME, 0, 1 );
+        if ( self.opacity === 0 ) {
+          Timer.clearInterval( timerID );
+          timerID = null;
+          self.visible = false;
+        }
+      }, UPDATE_PERIOD );
     } );
 
     // Handle the event that indicates that the face should be hidden.

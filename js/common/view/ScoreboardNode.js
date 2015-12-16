@@ -23,9 +23,9 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var patternLevel0LevelNumberString = require( 'string!ARITHMETIC/pattern.level.0levelNumber' );
   var labelScoreString = require( 'string!VEGAS/label.score' );
   var labelTimeString = require( 'string!VEGAS/label.time' );
+  var patternLevel0LevelNumberString = require( 'string!ARITHMETIC/pattern.level.0levelNumber' );
 
   // constants
   var FONT = new PhetFont( { size: 18 } );
@@ -40,7 +40,7 @@ define( function( require ) {
   };
   var REFRESH_BUTTON_BASE_COLOR = '#F2E916';
   var REFRESH_BUTTON_MARGIN = new Dimension2( 20, 10 );
-  var SPACING = 18;
+  var SPACING = 16;
 
   /**
    * @param {Property} levelProperty - property for level displaying label.
@@ -51,7 +51,11 @@ define( function( require ) {
    * @param {Object} options - optional parameters that control the appearance and behavior of the panel
    * @constructor
    */
-  function ControlPanelNode( levelProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback, options ) {
+  function ScoreboardNode( levelProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback, options ) {
+
+    options = _.extend( {
+      title: ''
+    }, options );
     var levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, '' ), FONT_BOLD );
     var scoreText = new Text( StringUtils.format( labelScoreString, '0' ), FONT );
     var timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), FONT );
@@ -64,6 +68,7 @@ define( function( require ) {
     var vBox = new VBox( {
       spacing: SPACING,
       children: [
+        new Text( options.title, { font: FONT_BOLD } ),
         levelText,
         scoreText,
         timeText,
@@ -120,5 +125,5 @@ define( function( require ) {
     } );
   }
 
-  return inherit( Node, ControlPanelNode );
+  return inherit( Node, ScoreboardNode );
 } );

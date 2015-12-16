@@ -43,7 +43,7 @@ define( function( require ) {
       this.cellPointer = new Image( cellPointerHandImage, { pickable: false } ); // @private
       this.addChild( this.cellPointer );
 
-      // variable used to track cell interaction
+      // variables used to track cell interaction
       this.cellListeners = []; // @private
       this.activeCell = null; // @private
       this.mouseDownCell = null; // @private
@@ -114,13 +114,6 @@ define( function( require ) {
                 // Define a function for submitting an answer that can be used by both mouse and the touch handlers.
                 var submitAnswer = function() {
 
-                  // If this answer is being submitted after getting the problem wrong, the selected region must be
-                  // set (in other cases, this region is set as the user moves the mouse over the table).
-                  if ( model.state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
-                    self.setCellsToDefaultColor( model.level );
-                    self.setSelectedRect( model.level, multiplicandRowIndex, multiplierIndex );
-                  }
-
                   // Record the user's answer.
                   model.problemModel.multiplicand = multiplicandRowIndex;
                   model.problemModel.multiplier = multiplierIndex;
@@ -132,6 +125,10 @@ define( function( require ) {
 
                   // Submit the user's answer for checking.
                   model.submitAnswer();
+
+                  // Update the cell highlighting to match the latest submission, which may be necessary if the user
+                  // submitted a new answer after first submitting one or more incorrect ones.
+                  self.setSelectedRect( model.level, multiplicandRowIndex, multiplierIndex );
                 };
 
                 // When the user releases the mouse button, check that it's the same cell where the mouse down occurred,
