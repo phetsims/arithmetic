@@ -29,7 +29,6 @@ define( function( require ) {
   var BACK_BUTTON_MARGIN = new Dimension2( 20, 10 ); // margin of background of back button
   var BUTTON_BASE_COLOR = '#F2E916';
   var BUTTON_FONT = new PhetFont( { size: 20 } );
-  var BUTTON_INSET_FROM_BOTTOM = 20; // empirically determined
 
   // strings
   var checkString = require( 'string!ARITHMETIC/check' );
