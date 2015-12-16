@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.0-rc.1 Fri Dec 11 2015 12:04:37 GMT-0700 (Mountain Standard Time)",
+  "comment": "# arithmetic 1.0.0-rc.2 Wed Dec 16 2015 14:07:19 GMT-0700 (Mountain Standard Time)",
   "arithmetic": {
-    "sha": "f6b9b3424d586a729b8be321b8056c44cf76acf4",
+    "sha": "6476bd3ec64c3739591a87e97094c18c527afded",
     "branch": "1.0"
   },
   "assert": {
@@ -21,11 +21,11 @@
     "branch": "master"
   },
   "dot": {
-    "sha": "24f07fa0a43389dcabff3a9ea3f43b334e1aa32d",
+    "sha": "7a28b1a92733cee778e2cf5d22ca45042884d416",
     "branch": "master"
   },
   "joist": {
-    "sha": "7bb4d829471190203fe7e7b6c26b304eb40146a7",
+    "sha": "d1f201a12aa5346a782d7fb408adcca05fce48fa",
     "branch": "master"
   },
   "kite": {
@@ -53,7 +53,7 @@
     "branch": "master"
   },
   "sun": {
-    "sha": "125fa62cda0eb2ead0c4c3a208a55dce5aab98de",
+    "sha": "5e85610d537d9740394db303534146a0f982c3dc",
     "branch": "master"
   },
   "tandem": {
