@@ -15,7 +15,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var Util = require( 'DOT/Util' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var Timer = require( 'JOIST/Timer' );
+  var Timer = require( 'PHET_CORE/Timer' );
 
   // constants
   var UPDATE_PERIOD = 1 / 60 * 1000; // milliseconds, intended to match the expected frame rate

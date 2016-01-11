@@ -19,7 +19,7 @@ define( function( require ) {
   var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
   var ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
   var PropertySet = require( 'AXON/PropertySet' );
-  var Timer = require( 'JOIST/Timer' );
+  var Timer = require( 'PHET_CORE/Timer' );
 
   // constants
   var FEEDBACK_TIME = 1200; // in milliseconds, time that the feedback is presented before moving to next problem
