@@ -215,6 +215,7 @@ define( function( require ) {
         ArithmeticGlobals.timerEnabledProperty,
         function() {
           model.state = GameState.LEVEL_COMPLETED;
+          model.returnToLevelSelectScreen();
         },
         layoutBounds )
     );
