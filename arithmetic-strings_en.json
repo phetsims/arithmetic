@@ -20,12 +20,6 @@
   "pattern.level.0levelNumber": {
     "value": "Level {0}"
   },
-  "score": {
-    "value": "Score"
-  },
-  "time": {
-    "value": "Time"
-  },
   "tryAgain": {
     "value": "Try Again"
   },
