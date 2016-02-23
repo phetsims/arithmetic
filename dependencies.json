@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.1 Mon Feb 22 2016 14:58:03 GMT-0700 (Mountain Standard Time)",
+  "comment": "# arithmetic 1.0.2 Tue Feb 23 2016 16:02:24 GMT-0700 (Mountain Standard Time)",
   "arithmetic": {
-    "sha": "4a9c2826b8192acda55ac05905a077feff837d7b",
+    "sha": "81895b936f67353ceeddfe0b821f4748333e3bfd",
     "branch": "1.0"
   },
   "assert": {
@@ -26,7 +26,7 @@
   },
   "joist": {
     "sha": "3cf8a30c300acedfc61716a90777fb9fe96f9b2c",
-    "branch": "arithmetic-1.0"
+    "branch": "HEAD"
   },
   "kite": {
     "sha": "a4907ccc07cc80d6d3c9c1e240ba7664e32db56b",
@@ -41,8 +41,8 @@
     "branch": "HEAD"
   },
   "scenery": {
-    "sha": "98ea2eeb998282b37da86e961bc939c3942265aa",
-    "branch": "HEAD"
+    "sha": "ad956984b42d5ebc6f4e582734d1a0c4fce31417",
+    "branch": "arithmetic-1.0"
   },
   "scenery-phet": {
     "sha": "956aff92df92cc0d004e46299e06387edc2cb153",
