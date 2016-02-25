@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.2 Tue Feb 23 2016 16:02:24 GMT-0700 (Mountain Standard Time)",
+  "comment": "# arithmetic 1.0.2 Thu Feb 25 2016 12:57:17 GMT-0700 (Mountain Standard Time)",
   "arithmetic": {
-    "sha": "81895b936f67353ceeddfe0b821f4748333e3bfd",
+    "sha": "ef1b883dd13f830006ea03709e553cc9e53d0cbe",
     "branch": "1.0"
   },
   "assert": {
@@ -42,7 +42,7 @@
   },
   "scenery": {
     "sha": "ad956984b42d5ebc6f4e582734d1a0c4fce31417",
-    "branch": "arithmetic-1.0"
+    "branch": "HEAD"
   },
   "scenery-phet": {
     "sha": "956aff92df92cc0d004e46299e06387edc2cb153",
