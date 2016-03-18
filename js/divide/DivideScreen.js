@@ -20,12 +20,18 @@ define( function( require ) {
   // strings
   var divideString = require( 'string!ARITHMETIC/divide' );
 
-  function DivideScreen() {
+  /**
+   * @param {Tandem} tandem
+   * @constructor
+   */
+  function DivideScreen( tandem ) {
     Screen.call( this,
       divideString, new DivideScreenIconNode(),
       function() {return new DivideModel();},
-      function( model ) {return new DivideView( model );},
-      { backgroundColor: ArithmeticConstants.BACKGROUND_COLOR } );
+      function( model ) {return new DivideView( model );}, {
+        backgroundColor: ArithmeticConstants.BACKGROUND_COLOR,
+        tandem: tandem
+      } );
   }
 
   return inherit( Screen, DivideScreen );

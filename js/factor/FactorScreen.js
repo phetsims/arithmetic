@@ -20,14 +20,17 @@ define( function( require ) {
   var factorString = require( 'string!ARITHMETIC/factor' );
 
   /**
+   * @param {Tandem} tandem
    * @constructor
    */
-  function FactorScreen() {
+  function FactorScreen( tandem ) {
     Screen.call( this,
       factorString, new FactorScreenIconNode(),
       function() {return new FactorModel();},
-      function( model ) {return new FactorView( model );},
-      { backgroundColor: ArithmeticConstants.BACKGROUND_COLOR } );
+      function( model ) {return new FactorView( model );}, {
+        backgroundColor: ArithmeticConstants.BACKGROUND_COLOR,
+        tandem: tandem
+      } );
   }
 
   return inherit( Screen, FactorScreen );

@@ -19,12 +19,18 @@ define( function( require ) {
   // strings
   var multiplyString = require( 'string!ARITHMETIC/multiply' );
 
-  function MultiplyScreen() {
+  /**
+   * @param {Tandem} tandem
+   * @constructor
+   */
+  function MultiplyScreen( tandem ) {
     Screen.call( this,
       multiplyString, new MultiplyScreenIconNode(),
       function() {return new MultiplyModel();},
-      function( model ) {return new MultiplyView( model );},
-      { backgroundColor: ArithmeticConstants.BACKGROUND_COLOR } );
+      function( model ) {return new MultiplyView( model );}, {
+        backgroundColor: ArithmeticConstants.BACKGROUND_COLOR,
+        tandem: tandem
+      } );
   }
 
   return inherit( Screen, MultiplyScreen );

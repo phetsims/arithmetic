@@ -14,9 +14,13 @@ define( function( require ) {
   var MultiplyScreen = require( 'ARITHMETIC/multiply/MultiplyScreen' );
   var Sim = require( 'JOIST/Sim' );
   var SimLauncher = require( 'JOIST/SimLauncher' );
+  var Tandem = require( 'TANDEM/Tandem' );
 
   // strings and images
   var arithmeticTitleString = require( 'string!ARITHMETIC/arithmetic.title' );
+
+  // constants
+  var tandem = Tandem.createRootTandem();
 
   var simOptions = {
     credits: {
@@ -25,11 +29,16 @@ define( function( require ) {
       team: 'Bryce Gruneich, Karina K. R. Hensberry, Trish Loeblein, Ariel Paul, Kathy Perkins, Beth Stade',
       qualityAssurance: 'Steele Dalton, Bryce Griebenow, Elise Morgan, Oliver Orejola, Ben Roberts, Bryan Yoelin',
       thanks: 'Thanks to Mobile Learner Labs for working with the PhET development team to convert this simulation to HTML5.'
-    }
+    },
+    tandem: tandem
   };
 
   SimLauncher.launch( function() {
     // Create and start the sim
-    new Sim( arithmeticTitleString, [ new MultiplyScreen(), new FactorScreen(), new DivideScreen() ], simOptions ).start();
+    new Sim( arithmeticTitleString, [
+      new MultiplyScreen( tandem.createTandem( 'multiplyScreen' ) ),
+      new FactorScreen( tandem.createTandem( 'factorScreen' ) ),
+      new DivideScreen( tandem.createTandem( 'divideScreen' ) )
+    ], simOptions ).start();
   } );
 } );
