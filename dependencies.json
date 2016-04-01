@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.3 Mon Mar 07 2016 16:41:56 GMT-0700 (MST)",
+  "comment": "# arithmetic 1.0.3 Fri Apr 01 2016 12:55:46 GMT-0600 (MDT)",
   "arithmetic": {
-    "sha": "23c408eaa6aa841b8581ad3714f756190d4273bb",
+    "sha": "77ff8388976fcd3d26a083729064a7d2e9486371",
     "branch": "1.0"
   },
   "assert": {
@@ -37,8 +37,8 @@
     "branch": "HEAD"
   },
   "phetcommon": {
-    "sha": "db0b7f13e2c8c840266b2b9a90ca873e2fed3b38",
-    "branch": "HEAD"
+    "sha": "d71dc9ef13282a0970c0007e8af3eecaafd24a87",
+    "branch": "arithmetic-1.0"
   },
   "scenery": {
     "sha": "ad956984b42d5ebc6f4e582734d1a0c4fce31417",
