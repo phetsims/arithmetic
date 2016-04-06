@@ -209,6 +209,9 @@ define( function( require ) {
       this.nextProblem();
       this.activeLevelModel.gameTimer.start(); // may already be running, if so this is a no-op
       this.trigger( 'refreshed' );
+
+      // automatically answer most of the problems if enabled - this is for testing only
+      this.autoAnswerIfEnabled();
     },
 
     // @private
@@ -216,6 +219,16 @@ define( function( require ) {
       this.levelModels.forEach( function( levelModel ) {
         levelModel.reset();
       } );
+    },
+
+    // @private, check if auto answer should be performed and, if so, do it
+    autoAnswerIfEnabled: function(){
+
+      // Automatically answer most of the problems if the autoAnswer query parameter was specified, but only if this is
+      // not a production release.
+      if ( ArithmeticQueryParameters.AUTO_ANSWER && window.phet.joist.sim.version.indexOf( '-' ) > 0 ) {
+        this.autoAnswer();
+      }
     },
 
     // @public - set the level to be played, initializing or restoring the level as appropriate
@@ -235,10 +248,8 @@ define( function( require ) {
       else {
         this.nextProblem();
 
-        // enable auto answer if specified in the query params, but only if this is not a production release
-        if ( ArithmeticQueryParameters.AUTO_ANSWER && window.phet.joist.sim.version.indexOf( '-' ) > 0 ) {
-          this.autoAnswer();
-        }
+        // automatically answer most of the problems if enabled - this is for testing only
+        this.autoAnswerIfEnabled();
       }
     },
 
