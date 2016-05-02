@@ -6,7 +6,7 @@
  * @author Andrey Zelenkov (Mlearner)
  * @author John Blanco
  */
-define( function() {
+define( function( require ) {
   'use strict';
 
   // @public
