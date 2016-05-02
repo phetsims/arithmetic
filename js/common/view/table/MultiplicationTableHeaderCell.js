@@ -10,8 +10,9 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var inherit = require( 'PHET_CORE/inherit' );
   var AbstractCell = require( 'ARITHMETIC/common/view/table/AbstractCell' );
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
+  var inherit = require( 'PHET_CORE/inherit' );
 
   // constants
   var NORMAL_COLOR_BACKGROUND = 'rgb(220,60,33)'; // background normal color
@@ -34,6 +35,8 @@ define( function( require ) {
 
     this.setText( contentText );
   }
+
+  arithmetic.register( 'MultiplicationTableHeaderCell', MultiplicationTableHeaderCell );
 
   return inherit( AbstractCell, MultiplicationTableHeaderCell, {
 

@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
@@ -42,6 +43,8 @@ define( function( require ) {
       }
     } );
   }
+
+  arithmetic.register( 'MultiplyScreenTableNode', MultiplyScreenTableNode );
 
   return inherit( MultiplicationTableNode, MultiplyScreenTableNode, {
 

@@ -13,6 +13,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PropertySet = require( 'AXON/PropertySet' );
 
@@ -26,6 +27,8 @@ define( function( require ) {
       enabled: true
     } );
   }
+
+  arithmetic.register( 'CellInteractionListener', CellInteractionListener );
 
   return inherit( PropertySet, CellInteractionListener, {
 

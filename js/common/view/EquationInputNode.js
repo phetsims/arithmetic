@@ -11,6 +11,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var HBox = require( 'SCENERY/nodes/HBox' );
@@ -27,6 +28,12 @@ define( function( require ) {
   var NON_INTERACTIVE_FILL = '#dddddd';
   var MIN_X_MARGIN = 5;
   var CURSOR_HEIGHT = new Text( '8', { font: ArithmeticConstants.EQUATION_FONT_TEXT } ).height * 0.7;
+
+  // convenience function to avoid duplicated code
+  var updateBoxPosition = function( box, inputSize ) {
+    box.centerX = inputSize.width / 2;
+    box.centerY = inputSize.height / 2;
+  };
 
   /**
    * @param {Property} valueProperty for observing and changing by input
@@ -78,10 +85,7 @@ define( function( require ) {
     this.setFocus( false );
   }
 
-  var updateBoxPosition = function( box, inputSize ) {
-    box.centerX = inputSize.width / 2;
-    box.centerY = inputSize.height / 2;
-  };
+  arithmetic.register( 'EquationInputNode', EquationInputNode );
 
   return inherit( Node, EquationInputNode, {
 

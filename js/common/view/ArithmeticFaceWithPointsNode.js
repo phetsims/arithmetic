@@ -11,6 +11,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var FaceWithPointsNode = require( 'SCENERY_PHET/FaceWithPointsNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Util = require( 'DOT/Util' );
@@ -94,6 +95,8 @@ define( function( require ) {
       self.visible = false;
     } );
   }
+
+  arithmetic.register( 'ArithmeticFaceWithPointsNode', ArithmeticFaceWithPointsNode );
 
   return inherit( FaceWithPointsNode, ArithmeticFaceWithPointsNode );
 } );

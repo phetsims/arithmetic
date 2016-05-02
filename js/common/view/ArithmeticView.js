@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var Bounds2 = require( 'DOT/Bounds2' );
   var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
@@ -147,6 +148,8 @@ define( function( require ) {
       }
     } );
   }
+
+  arithmetic.register( 'ArithmeticView', ArithmeticView );
 
   return inherit( ScreenView, ArithmeticView );
 } );

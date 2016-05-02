@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplyEquationNode = require( 'ARITHMETIC/multiply/view/MultiplyEquationNode' );
@@ -44,6 +45,8 @@ define( function( require ) {
       }
     );
   }
+
+  arithmetic.register( 'MultiplyView', MultiplyView );
 
   return inherit( ArithmeticView, MultiplyView );
 } );

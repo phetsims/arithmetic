@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var DivideModel = require( 'ARITHMETIC/divide/model/DivideModel' );
   var DivideScreenIconNode = require( 'ARITHMETIC/divide/view/DivideScreenIconNode' );
@@ -33,6 +34,8 @@ define( function( require ) {
         tandem: tandem
       } );
   }
+
+  arithmetic.register( 'DivideScreen', DivideScreen );
 
   return inherit( Screen, DivideScreen );
 } );

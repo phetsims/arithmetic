@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Line = require( 'SCENERY/nodes/Line' );
@@ -41,6 +42,8 @@ define( function( require ) {
       center: this.center
     } ) );
   }
+
+  arithmetic.register( 'MultiplyScreenIconNode', MultiplyScreenIconNode );
 
   return inherit( Rectangle, MultiplyScreenIconNode );
 } );

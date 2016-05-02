@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var Color = require( 'SCENERY/util/Color' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
@@ -52,6 +53,8 @@ define( function( require ) {
       }
     } );
   }
+
+  arithmetic.register( 'LevelCompletedNodeWrapper', LevelCompletedNodeWrapper );
 
   return inherit( Node, LevelCompletedNodeWrapper );
 } );

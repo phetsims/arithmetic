@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var GameTimer = require( 'VEGAS/GameTimer' );
@@ -124,6 +125,8 @@ define( function( require ) {
       }
     } );
   }
+
+  arithmetic.register( 'ScoreboardNode', ScoreboardNode );
 
   return inherit( Node, ScoreboardNode );
 } );

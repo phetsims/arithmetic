@@ -8,11 +8,18 @@
 define( function( require ) {
   'use strict';
 
+  // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
+
   var getQueryParameter = phet.chipper.getQueryParameter;
 
-  return {
+  var ArithmeticQueryParameters = {
 
     // Automatically answer most problems to enable faster testing of level completion.
     AUTO_ANSWER: !!getQueryParameter( 'autoAnswer' )
   };
+
+  arithmetic.register( 'ArithmeticQueryParameters', ArithmeticQueryParameters );
+
+  return ArithmeticQueryParameters;
 } );

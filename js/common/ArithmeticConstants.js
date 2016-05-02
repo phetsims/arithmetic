@@ -10,10 +10,11 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Screen = require( 'JOIST/Screen' );
 
-  return {
+  var ArithmeticConstants = {
     BACKGROUND_COLOR: 'rgb( 173, 202, 255 )',
     CURSOR_BLINK_INTERVAL: 500, // duration of animation in milliseconds
     EQUATION_FONT_TEXT: new PhetFont( { size: 32 } ),
@@ -23,4 +24,8 @@ define( function( require ) {
     STAR_NUMBER: 5, // number of stars in select level buttons
     WORKSPACE_BACKGROUND_COLOR: 'rgb(130,181,252)'
   };
+
+  arithmetic.register( 'ArithmeticConstants', ArithmeticConstants );
+
+  return ArithmeticConstants;
 } );

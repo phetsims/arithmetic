@@ -11,6 +11,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var ArithmeticQueryParameters = require( 'ARITHMETIC/common/ArithmeticQueryParameters' );
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
@@ -70,6 +71,8 @@ define( function( require ) {
       }
     } );
   }
+
+  arithmetic.register( 'ArithmeticModel', ArithmeticModel );
 
   return inherit( PropertySet, ArithmeticModel, {
 

@@ -11,6 +11,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticFaceWithPointsNode = require( 'ARITHMETIC/common/view/ArithmeticFaceWithPointsNode' );
   var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var BackButton = require( 'SCENERY_PHET/buttons/BackButton' );
@@ -220,6 +221,8 @@ define( function( require ) {
         layoutBounds )
     );
   }
+
+  arithmetic.register( 'WorkspaceNode', WorkspaceNode );
 
   return inherit( Node, WorkspaceNode );
 } );

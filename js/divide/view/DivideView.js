@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
   var DivideEquationNode = require( 'ARITHMETIC/divide/view/DivideEquationNode' );
   var DivideScreenTableNode = require( 'ARITHMETIC/divide/view/DivideScreenTableNode' );
@@ -47,6 +48,8 @@ define( function( require ) {
       }
     );
   }
+
+  arithmetic.register( 'DivideView', DivideView );
 
   return inherit( ArithmeticView, DivideView );
 } );

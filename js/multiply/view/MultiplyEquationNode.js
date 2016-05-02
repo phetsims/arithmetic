@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var EquationNode = require( 'ARITHMETIC/common/view/EquationNode' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -43,6 +44,8 @@ define( function( require ) {
       self.setShowEqual( state !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
     } );
   }
+
+  arithmetic.register( 'MultiplyEquationNode', MultiplyEquationNode );
 
   return inherit( EquationNode, MultiplyEquationNode );
 } );

@@ -14,6 +14,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
@@ -228,6 +229,8 @@ define( function( require ) {
       }
     } );
   }
+
+  arithmetic.register( 'MultiplicationTableNode', MultiplicationTableNode );
 
   return inherit( Node, MultiplicationTableNode, {
 

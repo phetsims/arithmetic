@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
   var FactorEquationNode = require( 'ARITHMETIC/factor/view/FactorEquationNode' );
   var FactorScreenTableNode = require( 'ARITHMETIC/factor/view/FactorScreenTableNode' );
@@ -40,6 +41,8 @@ define( function( require ) {
       }
     );
   }
+
+  arithmetic.register( 'FactorView', FactorView );
 
   return inherit( ArithmeticView, FactorView );
 } );

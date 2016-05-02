@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PropertySet = require( 'AXON/PropertySet' );
   var GameTimer = require( 'VEGAS/GameTimer' );
@@ -39,6 +40,8 @@ define( function( require ) {
 
     this.environment = null; // @public - storage area used for saving/restoring this level's state in the parent model 
   }
+
+  arithmetic.register( 'LevelModel', LevelModel );
 
   return inherit( PropertySet, LevelModel, {
 

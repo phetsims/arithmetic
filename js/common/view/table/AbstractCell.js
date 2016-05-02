@@ -16,6 +16,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
@@ -90,6 +91,8 @@ define( function( require ) {
     cell._textNode.centerX = cell.bounds.width / 2;
     cell.addChild( cell._textNode );
   }
+
+  arithmetic.register( 'AbstractCell', AbstractCell );
 
   return inherit( Rectangle, AbstractCell, {
 

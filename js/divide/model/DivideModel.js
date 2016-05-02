@@ -11,6 +11,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
@@ -33,6 +34,8 @@ define( function( require ) {
       }
     } );
   }
+
+  arithmetic.register( 'DivideModel', DivideModel );
 
   return inherit( ArithmeticModel, DivideModel, {
 

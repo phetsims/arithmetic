@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var FactorModel = require( 'ARITHMETIC/factor/model/FactorModel' );
   var FactorView = require( 'ARITHMETIC/factor/view/FactorView' );
@@ -24,14 +25,17 @@ define( function( require ) {
    * @constructor
    */
   function FactorScreen( tandem ) {
-    Screen.call( this,
-      factorString, new FactorScreenIconNode(),
-      function() {return new FactorModel();},
-      function( model ) {return new FactorView( model );}, {
-        backgroundColor: ArithmeticConstants.BACKGROUND_COLOR,
-        tandem: tandem
-      } );
+    Screen.call(
+      this,
+      factorString,
+      new FactorScreenIconNode(),
+      function() { return new FactorModel(); },
+      function( model ) { return new FactorView( model ); },
+      { backgroundColor: ArithmeticConstants.BACKGROUND_COLOR, tandem: tandem }
+    );
   }
+
+  arithmetic.register( 'FactorScreen', FactorScreen );
 
   return inherit( Screen, FactorScreen );
 } );

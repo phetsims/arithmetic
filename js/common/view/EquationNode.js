@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var Dimension2 = require( 'DOT/Dimension2' );
   var EquationInputNode = require( 'ARITHMETIC/common/view/EquationInputNode' );
   var HBox = require( 'SCENERY/nodes/HBox' );
@@ -60,6 +61,8 @@ define( function( require ) {
     // Perform the layout by placing everything in an HBox.
     HBox.call( this, options );
   }
+
+  arithmetic.register( 'EquationNode', EquationNode );
 
   return inherit( HBox, EquationNode, {
 

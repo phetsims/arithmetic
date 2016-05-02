@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var HBox = require( 'SCENERY/nodes/HBox' );
@@ -132,6 +133,8 @@ define( function( require ) {
     // pass options through to superclass
     this.mutate( options );
   }
+
+  arithmetic.register( 'LevelSelectionNode', LevelSelectionNode );
 
   return inherit( Node, LevelSelectionNode );
 } );

@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplyModel = require( 'ARITHMETIC/multiply/model/MultiplyModel' );
@@ -24,14 +25,17 @@ define( function( require ) {
    * @constructor
    */
   function MultiplyScreen( tandem ) {
-    Screen.call( this,
-      multiplyString, new MultiplyScreenIconNode(),
-      function() {return new MultiplyModel();},
-      function( model ) {return new MultiplyView( model );}, {
-        backgroundColor: ArithmeticConstants.BACKGROUND_COLOR,
-        tandem: tandem
-      } );
+    Screen.call(
+      this,
+      multiplyString,
+      new MultiplyScreenIconNode(),
+      function() { return new MultiplyModel(); },
+      function( model ) { return new MultiplyView( model ); },
+      { backgroundColor: ArithmeticConstants.BACKGROUND_COLOR, tandem: tandem }
+    );
   }
+
+  arithmetic.register( 'MultiplyScreen', MultiplyScreen );
 
   return inherit( Screen, MultiplyScreen );
 } );

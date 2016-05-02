@@ -10,10 +10,15 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var Property = require( 'AXON/Property' );
 
-  return {
+  var ArithmeticGlobals = {
     timerEnabledProperty: new Property( false ),
     soundEnabledProperty: new Property( true )
   };
+
+  arithmetic.register( 'ArithmeticGlobals', ArithmeticGlobals );
+
+  return ArithmeticGlobals;
 } );
