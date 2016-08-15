@@ -24,8 +24,8 @@ define( function( require ) {
 
   var simOptions = {
     credits: {
-      leadDesign: 'Mike Dubson, Amanda McGarry',
-      softwareDevelopment: 'John Blanco, Mike Dubson',
+      leadDesign: 'Michael Dubson, Amanda McGarry',
+      softwareDevelopment: 'John Blanco, Michael Dubson',
       team: 'Bryce Gruneich, Karina K. R. Hensberry, Trish Loeblein, Ariel Paul, Kathy Perkins, Beth Stade',
       qualityAssurance: 'Steele Dalton, Bryce Griebenow, Elise Morgan, Oliver Orejola, Ben Roberts, Bryan Yoelin',
       thanks: 'Thanks to Mobile Learner Labs for working with the PhET development team to convert this simulation to HTML5.'
