@@ -16,6 +16,7 @@ define( function( require ) {
   var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var Random = require( 'DOT/Random' );
 
   /**
    * @constructor
@@ -33,6 +34,7 @@ define( function( require ) {
         self.submitAnswer();
       }
     } );
+    this.random = new Random( { staticSeed: true } );
   }
 
   arithmetic.register( 'DivideModel', DivideModel );
@@ -57,7 +59,7 @@ define( function( require ) {
         this.problemModel.product = multipliers.multiplicand * multipliers.multiplier;
 
         // set multiplicand or multiplier
-        if ( Math.random() < 0.5 ) {
+        if ( this.random.nextBoolean() ) {
           this.problemModel.multiplicand = multipliers.multiplicand;
           this.activeInput = 'multiplier';
         }
