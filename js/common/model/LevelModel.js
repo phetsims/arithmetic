@@ -14,14 +14,12 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var PropertySet = require( 'AXON/PropertySet' );
   var GameTimer = require( 'VEGAS/GameTimer' );
-  var Random = require( 'DOT/Random' );
 
   /**
    * @param {number} tableSize - width and height of the multiplication table, which is assumed to be square
    * @constructor
    */
   function LevelModel( tableSize ) {
-    this.random = new Random( { staticSeed: true } );
     PropertySet.call( this, {
       bestTime: null,  // @public - best time for level
       currentScore: 0, // @public - current score for level
@@ -99,7 +97,7 @@ define( function( require ) {
       }
 
       // set multiplicand
-      multiplicand = this.random.shuffle( availableMultiplicands )[ 0 ];
+      multiplicand = phet.joist.random.shuffle( availableMultiplicands )[ 0 ];
 
       // find available multipliers
       this.cellUsedStates[ multiplicand - 1 ].forEach( function( isProblemAnswered, index ) {
@@ -109,7 +107,7 @@ define( function( require ) {
       } );
 
       // set multiplier
-      multiplier = this.random.sample( availableMultipliers );
+      multiplier = phet.joist.random.sample( availableMultipliers );
 
       return {
         multiplicand: multiplicand,
