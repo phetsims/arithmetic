@@ -26,13 +26,18 @@ define( function( require ) {
    * @constructor
    */
   function DivideScreen( tandem ) {
+
+    var options = {
+      name: divideString,
+      backgroundColor: ArithmeticConstants.BACKGROUND_COLOR,
+      homeScreenIcon: new DivideScreenIconNode(),
+      tandem: tandem
+    };
+
     Screen.call( this,
-      divideString, new DivideScreenIconNode(),
-      function() {return new DivideModel();},
-      function( model ) {return new DivideView( model );}, {
-        backgroundColor: ArithmeticConstants.BACKGROUND_COLOR,
-        tandem: tandem
-      } );
+      function() { return new DivideModel(); },
+      function( model ) { return new DivideView( model ); },
+      options );
   }
 
   arithmetic.register( 'DivideScreen', DivideScreen );

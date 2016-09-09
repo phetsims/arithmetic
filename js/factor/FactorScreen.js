@@ -25,14 +25,18 @@ define( function( require ) {
    * @constructor
    */
   function FactorScreen( tandem ) {
-    Screen.call(
-      this,
-      factorString,
-      new FactorScreenIconNode(),
+
+    var options = {
+      name: factorString,
+      homeScreenIcon: new FactorScreenIconNode(),
+      backgroundColor: ArithmeticConstants.BACKGROUND_COLOR,
+      tandem: tandem
+    };
+
+    Screen.call( this,
       function() { return new FactorModel(); },
       function( model ) { return new FactorView( model ); },
-      { backgroundColor: ArithmeticConstants.BACKGROUND_COLOR, tandem: tandem }
-    );
+      options );
   }
 
   arithmetic.register( 'FactorScreen', FactorScreen );

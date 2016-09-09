@@ -25,14 +25,18 @@ define( function( require ) {
    * @constructor
    */
   function MultiplyScreen( tandem ) {
-    Screen.call(
-      this,
-      multiplyString,
-      new MultiplyScreenIconNode(),
+
+    var options = {
+      name: multiplyString,
+      homeScreenIcon: new MultiplyScreenIconNode(),
+      backgroundColor: ArithmeticConstants.BACKGROUND_COLOR,
+      tandem: tandem
+    };
+
+    Screen.call( this,
       function() { return new MultiplyModel(); },
       function( model ) { return new MultiplyView( model ); },
-      { backgroundColor: ArithmeticConstants.BACKGROUND_COLOR, tandem: tandem }
-    );
+      options );
   }
 
   arithmetic.register( 'MultiplyScreen', MultiplyScreen );
