@@ -77,25 +77,19 @@ define( function( require ) {
     multiplicationTableNode.animationOrigin = equationNode.productInput.center;
 
     // create the animators or 'tweens' that will slide the screens in and out.
-    var levelSelectionScreenAnimator = new TWEEN.Tween( { x: levelSelectionNode.x } ).
-      easing( TWEEN.Easing.Cubic.InOut ).
-      onUpdate( function() {
-        levelSelectionNode.x = this.x;
-      } ).
-      onComplete( function() {
-        levelSelectionNode.visible = ( levelSelectionNode.x === self.layoutBounds.minX );
-        levelSelectionNode.pickable = levelSelectionNode.visible; // prevent interaction during animation, see issue #137
-      } );
+    var levelSelectionScreenAnimator = new TWEEN.Tween( { x: levelSelectionNode.x } ).easing( TWEEN.Easing.Cubic.InOut ).onUpdate( function() {
+      levelSelectionNode.x = this.x;
+    } ).onComplete( function() {
+      levelSelectionNode.visible = ( levelSelectionNode.x === self.layoutBounds.minX );
+      levelSelectionNode.pickable = levelSelectionNode.visible; // prevent interaction during animation, see issue #137
+    } );
 
-    var workspaceNodeAnimator = new TWEEN.Tween( { x: workspaceNode.x } ).
-      easing( TWEEN.Easing.Cubic.InOut ).
-      onUpdate( function() {
-        workspaceNode.x = this.x;
-      } ).
-      onComplete( function() {
-        workspaceNode.visible = ( workspaceNode.x === self.layoutBounds.minX );
-        workspaceNode.pickable = workspaceNode.visible; // prevent interaction during animation, see issue #137
-      } );
+    var workspaceNodeAnimator = new TWEEN.Tween( { x: workspaceNode.x } ).easing( TWEEN.Easing.Cubic.InOut ).onUpdate( function() {
+      workspaceNode.x = this.x;
+    } ).onComplete( function() {
+      workspaceNode.visible = ( workspaceNode.x === self.layoutBounds.minX );
+      workspaceNode.pickable = workspaceNode.visible; // prevent interaction during animation, see issue #137
+    } );
 
     // observers
     model.stateProperty.link( function( newState, oldState ) {
@@ -105,21 +99,21 @@ define( function( require ) {
 
         // Slide out the workspace node
         workspaceNode.pickable = false;
-        workspaceNodeAnimator.stop().to( { x: self.layoutBounds.maxX }, ANIMATION_TIME ).start();
+        workspaceNodeAnimator.stop().to( { x: self.layoutBounds.maxX }, ANIMATION_TIME ).start( phet.joist.elapsedTime );
 
         // Slide in the level selection screen
         levelSelectionNode.visible = true;
-        levelSelectionScreenAnimator.stop().to( { x: self.layoutBounds.minX }, ANIMATION_TIME ).start();
+        levelSelectionScreenAnimator.stop().to( { x: self.layoutBounds.minX }, ANIMATION_TIME ).start( phet.joist.elapsedTime );
       }
       else if ( newState !== GameState.SELECTING_LEVEL && oldState === GameState.SELECTING_LEVEL ) {
 
         // Slide in the workspace node
         workspaceNode.visible = true;
-        workspaceNodeAnimator.stop().to( { x: self.layoutBounds.minX }, ANIMATION_TIME ).start();
+        workspaceNodeAnimator.stop().to( { x: self.layoutBounds.minX }, ANIMATION_TIME ).start( phet.joist.elapsedTime );
 
         // Slide out the level selection screen
         levelSelectionNode.pickable = false;
-        levelSelectionScreenAnimator.stop().to( { x: self.layoutBounds.minX - levelSelectionNode.width }, ANIMATION_TIME ).start();
+        levelSelectionScreenAnimator.stop().to( { x: self.layoutBounds.minX - levelSelectionNode.width }, ANIMATION_TIME ).start( phet.joist.elapsedTime );
       }
 
       // play the appropriate audio, if any, for this state transition

@@ -195,25 +195,21 @@ define( function( require ) {
                     centerY: ANSWER_ANIMATION_ORIGIN.y,
                     scale: 1
                   };
-                  self.flyingProductAnimation = new TWEEN.Tween( flyingProductPositionAndScale ).
-                    to( {
-                      centerX: flyingProductDestination.x,
-                      centerY: flyingProductDestination.y,
-                      scale: destinationCell.getTextHeight() / self.flyingProduct.height
-                    }, ANSWER_ANIMATION_TIME ).
-                    easing( TWEEN.Easing.Cubic.InOut ).
-                    onUpdate( function() {
-                      self.flyingProduct.centerX = flyingProductPositionAndScale.centerX;
-                      self.flyingProduct.centerY = flyingProductPositionAndScale.centerY;
-                      self.flyingProduct.setScaleMagnitude( flyingProductPositionAndScale.scale );
-                    } ).
-                    onComplete( function() {
-                      destinationCell.showText();
-                      self.flyingProduct.visible = false;
-                      self.flyingProductAnimation = null;
-                    } );
+                  self.flyingProductAnimation = new TWEEN.Tween( flyingProductPositionAndScale ).to( {
+                    centerX: flyingProductDestination.x,
+                    centerY: flyingProductDestination.y,
+                    scale: destinationCell.getTextHeight() / self.flyingProduct.height
+                  }, ANSWER_ANIMATION_TIME ).easing( TWEEN.Easing.Cubic.InOut ).onUpdate( function() {
+                    self.flyingProduct.centerX = flyingProductPositionAndScale.centerX;
+                    self.flyingProduct.centerY = flyingProductPositionAndScale.centerY;
+                    self.flyingProduct.setScaleMagnitude( flyingProductPositionAndScale.scale );
+                  } ).onComplete( function() {
+                    destinationCell.showText();
+                    self.flyingProduct.visible = false;
+                    self.flyingProductAnimation = null;
+                  } );
                   self.flyingProduct.visible = true;
-                  self.flyingProductAnimation.start();
+                  self.flyingProductAnimation.start( phet.joist.elapsedTime );
                 })();
               }
               else {
