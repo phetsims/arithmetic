@@ -11,14 +11,14 @@ define( function( require ) {
 
   // modules
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var Dimension2 = require( 'DOT/Dimension2' );
+  var FontAwesomeNode = require( 'SUN/FontAwesomeNode' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var GameTimer = require( 'VEGAS/GameTimer' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Panel = require( 'SUN/Panel' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var RefreshButton = require( 'SCENERY_PHET/buttons/RefreshButton' );
+  var RectangularPushButton = require( 'SUN/buttons/RectangularPushButton' );
   var StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   var Text = require( 'SCENERY/nodes/Text' );
   var VBox = require( 'SCENERY/nodes/VBox' );
@@ -39,8 +39,6 @@ define( function( require ) {
     cornerRadius: 5,
     align: 'center'
   };
-  var REFRESH_BUTTON_BASE_COLOR = '#F2E916';
-  var REFRESH_BUTTON_MARGIN = new Dimension2( 20, 10 );
   var SPACING = 16;
 
   /**
@@ -74,12 +72,12 @@ define( function( require ) {
         scoreText,
         timeText,
         // add refresh button
-        new RefreshButton( {
-          baseColor: REFRESH_BUTTON_BASE_COLOR,
-          xMargin: REFRESH_BUTTON_MARGIN.width,
-          yMargin: REFRESH_BUTTON_MARGIN.height,
-          listener: refreshLevelCallback,
-          scale: 0.75
+        new RectangularPushButton( {
+          content: new FontAwesomeNode( 'refresh', { scale: 0.6 } ),
+          baseColor: '#F2E916',
+          xMargin: 14,
+          yMargin: 7,
+          listener: refreshLevelCallback
         } )
       ]
     } );
