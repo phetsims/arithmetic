@@ -229,7 +229,7 @@ define( function( require ) {
 
       // Automatically answer most of the problems if the autoAnswer query parameter was specified, but only if this is
       // not a production release.
-      if ( ArithmeticQueryParameters.AUTO_ANSWER && window.phet.joist.sim.version.indexOf( '-' ) > 0 ) {
+      if ( ArithmeticQueryParameters.autoAnswer && window.phet.joist.sim.version.indexOf( '-' ) > 0 ) {
         this.autoAnswer();
       }
     },

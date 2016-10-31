@@ -11,13 +11,11 @@ define( function( require ) {
   // modules
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
 
-  var getQueryParameter = phet.chipper.getQueryParameter;
-
-  var ArithmeticQueryParameters = {
+  var ArithmeticQueryParameters = QueryStringMachine.getAll( {
 
     // Automatically answer most problems to enable faster testing of level completion.
-    AUTO_ANSWER: !!getQueryParameter( 'autoAnswer' )
-  };
+    autoAnswer: { type: 'flag' }
+  } );
 
   arithmetic.register( 'ArithmeticQueryParameters', ArithmeticQueryParameters );
 
