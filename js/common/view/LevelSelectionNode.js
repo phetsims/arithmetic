@@ -54,7 +54,7 @@ define( function( require ) {
 
   /**
    * @param {ArithmeticModel} model - Main model for screen.
-   * @param {String} titleString - Title string for given screen.
+   * @param {string} titleString - Title string for given screen.
    * @param {Function} callback - Callback function call after pressing button.
    * @param {Bounds2} layoutBounds - Bounds of screen on which this will appear, used for layout
    * @param {Object} [options]
