@@ -22,6 +22,7 @@ define( function( require ) {
   var StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   var Text = require( 'SCENERY/nodes/Text' );
   var VBox = require( 'SCENERY/nodes/VBox' );
+  var PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
 
   // strings
   var labelScoreString = require( 'string!VEGAS/label.score' );
@@ -74,7 +75,7 @@ define( function( require ) {
         // add refresh button
         new RectangularPushButton( {
           content: new FontAwesomeNode( 'refresh', { scale: 0.6 } ),
-          baseColor: '#F2E916',
+          baseColor: PhetColorScheme.PHET_YELLOW,
           xMargin: 14,
           yMargin: 7,
           listener: refreshLevelCallback

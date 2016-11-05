@@ -24,11 +24,12 @@ define( function( require ) {
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var TextPushButton = require( 'SUN/buttons/TextPushButton' );
+  var PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
 
   // constants
-  var BACK_BUTTON_BASE_COLOR = '#F2E916'; // base color of back button
+  var BACK_BUTTON_BASE_COLOR = PhetColorScheme.PHET_YELLOW; // base color of back button
   var BACK_BUTTON_MARGIN = new Dimension2( 20, 10 ); // margin of background of back button
-  var BUTTON_BASE_COLOR = '#F2E916';
+  var BUTTON_BASE_COLOR = PhetColorScheme.PHET_YELLOW;
   var BUTTON_FONT = new PhetFont( { size: 20 } );
 
   // strings
