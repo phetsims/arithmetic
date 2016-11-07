@@ -127,7 +127,7 @@ define( function( require ) {
     if ( options.showKeypad ) {
       // create and add the keypad
       var keypad = new NumberKeypad( {
-        digitStringProperty: model.inputProperty,
+        valueStringProperty: model.inputProperty,
         maxDigits: 3,
         centerX: controlPanelNode.centerX,
         bottom: layoutBounds.maxY * 0.85
