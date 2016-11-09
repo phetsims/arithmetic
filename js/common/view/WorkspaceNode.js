@@ -128,7 +128,7 @@ define( function( require ) {
       // create and add the keypad
       var keypad = new NumberKeypad( {
         valueStringProperty: model.inputProperty,
-        maxDigits: 3,
+        validateKey: NumberKeypad.validateMaxDigits( { maxDigits: 3 } ),
         centerX: controlPanelNode.centerX,
         bottom: layoutBounds.maxY * 0.85
       } );
