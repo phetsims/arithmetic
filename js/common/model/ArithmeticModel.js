@@ -153,7 +153,6 @@ define( function( require ) {
      * @public
      */
     retryProblem: function() {
-      this.inputProperty.reset();
       this.state = GameState.AWAITING_USER_INPUT;
     },
 

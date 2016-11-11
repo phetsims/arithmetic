@@ -142,7 +142,8 @@ define( function( require ) {
           // can simply start entering values again if they got the wrong answer initially.
           keypad.armForNewEntry();
         }
-        else if ( newGameState === GameState.AWAITING_USER_INPUT ) {
+        else if ( newGameState === GameState.AWAITING_USER_INPUT &&
+                  oldGameState !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
           keypad.clear();
         }
 
@@ -200,7 +201,10 @@ define( function( require ) {
       centerX: controlPanelNode.centerX,
       baseColor: BUTTON_BASE_COLOR,
       maxWidth: maxButtonWidth,
-      listener: function() { model.retryProblem(); }
+      listener: function() {
+        model.inputProperty.reset();
+        model.retryProblem();
+      }
     } );
     this.addChild( tryAgainButton );
 

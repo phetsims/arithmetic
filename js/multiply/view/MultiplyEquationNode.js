@@ -30,18 +30,18 @@ define( function( require ) {
     this.productInput.setInteractiveAppearance( true );
 
     // Update contents and focus at the state changes.
-    stateProperty.link( function( state ) {
+    stateProperty.link( function( newState, oldState ) {
 
       // Set the state of the product portion of the equation.
-      if ( state === GameState.AWAITING_USER_INPUT ) {
+      if ( newState === GameState.AWAITING_USER_INPUT && oldState !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
         self.productInput.clear();
       }
 
       // The input should only have focus (i.e. blinking cursor) when awaiting input from the user.
-      self.productInput.setFocus( state === GameState.AWAITING_USER_INPUT );
+      self.productInput.setFocus( newState === GameState.AWAITING_USER_INPUT );
 
       // If the user got it wrong, the equation should depict a not equals sign.
-      self.setShowEqual( state !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
+      self.setShowEqual( newState !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
     } );
   }
 
