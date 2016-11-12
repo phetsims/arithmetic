@@ -56,9 +56,9 @@ define( function( require ) {
     options = _.extend( {
       title: ''
     }, options );
-    var levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, '' ), FONT_BOLD );
-    var scoreText = new Text( StringUtils.format( labelScoreString, '0' ), FONT );
-    var timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), FONT );
+    var levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, '' ), { font: FONT_BOLD } );
+    var scoreText = new Text( StringUtils.format( labelScoreString, '0' ), { font: FONT } );
+    var timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), { font: FONT } );
 
     var panelOptions = _.extend( {}, PANEL_OPTIONS, options );
 
