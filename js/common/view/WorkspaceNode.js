@@ -140,7 +140,7 @@ define( function( require ) {
         if ( newGameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
           // Arm the keypad for auto-clear when showing incorrect feedback.  This is part of the feature where the user
           // can simply start entering values again if they got the wrong answer initially.
-          keypad.armedForNewEntry = true;
+          keypad.clearOnNextKeyPress = true;
         }
         else if ( newGameState === GameState.AWAITING_USER_INPUT &&
                   oldGameState !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
