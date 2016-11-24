@@ -16,6 +16,8 @@ define( function( require ) {
   var FactorScreenIconNode = require( 'ARITHMETIC/factor/view/FactorScreenIconNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Screen = require( 'JOIST/Screen' );
+  var Property = require( 'AXON/Property' );
+  var Color = require( 'SCENERY/util/Color' );
 
   // strings
   var factorString = require( 'string!ARITHMETIC/factor' );
@@ -29,7 +31,7 @@ define( function( require ) {
     var options = {
       name: factorString,
       homeScreenIcon: new FactorScreenIconNode(),
-      backgroundColor: ArithmeticConstants.BACKGROUND_COLOR,
+      backgroundColorProperty: new Property( Color.toColor( ArithmeticConstants.BACKGROUND_COLOR ) ),
       tandem: tandem
     };
 
