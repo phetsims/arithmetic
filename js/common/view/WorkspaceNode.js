@@ -27,9 +27,9 @@ define( function( require ) {
   var PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
 
   // constants
-  var BACK_BUTTON_BASE_COLOR = PhetColorScheme.PHET_YELLOW; // base color of back button
+  var BACK_BUTTON_BASE_COLOR = PhetColorScheme.PHET_LOGO_YELLOW; // base color of back button
   var BACK_BUTTON_MARGIN = new Dimension2( 20, 10 ); // margin of background of back button
-  var BUTTON_BASE_COLOR = PhetColorScheme.PHET_YELLOW;
+  var BUTTON_BASE_COLOR = PhetColorScheme.PHET_LOGO_YELLOW;
   var BUTTON_FONT = new PhetFont( { size: 20 } );
 
   // strings
