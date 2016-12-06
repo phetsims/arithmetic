@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.7-rc.2 Tue Dec 06 2016 15:01:31 GMT-0700 (Mountain Standard Time)",
+  "comment": "# arithmetic 1.0.7 Tue Dec 06 2016 16:28:16 GMT-0700 (Mountain Standard Time)",
   "arithmetic": {
-    "sha": "6e7cebf0a4b5f8d878790490d30b54e8ed353397",
+    "sha": "e7f2d03b104b99706bf42927a03df4be10d9660d",
     "branch": "1.0"
   },
   "assert": {
