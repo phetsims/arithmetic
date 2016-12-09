@@ -16,42 +16,40 @@ define( function( require ) {
   var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
 
   /**
-   * @param {ArithmeticModel} problemModel - model for single task.
-   * @param {Property} levelProperty - Level difficulty property.
-   * @param {Property} stateProperty - Current state property.
-   * @param {Array} levelModels - Array of descriptions for each level.
-   *
+   * @param {ArithmeticModel} model
    * @constructor
    */
-  function DivideScreenTableNode( problemModel, stateProperty, levelProperty, levelModels ) {
+  function DivideScreenTableNode( model ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, true );
-    this.problemModel = problemModel;
-    this.levelProperty = levelProperty;
+    MultiplicationTableNode.call( this, model.levelProperty, model.stateProperty, model.levelModels, true );
+    this.problemModel = model.problemModel;
+    this.levelProperty = model.levelProperty;
 
-    stateProperty.lazyLink( function( state ) {
+    model.stateProperty.lazyLink( function( state ) {
+
       // set view for multiplication table after choosing multiplicand and multiplier
       if ( state === GameState.AWAITING_USER_INPUT ) {
 
         // clear cell colors prior to showing the problem
-        self.setCellsToDefaultColor( levelProperty.value );
+        self.setCellsToDefaultColor( self.levelProperty.value );
 
-        // set select multipliers
-        if ( problemModel.multiplicand ) {
-          self.cells[ levelProperty.value ][ problemModel.multiplicand ][ 0 ].setSelected();
+        // highlight the active multiplicand or multiplier
+        if ( model.activeInput === 'multiplier' ) {
+          self.cells[ self.levelProperty.value ][ self.problemModel.multiplicand ][ 0 ].setSelected();
         }
         else {
-          self.cells[ levelProperty.value ][ 0 ][ problemModel.multiplier ].setSelected();
+          assert && assert( model.activeInput === 'multiplicand' );
+          self.cells[ self.levelProperty.value ][ 0 ][ self.problemModel.multiplier ].setSelected();
         }
       }
       else if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
 
         // Make the cells that correspond to the answer change color.
-        self.cells[ levelProperty.value ][ problemModel.multiplicand ][ 0 ].setSelected();
-        self.cells[ levelProperty.value ][ 0 ][ problemModel.multiplier ].setSelected();
-        for ( var multiplicand = 1; multiplicand <= problemModel.multiplicand; multiplicand++ ) {
-          for ( var multiplier = 1; multiplier <= problemModel.multiplier; multiplier++ ) {
-            self.cells[ levelProperty.value ][ multiplicand ][ multiplier ].setSelected();
+        self.cells[ self.levelProperty.value ][ self.problemModel.multiplicand ][ 0 ].setSelected();
+        self.cells[ self.levelProperty.value ][ 0 ][ self.problemModel.multiplier ].setSelected();
+        for ( var multiplicand = 1; multiplicand <= self.problemModel.multiplicand; multiplicand++ ) {
+          for ( var multiplier = 1; multiplier <= self.problemModel.multiplier; multiplier++ ) {
+            self.cells[ self.levelProperty.value ][ multiplicand ][ multiplier ].setSelected();
           }
         }
       }

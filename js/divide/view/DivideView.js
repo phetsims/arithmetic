@@ -27,12 +27,7 @@ define( function( require ) {
     ArithmeticView.call(
       this,
       model,
-      new DivideScreenTableNode(
-        model.problemModel,
-        model.stateProperty,
-        model.levelProperty,
-        model.levelModels
-      ),
+      new DivideScreenTableNode( model ),
       new DivideEquationNode(
         model.stateProperty,
         model.problemModel.multiplicandProperty,
