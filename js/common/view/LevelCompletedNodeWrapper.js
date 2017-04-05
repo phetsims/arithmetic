@@ -41,9 +41,9 @@ define( function( require ) {
           levelModel.perfectScore,
           ArithmeticConstants.STAR_NUMBER,
           timerEnabledProperty.value,
-          levelModel.gameTimer.elapsedTime,
+          levelModel.gameTimer.elapsedTimeProperty.value,
           levelModel.bestTime,
-          (levelModel.gameTimer.elapsedTime < levelModel.bestTime),
+          (levelModel.gameTimer.elapsedTimeProperty.value < levelModel.bestTime),
           continueCallback,
           { fill: new Color( 255, 235, 205 ), centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2 }
         ) );

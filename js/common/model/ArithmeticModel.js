@@ -305,12 +305,12 @@ define( function( require ) {
       this.problemModel.possiblePoints = environment.possiblePoints;
       this.state = environment.state;
       this.input = environment.input;
-      this.activeLevelModel.gameTimer.elapsedTime = environment.elapsedTime;
+      this.activeLevelModel.gameTimer.elapsedTimeProperty.value = environment.elapsedTime;
 
       // Elapsed time must account for any time that has gone by since the environment was saved.
       if ( this.state !== GameState.LEVEL_COMPLETED && this.state !== GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
-        this.activeLevelModel.gameTimer.elapsedTime =
-          this.activeLevelModel.gameTimer.elapsedTime +
+        this.activeLevelModel.gameTimer.elapsedTimeProperty.value =
+          this.activeLevelModel.gameTimer.elapsedTimeProperty.value +
           Math.floor( ( new Date().getTime() - environment.systemTimeWhenSaveOccurred ) / 1000 );
       }
     },
@@ -324,7 +324,7 @@ define( function( require ) {
         product: this.problemModel.product,
         state: this.state,
         currentScore: this.activeLevelModel.currentScore,
-        elapsedTime: this.activeLevelModel.gameTimer.elapsedTime,
+        elapsedTime: this.activeLevelModel.gameTimer.elapsedTimeProperty.value,
         systemTimeWhenSaveOccurred: new Date().getTime(),
         possiblePoints: this.problemModel.possiblePoints,
         activeInput: this.activeInput

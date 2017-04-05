@@ -54,7 +54,7 @@ define( function( require ) {
 
       // reset game timer
       this.gameTimer.stop();
-      this.gameTimer.elapsedTime = 0;
+      this.gameTimer.elapsedTimeProperty.value = 0;
     },
 
     // @private - clear the usage state for all cells
