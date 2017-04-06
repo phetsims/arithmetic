@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.7 Wed Apr 05 2017 20:49:58 GMT-0600 (MDT)",
+  "comment": "# arithmetic 1.0.7 Wed Apr 05 2017 21:50:31 GMT-0600 (MDT)",
   "arithmetic": {
-    "sha": "90daf2d41a085f064f257d88cad5e9f1b55fb167",
+    "sha": "75dfe95664404368de1032dcdb9a7be7c066c816",
     "branch": "1.0"
   },
   "assert": {
@@ -26,7 +26,7 @@
   },
   "joist": {
     "sha": "2695635a3ff28555121530007ca56e40e386133d",
-    "branch": "arithmetic-1.0"
+    "branch": "HEAD"
   },
   "kite": {
     "sha": "a4907ccc07cc80d6d3c9c1e240ba7664e32db56b",
@@ -41,8 +41,8 @@
     "branch": "HEAD"
   },
   "scenery": {
-    "sha": "ad956984b42d5ebc6f4e582734d1a0c4fce31417",
-    "branch": "HEAD"
+    "sha": "5651eaa3dc439f8769de8670f01fdc09b0af0a28",
+    "branch": "arithmetic-1.0"
   },
   "scenery-phet": {
     "sha": "956aff92df92cc0d004e46299e06387edc2cb153",
