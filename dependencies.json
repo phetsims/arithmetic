@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.8 Thu Apr 13 2017 16:17:54 GMT-0600 (MDT)",
+  "comment": "# arithmetic 1.0.9-rc.1 Thu Apr 13 2017 16:49:44 GMT-0600 (MDT)",
   "arithmetic": {
-    "sha": "11664f50b9d93b95f8d5e23b86449d494a6a99e2",
+    "sha": "8d7eab8ab49bf27e11f14fac36cf444690331d0c",
     "branch": "1.0"
   },
   "assert": {
@@ -66,6 +66,6 @@
   },
   "vibe": {
     "sha": "346f570241f1a2ed996658dcdb6244dd45676341",
-    "branch": "arithmetic-1.0"
+    "branch": "HEAD"
   }
 }
