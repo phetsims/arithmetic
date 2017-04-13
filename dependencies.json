@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.8 Thu Apr 13 2017 11:55:04 GMT-0600 (MDT)",
+  "comment": "# arithmetic 1.0.8 Thu Apr 13 2017 16:17:54 GMT-0600 (MDT)",
   "arithmetic": {
-    "sha": "8f740b51cd959a56859165a0c98cbf4058a0ac36",
+    "sha": "11664f50b9d93b95f8d5e23b86449d494a6a99e2",
     "branch": "1.0"
   },
   "assert": {
@@ -14,11 +14,11 @@
   },
   "brand": {
     "sha": "d4946c15ec3f69100a8672f450b3ef4096179468",
-    "branch": "arithmetic-1.0"
+    "branch": "HEAD"
   },
   "chipper": {
     "sha": "d18a2538e68fff26d80d6e0cfa2beca4b032dc79",
-    "branch": "arithmetic-1.0"
+    "branch": "HEAD"
   },
   "dot": {
     "sha": "7a28b1a92733cee778e2cf5d22ca45042884d416",
@@ -38,7 +38,7 @@
   },
   "phetcommon": {
     "sha": "323c66f783de9bb17320422732f1e65aa95e9d9c",
-    "branch": "arithmetic-1.0"
+    "branch": "HEAD"
   },
   "scenery": {
     "sha": "5651eaa3dc439f8769de8670f01fdc09b0af0a28",
@@ -65,7 +65,7 @@
     "branch": "HEAD"
   },
   "vibe": {
-    "sha": "f09e9c6e38de5d023d8a7f3848cdbebfd4c22998",
-    "branch": "HEAD"
+    "sha": "346f570241f1a2ed996658dcdb6244dd45676341",
+    "branch": "arithmetic-1.0"
   }
 }
