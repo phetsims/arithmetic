@@ -10,35 +10,43 @@ define( function( require ) {
 
   // modules
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
+  var Emitter = require( 'AXON/Emitter' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var PropertySet = require( 'AXON/PropertySet' );
+  var Property = require( 'AXON/Property' );
 
   function FaceModel() {
-    PropertySet.call( this, {
 
-      // @public - Points to be displayed near the face.  In this simulation, the user gets 1 point when they get a
-      // challenge correct on the first try, zero otherwise.
-      pointsToDisplay: 1,
+    // @public - Points to be displayed near the face.  In this simulation, the user gets 1 point when they get a
+    // challenge correct on the first try, zero otherwise.
+    this.pointsToDisplayProperty = new Property( 1 );
 
-      // flag that controls the expression that the face should depict
-      isSmile: true
-    } );
+    // @public - flag that controls the expression that the face should depict
+    this.isSmileProperty = new Property( true );
+
+    Property.preventGetSet( this, 'pointsToDisplay' );
+    Property.preventGetSet( this, 'isSmile' );
+
+    // @public - emitters for showing and hiding the face
+    this.showFaceEmitter = new Emitter();
+    this.hideFaceEmitter = new Emitter();
   }
 
   arithmetic.register( 'FaceModel', FaceModel );
 
-  return inherit( PropertySet, FaceModel, {
+  return inherit( Object, FaceModel, {
 
     // @public
     showFace: function() {
-      // Use a trigger to show the face rather than a property, since by design it is shown and then fades.
-      this.trigger( 'showFace' );
+      // Use an emitter to indicate that the face should be shown rather than a property, since by design it is shown
+      // and then fades.
+      this.showFaceEmitter.emit();
     },
 
     // @public
     hideFace: function() {
-      // Trigger the face to be hidden, should be ignored if the face is not currently shown.
-      this.trigger( 'hideFace' );
+      // Emit an event that indicates that the face should be hidden, should be ignored if the face is not currently
+      // shown.
+      this.hideFaceEmitter.emit();
     }
   } );
 } );

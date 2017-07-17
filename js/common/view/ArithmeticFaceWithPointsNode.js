@@ -56,7 +56,7 @@ define( function( require ) {
     var timerID = null;
 
     // Handle the event that indicates that the face should be shown.
-    faceModel.on( 'showFace', function() {
+    faceModel.showFaceEmitter.addListener( function() {
 
       // make face fully visible
       self.visible = true;
@@ -83,7 +83,7 @@ define( function( require ) {
     } );
 
     // Handle the event that indicates that the face should be hidden.
-    faceModel.on( 'hideFace', function() {
+    faceModel.hideFaceEmitter.addListener( function() {
 
       // Cancel the timer (if running)
       if ( timerID !== null ) {

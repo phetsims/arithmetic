@@ -112,8 +112,8 @@ define( function( require ) {
         this.activeLevelModel.displayScore = this.activeLevelModel.currentScore;
 
         // set the face to smile
-        this.faceModel.pointsToDisplay = this.problemModel.possiblePoints;
-        this.faceModel.isSmile = true;
+        this.faceModel.pointsToDisplayProperty.set( this.problemModel.possiblePoints );
+        this.faceModel.isSmileProperty.set( true );
         this.faceModel.showFace();
 
         // mark this table entry as solved
@@ -137,8 +137,8 @@ define( function( require ) {
         this.problemModel.possiblePoints = 0;
 
         // set face model state
-        this.faceModel.pointsToDisplay = this.problemModel.possiblePoints;
-        this.faceModel.isSmile = false;
+        this.faceModel.pointsToDisplayProperty.set( this.problemModel.possiblePoints );
+        this.faceModel.isSmileProperty.set( false );
         this.faceModel.showFace();
 
         // set the appropriate state
