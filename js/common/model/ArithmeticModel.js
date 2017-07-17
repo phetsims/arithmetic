@@ -306,10 +306,6 @@ define( function( require ) {
       ArithmeticGlobals.timerEnabledProperty.reset();
     },
 
-    clearGameEnvironment: function( levelNumber ) {
-      this.levelModels[ levelNumber ].environment = null;
-    },
-
     // clear environments of all levels
     clearGameEnvironments: function() {
       this.levelModels.forEach( function( levelModel ) {
