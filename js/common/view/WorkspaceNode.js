@@ -78,7 +78,7 @@ define( function( require ) {
 
     // clear the multiplication table node on a refresh event.
     model.refreshEmitter.addListener( function() {
-      multiplicationTableNode.refreshLevel( model.levelProperty.get() );
+      multiplicationTableNode.refreshLevel( model.levelNumberProperty.get() );
     } );
 
     // add equation
@@ -101,7 +101,7 @@ define( function( require ) {
 
     // add control panel
     var controlPanelNode = new ScoreboardNode(
-      model.levelProperty,
+      model.levelNumberProperty,
       model.stateProperty,
       model.levelModels,
       ArithmeticGlobals.timerEnabledProperty,
@@ -216,7 +216,7 @@ define( function( require ) {
     // add the dialog that indicates that the level has been completed
     this.addChild( new LevelCompletedNodeWrapper(
         model.levelModels,
-        model.levelProperty,
+      model.levelNumberProperty,
         model.stateProperty,
         ArithmeticGlobals.timerEnabledProperty,
         function() {

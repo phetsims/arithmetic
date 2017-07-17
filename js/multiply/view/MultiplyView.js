@@ -29,7 +29,7 @@ define( function( require ) {
       new MultiplyScreenTableNode(
         model.problemModel,
         model.stateProperty,
-        model.levelProperty,
+        model.levelNumberProperty,
         model.levelModels
       ),
       new MultiplyEquationNode(

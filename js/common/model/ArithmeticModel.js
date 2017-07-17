@@ -38,7 +38,7 @@ define( function( require ) {
     this.fillEquation = options.fillEquation; // @public
 
     // @public - active game level, null represents none
-    this.levelProperty = new Property( null );
+    this.levelNumberProperty = new Property( null );
 
     // @public - user's input value
     this.inputProperty = new Property( '' );
@@ -92,7 +92,7 @@ define( function( require ) {
 
     // @protected - get the current level model, use this to make the code more readable
     get activeLevelModel() {
-      return this.levelModels[ this.levelProperty.get() ];
+      return this.levelModels[ this.levelNumberProperty.get() ];
     },
 
     /**
@@ -253,7 +253,7 @@ define( function( require ) {
 
     // @public - set the level to be played, initializing or restoring the level as appropriate
     setLevel: function( level ) {
-      this.levelProperty.set( level );
+      this.levelNumberProperty.set( level );
 
       // restore or init new environment for game
       if ( this.levelModels[ level ].environment ) {
@@ -290,7 +290,7 @@ define( function( require ) {
     // @public - reset the scores, clear the boards
     reset: function() {
 
-      this.levelProperty.reset();
+      this.levelNumberProperty.reset();
       this.inputProperty.reset();
       this.activeInputProperty.reset();
       this.stateProperty.reset();

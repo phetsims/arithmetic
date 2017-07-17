@@ -27,7 +27,7 @@ define( function( require ) {
    */
   function FactorScreenTableNode( model ) {
     var self = this;
-    MultiplicationTableNode.call( this, model.levelProperty, model.stateProperty, model.levelModels, false );
+    MultiplicationTableNode.call( this, model.levelNumberProperty, model.stateProperty, model.levelModels, false );
 
     // convenience var
     var gameState = model.stateProperty;
@@ -73,9 +73,9 @@ define( function( require ) {
 
               var updateHover = function() {
                 if ( model.stateProperty.get() === GameState.AWAITING_USER_INPUT ) {
-                  self.setCellsToDefaultColor( model.levelProperty.get() );
+                  self.setCellsToDefaultColor( model.levelNumberProperty.get() );
                   if ( cellListener.enabledProperty.get() ) {
-                    self.setSelectedRect( model.levelProperty.get(), multiplicandRowIndex, multiplierIndex );
+                    self.setSelectedRect( model.levelNumberProperty.get(), multiplicandRowIndex, multiplierIndex );
                     cell.setHover();
                     self.cellPointer.visible = true;
 
@@ -129,7 +129,7 @@ define( function( require ) {
 
                 // Update the cell highlighting to match the latest submission, which may be necessary if the user
                 // submitted a new answer after first submitting one or more incorrect ones.
-                self.setSelectedRect( model.levelProperty.get(), multiplicandRowIndex, multiplierIndex );
+                self.setSelectedRect( model.levelNumberProperty.get(), multiplicandRowIndex, multiplierIndex );
               };
 
               // When the user releases the mouse button, check that it's the same cell where the mouse down occurred,
@@ -158,7 +158,7 @@ define( function( require ) {
               // cancel hover for disabled cell before next task
               model.stateProperty.lazyLink( function( state ) {
                 if ( state === GameState.AWAITING_USER_INPUT && !cellListener.enabledProperty.get() ) {
-                  self.setCellsToDefaultColor( model.levelProperty.get() );
+                  self.setCellsToDefaultColor( model.levelNumberProperty.get() );
                 }
               } );
             }
@@ -174,8 +174,8 @@ define( function( require ) {
     model.stateProperty.link( function( newState, oldState ) {
 
       if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
-        self.setCellsToDefaultColor( model.levelProperty.get() );
-        self.updateCellListenerEnabledStates( model.levelProperty.get(), model.activeLevelModel );
+        self.setCellsToDefaultColor( model.levelNumberProperty.get() );
+        self.updateCellListenerEnabledStates( model.levelNumberProperty.get(), model.activeLevelModel );
       }
       else if ( ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ||
                   newState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) &&
@@ -190,7 +190,7 @@ define( function( require ) {
              newState === GameState.AWAITING_USER_INPUT ) ) {
 
         // clear previously selected region
-        self.setCellsToDefaultColor( model.levelProperty.get() );
+        self.setCellsToDefaultColor( model.levelNumberProperty.get() );
       }
 
       // hide the pointer when showing correct or incorrect answer feedback

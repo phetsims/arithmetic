@@ -21,9 +21,9 @@ define( function( require ) {
    */
   function DivideScreenTableNode( model ) {
     var self = this;
-    MultiplicationTableNode.call( this, model.levelProperty, model.stateProperty, model.levelModels, true );
+    MultiplicationTableNode.call( this, model.levelNumberProperty, model.stateProperty, model.levelModels, true );
     this.problemModel = model.problemModel;
-    this.levelProperty = model.levelProperty;
+    this.levelNumberProperty = model.levelNumberProperty;
 
     model.stateProperty.lazyLink( function( state ) {
 
@@ -31,32 +31,32 @@ define( function( require ) {
       if ( state === GameState.AWAITING_USER_INPUT ) {
 
         // clear cell colors prior to showing the problem
-        self.setCellsToDefaultColor( self.levelProperty.value );
+        self.setCellsToDefaultColor( self.levelNumberProperty.value );
 
         // highlight the active multiplicand or multiplier
         if ( model.activeInputProperty.get() === 'multiplier' ) {
-          self.cells[ self.levelProperty.value ][ self.problemModel.multiplicandProperty.get() ][ 0 ].setSelected();
+          self.cells[ self.levelNumberProperty.value ][ self.problemModel.multiplicandProperty.get() ][ 0 ].setSelected();
         }
         else {
           assert && assert( model.activeInputProperty.get() === 'multiplicand' );
-          self.cells[ self.levelProperty.value ][ 0 ][ self.problemModel.multiplierProperty.get() ].setSelected();
+          self.cells[ self.levelNumberProperty.value ][ 0 ][ self.problemModel.multiplierProperty.get() ].setSelected();
         }
       }
       else if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
 
         // Make the cells that correspond to the answer change color.
-        self.cells[ self.levelProperty.value ][ self.problemModel.multiplicandProperty.get() ][ 0 ].setSelected();
-        self.cells[ self.levelProperty.value ][ 0 ][ self.problemModel.multiplierProperty.get() ].setSelected();
+        self.cells[ self.levelNumberProperty.value ][ self.problemModel.multiplicandProperty.get() ][ 0 ].setSelected();
+        self.cells[ self.levelNumberProperty.value ][ 0 ][ self.problemModel.multiplierProperty.get() ].setSelected();
         for ( var multiplicand = 1; multiplicand <= self.problemModel.multiplicandProperty.get(); multiplicand++ ) {
           for ( var multiplier = 1; multiplier <= self.problemModel.multiplierProperty.get(); multiplier++ ) {
-            self.cells[ self.levelProperty.value ][ multiplicand ][ multiplier ].setSelected();
+            self.cells[ self.levelNumberProperty.value ][ multiplicand ][ multiplier ].setSelected();
           }
         }
       }
       else if ( state === GameState.LEVEL_COMPLETED ) {
 
         // set all cells to default conditions when the table has been filled
-        self.setCellsToDefaultColor( self.levelProperty.value );
+        self.setCellsToDefaultColor( self.levelNumberProperty.value );
       }
     } );
   }
@@ -67,14 +67,14 @@ define( function( require ) {
 
     // @public, @override
     refreshLevel: function() {
-      MultiplicationTableNode.prototype.refreshLevel.call( this, this.levelProperty.value );
+      MultiplicationTableNode.prototype.refreshLevel.call( this, this.levelNumberProperty.value );
 
       // highlight the appropriate header cell
       if ( this.problemModel.multiplicandProperty.get() ) {
-        this.cells[ this.levelProperty.value ][ this.problemModel.multiplicandProperty.get() ][ 0 ].setSelected();
+        this.cells[ this.levelNumberProperty.value ][ this.problemModel.multiplicandProperty.get() ][ 0 ].setSelected();
       }
       else {
-        this.cells[ this.levelProperty.value ][ 0 ][ this.problemModel.multiplierProperty.get() ].setSelected();
+        this.cells[ this.levelNumberProperty.value ][ 0 ][ this.problemModel.multiplierProperty.get() ].setSelected();
       }
     }
   } );

@@ -17,15 +17,15 @@ define( function( require ) {
 
   /**
    * @param {ProblemModel} problemModel - Model for single multiplication problem.
-   * @param {Property} levelProperty - Level difficulty property.
+   * @param {Property} levelNumberProperty - Level difficulty property.
    * @param {Property} stateProperty - Current state property.
    * @param {Array} levelModels - Array of descriptions for each level.
    *
    * @constructor
    */
-  function MultiplyScreenTableNode( problemModel, stateProperty, levelProperty, levelModels ) {
+  function MultiplyScreenTableNode( problemModel, stateProperty, levelNumberProperty, levelModels ) {
     var self = this;
-    MultiplicationTableNode.call( this, levelProperty, stateProperty, levelModels, true );
+    MultiplicationTableNode.call( this, levelNumberProperty, stateProperty, levelModels, true );
     this.problemModel = problemModel; // @private
 
     stateProperty.lazyLink( function( state ) {
@@ -34,12 +34,12 @@ define( function( require ) {
       if ( state === GameState.AWAITING_USER_INPUT ) {
 
         // select the cells that correspond to the current problem
-        self.setCellAppearanceForProblem( levelProperty.value );
+        self.setCellAppearanceForProblem( levelNumberProperty.value );
       }
       else if ( state === GameState.LEVEL_COMPLETED ) {
 
         // set all cells to default conditions when the table has been filled
-        self.setCellsToDefaultColor( levelProperty.value );
+        self.setCellsToDefaultColor( levelNumberProperty.value );
       }
     } );
   }

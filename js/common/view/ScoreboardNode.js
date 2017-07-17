@@ -43,7 +43,7 @@ define( function( require ) {
   var SPACING = 16;
 
   /**
-   * @param {Property} levelProperty - property for level displaying label.
+   * @param {Property} levelNumberProperty - property for level displaying label.
    * @param {Property} stateProperty - State of game property.
    * @param {Array.<LevelModel>} levelModels - Array of properties for score counter component.
    * @param {Property} timerEnabledProperty - Time enabling flag.
@@ -51,7 +51,7 @@ define( function( require ) {
    * @param {Object} options - optional parameters that control the appearance and behavior of the panel
    * @constructor
    */
-  function ScoreboardNode( levelProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback, options ) {
+  function ScoreboardNode( levelNumberProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback, options ) {
 
     options = _.extend( {
       title: ''
@@ -93,7 +93,7 @@ define( function( require ) {
       timeText.text = StringUtils.format( labelTimeString, GameTimer.formatTime( time ) );
     };
 
-    levelProperty.lazyLink( function( levelNew, levelPrevious ) {
+    levelNumberProperty.lazyLink( function( levelNew, levelPrevious ) {
       if ( levelNew !== null ) {
         levelText.text = StringUtils.format( patternLevel0LevelNumberString, ( levelNew + 1 ).toString() );
       }

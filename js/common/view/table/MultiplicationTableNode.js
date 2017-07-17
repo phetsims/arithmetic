@@ -38,17 +38,17 @@ define( function( require ) {
   var ANSWER_ANIMATION_ORIGIN = new Vector2( 370, 380 );
 
   /**
-   * @param {Property.<number>} levelProperty - level property.
+   * @param {Property.<number>} levelNumberProperty - level property.
    * @param {Property.<GameState>} stateProperty - current state property
    * @param {Array.<LevelModel>} levelModels - array of models for each level
    * @param {boolean} animateAnswer - flag that controls whether answer appears to fly into the cell or just appears
    * @constructor
    */
-  function MultiplicationTableNode( levelProperty, stateProperty, levelModels, animateAnswer ) {
+  function MultiplicationTableNode( levelNumberProperty, stateProperty, levelModels, animateAnswer ) {
     var self = this;
     Node.call( this );
 
-    this.levelProperty = levelProperty; // @protected - needs to be available to sub-classes
+    this.levelNumberProperty = levelNumberProperty; // @protected - needs to be available to sub-classes
     this.viewForLevel = new Array( levelModels.length ); // @private - array with views for each level
 
     // @private - three-dimensional array of the cells, indexed by [levelNumber][multiplicand][multiplier]
@@ -142,7 +142,7 @@ define( function( require ) {
     backgroundRect.setRectWidth( this.bounds.width );
     backgroundRect.setRectHeight( this.bounds.height );
 
-    levelProperty.link( function( levelNumberCurrent, levelNumberPrev ) {
+    levelNumberProperty.link( function( levelNumberCurrent, levelNumberPrev ) {
 
       // show multiplication table view for the current level
       if ( self.viewForLevel[ levelNumberCurrent ] ) {
@@ -170,13 +170,13 @@ define( function( require ) {
     stateProperty.link( function( newState, oldState ) {
       if ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK || oldState === GameState.SELECTING_LEVEL ) {
 
-        var level = levelProperty.value; // convenience var
+        var level = levelNumberProperty.value; // convenience var
         var levelModel = levelModels[ level ]; // convenience var
 
         // make sure the appropriate cells are displaying their numerical values
         for ( var multiplicand = 1; multiplicand <= levelModel.tableSize; multiplicand++ ) {
           for ( var multiplier = 1; multiplier <= levelModel.tableSize; multiplier++ ) {
-            var cell = self.cells[ levelProperty.value ][ multiplicand ][ multiplier ];
+            var cell = self.cells[ levelNumberProperty.value ][ multiplicand ][ multiplier ];
             if ( levelModel.isCellUsed( multiplicand, multiplier ) ) {
 
               // If the cell is marked as used but the text is not yet visible, animate the product to the cell.

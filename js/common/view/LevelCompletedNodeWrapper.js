@@ -20,23 +20,23 @@ define( function( require ) {
   /**
    * @param {Array} levelModels - Array of descriptions for each level. Necessary to get perfect and current score for
    * completed level.
-   * @param {Property} levelProperty - Level property.
+   * @param {Property} levelNumberProperty - Level property.
    * @param {Property} stateProperty - Game state property.
    * @param {Property} timerEnabledProperty - Timer enabled flag.
    * @param {Function} continueCallback - Callback listener for continue button.
    * @param {Bounds2} layoutBounds - Bounds of main screen. Necessary for placing components.
    * @constructor
    */
-  function LevelCompletedNodeWrapper( levelModels, levelProperty, stateProperty, timerEnabledProperty, continueCallback, layoutBounds ) {
+  function LevelCompletedNodeWrapper( levelModels, levelNumberProperty, stateProperty, timerEnabledProperty, continueCallback, layoutBounds ) {
     var self = this;
     Node.call( this );
 
     // Show this node only when the level has been completed.
     stateProperty.lazyLink( function( state ) {
       if ( state === GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
-        var levelModel = levelModels[ levelProperty.value ];
+        var levelModel = levelModels[ levelNumberProperty.value ];
         self.addChild( new LevelCompletedNode(
-          levelProperty.value,
+          levelNumberProperty.value,
           levelModel.currentScoreProperty.get(),
           levelModel.perfectScore,
           ArithmeticConstants.STAR_NUMBER,
