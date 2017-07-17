@@ -42,7 +42,9 @@ define( function( require ) {
         this.problemModel.multiplierProperty.reset();
 
         // set product
-        this.problemModel.product = multiplierPair.multiplicand * multiplierPair.multiplier;
+        this.problemModel.productProperty.set(
+          multiplierPair.multiplicand * multiplierPair.multiplier
+        );
 
         return true;
       }
@@ -66,11 +68,11 @@ define( function( require ) {
       if ( this.stateProperty.get() === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
 
         // force a change to the AWAITING_USER_INPUT state before checking the answer
-        var multiplicand = this.problemModel.multiplicand;
-        var multiplier = this.problemModel.multiplier;
+        var multiplicand = this.problemModel.multiplicandProperty.get();
+        var multiplier = this.problemModel.multiplierProperty.get();
         this.retryProblem();
-        this.problemModel.multiplicand = multiplicand;
-        this.problemModel.multiplier = multiplier;
+        this.problemModel.multiplicandProperty.set( multiplicand );
+        this.problemModel.multiplierProperty.set( multiplier );
       }
       ArithmeticModel.prototype.submitAnswer.call( this );
     },
@@ -100,13 +102,14 @@ define( function( require ) {
         var answerFound = false;
         for ( var multiplicand = 1; multiplicand <= tableSize && !answerFound; multiplicand++ ) {
           for ( var multiplier = 1; multiplier <= tableSize && !answerFound; multiplier++ ) {
-            if ( multiplicand * multiplier === self.problemModel.product && !levelModel.isCellUsed( multiplicand, multiplier ) ) {
+            if ( multiplicand * multiplier === self.problemModel.productProperty.get() && !levelModel.isCellUsed( multiplicand, multiplier ) ) {
+
               answerFound = true;
               levelModel.markCellAsUsed( multiplicand, multiplier );
             }
           }
         }
-        levelModel.currentScoreProperty.value += self.problemModel.possiblePoints;
+        levelModel.currentScoreProperty.value += self.problemModel.possiblePointsProperty.get();
         levelModel.displayScoreProperty.set( self.activeLevelModel.currentScoreProperty.get() );
         self.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
         self.nextProblem();

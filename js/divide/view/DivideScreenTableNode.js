@@ -35,20 +35,20 @@ define( function( require ) {
 
         // highlight the active multiplicand or multiplier
         if ( model.activeInputProperty.get() === 'multiplier' ) {
-          self.cells[ self.levelProperty.value ][ self.problemModel.multiplicand ][ 0 ].setSelected();
+          self.cells[ self.levelProperty.value ][ self.problemModel.multiplicandProperty.get() ][ 0 ].setSelected();
         }
         else {
           assert && assert( model.activeInputProperty.get() === 'multiplicand' );
-          self.cells[ self.levelProperty.value ][ 0 ][ self.problemModel.multiplier ].setSelected();
+          self.cells[ self.levelProperty.value ][ 0 ][ self.problemModel.multiplierProperty.get() ].setSelected();
         }
       }
       else if ( state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
 
         // Make the cells that correspond to the answer change color.
-        self.cells[ self.levelProperty.value ][ self.problemModel.multiplicand ][ 0 ].setSelected();
-        self.cells[ self.levelProperty.value ][ 0 ][ self.problemModel.multiplier ].setSelected();
-        for ( var multiplicand = 1; multiplicand <= self.problemModel.multiplicand; multiplicand++ ) {
-          for ( var multiplier = 1; multiplier <= self.problemModel.multiplier; multiplier++ ) {
+        self.cells[ self.levelProperty.value ][ self.problemModel.multiplicandProperty.get() ][ 0 ].setSelected();
+        self.cells[ self.levelProperty.value ][ 0 ][ self.problemModel.multiplierProperty.get() ].setSelected();
+        for ( var multiplicand = 1; multiplicand <= self.problemModel.multiplicandProperty.get(); multiplicand++ ) {
+          for ( var multiplier = 1; multiplier <= self.problemModel.multiplierProperty.get(); multiplier++ ) {
             self.cells[ self.levelProperty.value ][ multiplicand ][ multiplier ].setSelected();
           }
         }
@@ -70,11 +70,11 @@ define( function( require ) {
       MultiplicationTableNode.prototype.refreshLevel.call( this, this.levelProperty.value );
 
       // highlight the appropriate header cell
-      if ( this.problemModel.multiplicand ) {
-        this.cells[ this.levelProperty.value ][ this.problemModel.multiplicand ][ 0 ].setSelected();
+      if ( this.problemModel.multiplicandProperty.get() ) {
+        this.cells[ this.levelProperty.value ][ this.problemModel.multiplicandProperty.get() ][ 0 ].setSelected();
       }
       else {
-        this.cells[ this.levelProperty.value ][ 0 ][ this.problemModel.multiplier ].setSelected();
+        this.cells[ this.levelProperty.value ][ 0 ][ this.problemModel.multiplierProperty.get() ].setSelected();
       }
     }
   } );

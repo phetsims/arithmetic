@@ -26,7 +26,7 @@ define( function( require ) {
       this,
       {
         fillEquation: function() {
-          self.problemModel.product = parseInt( self.inputProperty.get(), 10 );
+          self.problemModel.productProperty.set( parseInt( self.inputProperty.get(), 10 ) );
           self.submitAnswer();
         }
       }
@@ -52,8 +52,8 @@ define( function( require ) {
         this.problemModel.possiblePointsProperty.reset();
 
         // set up the problem
-        this.problemModel.multiplicand = multiplierPair.multiplicand;
-        this.problemModel.multiplier = multiplierPair.multiplier;
+        this.problemModel.multiplicandProperty.set( multiplierPair.multiplicand );
+        this.problemModel.multiplierProperty.set( multiplierPair.multiplier );
 
         return true;
       }
@@ -81,10 +81,15 @@ define( function( require ) {
       var numQuestionsToAnswer = numQuestions - 1;
       console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
       _.times( numQuestionsToAnswer, function() {
-        self.problemModel.product = self.problemModel.multiplicand * self.problemModel.multiplier;
-        self.activeLevelModel.currentScoreProperty.value += self.problemModel.possiblePoints;
+        self.problemModel.productProperty.set(
+          self.problemModel.multiplicandProperty.get() * self.problemModel.multiplierProperty.get()
+        );
+        self.activeLevelModel.currentScoreProperty.value += self.problemModel.possiblePointsProperty.get();
         self.activeLevelModel.displayScoreProperty.set( self.activeLevelModel.currentScoreProperty.get() );
-        self.activeLevelModel.markCellAsUsed( self.problemModel.multiplicand, self.problemModel.multiplier );
+        self.activeLevelModel.markCellAsUsed(
+          self.problemModel.multiplicandProperty.get(),
+          self.problemModel.multiplierProperty.get()
+        );
         self.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
         self.nextProblem();
       } );

@@ -27,8 +27,8 @@ define( function( require ) {
       fillEquation: function() {
 
         // Convert any strings entered by the user into numerical values.
-        self.problemModel.multiplier = parseInt( self.problemModel.multiplier, 10 );
-        self.problemModel.multiplicand = parseInt( self.problemModel.multiplicand, 10 );
+        self.problemModel.multiplierProperty.set( parseInt( self.problemModel.multiplierProperty.get(), 10 ) );
+        self.problemModel.multiplicandProperty.set( parseInt( self.problemModel.multiplicandProperty.get(), 10 ) );
 
         // Submit this answer so that it can be checked.
         self.submitAnswer();
@@ -56,15 +56,15 @@ define( function( require ) {
         this.problemModel.possiblePointsProperty.reset();
 
         // set product
-        this.problemModel.product = multipliers.multiplicand * multipliers.multiplier;
+        this.problemModel.productProperty.set( multipliers.multiplicand * multipliers.multiplier );
 
         // set multiplicand or multiplier
         if ( this.random.nextBoolean() ) {
-          this.problemModel.multiplicand = multipliers.multiplicand;
+          this.problemModel.multiplicandProperty.set( multipliers.multiplicand );
           this.activeInputProperty.set( 'multiplier' );
         }
         else {
-          this.problemModel.multiplier = multipliers.multiplier;
+          this.problemModel.multiplierProperty.set( multipliers.multiplier );
           this.activeInputProperty.set( 'multiplicand' );
         }
 
@@ -94,18 +94,25 @@ define( function( require ) {
       var numQuestionsToAnswer = numQuestions - 1;
       console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
       _.times( numQuestionsToAnswer, function( index ) {
-        if ( !self.problemModel.multiplicand ) {
-          self.problemModel.multiplicand = self.problemModel.product / self.problemModel.multiplier;
+        if ( !self.problemModel.multiplicandProperty.get() ) {
+          self.problemModel.multiplicandProperty.set(
+            self.problemModel.productProperty.get() / self.problemModel.multiplierProperty.get()
+          );
         }
-        else if ( !self.problemModel.multiplier ) {
-          self.problemModel.multiplier = self.problemModel.product / self.problemModel.multiplicand;
+        else if ( !self.problemModel.multiplierProperty.get() ) {
+          self.problemModel.multiplierProperty.set(
+            self.problemModel.productProperty.get() / self.problemModel.multiplicandProperty.get()
+          );
         }
         else {
           throw new Error( 'unexpected problem structure for problem', index );
         }
-        self.activeLevelModel.currentScoreProperty.value += self.problemModel.possiblePoints;
+        self.activeLevelModel.currentScoreProperty.value += self.problemModel.possiblePointsProperty.get();
         self.activeLevelModel.displayScoreProperty.set( self.activeLevelModel.currentScoreProperty.get() );
-        self.activeLevelModel.markCellAsUsed( self.problemModel.multiplicand, self.problemModel.multiplier );
+        self.activeLevelModel.markCellAsUsed(
+          self.problemModel.multiplicandProperty.get(),
+          self.problemModel.multiplierProperty.get()
+        );
         self.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
         self.nextProblem();
       } );

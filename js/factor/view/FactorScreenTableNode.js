@@ -116,11 +116,11 @@ define( function( require ) {
               var submitAnswer = function() {
 
                 // Record the user's answer.
-                model.problemModel.multiplicand = multiplicandRowIndex;
-                model.problemModel.multiplier = multiplierIndex;
+                model.problemModel.multiplicandProperty.set( multiplicandRowIndex );
+                model.problemModel.multiplierProperty.set( multiplierIndex );
 
                 // Disable this cell if the user's answer is correct.
-                if ( multiplicandRowIndex * multiplierIndex === model.problemModel.product ) {
+                if ( multiplicandRowIndex * multiplierIndex === model.problemModel.productProperty.get() ) {
                   cellListener.enabled = false;
                 }
 

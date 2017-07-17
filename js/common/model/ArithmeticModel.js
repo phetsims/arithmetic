@@ -103,21 +103,25 @@ define( function( require ) {
      */
     submitAnswer: function() {
       var self = this;
-      if ( this.problemModel.multiplicand * this.problemModel.multiplier === this.problemModel.product ) {
+      if ( this.problemModel.multiplicandProperty.get() * this.problemModel.multiplierProperty.get() ===
+           this.problemModel.productProperty.get() ) {
 
         // add the problem value to the total score
-        this.activeLevelModel.currentScoreProperty.value += this.problemModel.possiblePoints;
+        this.activeLevelModel.currentScoreProperty.value += this.problemModel.possiblePointsProperty.get();
 
         // update the displayed score
         this.activeLevelModel.displayScoreProperty.set( this.activeLevelModel.currentScoreProperty.get() );
 
         // set the face to smile
-        this.faceModel.pointsToDisplayProperty.set( this.problemModel.possiblePoints );
+        this.faceModel.pointsToDisplayProperty.set( this.problemModel.possiblePointsProperty.get() );
         this.faceModel.isSmileProperty.set( true );
         this.faceModel.showFace();
 
         // mark this table entry as solved
-        this.activeLevelModel.markCellAsUsed( this.problemModel.multiplicand, this.problemModel.multiplier );
+        this.activeLevelModel.markCellAsUsed(
+          this.problemModel.multiplicandProperty.get(),
+          this.problemModel.multiplierProperty.get()
+        );
 
         // show the feedback that indicates a correct answer
         this.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
@@ -134,10 +138,10 @@ define( function( require ) {
       // incorrect answer
       else {
         // player will not get points for this task
-        this.problemModel.possiblePoints = 0;
+        this.problemModel.possiblePointsProperty.set( 0 );
 
         // set face model state
-        this.faceModel.pointsToDisplayProperty.set( this.problemModel.possiblePoints );
+        this.faceModel.pointsToDisplayProperty.set( this.problemModel.possiblePointsProperty.get() );
         this.faceModel.isSmileProperty.set( false );
         this.faceModel.showFace();
 
@@ -317,10 +321,10 @@ define( function( require ) {
     restoreGameEnvironment: function( environment ) {
       this.activeLevelModel.currentScoreProperty.set( environment.currentScore );
       this.activeInputProperty.set( environment.activeInput );
-      this.problemModel.multiplicand = environment.multiplicand;
-      this.problemModel.multiplier = environment.multiplier;
-      this.problemModel.product = environment.product;
-      this.problemModel.possiblePoints = environment.possiblePoints;
+      this.problemModel.multiplicandProperty.set( environment.multiplicand );
+      this.problemModel.multiplierProperty.set( environment.multiplier );
+      this.problemModel.productProperty.set( environment.product );
+      this.problemModel.possiblePointsProperty.set( environment.possiblePoints );
       this.stateProperty.set( environment.state );
       this.inputProperty.set( environment.input );
       this.activeLevelModel.gameTimer.elapsedTimeProperty.value = environment.elapsedTime;
@@ -338,14 +342,14 @@ define( function( require ) {
     saveGameEnvironment: function() {
       this.activeLevelModel.environment = {
         input: this.inputProperty.get(),
-        multiplicand: this.problemModel.multiplicand,
-        multiplier: this.problemModel.multiplier,
-        product: this.problemModel.product,
+        multiplicand: this.problemModel.multiplicandProperty.get(),
+        multiplier: this.problemModel.multiplierProperty.get(),
+        product: this.problemModel.productProperty.get(),
         state: this.stateProperty.get(),
         currentScore: this.activeLevelModel.currentScoreProperty.get(),
         elapsedTime: this.activeLevelModel.gameTimer.elapsedTimeProperty.value,
         systemTimeWhenSaveOccurred: new Date().getTime(),
-        possiblePoints: this.problemModel.possiblePoints,
+        possiblePoints: this.problemModel.possiblePointsProperty.get(),
         activeInput: this.activeInputProperty.get()
       };
     }

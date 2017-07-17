@@ -60,15 +60,15 @@ define( function( require ) {
       this.setCellsToDefaultColor( level );
 
       // set the header cells for this problem to the selected state
-      this.cells[ level ][ 0 ][ this.problemModel.multiplier ].setSelected();
-      this.cells[ level ][ this.problemModel.multiplicand ][ 0 ].setSelected();
+      this.cells[ level ][ 0 ][ this.problemModel.multiplierProperty.get() ].setSelected();
+      this.cells[ level ][ this.problemModel.multiplicandProperty.get() ][ 0 ].setSelected();
 
       // create a rectangle of selected body cells with a width defined by the multiplier and a height defined by the
       // multplicand
       this.cells[ level ].forEach( function( multiplicand, index ) {
-        if ( index && index <= self.problemModel.multiplicand ) {
+        if ( index && index <= self.problemModel.multiplicandProperty.get() ) {
           multiplicand.forEach( function( cell, index ) {
-            if ( index && index <= self.problemModel.multiplier ) {
+            if ( index && index <= self.problemModel.multiplierProperty.get() ) {
               cell.setSelected();
             }
           } );
