@@ -15,7 +15,7 @@ define( function( require ) {
   // modules
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var PropertySet = require( 'AXON/PropertySet' );
+  var Property = require( 'AXON/Property' );
 
   /**
    * @constructor
@@ -30,7 +30,7 @@ define( function( require ) {
 
   arithmetic.register( 'CellInteractionListener', CellInteractionListener );
 
-  return inherit( PropertySet, CellInteractionListener, {
+  return inherit( Object, CellInteractionListener, {
 
     // @public
     enter: function( event, trail ) {
