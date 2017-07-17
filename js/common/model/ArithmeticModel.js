@@ -14,12 +14,13 @@ define( function( require ) {
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var ArithmeticQueryParameters = require( 'ARITHMETIC/common/ArithmeticQueryParameters' );
+  var Emitter = require( 'AXON/Emitter' );
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
   var ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
-  var PropertySet = require( 'AXON/PropertySet' );
+  var Property = require( 'AXON/Property' );
   var Timer = require( 'PHET_CORE/Timer' );
 
   // constants
@@ -36,12 +37,25 @@ define( function( require ) {
     options = _.extend( { fillEquation: null }, options );
     this.fillEquation = options.fillEquation; // @public
 
-    PropertySet.call( this, {
-      level: null, // @public - active game level, null represents none
-      input: '', // @public - user's input value
-      activeInput: null, // @public - reference to the portion of the equation that is awaiting input from the user
-      state: GameState.SELECTING_LEVEL // @public - current game state
-    } );
+    // @public - active game level, null represents none
+    this.levelProperty = new Property( null );
+
+    // @public - user's input value
+    this.inputProperty = new Property( '' );
+
+    // @public - reference to the portion of the equation that is awaiting input from the user
+    this.activeInputProperty = new Property( null );
+
+    // @public - current game state
+    this.stateProperty = new Property( GameState.SELECTING_LEVEL );
+
+    Property.preventGetSet( this, 'level' );
+    Property.preventGetSet( this, 'input' );
+    Property.preventGetSet( this, 'activeInput' );
+    Property.preventGetSet( this, 'state' );
+
+    // @public - emitter that emits an even when a refresh occurs
+    this.refreshEmitter = new Emitter();
 
     // @public - array of models that correspond to a given difficulty level
     this.levelModels = [
@@ -74,11 +88,11 @@ define( function( require ) {
 
   arithmetic.register( 'ArithmeticModel', ArithmeticModel );
 
-  return inherit( PropertySet, ArithmeticModel, {
+  return inherit( Object, ArithmeticModel, {
 
     // @protected - get the current level model, use this to make the code more readable
     get activeLevelModel() {
-      return this.levelModels[ this.level ];
+      return this.levelModels[ this.levelProperty.get() ];
     },
 
     /**
@@ -106,7 +120,7 @@ define( function( require ) {
         this.activeLevelModel.markCellAsUsed( this.problemModel.multiplicand, this.problemModel.multiplier );
 
         // show the feedback that indicates a correct answer
-        this.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
+        this.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
 
         // start a timer that will set up the next problem
         this.feedbackTimer = Timer.setTimeout(
@@ -128,7 +142,7 @@ define( function( require ) {
         this.faceModel.showFace();
 
         // set the appropriate state
-        this.state = GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK;
+        this.stateProperty.set( GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
       }
     },
 
@@ -139,11 +153,11 @@ define( function( require ) {
     nextProblem: function() {
       if ( this.setUpUnansweredProblem() ) {
         this.inputProperty.reset();
-        this.state = GameState.AWAITING_USER_INPUT;
+        this.stateProperty.set( GameState.AWAITING_USER_INPUT );
       }
       else {
         // all problems have been answered, the level is now complete
-        this.state = GameState.SHOWING_LEVEL_COMPLETED_DIALOG;
+        this.stateProperty.set( GameState.SHOWING_LEVEL_COMPLETED_DIALOG );
         this.activeLevelModel.gameTimer.stop();
       }
     },
@@ -153,7 +167,7 @@ define( function( require ) {
      * @public
      */
     retryProblem: function() {
-      this.state = GameState.AWAITING_USER_INPUT;
+      this.stateProperty.set( GameState.AWAITING_USER_INPUT );
     },
 
     /**
@@ -184,7 +198,7 @@ define( function( require ) {
     // @public
     returnToLevelSelectScreen: function() {
 
-      if ( this.state === GameState.AWAITING_USER_INPUT ) {
+      if ( this.stateProperty.get() === GameState.AWAITING_USER_INPUT ) {
         // reset any partial input that the user may have entered
         this.inputProperty.reset();
       }
@@ -198,7 +212,7 @@ define( function( require ) {
       }
 
       // go back to the level selection screen
-      this.state = GameState.SELECTING_LEVEL;
+      this.stateProperty.set( GameState.SELECTING_LEVEL );
     },
 
     // @public
@@ -210,7 +224,7 @@ define( function( require ) {
       this.activeLevelModel.displayScore = 0;
       this.nextProblem();
       this.activeLevelModel.gameTimer.start(); // may already be running, if so this is a no-op
-      this.trigger( 'refreshed' );
+      this.refreshEmitter.emit();
 
       // automatically answer most of the problems if enabled - this is for testing only
       this.autoAnswerIfEnabled();
@@ -224,7 +238,7 @@ define( function( require ) {
     },
 
     // @private, check if auto answer should be performed and, if so, do it
-    autoAnswerIfEnabled: function(){
+    autoAnswerIfEnabled: function() {
 
       // Automatically answer most of the problems if the autoAnswer query parameter was specified, but only if this is
       // not a production release.
@@ -235,12 +249,12 @@ define( function( require ) {
 
     // @public - set the level to be played, initializing or restoring the level as appropriate
     setLevel: function( level ) {
-      this.level = level;
+      this.levelProperty.set( level );
 
       // restore or init new environment for game
       if ( this.levelModels[ level ].environment ) {
         this.restoreGameEnvironment( this.levelModels[ level ].environment );
-        if ( this.state === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
+        if ( this.stateProperty.get() === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ) {
 
           // The user hit the back button before the feedback timer expired, so the next problem wasn't set up.  We need
           // to set it up now.  See https://github.com/phetsims/arithmetic/issues/145
@@ -271,7 +285,11 @@ define( function( require ) {
 
     // @public - reset the scores, clear the boards
     reset: function() {
-      PropertySet.prototype.reset.call( this );
+
+      this.levelProperty.reset();
+      this.inputProperty.reset();
+      this.activeInputProperty.reset();
+      this.stateProperty.reset();
 
       // reset levels model
       this.resetLevelModels();
@@ -298,17 +316,18 @@ define( function( require ) {
     // @private - set the 'game environment', generally used when switching to a different level
     restoreGameEnvironment: function( environment ) {
       this.activeLevelModel.currentScore = environment.currentScore;
-      this.activeInput = environment.activeInput;
+      this.activeInputProperty.set( environment.activeInput );
       this.problemModel.multiplicand = environment.multiplicand;
       this.problemModel.multiplier = environment.multiplier;
       this.problemModel.product = environment.product;
       this.problemModel.possiblePoints = environment.possiblePoints;
-      this.state = environment.state;
-      this.input = environment.input;
+      this.stateProperty.set( environment.state );
+      this.inputProperty.set( environment.input );
       this.activeLevelModel.gameTimer.elapsedTimeProperty.value = environment.elapsedTime;
 
       // Elapsed time must account for any time that has gone by since the environment was saved.
-      if ( this.state !== GameState.LEVEL_COMPLETED && this.state !== GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
+      if ( this.stateProperty.get() !== GameState.LEVEL_COMPLETED &&
+           this.stateProperty.get() !== GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
         this.activeLevelModel.gameTimer.elapsedTimeProperty.value =
           this.activeLevelModel.gameTimer.elapsedTimeProperty.value +
           Math.floor( ( new Date().getTime() - environment.systemTimeWhenSaveOccurred ) / 1000 );
@@ -318,16 +337,16 @@ define( function( require ) {
     // save game environment of current level
     saveGameEnvironment: function() {
       this.activeLevelModel.environment = {
-        input: this.input,
+        input: this.inputProperty.get(),
         multiplicand: this.problemModel.multiplicand,
         multiplier: this.problemModel.multiplier,
         product: this.problemModel.product,
-        state: this.state,
+        state: this.stateProperty.get(),
         currentScore: this.activeLevelModel.currentScore,
         elapsedTime: this.activeLevelModel.gameTimer.elapsedTimeProperty.value,
         systemTimeWhenSaveOccurred: new Date().getTime(),
         possiblePoints: this.problemModel.possiblePoints,
-        activeInput: this.activeInput
+        activeInput: this.activeInputProperty.get()
       };
     }
   } );

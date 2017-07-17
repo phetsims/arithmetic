@@ -77,8 +77,8 @@ define( function( require ) {
     this.addChild( multiplicationTableNode );
 
     // clear the multiplication table node on a refresh event.
-    model.on( 'refreshed', function() {
-      multiplicationTableNode.refreshLevel( model.level );
+    model.refreshEmitter.addListener( function() {
+      multiplicationTableNode.refreshLevel( model.levelProperty.get() );
     } );
 
     // add equation
@@ -171,8 +171,8 @@ define( function( require ) {
       this.addChild( checkButton );
 
       var updateCheckButtonState = function() {
-        checkButton.visible = ( model.state === GameState.AWAITING_USER_INPUT);
-        checkButton.enabled = model.input.length > 0;
+        checkButton.visible = ( model.stateProperty.get() === GameState.AWAITING_USER_INPUT );
+        checkButton.enabled = model.inputProperty.get().length > 0;
       };
 
       // control the visibility of the 'Check' button
@@ -181,7 +181,7 @@ define( function( require ) {
       // Monitor the string entered from the keypad and, if the user starts entering something immediately after
       // receiving the feedback indicating an incorrect answer, allow them to retry the problem.
       model.inputProperty.link( function( input ) {
-        if ( model.state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+        if ( model.stateProperty.get() === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
           model.retryProblem();
         }
         updateCheckButtonState();
@@ -220,7 +220,7 @@ define( function( require ) {
         model.stateProperty,
         ArithmeticGlobals.timerEnabledProperty,
         function() {
-          model.state = GameState.LEVEL_COMPLETED;
+          model.stateProperty.set( GameState.LEVEL_COMPLETED );
           model.returnToLevelSelectScreen();
         },
         layoutBounds )

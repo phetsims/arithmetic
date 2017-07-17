@@ -63,7 +63,7 @@ define( function( require ) {
      * @public
      */
     submitAnswer: function() {
-      if ( this.state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+      if ( this.stateProperty.get() === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
 
         // force a change to the AWAITING_USER_INPUT state before checking the answer
         var multiplicand = this.problemModel.multiplicand;
@@ -108,7 +108,7 @@ define( function( require ) {
         }
         levelModel.currentScore += self.problemModel.possiblePoints;
         levelModel.displayScore = self.activeLevelModel.currentScore;
-        self.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
+        self.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
         self.nextProblem();
       } );
 

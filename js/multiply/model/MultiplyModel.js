@@ -26,7 +26,7 @@ define( function( require ) {
       this,
       {
         fillEquation: function() {
-          self.problemModel.product = parseInt( self.input, 10 );
+          self.problemModel.product = parseInt( self.inputProperty.get(), 10 );
           self.submitAnswer();
         }
       }
@@ -85,7 +85,7 @@ define( function( require ) {
         self.activeLevelModel.currentScore += self.problemModel.possiblePoints;
         self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
         self.activeLevelModel.markCellAsUsed( self.problemModel.multiplicand, self.problemModel.multiplier );
-        self.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
+        self.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
         self.nextProblem();
       } );
 

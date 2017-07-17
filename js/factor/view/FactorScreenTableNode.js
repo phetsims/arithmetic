@@ -72,10 +72,10 @@ define( function( require ) {
               self.cellListeners[ levelIndex ].push( cellListener );
 
               var updateHover = function() {
-                if ( model.state === GameState.AWAITING_USER_INPUT ) {
-                  self.setCellsToDefaultColor( model.level );
+                if ( model.stateProperty.get() === GameState.AWAITING_USER_INPUT ) {
+                  self.setCellsToDefaultColor( model.levelProperty.get() );
                   if ( cellListener.enabled ) {
-                    self.setSelectedRect( model.level, multiplicandRowIndex, multiplierIndex );
+                    self.setSelectedRect( model.levelProperty.get(), multiplicandRowIndex, multiplierIndex );
                     cell.setHover();
                     self.cellPointer.visible = true;
 
@@ -96,7 +96,7 @@ define( function( require ) {
               // add 'hover' listeners
               cellListener.mouseOverProperty.link( updateHover );
               cellListener.touchedProperty.onValue( true, function() {
-                if ( model.state === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+                if ( model.stateProperty.get() === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
                   // The user has re-touched the grid after submitting an incorrect answer, so assume they want to retry.
                   model.retryProblem();
                 }
@@ -129,7 +129,7 @@ define( function( require ) {
 
                 // Update the cell highlighting to match the latest submission, which may be necessary if the user
                 // submitted a new answer after first submitting one or more incorrect ones.
-                self.setSelectedRect( model.level, multiplicandRowIndex, multiplierIndex );
+                self.setSelectedRect( model.levelProperty.get(), multiplicandRowIndex, multiplierIndex );
               };
 
               // When the user releases the mouse button, check that it's the same cell where the mouse down occurred,
@@ -158,7 +158,7 @@ define( function( require ) {
               // cancel hover for disabled cell before next task
               model.stateProperty.lazyLink( function( state ) {
                 if ( state === GameState.AWAITING_USER_INPUT && !cellListener.enabled ) {
-                  self.setCellsToDefaultColor( model.level );
+                  self.setCellsToDefaultColor( model.levelProperty.get() );
                 }
               } );
             }
@@ -174,8 +174,8 @@ define( function( require ) {
     model.stateProperty.link( function( newState, oldState ) {
 
       if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
-        self.setCellsToDefaultColor( model.level );
-        self.updateCellListenerEnabledStates( model.level, model.activeLevelModel );
+        self.setCellsToDefaultColor( model.levelProperty.get() );
+        self.updateCellListenerEnabledStates( model.levelProperty.get(), model.activeLevelModel );
       }
       else if ( ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK ||
                   newState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) &&
@@ -190,7 +190,7 @@ define( function( require ) {
              newState === GameState.AWAITING_USER_INPUT ) ) {
 
         // clear previously selected region
-        self.setCellsToDefaultColor( model.level );
+        self.setCellsToDefaultColor( model.levelProperty.get() );
       }
 
       // hide the pointer when showing correct or incorrect answer feedback

@@ -61,11 +61,11 @@ define( function( require ) {
         // set multiplicand or multiplier
         if ( this.random.nextBoolean() ) {
           this.problemModel.multiplicand = multipliers.multiplicand;
-          this.activeInput = 'multiplier';
+          this.activeInputProperty.set( 'multiplier' );
         }
         else {
           this.problemModel.multiplier = multipliers.multiplier;
-          this.activeInput = 'multiplicand';
+          this.activeInputProperty.set( 'multiplicand' );
         }
 
         return true;
@@ -106,7 +106,7 @@ define( function( require ) {
         self.activeLevelModel.currentScore += self.problemModel.possiblePoints;
         self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
         self.activeLevelModel.markCellAsUsed( self.problemModel.multiplicand, self.problemModel.multiplier );
-        self.state = GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK;
+        self.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
         self.nextProblem();
       } );
 

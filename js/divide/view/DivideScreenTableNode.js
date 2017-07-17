@@ -34,11 +34,11 @@ define( function( require ) {
         self.setCellsToDefaultColor( self.levelProperty.value );
 
         // highlight the active multiplicand or multiplier
-        if ( model.activeInput === 'multiplier' ) {
+        if ( model.activeInputProperty.get() === 'multiplier' ) {
           self.cells[ self.levelProperty.value ][ self.problemModel.multiplicand ][ 0 ].setSelected();
         }
         else {
-          assert && assert( model.activeInput === 'multiplicand' );
+          assert && assert( model.activeInputProperty.get() === 'multiplicand' );
           self.cells[ self.levelProperty.value ][ 0 ][ self.problemModel.multiplier ].setSelected();
         }
       }
