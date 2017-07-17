@@ -37,13 +37,13 @@ define( function( require ) {
         var levelModel = levelModels[ levelProperty.value ];
         self.addChild( new LevelCompletedNode(
           levelProperty.value,
-          levelModel.currentScore,
+          levelModel.currentScoreProperty.get(),
           levelModel.perfectScore,
           ArithmeticConstants.STAR_NUMBER,
           timerEnabledProperty.value,
           levelModel.gameTimer.elapsedTimeProperty.value,
-          levelModel.bestTime,
-          (levelModel.gameTimer.elapsedTimeProperty.value < levelModel.bestTime),
+          levelModel.bestTimeProperty.get(),
+          ( levelModel.gameTimer.elapsedTimeProperty.get() < levelModel.bestTimeProperty.get() ),
           continueCallback,
           { fill: new Color( 255, 235, 205 ), centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2 }
         ) );

@@ -81,7 +81,7 @@ define( function( require ) {
         self.activeLevelModel.gameTimer.start();
 
         // update display score
-        self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
+        self.activeLevelModel.displayScoreProperty.set( self.activeLevelModel.currentScoreProperty.get() );
       }
     } );
   }
@@ -106,10 +106,10 @@ define( function( require ) {
       if ( this.problemModel.multiplicand * this.problemModel.multiplier === this.problemModel.product ) {
 
         // add the problem value to the total score
-        this.activeLevelModel.currentScore += this.problemModel.possiblePoints;
+        this.activeLevelModel.currentScoreProperty.value += this.problemModel.possiblePoints;
 
         // update the displayed score
-        this.activeLevelModel.displayScore = this.activeLevelModel.currentScore;
+        this.activeLevelModel.displayScoreProperty.set( this.activeLevelModel.currentScoreProperty.get() );
 
         // set the face to smile
         this.faceModel.pointsToDisplayProperty.set( this.problemModel.possiblePoints );
@@ -221,7 +221,7 @@ define( function( require ) {
         Timer.clearTimeout( this.feedbackTimer );
       }
       this.resetLevel();
-      this.activeLevelModel.displayScore = 0;
+      this.activeLevelModel.displayScoreProperty.reset();
       this.nextProblem();
       this.activeLevelModel.gameTimer.start(); // may already be running, if so this is a no-op
       this.refreshEmitter.emit();
@@ -315,7 +315,7 @@ define( function( require ) {
 
     // @private - set the 'game environment', generally used when switching to a different level
     restoreGameEnvironment: function( environment ) {
-      this.activeLevelModel.currentScore = environment.currentScore;
+      this.activeLevelModel.currentScoreProperty.set( environment.currentScore );
       this.activeInputProperty.set( environment.activeInput );
       this.problemModel.multiplicand = environment.multiplicand;
       this.problemModel.multiplier = environment.multiplier;
@@ -342,7 +342,7 @@ define( function( require ) {
         multiplier: this.problemModel.multiplier,
         product: this.problemModel.product,
         state: this.stateProperty.get(),
-        currentScore: this.activeLevelModel.currentScore,
+        currentScore: this.activeLevelModel.currentScoreProperty.get(),
         elapsedTime: this.activeLevelModel.gameTimer.elapsedTimeProperty.value,
         systemTimeWhenSaveOccurred: new Date().getTime(),
         possiblePoints: this.problemModel.possiblePoints,

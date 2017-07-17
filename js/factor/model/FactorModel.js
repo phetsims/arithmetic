@@ -106,8 +106,8 @@ define( function( require ) {
             }
           }
         }
-        levelModel.currentScore += self.problemModel.possiblePoints;
-        levelModel.displayScore = self.activeLevelModel.currentScore;
+        levelModel.currentScoreProperty.value += self.problemModel.possiblePoints;
+        levelModel.displayScoreProperty.set( self.activeLevelModel.currentScoreProperty.get() );
         self.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
         self.nextProblem();
       } );

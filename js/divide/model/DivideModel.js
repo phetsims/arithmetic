@@ -103,8 +103,8 @@ define( function( require ) {
         else {
           throw new Error( 'unexpected problem structure for problem', index );
         }
-        self.activeLevelModel.currentScore += self.problemModel.possiblePoints;
-        self.activeLevelModel.displayScore = self.activeLevelModel.currentScore;
+        self.activeLevelModel.currentScoreProperty.value += self.problemModel.possiblePoints;
+        self.activeLevelModel.displayScoreProperty.set( self.activeLevelModel.currentScoreProperty.get() );
         self.activeLevelModel.markCellAsUsed( self.problemModel.multiplicand, self.problemModel.multiplier );
         self.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
         self.nextProblem();

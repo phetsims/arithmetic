@@ -47,6 +47,12 @@ define( function( require ) {
       // Emit an event that indicates that the face should be hidden, should be ignored if the face is not currently
       // shown.
       this.hideFaceEmitter.emit();
+    },
+
+    // public
+    reset: function() {
+      this.pointsToDisplayProperty.reset();
+      this.isSmileProperty.reset();
     }
   } );
 } );

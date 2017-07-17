@@ -127,7 +127,7 @@ define( function( require ) {
         gameAudioPlayer.wrongAnswer();
       }
       else if ( oldState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK && newState === GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
-        var resultScore = model.activeLevelModel.currentScore;
+        var resultScore = model.activeLevelModel.currentScoreProperty.get();
         var perfectScore = model.activeLevelModel.perfectScore;
 
         if ( resultScore === perfectScore ) {

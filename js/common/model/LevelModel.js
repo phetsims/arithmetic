@@ -12,7 +12,7 @@ define( function( require ) {
   // modules
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var PropertySet = require( 'AXON/PropertySet' );
+  var Property = require( 'AXON/Property' );
   var GameTimer = require( 'VEGAS/GameTimer' );
 
   /**
@@ -20,12 +20,17 @@ define( function( require ) {
    * @constructor
    */
   function LevelModel( tableSize ) {
-    PropertySet.call( this, {
-      bestTime: null,  // @public - best time for level
-      currentScore: 0, // @public - current score for level
-      displayScore: 0 // @public - score for displaying in level select buttons
-    } );
 
+    // observable model properties
+    this.bestTimeProperty = new Property( null );  // @public - best time for level
+    this.currentScoreProperty = new Property( 0 ); // @public - current score for level
+    this.displayScoreProperty = new Property( 0 ); // @public - score for displaying in level select buttons
+
+    Property.preventGetSet( this, 'bestTime' );
+    Property.preventGetSet( this, 'currentScore' );
+    Property.preventGetSet( this, 'displayScore' );
+
+    // non-Property model values
     this.tableSize = tableSize; // @public, read only
     this.perfectScore = tableSize * tableSize; // @public, read only
     this.gameTimer = new GameTimer(); // @public - timer for this level
@@ -43,11 +48,15 @@ define( function( require ) {
 
   arithmetic.register( 'LevelModel', LevelModel );
 
-  return inherit( PropertySet, LevelModel, {
+  return inherit( Object, LevelModel, {
 
     // @public - reset this level
     reset: function() {
-      PropertySet.prototype.reset.call( this );
+
+      // reset this level model's explicitly defined properties
+      this.bestTimeProperty.reset();
+      this.currentScoreProperty.reset();
+      this.displayScoreProperty.reset();
 
       // reset the states of the cells
       this.clearCellUsedStates();
