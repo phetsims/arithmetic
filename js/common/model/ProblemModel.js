@@ -24,11 +24,6 @@ define( function( require ) {
     this.multiplierProperty = new Property( undefined );
     this.productProperty = new Property( undefined ); // product of multiplication
     this.possiblePointsProperty = new Property( 1 ); // points for correct completion of current task, can go down on incorrect answers
-
-    Property.preventGetSet( this, 'multiplicand' );
-    Property.preventGetSet( this, 'multiplier' );
-    Property.preventGetSet( this, 'product' );
-    Property.preventGetSet( this, 'possiblePoints' );
   }
 
   arithmetic.register( 'ProblemModel', ProblemModel );

@@ -26,10 +26,6 @@ define( function( require ) {
     this.touchedProperty = new Property( false );
     this.enabledProperty = new Property( true );
 
-    Property.preventGetSet( this, 'mouseOver' );
-    Property.preventGetSet( this, 'touched' );
-    Property.preventGetSet( this, 'enabled' );
-
     this.mouseDownEmitter = new Emitter();
     this.mouseUpEmitter = new Emitter();
     this.touchUpEmitter = new Emitter();

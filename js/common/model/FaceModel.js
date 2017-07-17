@@ -23,9 +23,6 @@ define( function( require ) {
     // @public - flag that controls the expression that the face should depict
     this.isSmileProperty = new Property( true );
 
-    Property.preventGetSet( this, 'pointsToDisplay' );
-    Property.preventGetSet( this, 'isSmile' );
-
     // @public - emitters for showing and hiding the face
     this.showFaceEmitter = new Emitter();
     this.hideFaceEmitter = new Emitter();

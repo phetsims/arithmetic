@@ -49,11 +49,6 @@ define( function( require ) {
     // @public - current game state
     this.stateProperty = new Property( GameState.SELECTING_LEVEL );
 
-    Property.preventGetSet( this, 'level' );
-    Property.preventGetSet( this, 'input' );
-    Property.preventGetSet( this, 'activeInput' );
-    Property.preventGetSet( this, 'state' );
-
     // @public - emitter that emits an even when a refresh occurs
     this.refreshEmitter = new Emitter();
 

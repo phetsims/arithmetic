@@ -26,10 +26,6 @@ define( function( require ) {
     this.currentScoreProperty = new Property( 0 ); // @public - current score for level
     this.displayScoreProperty = new Property( 0 ); // @public - score for displaying in level select buttons
 
-    Property.preventGetSet( this, 'bestTime' );
-    Property.preventGetSet( this, 'currentScore' );
-    Property.preventGetSet( this, 'displayScore' );
-
     // non-Property model values
     this.tableSize = tableSize; // @public, read only
     this.perfectScore = tableSize * tableSize; // @public, read only
