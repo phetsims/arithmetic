@@ -74,7 +74,7 @@ define( function( require ) {
               var updateHover = function() {
                 if ( model.stateProperty.get() === GameState.AWAITING_USER_INPUT ) {
                   self.setCellsToDefaultColor( model.levelProperty.get() );
-                  if ( cellListener.enabled ) {
+                  if ( cellListener.enabledProperty.get() ) {
                     self.setSelectedRect( model.levelProperty.get(), multiplicandRowIndex, multiplierIndex );
                     cell.setHover();
                     self.cellPointer.visible = true;
@@ -105,7 +105,7 @@ define( function( require ) {
               } );
 
               // When the user presses the mouse button, record it.
-              cellListener.on( 'mouseDown', function() {
+              cellListener.mouseDownEmitter.addListener( function() {
                 self.mouseDownCell = cell;
                 self.activeCell = cell;
                 handImage.visible = false; // stop showing hand after first interaction
@@ -121,7 +121,7 @@ define( function( require ) {
 
                 // Disable this cell if the user's answer is correct.
                 if ( multiplicandRowIndex * multiplierIndex === model.problemModel.productProperty.get() ) {
-                  cellListener.enabled = false;
+                  cellListener.enabledProperty.set( false );
                 }
 
                 // Submit the user's answer for checking.
@@ -134,8 +134,8 @@ define( function( require ) {
 
               // When the user releases the mouse button, check that it's the same cell where the mouse down occurred,
               // and fire if so.
-              cellListener.on( 'mouseUp', function() {
-                if ( cellListener.enabled && self.mouseDownCell === cell &&
+              cellListener.mouseUpEmitter.addListener( function() {
+                if ( cellListener.enabledProperty.get() && self.mouseDownCell === cell &&
                      ( gameState.value === GameState.AWAITING_USER_INPUT ||
                        gameState.value === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) ) {
                   submitAnswer();
@@ -143,9 +143,9 @@ define( function( require ) {
               } );
 
               // Add listener for handling the event where the user was touching and lifts their finger.
-              cellListener.on( 'touchUp', function() {
+              cellListener.touchUpEmitter.addListener( function() {
                 // It takes two touchUp events in a row from the same cell to submit an answer.
-                if ( cellListener.enabled ) {
+                if ( cellListener.enabledProperty.get() ) {
                   if ( self.touchUpCell === cell && gameState.value === GameState.AWAITING_USER_INPUT ) {
                     submitAnswer();
                   }
@@ -157,7 +157,7 @@ define( function( require ) {
 
               // cancel hover for disabled cell before next task
               model.stateProperty.lazyLink( function( state ) {
-                if ( state === GameState.AWAITING_USER_INPUT && !cellListener.enabled ) {
+                if ( state === GameState.AWAITING_USER_INPUT && !cellListener.enabledProperty.get() ) {
                   self.setCellsToDefaultColor( model.levelProperty.get() );
                 }
               } );
@@ -211,7 +211,7 @@ define( function( require ) {
     // @private, enable all cells for given level
     enableAllCells: function( levelNumber ) {
       this.cellListeners[ levelNumber ].forEach( function( cellListener ) {
-        cellListener.enabled = true;
+        cellListener.enabledProperty.set( true );
       } );
     },
 
@@ -221,7 +221,9 @@ define( function( require ) {
       var tableSize = levelModel.tableSize;
       for ( var multiplicand = 1; multiplicand <= tableSize; multiplicand++ ) {
         for ( var multiplier = 1; multiplier <= tableSize; multiplier++ ) {
-          self.cellListeners[ levelNumber ][ ( multiplicand - 1 ) * tableSize + ( multiplier - 1 ) ].enabled = !levelModel.isCellUsed( multiplicand, multiplier );
+          self.cellListeners[ levelNumber ][ ( multiplicand - 1 ) * tableSize + ( multiplier - 1 ) ].enabledProperty.set(
+            !levelModel.isCellUsed( multiplicand, multiplier )
+          );
         }
       }
     },

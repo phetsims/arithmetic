@@ -14,6 +14,7 @@ define( function( require ) {
 
   // modules
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
+  var Emitter = require( 'AXON/Emitter' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Property = require( 'AXON/Property' );
 
@@ -21,11 +22,17 @@ define( function( require ) {
    * @constructor
    */
   function CellInteractionListener() {
-    PropertySet.call( this, {
-      mouseOver: false,
-      touched: false,
-      enabled: true
-    } );
+    this.mouseOverProperty = new Property( false );
+    this.touchedProperty = new Property( false );
+    this.enabledProperty = new Property( true );
+
+    Property.preventGetSet( this, 'mouseOver' );
+    Property.preventGetSet( this, 'touched' );
+    Property.preventGetSet( this, 'enabled' );
+
+    this.mouseDownEmitter = new Emitter();
+    this.mouseUpEmitter = new Emitter();
+    this.touchUpEmitter = new Emitter();
   }
 
   arithmetic.register( 'CellInteractionListener', CellInteractionListener );
@@ -35,37 +42,37 @@ define( function( require ) {
     // @public
     enter: function( event, trail ) {
       if ( event.pointer.type === 'mouse' ) {
-        this.mouseOver = true;
+        this.mouseOverProperty.set( true );
       }
       else if ( event.pointer.type === 'touch' ) {
-        this.touched = true;
+        this.touchedProperty.set( true );
       }
     },
 
     // @public
     exit: function( event, trail ) {
       if ( event.pointer.type === 'mouse' ) {
-        this.mouseOver = false;
+        this.mouseOverProperty.set( false );
       }
       else if ( event.pointer.type === 'touch' ) {
-        this.touched = false;
+        this.touchedProperty.set( false );
       }
     },
 
     // @public
     down: function( event, trail ) {
       if ( event.pointer.type === 'mouse' ) {
-        this.trigger( 'mouseDown' );
+        this.mouseDownEmitter.emit();
       }
     },
 
     // @public
     up: function( event, trail ) {
       if ( event.pointer.type === 'mouse' ) {
-        this.trigger( 'mouseUp' );
+        this.mouseUpEmitter.emit();
       }
       else if ( event.pointer.type === 'touch' ) {
-        this.trigger( 'touchUp' );
+        this.touchUpEmitter.emit();
       }
     }
   } );
