@@ -12,10 +12,10 @@ define( function( require ) {
   // modules
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Circle = require( 'SCENERY/nodes/Circle' );
+  var inherit = require( 'PHET_CORE/inherit' );
   var Line = require( 'SCENERY/nodes/Line' );
+  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
 
   // constants
   var ICON_SIZE = ArithmeticConstants.SCREEN_ICON_SIZE;

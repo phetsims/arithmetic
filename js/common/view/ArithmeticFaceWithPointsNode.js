@@ -14,9 +14,9 @@ define( function( require ) {
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var FaceWithPointsNode = require( 'SCENERY_PHET/FaceWithPointsNode' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var Util = require( 'DOT/Util' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Timer = require( 'PHET_CORE/Timer' );
+  var Util = require( 'DOT/Util' );
 
   // constants
   var UPDATE_PERIOD = 1 / 60 * 1000; // milliseconds, intended to match the expected frame rate

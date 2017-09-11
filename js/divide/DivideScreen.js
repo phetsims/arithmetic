@@ -16,8 +16,8 @@ define( function( require ) {
   var DivideScreenIconNode = require( 'ARITHMETIC/divide/view/DivideScreenIconNode' );
   var DivideView = require( 'ARITHMETIC/divide/view/DivideView' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var Screen = require( 'JOIST/Screen' );
   var Property = require( 'AXON/Property' );
+  var Screen = require( 'JOIST/Screen' );
 
   // strings
   var divideString = require( 'string!ARITHMETIC/divide' );

@@ -13,10 +13,10 @@ define( function( require ) {
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MultiplyModel = require( 'ARITHMETIC/multiply/model/MultiplyModel' );
-  var MultiplyView = require( 'ARITHMETIC/multiply/view/MultiplyView' );
   var MultiplyScreenIconNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenIconNode' );
-  var Screen = require( 'JOIST/Screen' );
+  var MultiplyView = require( 'ARITHMETIC/multiply/view/MultiplyView' );
   var Property = require( 'AXON/Property' );
+  var Screen = require( 'JOIST/Screen' );
 
   // strings
   var multiplyString = require( 'string!ARITHMETIC/multiply' );

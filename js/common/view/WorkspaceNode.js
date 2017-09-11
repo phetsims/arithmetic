@@ -15,16 +15,16 @@ define( function( require ) {
   var ArithmeticFaceWithPointsNode = require( 'ARITHMETIC/common/view/ArithmeticFaceWithPointsNode' );
   var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var BackButton = require( 'SCENERY_PHET/buttons/BackButton' );
-  var ScoreboardNode = require( 'ARITHMETIC/common/view/ScoreboardNode' );
   var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var NumberKeypad = require( 'SCENERY_PHET/NumberKeypad' );
   var LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );
   var Node = require( 'SCENERY/nodes/Node' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var TextPushButton = require( 'SUN/buttons/TextPushButton' );
+  var NumberKeypad = require( 'SCENERY_PHET/NumberKeypad' );
   var PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
+  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  var ScoreboardNode = require( 'ARITHMETIC/common/view/ScoreboardNode' );
+  var TextPushButton = require( 'SUN/buttons/TextPushButton' );
 
   // constants
   var BACK_BUTTON_BASE_COLOR = PhetColorScheme.PHET_LOGO_YELLOW; // base color of back button

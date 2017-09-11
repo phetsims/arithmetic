@@ -12,11 +12,11 @@ define( function( require ) {
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var FactorModel = require( 'ARITHMETIC/factor/model/FactorModel' );
-  var FactorView = require( 'ARITHMETIC/factor/view/FactorView' );
   var FactorScreenIconNode = require( 'ARITHMETIC/factor/view/FactorScreenIconNode' );
+  var FactorView = require( 'ARITHMETIC/factor/view/FactorView' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var Screen = require( 'JOIST/Screen' );
   var Property = require( 'AXON/Property' );
+  var Screen = require( 'JOIST/Screen' );
 
   // strings
   var factorString = require( 'string!ARITHMETIC/factor' );

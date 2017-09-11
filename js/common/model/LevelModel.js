@@ -11,9 +11,9 @@ define( function( require ) {
 
   // modules
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
+  var GameTimer = require( 'VEGAS/GameTimer' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Property = require( 'AXON/Property' );
-  var GameTimer = require( 'VEGAS/GameTimer' );
 
   /**
    * @param {number} tableSize - width and height of the multiplication table, which is assumed to be square
