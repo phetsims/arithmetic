@@ -1,4 +1,4 @@
-// Copyright 2002-2014, University of Colorado Boulder
+// Copyright 2014-2016, University of Colorado Boulder
 
 /**
  * This Scenery node represents one cell in the body (as opposed to the headers) of the multiplication table.

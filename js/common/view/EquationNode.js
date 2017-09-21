@@ -1,4 +1,4 @@
-// Copyright 2014-2015, University of Colorado Boulder
+// Copyright 2014-2016, University of Colorado Boulder
 
 /**
  * Abstract base type for a scenery node that represents a multiplication equation, with two multipliers and a product,
