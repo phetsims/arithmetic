@@ -95,13 +95,15 @@ define( function( require ) {
 
               // add 'hover' listeners
               cellListener.mouseOverProperty.link( updateHover );
-              cellListener.touchedProperty.onValue( true, function() {
-                if ( model.stateProperty.get() === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
-                  // The user has re-touched the grid after submitting an incorrect answer, so assume they want to retry.
-                  model.retryProblem();
+              cellListener.touchedProperty.link( function( touched ) {
+                if ( touched ) {
+                  if ( model.stateProperty.get() === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+                    // The user has re-touched the grid after submitting an incorrect answer, so assume they want to retry.
+                    model.retryProblem();
+                  }
+                  handImage.visible = false; // stop showing hand after first interaction
+                  updateHover();
                 }
-                handImage.visible = false; // stop showing hand after first interaction
-                updateHover();
               } );
 
               // When the user presses the mouse button, record it.
