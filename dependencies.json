@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.9 Thu Nov 16 2017 22:54:42 GMT-0700 (MST)",
+  "comment": "# arithmetic 1.0.10-rc.1 Fri Nov 17 2017 18:31:23 GMT-0700 (MST)",
   "arithmetic": {
-    "sha": "a8f8e50653dec445a40bbeeaa30aa3a36758c341",
+    "sha": "6c86b356c0423c4602cdb057cb19d83d56a9c99b",
     "branch": "1.0"
   },
   "assert": {
@@ -18,7 +18,7 @@
   },
   "chipper": {
     "sha": "7363e6afdbe2921b335616c27fe1b7f9e654103c",
-    "branch": "arithmetic-1.0"
+    "branch": "HEAD"
   },
   "dot": {
     "sha": "7a28b1a92733cee778e2cf5d22ca45042884d416",
@@ -26,7 +26,7 @@
   },
   "joist": {
     "sha": "e2fbe6407ee2f58068d2b67ac39e8918f845456d",
-    "branch": "arithmetic-1.0"
+    "branch": "HEAD"
   },
   "kite": {
     "sha": "a4907ccc07cc80d6d3c9c1e240ba7664e32db56b",
