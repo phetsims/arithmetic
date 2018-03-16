@@ -15,6 +15,7 @@ define( function( require ) {
   var EquationInputNode = require( 'ARITHMETIC/common/view/EquationInputNode' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var MathSymbols = require( 'SCENERY_PHET/MathSymbols' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Text = require( 'SCENERY/nodes/Text' );
 
@@ -52,7 +53,7 @@ define( function( require ) {
 
     options.children = [
       this.multiplicandInput,
-      new Text( '\u00D7', { font: FONT_X, fill: SYMBOL_COLOR } ),
+      new Text( MathSymbols.TIMES, { font: FONT_X, fill: SYMBOL_COLOR } ),
       this.multiplierInput,
       this.equalsSign,
       this.productInput
@@ -73,7 +74,7 @@ define( function( require ) {
      * @protected
      */
     setShowEqual: function( showEqual ) {
-      this.equalsSign.text = showEqual ? '=' : '\u2260';
+      this.equalsSign.text = showEqual ? MathSymbols.EQUAL_TO : MathSymbols.NOT_EQUAL_TO;
     }
   } );
 } );

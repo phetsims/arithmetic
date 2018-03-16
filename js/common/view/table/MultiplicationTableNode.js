@@ -19,6 +19,7 @@ define( function( require ) {
   var Dimension2 = require( 'DOT/Dimension2' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var MathSymbols = require( 'SCENERY_PHET/MathSymbols' );
   var MultiplicationTableBodyCell = require( 'ARITHMETIC/common/view/table/MultiplicationTableBodyCell' );
   var MultiplicationTableHeaderCell = require( 'ARITHMETIC/common/view/table/MultiplicationTableHeaderCell' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -90,7 +91,7 @@ define( function( require ) {
 
             // first cell is the multiplier operator, others are multipliers
             if ( column === 0 ) {
-              cell = new MultiplicationTableHeaderCell( '\u00D7', cellOptions, {
+              cell = new MultiplicationTableHeaderCell( MathSymbols.TIMES, cellOptions, {
                 font: new PhetFont( { size: Math.round( cellOptions.height * 0.85 ) } ) // Equation empirically determined, makes font smaller for larger tables.
               } );
             }
