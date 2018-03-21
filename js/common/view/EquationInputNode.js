@@ -60,7 +60,7 @@ define( function( require ) {
 
     // update text when the value changes
     valueProperty.lazyLink( function( value ) {
-      self.inputText.setText( value || '' );
+      self.inputText.setText( isNaN( value ) ? '' : value );
       updateBoxPosition( self._box, size );
     } );
 
