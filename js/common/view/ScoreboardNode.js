@@ -11,15 +11,13 @@ define( function( require ) {
 
   // modules
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var FontAwesomeNode = require( 'SUN/FontAwesomeNode' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var GameTimer = require( 'VEGAS/GameTimer' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Panel = require( 'SUN/Panel' );
-  var PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var RectangularPushButton = require( 'SUN/buttons/RectangularPushButton' );
+  var RefreshButton = require( 'SCENERY_PHET/buttons/RefreshButton' );
   var StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   var Text = require( 'SCENERY/nodes/Text' );
   var VBox = require( 'SCENERY/nodes/VBox' );
@@ -73,9 +71,8 @@ define( function( require ) {
         scoreText,
         timeText,
         // add refresh button
-        new RectangularPushButton( {
-          content: new FontAwesomeNode( 'refresh', { scale: 0.6 } ),
-          baseColor: PhetColorScheme.BUTTON_YELLOW,
+        new RefreshButton( {
+          iconScale: 0.6,
           xMargin: 14,
           yMargin: 7,
           listener: refreshLevelCallback
