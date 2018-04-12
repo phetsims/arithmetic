@@ -16,7 +16,7 @@ define( function( require ) {
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var LevelSelectionItemNodeDeprecated = require( 'VEGAS/LevelSelectionItemNodeDeprecated' );
+  var LevelSelectionItemNode = require( 'VEGAS/LevelSelectionItemNode' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
@@ -88,7 +88,7 @@ define( function( require ) {
     // add select level buttons
     assert && assert( model.levelModels.length === ICON_SETS[ options.iconSet ].length, 'Number of icons doesn\'t match number of levels' );
     var levelSelectButtons = model.levelModels.map( function( level, levelIndex ) {
-      return new LevelSelectionItemNodeDeprecated(
+      return new LevelSelectionItemNode(
         new Image( ICON_SETS[ options.iconSet ][ levelIndex ] ),
         ArithmeticConstants.STAR_NUMBER,
         function() {
