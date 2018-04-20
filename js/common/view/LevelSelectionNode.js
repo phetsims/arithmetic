@@ -16,7 +16,7 @@ define( function( require ) {
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var LevelSelectionItemNode = require( 'VEGAS/LevelSelectionItemNode' );
+  var LevelSelectionButton = require( 'VEGAS/LevelSelectionButton' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
@@ -88,20 +88,22 @@ define( function( require ) {
     // add select level buttons
     assert && assert( model.levelModels.length === ICON_SETS[ options.iconSet ].length, 'Number of icons doesn\'t match number of levels' );
     var levelSelectButtons = model.levelModels.map( function( level, levelIndex ) {
-      return new LevelSelectionItemNode(
+      return new LevelSelectionButton(
         new Image( ICON_SETS[ options.iconSet ][ levelIndex ] ),
-        ArithmeticConstants.STAR_NUMBER,
-        function() {
-          callback( levelIndex );
-        },
         model.levelModels[ levelIndex ].displayScoreProperty,
-        level.perfectScore,
         {
           buttonWidth: BUTTON_LENGTH,
           buttonHeight: BUTTON_LENGTH,
           baseColor: options.buttonBaseColor,
           bestTimeProperty: model.levelModels[ levelIndex ].bestTimeProperty,
-          bestTimeVisibleProperty: ArithmeticGlobals.timerEnabledProperty
+          bestTimeVisibleProperty: ArithmeticGlobals.timerEnabledProperty,
+          listener: function() {
+            callback( levelIndex );
+          },
+          scoreDisplayOptions: {
+            numberOfStars: ArithmeticConstants.NUM_STARS,
+            perfectScore: level.perfectScore
+          }
         }
       );
     } );
@@ -117,7 +119,7 @@ define( function( require ) {
         new TimerToggleButton( ArithmeticGlobals.timerEnabledProperty ),
         new SoundToggleButton( ArithmeticGlobals.soundEnabledProperty )
       ],
-      right:  layoutBounds.maxX * 0.08,
+      right: layoutBounds.maxX * 0.08,
       bottom: layoutBounds.maxY * 0.95
     } );
     this.addChild( soundAndTimerButtons );

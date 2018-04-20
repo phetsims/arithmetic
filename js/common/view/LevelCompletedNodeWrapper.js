@@ -39,7 +39,7 @@ define( function( require ) {
           levelNumberProperty.value,
           levelModel.currentScoreProperty.get(),
           levelModel.perfectScore,
-          ArithmeticConstants.STAR_NUMBER,
+          ArithmeticConstants.NUM_STARS,
           timerEnabledProperty.value,
           levelModel.gameTimer.elapsedTimeProperty.value,
           levelModel.bestTimeProperty.get(),
