@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.10 Mon Apr 23 2018 14:51:09 GMT-0600 (MDT)",
+  "comment": "# arithmetic 1.0.11-rc.1 Mon Apr 23 2018 17:02:45 GMT-0600 (MDT)",
   "arithmetic": {
-    "sha": "214debf30e4ed94a2ad696e066a6daa27fa5aee6",
+    "sha": "cc1b5e6bb89eb24dbe65e0a935947a9c0b51e054",
     "branch": "1.0"
   },
   "assert": {
@@ -42,7 +42,7 @@
   },
   "scenery": {
     "sha": "ece4f121f64b2748edd9be87f4408a4e6b244d3b",
-    "branch": "arithmetic-1.0"
+    "branch": "HEAD"
   },
   "scenery-phet": {
     "sha": "956aff92df92cc0d004e46299e06387edc2cb153",
