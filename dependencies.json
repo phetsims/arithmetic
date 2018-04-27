@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.11-rc.1 Mon Apr 23 2018 17:02:45 GMT-0600 (MDT)",
+  "comment": "# arithmetic 1.0.11 Fri Apr 27 2018 14:21:01 GMT-0600 (MDT)",
   "arithmetic": {
-    "sha": "cc1b5e6bb89eb24dbe65e0a935947a9c0b51e054",
+    "sha": "7871bcd018f32ae7822666a4a74102eb974272e5",
     "branch": "1.0"
   },
   "assert": {
