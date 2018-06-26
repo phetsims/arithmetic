@@ -36,7 +36,7 @@ define( function( require ) {
       if ( state === GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
         var levelModel = levelModels[ levelNumberProperty.value ];
         self.addChild( new LevelCompletedNode(
-          levelNumberProperty.value,
+          levelNumberProperty.value + 1,
           levelModel.currentScoreProperty.get(),
           levelModel.perfectScore,
           ArithmeticConstants.NUM_STARS,
