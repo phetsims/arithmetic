@@ -13,9 +13,14 @@ define( function( require ) {
 
   var ArithmeticQueryParameters = QueryStringMachine.getAll( {
 
-    // Automatically answer most problems to enable faster testing of level completion.
+    // automatically answer most problems to enable faster testing of level completion
     autoAnswer: { type: 'flag' }
   } );
+
+  // prevent auto answer in versions that are intended for publication
+  if ( phet.chipper.isProduction && !phet.chipper.isDebugBuild ) {
+    ArithmeticQueryParameters.autoAnswer = false;
+  }
 
   arithmetic.register( 'ArithmeticQueryParameters', ArithmeticQueryParameters );
 
