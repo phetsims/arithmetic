@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.11 Fri Apr 27 2018 14:21:01 GMT-0600 (MDT)",
+  "comment": "# arithmetic 1.0.11 Tue Jul 24 2018 17:09:18 GMT-0600 (MDT)",
   "arithmetic": {
-    "sha": "7871bcd018f32ae7822666a4a74102eb974272e5",
+    "sha": "0534276b196000c282ed04483a6957a419730173",
     "branch": "1.0"
   },
   "assert": {
@@ -65,7 +65,7 @@
     "branch": "HEAD"
   },
   "vibe": {
-    "sha": "346f570241f1a2ed996658dcdb6244dd45676341",
-    "branch": "HEAD"
+    "sha": "57ff9ca74d62eacd6ae556db66e489ba54a2d736",
+    "branch": "arithmetic-1.0"
   }
 }
