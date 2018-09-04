@@ -21,7 +21,7 @@ define( function( require ) {
   var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
   var ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
   var Property = require( 'AXON/Property' );
-  var Timer = require( 'PHET_CORE/Timer' );
+  var timer = require( 'PHET_CORE/timer' );
 
   // constants
   var FEEDBACK_TIME = 1200; // in milliseconds, time that the feedback is presented before moving to next problem
@@ -122,7 +122,7 @@ define( function( require ) {
         this.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
 
         // start a timer that will set up the next problem
-        this.feedbackTimer = Timer.setTimeout(
+        this.feedbackTimer = timer.setTimeout(
           function() {
             self.feedbackTimer = null;
             self.nextProblem();
@@ -207,7 +207,7 @@ define( function( require ) {
 
       // if there is a timer running for displaying feedback, cancel it
       if ( this.feedbackTimer ) {
-        Timer.clearTimeout( this.feedbackTimer );
+        timer.clearTimeout( this.feedbackTimer );
       }
 
       // go back to the level selection screen
@@ -217,7 +217,7 @@ define( function( require ) {
     // @public
     refreshLevel: function() {
       if ( this.feedbackTimer ) {
-        Timer.clearTimeout( this.feedbackTimer );
+        timer.clearTimeout( this.feedbackTimer );
       }
       this.resetLevel();
       this.activeLevelModel.displayScoreProperty.reset();

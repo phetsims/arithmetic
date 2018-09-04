@@ -18,7 +18,7 @@ define( function( require ) {
   var Node = require( 'SCENERY/nodes/Node' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
-  var Timer = require( 'PHET_CORE/Timer' );
+  var timer = require( 'PHET_CORE/timer' );
 
   // strings
   var unknownValueIndicatorString = require( 'string!ARITHMETIC/unknownValueIndicator' );
@@ -65,7 +65,7 @@ define( function( require ) {
     } );
 
     // set up blinking of cursor
-    Timer.setInterval( function() {
+    timer.setInterval( function() {
       self.textCursor.visible = !self.textCursor.visible;
     }, ArithmeticConstants.CURSOR_BLINK_INTERVAL );
 

@@ -15,7 +15,7 @@ define( function( require ) {
   var FaceWithPointsNode = require( 'SCENERY_PHET/FaceWithPointsNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var Timer = require( 'PHET_CORE/Timer' );
+  var timer = require( 'PHET_CORE/timer' );
   var Util = require( 'DOT/Util' );
 
   // constants
@@ -67,15 +67,15 @@ define( function( require ) {
 
       // cancel previous timer if it exists
       if ( timerID !== null ) {
-        Timer.clearInterval( timerID );
+        timer.clearInterval( timerID );
       }
 
       // start up the new timer
-      timerID = Timer.setInterval( function() {
+      timerID = timer.setInterval( function() {
         countdown -= UPDATE_PERIOD;
         self.opacity = Util.clamp( countdown / FADE_TIME, 0, 1 );
         if ( self.opacity === 0 ) {
-          Timer.clearInterval( timerID );
+          timer.clearInterval( timerID );
           timerID = null;
           self.visible = false;
         }
@@ -87,7 +87,7 @@ define( function( require ) {
 
       // Cancel the timer (if running)
       if ( timerID !== null ) {
-        Timer.clearTimeout( timerID );
+        timer.clearTimeout( timerID );
         timerID = null;
       }
 
