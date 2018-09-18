@@ -69,7 +69,7 @@ define( function( require ) {
     workspaceNode.visible = false;
     this.addChild( workspaceNode );
 
-    // audio player that is used to produce the feedback sounds for the game
+    // sounds player that is used to produce the feedback sounds for the game
     var gameAudioPlayer = new GameAudioPlayer( ArithmeticGlobals.soundEnabledProperty );
 
     // set the origin of the answer animation in the multiplication table, which depends upon the newly set position of
