@@ -18,10 +18,11 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
 
   /**
+   * @param {Tandem} tandem
    * @constructor
    */
-  function FactorModel() {
-    ArithmeticModel.call( this );
+  function FactorModel( tandem ) {
+    ArithmeticModel.call( this, tandem );
   }
 
   arithmetic.register( 'FactorModel', FactorModel );

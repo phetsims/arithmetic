@@ -23,20 +23,19 @@ define( function( require ) {
   var divideString = require( 'string!ARITHMETIC/divide' );
 
   /**
-   * @param {Tandem} tandem
+   * @param {Object} [options]
    * @constructor
    */
-  function DivideScreen( tandem ) {
+  function DivideScreen( options ) {
 
-    var options = {
+    options = _.extend( {
       name: divideString,
       backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
-      homeScreenIcon: new DivideScreenIconNode(),
-      tandem: tandem
-    };
+      homeScreenIcon: new DivideScreenIconNode()
+    }, options );
 
     Screen.call( this,
-      function() { return new DivideModel(); },
+      function() { return new DivideModel( options.tandem.createTandem( 'model' ) ); },
       function( model ) { return new DivideView( model ); },
       options );
   }

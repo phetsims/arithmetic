@@ -35,9 +35,9 @@ define( function( require ) {
   SimLauncher.launch( function() {
     // Create and start the sim
     new Sim( arithmeticTitleString, [
-      new MultiplyScreen( tandem.createTandem( 'multiplyScreen' ) ),
-      new FactorScreen( tandem.createTandem( 'factorScreen' ) ),
-      new DivideScreen( tandem.createTandem( 'divideScreen' ) )
+      new MultiplyScreen( { tandem: tandem.createTandem( 'multiplyScreen' ) } ),
+      new FactorScreen( { tandem: tandem.createTandem( 'factorScreen' ) } ),
+      new DivideScreen( { tandem: tandem.createTandem( 'divideScreen' ) } )
     ], simOptions ).start();
   } );
 } );

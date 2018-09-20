@@ -22,20 +22,19 @@ define( function( require ) {
   var factorString = require( 'string!ARITHMETIC/factor' );
 
   /**
-   * @param {Tandem} tandem
+   * @param {Object} [options]
    * @constructor
    */
-  function FactorScreen( tandem ) {
+  function FactorScreen( options ) {
 
-    var options = {
+    options = _.extend( {
       name: factorString,
       homeScreenIcon: new FactorScreenIconNode(),
-      backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
-      tandem: tandem
-    };
+      backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR )
+    }, options );
 
     Screen.call( this,
-      function() { return new FactorModel(); },
+      function() { return new FactorModel( options.tandem ); },
       function( model ) { return new FactorView( model ); },
       options );
   }

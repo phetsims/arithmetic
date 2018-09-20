@@ -22,20 +22,19 @@ define( function( require ) {
   var multiplyString = require( 'string!ARITHMETIC/multiply' );
 
   /**
-   * @param {Tandem} tandem
+   * @param {Object} [options]
    * @constructor
    */
-  function MultiplyScreen( tandem ) {
+  function MultiplyScreen( options ) {
 
-    var options = {
+    options = _.extend( {
       name: multiplyString,
       homeScreenIcon: new MultiplyScreenIconNode(),
-      backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
-      tandem: tandem
-    };
+      backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR )
+    }, options );
 
     Screen.call( this,
-      function() { return new MultiplyModel(); },
+      function() { return new MultiplyModel( options.tandem.createTandem( 'model' ) ); },
       function( model ) { return new MultiplyView( model ); },
       options );
   }

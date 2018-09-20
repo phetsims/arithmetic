@@ -19,11 +19,12 @@ define( function( require ) {
   var Random = require( 'DOT/Random' );
 
   /**
+   * @param {Tandem} tandem
    * @constructor
    */
-  function DivideModel() {
+  function DivideModel( tandem ) {
     var self = this;
-    ArithmeticModel.call( this, {
+    ArithmeticModel.call( this, tandem, {
       fillEquation: function() {
 
         // Convert any strings entered by the user into numerical values.

@@ -20,11 +20,11 @@ define( function( require ) {
   /**
    * @constructor
    */
-  function MultiplyModel() {
+  function MultiplyModel( tandem ) {
     var self = this;
     ArithmeticModel.call(
       this,
-      {
+      tandem, {
         fillEquation: function() {
           self.problemModel.productProperty.set( parseInt( self.inputProperty.get(), 10 ) );
           self.submitAnswer();

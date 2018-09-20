@@ -15,6 +15,7 @@ define( function( require ) {
   var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var ArithmeticQueryParameters = require( 'ARITHMETIC/common/ArithmeticQueryParameters' );
   var Emitter = require( 'AXON/Emitter' );
+  var EmitterIO = require( 'AXON/EmitterIO' );
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -23,6 +24,10 @@ define( function( require ) {
   var Property = require( 'AXON/Property' );
   var timer = require( 'PHET_CORE/timer' );
 
+  // ifphetio
+  var StringIO = require( 'ifphetio!PHET_IO/types/StringIO' );
+  var BooleanIO = require( 'ifphetio!PHET_IO/types/BooleanIO' );
+
   // constants
   var FEEDBACK_TIME = 1200; // in milliseconds, time that the feedback is presented before moving to next problem
 
@@ -30,8 +35,14 @@ define( function( require ) {
    * Constructor for ArithmeticModel
    * @constructor
    */
-  function ArithmeticModel( options ) {
+  function ArithmeticModel( tandem, options ) {
     var self = this;
+
+    // @private - for PhET-iO
+    this.checkAnswerEmitter = new Emitter( {
+      tandem: tandem.createTandem( 'checkAnswerEmitter' ),
+      phetioType: EmitterIO( [ StringIO, BooleanIO ] )
+    } );
 
     // set up the 'fillEquation' function, which is used to fill in the missing portion(s) based on the user's inputs
     options = _.extend( { fillEquation: null }, options );
@@ -98,8 +109,11 @@ define( function( require ) {
      */
     submitAnswer: function() {
       var self = this;
-      if ( this.problemModel.multiplicandProperty.get() * this.problemModel.multiplierProperty.get() ===
-           this.problemModel.productProperty.get() ) {
+
+      var isCorrect = this.problemModel.multiplicandProperty.get() * this.problemModel.multiplierProperty.get() === this.problemModel.productProperty.get();
+      var string = this.problemModel.multiplicandProperty.get() + ' x ' + this.problemModel.multiplierProperty.get() + ' = ' + this.problemModel.productProperty.get();
+      this.checkAnswerEmitter.emit2( string, isCorrect );
+      if ( isCorrect ) {
 
         // add the problem value to the total score
         this.activeLevelModel.currentScoreProperty.value += this.problemModel.possiblePointsProperty.get();
