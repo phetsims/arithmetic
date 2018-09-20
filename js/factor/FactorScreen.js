@@ -17,6 +17,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var Property = require( 'AXON/Property' );
   var Screen = require( 'JOIST/Screen' );
+  var Tandem = require( 'TANDEM/Tandem' );
 
   // strings
   var factorString = require( 'string!ARITHMETIC/factor' );
@@ -30,11 +31,12 @@ define( function( require ) {
     options = _.extend( {
       name: factorString,
       homeScreenIcon: new FactorScreenIconNode(),
-      backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR )
+      backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
+      tandem: Tandem.required
     }, options );
 
     Screen.call( this,
-      function() { return new FactorModel( options.tandem ); },
+      function() { return new FactorModel( options.tandem.createTandem( 'model' ) ); },
       function( model ) { return new FactorView( model ); },
       options );
   }

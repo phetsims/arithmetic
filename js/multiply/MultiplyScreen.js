@@ -17,6 +17,7 @@ define( function( require ) {
   var MultiplyView = require( 'ARITHMETIC/multiply/view/MultiplyView' );
   var Property = require( 'AXON/Property' );
   var Screen = require( 'JOIST/Screen' );
+  var Tandem = require( 'TANDEM/Tandem' );
 
   // strings
   var multiplyString = require( 'string!ARITHMETIC/multiply' );
@@ -30,7 +31,8 @@ define( function( require ) {
     options = _.extend( {
       name: multiplyString,
       homeScreenIcon: new MultiplyScreenIconNode(),
-      backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR )
+      backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
+      tandem: Tandem.required
     }, options );
 
     Screen.call( this,

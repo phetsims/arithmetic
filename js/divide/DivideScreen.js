@@ -18,6 +18,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var Property = require( 'AXON/Property' );
   var Screen = require( 'JOIST/Screen' );
+  var Tandem = require( 'TANDEM/Tandem' );
 
   // strings
   var divideString = require( 'string!ARITHMETIC/divide' );
@@ -31,7 +32,8 @@ define( function( require ) {
     options = _.extend( {
       name: divideString,
       backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
-      homeScreenIcon: new DivideScreenIconNode()
+      homeScreenIcon: new DivideScreenIconNode(),
+      tandem: Tandem.required
     }, options );
 
     Screen.call( this,
