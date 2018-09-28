@@ -25,8 +25,7 @@ define( function( require ) {
   var timer = require( 'PHET_CORE/timer' );
 
   // ifphetio
-  var StringIO = require( 'ifphetio!PHET_IO/types/StringIO' );
-  var BooleanIO = require( 'ifphetio!PHET_IO/types/BooleanIO' );
+  var ObjectIO = require( 'ifphetio!PHET_IO/types/ObjectIO' );
 
   // constants
   var FEEDBACK_TIME = 1200; // in milliseconds, time that the feedback is presented before moving to next problem
@@ -41,7 +40,7 @@ define( function( require ) {
     // @private - for PhET-iO
     this.checkAnswerEmitter = new Emitter( {
       tandem: tandem.createTandem( 'checkAnswerEmitter' ),
-      phetioType: EmitterIO( [ StringIO, BooleanIO ] )
+      phetioType: EmitterIO( [ ObjectIO ] )
     } );
 
     // set up the 'fillEquation' function, which is used to fill in the missing portion(s) based on the user's inputs
@@ -112,7 +111,14 @@ define( function( require ) {
 
       var isCorrect = this.problemModel.multiplicandProperty.get() * this.problemModel.multiplierProperty.get() === this.problemModel.productProperty.get();
       var string = this.problemModel.multiplicandProperty.get() + ' x ' + this.problemModel.multiplierProperty.get() + ' = ' + this.problemModel.productProperty.get();
-      this.checkAnswerEmitter.emit2( string, isCorrect );
+      this.checkAnswerEmitter.emit1( {
+        multiplicand: this.problemModel.multiplicandProperty.get(),
+        product: this.problemModel.productProperty.get(),
+        multiplier: this.problemModel.multiplierProperty.get(),
+        isCorrect: isCorrect,
+        asString: string,
+        userInput: this.inputProperty.get()
+      } );
       if ( isCorrect ) {
 
         // add the problem value to the total score
