@@ -39,6 +39,7 @@ define( function( require ) {
 
     // @private - for PhET-iO
     this.checkAnswerEmitter = new Emitter( {
+      valueTypes: [ Object ],
       tandem: tandem.createTandem( 'checkAnswerEmitter' ),
       phetioType: EmitterIO( [ ObjectIO ] )
     } );
@@ -111,7 +112,7 @@ define( function( require ) {
 
       var isCorrect = this.problemModel.multiplicandProperty.get() * this.problemModel.multiplierProperty.get() === this.problemModel.productProperty.get();
       var string = this.problemModel.multiplicandProperty.get() + ' x ' + this.problemModel.multiplierProperty.get() + ' = ' + this.problemModel.productProperty.get();
-      this.checkAnswerEmitter.emit1( {
+      this.checkAnswerEmitter.emit( {
         multiplicand: this.problemModel.multiplicandProperty.get(),
         product: this.problemModel.productProperty.get(),
         multiplier: this.problemModel.multiplierProperty.get(),
