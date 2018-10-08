@@ -41,7 +41,7 @@ define( function( require ) {
     this.checkAnswerEmitter = new Emitter( {
       valueTypes: [ Object ],
       tandem: tandem.createTandem( 'checkAnswerEmitter' ),
-      phetioType: EmitterIO( [ ObjectIO ] )
+      phetioType: EmitterIO( [ { name: 'results', type: ObjectIO, documentation: 'hello' } ] )
     } );
 
     // set up the 'fillEquation' function, which is used to fill in the missing portion(s) based on the user's inputs
