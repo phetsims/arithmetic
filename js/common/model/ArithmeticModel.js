@@ -25,7 +25,7 @@ define( function( require ) {
   var timer = require( 'PHET_CORE/timer' );
 
   // ifphetio
-  var ObjectIO = require( 'ifphetio!PHET_IO/types/ObjectIO' );
+  var ObjectIO = require( 'TANDEM/types/ObjectIO' );
 
   // constants
   var FEEDBACK_TIME = 1200; // in milliseconds, time that the feedback is presented before moving to next problem
