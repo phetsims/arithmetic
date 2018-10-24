@@ -20,12 +20,10 @@ define( function( require ) {
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
+  var ObjectIO = require( 'TANDEM/types/ObjectIO' );
   var ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
   var Property = require( 'AXON/Property' );
   var timer = require( 'PHET_CORE/timer' );
-
-  // ifphetio
-  var ObjectIO = require( 'TANDEM/types/ObjectIO' );
 
   // constants
   var FEEDBACK_TIME = 1200; // in milliseconds, time that the feedback is presented before moving to next problem
