@@ -37,7 +37,6 @@ define( function( require ) {
 
     // @private - for PhET-iO
     this.checkAnswerEmitter = new Emitter( {
-      valueTypes: [ Object ],
       tandem: tandem.createTandem( 'checkAnswerEmitter' ),
       phetioType: EmitterIO( [ { name: 'results', type: ObjectIO, documentation: 'hello' } ] )
     } );
