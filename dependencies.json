@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.14 Tue Oct 30 2018 13:30:33 GMT-0600 (MDT)",
+  "comment": "# arithmetic 1.0.15-rc.1 Tue Oct 30 2018 15:22:04 GMT-0600 (MDT)",
   "arithmetic": {
-    "sha": "7077348a1b3ab8f38ad4cf02e8b89d01561f363a",
+    "sha": "6eb15e2d7aa59e476c8bdefc252af82f9fe7cc3b",
     "branch": "1.0"
   },
   "assert": {
@@ -26,7 +26,7 @@
   },
   "joist": {
     "sha": "2924a02611570eb7443cd94eb2115ae99cad206d",
-    "branch": "arithmetic-1.0"
+    "branch": "HEAD"
   },
   "kite": {
     "sha": "a4907ccc07cc80d6d3c9c1e240ba7664e32db56b",
