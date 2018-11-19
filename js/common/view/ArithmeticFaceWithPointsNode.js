@@ -1,4 +1,4 @@
-// Copyright 2014-2017, University of Colorado Boulder
+// Copyright 2014-2018, University of Colorado Boulder
 
 /**
  * Node that represents a smiling or frowning face with the additional points gained for getting the answer correct
