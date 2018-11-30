@@ -38,7 +38,7 @@ define( function( require ) {
     // @private - for PhET-iO
     this.checkAnswerEmitter = new Emitter( {
       tandem: tandem.createTandem( 'checkAnswerEmitter' ),
-      phetioType: EmitterIO( [ { name: 'results', type: ObjectIO, documentation: 'hello' } ] )
+      phetioType: EmitterIO( [ { name: 'results', type: ObjectIO } ] )
     } );
 
     // set up the 'fillEquation' function, which is used to fill in the missing portion(s) based on the user's inputs
