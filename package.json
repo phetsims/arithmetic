@@ -25,5 +25,8 @@
       "phet-io"
     ],
     "simulation": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/.eslintrc.js"
   }
 }
