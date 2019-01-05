@@ -38,6 +38,9 @@ define( function( require ) {
     // @private - for PhET-iO
     this.checkAnswerEmitter = new Emitter( {
       tandem: tandem.createTandem( 'checkAnswerEmitter' ),
+
+      // TODO: use of both of these is redundant, and should get fixed with https://github.com/phetsims/axon/issues/194
+      argumentTypes: [ { validValue: Object } ],
       phetioType: EmitterIO( [ { name: 'results', type: ObjectIO } ] )
     } );
 
