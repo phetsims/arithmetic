@@ -27,6 +27,7 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var Text = require( 'SCENERY/nodes/Text' );
+  var Util = require( 'DOT/Util' );
   var Vector2 = require( 'DOT/Vector2' );
 
   // constants
@@ -92,7 +93,9 @@ define( function( require ) {
             // first cell is the multiplier operator, others are multipliers
             if ( column === 0 ) {
               cell = new MultiplicationTableHeaderCell( MathSymbols.TIMES, cellOptions, {
-                font: new PhetFont( { size: Math.round( cellOptions.height * 0.85 ) } ) // Equation empirically determined, makes font smaller for larger tables.
+
+                // specify font and size, equation empirically determined, makes font smaller for larger tables
+                font: new PhetFont( { size: Util.roundSymmetric( cellOptions.height * 0.85 ) } )
               } );
             }
             else {
