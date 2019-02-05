@@ -23,7 +23,7 @@ define( function( require ) {
   var ObjectIO = require( 'TANDEM/types/ObjectIO' );
   var ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
   var Property = require( 'AXON/Property' );
-  var timer = require( 'PHET_CORE/timer' );
+  var timer = require( 'AXON/timer' );
 
   // constants
   var FEEDBACK_TIME = 1200; // in milliseconds, time that the feedback is presented before moving to next problem

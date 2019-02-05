@@ -18,7 +18,7 @@ define( function( require ) {
   var Node = require( 'SCENERY/nodes/Node' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
-  var timer = require( 'PHET_CORE/timer' );
+  var timer = require( 'AXON/timer' );
 
   // strings
   var unknownValueIndicatorString = require( 'string!ARITHMETIC/unknownValueIndicator' );

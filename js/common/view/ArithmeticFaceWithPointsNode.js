@@ -15,7 +15,7 @@ define( function( require ) {
   var FaceWithPointsNode = require( 'SCENERY_PHET/FaceWithPointsNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var timer = require( 'PHET_CORE/timer' );
+  var timer = require( 'AXON/timer' );
   var Util = require( 'DOT/Util' );
 
   // constants
