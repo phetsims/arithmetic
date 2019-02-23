@@ -40,7 +40,7 @@ define( function( require ) {
       tandem: tandem.createTandem( 'checkAnswerEmitter' ),
 
       // TODO: use of both of these is redundant, and should get fixed with https://github.com/phetsims/axon/issues/194
-      argumentTypes: [ { validValue: Object } ],
+      validators: [ { validValue: Object } ],
       phetioType: EmitterIO( [ { name: 'results', type: ObjectIO } ] )
     } );
 
