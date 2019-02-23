@@ -39,9 +39,7 @@ define( function( require ) {
     this.checkAnswerEmitter = new Emitter( {
       tandem: tandem.createTandem( 'checkAnswerEmitter' ),
 
-      // TODO: use of both of these is redundant, and should get fixed with https://github.com/phetsims/axon/issues/194
-      validators: [ { validValue: Object } ],
-      phetioType: EmitterIO( [ { name: 'results', type: ObjectIO } ] )
+      phetioType: EmitterIO( [ { name: 'results', type: ObjectIO, validator: { validValue: Object } } ] )
     } );
 
     // set up the 'fillEquation' function, which is used to fill in the missing portion(s) based on the user's inputs
