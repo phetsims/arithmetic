@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.15 Tue Mar 05 2019 14:29:41 GMT-0500 (EST)",
+  "comment": "# arithmetic 1.0.15 Tue Mar 19 2019 15:36:54 GMT-0400 (EDT)",
   "arithmetic": {
-    "sha": "1c283c9671b30a3eb9b5f379e1dd784a3c48a0a4",
+    "sha": "88c2fdfeb6a7713b83ea969f93715c00f46337d3",
     "branch": "1.0"
   },
   "assert": {
@@ -14,11 +14,11 @@
   },
   "brand": {
     "sha": "e1206a308bf08c15b1cae824bd1fd3775e02846b",
-    "branch": "arithmetic-1.0"
+    "branch": "HEAD"
   },
   "chipper": {
-    "sha": "c8cce7a8ad62b8bd4e5949e99e6b225d574c0b75",
-    "branch": "HEAD"
+    "sha": "09f4f57558e707e5f74f8e1269d71c101f588231",
+    "branch": "arithmetic-1.0"
   },
   "dot": {
     "sha": "7a28b1a92733cee778e2cf5d22ca45042884d416",
@@ -26,7 +26,7 @@
   },
   "joist": {
     "sha": "24e0a038df6191c8c8411bd674bb6f32c1084917",
-    "branch": "arithmetic-1.0"
+    "branch": "HEAD"
   },
   "kite": {
     "sha": "a4907ccc07cc80d6d3c9c1e240ba7664e32db56b",
@@ -38,6 +38,10 @@
   },
   "phetcommon": {
     "sha": "f48b7b8e7b379e35ab197f97cf51306c6bd90484",
+    "branch": "HEAD"
+  },
+  "phetmarks": {
+    "sha": "fb7c8ebaeab84cff5db1dab8c4897b622338789d",
     "branch": "HEAD"
   },
   "scenery": {
@@ -67,9 +71,5 @@
   "vibe": {
     "sha": "57ff9ca74d62eacd6ae556db66e489ba54a2d736",
     "branch": "HEAD"
-  },
-  "phetmarks": {
-    "branch": "master",
-    "sha": "fb7c8ebaeab84cff5db1dab8c4897b622338789d"
   }
 }
