@@ -12,6 +12,7 @@
   "phet": {
     "requirejsNamespace": "ARITHMETIC",
     "phetLibs": [
+      "twixt",
       "vegas",
       "vibe"
     ],
