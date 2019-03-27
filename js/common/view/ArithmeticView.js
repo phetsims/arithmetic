@@ -10,9 +10,11 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var Animation = require( 'TWIXT/Animation' );
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var Bounds2 = require( 'DOT/Bounds2' );
+  var Easing = require( 'TWIXT/Easing' );
   var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -21,7 +23,7 @@ define( function( require ) {
   var WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
 
   // constants
-  var ANIMATION_TIME = 750;
+  var SCREEN_CHANGE_TIME = 0.75; // seconds
 
   /**
    * @param {ArithmeticModel} model - Main model for screen.
@@ -76,44 +78,105 @@ define( function( require ) {
     // the equation node.
     multiplicationTableNode.animationOrigin = equationNode.productInput.center;
 
-    // create the animators or 'tweens' that will slide the screens in and out.
-    var levelSelectionScreenAnimator = new TWEEN.Tween( { x: levelSelectionNode.x } ).easing( TWEEN.Easing.Cubic.InOut ).onUpdate( function() {
-      levelSelectionNode.x = this.x;
-    } ).onComplete( function() {
-      levelSelectionNode.visible = ( levelSelectionNode.x === self.layoutBounds.minX );
-      levelSelectionNode.pickable = levelSelectionNode.visible; // prevent interaction during animation, see issue #137
+    // create the animations that will slide the level selection screen and the workspaces in and out
+    var levelSelectionScreenInAnimator = new Animation( {
+      duration: SCREEN_CHANGE_TIME,
+      easing: Easing.CUBIC_IN_OUT,
+      getValue: function() {
+        return levelSelectionNode.x;
+      },
+      setValue: function( newXPosition ) {
+        levelSelectionNode.x = newXPosition;
+      },
+      to: self.layoutBounds.minX
+    } );
+    levelSelectionScreenInAnimator.beginEmitter.addListener( function() {
+      levelSelectionNode.visible = true;
+      levelSelectionNode.pickable = false; // prevent interaction during animation
+    } );
+    levelSelectionScreenInAnimator.finishEmitter.addListener( function() {
+      levelSelectionNode.pickable = true;
     } );
 
-    var workspaceNodeAnimator = new TWEEN.Tween( { x: workspaceNode.x } ).easing( TWEEN.Easing.Cubic.InOut ).onUpdate( function() {
-      workspaceNode.x = this.x;
-    } ).onComplete( function() {
-      workspaceNode.visible = ( workspaceNode.x === self.layoutBounds.minX );
-      workspaceNode.pickable = workspaceNode.visible; // prevent interaction during animation, see issue #137
+    var levelSelectionScreenOutAnimator = new Animation( {
+      duration: SCREEN_CHANGE_TIME,
+      easing: Easing.CUBIC_IN_OUT,
+      getValue: function() {
+        return levelSelectionNode.x;
+      },
+      setValue: function( newXPosition ) {
+        levelSelectionNode.x = newXPosition;
+      },
+      to: self.layoutBounds.minX - levelSelectionNode.width
+    } );
+    levelSelectionScreenOutAnimator.beginEmitter.addListener( function() {
+      levelSelectionNode.pickable = false; // prevent interaction during animation
+    } );
+    levelSelectionScreenOutAnimator.finishEmitter.addListener( function() {
+      levelSelectionNode.visible = false;
     } );
 
-    // observers
+    var workspaceNodeInAnimator = new Animation( {
+      duration: SCREEN_CHANGE_TIME,
+      easing: Easing.CUBIC_IN_OUT,
+      getValue: function() {
+        return workspaceNode.x;
+      },
+      setValue: function( newXPosition ) {
+        workspaceNode.x = newXPosition;
+      },
+      to: self.layoutBounds.minX
+    } );
+    workspaceNodeInAnimator.beginEmitter.addListener( function() {
+      workspaceNode.visible = true;
+      workspaceNode.pickable = false; // prevent interaction during animation
+    } );
+    workspaceNodeInAnimator.finishEmitter.addListener( function() {
+      workspaceNode.pickable = true;
+    } );
+
+    var workspaceNodeOutAnimator = new Animation( {
+      duration: SCREEN_CHANGE_TIME,
+      easing: Easing.CUBIC_IN_OUT,
+      getValue: function() {
+        return workspaceNode.x;
+      },
+      setValue: function( newXPosition ) {
+        workspaceNode.x = newXPosition;
+      },
+      to: self.layoutBounds.maxX
+    } );
+    workspaceNodeOutAnimator.beginEmitter.addListener( function() {
+      workspaceNode.pickable = false; // prevent interaction during animation
+    } );
+    workspaceNodeOutAnimator.finishEmitter.addListener( function() {
+      workspaceNode.visible = false;
+    } );
+
+    // monitor the game state and update the view and changes occur
     model.stateProperty.link( function( newState, oldState ) {
 
       // animate the transition between the level select screen and the selected level
       if ( newState === GameState.SELECTING_LEVEL && oldState ) {
 
         // Slide out the workspace node
-        workspaceNode.pickable = false;
-        workspaceNodeAnimator.stop().to( { x: self.layoutBounds.maxX }, ANIMATION_TIME ).start( phet.joist.elapsedTime );
+        workspaceNodeInAnimator.stop();
+        workspaceNodeOutAnimator.start();
 
         // Slide in the level selection screen
-        levelSelectionNode.visible = true;
-        levelSelectionScreenAnimator.stop().to( { x: self.layoutBounds.minX }, ANIMATION_TIME ).start( phet.joist.elapsedTime );
+        levelSelectionScreenOutAnimator.stop();
+        levelSelectionScreenInAnimator.start();
       }
       else if ( newState !== GameState.SELECTING_LEVEL && oldState === GameState.SELECTING_LEVEL ) {
 
         // Slide in the workspace node
-        workspaceNode.visible = true;
-        workspaceNodeAnimator.stop().to( { x: self.layoutBounds.minX }, ANIMATION_TIME ).start( phet.joist.elapsedTime );
+        workspaceNodeOutAnimator.stop();
+        workspaceNodeInAnimator.start();
 
         // Slide out the level selection screen
-        levelSelectionNode.pickable = false;
-        levelSelectionScreenAnimator.stop().to( { x: self.layoutBounds.minX - levelSelectionNode.width }, ANIMATION_TIME ).start( phet.joist.elapsedTime );
+        levelSelectionScreenInAnimator.stop();
+        levelSelectionScreenOutAnimator.start();
+        // levelSelectionScreenAnimatorOld.stop().to( { x: self.layoutBounds.minX - levelSelectionNode.width }, ANIMATION_TIME ).start( phet.joist.elapsedTime );
       }
 
       // play the appropriate audio, if any, for this state transition
