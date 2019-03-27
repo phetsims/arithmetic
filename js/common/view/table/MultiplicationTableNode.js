@@ -14,9 +14,11 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var Animation = require( 'TWIXT/Animation' );
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   var Dimension2 = require( 'DOT/Dimension2' );
+  var Easing = require( 'TWIXT/Easing' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MathSymbols = require( 'SCENERY_PHET/MathSymbols' );
@@ -32,7 +34,7 @@ define( function( require ) {
 
   // constants
   var TABLE_SIZE = new Dimension2( 434, 320 ); // table size in screen coordinates, empirically determined
-  var ANSWER_ANIMATION_TIME = 800; // in milliseconds
+  var ANSWER_ANIMATION_TIME = 0.8; // in seconds
 
   // Starting point for the animation of the answer.  It is not ideal that this is a constant, because it means that if
   // the layout changes, this will need to be manually updated, but it's tricky to get it coordinated with the layout
@@ -186,35 +188,50 @@ define( function( require ) {
               // If the cell is marked as used but the text is not yet visible, animate the product to the cell.
               if ( animateAnswer && !cell.isTextVisible() ) {
 
-                // Animate the product moving from the equation to the appropriate cell within the table.  We had to
-                // get a little tricky with this since the scale of each node is controlled by a function rather than
-                // a parameter.
-                (function() {
+                // Animate the product moving from the equation to the appropriate cell within the table.
+                ( function() {
                   var destinationCell = cell;
                   self.flyingProduct.text = destinationCell.getTextString();
                   self.flyingProduct.setScaleMagnitude( 1 );
                   var flyingProductDestination = self.globalToLocalPoint( destinationCell.parentToGlobalPoint( destinationCell.center ) );
-                  var flyingProductPositionAndScale = {
-                    centerX: ANSWER_ANIMATION_ORIGIN.x,
-                    centerY: ANSWER_ANIMATION_ORIGIN.y,
-                    scale: 1
-                  };
-                  self.flyingProductAnimation = new TWEEN.Tween( flyingProductPositionAndScale ).to( {
-                    centerX: flyingProductDestination.x,
-                    centerY: flyingProductDestination.y,
-                    scale: destinationCell.getTextHeight() / self.flyingProduct.height
-                  }, ANSWER_ANIMATION_TIME ).easing( TWEEN.Easing.Cubic.InOut ).onUpdate( function() {
-                    self.flyingProduct.centerX = flyingProductPositionAndScale.centerX;
-                    self.flyingProduct.centerY = flyingProductPositionAndScale.centerY;
-                    self.flyingProduct.setScaleMagnitude( flyingProductPositionAndScale.scale );
-                  } ).onComplete( function() {
+
+                  // create the animation
+                  self.flyingProductAnimation = new Animation( {
+                    duration: ANSWER_ANIMATION_TIME,
+                    targets: [
+
+                      // position
+                      {
+                        object: self.flyingProduct,
+                        attribute: 'center',
+                        from: ANSWER_ANIMATION_ORIGIN,
+                        to: flyingProductDestination,
+                        easing: Easing.CUBIC_IN_OUT
+                      },
+
+                      // scale
+                      {
+                        from: 1,
+                        to: destinationCell.getTextHeight() / self.flyingProduct.height,
+                        setValue: function( newScale ) {
+                          self.flyingProduct.setScaleMagnitude( newScale );
+                        },
+                        easing: Easing.CUBIC_IN_OUT
+                      }
+                    ]
+                  } );
+                  self.flyingProductAnimation.beginEmitter.addListener( function() {
+                    self.flyingProduct.visible = true;
+                  } );
+                  self.flyingProductAnimation.finishEmitter.addListener( function() {
                     destinationCell.showText();
                     self.flyingProduct.visible = false;
                     self.flyingProductAnimation = null;
                   } );
-                  self.flyingProduct.visible = true;
-                  self.flyingProductAnimation.start( phet.joist.elapsedTime );
-                })();
+
+                  // start the animation
+                  self.flyingProductAnimation.start();
+                } )();
               }
               else {
                 // No animation, so just show the text.
