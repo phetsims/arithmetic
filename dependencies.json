@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.16 Thu Apr 04 2019 09:25:46 GMT-0600 (Mountain Daylight Time)",
+  "comment": "# arithmetic 1.0.16 Thu Apr 11 2019 16:38:51 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "f83bc1e29c82df05bef3e36b8cd29dc6840f62b2",
+    "sha": "52a41d1fe22ffa17371746c00f147cb91c020672",
     "branch": "1.0"
   },
   "assert": {
@@ -17,8 +17,8 @@
     "branch": "HEAD"
   },
   "chipper": {
-    "sha": "09f4f57558e707e5f74f8e1269d71c101f588231",
-    "branch": "HEAD"
+    "sha": "9b3a5817da348520acac457b737e970fb97b02d2",
+    "branch": "arithmetic-1.0"
   },
   "dot": {
     "sha": "7a28b1a92733cee778e2cf5d22ca45042884d416",
