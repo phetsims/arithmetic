@@ -320,7 +320,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PhetioCommandProcessorIO"
     },
-    "arithmetic.general.resizedEmitter": {
+    "arithmetic.general.resizedAction": {
       "phetioDocumentation": "Emits when the sim is resized",
       "phetioEventType": "model",
       "phetioFeatured": false,
@@ -364,7 +364,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "arithmetic.general.stepSimulationEmitter": {
+    "arithmetic.general.stepSimulationAction": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
       "phetioFeatured": false,
