@@ -78,8 +78,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO.<>"
     },
-    "arithmetic.general.barrierRectangle.inputListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.general.barrierRectangle.inputListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -89,8 +89,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.general.barrierRectangle.inputListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.general.barrierRectangle.inputListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -144,7 +144,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "arithmetic.general.controller.input.mouseDownEmitter": {
+    "arithmetic.general.controller.input.mouseDownAction": {
       "phetioDocumentation": "Emits when a mouse button is pressed",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -155,7 +155,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<Vector2IO, DOMEventIO>"
     },
-    "arithmetic.general.controller.input.mouseMovedEmitter": {
+    "arithmetic.general.controller.input.mouseMovedAction": {
       "phetioDocumentation": "Emits when the mouse is moved",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -166,7 +166,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<Vector2IO, DOMEventIO>"
     },
-    "arithmetic.general.controller.input.mouseOutEmitter": {
+    "arithmetic.general.controller.input.mouseOutAction": {
       "phetioDocumentation": "Emits when the mouse moves out of the display",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -177,7 +177,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<Vector2IO, DOMEventIO>"
     },
-    "arithmetic.general.controller.input.mouseOverEmitter": {
+    "arithmetic.general.controller.input.mouseOverAction": {
       "phetioDocumentation": "Emits when the mouse is moved over a Node",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -188,7 +188,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<Vector2IO, DOMEventIO>"
     },
-    "arithmetic.general.controller.input.mouseUpEmitter": {
+    "arithmetic.general.controller.input.mouseUpAction": {
       "phetioDocumentation": "Emits when a mouse button is released",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -199,7 +199,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<Vector2IO, DOMEventIO>"
     },
-    "arithmetic.general.controller.input.penCanceledEmitter": {
+    "arithmetic.general.controller.input.penCanceledAction": {
       "phetioDocumentation": "Emits when a pen is canceled",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -210,7 +210,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NumberIO, Vector2IO, DOMEventIO>"
     },
-    "arithmetic.general.controller.input.penEndedEmitter": {
+    "arithmetic.general.controller.input.penEndedAction": {
       "phetioDocumentation": "Emits when a pen is lifted",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -221,7 +221,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NumberIO, Vector2IO, DOMEventIO>"
     },
-    "arithmetic.general.controller.input.penMovedEmitter": {
+    "arithmetic.general.controller.input.penMovedAction": {
       "phetioDocumentation": "Emits when a pen is moved",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -232,7 +232,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NumberIO, Vector2IO, DOMEventIO>"
     },
-    "arithmetic.general.controller.input.penStartedEmitter": {
+    "arithmetic.general.controller.input.penStartedAction": {
       "phetioDocumentation": "Emits when a pen touches the screen",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -243,7 +243,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NumberIO, Vector2IO, DOMEventIO>"
     },
-    "arithmetic.general.controller.input.touchCanceledEmitter": {
+    "arithmetic.general.controller.input.touchCanceledAction": {
       "phetioDocumentation": "Emits when a touch is canceled",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -254,7 +254,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NumberIO, Vector2IO, DOMEventIO>"
     },
-    "arithmetic.general.controller.input.touchEndedEmitter": {
+    "arithmetic.general.controller.input.touchEndedAction": {
       "phetioDocumentation": "Emits when a touch ends",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -265,7 +265,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NumberIO, Vector2IO, DOMEventIO>"
     },
-    "arithmetic.general.controller.input.touchMovedEmitter": {
+    "arithmetic.general.controller.input.touchMovedAction": {
       "phetioDocumentation": "Emits when a touch moves",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -276,7 +276,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NumberIO, Vector2IO, DOMEventIO>"
     },
-    "arithmetic.general.controller.input.touchStartedEmitter": {
+    "arithmetic.general.controller.input.touchStartedAction": {
       "phetioDocumentation": "Emits when a touch begins",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -287,7 +287,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NumberIO, Vector2IO, DOMEventIO>"
     },
-    "arithmetic.general.controller.input.validatePointersEmitter": {
+    "arithmetic.general.controller.input.validatePointersAction": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
       "phetioFeatured": false,
@@ -298,7 +298,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<>"
     },
-    "arithmetic.general.controller.input.wheelScrolledEmitter": {
+    "arithmetic.general.controller.input.wheelScrolledAction": {
       "phetioDocumentation": "Emits when the mouse wheel scrolls",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -321,7 +321,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioTypeName": "PhetioCommandProcessorIO"
     },
     "arithmetic.general.resizedAction": {
-      "phetioDocumentation": "Emits when the sim is resized",
+      "phetioDocumentation": "Executes when the sim is resized",
       "phetioEventType": "model",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -419,8 +419,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO.<>"
     },
-    "arithmetic.homeScreen.view.divideScreenLargeButton.inputListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.homeScreen.view.divideScreenLargeButton.inputListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -430,8 +430,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.homeScreen.view.divideScreenLargeButton.inputListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.homeScreen.view.divideScreenLargeButton.inputListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -551,8 +551,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO.<>"
     },
-    "arithmetic.homeScreen.view.divideScreenSmallButton.inputListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.homeScreen.view.divideScreenSmallButton.inputListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -562,8 +562,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.homeScreen.view.divideScreenSmallButton.inputListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.homeScreen.view.divideScreenSmallButton.inputListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -683,8 +683,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO.<>"
     },
-    "arithmetic.homeScreen.view.factorScreenLargeButton.inputListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.homeScreen.view.factorScreenLargeButton.inputListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -694,8 +694,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.homeScreen.view.factorScreenLargeButton.inputListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.homeScreen.view.factorScreenLargeButton.inputListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -815,8 +815,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO.<>"
     },
-    "arithmetic.homeScreen.view.factorScreenSmallButton.inputListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.homeScreen.view.factorScreenSmallButton.inputListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -826,8 +826,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.homeScreen.view.factorScreenSmallButton.inputListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.homeScreen.view.factorScreenSmallButton.inputListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -947,8 +947,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO.<>"
     },
-    "arithmetic.homeScreen.view.multiplyScreenLargeButton.inputListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.homeScreen.view.multiplyScreenLargeButton.inputListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -958,8 +958,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.homeScreen.view.multiplyScreenLargeButton.inputListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.homeScreen.view.multiplyScreenLargeButton.inputListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -1079,8 +1079,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO.<>"
     },
-    "arithmetic.homeScreen.view.multiplyScreenSmallButton.inputListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.homeScreen.view.multiplyScreenSmallButton.inputListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -1090,8 +1090,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.homeScreen.view.multiplyScreenSmallButton.inputListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.homeScreen.view.multiplyScreenSmallButton.inputListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -1398,8 +1398,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
     },
-    "arithmetic.navigationBar.divideScreenButton.pressListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.navigationBar.divideScreenButton.pressListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -1409,8 +1409,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.navigationBar.divideScreenButton.pressListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.navigationBar.divideScreenButton.pressListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -1585,8 +1585,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
     },
-    "arithmetic.navigationBar.factorScreenButton.pressListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.navigationBar.factorScreenButton.pressListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -1596,8 +1596,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.navigationBar.factorScreenButton.pressListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.navigationBar.factorScreenButton.pressListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -1728,8 +1728,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
     },
-    "arithmetic.navigationBar.homeButton.pressListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.navigationBar.homeButton.pressListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -1739,8 +1739,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.navigationBar.homeButton.pressListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.navigationBar.homeButton.pressListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -1860,8 +1860,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
     },
-    "arithmetic.navigationBar.multiplyScreenButton.pressListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.navigationBar.multiplyScreenButton.pressListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -1871,8 +1871,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.navigationBar.multiplyScreenButton.pressListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.navigationBar.multiplyScreenButton.pressListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -2014,8 +2014,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO.<>"
     },
-    "arithmetic.navigationBar.phetButton.phetMenu.aboutMenuItem.inputListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.navigationBar.phetButton.phetMenu.aboutMenuItem.inputListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -2025,8 +2025,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.navigationBar.phetButton.phetMenu.aboutMenuItem.inputListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.navigationBar.phetButton.phetMenu.aboutMenuItem.inputListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -2091,8 +2091,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO.<>"
     },
-    "arithmetic.navigationBar.phetButton.phetMenu.screenshotMenuItem.inputListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.navigationBar.phetButton.phetMenu.screenshotMenuItem.inputListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -2102,8 +2102,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.navigationBar.phetButton.phetMenu.screenshotMenuItem.inputListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.navigationBar.phetButton.phetMenu.screenshotMenuItem.inputListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -2157,8 +2157,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
     },
-    "arithmetic.navigationBar.phetButton.pressListener.pressedEmitter": {
-      "phetioDocumentation": "Emits whenever a press occurs. The first argument when emitting can be used to convey info about the Event.",
+    "arithmetic.navigationBar.phetButton.pressListener.pressedAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
@@ -2168,8 +2168,8 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
     },
-    "arithmetic.navigationBar.phetButton.pressListener.releasedEmitter": {
-      "phetioDocumentation": "Emits whenever a release occurs.",
+    "arithmetic.navigationBar.phetButton.pressListener.releasedAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
       "phetioEventType": "user",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
