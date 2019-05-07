@@ -309,6 +309,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<DOMEventIO>"
     },
+    "arithmetic.general.focusProperty": {
+      "phetioDocumentation": "Stores the focus for the simulation. This is not updated based on mouse or touch input, only keyboard and other alternative inputs.",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<NullableIO.<FocusIO>>"
+    },
     "arithmetic.general.phetioCommandProcessor": {
       "phetioDocumentation": "Processes messages from the wrapper frame and returns the results. This serves as the source of PhET-iO data stream messages when commands are invoked from the wrapper.",
       "phetioEventType": "model",
