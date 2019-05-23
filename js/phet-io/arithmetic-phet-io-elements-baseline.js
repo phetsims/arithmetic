@@ -21,7 +21,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "EmitterIO.<ObjectIO>"
+      "phetioTypeName": "EmitterIO.<NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO>"
     },
     "arithmetic.factorScreen.activeProperty": {
       "phetioDocumentation": "Indicates whether the screen is active.  For single-screen simulations, the screen is always active.",
@@ -43,7 +43,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "EmitterIO.<ObjectIO>"
+      "phetioTypeName": "EmitterIO.<NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO>"
     },
     "arithmetic.general.activeProperty": {
       "phetioDocumentation": "Determines whether the entire simulation is running and processing user input. Setting this property to false pauses the simulation, and prevents user interaction.",
@@ -1308,7 +1308,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "EmitterIO.<ObjectIO>"
+      "phetioTypeName": "EmitterIO.<NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO>"
     },
     "arithmetic.navigationBar.divideScreenButton": {
       "phetioDocumentation": "Button in the navigation bar that selects the 'divideScreen' screen",

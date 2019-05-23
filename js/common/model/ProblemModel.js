@@ -19,7 +19,7 @@ define( function( require ) {
    */
   function ProblemModel() {
 
-    // @public - model properties
+    // @public - model properties, initialized to undefined, but only ever set to {number}
     this.multiplicandProperty = new Property( undefined );
     this.multiplierProperty = new Property( undefined );
     this.productProperty = new Property( undefined ); // product of multiplication

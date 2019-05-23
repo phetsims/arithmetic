@@ -14,15 +14,18 @@ define( function( require ) {
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
   var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var ArithmeticQueryParameters = require( 'ARITHMETIC/common/ArithmeticQueryParameters' );
+  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
   var Emitter = require( 'AXON/Emitter' );
   var EmitterIO = require( 'AXON/EmitterIO' );
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
+  var NumberIO = require( 'TANDEM/types/NumberIO' );
   var ObjectIO = require( 'TANDEM/types/ObjectIO' );
   var ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
   var Property = require( 'AXON/Property' );
+  var StringIO = require( 'TANDEM/types/StringIO' );
   var timer = require( 'AXON/timer' );
 
   // constants
@@ -38,8 +41,14 @@ define( function( require ) {
     // @private - for PhET-iO
     this.checkAnswerEmitter = new Emitter( {
       tandem: tandem.createTandem( 'checkAnswerEmitter' ),
-
-      phetioType: EmitterIO( [ { name: 'results', type: ObjectIO, validator: { valueType: Object } } ] )
+      phetioType: EmitterIO( [
+        { name: 'multiplicand', type: NumberIO },
+        { name: 'product', type: NumberIO },
+        { name: 'multiplier', type: NumberIO },
+        { name: 'isCorrect', type: BooleanIO },
+        { name: 'asString', type: StringIO },
+        { name: 'input', type: StringIO }
+      ] )
     } );
 
     // set up the 'fillEquation' function, which is used to fill in the missing portion(s) based on the user's inputs
@@ -110,14 +119,13 @@ define( function( require ) {
 
       var isCorrect = this.problemModel.multiplicandProperty.get() * this.problemModel.multiplierProperty.get() === this.problemModel.productProperty.get();
       var string = this.problemModel.multiplicandProperty.get() + ' x ' + this.problemModel.multiplierProperty.get() + ' = ' + this.problemModel.productProperty.get();
-      this.checkAnswerEmitter.emit( {
-        multiplicand: this.problemModel.multiplicandProperty.get(),
-        product: this.problemModel.productProperty.get(),
-        multiplier: this.problemModel.multiplierProperty.get(),
-        isCorrect: isCorrect,
-        asString: string,
-        userInput: this.inputProperty.get()
-      } );
+      this.checkAnswerEmitter.emit(
+        this.problemModel.multiplicandProperty.get(),
+        this.problemModel.productProperty.get(),
+        this.problemModel.multiplierProperty.get(),
+        isCorrect,
+        string,
+        this.inputProperty.get() );
       if ( isCorrect ) {
 
         // add the problem value to the total score
