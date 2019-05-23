@@ -22,7 +22,6 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
   var NumberIO = require( 'TANDEM/types/NumberIO' );
-  var ObjectIO = require( 'TANDEM/types/ObjectIO' );
   var ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
   var Property = require( 'AXON/Property' );
   var StringIO = require( 'TANDEM/types/StringIO' );
