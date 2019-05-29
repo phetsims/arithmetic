@@ -1321,10 +1321,10 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "arithmetic.navigationBar.divideScreenButton.buttonModel.enabledProperty": {
+    "arithmetic.navigationBar.divideScreenButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -1332,7 +1332,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "arithmetic.navigationBar.divideScreenButton.buttonModel.firedEmitter": {
+    "arithmetic.navigationBar.divideScreenButton.firedEmitter": {
       "phetioDocumentation": "Emits when the button is fired",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -1508,10 +1508,10 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "arithmetic.navigationBar.factorScreenButton.buttonModel.enabledProperty": {
+    "arithmetic.navigationBar.factorScreenButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -1519,7 +1519,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "arithmetic.navigationBar.factorScreenButton.buttonModel.firedEmitter": {
+    "arithmetic.navigationBar.factorScreenButton.firedEmitter": {
       "phetioDocumentation": "Emits when the button is fired",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -1698,7 +1698,7 @@ window.phet.phetio.phetioElementsBaseline =
     "arithmetic.navigationBar.homeButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -1783,10 +1783,10 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "arithmetic.navigationBar.multiplyScreenButton.buttonModel.enabledProperty": {
+    "arithmetic.navigationBar.multiplyScreenButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -1794,7 +1794,7 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "arithmetic.navigationBar.multiplyScreenButton.buttonModel.firedEmitter": {
+    "arithmetic.navigationBar.multiplyScreenButton.firedEmitter": {
       "phetioDocumentation": "Emits when the button is fired",
       "phetioEventType": "user",
       "phetioFeatured": false,
@@ -1973,7 +1973,7 @@ window.phet.phetio.phetioElementsBaseline =
     "arithmetic.navigationBar.phetButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
