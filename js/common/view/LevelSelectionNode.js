@@ -20,7 +20,6 @@ define( function( require ) {
   var Node = require( 'SCENERY/nodes/Node' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
-  var SoundToggleButton = require( 'SCENERY_PHET/buttons/SoundToggleButton' );
   var Text = require( 'SCENERY/nodes/Text' );
   var TimerToggleButton = require( 'SCENERY_PHET/buttons/TimerToggleButton' );
   var VBox = require( 'SCENERY/nodes/VBox' );
@@ -116,8 +115,7 @@ define( function( require ) {
     var soundAndTimerButtons = new VBox( {
       spacing: 5,
       children: [
-        new TimerToggleButton( ArithmeticGlobals.timerEnabledProperty ),
-        new SoundToggleButton( ArithmeticGlobals.soundEnabledProperty )
+        new TimerToggleButton( ArithmeticGlobals.timerEnabledProperty )
       ],
       right: layoutBounds.maxX * 0.08,
       bottom: layoutBounds.maxY * 0.95

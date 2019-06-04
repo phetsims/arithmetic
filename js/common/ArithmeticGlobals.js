@@ -14,8 +14,7 @@ define( function( require ) {
   var Property = require( 'AXON/Property' );
 
   var ArithmeticGlobals = {
-    timerEnabledProperty: new Property( false ),
-    soundEnabledProperty: new Property( true )
+    timerEnabledProperty: new Property( false )
   };
 
   arithmetic.register( 'ArithmeticGlobals', ArithmeticGlobals );

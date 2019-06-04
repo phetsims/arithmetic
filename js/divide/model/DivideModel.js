@@ -12,11 +12,11 @@ define( function( require ) {
 
   // modules
   var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Random = require( 'DOT/Random' );
+  var soundManager = require( 'TAMBO/soundManager' );
 
   /**
    * @param {Tandem} tandem
@@ -87,8 +87,8 @@ define( function( require ) {
       var self = this;
 
       // make sure that sound is off, since otherwise it dings for every solved problem
-      var soundState = ArithmeticGlobals.soundEnabledProperty.value;
-      ArithmeticGlobals.soundEnabledProperty.value = false;
+      var soundState = soundManager.enabled;
+      soundManager.enabled = false;
 
       // answer the questions
       var numQuestions = this.activeLevelModel.tableSize * this.activeLevelModel.tableSize;
@@ -119,7 +119,7 @@ define( function( require ) {
       } );
 
       // restore the original sound state
-      ArithmeticGlobals.soundEnabledProperty.value = soundState;
+      soundManager.enabled = soundState;
     }
   } );
 

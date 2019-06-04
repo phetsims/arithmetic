@@ -313,7 +313,6 @@ define( function( require ) {
       this.clearGameEnvironments();
 
       // reset sound and timer on/off settings
-      ArithmeticGlobals.soundEnabledProperty.reset();
       ArithmeticGlobals.timerEnabledProperty.reset();
     },
 
