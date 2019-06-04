@@ -15,7 +15,7 @@ define( function( require ) {
   var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
   var Bounds2 = require( 'DOT/Bounds2' );
   var Easing = require( 'TWIXT/Easing' );
-  var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
+  var GameAudioPlayerOld = require( 'VEGAS/GameAudioPlayerOld' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LevelSelectionNode = require( 'ARITHMETIC/common/view/LevelSelectionNode' );
@@ -72,7 +72,7 @@ define( function( require ) {
     this.addChild( workspaceNode );
 
     // sounds player that is used to produce the feedback sounds for the game
-    var gameAudioPlayer = new GameAudioPlayer( ArithmeticGlobals.soundEnabledProperty );
+    var gameAudioPlayer = new GameAudioPlayerOld( ArithmeticGlobals.soundEnabledProperty );
 
     // set the origin of the answer animation in the multiplication table, which depends upon the newly set position of
     // the equation node.
