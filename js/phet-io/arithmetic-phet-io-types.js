@@ -119,6 +119,45 @@ window.phet.phetio.phetioTypes = assert &&
       "supertype": "ObjectIO",
       "typeName": "ActionIO.<NullableIO.<EventIO>, VoidIO>"
     },
+    "ActionIO.<NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO>": {
+      "documentation": "Emits when an event occurs. The arguments are:<br><ol><li>multiplicand: NumberIO</li>\n<li>product: NumberIO</li>\n<li>multiplier: NumberIO</li>\n<li>isCorrect: BooleanIO</li>\n<li>asString: StringIO</li>\n<li>input: StringIO</li></ol>",
+      "events": [
+        "emitted"
+      ],
+      "methodOrder": [],
+      "methods": {
+        "addListener": {
+          "documentation": "Adds a listener which will be called when the emitter emits.",
+          "parameterTypes": [
+            "FunctionIO.<NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO>"
+          ],
+          "returnType": "VoidIO"
+        },
+        "execute": {
+          "documentation": "Executes the function the Action is wrapping.",
+          "invocableForReadOnlyElements": false,
+          "parameterTypes": [
+            "NumberIO",
+            "NumberIO",
+            "NumberIO",
+            "BooleanIO",
+            "StringIO",
+            "StringIO"
+          ],
+          "returnType": "VoidIO"
+        }
+      },
+      "parameterTypes": [
+        "NumberIO",
+        "NumberIO",
+        "NumberIO",
+        "BooleanIO",
+        "StringIO",
+        "StringIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "ActionIO.<NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO>"
+    },
     "ActionIO.<NumberIO, NumberIO>": {
       "documentation": "Emits when an event occurs. The arguments are:<br><ol><li>width: NumberIO</li>\n<li>height: NumberIO</li></ol>",
       "events": [
@@ -243,6 +282,33 @@ window.phet.phetio.phetioTypes = assert &&
       "supertype": "ObjectIO",
       "typeName": "ActionIO.<Vector2IO, DOMEventIO>"
     },
+    "ArrayIO.<StringIO>": {
+      "documentation": "A wrapper for the built-in JS array type, with the element type specified.",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "StringIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "ArrayIO.<StringIO>"
+    },
+    "BooleanIO": {
+      "documentation": "Wrapper for the built-in JS boolean type (true/false)",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "ObjectIO",
+      "typeName": "BooleanIO"
+    },
+    "DOMEventIO": {
+      "documentation": "A DOM Event",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "ObjectIO",
+      "typeName": "DOMEventIO"
+    },
     "EmitterIO.<>": {
       "documentation": "Emits when an event occurs. No arguments.",
       "events": [],
@@ -303,6 +369,280 @@ window.phet.phetio.phetioTypes = assert &&
       "supertype": "ActionIO.<NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO>",
       "typeName": "EmitterIO.<NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO>"
     },
+    "EventIO": {
+      "documentation": "An event, with a point",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "ObjectIO",
+      "typeName": "EventIO"
+    },
+    "FocusIO": {
+      "documentation": "A IO type for the instance in the simulation which currently has keyboard focus.",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "ObjectIO",
+      "typeName": "FocusIO"
+    },
+    "FontIO": {
+      "documentation": "Font handling for text drawing. Options:<ul><li><strong>style:</strong> normal      &mdash; normal | italic | oblique </li><li><strong>variant:</strong> normal    &mdash; normal | small-caps </li><li><strong>weight:</strong> normal     &mdash; normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 </li><li><strong>stretch:</strong> normal    &mdash; normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded </li><li><strong>size:</strong> 10px         &mdash; absolute-size | relative-size | length | percentage -- unitless number interpreted as px. absolute suffixes: cm, mm, in, pt, pc, px. relative suffixes: em, ex, ch, rem, vw, vh, vmin, vmax. </li><li><strong>lineHeight:</strong> normal &mdash; normal | number | length | percentage -- NOTE: Canvas spec forces line-height to normal </li><li><strong>family:</strong> sans-serif &mdash; comma-separated list of families, including generic families (serif, sans-serif, cursive, fantasy, monospace). ideally escape with double-quotes</li></ul>",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "ObjectIO",
+      "typeName": "FontIO"
+    },
+    "FunctionIO.<>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> VoidIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<>"
+    },
+    "FunctionIO.<BooleanIO, NullableIO.<BooleanIO>>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> BooleanIO, NullableIO.<BooleanIO><br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "BooleanIO",
+        "NullableIO.<BooleanIO>"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<BooleanIO, NullableIO.<BooleanIO>>"
+    },
+    "FunctionIO.<BooleanIO>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> BooleanIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "BooleanIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<BooleanIO>"
+    },
+    "FunctionIO.<DOMEventIO>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> DOMEventIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "DOMEventIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<DOMEventIO>"
+    },
+    "FunctionIO.<EventIO, VoidIO, VoidIO>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> EventIO, VoidIO, VoidIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "EventIO",
+        "VoidIO",
+        "VoidIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<EventIO, VoidIO, VoidIO>"
+    },
+    "FunctionIO.<NullableIO.<BooleanIO>, NullableIO.<NullableIO.<BooleanIO>>>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NullableIO.<BooleanIO>, NullableIO.<NullableIO.<BooleanIO>><br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "NullableIO.<BooleanIO>",
+        "NullableIO.<NullableIO.<BooleanIO>>"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<NullableIO.<BooleanIO>, NullableIO.<NullableIO.<BooleanIO>>>"
+    },
+    "FunctionIO.<NullableIO.<BooleanIO>>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NullableIO.<BooleanIO><br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "NullableIO.<BooleanIO>"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<NullableIO.<BooleanIO>>"
+    },
+    "FunctionIO.<NullableIO.<EventIO>, VoidIO>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NullableIO.<EventIO>, VoidIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "NullableIO.<EventIO>",
+        "VoidIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<NullableIO.<EventIO>, VoidIO>"
+    },
+    "FunctionIO.<NullableIO.<FocusIO>, NullableIO.<NullableIO.<FocusIO>>>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NullableIO.<FocusIO>, NullableIO.<NullableIO.<FocusIO>><br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "NullableIO.<FocusIO>",
+        "NullableIO.<NullableIO.<FocusIO>>"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<NullableIO.<FocusIO>, NullableIO.<NullableIO.<FocusIO>>>"
+    },
+    "FunctionIO.<NullableIO.<FocusIO>>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NullableIO.<FocusIO><br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "NullableIO.<FocusIO>"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<NullableIO.<FocusIO>>"
+    },
+    "FunctionIO.<NumberIO, NullableIO.<NumberIO>>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NumberIO, NullableIO.<NumberIO><br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "NumberIO",
+        "NullableIO.<NumberIO>"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<NumberIO, NullableIO.<NumberIO>>"
+    },
+    "FunctionIO.<NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "NumberIO",
+        "NumberIO",
+        "NumberIO",
+        "BooleanIO",
+        "StringIO",
+        "StringIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO>"
+    },
+    "FunctionIO.<NumberIO, NumberIO>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NumberIO, NumberIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "NumberIO",
+        "NumberIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<NumberIO, NumberIO>"
+    },
+    "FunctionIO.<NumberIO, Vector2IO, DOMEventIO>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NumberIO, Vector2IO, DOMEventIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "NumberIO",
+        "Vector2IO",
+        "DOMEventIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<NumberIO, Vector2IO, DOMEventIO>"
+    },
+    "FunctionIO.<NumberIO>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NumberIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "NumberIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<NumberIO>"
+    },
+    "FunctionIO.<ObjectIO>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> ObjectIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "ObjectIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<ObjectIO>"
+    },
+    "FunctionIO.<StringIO, NullableIO.<StringIO>>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> StringIO, NullableIO.<StringIO><br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "StringIO",
+        "NullableIO.<StringIO>"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<StringIO, NullableIO.<StringIO>>"
+    },
+    "FunctionIO.<StringIO, ObjectIO, ObjectIO, ObjectIO>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> StringIO, ObjectIO, ObjectIO, ObjectIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "StringIO",
+        "ObjectIO",
+        "ObjectIO",
+        "ObjectIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<StringIO, ObjectIO, ObjectIO, ObjectIO>"
+    },
+    "FunctionIO.<StringIO, StringIO>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> StringIO, StringIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "StringIO",
+        "StringIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<StringIO, StringIO>"
+    },
+    "FunctionIO.<StringIO>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> StringIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "StringIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<StringIO>"
+    },
+    "FunctionIO.<Vector2IO, DOMEventIO>": {
+      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> Vector2IO, DOMEventIO<br><strong>Return Type:</strong> VoidIO",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "Vector2IO",
+        "DOMEventIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "FunctionIO.<Vector2IO, DOMEventIO>"
+    },
     "NodeIO": {
       "documentation": "The base type for graphical and potentially interactive objects.  NodeIO has nested PropertyIO values for visibility, pickability and opacity.<br><br>Pickable can take one of three values:<br><ul><li>null: pass-through behavior. Nodes with input listeners are pickable, but nodes without input listeners won't block events for nodes behind it.</li><li>false: The node cannot be interacted with, and it blocks events for nodes behind it.</li><li>true: The node can be interacted with (if it has an input listener).</li></ul>For more about Scenery node pickability, please see <a href=\"http://phetsims.github.io/scenery/doc/implementation-notes#pickability\">http://phetsims.github.io/scenery/doc/implementation-notes#pickability</a>",
       "events": [],
@@ -310,6 +650,91 @@ window.phet.phetio.phetioTypes = assert &&
       "methods": {},
       "supertype": "ObjectIO",
       "typeName": "NodeIO"
+    },
+    "NullableIO.<BooleanIO>": {
+      "documentation": "A wrapper to wrap another IOType, adding support for null.",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "BooleanIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "NullableIO.<BooleanIO>"
+    },
+    "NullableIO.<EventIO>": {
+      "documentation": "A wrapper to wrap another IOType, adding support for null.",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "EventIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "NullableIO.<EventIO>"
+    },
+    "NullableIO.<FocusIO>": {
+      "documentation": "A wrapper to wrap another IOType, adding support for null.",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "FocusIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "NullableIO.<FocusIO>"
+    },
+    "NullableIO.<NullableIO.<BooleanIO>>": {
+      "documentation": "A wrapper to wrap another IOType, adding support for null.",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "NullableIO.<BooleanIO>"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "NullableIO.<NullableIO.<BooleanIO>>"
+    },
+    "NullableIO.<NullableIO.<FocusIO>>": {
+      "documentation": "A wrapper to wrap another IOType, adding support for null.",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "NullableIO.<FocusIO>"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "NullableIO.<NullableIO.<FocusIO>>"
+    },
+    "NullableIO.<NumberIO>": {
+      "documentation": "A wrapper to wrap another IOType, adding support for null.",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "NumberIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "NullableIO.<NumberIO>"
+    },
+    "NullableIO.<StringIO>": {
+      "documentation": "A wrapper to wrap another IOType, adding support for null.",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "parameterTypes": [
+        "StringIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "NullableIO.<StringIO>"
+    },
+    "NumberIO": {
+      "documentation": "Wrapper for the built-in JS number type (floating point, but also represents integers)",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "ObjectIO",
+      "typeName": "NumberIO"
     },
     "NumberPropertyIO": {
       "documentation": "Extends PropertyIO to add values for the numeric range ( min, max ) and numberType ( 'FloatingPoint' | 'Integer' )",
@@ -321,6 +746,14 @@ window.phet.phetio.phetioTypes = assert &&
       ],
       "supertype": "PropertyIO.<NumberIO>",
       "typeName": "NumberPropertyIO"
+    },
+    "ObjectIO": {
+      "documentation": "The root of the wrapper object hierarchy.",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": null,
+      "typeName": "ObjectIO"
     },
     "PhetButtonIO": {
       "documentation": "The PhET Button in the bottom right of the screen",
@@ -360,6 +793,7 @@ window.phet.phetio.phetioTypes = assert &&
         "addEventListener",
         "getScreenshotDataURL",
         "getPhetioIDs",
+        "getPhetioTypes",
         "getValues",
         "getState",
         "setState",
@@ -430,6 +864,11 @@ window.phet.phetio.phetioTypes = assert &&
         },
         "getPhetioIDs": {
           "documentation": "Gets a list of all of the PhET-iO elements.",
+          "parameterTypes": [],
+          "returnType": "ArrayIO.<StringIO>"
+        },
+        "getPhetioTypes": {
+          "documentation": "Gets a list of all of the PhET-iO types. This list includes types that have no PhET-iO elements associated with it, but may be a supertype, or a method parameter or return type.",
           "parameterTypes": [],
           "returnType": "ArrayIO.<StringIO>"
         },
@@ -719,6 +1158,57 @@ window.phet.phetio.phetioTypes = assert &&
       "supertype": "ObjectIO",
       "typeName": "PropertyIO.<NullableIO.<FocusIO>>"
     },
+    "PropertyIO.<NumberIO>": {
+      "documentation": "Observable values that send out notifications when the value changes. This differs from the traditional listener pattern in that added listeners also receive a callback with the current value when the listeners are registered. This is a widely-used pattern in PhET-iO simulations.",
+      "events": [
+        "changed"
+      ],
+      "methodOrder": [
+        "link",
+        "lazyLink"
+      ],
+      "methods": {
+        "getValue": {
+          "documentation": "Gets the current value.",
+          "parameterTypes": [],
+          "returnType": "NumberIO"
+        },
+        "lazyLink": {
+          "documentation": "Adds a listener which will be called when the value changes. This method is like \"link\", but without the current-value callback on registration. The listener takes two arguments, the new value and the previous value.",
+          "parameterTypes": [
+            "FunctionIO.<NumberIO, NullableIO.<NumberIO>>"
+          ],
+          "returnType": "VoidIO"
+        },
+        "link": {
+          "documentation": "Adds a listener which will be called when the value changes. On registration, the listener is also called with the current value. The listener takes two arguments, the new value and the previous value.",
+          "parameterTypes": [
+            "FunctionIO.<NumberIO, NullableIO.<NumberIO>>"
+          ],
+          "returnType": "VoidIO"
+        },
+        "setValue": {
+          "documentation": "Sets the value of the property. If the value differs from the previous value, listeners are notified with the new value.",
+          "invocableForReadOnlyElements": false,
+          "parameterTypes": [
+            "NumberIO"
+          ],
+          "returnType": "VoidIO"
+        },
+        "unlink": {
+          "documentation": "Removes a listener.",
+          "parameterTypes": [
+            "FunctionIO.<NumberIO>"
+          ],
+          "returnType": "VoidIO"
+        }
+      },
+      "parameterTypes": [
+        "NumberIO"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "PropertyIO.<NumberIO>"
+    },
     "PropertyIO.<StringIO>": {
       "documentation": "Observable values that send out notifications when the value changes. This differs from the traditional listener pattern in that added listeners also receive a callback with the current value when the listeners are registered. This is a widely-used pattern in PhET-iO simulations.",
       "events": [
@@ -770,6 +1260,14 @@ window.phet.phetio.phetioTypes = assert &&
       "supertype": "ObjectIO",
       "typeName": "PropertyIO.<StringIO>"
     },
+    "StringIO": {
+      "documentation": "Wrapper for the built-in JS string type",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "ObjectIO",
+      "typeName": "StringIO"
+    },
     "TextIO": {
       "documentation": "Text that is displayed in the simulation. TextIO has a nested PropertyIO.&lt;String&gt; for the current string value.",
       "events": [],
@@ -804,5 +1302,21 @@ window.phet.phetio.phetioTypes = assert &&
       },
       "supertype": "NodeIO",
       "typeName": "TextIO"
+    },
+    "Vector2IO": {
+      "documentation": "A numerical object with x and y properties, like {x:3,y:4}",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "ObjectIO",
+      "typeName": "Vector2IO"
+    },
+    "VoidIO": {
+      "documentation": "Type for which there is no instance, usually to mark functions without a return value",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "ObjectIO",
+      "typeName": "VoidIO"
     }
   };
