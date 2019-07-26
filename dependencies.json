@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.18 Wed Jul 10 2019 15:00:33 GMT-0600 (Mountain Daylight Time)",
+  "comment": "# arithmetic 1.0.18 Fri Jul 26 2019 12:47:11 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "941cac92093581bb218e31ef3db7ac8b83e14dde",
+    "sha": "e23add0d6531441b39e597920142a34b21b00ace",
     "branch": "1.0"
   },
   "assert": {
@@ -37,8 +37,8 @@
     "branch": "HEAD"
   },
   "phetcommon": {
-    "sha": "848385a16c1c53a6a5bd6d2a8a1b8a9cca84db36",
-    "branch": "HEAD"
+    "sha": "7ad9ecf2bf6108b5e1c2cd777b314c7ae8006531",
+    "branch": "arithmetic-1.0"
   },
   "phetmarks": {
     "sha": "fb7c8ebaeab84cff5db1dab8c4897b622338789d",
