@@ -16,7 +16,6 @@ define( function( require ) {
   var ArithmeticQueryParameters = require( 'ARITHMETIC/common/ArithmeticQueryParameters' );
   var BooleanIO = require( 'TANDEM/types/BooleanIO' );
   var Emitter = require( 'AXON/Emitter' );
-  var EmitterIO = require( 'AXON/EmitterIO' );
   var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
   var GameState = require( 'ARITHMETIC/common/model/GameState' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -40,14 +39,14 @@ define( function( require ) {
     // @private - for PhET-iO
     this.checkAnswerEmitter = new Emitter( {
       tandem: tandem.createTandem( 'checkAnswerEmitter' ),
-      phetioType: EmitterIO( [
-        { name: 'multiplicand', type: NumberIO },
-        { name: 'product', type: NumberIO },
-        { name: 'multiplier', type: NumberIO },
-        { name: 'isCorrect', type: BooleanIO },
-        { name: 'asString', type: StringIO },
-        { name: 'input', type: StringIO }
-      ] )
+      parameters: [
+        { name: 'multiplicand', phetioType: NumberIO },
+        { name: 'product', phetioType: NumberIO },
+        { name: 'multiplier', phetioType: NumberIO },
+        { name: 'isCorrect', phetioType: BooleanIO },
+        { name: 'asString', phetioType: StringIO },
+        { name: 'input', phetioType: StringIO }
+      ]
     } );
 
     // set up the 'fillEquation' function, which is used to fill in the missing portion(s) based on the user's inputs
