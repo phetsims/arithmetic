@@ -21,7 +21,12 @@
       "adapted-from-phet",
       "phet-io"
     ],
-    "simulation": true
+    "simulation": true,
+    "phet-io": {
+      "wrappers": [
+        "phet-io-wrapper-arithmetic"
+      ]
+    }
   },
   "eslintConfig": {
     "extends": "../chipper/eslint/sim_eslintrc.js"
