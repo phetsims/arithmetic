@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.19 Mon Aug 05 2019 14:27:56 GMT-0600 (Mountain Daylight Time)",
+  "comment": "# arithmetic 1.0.19 Mon Aug 19 2019 12:32:14 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "8d95e92114ad0ed4b450a09b445e44d2bbff0889",
+    "sha": "4213e8e1151e44203f0ddfe28d8de99403911900",
     "branch": "1.0"
   },
   "assert": {
@@ -25,8 +25,8 @@
     "branch": "HEAD"
   },
   "joist": {
-    "sha": "24e0a038df6191c8c8411bd674bb6f32c1084917",
-    "branch": "HEAD"
+    "sha": "aad2c10c95c73d0dced0c323e8e1038f2900c8f7",
+    "branch": "arithmetic-1.0"
   },
   "kite": {
     "sha": "a4907ccc07cc80d6d3c9c1e240ba7664e32db56b",
@@ -49,8 +49,8 @@
     "branch": "HEAD"
   },
   "scenery-phet": {
-    "sha": "956aff92df92cc0d004e46299e06387edc2cb153",
-    "branch": "HEAD"
+    "sha": "e9d39b533a48ee81d632c19b4eb36e39c25eb067",
+    "branch": "arithmetic-1.0"
   },
   "sherpa": {
     "sha": "be8c4fc917f1644586ba4459351eade68e3bc0d2",
