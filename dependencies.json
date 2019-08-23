@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.20-rc.1 Mon Aug 19 2019 15:26:55 GMT-0600 (Mountain Daylight Time)",
+  "comment": "# arithmetic 1.0.20 Fri Aug 23 2019 12:18:28 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "2dfccc163686668e5f602e039926a01006821a0a",
+    "sha": "d316d143eedaab281d89602748e60c9d65c5b09f",
     "branch": "1.0"
   },
   "assert": {
