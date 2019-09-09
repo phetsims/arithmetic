@@ -291,14 +291,6 @@ window.phet.phetio.phetioTypes = assert &&
       "supertype": "ObjectIO",
       "typeName": "FunctionIO.()=>VoidIO"
     },
-    "FunctionIO.(BooleanIO)=>VoidIO": {
-      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> BooleanIO<br><strong>Return Type:</strong> VoidIO",
-      "events": [],
-      "methodOrder": [],
-      "methods": {},
-      "supertype": "ObjectIO",
-      "typeName": "FunctionIO.(BooleanIO)=>VoidIO"
-    },
     "FunctionIO.(BooleanIO,NullableIO.<BooleanIO>)=>VoidIO": {
       "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> BooleanIO, NullableIO.<BooleanIO><br><strong>Return Type:</strong> VoidIO",
       "events": [],
@@ -306,14 +298,6 @@ window.phet.phetio.phetioTypes = assert &&
       "methods": {},
       "supertype": "ObjectIO",
       "typeName": "FunctionIO.(BooleanIO,NullableIO.<BooleanIO>)=>VoidIO"
-    },
-    "FunctionIO.(NullableIO.<BooleanIO>)=>VoidIO": {
-      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NullableIO.<BooleanIO><br><strong>Return Type:</strong> VoidIO",
-      "events": [],
-      "methodOrder": [],
-      "methods": {},
-      "supertype": "ObjectIO",
-      "typeName": "FunctionIO.(NullableIO.<BooleanIO>)=>VoidIO"
     },
     "FunctionIO.(NullableIO.<BooleanIO>,NullableIO.<NullableIO.<BooleanIO>>)=>VoidIO": {
       "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NullableIO.<BooleanIO>, NullableIO.<NullableIO.<BooleanIO>><br><strong>Return Type:</strong> VoidIO",
@@ -323,14 +307,6 @@ window.phet.phetio.phetioTypes = assert &&
       "supertype": "ObjectIO",
       "typeName": "FunctionIO.(NullableIO.<BooleanIO>,NullableIO.<NullableIO.<BooleanIO>>)=>VoidIO"
     },
-    "FunctionIO.(NullableIO.<FocusIO>)=>VoidIO": {
-      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NullableIO.<FocusIO><br><strong>Return Type:</strong> VoidIO",
-      "events": [],
-      "methodOrder": [],
-      "methods": {},
-      "supertype": "ObjectIO",
-      "typeName": "FunctionIO.(NullableIO.<FocusIO>)=>VoidIO"
-    },
     "FunctionIO.(NullableIO.<FocusIO>,NullableIO.<NullableIO.<FocusIO>>)=>VoidIO": {
       "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NullableIO.<FocusIO>, NullableIO.<NullableIO.<FocusIO>><br><strong>Return Type:</strong> VoidIO",
       "events": [],
@@ -338,14 +314,6 @@ window.phet.phetio.phetioTypes = assert &&
       "methods": {},
       "supertype": "ObjectIO",
       "typeName": "FunctionIO.(NullableIO.<FocusIO>,NullableIO.<NullableIO.<FocusIO>>)=>VoidIO"
-    },
-    "FunctionIO.(NumberIO)=>VoidIO": {
-      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NumberIO<br><strong>Return Type:</strong> VoidIO",
-      "events": [],
-      "methodOrder": [],
-      "methods": {},
-      "supertype": "ObjectIO",
-      "typeName": "FunctionIO.(NumberIO)=>VoidIO"
     },
     "FunctionIO.(NumberIO,NullableIO.<NumberIO>)=>VoidIO": {
       "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> NumberIO, NullableIO.<NumberIO><br><strong>Return Type:</strong> VoidIO",
@@ -370,14 +338,6 @@ window.phet.phetio.phetioTypes = assert &&
       "methods": {},
       "supertype": "ObjectIO",
       "typeName": "FunctionIO.(ObjectIO)=>VoidIO"
-    },
-    "FunctionIO.(StringIO)=>VoidIO": {
-      "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> StringIO<br><strong>Return Type:</strong> VoidIO",
-      "events": [],
-      "methodOrder": [],
-      "methods": {},
-      "supertype": "ObjectIO",
-      "typeName": "FunctionIO.(StringIO)=>VoidIO"
     },
     "FunctionIO.(StringIO,NullableIO.<StringIO>)=>VoidIO": {
       "documentation": "Wrapper for the built-in JS function type.<br><strong>Arguments:</strong> StringIO, NullableIO.<StringIO><br><strong>Return Type:</strong> VoidIO",
@@ -482,13 +442,6 @@ window.phet.phetio.phetioTypes = assert &&
           "invocableForReadOnlyElements": false,
           "parameterTypes": [
             "NumberIO"
-          ],
-          "returnType": "VoidIO"
-        },
-        "unlink": {
-          "documentation": "Removes a listener.",
-          "parameterTypes": [
-            "FunctionIO.(NumberIO)=>VoidIO"
           ],
           "returnType": "VoidIO"
         }
@@ -779,13 +732,6 @@ window.phet.phetio.phetioTypes = assert &&
             "BooleanIO"
           ],
           "returnType": "VoidIO"
-        },
-        "unlink": {
-          "documentation": "Removes a listener.",
-          "parameterTypes": [
-            "FunctionIO.(BooleanIO)=>VoidIO"
-          ],
-          "returnType": "VoidIO"
         }
       },
       "supertype": "ObjectIO",
@@ -825,13 +771,6 @@ window.phet.phetio.phetioTypes = assert &&
           "invocableForReadOnlyElements": false,
           "parameterTypes": [
             "NullableIO.<BooleanIO>"
-          ],
-          "returnType": "VoidIO"
-        },
-        "unlink": {
-          "documentation": "Removes a listener.",
-          "parameterTypes": [
-            "FunctionIO.(NullableIO.<BooleanIO>)=>VoidIO"
           ],
           "returnType": "VoidIO"
         }
@@ -875,13 +814,6 @@ window.phet.phetio.phetioTypes = assert &&
             "NullableIO.<FocusIO>"
           ],
           "returnType": "VoidIO"
-        },
-        "unlink": {
-          "documentation": "Removes a listener.",
-          "parameterTypes": [
-            "FunctionIO.(NullableIO.<FocusIO>)=>VoidIO"
-          ],
-          "returnType": "VoidIO"
         }
       },
       "supertype": "ObjectIO",
@@ -923,13 +855,6 @@ window.phet.phetio.phetioTypes = assert &&
             "NumberIO"
           ],
           "returnType": "VoidIO"
-        },
-        "unlink": {
-          "documentation": "Removes a listener.",
-          "parameterTypes": [
-            "FunctionIO.(NumberIO)=>VoidIO"
-          ],
-          "returnType": "VoidIO"
         }
       },
       "supertype": "ObjectIO",
@@ -969,13 +894,6 @@ window.phet.phetio.phetioTypes = assert &&
           "invocableForReadOnlyElements": false,
           "parameterTypes": [
             "StringIO"
-          ],
-          "returnType": "VoidIO"
-        },
-        "unlink": {
-          "documentation": "Removes a listener.",
-          "parameterTypes": [
-            "FunctionIO.(StringIO)=>VoidIO"
           ],
           "returnType": "VoidIO"
         }
