@@ -25,12 +25,12 @@ define( require => {
   const VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
-  var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( { size: 24 } );
-  var TAB_TITLE_FONT = new PhetFont( { size: 54 } );
-  var BUTTON_LENGTH = 150;
+  const CHOOSE_LEVEL_TITLE_FONT = new PhetFont( { size: 24 } );
+  const TAB_TITLE_FONT = new PhetFont( { size: 54 } );
+  const BUTTON_LENGTH = 150;
 
   // icon sets, used to place on the buttons
-  var ICON_SETS = {
+  const ICON_SETS = {
     multiply: [
       require( 'mipmap!ARITHMETIC/multiply_level_1_icon.png' ),
       require( 'mipmap!ARITHMETIC/multiply_level_2_icon.png' ),
@@ -69,7 +69,7 @@ define( require => {
     }, options );
 
     // add title
-    var tabTitle = new Text( titleString, {
+    const tabTitle = new Text( titleString, {
       font: TAB_TITLE_FONT,
       centerX: layoutBounds.centerX,
       top: layoutBounds.height * 0.1
@@ -77,7 +77,7 @@ define( require => {
     this.addChild( tabTitle );
 
     // add choose level title
-    var chooseLevelTitle = new Text( chooseYourLevelString, {
+    const chooseLevelTitle = new Text( chooseYourLevelString, {
       font: CHOOSE_LEVEL_TITLE_FONT,
       centerX: layoutBounds.centerX,
       top: tabTitle.bottom + 15
@@ -86,7 +86,7 @@ define( require => {
 
     // add select level buttons
     assert && assert( model.levelModels.length === ICON_SETS[ options.iconSet ].length, 'Number of icons doesn\'t match number of levels' );
-    var levelSelectButtons = model.levelModels.map( function( level, levelIndex ) {
+    const levelSelectButtons = model.levelModels.map( function( level, levelIndex ) {
       return new LevelSelectionButton(
         new Image( ICON_SETS[ options.iconSet ][ levelIndex ] ),
         model.levelModels[ levelIndex ].displayScoreProperty,
@@ -106,13 +106,13 @@ define( require => {
         }
       );
     } );
-    var selectLevelButtonsHBox = new HBox( { spacing: 50, children: levelSelectButtons } );
+    const selectLevelButtonsHBox = new HBox( { spacing: 50, children: levelSelectButtons } );
     selectLevelButtonsHBox.top = chooseLevelTitle.bottom + 15;
     selectLevelButtonsHBox.centerX = chooseLevelTitle.centerX;
     this.addChild( selectLevelButtonsHBox );
 
     // add timer and sound buttons
-    var soundAndTimerButtons = new VBox( {
+    const soundAndTimerButtons = new VBox( {
       spacing: 5,
       children: [
         new TimerToggleButton( ArithmeticGlobals.timerEnabledProperty )
@@ -123,7 +123,7 @@ define( require => {
     this.addChild( soundAndTimerButtons );
 
     // add reset all button
-    var resetAllButton = new ResetAllButton( {
+    const resetAllButton = new ResetAllButton( {
       listener: function() {model.reset(); },
       right: layoutBounds.maxX * 0.98,
       bottom: layoutBounds.maxY * 0.95

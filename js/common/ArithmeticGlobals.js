@@ -13,7 +13,7 @@ define( require => {
   const arithmetic = require( 'ARITHMETIC/arithmetic' );
   const Property = require( 'AXON/Property' );
 
-  var ArithmeticGlobals = {
+  const ArithmeticGlobals = {
     timerEnabledProperty: new Property( false )
   };
 

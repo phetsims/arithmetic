@@ -16,9 +16,9 @@ define( require => {
   const inherit = require( 'PHET_CORE/inherit' );
 
   // constants
-  var HOVER_COLOR = 'rgb(238,253,77)';
-  var NORMAL_COLOR = 'rgb(50,70,255)';
-  var SELECT_COLOR = 'rgb(77,0,153)';
+  const HOVER_COLOR = 'rgb(238,253,77)';
+  const NORMAL_COLOR = 'rgb(50,70,255)';
+  const SELECT_COLOR = 'rgb(77,0,153)';
 
   /**
    * @param {Text} contentText - Text label for button.

@@ -20,7 +20,7 @@ define( require => {
    * @constructor
    */
   function DivideScreenTableNode( model ) {
-    var self = this;
+    const self = this;
     MultiplicationTableNode.call( this, model.levelNumberProperty, model.stateProperty, model.levelModels, true );
     this.problemModel = model.problemModel;
     this.levelNumberProperty = model.levelNumberProperty;
@@ -47,8 +47,8 @@ define( require => {
         // Make the cells that correspond to the answer change color.
         self.cells[ self.levelNumberProperty.value ][ self.problemModel.multiplicandProperty.get() ][ 0 ].setSelected();
         self.cells[ self.levelNumberProperty.value ][ 0 ][ self.problemModel.multiplierProperty.get() ].setSelected();
-        for ( var multiplicand = 1; multiplicand <= self.problemModel.multiplicandProperty.get(); multiplicand++ ) {
-          for ( var multiplier = 1; multiplier <= self.problemModel.multiplierProperty.get(); multiplier++ ) {
+        for ( let multiplicand = 1; multiplicand <= self.problemModel.multiplicandProperty.get(); multiplicand++ ) {
+          for ( let multiplier = 1; multiplier <= self.problemModel.multiplierProperty.get(); multiplier++ ) {
             self.cells[ self.levelNumberProperty.value ][ multiplicand ][ multiplier ].setSelected();
           }
         }

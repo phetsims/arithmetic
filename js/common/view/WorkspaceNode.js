@@ -27,10 +27,10 @@ define( require => {
   const TextPushButton = require( 'SUN/buttons/TextPushButton' );
 
   // constants
-  var BACK_BUTTON_BASE_COLOR = PhetColorScheme.BUTTON_YELLOW; // base color of back button
-  var BACK_BUTTON_MARGIN = new Dimension2( 20, 10 ); // margin of background of back button
-  var BUTTON_BASE_COLOR = PhetColorScheme.BUTTON_YELLOW;
-  var BUTTON_FONT = new PhetFont( { size: 20 } );
+  const BACK_BUTTON_BASE_COLOR = PhetColorScheme.BUTTON_YELLOW; // base color of back button
+  const BACK_BUTTON_MARGIN = new Dimension2( 20, 10 ); // margin of background of back button
+  const BUTTON_BASE_COLOR = PhetColorScheme.BUTTON_YELLOW;
+  const BUTTON_FONT = new PhetFont( { size: 20 } );
 
   // strings
   const checkString = require( 'string!ARITHMETIC/check' );
@@ -58,7 +58,7 @@ define( require => {
     }, options );
 
     // add button for returning to the level select screen
-    var backButton = new BackButton( {
+    const backButton = new BackButton( {
       baseColor: BACK_BUTTON_BASE_COLOR,
       xMargin: BACK_BUTTON_MARGIN.width,
       yMargin: BACK_BUTTON_MARGIN.height,
@@ -97,10 +97,10 @@ define( require => {
     } );
 
     // define the width of the control panel so that it fits between the table and the bounds with some margin
-    var controlPanelWidth = layoutBounds.maxX - multiplicationTableNode.right - 60;
+    const controlPanelWidth = layoutBounds.maxX - multiplicationTableNode.right - 60;
 
     // add control panel
-    var controlPanelNode = new ScoreboardNode(
+    const controlPanelNode = new ScoreboardNode(
       model.levelNumberProperty,
       model.stateProperty,
       model.levelModels,
@@ -120,13 +120,13 @@ define( require => {
     this.addChild( controlPanelNode );
 
     // set up some variables needed for positioning the buttons
-    var buttonYCenter = ( equationNode.bottom + layoutBounds.maxY ) / 2 - 5; // tweaked a bit empirically
-    var maxButtonWidth = layoutBounds.maxX - multiplicationTableNode.bounds.maxX;
+    const buttonYCenter = ( equationNode.bottom + layoutBounds.maxY ) / 2 - 5; // tweaked a bit empirically
+    const maxButtonWidth = layoutBounds.maxX - multiplicationTableNode.bounds.maxX;
 
     // add keypad if necessary
     if ( options.showKeypad ) {
       // create and add the keypad
-      var keypad = new NumberKeypad( {
+      const keypad = new NumberKeypad( {
         valueStringProperty: model.inputProperty,
         validateKey: NumberKeypad.validateMaxDigits( { maxDigits: 3 } ),
         centerX: controlPanelNode.centerX,
@@ -160,7 +160,7 @@ define( require => {
       } );
 
       // add the 'Check' button, which is only used in conjunction with the keypad
-      var checkButton = new TextPushButton( checkString, {
+      const checkButton = new TextPushButton( checkString, {
         font: BUTTON_FONT,
         centerY: buttonYCenter,
         centerX: controlPanelNode.centerX,
@@ -170,7 +170,7 @@ define( require => {
       } );
       this.addChild( checkButton );
 
-      var updateCheckButtonState = function() {
+      const updateCheckButtonState = function() {
         checkButton.visible = ( model.stateProperty.get() === GameState.AWAITING_USER_INPUT );
         checkButton.enabled = model.inputProperty.get().length > 0;
       };
@@ -195,7 +195,7 @@ define( require => {
     } ) );
 
     // add the 'try again' button
-    var tryAgainButton = new TextPushButton( tryAgainString, {
+    const tryAgainButton = new TextPushButton( tryAgainString, {
       font: BUTTON_FONT,
       centerY: buttonYCenter,
       centerX: controlPanelNode.centerX,

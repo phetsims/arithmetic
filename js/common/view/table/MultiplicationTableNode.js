@@ -33,13 +33,13 @@ define( require => {
   const Vector2 = require( 'DOT/Vector2' );
 
   // constants
-  var TABLE_SIZE = new Dimension2( 434, 320 ); // table size in screen coordinates, empirically determined
-  var ANSWER_ANIMATION_TIME = 0.8; // in seconds
+  const TABLE_SIZE = new Dimension2( 434, 320 ); // table size in screen coordinates, empirically determined
+  const ANSWER_ANIMATION_TIME = 0.8; // in seconds
 
   // Starting point for the animation of the answer.  It is not ideal that this is a constant, because it means that if
   // the layout changes, this will need to be manually updated, but it's tricky to get it coordinated with the layout
   // in some other way.
-  var ANSWER_ANIMATION_ORIGIN = new Vector2( 370, 380 );
+  const ANSWER_ANIMATION_ORIGIN = new Vector2( 370, 380 );
 
   /**
    * @param {Property.<number>} levelNumberProperty - level property.
@@ -49,7 +49,7 @@ define( require => {
    * @constructor
    */
   function MultiplicationTableNode( levelNumberProperty, stateProperty, levelModels, animateAnswer ) {
-    var self = this;
+    const self = this;
     Node.call( this );
 
     this.levelNumberProperty = levelNumberProperty; // @protected - needs to be available to sub-classes
@@ -59,7 +59,7 @@ define( require => {
     this.cells = new Array( levelModels.length );
 
     // add stroke for all multiplication table views
-    var backgroundRect = new Rectangle( 0, 0, 0, 0, {
+    const backgroundRect = new Rectangle( 0, 0, 0, 0, {
       fill: 'white',
       cursor: 'pointer' // this is done so that the cursor doesn't change when moving between cells
     } );
@@ -67,22 +67,22 @@ define( require => {
 
     // create view of multiplication table for each of the levels
     levelModels.forEach( function( level, levelIndex ) {
-      var tableSize = level.tableSize;
-      var cellOptions = {
+      const tableSize = level.tableSize;
+      const cellOptions = {
         lineWidth: Math.max( Math.ceil( ( TABLE_SIZE.width / ( tableSize + 1 ) ) / 40 ), 2 ),
         width: TABLE_SIZE.width / ( tableSize + 1 ),
         height: TABLE_SIZE.height / ( tableSize + 1 )
       };
-      var levelRootNode = new Node( { visible: false } ); // root node for a single level
-      var row;
-      var column;
+      const levelRootNode = new Node( { visible: false } ); // root node for a single level
+      let row;
+      let column;
 
       // init store for cells
       self.cells[ levelIndex ] = new Array( tableSize + 1 );
 
-      var cell;
-      var cellTop = 0;
-      var cellLeft = 0;
+      let cell;
+      let cellTop = 0;
+      let cellLeft = 0;
 
       // create the table row by row
       for ( row = 0; row <= tableSize; row++ ) {
@@ -176,12 +176,12 @@ define( require => {
     stateProperty.link( function( newState, oldState ) {
       if ( newState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK || oldState === GameState.SELECTING_LEVEL ) {
 
-        var level = levelNumberProperty.value; // convenience var
-        var levelModel = levelModels[ level ]; // convenience var
+        const level = levelNumberProperty.value; // convenience var
+        const levelModel = levelModels[ level ]; // convenience var
 
         // make sure the appropriate cells are displaying their numerical values
-        for ( var multiplicand = 1; multiplicand <= levelModel.tableSize; multiplicand++ ) {
-          for ( var multiplier = 1; multiplier <= levelModel.tableSize; multiplier++ ) {
+        for ( let multiplicand = 1; multiplicand <= levelModel.tableSize; multiplicand++ ) {
+          for ( let multiplier = 1; multiplier <= levelModel.tableSize; multiplier++ ) {
             var cell = self.cells[ levelNumberProperty.value ][ multiplicand ][ multiplier ];
             if ( levelModel.isCellUsed( multiplicand, multiplier ) ) {
 
@@ -190,10 +190,10 @@ define( require => {
 
                 // Animate the product moving from the equation to the appropriate cell within the table.
                 ( function() {
-                  var destinationCell = cell;
+                  const destinationCell = cell;
                   self.flyingProduct.text = destinationCell.getTextString();
                   self.flyingProduct.setScaleMagnitude( 1 );
-                  var flyingProductDestination = self.globalToLocalPoint( destinationCell.parentToGlobalPoint( destinationCell.center ) );
+                  const flyingProductDestination = self.globalToLocalPoint( destinationCell.parentToGlobalPoint( destinationCell.center ) );
 
                   // create the animation
                   self.flyingProductAnimation = new Animation( {
@@ -306,9 +306,9 @@ define( require => {
     whereIsCellCenter: function( level, column, row ) {
 
       // Find the parent screen by moving up the scene graph.
-      var cell = this.cells[ level ][ row ][ column ];
-      var testNode = cell;
-      var parentScreen = null;
+      const cell = this.cells[ level ][ row ][ column ];
+      let testNode = cell;
+      let parentScreen = null;
       while ( testNode !== null ) {
         if ( testNode instanceof ScreenView ) {
           parentScreen = testNode;

@@ -20,9 +20,9 @@ define( require => {
   const arithmeticTitleString = require( 'string!ARITHMETIC/arithmetic.title' );
 
   // constants
-  var tandem = Tandem.rootTandem;
+  const tandem = Tandem.rootTandem;
 
-  var simOptions = {
+  const simOptions = {
     credits: {
       leadDesign: 'Michael Dubson, Amanda McGarry',
       softwareDevelopment: 'John Blanco, Michael Dubson',

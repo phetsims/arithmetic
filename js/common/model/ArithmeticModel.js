@@ -27,14 +27,14 @@ define( require => {
   const timer = require( 'AXON/timer' );
 
   // constants
-  var FEEDBACK_TIME = 1200; // in milliseconds, time that the feedback is presented before moving to next problem
+  const FEEDBACK_TIME = 1200; // in milliseconds, time that the feedback is presented before moving to next problem
 
   /**
    * Constructor for ArithmeticModel
    * @constructor
    */
   function ArithmeticModel( tandem, options ) {
-    var self = this;
+    const self = this;
 
     // @private - for PhET-iO
     this.checkAnswerEmitter = new Emitter( {
@@ -113,10 +113,10 @@ define( require => {
      * @public
      */
     submitAnswer: function() {
-      var self = this;
+      const self = this;
 
-      var isCorrect = this.problemModel.multiplicandProperty.get() * this.problemModel.multiplierProperty.get() === this.problemModel.productProperty.get();
-      var string = this.problemModel.multiplicandProperty.get() + ' x ' + this.problemModel.multiplierProperty.get() + ' = ' + this.problemModel.productProperty.get();
+      const isCorrect = this.problemModel.multiplicandProperty.get() * this.problemModel.multiplierProperty.get() === this.problemModel.productProperty.get();
+      const string = this.problemModel.multiplicandProperty.get() + ' x ' + this.problemModel.multiplierProperty.get() + ' = ' + this.problemModel.productProperty.get();
       this.checkAnswerEmitter.emit(
         this.problemModel.multiplicandProperty.get(),
         this.problemModel.productProperty.get(),

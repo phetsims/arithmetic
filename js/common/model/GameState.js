@@ -13,7 +13,7 @@ define( require => {
   const arithmetic = require( 'ARITHMETIC/arithmetic' );
 
   // @public
-  var GameState = {
+  const GameState = {
     SELECTING_LEVEL: 'SELECTING_LEVEL',
     AWAITING_USER_INPUT: 'AWAITING_USER_INPUT',
     DISPLAYING_CORRECT_ANSWER_FEEDBACK: 'DISPLAYING_CORRECT_ANSWER_FEEDBACK',

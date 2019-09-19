@@ -18,9 +18,9 @@ define( require => {
   const Rectangle = require( 'SCENERY/nodes/Rectangle' );
 
   // constants
-  var ICON_SIZE = ArithmeticConstants.SCREEN_ICON_SIZE;
-  var SYMBOL_COLOR = '#FFF31E';
-  var CIRCLE_RADIUS = 30; // Empirically determined
+  const ICON_SIZE = ArithmeticConstants.SCREEN_ICON_SIZE;
+  const SYMBOL_COLOR = '#FFF31E';
+  const CIRCLE_RADIUS = 30; // Empirically determined
 
   /**
    * @constructor

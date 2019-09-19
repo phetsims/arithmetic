@@ -34,7 +34,7 @@ define( require => {
     // @private - 2d array that tracks the 'used' state of each of the cells in the multiplication table for this level,
     // accessed through methods defined in the inherit block
     this.cellUsedStates = new Array( tableSize );
-    for ( var i = 0; i < tableSize; i++ ) {
+    for ( let i = 0; i < tableSize; i++ ) {
       this.cellUsedStates[ i ] = new Array( tableSize );
     }
     this.clearCellUsedStates();
@@ -65,8 +65,8 @@ define( require => {
     // @private - clear the usage state for all cells
     clearCellUsedStates: function() {
       // done as c-style loops for optimum performance
-      for ( var i = 0; i < this.tableSize; i++ ) {
-        for ( var j = 0; j < this.tableSize; j++ ) {
+      for ( let i = 0; i < this.tableSize; i++ ) {
+        for ( let j = 0; j < this.tableSize; j++ ) {
           this.cellUsedStates[ i ][ j ] = false;
         }
       }
@@ -84,10 +84,10 @@ define( require => {
 
     // @public - chose a multiplicand-multiplier pair randomly from those that are available
     selectUnusedMultiplierPair: function() {
-      var availableMultiplicands = [];
-      var availableMultipliers = [];
-      var multiplicand;
-      var multiplier;
+      const availableMultiplicands = [];
+      const availableMultipliers = [];
+      let multiplicand;
+      let multiplier;
 
       // find available multiplicand rows with at least one unused cell
       this.cellUsedStates.forEach( function( multipliers, index ) {

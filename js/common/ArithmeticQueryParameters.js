@@ -11,7 +11,7 @@ define( require => {
   // modules
   const arithmetic = require( 'ARITHMETIC/arithmetic' );
 
-  var ArithmeticQueryParameters = QueryStringMachine.getAll( {
+  const ArithmeticQueryParameters = QueryStringMachine.getAll( {
 
     // automatically answer most problems to enable faster testing of level completion
     autoAnswer: { type: 'flag' }

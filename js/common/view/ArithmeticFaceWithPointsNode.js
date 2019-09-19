@@ -19,9 +19,9 @@ define( require => {
   const Util = require( 'DOT/Util' );
 
   // constants
-  var UPDATE_PERIOD = 1 / 60 * 1000; // milliseconds, intended to match the expected frame rate
-  var OPAQUE_TIME = 1000; // milliseconds
-  var FADE_TIME = 1000; // milliseconds
+  const UPDATE_PERIOD = 1 / 60 * 1000; // milliseconds, intended to match the expected frame rate
+  const OPAQUE_TIME = 1000; // milliseconds
+  const FADE_TIME = 1000; // milliseconds
 
   /**
    * @param {Object} faceModel model for smile face.
@@ -30,7 +30,7 @@ define( require => {
    * @constructor
    */
   function ArithmeticFaceWithPointsNode( faceModel, options ) {
-    var self = this;
+    const self = this;
 
     FaceWithPointsNode.call( this, _.extend( {
       pointsFont: new PhetFont( { size: 26, weight: 'bold' } ),
@@ -53,7 +53,7 @@ define( require => {
     } );
 
     // Timer for fading the face.
-    var timerID = null;
+    let timerID = null;
 
     // Handle the event that indicates that the face should be shown.
     faceModel.showFaceEmitter.addListener( function() {
@@ -63,7 +63,7 @@ define( require => {
       self.opacity = 1;
 
       // Set the countdown to the total for the opaque time and the fade time.
-      var countdown = OPAQUE_TIME + FADE_TIME;
+      let countdown = OPAQUE_TIME + FADE_TIME;
 
       // cancel previous timer if it exists
       if ( timerID !== null ) {

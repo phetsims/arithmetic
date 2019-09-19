@@ -22,7 +22,7 @@ define( require => {
   const WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
 
   // constants
-  var SCREEN_CHANGE_TIME = 0.75; // seconds
+  const SCREEN_CHANGE_TIME = 0.75; // seconds
 
   /**
    * @param {ArithmeticModel} model - Main model for screen.
@@ -32,7 +32,7 @@ define( require => {
    * @constructor
    */
   function ArithmeticView( model, multiplicationTableNode, equationNode, options ) {
-    var self = this;
+    const self = this;
     ScreenView.call( this, { layoutBounds: new Bounds2( 0, 0, 768, 504 ) } );
 
     // defaults
@@ -44,7 +44,7 @@ define( require => {
     }, options );
 
     // create and add the node that allows the user to select the game level
-    var levelSelectionNode = new LevelSelectionNode(
+    const levelSelectionNode = new LevelSelectionNode(
       model,
       options.titleString,
       function( level ) { model.setLevel( level ); },
@@ -59,7 +59,7 @@ define( require => {
     this.addChild( levelSelectionNode );
 
     // add the game components
-    var workspaceNode = new WorkspaceNode(
+    const workspaceNode = new WorkspaceNode(
       model,
       multiplicationTableNode,
       equationNode,
@@ -71,14 +71,14 @@ define( require => {
     this.addChild( workspaceNode );
 
     // sounds player that is used to produce the feedback sounds for the game
-    var gameAudioPlayer = new GameAudioPlayer();
+    const gameAudioPlayer = new GameAudioPlayer();
 
     // set the origin of the answer animation in the multiplication table, which depends upon the newly set position of
     // the equation node.
     multiplicationTableNode.animationOrigin = equationNode.productInput.center;
 
     // create the animations that will slide the level selection screen and the workspaces in and out
-    var levelSelectionScreenInAnimator = new Animation( {
+    const levelSelectionScreenInAnimator = new Animation( {
       duration: SCREEN_CHANGE_TIME,
       easing: Easing.CUBIC_IN_OUT,
       getValue: function() {
@@ -97,7 +97,7 @@ define( require => {
       levelSelectionNode.pickable = true;
     } );
 
-    var levelSelectionScreenOutAnimator = new Animation( {
+    const levelSelectionScreenOutAnimator = new Animation( {
       duration: SCREEN_CHANGE_TIME,
       easing: Easing.CUBIC_IN_OUT,
       getValue: function() {
@@ -115,7 +115,7 @@ define( require => {
       levelSelectionNode.visible = false;
     } );
 
-    var workspaceNodeInAnimator = new Animation( {
+    const workspaceNodeInAnimator = new Animation( {
       duration: SCREEN_CHANGE_TIME,
       easing: Easing.CUBIC_IN_OUT,
       getValue: function() {
@@ -134,7 +134,7 @@ define( require => {
       workspaceNode.pickable = true;
     } );
 
-    var workspaceNodeOutAnimator = new Animation( {
+    const workspaceNodeOutAnimator = new Animation( {
       duration: SCREEN_CHANGE_TIME,
       easing: Easing.CUBIC_IN_OUT,
       getValue: function() {
@@ -189,8 +189,8 @@ define( require => {
         gameAudioPlayer.wrongAnswer();
       }
       else if ( oldState === GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK && newState === GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
-        var resultScore = model.activeLevelModel.currentScoreProperty.get();
-        var perfectScore = model.activeLevelModel.perfectScore;
+        const resultScore = model.activeLevelModel.currentScoreProperty.get();
+        const perfectScore = model.activeLevelModel.perfectScore;
 
         if ( resultScore === perfectScore ) {
           gameAudioPlayer.gameOverPerfectScore();

@@ -25,7 +25,7 @@ define( require => {
    * @constructor
    */
   function DivideEquationNode( stateProperty, multiplicandProperty, multiplierProperty, productProperty, inputProperty, activeInputProperty ) {
-    var self = this;
+    const self = this;
     EquationNode.call( this, multiplicandProperty, multiplierProperty, productProperty );
 
     // If the input value changes, it means that the user entered something, so put it in the appropriate equation node.

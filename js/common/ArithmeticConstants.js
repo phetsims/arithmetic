@@ -14,7 +14,7 @@ define( require => {
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Screen = require( 'JOIST/Screen' );
 
-  var ArithmeticConstants = {
+  const ArithmeticConstants = {
     BACKGROUND_COLOR: 'rgb( 173, 202, 255 )',
     CURSOR_BLINK_INTERVAL: 500, // duration of animation in milliseconds
     EQUATION_FONT_TEXT: new PhetFont( { size: 32 } ),

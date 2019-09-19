@@ -24,7 +24,7 @@ define( require => {
    * @constructor
    */
   function MultiplyScreenTableNode( problemModel, stateProperty, levelNumberProperty, levelModels ) {
-    var self = this;
+    const self = this;
     MultiplicationTableNode.call( this, levelNumberProperty, stateProperty, levelModels, true );
     this.problemModel = problemModel; // @private
 
@@ -56,7 +56,7 @@ define( require => {
 
     // @private, set the appearance of the cells based on the currently presented problem
     setCellAppearanceForProblem: function( level ) {
-      var self = this;
+      const self = this;
       this.setCellsToDefaultColor( level );
 
       // set the header cells for this problem to the selected state

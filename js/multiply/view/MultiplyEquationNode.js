@@ -23,7 +23,7 @@ define( require => {
    * @constructor
    */
   function MultiplyEquationNode( stateProperty, multiplicandProperty, multiplierProperty, inputProperty ) {
-    var self = this;
+    const self = this;
     EquationNode.call( this, multiplicandProperty, multiplierProperty, inputProperty );
 
     // The product is always the interactive part for this equation, so set up the appearance now.

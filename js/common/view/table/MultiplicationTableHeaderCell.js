@@ -15,10 +15,10 @@ define( require => {
   const inherit = require( 'PHET_CORE/inherit' );
 
   // constants
-  var NORMAL_COLOR_BACKGROUND = 'rgb(220,60,33)'; // background normal color
-  var SELECT_COLOR_BACKGROUND = 'rgb(0,0,128)'; // background select color
-  var NORMAL_COLOR_TEXT = 'white'; // text normal color
-  var SELECT_COLOR_TEXT = 'rgb(255,253,56)'; // text select color
+  const NORMAL_COLOR_BACKGROUND = 'rgb(220,60,33)'; // background normal color
+  const SELECT_COLOR_BACKGROUND = 'rgb(0,0,128)'; // background select color
+  const NORMAL_COLOR_TEXT = 'white'; // text normal color
+  const SELECT_COLOR_TEXT = 'rgb(255,253,56)'; // text select color
 
   /**
    * @param {Text} contentText - Text label for button.

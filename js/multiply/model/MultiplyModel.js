@@ -21,7 +21,7 @@ define( require => {
    * @constructor
    */
   function MultiplyModel( tandem ) {
-    var self = this;
+    const self = this;
     ArithmeticModel.call(
       this,
       tandem, {
@@ -41,7 +41,7 @@ define( require => {
     setUpUnansweredProblem: function() {
 
       // get available multiplier pair
-      var multiplierPair = this.selectUnusedMultiplierPair();
+      const multiplierPair = this.selectUnusedMultiplierPair();
 
       if ( multiplierPair ) {
 
@@ -72,13 +72,13 @@ define( require => {
     autoAnswer: function() {
 
       // make sure that sound is off, since otherwise it dings for every solved problem
-      var soundState = soundManager.enabled;
+      const soundState = soundManager.enabled;
       soundManager.enabled = false;
 
       // answer the questions
-      var self = this;
-      var numQuestions = this.activeLevelModel.tableSize * this.activeLevelModel.tableSize;
-      var numQuestionsToAnswer = numQuestions - 1;
+      const self = this;
+      const numQuestions = this.activeLevelModel.tableSize * this.activeLevelModel.tableSize;
+      const numQuestionsToAnswer = numQuestions - 1;
       console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
       _.times( numQuestionsToAnswer, function() {
         self.problemModel.productProperty.set(

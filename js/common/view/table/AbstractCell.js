@@ -23,13 +23,13 @@ define( require => {
   const Text = require( 'SCENERY/nodes/Text' );
 
   // constants
-  var SMALL_FONT = new PhetFont( 17 );
-  var MEDIUM_FONT = new PhetFont( 22 );
-  var LARGE_FONT = new PhetFont( 30 );
-  var EXAMPLE_HEIGHT_STRING = '123456789';
-  var SMALL_FONT_HEIGHT = new Text( EXAMPLE_HEIGHT_STRING, { font: SMALL_FONT } ).bounds.height;
-  var MEDIUM_FONT_HEIGHT = new Text( EXAMPLE_HEIGHT_STRING, { font: MEDIUM_FONT } ).bounds.height;
-  var LARGE_FONT_HEIGHT = new Text( EXAMPLE_HEIGHT_STRING, { font: LARGE_FONT } ).bounds.height;
+  const SMALL_FONT = new PhetFont( 17 );
+  const MEDIUM_FONT = new PhetFont( 22 );
+  const LARGE_FONT = new PhetFont( 30 );
+  const EXAMPLE_HEIGHT_STRING = '123456789';
+  const SMALL_FONT_HEIGHT = new Text( EXAMPLE_HEIGHT_STRING, { font: SMALL_FONT } ).bounds.height;
+  const MEDIUM_FONT_HEIGHT = new Text( EXAMPLE_HEIGHT_STRING, { font: MEDIUM_FONT } ).bounds.height;
+  const LARGE_FONT_HEIGHT = new Text( EXAMPLE_HEIGHT_STRING, { font: LARGE_FONT } ).bounds.height;
 
   /**
    * @param {Object} backgroundOptions - Background options for button.
@@ -66,7 +66,7 @@ define( require => {
   // Convenience function for selecting appropriate font size for this cell.  This is done as an optimization so that
   // a new font doesn't need to be created for each cell.  The sizes were empirically determined.
   function chooseFont( cellHeight ) {
-    var font;
+    let font;
     if ( cellHeight < 27 ) {
       font = SMALL_FONT;
     }
@@ -145,7 +145,7 @@ define( require => {
 
     // @public
     getTextHeight: function() {
-      var height;
+      let height;
       switch( this._textOptions.font ) {
         case SMALL_FONT:
           height = SMALL_FONT_HEIGHT;

@@ -23,7 +23,7 @@ define( require => {
    * @constructor
    */
   function DivideModel( tandem ) {
-    var self = this;
+    const self = this;
     ArithmeticModel.call( this, tandem, {
       fillEquation: function() {
 
@@ -46,7 +46,7 @@ define( require => {
     setUpUnansweredProblem: function() {
 
       // get available multiplier pair
-      var multipliers = this.selectUnusedMultiplierPair();
+      const multipliers = this.selectUnusedMultiplierPair();
 
       if ( multipliers ) {
 
@@ -84,15 +84,15 @@ define( require => {
      * @protected
      */
     autoAnswer: function() {
-      var self = this;
+      const self = this;
 
       // make sure that sound is off, since otherwise it dings for every solved problem
-      var soundState = soundManager.enabled;
+      const soundState = soundManager.enabled;
       soundManager.enabled = false;
 
       // answer the questions
-      var numQuestions = this.activeLevelModel.tableSize * this.activeLevelModel.tableSize;
-      var numQuestionsToAnswer = numQuestions - 1;
+      const numQuestions = this.activeLevelModel.tableSize * this.activeLevelModel.tableSize;
+      const numQuestionsToAnswer = numQuestions - 1;
       console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
       _.times( numQuestionsToAnswer, function( index ) {
         if ( !self.problemModel.multiplicandProperty.get() ) {

@@ -24,13 +24,13 @@ define( require => {
   const unknownValueIndicatorString = require( 'string!ARITHMETIC/unknownValueIndicator' );
 
   // constants
-  var INTERACTIVE_FILL = 'white';
-  var NON_INTERACTIVE_FILL = '#dddddd';
-  var MIN_X_MARGIN = 5;
-  var CURSOR_HEIGHT = new Text( '8', { font: ArithmeticConstants.EQUATION_FONT_TEXT } ).height * 0.7;
+  const INTERACTIVE_FILL = 'white';
+  const NON_INTERACTIVE_FILL = '#dddddd';
+  const MIN_X_MARGIN = 5;
+  const CURSOR_HEIGHT = new Text( '8', { font: ArithmeticConstants.EQUATION_FONT_TEXT } ).height * 0.7;
 
   // convenience function to avoid duplicated code
-  var updateBoxPosition = function( box, inputSize ) {
+  const updateBoxPosition = function( box, inputSize ) {
     box.centerX = inputSize.width / 2;
     box.centerY = inputSize.height / 2;
   };
@@ -42,7 +42,7 @@ define( require => {
    * @constructor
    */
   function EquationInputNode( valueProperty, size ) {
-    var self = this;
+    const self = this;
     Node.call( this );
 
     // @private - create text and save reference for use in public methods

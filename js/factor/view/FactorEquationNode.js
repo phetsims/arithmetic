@@ -22,7 +22,7 @@ define( require => {
    * @constructor
    */
   function FactorEquationNode( stateProperty, multiplicandProperty, multiplierProperty, productProperty ) {
-    var self = this;
+    const self = this;
     EquationNode.call( this, multiplicandProperty, multiplierProperty, productProperty );
 
     // The two multipliers are always interactive in the factor equation, so set this up now.

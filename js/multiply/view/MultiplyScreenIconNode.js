@@ -17,9 +17,9 @@ define( require => {
   const Rectangle = require( 'SCENERY/nodes/Rectangle' );
 
   // constants
-  var ICON_SIZE = ArithmeticConstants.SCREEN_ICON_SIZE;
-  var SYMBOL_COLOR = '#FFF31E';
-  var LINE_WIDTH = 33; // empirically determined
+  const ICON_SIZE = ArithmeticConstants.SCREEN_ICON_SIZE;
+  const SYMBOL_COLOR = '#FFF31E';
+  const LINE_WIDTH = 33; // empirically determined
 
   /**
    * @constructor
@@ -30,7 +30,7 @@ define( require => {
     Rectangle.call( this, 0, 0, ICON_SIZE.width, ICON_SIZE.height, { fill: ArithmeticConstants.ICON_BACKGROUND_COLOR } );
 
     // Add the multiply symbol.  Create our own rather than use the Unicode char, since this gives us more control.
-    var symbolWidth = ICON_SIZE.width * 0.3;
+    const symbolWidth = ICON_SIZE.width * 0.3;
     this.addChild( new Line( 0, 0, symbolWidth, symbolWidth, {
       stroke: SYMBOL_COLOR,
       lineWidth: LINE_WIDTH,

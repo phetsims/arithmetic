@@ -28,9 +28,9 @@ define( require => {
   const patternLevel0LevelNumberString = require( 'string!ARITHMETIC/pattern.level.0levelNumber' );
 
   // constants
-  var FONT = new PhetFont( { size: 18 } );
-  var FONT_BOLD = new PhetFont( { size: 18, weight: 'bold' } );
-  var PANEL_OPTIONS = {
+  const FONT = new PhetFont( { size: 18 } );
+  const FONT_BOLD = new PhetFont( { size: 18, weight: 'bold' } );
+  const PANEL_OPTIONS = {
     fill: '#dddddd',
     lineWidth: 0.5,
     xMargin: 23,
@@ -38,7 +38,7 @@ define( require => {
     cornerRadius: 5,
     align: 'center'
   };
-  var SPACING = 16;
+  const SPACING = 16;
 
   /**
    * @param {Property} levelNumberProperty - property for level displaying label.
@@ -54,16 +54,16 @@ define( require => {
     options = _.extend( {
       title: ''
     }, options );
-    var levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, '' ), { font: FONT_BOLD } );
-    var scoreText = new Text( StringUtils.format( labelScoreString, '0' ), { font: FONT } );
-    var timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), { font: FONT } );
+    const levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, '' ), { font: FONT_BOLD } );
+    const scoreText = new Text( StringUtils.format( labelScoreString, '0' ), { font: FONT } );
+    const timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), { font: FONT } );
 
-    var panelOptions = _.extend( {}, PANEL_OPTIONS, options );
+    const panelOptions = _.extend( {}, PANEL_OPTIONS, options );
 
     Node.call( this );
 
     // add control panel components
-    var vBox = new VBox( {
+    const vBox = new VBox( {
       spacing: SPACING,
       children: [
         new Text( options.title, { font: FONT_BOLD } ),
@@ -82,11 +82,11 @@ define( require => {
     this.addChild( new Panel( vBox, panelOptions ) );
 
     // add observers
-    var updateScore = function( score ) {
+    const updateScore = function( score ) {
       scoreText.text = StringUtils.format( labelScoreString, score.toString() );
     };
 
-    var updateTime = function( time ) {
+    const updateTime = function( time ) {
       timeText.text = StringUtils.format( labelTimeString, GameTimer.formatTime( time ) );
     };
 

@@ -28,13 +28,13 @@ define( require => {
    * @constructor
    */
   function LevelCompletedNodeWrapper( levelModels, levelNumberProperty, stateProperty, timerEnabledProperty, continueCallback, layoutBounds ) {
-    var self = this;
+    const self = this;
     Node.call( this );
 
     // Show this node only when the level has been completed.
     stateProperty.lazyLink( function( state ) {
       if ( state === GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
-        var levelModel = levelModels[ levelNumberProperty.value ];
+        const levelModel = levelModels[ levelNumberProperty.value ];
         self.addChild( new LevelCompletedNode(
           levelNumberProperty.value + 1,
           levelModel.currentScoreProperty.get(),

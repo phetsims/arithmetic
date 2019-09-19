@@ -33,7 +33,7 @@ define( require => {
     setUpUnansweredProblem: function() {
 
       // get available multiplier pair
-      var multiplierPair = this.selectUnusedMultiplierPair();
+      const multiplierPair = this.selectUnusedMultiplierPair();
 
       if ( multiplierPair ) {
 
@@ -69,8 +69,8 @@ define( require => {
       if ( this.stateProperty.get() === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
 
         // force a change to the AWAITING_USER_INPUT state before checking the answer
-        var multiplicand = this.problemModel.multiplicandProperty.get();
-        var multiplier = this.problemModel.multiplierProperty.get();
+        const multiplicand = this.problemModel.multiplicandProperty.get();
+        const multiplier = this.problemModel.multiplierProperty.get();
         this.retryProblem();
         this.problemModel.multiplicandProperty.set( multiplicand );
         this.problemModel.multiplierProperty.set( multiplier );
@@ -88,21 +88,21 @@ define( require => {
     autoAnswer: function() {
 
       // make sure that sound is off, since otherwise it dings for every solved problem
-      var soundState = soundManager.enabled;
+      const soundState = soundManager.enabled;
       soundManager.enabled = false;
 
       // answer the questions
-      var self = this;
-      var tableSize = this.activeLevelModel.tableSize;
-      var numQuestions = tableSize * tableSize;
-      var numQuestionsToAnswer = numQuestions - 1;
-      var levelModel = this.activeLevelModel; // convenience var
+      const self = this;
+      const tableSize = this.activeLevelModel.tableSize;
+      const numQuestions = tableSize * tableSize;
+      const numQuestionsToAnswer = numQuestions - 1;
+      const levelModel = this.activeLevelModel; // convenience var
       console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
       _.times( numQuestionsToAnswer, function( index ) {
         // do a brute-force factoring method, since performance isn't really an issue here
-        var answerFound = false;
-        for ( var multiplicand = 1; multiplicand <= tableSize && !answerFound; multiplicand++ ) {
-          for ( var multiplier = 1; multiplier <= tableSize && !answerFound; multiplier++ ) {
+        let answerFound = false;
+        for ( let multiplicand = 1; multiplicand <= tableSize && !answerFound; multiplicand++ ) {
+          for ( let multiplier = 1; multiplier <= tableSize && !answerFound; multiplier++ ) {
             if ( multiplicand * multiplier === self.problemModel.productProperty.get() && !levelModel.isCellUsed( multiplicand, multiplier ) ) {
 
               answerFound = true;

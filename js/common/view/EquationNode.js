@@ -20,12 +20,12 @@ define( require => {
   const Text = require( 'SCENERY/nodes/Text' );
 
   // constants
-  var FONT_EQUALS = new PhetFont( 45 );
-  var FONT_X = new PhetFont( 50 );
-  var INPUT_SIZE_MULTIPLIER = new Dimension2( 70, 45 ); // size of input boxes for multiplier
-  var INPUT_SIZE_PRODUCT = new Dimension2( 80, 45 ); // size of input box for product
-  var SPACING = 20; // spacing between equation elements
-  var SYMBOL_COLOR = '#FFFF00';
+  const FONT_EQUALS = new PhetFont( 45 );
+  const FONT_X = new PhetFont( 50 );
+  const INPUT_SIZE_MULTIPLIER = new Dimension2( 70, 45 ); // size of input boxes for multiplier
+  const INPUT_SIZE_PRODUCT = new Dimension2( 80, 45 ); // size of input box for product
+  const SPACING = 20; // spacing between equation elements
+  const SYMBOL_COLOR = '#FFFF00';
 
   /**
    * @param {Property.<number>} multiplicandProperty - Property necessary for creating multiplicand input.

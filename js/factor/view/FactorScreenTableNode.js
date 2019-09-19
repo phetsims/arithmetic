@@ -26,14 +26,14 @@ define( require => {
    * @constructor
    */
   function FactorScreenTableNode( model ) {
-    var self = this;
+    const self = this;
     MultiplicationTableNode.call( this, model.levelNumberProperty, model.stateProperty, model.levelModels, false );
 
     // convenience var
-    var gameState = model.stateProperty;
+    const gameState = model.stateProperty;
 
     // Create an image of a transparent hand that will cue the user that they need to interact with the table.
-    var handImage = new Image( overlayPointingHandImage, { pickable: false } ); // @private
+    const handImage = new Image( overlayPointingHandImage, { pickable: false } ); // @private
     handImage.scale( ( this.width / overlayPointingHandImage.width ) * 0.25 );
     handImage.centerX = this.width * 0.55; // position empirically determined
     handImage.centerY = this.height / 2;
@@ -60,7 +60,7 @@ define( require => {
         if ( multiplicandRowIndex ) {
 
           multiplicandRow.forEach( function( cell, multiplierIndex ) {
-            var cellListener;
+            let cellListener;
 
             // skip zero-index because it's the header row
             if ( multiplierIndex ) {
@@ -71,7 +71,7 @@ define( require => {
               // store cell listeners for each level
               self.cellListeners[ levelIndex ].push( cellListener );
 
-              var updateHover = function() {
+              const updateHover = function() {
                 if ( model.stateProperty.get() === GameState.AWAITING_USER_INPUT ) {
                   self.setCellsToDefaultColor( model.levelNumberProperty.get() );
                   if ( cellListener.enabledProperty.get() ) {
@@ -115,7 +115,7 @@ define( require => {
               } );
 
               // Define a function for submitting an answer that can be used by both mouse and the touch handlers.
-              var submitAnswer = function() {
+              const submitAnswer = function() {
 
                 // Record the user's answer.
                 model.problemModel.multiplicandProperty.set( multiplicandRowIndex );
@@ -219,10 +219,10 @@ define( require => {
 
     // @private, enabled or disable the cell listeners based on whether or not the cell has been used
     updateCellListenerEnabledStates: function( levelNumber, levelModel ) {
-      var self = this;
-      var tableSize = levelModel.tableSize;
-      for ( var multiplicand = 1; multiplicand <= tableSize; multiplicand++ ) {
-        for ( var multiplier = 1; multiplier <= tableSize; multiplier++ ) {
+      const self = this;
+      const tableSize = levelModel.tableSize;
+      for ( let multiplicand = 1; multiplicand <= tableSize; multiplicand++ ) {
+        for ( let multiplier = 1; multiplier <= tableSize; multiplier++ ) {
           self.cellListeners[ levelNumber ][ ( multiplicand - 1 ) * tableSize + ( multiplier - 1 ) ].enabledProperty.set(
             !levelModel.isCellUsed( multiplicand, multiplier )
           );
