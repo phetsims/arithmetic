@@ -5,18 +5,18 @@
  *
  * @author Andrey Zelenkov (MLearner)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
-  var DivideEquationNode = require( 'ARITHMETIC/divide/view/DivideEquationNode' );
-  var DivideScreenTableNode = require( 'ARITHMETIC/divide/view/DivideScreenTableNode' );
-  var inherit = require( 'PHET_CORE/inherit' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
+  const DivideEquationNode = require( 'ARITHMETIC/divide/view/DivideEquationNode' );
+  const DivideScreenTableNode = require( 'ARITHMETIC/divide/view/DivideScreenTableNode' );
+  const inherit = require( 'PHET_CORE/inherit' );
 
   // strings
-  var divideString = require( 'string!ARITHMETIC/divide' );
+  const divideString = require( 'string!ARITHMETIC/divide' );
 
   /**
    * @param {DivideModel} model - Main model for screen.

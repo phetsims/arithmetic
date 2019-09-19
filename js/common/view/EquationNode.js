@@ -6,18 +6,18 @@
  *
  * @author Andrey Zelenkov (MLearner)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var Dimension2 = require( 'DOT/Dimension2' );
-  var EquationInputNode = require( 'ARITHMETIC/common/view/EquationInputNode' );
-  var HBox = require( 'SCENERY/nodes/HBox' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var MathSymbols = require( 'SCENERY_PHET/MathSymbols' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var Text = require( 'SCENERY/nodes/Text' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const Dimension2 = require( 'DOT/Dimension2' );
+  const EquationInputNode = require( 'ARITHMETIC/common/view/EquationInputNode' );
+  const HBox = require( 'SCENERY/nodes/HBox' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const MathSymbols = require( 'SCENERY_PHET/MathSymbols' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const Text = require( 'SCENERY/nodes/Text' );
 
   // constants
   var FONT_EQUALS = new PhetFont( 45 );

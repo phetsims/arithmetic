@@ -5,18 +5,18 @@
  *
  * @author Andrey Zelenkov (MLearner)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
-  var FactorEquationNode = require( 'ARITHMETIC/factor/view/FactorEquationNode' );
-  var FactorScreenTableNode = require( 'ARITHMETIC/factor/view/FactorScreenTableNode' );
-  var inherit = require( 'PHET_CORE/inherit' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
+  const FactorEquationNode = require( 'ARITHMETIC/factor/view/FactorEquationNode' );
+  const FactorScreenTableNode = require( 'ARITHMETIC/factor/view/FactorScreenTableNode' );
+  const inherit = require( 'PHET_CORE/inherit' );
 
   // strings
-  var factorString = require( 'string!ARITHMETIC/factor' );
+  const factorString = require( 'string!ARITHMETIC/factor' );
 
   /**
    * @param {FactorModel} model - Main model for screen.

@@ -5,22 +5,22 @@
  *
  * @author John Blanco, Andrey Zelenkov (MLearner)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var FactorModel = require( 'ARITHMETIC/factor/model/FactorModel' );
-  var FactorScreenIconNode = require( 'ARITHMETIC/factor/view/FactorScreenIconNode' );
-  var FactorView = require( 'ARITHMETIC/factor/view/FactorView' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Property = require( 'AXON/Property' );
-  var Screen = require( 'JOIST/Screen' );
-  var Tandem = require( 'TANDEM/Tandem' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  const FactorModel = require( 'ARITHMETIC/factor/model/FactorModel' );
+  const FactorScreenIconNode = require( 'ARITHMETIC/factor/view/FactorScreenIconNode' );
+  const FactorView = require( 'ARITHMETIC/factor/view/FactorView' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Property = require( 'AXON/Property' );
+  const Screen = require( 'JOIST/Screen' );
+  const Tandem = require( 'TANDEM/Tandem' );
 
   // strings
-  var factorString = require( 'string!ARITHMETIC/factor' );
+  const factorString = require( 'string!ARITHMETIC/factor' );
 
   /**
    * @param {Object} [options]

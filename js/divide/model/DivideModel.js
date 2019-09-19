@@ -7,16 +7,16 @@
  * @author John Blanco
  */
 
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
-  var GameState = require( 'ARITHMETIC/common/model/GameState' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Random = require( 'DOT/Random' );
-  var soundManager = require( 'TAMBO/soundManager' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const ArithmeticModel = require( 'ARITHMETIC/common/model/ArithmeticModel' );
+  const GameState = require( 'ARITHMETIC/common/model/GameState' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Random = require( 'DOT/Random' );
+  const soundManager = require( 'TAMBO/soundManager' );
 
   /**
    * @param {Tandem} tandem

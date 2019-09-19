@@ -6,14 +6,14 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var GameState = require( 'ARITHMETIC/common/model/GameState' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const GameState = require( 'ARITHMETIC/common/model/GameState' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
 
   /**
    * @param {ProblemModel} problemModel - Model for single multiplication problem.

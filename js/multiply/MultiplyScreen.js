@@ -5,22 +5,22 @@
  *
  * @author John Blanco, Andrey Zelenkov (MLearner)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var MultiplyModel = require( 'ARITHMETIC/multiply/model/MultiplyModel' );
-  var MultiplyScreenIconNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenIconNode' );
-  var MultiplyView = require( 'ARITHMETIC/multiply/view/MultiplyView' );
-  var Property = require( 'AXON/Property' );
-  var Screen = require( 'JOIST/Screen' );
-  var Tandem = require( 'TANDEM/Tandem' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const MultiplyModel = require( 'ARITHMETIC/multiply/model/MultiplyModel' );
+  const MultiplyScreenIconNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenIconNode' );
+  const MultiplyView = require( 'ARITHMETIC/multiply/view/MultiplyView' );
+  const Property = require( 'AXON/Property' );
+  const Screen = require( 'JOIST/Screen' );
+  const Tandem = require( 'TANDEM/Tandem' );
 
   // strings
-  var multiplyString = require( 'string!ARITHMETIC/multiply' );
+  const multiplyString = require( 'string!ARITHMETIC/multiply' );
 
   /**
    * @param {Object} [options]

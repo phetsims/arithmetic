@@ -7,16 +7,16 @@
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var FaceWithPointsNode = require( 'SCENERY_PHET/FaceWithPointsNode' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var timer = require( 'AXON/timer' );
-  var Util = require( 'DOT/Util' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const FaceWithPointsNode = require( 'SCENERY_PHET/FaceWithPointsNode' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const timer = require( 'AXON/timer' );
+  const Util = require( 'DOT/Util' );
 
   // constants
   var UPDATE_PERIOD = 1 / 60 * 1000; // milliseconds, intended to match the expected frame rate

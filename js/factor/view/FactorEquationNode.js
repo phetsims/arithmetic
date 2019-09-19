@@ -5,14 +5,14 @@
  *
  * @author Andrey Zelenkov (MLearner)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var EquationNode = require( 'ARITHMETIC/common/view/EquationNode' );
-  var GameState = require( 'ARITHMETIC/common/model/GameState' );
-  var inherit = require( 'PHET_CORE/inherit' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const EquationNode = require( 'ARITHMETIC/common/view/EquationNode' );
+  const GameState = require( 'ARITHMETIC/common/model/GameState' );
+  const inherit = require( 'PHET_CORE/inherit' );
 
   /**
    * @param {Property} stateProperty - State of game property.

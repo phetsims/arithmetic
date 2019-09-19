@@ -5,18 +5,18 @@
  *
  * @author Andrey Zelenkov (MLearner)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var MultiplyEquationNode = require( 'ARITHMETIC/multiply/view/MultiplyEquationNode' );
-  var MultiplyScreenTableNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenTableNode' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const MultiplyEquationNode = require( 'ARITHMETIC/multiply/view/MultiplyEquationNode' );
+  const MultiplyScreenTableNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenTableNode' );
 
   // strings
-  var multiplyString = require( 'string!ARITHMETIC/multiply' );
+  const multiplyString = require( 'string!ARITHMETIC/multiply' );
 
   /**
    * @param {MultiplyModel} model - Main model for screen.

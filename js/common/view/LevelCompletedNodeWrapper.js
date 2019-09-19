@@ -5,17 +5,17 @@
  *
  * @author Andrey Zelenkov (MLearner)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var Color = require( 'SCENERY/util/Color' );
-  var GameState = require( 'ARITHMETIC/common/model/GameState' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var LevelCompletedNode = require( 'VEGAS/LevelCompletedNode' );
-  var Node = require( 'SCENERY/nodes/Node' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  const Color = require( 'SCENERY/util/Color' );
+  const GameState = require( 'ARITHMETIC/common/model/GameState' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const LevelCompletedNode = require( 'VEGAS/LevelCompletedNode' );
+  const Node = require( 'SCENERY/nodes/Node' );
 
   /**
    * @param {Array} levelModels - Array of descriptions for each level. Necessary to get perfect and current score for

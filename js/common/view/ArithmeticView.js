@@ -6,20 +6,20 @@
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var Animation = require( 'TWIXT/Animation' );
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var Bounds2 = require( 'DOT/Bounds2' );
-  var Easing = require( 'TWIXT/Easing' );
-  var GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
-  var GameState = require( 'ARITHMETIC/common/model/GameState' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var LevelSelectionNode = require( 'ARITHMETIC/common/view/LevelSelectionNode' );
-  var ScreenView = require( 'JOIST/ScreenView' );
-  var WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
+  const Animation = require( 'TWIXT/Animation' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const Bounds2 = require( 'DOT/Bounds2' );
+  const Easing = require( 'TWIXT/Easing' );
+  const GameAudioPlayer = require( 'VEGAS/GameAudioPlayer' );
+  const GameState = require( 'ARITHMETIC/common/model/GameState' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const LevelSelectionNode = require( 'ARITHMETIC/common/view/LevelSelectionNode' );
+  const ScreenView = require( 'JOIST/ScreenView' );
+  const WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
 
   // constants
   var SCREEN_CHANGE_TIME = 0.75; // seconds

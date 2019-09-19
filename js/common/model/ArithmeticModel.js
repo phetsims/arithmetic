@@ -7,24 +7,24 @@
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
-  var ArithmeticQueryParameters = require( 'ARITHMETIC/common/ArithmeticQueryParameters' );
-  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
-  var Emitter = require( 'AXON/Emitter' );
-  var FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
-  var GameState = require( 'ARITHMETIC/common/model/GameState' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
-  var NumberIO = require( 'TANDEM/types/NumberIO' );
-  var ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
-  var Property = require( 'AXON/Property' );
-  var StringIO = require( 'TANDEM/types/StringIO' );
-  var timer = require( 'AXON/timer' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
+  const ArithmeticQueryParameters = require( 'ARITHMETIC/common/ArithmeticQueryParameters' );
+  const BooleanIO = require( 'TANDEM/types/BooleanIO' );
+  const Emitter = require( 'AXON/Emitter' );
+  const FaceModel = require( 'ARITHMETIC/common/model/FaceModel' );
+  const GameState = require( 'ARITHMETIC/common/model/GameState' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
+  const NumberIO = require( 'TANDEM/types/NumberIO' );
+  const ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
+  const Property = require( 'AXON/Property' );
+  const StringIO = require( 'TANDEM/types/StringIO' );
+  const timer = require( 'AXON/timer' );
 
   // constants
   var FEEDBACK_TIME = 1200; // in milliseconds, time that the feedback is presented before moving to next problem

@@ -6,11 +6,11 @@
  * @author Andrey Zelenkov (Mlearner)
  * @author John Blanco
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
 
   // @public
   var GameState = {

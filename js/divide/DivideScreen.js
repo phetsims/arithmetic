@@ -6,22 +6,22 @@
  * Andrey Zelenkov (MLearner)
  * @author John Blanco
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var DivideModel = require( 'ARITHMETIC/divide/model/DivideModel' );
-  var DivideScreenIconNode = require( 'ARITHMETIC/divide/view/DivideScreenIconNode' );
-  var DivideView = require( 'ARITHMETIC/divide/view/DivideView' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Property = require( 'AXON/Property' );
-  var Screen = require( 'JOIST/Screen' );
-  var Tandem = require( 'TANDEM/Tandem' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  const DivideModel = require( 'ARITHMETIC/divide/model/DivideModel' );
+  const DivideScreenIconNode = require( 'ARITHMETIC/divide/view/DivideScreenIconNode' );
+  const DivideView = require( 'ARITHMETIC/divide/view/DivideView' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Property = require( 'AXON/Property' );
+  const Screen = require( 'JOIST/Screen' );
+  const Tandem = require( 'TANDEM/Tandem' );
 
   // strings
-  var divideString = require( 'string!ARITHMETIC/divide' );
+  const divideString = require( 'string!ARITHMETIC/divide' );
 
   /**
    * @param {Object} [options]

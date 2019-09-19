@@ -6,17 +6,17 @@
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco (MLearner)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Line = require( 'SCENERY/nodes/Line' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
-  var Text = require( 'SCENERY/nodes/Text' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Line = require( 'SCENERY/nodes/Line' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const Rectangle = require( 'SCENERY/nodes/Rectangle' );
+  const Text = require( 'SCENERY/nodes/Text' );
 
   // constants
   var ICON_SIZE = ArithmeticConstants.SCREEN_ICON_SIZE;

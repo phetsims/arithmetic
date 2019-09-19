@@ -6,12 +6,12 @@
  * @author John Blanco
  */
 
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var Property = require( 'AXON/Property' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const Property = require( 'AXON/Property' );
 
   var ArithmeticGlobals = {
     timerEnabledProperty: new Property( false )

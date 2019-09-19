@@ -6,13 +6,13 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var Screen = require( 'JOIST/Screen' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const Screen = require( 'JOIST/Screen' );
 
   var ArithmeticConstants = {
     BACKGROUND_COLOR: 'rgb( 173, 202, 255 )',

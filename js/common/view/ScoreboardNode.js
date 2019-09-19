@@ -6,26 +6,26 @@
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var GameState = require( 'ARITHMETIC/common/model/GameState' );
-  var GameTimer = require( 'VEGAS/GameTimer' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var Panel = require( 'SUN/Panel' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var RefreshButton = require( 'SCENERY_PHET/buttons/RefreshButton' );
-  var StringUtils = require( 'PHETCOMMON/util/StringUtils' );
-  var Text = require( 'SCENERY/nodes/Text' );
-  var VBox = require( 'SCENERY/nodes/VBox' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const GameState = require( 'ARITHMETIC/common/model/GameState' );
+  const GameTimer = require( 'VEGAS/GameTimer' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  const Panel = require( 'SUN/Panel' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const RefreshButton = require( 'SCENERY_PHET/buttons/RefreshButton' );
+  const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
+  const Text = require( 'SCENERY/nodes/Text' );
+  const VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var labelScoreString = require( 'string!VEGAS/label.score' );
-  var labelTimeString = require( 'string!VEGAS/label.time' );
-  var patternLevel0LevelNumberString = require( 'string!ARITHMETIC/pattern.level.0levelNumber' );
+  const labelScoreString = require( 'string!VEGAS/label.score' );
+  const labelTimeString = require( 'string!VEGAS/label.time' );
+  const patternLevel0LevelNumberString = require( 'string!ARITHMETIC/pattern.level.0levelNumber' );
 
   // constants
   var FONT = new PhetFont( { size: 18 } );

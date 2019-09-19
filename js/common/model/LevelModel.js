@@ -6,14 +6,14 @@
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var GameTimer = require( 'VEGAS/GameTimer' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Property = require( 'AXON/Property' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const GameTimer = require( 'VEGAS/GameTimer' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Property = require( 'AXON/Property' );
 
   /**
    * @param {number} tableSize - width and height of the multiplication table, which is assumed to be square

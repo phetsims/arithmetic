@@ -5,19 +5,19 @@
  *
  * @author John Blanco, Andrey Zelenkov (MLearner)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var DivideScreen = require( 'ARITHMETIC/divide/DivideScreen' );
-  var FactorScreen = require( 'ARITHMETIC/factor/FactorScreen' );
-  var MultiplyScreen = require( 'ARITHMETIC/multiply/MultiplyScreen' );
-  var Sim = require( 'JOIST/Sim' );
-  var SimLauncher = require( 'JOIST/SimLauncher' );
-  var Tandem = require( 'TANDEM/Tandem' );
+  const DivideScreen = require( 'ARITHMETIC/divide/DivideScreen' );
+  const FactorScreen = require( 'ARITHMETIC/factor/FactorScreen' );
+  const MultiplyScreen = require( 'ARITHMETIC/multiply/MultiplyScreen' );
+  const Sim = require( 'JOIST/Sim' );
+  const SimLauncher = require( 'JOIST/SimLauncher' );
+  const Tandem = require( 'TANDEM/Tandem' );
 
   // strings and images
-  var arithmeticTitleString = require( 'string!ARITHMETIC/arithmetic.title' );
+  const arithmeticTitleString = require( 'string!ARITHMETIC/arithmetic.title' );
 
   // constants
   var tandem = Tandem.rootTandem;

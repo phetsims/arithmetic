@@ -6,23 +6,23 @@
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
-  var HBox = require( 'SCENERY/nodes/HBox' );
-  var Image = require( 'SCENERY/nodes/Image' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var LevelSelectionButton = require( 'VEGAS/LevelSelectionButton' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
-  var Text = require( 'SCENERY/nodes/Text' );
-  var TimerToggleButton = require( 'SCENERY_PHET/buttons/TimerToggleButton' );
-  var VBox = require( 'SCENERY/nodes/VBox' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
+  const ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
+  const HBox = require( 'SCENERY/nodes/HBox' );
+  const Image = require( 'SCENERY/nodes/Image' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const LevelSelectionButton = require( 'VEGAS/LevelSelectionButton' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
+  const Text = require( 'SCENERY/nodes/Text' );
+  const TimerToggleButton = require( 'SCENERY_PHET/buttons/TimerToggleButton' );
+  const VBox = require( 'SCENERY/nodes/VBox' );
 
   // constants
   var CHOOSE_LEVEL_TITLE_FONT = new PhetFont( { size: 24 } );
@@ -49,7 +49,7 @@ define( function( require ) {
   };
 
   // strings
-  var chooseYourLevelString = require( 'string!ARITHMETIC/chooseYourLevel' );
+  const chooseYourLevelString = require( 'string!ARITHMETIC/chooseYourLevel' );
 
   /**
    * @param {ArithmeticModel} model - Main model for screen.

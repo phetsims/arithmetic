@@ -7,24 +7,24 @@
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var ArithmeticFaceWithPointsNode = require( 'ARITHMETIC/common/view/ArithmeticFaceWithPointsNode' );
-  var ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
-  var BackButton = require( 'SCENERY_PHET/buttons/BackButton' );
-  var Dimension2 = require( 'DOT/Dimension2' );
-  var GameState = require( 'ARITHMETIC/common/model/GameState' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var NumberKeypad = require( 'SCENERY_PHET/NumberKeypad' );
-  var PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var ScoreboardNode = require( 'ARITHMETIC/common/view/ScoreboardNode' );
-  var TextPushButton = require( 'SUN/buttons/TextPushButton' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const ArithmeticFaceWithPointsNode = require( 'ARITHMETIC/common/view/ArithmeticFaceWithPointsNode' );
+  const ArithmeticGlobals = require( 'ARITHMETIC/common/ArithmeticGlobals' );
+  const BackButton = require( 'SCENERY_PHET/buttons/BackButton' );
+  const Dimension2 = require( 'DOT/Dimension2' );
+  const GameState = require( 'ARITHMETIC/common/model/GameState' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  const NumberKeypad = require( 'SCENERY_PHET/NumberKeypad' );
+  const PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const ScoreboardNode = require( 'ARITHMETIC/common/view/ScoreboardNode' );
+  const TextPushButton = require( 'SUN/buttons/TextPushButton' );
 
   // constants
   var BACK_BUTTON_BASE_COLOR = PhetColorScheme.BUTTON_YELLOW; // base color of back button
@@ -33,8 +33,8 @@ define( function( require ) {
   var BUTTON_FONT = new PhetFont( { size: 20 } );
 
   // strings
-  var checkString = require( 'string!ARITHMETIC/check' );
-  var tryAgainString = require( 'string!ARITHMETIC/tryAgain' );
+  const checkString = require( 'string!ARITHMETIC/check' );
+  const tryAgainString = require( 'string!ARITHMETIC/tryAgain' );
 
   /**
    * @param {ArithmeticModel} model - main model for screen.

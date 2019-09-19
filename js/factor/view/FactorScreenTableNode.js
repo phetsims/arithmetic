@@ -6,20 +6,20 @@
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var CellInteractionListener = require( 'ARITHMETIC/factor/view/CellInteractionListener' );
-  var GameState = require( 'ARITHMETIC/common/model/GameState' );
-  var Image = require( 'SCENERY/nodes/Image' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const CellInteractionListener = require( 'ARITHMETIC/factor/view/CellInteractionListener' );
+  const GameState = require( 'ARITHMETIC/common/model/GameState' );
+  const Image = require( 'SCENERY/nodes/Image' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const MultiplicationTableNode = require( 'ARITHMETIC/common/view/table/MultiplicationTableNode' );
 
   // images
-  var cellPointerHandImage = require( 'image!ARITHMETIC/small-pointing-hand.png' );
-  var overlayPointingHandImage = require( 'image!ARITHMETIC/large-pointing-hand.png' );
+  const cellPointerHandImage = require( 'image!ARITHMETIC/small-pointing-hand.png' );
+  const overlayPointingHandImage = require( 'image!ARITHMETIC/large-pointing-hand.png' );
 
   /**
    * @param {FactorModel} model - main model class for the factor screen

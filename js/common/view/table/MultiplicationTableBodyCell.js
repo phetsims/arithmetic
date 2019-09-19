@@ -7,13 +7,13 @@
  * @author John Blanco
  */
 
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var AbstractCell = require( 'ARITHMETIC/common/view/table/AbstractCell' );
-  var arithmetic = require( 'ARITHMETIC/arithmetic' );
-  var inherit = require( 'PHET_CORE/inherit' );
+  const AbstractCell = require( 'ARITHMETIC/common/view/table/AbstractCell' );
+  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+  const inherit = require( 'PHET_CORE/inherit' );
 
   // constants
   var HOVER_COLOR = 'rgb(238,253,77)';
