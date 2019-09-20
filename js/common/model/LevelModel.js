@@ -86,8 +86,6 @@ define( require => {
     selectUnusedMultiplierPair: function() {
       const availableMultiplicands = [];
       const availableMultipliers = [];
-      let multiplicand;
-      let multiplier;
 
       // find available multiplicand rows with at least one unused cell
       this.cellUsedStates.forEach( function( multipliers, index ) {
@@ -102,7 +100,7 @@ define( require => {
       }
 
       // set multiplicand
-      multiplicand = phet.joist.random.shuffle( availableMultiplicands )[ 0 ];
+     const  multiplicand = phet.joist.random.shuffle( availableMultiplicands )[ 0 ];
 
       // find available multipliers
       this.cellUsedStates[ multiplicand - 1 ].forEach( function( isProblemAnswered, index ) {
@@ -112,7 +110,7 @@ define( require => {
       } );
 
       // set multiplier
-      multiplier = phet.joist.random.sample( availableMultipliers );
+      const multiplier = phet.joist.random.sample( availableMultipliers );
 
       return {
         multiplicand: multiplicand,
