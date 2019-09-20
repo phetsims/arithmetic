@@ -1,4 +1,4 @@
-// Copyright 2014-2017, University of Colorado Boulder
+// Copyright 2014-2019, University of Colorado Boulder
 
 /**
  * Model for cartoon face that is used to provide feedback in the 'Arithmetic' simulation.
