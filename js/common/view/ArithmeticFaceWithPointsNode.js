@@ -14,6 +14,7 @@ define( require => {
   const arithmetic = require( 'ARITHMETIC/arithmetic' );
   const FaceWithPointsNode = require( 'SCENERY_PHET/FaceWithPointsNode' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const timer = require( 'AXON/timer' );
   const Util = require( 'DOT/Util' );
@@ -32,7 +33,7 @@ define( require => {
   function ArithmeticFaceWithPointsNode( faceModel, options ) {
     const self = this;
 
-    FaceWithPointsNode.call( this, _.extend( {
+    FaceWithPointsNode.call( this, merge( {
       pointsFont: new PhetFont( { size: 26, weight: 'bold' } ),
       visible: false // Initially invisible, must receive a showFace event to become visible.
     }, options ) );

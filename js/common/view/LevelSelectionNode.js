@@ -17,6 +17,7 @@ define( require => {
   const Image = require( 'SCENERY/nodes/Image' );
   const inherit = require( 'PHET_CORE/inherit' );
   const LevelSelectionButton = require( 'VEGAS/LevelSelectionButton' );
+  const merge = require( 'PHET_CORE/merge' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
@@ -63,7 +64,7 @@ define( require => {
     Node.call( this );
 
     // Default options
-    options = _.extend( {
+    options = merge( {
       buttonBaseColor: 'white',
       iconSet: 'multiply' // valid values are 'multiply', 'factor', and 'divide'
     }, options );

@@ -19,6 +19,7 @@ define( require => {
   const GameState = require( 'ARITHMETIC/common/model/GameState' );
   const inherit = require( 'PHET_CORE/inherit' );
   const LevelCompletedNodeWrapper = require( 'ARITHMETIC/common/view/LevelCompletedNodeWrapper' );
+  const merge = require( 'PHET_CORE/merge' );
   const Node = require( 'SCENERY/nodes/Node' );
   const NumberKeypad = require( 'SCENERY_PHET/NumberKeypad' );
   const PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
@@ -52,7 +53,7 @@ define( require => {
   function WorkspaceNode( model, multiplicationTableNode, equationNode, layoutBounds, options ) {
     Node.call( this );
 
-    options = _.extend( {
+    options = merge( {
       scoreboardTitle: '',
       showKeypad: true
     }, options );

@@ -14,6 +14,7 @@ define( require => {
   const GameState = require( 'ARITHMETIC/common/model/GameState' );
   const GameTimer = require( 'VEGAS/GameTimer' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Panel = require( 'SUN/Panel' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -51,14 +52,14 @@ define( require => {
    */
   function ScoreboardNode( levelNumberProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback, options ) {
 
-    options = _.extend( {
+    options = merge( {
       title: ''
     }, options );
     const levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, '' ), { font: FONT_BOLD } );
     const scoreText = new Text( StringUtils.format( labelScoreString, '0' ), { font: FONT } );
     const timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), { font: FONT } );
 
-    const panelOptions = _.extend( {}, PANEL_OPTIONS, options );
+    const panelOptions = merge( {}, PANEL_OPTIONS, options );
 
     Node.call( this );
 

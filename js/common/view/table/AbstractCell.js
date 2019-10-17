@@ -18,6 +18,7 @@ define( require => {
   // modules
   const arithmetic = require( 'ARITHMETIC/arithmetic' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Rectangle = require( 'SCENERY/nodes/Rectangle' );
   const Text = require( 'SCENERY/nodes/Text' );
@@ -37,14 +38,14 @@ define( require => {
    * @constructor
    */
   function AbstractCell( backgroundOptions, textOptions ) {
-    Rectangle.call( this, 0, 0, backgroundOptions.width, backgroundOptions.height, _.extend( {
+    Rectangle.call( this, 0, 0, backgroundOptions.width, backgroundOptions.height, merge( {
       fill: 'white',
       stroke: 'white',
       lineWidth: 2.5
     }, backgroundOptions ) );
 
     // @private - save/define text options for when the text node is created
-    this._textOptions = _.extend( {
+    this._textOptions = merge( {
       font: chooseFont( this.bounds.height ),
       fill: 'white',
       centerY: this.bounds.height / 2,

@@ -20,6 +20,7 @@ define( require => {
   const GameState = require( 'ARITHMETIC/common/model/GameState' );
   const inherit = require( 'PHET_CORE/inherit' );
   const LevelModel = require( 'ARITHMETIC/common/model/LevelModel' );
+  const merge = require( 'PHET_CORE/merge' );
   const NumberIO = require( 'TANDEM/types/NumberIO' );
   const ProblemModel = require( 'ARITHMETIC/common/model/ProblemModel' );
   const Property = require( 'AXON/Property' );
@@ -50,7 +51,7 @@ define( require => {
     } );
 
     // set up the 'fillEquation' function, which is used to fill in the missing portion(s) based on the user's inputs
-    options = _.extend( { fillEquation: null }, options );
+    options = merge( { fillEquation: null }, options );
     this.fillEquation = options.fillEquation; // @public
 
     // @public - active game level, null represents none

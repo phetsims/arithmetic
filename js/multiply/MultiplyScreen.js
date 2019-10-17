@@ -12,6 +12,7 @@ define( require => {
   const arithmetic = require( 'ARITHMETIC/arithmetic' );
   const ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
   const MultiplyModel = require( 'ARITHMETIC/multiply/model/MultiplyModel' );
   const MultiplyScreenIconNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenIconNode' );
   const MultiplyView = require( 'ARITHMETIC/multiply/view/MultiplyView' );
@@ -28,7 +29,7 @@ define( require => {
    */
   function MultiplyScreen( options ) {
 
-    options = _.extend( {
+    options = merge( {
       name: multiplyString,
       homeScreenIcon: new MultiplyScreenIconNode(),
       backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),

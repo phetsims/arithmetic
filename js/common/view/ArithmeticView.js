@@ -18,6 +18,7 @@ define( require => {
   const GameState = require( 'ARITHMETIC/common/model/GameState' );
   const inherit = require( 'PHET_CORE/inherit' );
   const LevelSelectionNode = require( 'ARITHMETIC/common/view/LevelSelectionNode' );
+  const merge = require( 'PHET_CORE/merge' );
   const ScreenView = require( 'JOIST/ScreenView' );
   const WorkspaceNode = require( 'ARITHMETIC/common/view/WorkspaceNode' );
 
@@ -36,7 +37,7 @@ define( require => {
     ScreenView.call( this, { layoutBounds: new Bounds2( 0, 0, 768, 504 ) } );
 
     // defaults
-    options = _.extend( {
+    options = merge( {
       titleString: '',
       showKeypad: true,
       levelSelectButtonColor: 'white',

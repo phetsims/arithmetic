@@ -16,6 +16,7 @@ define( require => {
   const HBox = require( 'SCENERY/nodes/HBox' );
   const inherit = require( 'PHET_CORE/inherit' );
   const MathSymbols = require( 'SCENERY_PHET/MathSymbols' );
+  const merge = require( 'PHET_CORE/merge' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Text = require( 'SCENERY/nodes/Text' );
 
@@ -37,7 +38,7 @@ define( require => {
    */
   function EquationNode( multiplicandProperty, multiplierProperty, productProperty, options ) {
 
-    options = _.extend( {
+    options = merge( {
       spacing: SPACING,
       resize: false
     }, options );

@@ -13,6 +13,7 @@ define( require => {
   const AbstractCell = require( 'ARITHMETIC/common/view/table/AbstractCell' );
   const arithmetic = require( 'ARITHMETIC/arithmetic' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
 
   // constants
   const NORMAL_COLOR_BACKGROUND = 'rgb(220,60,33)'; // background normal color
@@ -28,7 +29,7 @@ define( require => {
    * @constructor
    */
   function MultiplicationTableHeaderCell( contentText, backgroundOptions, textOptions ) {
-    backgroundOptions = _.extend( {
+    backgroundOptions = merge( {
       fill: NORMAL_COLOR_BACKGROUND
     }, backgroundOptions );
     AbstractCell.call( this, backgroundOptions, textOptions );

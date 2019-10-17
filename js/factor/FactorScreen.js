@@ -15,6 +15,7 @@ define( require => {
   const FactorScreenIconNode = require( 'ARITHMETIC/factor/view/FactorScreenIconNode' );
   const FactorView = require( 'ARITHMETIC/factor/view/FactorView' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
   const Property = require( 'AXON/Property' );
   const Screen = require( 'JOIST/Screen' );
   const Tandem = require( 'TANDEM/Tandem' );
@@ -28,7 +29,7 @@ define( require => {
    */
   function FactorScreen( options ) {
 
-    options = _.extend( {
+    options = merge( {
       name: factorString,
       homeScreenIcon: new FactorScreenIconNode(),
       backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),

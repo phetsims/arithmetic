@@ -16,6 +16,7 @@ define( require => {
   const DivideScreenIconNode = require( 'ARITHMETIC/divide/view/DivideScreenIconNode' );
   const DivideView = require( 'ARITHMETIC/divide/view/DivideView' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
   const Property = require( 'AXON/Property' );
   const Screen = require( 'JOIST/Screen' );
   const Tandem = require( 'TANDEM/Tandem' );
@@ -29,7 +30,7 @@ define( require => {
    */
   function DivideScreen( options ) {
 
-    options = _.extend( {
+    options = merge( {
       name: divideString,
       backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
       homeScreenIcon: new DivideScreenIconNode(),
