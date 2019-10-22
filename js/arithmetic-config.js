@@ -42,6 +42,7 @@ require.config( {
     TAMBO: '../../tambo/js',
     TANDEM: '../../tandem/js',
     TWIXT: '../../twixt/js',
+    UTTERANCE_QUEUE: '../../utterance-queue/js',
     VEGAS: '../../vegas/js'
   },
 
