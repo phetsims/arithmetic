@@ -2,6 +2,7 @@
 window.phet.phetio.phetioElementsBaseline = assert &&
   {
     "arithmetic.divideScreen.activeProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Indicates whether the screen is active.  For single-screen simulations, the screen is always active.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -14,6 +15,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.divideScreen.model.checkAnswerEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>multiplicand: NumberIO</li><br/><li>product: NumberIO</li><br/><li>multiplier: NumberIO</li><br/><li>isCorrect: BooleanIO</li><br/><li>asString: StringIO</li><br/><li>input: StringIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -26,6 +28,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO>"
     },
     "arithmetic.factorScreen.activeProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Indicates whether the screen is active.  For single-screen simulations, the screen is always active.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -38,6 +41,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.factorScreen.model.checkAnswerEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>multiplicand: NumberIO</li><br/><li>product: NumberIO</li><br/><li>multiplier: NumberIO</li><br/><li>isCorrect: BooleanIO</li><br/><li>asString: StringIO</li><br/><li>input: StringIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -50,6 +54,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO>"
     },
     "arithmetic.general.activeProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Determines whether the entire simulation is running and processing user input. Setting this property to false pauses the simulation, and prevents user interaction.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -62,6 +67,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.barrierRectangle": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Semi-transparent barrier used to block input events when a dialog is shown, also fades out the background",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -74,6 +80,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.general.barrierRectangle.inputListener.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -86,6 +93,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.general.barrierRectangle.inputListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -98,6 +106,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.general.barrierRectangle.inputListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -110,6 +119,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.general.barrierRectangle.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -122,6 +132,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.barrierRectangle.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -134,6 +145,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.barrierRectangle.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -146,6 +158,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.browserTabVisibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Indicates whether the browser tab containing the simulation is currently visible",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -158,6 +171,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.controller.input.mouseDownAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when a mouse button is pressed The arguments are:<br/><ol><li>point: Vector2IO</li><br/><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -170,6 +184,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO, DOMEventIO>"
     },
     "arithmetic.general.controller.input.mouseMovedAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when the mouse is moved The arguments are:<br/><ol><li>point: Vector2IO</li><br/><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -182,6 +197,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO, DOMEventIO>"
     },
     "arithmetic.general.controller.input.mouseOutAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when the mouse moves out of the display The arguments are:<br/><ol><li>point: Vector2IO</li><br/><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -194,6 +210,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO, DOMEventIO>"
     },
     "arithmetic.general.controller.input.mouseOverAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when the mouse is moved over a Node The arguments are:<br/><ol><li>point: Vector2IO</li><br/><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -206,6 +223,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO, DOMEventIO>"
     },
     "arithmetic.general.controller.input.mouseUpAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when a mouse button is released The arguments are:<br/><ol><li>point: Vector2IO</li><br/><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -218,6 +236,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO, DOMEventIO>"
     },
     "arithmetic.general.controller.input.penCancelAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when a pen is canceled The arguments are:<br/><ol><li>id: NumberIO</li><br/><li>point: Vector2IO</li><br/><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -230,6 +249,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NumberIO, Vector2IO, DOMEventIO>"
     },
     "arithmetic.general.controller.input.penEndAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when a pen is lifted The arguments are:<br/><ol><li>id: NumberIO</li><br/><li>point: Vector2IO</li><br/><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -242,6 +262,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NumberIO, Vector2IO, DOMEventIO>"
     },
     "arithmetic.general.controller.input.penMoveAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when a pen is moved The arguments are:<br/><ol><li>id: NumberIO</li><br/><li>point: Vector2IO</li><br/><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -254,6 +275,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NumberIO, Vector2IO, DOMEventIO>"
     },
     "arithmetic.general.controller.input.penStartAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when a pen touches the screen The arguments are:<br/><ol><li>id: NumberIO</li><br/><li>point: Vector2IO</li><br/><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -266,6 +288,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NumberIO, Vector2IO, DOMEventIO>"
     },
     "arithmetic.general.controller.input.touchCancelAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when a touch is canceled The arguments are:<br/><ol><li>id: NumberIO</li><br/><li>point: Vector2IO</li><br/><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -278,6 +301,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NumberIO, Vector2IO, DOMEventIO>"
     },
     "arithmetic.general.controller.input.touchEndAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when a touch ends The arguments are:<br/><ol><li>id: NumberIO</li><br/><li>point: Vector2IO</li><br/><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -290,6 +314,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NumberIO, Vector2IO, DOMEventIO>"
     },
     "arithmetic.general.controller.input.touchMoveAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when a touch moves The arguments are:<br/><ol><li>id: NumberIO</li><br/><li>point: Vector2IO</li><br/><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -302,6 +327,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NumberIO, Vector2IO, DOMEventIO>"
     },
     "arithmetic.general.controller.input.touchStartAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when a touch begins The arguments are:<br/><ol><li>id: NumberIO</li><br/><li>point: Vector2IO</li><br/><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -314,6 +340,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NumberIO, Vector2IO, DOMEventIO>"
     },
     "arithmetic.general.controller.input.validatePointersAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -326,6 +353,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<>"
     },
     "arithmetic.general.controller.input.wheelScrollAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when the mouse wheel scrolls The arguments are:<br/><ol><li>event: DOMEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -338,6 +366,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<DOMEventIO>"
     },
     "arithmetic.general.focusProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Stores the current focus for the simulation, null if there is not focus. This is not updated based on mouse or touch input, only keyboard and other alternative inputs.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -350,6 +379,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<FocusIO>>"
     },
     "arithmetic.general.navigationBar.divideScreenButton": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Button in the navigation bar that selects the 'divideScreen' screen",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -362,6 +392,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.general.navigationBar.divideScreenButton.enabledProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -374,6 +405,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.divideScreenButton.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when the button is fired No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -386,6 +418,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.general.navigationBar.divideScreenButton.icon": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -398,6 +431,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.general.navigationBar.divideScreenButton.icon.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -410,6 +444,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.divideScreenButton.icon.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -422,6 +457,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.divideScreenButton.icon.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -434,6 +470,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.divideScreenButton.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -446,6 +483,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.divideScreenButton.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -458,6 +496,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.divideScreenButton.pressListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -470,6 +509,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.general.navigationBar.divideScreenButton.pressListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -482,6 +522,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.general.navigationBar.divideScreenButton.text": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -494,6 +535,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "TextIO"
     },
     "arithmetic.general.navigationBar.divideScreenButton.text.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -506,6 +548,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.divideScreenButton.text.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -518,6 +561,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.divideScreenButton.text.textProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -530,6 +574,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<StringIO>"
     },
     "arithmetic.general.navigationBar.divideScreenButton.text.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -542,6 +587,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.divideScreenButton.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -554,6 +600,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.factorScreenButton": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Button in the navigation bar that selects the 'factorScreen' screen",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -566,6 +613,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.general.navigationBar.factorScreenButton.enabledProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -578,6 +626,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.factorScreenButton.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when the button is fired No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -590,6 +639,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.general.navigationBar.factorScreenButton.icon": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -602,6 +652,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.general.navigationBar.factorScreenButton.icon.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -614,6 +665,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.factorScreenButton.icon.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -626,6 +678,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.factorScreenButton.icon.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -638,6 +691,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.factorScreenButton.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -650,6 +704,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.factorScreenButton.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -662,6 +717,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.factorScreenButton.pressListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -674,6 +730,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.general.navigationBar.factorScreenButton.pressListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -686,6 +743,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.general.navigationBar.factorScreenButton.text": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -698,6 +756,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "TextIO"
     },
     "arithmetic.general.navigationBar.factorScreenButton.text.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -710,6 +769,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.factorScreenButton.text.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -722,6 +782,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.factorScreenButton.text.textProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -734,6 +795,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<StringIO>"
     },
     "arithmetic.general.navigationBar.factorScreenButton.text.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -746,6 +808,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.factorScreenButton.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -758,6 +821,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.homeButton": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -770,6 +834,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.general.navigationBar.homeButton.enabledProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -782,6 +847,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.homeButton.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when the button is fired No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -794,6 +860,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.general.navigationBar.homeButton.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -806,6 +873,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.homeButton.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -818,6 +886,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.homeButton.pressListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -830,6 +899,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.general.navigationBar.homeButton.pressListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -842,6 +912,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.general.navigationBar.homeButton.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -854,6 +925,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Button in the navigation bar that selects the 'multiplyScreen' screen",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -866,6 +938,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.enabledProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -878,6 +951,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when the button is fired No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -890,6 +964,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.icon": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -902,6 +977,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.icon.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -914,6 +990,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.icon.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -926,6 +1003,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.icon.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -938,6 +1016,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -950,6 +1029,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -962,6 +1042,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.pressListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -974,6 +1055,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.pressListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -986,6 +1068,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.text": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -998,6 +1081,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "TextIO"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.text.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1010,6 +1094,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.text.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1022,6 +1107,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.text.textProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1034,6 +1120,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<StringIO>"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.text.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1046,6 +1133,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.multiplyScreenButton.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1058,6 +1146,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.phetButton": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "The button that appears at the right side of the navigation bar, which shows a menu when pressed",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1070,6 +1159,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PhetButtonIO"
     },
     "arithmetic.general.navigationBar.phetButton.enabledProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1082,6 +1172,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.phetButton.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Emits when the button is fired No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1094,6 +1185,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "This menu is displayed when the PhET button is pressed.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1106,6 +1198,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PhetMenuIO"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1118,6 +1211,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PhetioCapsuleIO<DialogIO>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": true,
       "phetioEventType": "MODEL",
@@ -1130,6 +1224,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "DialogIO"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton": {
+      "isDynamicElementPrototype": true,
       "phetioDocumentation": "",
       "phetioDynamicElement": true,
       "phetioEventType": "MODEL",
@@ -1142,6 +1237,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.enabledProperty": {
+      "isDynamicElementPrototype": true,
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioDynamicElement": true,
       "phetioEventType": "MODEL",
@@ -1154,6 +1250,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.firedEmitter": {
+      "isDynamicElementPrototype": true,
       "phetioDocumentation": "Emits when the button is fired No arguments.",
       "phetioDynamicElement": true,
       "phetioEventType": "USER",
@@ -1166,6 +1263,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.opacityProperty": {
+      "isDynamicElementPrototype": true,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": true,
       "phetioEventType": "MODEL",
@@ -1178,6 +1276,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.pickableProperty": {
+      "isDynamicElementPrototype": true,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": true,
       "phetioEventType": "MODEL",
@@ -1190,6 +1289,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.pressListener.pressAction": {
+      "isDynamicElementPrototype": true,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": true,
       "phetioEventType": "USER",
@@ -1202,6 +1302,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.pressListener.releaseAction": {
+      "isDynamicElementPrototype": true,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": true,
       "phetioEventType": "USER",
@@ -1214,6 +1315,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.visibleProperty": {
+      "isDynamicElementPrototype": true,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": true,
       "phetioEventType": "MODEL",
@@ -1226,6 +1328,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.isShowingProperty": {
+      "isDynamicElementPrototype": true,
       "phetioDocumentation": "",
       "phetioDynamicElement": true,
       "phetioEventType": "MODEL",
@@ -1238,6 +1341,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.opacityProperty": {
+      "isDynamicElementPrototype": true,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": true,
       "phetioEventType": "MODEL",
@@ -1250,6 +1354,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.pickableProperty": {
+      "isDynamicElementPrototype": true,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": true,
       "phetioEventType": "MODEL",
@@ -1262,6 +1367,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.visibleProperty": {
+      "isDynamicElementPrototype": true,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": true,
       "phetioEventType": "MODEL",
@@ -1274,6 +1380,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutMenuItem": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "This menu item shows a dialog with information about the simulation.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1286,6 +1393,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutMenuItem.inputListener.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1298,6 +1406,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutMenuItem.inputListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1310,6 +1419,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutMenuItem.inputListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1322,6 +1432,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutMenuItem.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1334,6 +1445,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutMenuItem.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1346,6 +1458,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.aboutMenuItem.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1358,6 +1471,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.screenshotMenuItem": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "This menu item captures a screenshot from the simulation and saves it to the file system.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1370,6 +1484,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.screenshotMenuItem.inputListener.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1382,6 +1497,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.screenshotMenuItem.inputListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1394,6 +1510,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.screenshotMenuItem.inputListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1406,6 +1523,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.screenshotMenuItem.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1418,6 +1536,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.screenshotMenuItem.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1430,6 +1549,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.phetButton.phetMenu.screenshotMenuItem.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1442,6 +1562,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.navigationBar.phetButton.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Set whether the phetButton will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1454,6 +1575,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.phetButton.pressListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1466,6 +1588,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.general.navigationBar.phetButton.pressListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1478,6 +1601,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.general.navigationBar.titleTextNode": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Displays the title of the simulation in the navigation bar (bottom left)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1490,6 +1614,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "TextIO"
     },
     "arithmetic.general.navigationBar.titleTextNode.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1502,6 +1627,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.navigationBar.titleTextNode.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1514,6 +1640,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.general.navigationBar.titleTextNode.textProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1526,6 +1653,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<StringIO>"
     },
     "arithmetic.general.navigationBar.titleTextNode.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1538,6 +1666,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.phetioCommandProcessor": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Processes messages from the wrapper frame and returns the results. This serves as the source of PhET-iO data stream messages when commands are invoked from the wrapper.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1550,6 +1679,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PhetioCommandProcessorIO"
     },
     "arithmetic.general.resizeAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes when the sim is resized The arguments are:<br/><ol><li>width: NumberIO</li><br/><li>height: NumberIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1562,6 +1692,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NumberIO, NumberIO>"
     },
     "arithmetic.general.screenIndexProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Indicates which screen is selected (0-indexed)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1574,6 +1705,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.general.showHomeScreenProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1586,6 +1718,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.soundEnabledProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1598,6 +1731,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.general.stepSimulationAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>dt: NumberIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1610,6 +1744,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NumberIO>"
     },
     "arithmetic.homeScreen.activeProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Indicates whether the screen is active.  For single-screen simulations, the screen is always active.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1622,6 +1757,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1634,6 +1770,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.homeScreen.view.divideScreenLargeButton": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A pressable button in the simulation, in the home screen",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1646,6 +1783,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.homeScreen.view.divideScreenLargeButton.inputListener.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1658,6 +1796,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.homeScreen.view.divideScreenLargeButton.inputListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1670,6 +1809,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.homeScreen.view.divideScreenLargeButton.inputListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1682,6 +1822,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.homeScreen.view.divideScreenLargeButton.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1694,6 +1835,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.divideScreenLargeButton.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1706,6 +1848,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.divideScreenLargeButton.text": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1718,6 +1861,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "TextIO"
     },
     "arithmetic.homeScreen.view.divideScreenLargeButton.text.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1730,6 +1874,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.divideScreenLargeButton.text.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1742,6 +1887,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.divideScreenLargeButton.text.textProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1754,6 +1900,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<StringIO>"
     },
     "arithmetic.homeScreen.view.divideScreenLargeButton.text.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1766,6 +1913,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view.divideScreenLargeButton.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1778,6 +1926,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view.divideScreenSmallButton": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A pressable button in the simulation, in the home screen",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1790,6 +1939,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.homeScreen.view.divideScreenSmallButton.inputListener.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1802,6 +1952,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.homeScreen.view.divideScreenSmallButton.inputListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1814,6 +1965,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.homeScreen.view.divideScreenSmallButton.inputListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1826,6 +1978,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.homeScreen.view.divideScreenSmallButton.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1838,6 +1991,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.divideScreenSmallButton.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1850,6 +2004,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.divideScreenSmallButton.text": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1862,6 +2017,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "TextIO"
     },
     "arithmetic.homeScreen.view.divideScreenSmallButton.text.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1874,6 +2030,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.divideScreenSmallButton.text.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1886,6 +2043,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.divideScreenSmallButton.text.textProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1898,6 +2056,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<StringIO>"
     },
     "arithmetic.homeScreen.view.divideScreenSmallButton.text.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1910,6 +2069,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view.divideScreenSmallButton.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1922,6 +2082,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view.factorScreenLargeButton": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A pressable button in the simulation, in the home screen",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1934,6 +2095,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.homeScreen.view.factorScreenLargeButton.inputListener.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1946,6 +2108,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.homeScreen.view.factorScreenLargeButton.inputListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1958,6 +2121,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.homeScreen.view.factorScreenLargeButton.inputListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -1970,6 +2134,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.homeScreen.view.factorScreenLargeButton.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1982,6 +2147,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.factorScreenLargeButton.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1994,6 +2160,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.factorScreenLargeButton.text": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2006,6 +2173,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "TextIO"
     },
     "arithmetic.homeScreen.view.factorScreenLargeButton.text.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2018,6 +2186,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.factorScreenLargeButton.text.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2030,6 +2199,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.factorScreenLargeButton.text.textProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2042,6 +2212,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<StringIO>"
     },
     "arithmetic.homeScreen.view.factorScreenLargeButton.text.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2054,6 +2225,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view.factorScreenLargeButton.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2066,6 +2238,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view.factorScreenSmallButton": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A pressable button in the simulation, in the home screen",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -2078,6 +2251,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.homeScreen.view.factorScreenSmallButton.inputListener.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -2090,6 +2264,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.homeScreen.view.factorScreenSmallButton.inputListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -2102,6 +2277,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.homeScreen.view.factorScreenSmallButton.inputListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -2114,6 +2290,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.homeScreen.view.factorScreenSmallButton.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2126,6 +2303,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.factorScreenSmallButton.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2138,6 +2316,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.factorScreenSmallButton.text": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2150,6 +2329,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "TextIO"
     },
     "arithmetic.homeScreen.view.factorScreenSmallButton.text.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2162,6 +2342,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.factorScreenSmallButton.text.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2174,6 +2355,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.factorScreenSmallButton.text.textProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2186,6 +2368,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<StringIO>"
     },
     "arithmetic.homeScreen.view.factorScreenSmallButton.text.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2198,6 +2381,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view.factorScreenSmallButton.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2210,6 +2394,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view.multiplyScreenLargeButton": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A pressable button in the simulation, in the home screen",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -2222,6 +2407,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.homeScreen.view.multiplyScreenLargeButton.inputListener.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -2234,6 +2420,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.homeScreen.view.multiplyScreenLargeButton.inputListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -2246,6 +2433,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.homeScreen.view.multiplyScreenLargeButton.inputListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -2258,6 +2446,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.homeScreen.view.multiplyScreenLargeButton.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2270,6 +2459,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.multiplyScreenLargeButton.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2282,6 +2472,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.multiplyScreenLargeButton.text": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2294,6 +2485,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "TextIO"
     },
     "arithmetic.homeScreen.view.multiplyScreenLargeButton.text.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2306,6 +2498,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.multiplyScreenLargeButton.text.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2318,6 +2511,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.multiplyScreenLargeButton.text.textProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2330,6 +2524,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<StringIO>"
     },
     "arithmetic.homeScreen.view.multiplyScreenLargeButton.text.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2342,6 +2537,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view.multiplyScreenLargeButton.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2354,6 +2550,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view.multiplyScreenSmallButton": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A pressable button in the simulation, in the home screen",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -2366,6 +2563,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NodeIO"
     },
     "arithmetic.homeScreen.view.multiplyScreenSmallButton.inputListener.firedEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -2378,6 +2576,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<>"
     },
     "arithmetic.homeScreen.view.multiplyScreenSmallButton.inputListener.pressAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -2390,6 +2589,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<EventIO>"
     },
     "arithmetic.homeScreen.view.multiplyScreenSmallButton.inputListener.releaseAction": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -2402,6 +2602,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
     "arithmetic.homeScreen.view.multiplyScreenSmallButton.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2414,6 +2615,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.multiplyScreenSmallButton.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2426,6 +2628,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.multiplyScreenSmallButton.text": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2438,6 +2641,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "TextIO"
     },
     "arithmetic.homeScreen.view.multiplyScreenSmallButton.text.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2450,6 +2654,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.multiplyScreenSmallButton.text.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2462,6 +2667,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.multiplyScreenSmallButton.text.textProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2474,6 +2680,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<StringIO>"
     },
     "arithmetic.homeScreen.view.multiplyScreenSmallButton.text.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2486,6 +2693,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view.multiplyScreenSmallButton.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2498,6 +2706,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2510,6 +2719,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2522,6 +2732,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.title": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2534,6 +2745,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "TextIO"
     },
     "arithmetic.homeScreen.view.title.opacityProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2546,6 +2758,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "arithmetic.homeScreen.view.title.pickableProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2558,6 +2771,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "arithmetic.homeScreen.view.title.textProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2570,6 +2784,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<StringIO>"
     },
     "arithmetic.homeScreen.view.title.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2582,6 +2797,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.homeScreen.view.visibleProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2594,6 +2810,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.multiplyScreen.activeProperty": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Indicates whether the screen is active.  For single-screen simulations, the screen is always active.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2606,6 +2823,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "arithmetic.multiplyScreen.model.checkAnswerEmitter": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>multiplicand: NumberIO</li><br/><li>product: NumberIO</li><br/><li>multiplier: NumberIO</li><br/><li>isCorrect: BooleanIO</li><br/><li>asString: StringIO</li><br/><li>input: StringIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -2618,6 +2836,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "EmitterIO<NumberIO, NumberIO, NumberIO, BooleanIO, StringIO, StringIO>"
     },
     "phetioEngine": {
+      "isDynamicElementPrototype": false,
       "phetioDocumentation": "Central point for PhET-iO interoperability",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
