@@ -21,6 +21,7 @@
       "adapted-from-phet",
       "phet-io"
     ],
+    "supportsSound": true,
     "simulation": true,
     "phet-io": {
       "wrappers": [
