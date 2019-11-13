@@ -1077,6 +1077,14 @@ window.phet.phetio.phetioTypes = assert &&
       "supertype": "ObjectIO",
       "typeName": "PropertyIO<StringIO>"
     },
+    "RichTextIO": {
+      "documentation": "The tandem IO type for the scenery RichText node",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "NodeIO",
+      "typeName": "RichTextIO"
+    },
     "StringIO": {
       "documentation": "Wrapper for the built-in JS string type",
       "events": [],
