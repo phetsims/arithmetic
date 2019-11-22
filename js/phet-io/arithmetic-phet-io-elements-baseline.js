@@ -1197,7 +1197,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PhetMenuIO"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": false,
@@ -1210,7 +1210,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PhetioCapsuleIO<DialogIO>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1223,7 +1223,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "DialogIO"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.closeButton": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1236,7 +1236,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.closeButton.enabledProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1249,7 +1249,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.closeButton.firedEmitter": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.firedEmitter": {
       "phetioDocumentation": "Emits when the button is fired No arguments.",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1262,7 +1262,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO<>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.closeButton.opacityProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1275,7 +1275,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.closeButton.pickableProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1288,7 +1288,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.closeButton.pressListener.pressAction": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.pressListener.pressAction": {
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1301,7 +1301,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<EventIO>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.closeButton.pressListener.releaseAction": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.pressListener.releaseAction": {
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1314,7 +1314,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<NullableIO<EventIO>>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.closeButton.visibleProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.closeButton.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1327,7 +1327,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.isShowingProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.isShowingProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1340,7 +1340,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.opacityProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1353,7 +1353,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.pickableProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1366,7 +1366,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.termsPrivacyAndLicensingText": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.termsPrivacyAndLicensingText": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1379,7 +1379,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "RichTextIO"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.termsPrivacyAndLicensingText.opacityProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.termsPrivacyAndLicensingText.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1392,7 +1392,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.termsPrivacyAndLicensingText.pickableProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.termsPrivacyAndLicensingText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1405,7 +1405,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.termsPrivacyAndLicensingText.textProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.termsPrivacyAndLicensingText.textProperty": {
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1418,7 +1418,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<StringIO>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.termsPrivacyAndLicensingText.visibleProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.termsPrivacyAndLicensingText.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1431,7 +1431,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.thirdPartyCreditsLinkText": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.thirdPartyCreditsLinkText": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1444,7 +1444,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "RichTextIO"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.thirdPartyCreditsLinkText.opacityProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.thirdPartyCreditsLinkText.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1457,7 +1457,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.thirdPartyCreditsLinkText.pickableProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.thirdPartyCreditsLinkText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1470,7 +1470,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.thirdPartyCreditsLinkText.textProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.thirdPartyCreditsLinkText.textProperty": {
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1483,7 +1483,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<StringIO>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.thirdPartyCreditsLinkText.visibleProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.thirdPartyCreditsLinkText.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1496,7 +1496,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.translationCreditsLinkText": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.translationCreditsLinkText": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1509,7 +1509,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "RichTextIO"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.translationCreditsLinkText.opacityProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.translationCreditsLinkText.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1522,7 +1522,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.translationCreditsLinkText.pickableProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.translationCreditsLinkText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1535,7 +1535,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.translationCreditsLinkText.textProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.translationCreditsLinkText.textProperty": {
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1548,7 +1548,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<StringIO>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.translationCreditsLinkText.visibleProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.translationCreditsLinkText.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
@@ -1561,7 +1561,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogSingleton.prototype.visibleProperty": {
+    "arithmetic.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.prototype.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioDynamicElementPrototype": true,
