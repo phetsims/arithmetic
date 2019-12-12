@@ -34,7 +34,7 @@ define( require => {
       name: divideString,
       backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
       homeScreenIcon: new DivideScreenIconNode(),
-      tandem: Tandem.required
+      tandem: Tandem.REQUIRED
     }, options );
 
     Screen.call( this,

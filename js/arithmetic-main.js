@@ -20,7 +20,7 @@ define( require => {
   const arithmeticTitleString = require( 'string!ARITHMETIC/arithmetic.title' );
 
   // constants
-  const tandem = Tandem.rootTandem;
+  const tandem = Tandem.ROOT;
 
   const simOptions = {
     credits: {

@@ -33,7 +33,7 @@ define( require => {
       name: multiplyString,
       homeScreenIcon: new MultiplyScreenIconNode(),
       backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
-      tandem: Tandem.required
+      tandem: Tandem.REQUIRED
     }, options );
 
     Screen.call( this,
