@@ -17,7 +17,7 @@ define( require => {
   const merge = require( 'PHET_CORE/merge' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const timer = require( 'AXON/timer' );
-  const Util = require( 'DOT/Util' );
+  const Utils = require( 'DOT/Utils' );
 
   // constants
   const UPDATE_PERIOD = 1 / 60 * 1000; // milliseconds, intended to match the expected frame rate
@@ -74,7 +74,7 @@ define( require => {
       // start up the new timer
       timerID = timer.setInterval( function() {
         countdown -= UPDATE_PERIOD;
-        self.opacity = Util.clamp( countdown / FADE_TIME, 0, 1 );
+        self.opacity = Utils.clamp( countdown / FADE_TIME, 0, 1 );
         if ( self.opacity === 0 ) {
           timer.clearInterval( timerID );
           timerID = null;

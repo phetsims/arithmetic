@@ -29,7 +29,7 @@ define( require => {
   const Rectangle = require( 'SCENERY/nodes/Rectangle' );
   const ScreenView = require( 'JOIST/ScreenView' );
   const Text = require( 'SCENERY/nodes/Text' );
-  const Util = require( 'DOT/Util' );
+  const Utils = require( 'DOT/Utils' );
   const Vector2 = require( 'DOT/Vector2' );
 
   // constants
@@ -97,7 +97,7 @@ define( require => {
               cell = new MultiplicationTableHeaderCell( MathSymbols.TIMES, cellOptions, {
 
                 // specify font and size, equation empirically determined, makes font smaller for larger tables
-                font: new PhetFont( { size: Util.roundSymmetric( cellOptions.height * 0.85 ) } )
+                font: new PhetFont( { size: Utils.roundSymmetric( cellOptions.height * 0.85 ) } )
               } );
             }
             else {
