@@ -25,6 +25,17 @@ define( require => {
   const TimerToggleButton = require( 'SCENERY_PHET/buttons/TimerToggleButton' );
   const VBox = require( 'SCENERY/nodes/VBox' );
 
+  // images
+  const multiplyLevel1Icon = require( 'mipmap!ARITHMETIC/multiply_level_1_icon.png' );
+  const multiplyLevel2Icon = require( 'mipmap!ARITHMETIC/multiply_level_2_icon.png' );
+  const multiplyLevel3Icon = require( 'mipmap!ARITHMETIC/multiply_level_3_icon.png' );
+  const factorLevel1Icon = require( 'mipmap!ARITHMETIC/factor_level_1_icon.png' );
+  const factorLevel2Icon = require( 'mipmap!ARITHMETIC/factor_level_2_icon.png' );
+  const factorLevel3Icon = require( 'mipmap!ARITHMETIC/factor_level_3_icon.png' );
+  const divideLevel1Icon = require( 'mipmap!ARITHMETIC/divide_level_1_icon.png' );
+  const divideLevel2Icon = require( 'mipmap!ARITHMETIC/divide_level_2_icon.png' );
+  const divideLevel3Icon = require( 'mipmap!ARITHMETIC/divide_level_3_icon.png' );
+
   // constants
   const CHOOSE_LEVEL_TITLE_FONT = new PhetFont( { size: 24 } );
   const TAB_TITLE_FONT = new PhetFont( { size: 54 } );
@@ -33,19 +44,19 @@ define( require => {
   // icon sets, used to place on the buttons
   const ICON_SETS = {
     multiply: [
-      require( 'mipmap!ARITHMETIC/multiply_level_1_icon.png' ),
-      require( 'mipmap!ARITHMETIC/multiply_level_2_icon.png' ),
-      require( 'mipmap!ARITHMETIC/multiply_level_3_icon.png' )
+      multiplyLevel1Icon,
+      multiplyLevel2Icon,
+      multiplyLevel3Icon
     ],
     factor: [
-      require( 'mipmap!ARITHMETIC/factor_level_1_icon.png' ),
-      require( 'mipmap!ARITHMETIC/factor_level_2_icon.png' ),
-      require( 'mipmap!ARITHMETIC/factor_level_3_icon.png' )
+      factorLevel1Icon,
+      factorLevel2Icon,
+      factorLevel3Icon
     ],
     divide: [
-      require( 'mipmap!ARITHMETIC/divide_level_1_icon.png' ),
-      require( 'mipmap!ARITHMETIC/divide_level_2_icon.png' ),
-      require( 'mipmap!ARITHMETIC/divide_level_3_icon.png' )
+      divideLevel1Icon,
+      divideLevel2Icon,
+      divideLevel3Icon
     ]
   };
 
