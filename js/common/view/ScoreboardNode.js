@@ -47,7 +47,7 @@ define( require => {
    * @param {Array.<LevelModel>} levelModels - Array of properties for score counter component.
    * @param {Property} timerEnabledProperty - Time enabling flag.
    * @param {Function} refreshLevelCallback - Callback listener for refresh level button.
-   * @param {Object} options - optional parameters that control the appearance and behavior of the panel
+   * @param {Object} [options] - optional parameters that control the appearance and behavior of the panel
    * @constructor
    */
   function ScoreboardNode( levelNumberProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback, options ) {

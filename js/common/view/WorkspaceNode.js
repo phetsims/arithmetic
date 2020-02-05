@@ -46,7 +46,7 @@ define( require => {
    * on the flavor of the game, i.e. multiplication, division, or factoring.  This is why it is passed in rather than
    * locally created.
    * @param {Bounds2} layoutBounds - Bounds of main screen. Necessary for placing components.
-   * @param {Object} options
+   * @param {Object} [options]
    *
    * @constructor
    */
