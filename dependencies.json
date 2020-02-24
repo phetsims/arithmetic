@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.23 Fri Oct 25 2019 16:53:39 GMT-0600 (Mountain Daylight Time)",
+  "comment": "# arithmetic 1.0.23 Mon Feb 24 2020 12:20:13 GMT-0700 (Mountain Standard Time)",
   "arithmetic": {
-    "sha": "2863f00373bbcab35c32aba9551889c691b3ac3a",
+    "sha": "a86b8541034116a80be058066bdd57ba70b25ce1",
     "branch": "1.0"
   },
   "assert": {
@@ -65,8 +65,8 @@
     "branch": "HEAD"
   },
   "vegas": {
-    "sha": "2620f230f7448fbd69833d76c5a3c367b054c6c4",
-    "branch": "HEAD"
+    "sha": "adf08713ba389dbb80338ae8ca9b65abd8ba0081",
+    "branch": "arithmetic-1.0"
   },
   "vibe": {
     "sha": "3028166b10c493fb4ef275dafa60b89b28aca2d8",
