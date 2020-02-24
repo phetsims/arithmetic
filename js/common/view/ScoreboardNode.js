@@ -23,7 +23,7 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var labelScoreString = require( 'string!VEGAS/label.score' );
+  var labelScorePatternString = require( 'string!VEGAS/label.scorePattern' );
   var labelTimeString = require( 'string!VEGAS/label.time' );
   var patternLevel0LevelNumberString = require( 'string!ARITHMETIC/pattern.level.0levelNumber' );
 
@@ -56,9 +56,9 @@ define( function( require ) {
     options = _.extend( {
       title: ''
     }, options );
-    var levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, '' ), FONT_BOLD );
-    var scoreText = new Text( StringUtils.format( labelScoreString, '0' ), FONT );
-    var timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), FONT );
+    var levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, '' ), { font: FONT_BOLD } );
+    var scoreText = new Text( StringUtils.format( labelScorePatternString, '0' ), { font: FONT } );
+    var timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), { font: FONT } );
 
     var panelOptions = _.extend( {}, PANEL_OPTIONS, options );
 
@@ -86,7 +86,7 @@ define( function( require ) {
 
     // add observers
     var updateScore = function( score ) {
-      scoreText.text = StringUtils.format( labelScoreString, score.toString() );
+      scoreText.text = StringUtils.format( labelScorePatternString, score.toString() );
     };
 
     var updateTime = function( time ) {
