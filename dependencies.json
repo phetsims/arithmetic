@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.24-rc.1 Mon Feb 24 2020 14:52:22 GMT-0700 (Mountain Standard Time)",
+  "comment": "# arithmetic 1.0.24 Tue Feb 25 2020 00:51:06 GMT-0700 (Mountain Standard Time)",
   "arithmetic": {
-    "sha": "bbf2c1f2db315646fb57842a9f54d927ef33929c",
+    "sha": "1484cfd187c2006829f3a3e6ff8a260701047495",
     "branch": "1.0"
   },
   "assert": {
