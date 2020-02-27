@@ -6,36 +6,32 @@
  *
  * @author Andrey Zelenkov (MLearner)
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const arithmetic = require( 'ARITHMETIC/arithmetic' );
-  const inherit = require( 'PHET_CORE/inherit' );
-  const Property = require( 'AXON/Property' );
+import Property from '../../../../axon/js/Property.js';
+import inherit from '../../../../phet-core/js/inherit.js';
+import arithmetic from '../../arithmetic.js';
 
-  /**
-   * @constructor
-   */
-  function ProblemModel() {
+/**
+ * @constructor
+ */
+function ProblemModel() {
 
-    // @public - model properties, initialized to undefined, but only ever set to {number}
-    this.multiplicandProperty = new Property( undefined );
-    this.multiplierProperty = new Property( undefined );
-    this.productProperty = new Property( undefined ); // product of multiplication
-    this.possiblePointsProperty = new Property( 1 ); // points for correct completion of current task, can go down on incorrect answers
+  // @public - model properties, initialized to undefined, but only ever set to {number}
+  this.multiplicandProperty = new Property( undefined );
+  this.multiplierProperty = new Property( undefined );
+  this.productProperty = new Property( undefined ); // product of multiplication
+  this.possiblePointsProperty = new Property( 1 ); // points for correct completion of current task, can go down on incorrect answers
+}
+
+arithmetic.register( 'ProblemModel', ProblemModel );
+
+export default inherit( Object, ProblemModel, {
+
+  // @public
+  reset: function() {
+    this.multiplicandProperty.reset();
+    this.multiplierProperty.reset();
+    this.productProperty.reset();
+    this.possiblePointsProperty.reset();
   }
-
-  arithmetic.register( 'ProblemModel', ProblemModel );
-
-  return inherit( Object, ProblemModel, {
-
-    // @public
-    reset: function() {
-      this.multiplicandProperty.reset();
-      this.multiplierProperty.reset();
-      this.productProperty.reset();
-      this.possiblePointsProperty.reset();
-    }
-  } );
 } );

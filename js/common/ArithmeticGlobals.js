@@ -6,18 +6,13 @@
  * @author John Blanco
  */
 
-define( require => {
-  'use strict';
+import Property from '../../../axon/js/Property.js';
+import arithmetic from '../arithmetic.js';
 
-  // modules
-  const arithmetic = require( 'ARITHMETIC/arithmetic' );
-  const Property = require( 'AXON/Property' );
+const ArithmeticGlobals = {
+  timerEnabledProperty: new Property( false )
+};
 
-  const ArithmeticGlobals = {
-    timerEnabledProperty: new Property( false )
-  };
+arithmetic.register( 'ArithmeticGlobals', ArithmeticGlobals );
 
-  arithmetic.register( 'ArithmeticGlobals', ArithmeticGlobals );
-
-  return ArithmeticGlobals;
-} );
+export default ArithmeticGlobals;

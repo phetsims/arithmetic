@@ -12,155 +12,151 @@
  * @author Andrey Zelenkov (MLearner)
  * @author John Blanco
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const arithmetic = require( 'ARITHMETIC/arithmetic' );
-  const inherit = require( 'PHET_CORE/inherit' );
-  const merge = require( 'PHET_CORE/merge' );
-  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  const Rectangle = require( 'SCENERY/nodes/Rectangle' );
-  const Text = require( 'SCENERY/nodes/Text' );
+import inherit from '../../../../../phet-core/js/inherit.js';
+import merge from '../../../../../phet-core/js/merge.js';
+import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
+import Rectangle from '../../../../../scenery/js/nodes/Rectangle.js';
+import Text from '../../../../../scenery/js/nodes/Text.js';
+import arithmetic from '../../../arithmetic.js';
 
-  // constants
-  const SMALL_FONT = new PhetFont( 17 );
-  const MEDIUM_FONT = new PhetFont( 22 );
-  const LARGE_FONT = new PhetFont( 30 );
-  const EXAMPLE_HEIGHT_STRING = '123456789';
-  const SMALL_FONT_HEIGHT = new Text( EXAMPLE_HEIGHT_STRING, { font: SMALL_FONT } ).bounds.height;
-  const MEDIUM_FONT_HEIGHT = new Text( EXAMPLE_HEIGHT_STRING, { font: MEDIUM_FONT } ).bounds.height;
-  const LARGE_FONT_HEIGHT = new Text( EXAMPLE_HEIGHT_STRING, { font: LARGE_FONT } ).bounds.height;
+// constants
+const SMALL_FONT = new PhetFont( 17 );
+const MEDIUM_FONT = new PhetFont( 22 );
+const LARGE_FONT = new PhetFont( 30 );
+const EXAMPLE_HEIGHT_STRING = '123456789';
+const SMALL_FONT_HEIGHT = new Text( EXAMPLE_HEIGHT_STRING, { font: SMALL_FONT } ).bounds.height;
+const MEDIUM_FONT_HEIGHT = new Text( EXAMPLE_HEIGHT_STRING, { font: MEDIUM_FONT } ).bounds.height;
+const LARGE_FONT_HEIGHT = new Text( EXAMPLE_HEIGHT_STRING, { font: LARGE_FONT } ).bounds.height;
+
+/**
+ * @param {Object} backgroundOptions - Background options for button.
+ * @param {Object} textOptions - Text options for button.
+ * @constructor
+ */
+function AbstractCell( backgroundOptions, textOptions ) {
+  Rectangle.call( this, 0, 0, backgroundOptions.width, backgroundOptions.height, merge( {
+    fill: 'white',
+    stroke: 'white',
+    lineWidth: 2.5
+  }, backgroundOptions ) );
+
+  // @private - save/define text options for when the text node is created
+  this._textOptions = merge( {
+    font: chooseFont( this.bounds.height ),
+    fill: 'white',
+    centerY: this.bounds.height / 2,
+    initiallyVisible: true
+  }, textOptions );
+
+  // @private - define the _text variable, but create it only when needed in order to save time during startup
+  this._textNode = null;
+
+  // @private - string to be displayed, used to support lazy creation of the node
+  this._text = '';
+
+  // if the text is initially visible, create the text node now, otherwise wait until it is shown
+  if ( this._textOptions.initiallyVisible ) {
+    createTextNodeIfNeeded( this );
+  }
+}
+
+// Convenience function for selecting appropriate font size for this cell.  This is done as an optimization so that
+// a new font doesn't need to be created for each cell.  The sizes were empirically determined.
+function chooseFont( cellHeight ) {
+  let font;
+  if ( cellHeight < 27 ) {
+    font = SMALL_FONT;
+  }
+  else if ( cellHeight < 35 ) {
+    font = MEDIUM_FONT;
+  }
+  else {
+    font = LARGE_FONT;
+  }
+  return font;
+}
+
+// Convenience function that supports 'lazy' creation of the text node, which is done to minimize startup time.
+function createTextNodeIfNeeded( cell ) {
+
+  if ( cell._textNode ) {
+    // the text node already exists
+    return;
+  }
+
+  cell._textNode = new Text( cell._text, cell._textOptions );
+  cell._textNode.centerX = cell.bounds.width / 2;
+  cell.addChild( cell._textNode );
+}
+
+arithmetic.register( 'AbstractCell', AbstractCell );
+
+export default inherit( Rectangle, AbstractCell, {
+
+  // @public
+  setBackgroundFill: function( fill ) {
+    this.fill = fill;
+  },
+
+  // @protected
+  setText: function( text ) {
+    this._text = text;
+    if ( this._textNode ) {
+      this._textNode.text = text;
+      this._textNode.centerX = this.width / 2;
+    }
+  },
+
+  // @public
+  setTextFill: function( fill ) {
+    createTextNodeIfNeeded( this );
+    this._textNode.setFill( fill );
+  },
+
+  // @public
+  showText: function() {
+    createTextNodeIfNeeded( this );
+    this._textNode.visible = true;
+  },
+
+  // @public
+  hideText: function() {
+    if ( this._textNode ) {
+      this._textNode.visible = false;
+    }
+  },
 
   /**
-   * @param {Object} backgroundOptions - Background options for button.
-   * @param {Object} textOptions - Text options for button.
-   * @constructor
+   * Get the text string contained in this cell (not the text node).
+   * @public
+   * @returns {string}
    */
-  function AbstractCell( backgroundOptions, textOptions ) {
-    Rectangle.call( this, 0, 0, backgroundOptions.width, backgroundOptions.height, merge( {
-      fill: 'white',
-      stroke: 'white',
-      lineWidth: 2.5
-    }, backgroundOptions ) );
+  getTextString: function() {
+    return this._text;
+  },
 
-    // @private - save/define text options for when the text node is created
-    this._textOptions = merge( {
-      font: chooseFont( this.bounds.height ),
-      fill: 'white',
-      centerY: this.bounds.height / 2,
-      initiallyVisible: true
-    }, textOptions );
+  // @public
+  isTextVisible: function() {
+    return this._textNode ? this._textNode.visible : false;
+  },
 
-    // @private - define the _text variable, but create it only when needed in order to save time during startup
-    this._textNode = null;
-
-    // @private - string to be displayed, used to support lazy creation of the node
-    this._text = '';
-
-    // if the text is initially visible, create the text node now, otherwise wait until it is shown
-    if ( this._textOptions.initiallyVisible ) {
-      createTextNodeIfNeeded( this );
+  // @public
+  getTextHeight: function() {
+    let height;
+    switch( this._textOptions.font ) {
+      case SMALL_FONT:
+        height = SMALL_FONT_HEIGHT;
+        break;
+      case MEDIUM_FONT:
+        height = MEDIUM_FONT_HEIGHT;
+        break;
+      case LARGE_FONT:
+        height = LARGE_FONT_HEIGHT;
+        break;
+      default:
+        assert && assert( false, 'unrecognized font' );
     }
+    return height;
   }
-
-  // Convenience function for selecting appropriate font size for this cell.  This is done as an optimization so that
-  // a new font doesn't need to be created for each cell.  The sizes were empirically determined.
-  function chooseFont( cellHeight ) {
-    let font;
-    if ( cellHeight < 27 ) {
-      font = SMALL_FONT;
-    }
-    else if ( cellHeight < 35 ) {
-      font = MEDIUM_FONT;
-    }
-    else {
-      font = LARGE_FONT;
-    }
-    return font;
-  }
-
-  // Convenience function that supports 'lazy' creation of the text node, which is done to minimize startup time.
-  function createTextNodeIfNeeded( cell ) {
-
-    if ( cell._textNode ) {
-      // the text node already exists
-      return;
-    }
-
-    cell._textNode = new Text( cell._text, cell._textOptions );
-    cell._textNode.centerX = cell.bounds.width / 2;
-    cell.addChild( cell._textNode );
-  }
-
-  arithmetic.register( 'AbstractCell', AbstractCell );
-
-  return inherit( Rectangle, AbstractCell, {
-
-    // @public
-    setBackgroundFill: function( fill ) {
-      this.fill = fill;
-    },
-
-    // @protected
-    setText: function( text ) {
-      this._text = text;
-      if ( this._textNode ) {
-        this._textNode.text = text;
-        this._textNode.centerX = this.width / 2;
-      }
-    },
-
-    // @public
-    setTextFill: function( fill ) {
-      createTextNodeIfNeeded( this );
-      this._textNode.setFill( fill );
-    },
-
-    // @public
-    showText: function() {
-      createTextNodeIfNeeded( this );
-      this._textNode.visible = true;
-    },
-
-    // @public
-    hideText: function() {
-      if ( this._textNode ) {
-        this._textNode.visible = false;
-      }
-    },
-
-    /**
-     * Get the text string contained in this cell (not the text node).
-     * @public
-     * @returns {string}
-     */
-    getTextString: function() {
-      return this._text;
-    },
-
-    // @public
-    isTextVisible: function() {
-      return this._textNode ? this._textNode.visible : false;
-    },
-
-    // @public
-    getTextHeight: function() {
-      let height;
-      switch( this._textOptions.font ) {
-        case SMALL_FONT:
-          height = SMALL_FONT_HEIGHT;
-          break;
-        case MEDIUM_FONT:
-          height = MEDIUM_FONT_HEIGHT;
-          break;
-        case LARGE_FONT:
-          height = LARGE_FONT_HEIGHT;
-          break;
-        default:
-          assert && assert( false, 'unrecognized font' );
-      }
-      return height;
-    }
-  } );
 } );

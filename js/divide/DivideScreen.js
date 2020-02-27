@@ -6,44 +6,41 @@
  * Andrey Zelenkov (MLearner)
  * @author John Blanco
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const arithmetic = require( 'ARITHMETIC/arithmetic' );
-  const ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  const DivideModel = require( 'ARITHMETIC/divide/model/DivideModel' );
-  const DivideScreenIconNode = require( 'ARITHMETIC/divide/view/DivideScreenIconNode' );
-  const DivideView = require( 'ARITHMETIC/divide/view/DivideView' );
-  const inherit = require( 'PHET_CORE/inherit' );
-  const merge = require( 'PHET_CORE/merge' );
-  const Property = require( 'AXON/Property' );
-  const Screen = require( 'JOIST/Screen' );
-  const Tandem = require( 'TANDEM/Tandem' );
+import Property from '../../../axon/js/Property.js';
+import Screen from '../../../joist/js/Screen.js';
+import inherit from '../../../phet-core/js/inherit.js';
+import merge from '../../../phet-core/js/merge.js';
+import Tandem from '../../../tandem/js/Tandem.js';
+import arithmeticStrings from '../arithmetic-strings.js';
+import arithmetic from '../arithmetic.js';
+import ArithmeticConstants from '../common/ArithmeticConstants.js';
+import DivideModel from './model/DivideModel.js';
+import DivideScreenIconNode from './view/DivideScreenIconNode.js';
+import DivideView from './view/DivideView.js';
 
-  // strings
-  const divideString = require( 'string!ARITHMETIC/divide' );
+const divideString = arithmeticStrings.divide;
 
-  /**
-   * @param {Object} [options]
-   * @constructor
-   */
-  function DivideScreen( options ) {
+/**
+ * @param {Object} [options]
+ * @constructor
+ */
+function DivideScreen( options ) {
 
-    options = merge( {
-      name: divideString,
-      backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
-      homeScreenIcon: new DivideScreenIconNode(),
-      tandem: Tandem.REQUIRED
-    }, options );
+  options = merge( {
+    name: divideString,
+    backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
+    homeScreenIcon: new DivideScreenIconNode(),
+    tandem: Tandem.REQUIRED
+  }, options );
 
-    Screen.call( this,
-      function() { return new DivideModel( options.tandem.createTandem( 'model' ) ); },
-      function( model ) { return new DivideView( model ); },
-      options );
-  }
+  Screen.call( this,
+    function() { return new DivideModel( options.tandem.createTandem( 'model' ) ); },
+    function( model ) { return new DivideView( model ); },
+    options );
+}
 
-  arithmetic.register( 'DivideScreen', DivideScreen );
+arithmetic.register( 'DivideScreen', DivideScreen );
 
-  return inherit( Screen, DivideScreen );
-} );
+inherit( Screen, DivideScreen );
+export default DivideScreen;

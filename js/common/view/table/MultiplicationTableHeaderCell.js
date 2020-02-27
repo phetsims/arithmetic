@@ -6,51 +6,46 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
-define( require => {
-  'use strict';
+import inherit from '../../../../../phet-core/js/inherit.js';
+import merge from '../../../../../phet-core/js/merge.js';
+import arithmetic from '../../../arithmetic.js';
+import AbstractCell from './AbstractCell.js';
 
-  // modules
-  const AbstractCell = require( 'ARITHMETIC/common/view/table/AbstractCell' );
-  const arithmetic = require( 'ARITHMETIC/arithmetic' );
-  const inherit = require( 'PHET_CORE/inherit' );
-  const merge = require( 'PHET_CORE/merge' );
+// constants
+const NORMAL_COLOR_BACKGROUND = 'rgb(220,60,33)'; // background normal color
+const SELECT_COLOR_BACKGROUND = 'rgb(0,0,128)'; // background select color
+const NORMAL_COLOR_TEXT = 'white'; // text normal color
+const SELECT_COLOR_TEXT = 'rgb(255,253,56)'; // text select color
 
-  // constants
-  const NORMAL_COLOR_BACKGROUND = 'rgb(220,60,33)'; // background normal color
-  const SELECT_COLOR_BACKGROUND = 'rgb(0,0,128)'; // background select color
-  const NORMAL_COLOR_TEXT = 'white'; // text normal color
-  const SELECT_COLOR_TEXT = 'rgb(255,253,56)'; // text select color
+/**
+ * @param {Text} contentText - Text label for button.
+ * @param {Object} backgroundOptions - Background options for button.
+ * @param {Object} textOptions - Text options for button.
+ *
+ * @constructor
+ */
+function MultiplicationTableHeaderCell( contentText, backgroundOptions, textOptions ) {
+  backgroundOptions = merge( {
+    fill: NORMAL_COLOR_BACKGROUND
+  }, backgroundOptions );
+  AbstractCell.call( this, backgroundOptions, textOptions );
 
-  /**
-   * @param {Text} contentText - Text label for button.
-   * @param {Object} backgroundOptions - Background options for button.
-   * @param {Object} textOptions - Text options for button.
-   *
-   * @constructor
-   */
-  function MultiplicationTableHeaderCell( contentText, backgroundOptions, textOptions ) {
-    backgroundOptions = merge( {
-      fill: NORMAL_COLOR_BACKGROUND
-    }, backgroundOptions );
-    AbstractCell.call( this, backgroundOptions, textOptions );
+  this.setText( contentText );
+}
 
-    this.setText( contentText );
+arithmetic.register( 'MultiplicationTableHeaderCell', MultiplicationTableHeaderCell );
+
+export default inherit( AbstractCell, MultiplicationTableHeaderCell, {
+
+  // @public
+  setSelected: function() {
+    this.setBackgroundFill( SELECT_COLOR_BACKGROUND );
+    this.setTextFill( SELECT_COLOR_TEXT );
+  },
+
+  // @public
+  setNormal: function() {
+    this.setBackgroundFill( NORMAL_COLOR_BACKGROUND );
+    this.setTextFill( NORMAL_COLOR_TEXT );
   }
-
-  arithmetic.register( 'MultiplicationTableHeaderCell', MultiplicationTableHeaderCell );
-
-  return inherit( AbstractCell, MultiplicationTableHeaderCell, {
-
-    // @public
-    setSelected: function() {
-      this.setBackgroundFill( SELECT_COLOR_BACKGROUND );
-      this.setTextFill( SELECT_COLOR_TEXT );
-    },
-
-    // @public
-    setNormal: function() {
-      this.setBackgroundFill( NORMAL_COLOR_BACKGROUND );
-      this.setTextFill( NORMAL_COLOR_TEXT );
-    }
-  } );
 } );

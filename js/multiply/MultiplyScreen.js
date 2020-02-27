@@ -5,44 +5,41 @@
  *
  * @author John Blanco, Andrey Zelenkov (MLearner)
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const arithmetic = require( 'ARITHMETIC/arithmetic' );
-  const ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  const inherit = require( 'PHET_CORE/inherit' );
-  const merge = require( 'PHET_CORE/merge' );
-  const MultiplyModel = require( 'ARITHMETIC/multiply/model/MultiplyModel' );
-  const MultiplyScreenIconNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenIconNode' );
-  const MultiplyView = require( 'ARITHMETIC/multiply/view/MultiplyView' );
-  const Property = require( 'AXON/Property' );
-  const Screen = require( 'JOIST/Screen' );
-  const Tandem = require( 'TANDEM/Tandem' );
+import Property from '../../../axon/js/Property.js';
+import Screen from '../../../joist/js/Screen.js';
+import inherit from '../../../phet-core/js/inherit.js';
+import merge from '../../../phet-core/js/merge.js';
+import Tandem from '../../../tandem/js/Tandem.js';
+import arithmeticStrings from '../arithmetic-strings.js';
+import arithmetic from '../arithmetic.js';
+import ArithmeticConstants from '../common/ArithmeticConstants.js';
+import MultiplyModel from './model/MultiplyModel.js';
+import MultiplyScreenIconNode from './view/MultiplyScreenIconNode.js';
+import MultiplyView from './view/MultiplyView.js';
 
-  // strings
-  const multiplyString = require( 'string!ARITHMETIC/multiply' );
+const multiplyString = arithmeticStrings.multiply;
 
-  /**
-   * @param {Object} [options]
-   * @constructor
-   */
-  function MultiplyScreen( options ) {
+/**
+ * @param {Object} [options]
+ * @constructor
+ */
+function MultiplyScreen( options ) {
 
-    options = merge( {
-      name: multiplyString,
-      homeScreenIcon: new MultiplyScreenIconNode(),
-      backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
-      tandem: Tandem.REQUIRED
-    }, options );
+  options = merge( {
+    name: multiplyString,
+    homeScreenIcon: new MultiplyScreenIconNode(),
+    backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
+    tandem: Tandem.REQUIRED
+  }, options );
 
-    Screen.call( this,
-      function() { return new MultiplyModel( options.tandem.createTandem( 'model' ) ); },
-      function( model ) { return new MultiplyView( model ); },
-      options );
-  }
+  Screen.call( this,
+    function() { return new MultiplyModel( options.tandem.createTandem( 'model' ) ); },
+    function( model ) { return new MultiplyView( model ); },
+    options );
+}
 
-  arithmetic.register( 'MultiplyScreen', MultiplyScreen );
+arithmetic.register( 'MultiplyScreen', MultiplyScreen );
 
-  return inherit( Screen, MultiplyScreen );
-} );
+inherit( Screen, MultiplyScreen );
+export default MultiplyScreen;

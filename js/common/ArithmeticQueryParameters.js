@@ -5,24 +5,20 @@
  *
  * @author John Blanco
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+import arithmetic from '../arithmetic.js';
 
-  const ArithmeticQueryParameters = QueryStringMachine.getAll( {
+const ArithmeticQueryParameters = QueryStringMachine.getAll( {
 
-    // automatically answer most problems to enable faster testing of level completion
-    autoAnswer: { type: 'flag' }
-  } );
-
-  // prevent auto answer in versions that are intended for publication
-  if ( phet.chipper.isProduction && !phet.chipper.isDebugBuild ) {
-    ArithmeticQueryParameters.autoAnswer = false;
-  }
-
-  arithmetic.register( 'ArithmeticQueryParameters', ArithmeticQueryParameters );
-
-  return ArithmeticQueryParameters;
+  // automatically answer most problems to enable faster testing of level completion
+  autoAnswer: { type: 'flag' }
 } );
+
+// prevent auto answer in versions that are intended for publication
+if ( phet.chipper.isProduction && !phet.chipper.isDebugBuild ) {
+  ArithmeticQueryParameters.autoAnswer = false;
+}
+
+arithmetic.register( 'ArithmeticQueryParameters', ArithmeticQueryParameters );
+
+export default ArithmeticQueryParameters;

@@ -5,44 +5,41 @@
  *
  * @author John Blanco, Andrey Zelenkov (MLearner)
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const arithmetic = require( 'ARITHMETIC/arithmetic' );
-  const ArithmeticConstants = require( 'ARITHMETIC/common/ArithmeticConstants' );
-  const FactorModel = require( 'ARITHMETIC/factor/model/FactorModel' );
-  const FactorScreenIconNode = require( 'ARITHMETIC/factor/view/FactorScreenIconNode' );
-  const FactorView = require( 'ARITHMETIC/factor/view/FactorView' );
-  const inherit = require( 'PHET_CORE/inherit' );
-  const merge = require( 'PHET_CORE/merge' );
-  const Property = require( 'AXON/Property' );
-  const Screen = require( 'JOIST/Screen' );
-  const Tandem = require( 'TANDEM/Tandem' );
+import Property from '../../../axon/js/Property.js';
+import Screen from '../../../joist/js/Screen.js';
+import inherit from '../../../phet-core/js/inherit.js';
+import merge from '../../../phet-core/js/merge.js';
+import Tandem from '../../../tandem/js/Tandem.js';
+import arithmeticStrings from '../arithmetic-strings.js';
+import arithmetic from '../arithmetic.js';
+import ArithmeticConstants from '../common/ArithmeticConstants.js';
+import FactorModel from './model/FactorModel.js';
+import FactorScreenIconNode from './view/FactorScreenIconNode.js';
+import FactorView from './view/FactorView.js';
 
-  // strings
-  const factorString = require( 'string!ARITHMETIC/factor' );
+const factorString = arithmeticStrings.factor;
 
-  /**
-   * @param {Object} [options]
-   * @constructor
-   */
-  function FactorScreen( options ) {
+/**
+ * @param {Object} [options]
+ * @constructor
+ */
+function FactorScreen( options ) {
 
-    options = merge( {
-      name: factorString,
-      homeScreenIcon: new FactorScreenIconNode(),
-      backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
-      tandem: Tandem.REQUIRED
-    }, options );
+  options = merge( {
+    name: factorString,
+    homeScreenIcon: new FactorScreenIconNode(),
+    backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
+    tandem: Tandem.REQUIRED
+  }, options );
 
-    Screen.call( this,
-      function() { return new FactorModel( options.tandem.createTandem( 'model' ) ); },
-      function( model ) { return new FactorView( model ); },
-      options );
-  }
+  Screen.call( this,
+    function() { return new FactorModel( options.tandem.createTandem( 'model' ) ); },
+    function( model ) { return new FactorView( model ); },
+    options );
+}
 
-  arithmetic.register( 'FactorScreen', FactorScreen );
+arithmetic.register( 'FactorScreen', FactorScreen );
 
-  return inherit( Screen, FactorScreen );
-} );
+inherit( Screen, FactorScreen );
+export default FactorScreen;

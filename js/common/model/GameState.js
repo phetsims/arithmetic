@@ -6,27 +6,22 @@
  * @author Andrey Zelenkov (Mlearner)
  * @author John Blanco
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const arithmetic = require( 'ARITHMETIC/arithmetic' );
+import arithmetic from '../../arithmetic.js';
 
-  // @public
-  const GameState = {
-    SELECTING_LEVEL: 'SELECTING_LEVEL',
-    AWAITING_USER_INPUT: 'AWAITING_USER_INPUT',
-    DISPLAYING_CORRECT_ANSWER_FEEDBACK: 'DISPLAYING_CORRECT_ANSWER_FEEDBACK',
-    DISPLAYING_INCORRECT_ANSWER_FEEDBACK: 'DISPLAYING_INCORRECT_ANSWER_FEEDBACK',
-    SHOWING_LEVEL_COMPLETED_DIALOG: 'SHOWING_LEVEL_COMPLETED_DIALOG',
-    LEVEL_COMPLETED: 'LEVEL_COMPLETED'
-  };
+// @public
+const GameState = {
+  SELECTING_LEVEL: 'SELECTING_LEVEL',
+  AWAITING_USER_INPUT: 'AWAITING_USER_INPUT',
+  DISPLAYING_CORRECT_ANSWER_FEEDBACK: 'DISPLAYING_CORRECT_ANSWER_FEEDBACK',
+  DISPLAYING_INCORRECT_ANSWER_FEEDBACK: 'DISPLAYING_INCORRECT_ANSWER_FEEDBACK',
+  SHOWING_LEVEL_COMPLETED_DIALOG: 'SHOWING_LEVEL_COMPLETED_DIALOG',
+  LEVEL_COMPLETED: 'LEVEL_COMPLETED'
+};
 
-  // verify that enum is immutable, without the runtime penalty in production code
-  if ( assert ) { Object.freeze( GameState ); }
+// verify that enum is immutable, without the runtime penalty in production code
+if ( assert ) { Object.freeze( GameState ); }
 
-  arithmetic.register( 'GameState', GameState );
+arithmetic.register( 'GameState', GameState );
 
-  return GameState;
-
-} );
+export default GameState;

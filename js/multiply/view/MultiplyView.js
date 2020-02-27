@@ -5,48 +5,45 @@
  *
  * @author Andrey Zelenkov (MLearner)
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const arithmetic = require( 'ARITHMETIC/arithmetic' );
-  const ArithmeticView = require( 'ARITHMETIC/common/view/ArithmeticView' );
-  const inherit = require( 'PHET_CORE/inherit' );
-  const MultiplyEquationNode = require( 'ARITHMETIC/multiply/view/MultiplyEquationNode' );
-  const MultiplyScreenTableNode = require( 'ARITHMETIC/multiply/view/MultiplyScreenTableNode' );
+import inherit from '../../../../phet-core/js/inherit.js';
+import arithmeticStrings from '../../arithmetic-strings.js';
+import arithmetic from '../../arithmetic.js';
+import ArithmeticView from '../../common/view/ArithmeticView.js';
+import MultiplyEquationNode from './MultiplyEquationNode.js';
+import MultiplyScreenTableNode from './MultiplyScreenTableNode.js';
 
-  // strings
-  const multiplyString = require( 'string!ARITHMETIC/multiply' );
+const multiplyString = arithmeticStrings.multiply;
 
-  /**
-   * @param {MultiplyModel} model - Main model for screen.
-   * @constructor
-   */
-  function MultiplyView( model ) {
-    ArithmeticView.call(
-      this,
-      model,
-      new MultiplyScreenTableNode(
-        model.problemModel,
-        model.stateProperty,
-        model.levelNumberProperty,
-        model.levelModels
-      ),
-      new MultiplyEquationNode(
-        model.stateProperty,
-        model.problemModel.multiplicandProperty,
-        model.problemModel.multiplierProperty,
-        model.inputProperty
-      ),
-      {
-        titleString: multiplyString,
-        levelSelectButtonColor: '#D8F58A',
-        levelSelectIconSet: 'multiply'
-      }
-    );
-  }
+/**
+ * @param {MultiplyModel} model - Main model for screen.
+ * @constructor
+ */
+function MultiplyView( model ) {
+  ArithmeticView.call(
+    this,
+    model,
+    new MultiplyScreenTableNode(
+      model.problemModel,
+      model.stateProperty,
+      model.levelNumberProperty,
+      model.levelModels
+    ),
+    new MultiplyEquationNode(
+      model.stateProperty,
+      model.problemModel.multiplicandProperty,
+      model.problemModel.multiplierProperty,
+      model.inputProperty
+    ),
+    {
+      titleString: multiplyString,
+      levelSelectButtonColor: '#D8F58A',
+      levelSelectIconSet: 'multiply'
+    }
+  );
+}
 
-  arithmetic.register( 'MultiplyView', MultiplyView );
+arithmetic.register( 'MultiplyView', MultiplyView );
 
-  return inherit( ArithmeticView, MultiplyView );
-} );
+inherit( ArithmeticView, MultiplyView );
+export default MultiplyView;

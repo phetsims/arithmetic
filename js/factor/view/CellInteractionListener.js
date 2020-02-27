@@ -9,67 +9,63 @@
  *
  * @author John Blanco
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const arithmetic = require( 'ARITHMETIC/arithmetic' );
-  const Emitter = require( 'AXON/Emitter' );
-  const inherit = require( 'PHET_CORE/inherit' );
-  const Property = require( 'AXON/Property' );
+import Emitter from '../../../../axon/js/Emitter.js';
+import Property from '../../../../axon/js/Property.js';
+import inherit from '../../../../phet-core/js/inherit.js';
+import arithmetic from '../../arithmetic.js';
 
-  /**
-   * @constructor
-   */
-  function CellInteractionListener() {
-    this.mouseOverProperty = new Property( false );
-    this.touchedProperty = new Property( false );
-    this.enabledProperty = new Property( true );
+/**
+ * @constructor
+ */
+function CellInteractionListener() {
+  this.mouseOverProperty = new Property( false );
+  this.touchedProperty = new Property( false );
+  this.enabledProperty = new Property( true );
 
-    this.mouseDownEmitter = new Emitter();
-    this.mouseUpEmitter = new Emitter();
-    this.touchUpEmitter = new Emitter();
-  }
+  this.mouseDownEmitter = new Emitter();
+  this.mouseUpEmitter = new Emitter();
+  this.touchUpEmitter = new Emitter();
+}
 
-  arithmetic.register( 'CellInteractionListener', CellInteractionListener );
+arithmetic.register( 'CellInteractionListener', CellInteractionListener );
 
-  return inherit( Object, CellInteractionListener, {
+export default inherit( Object, CellInteractionListener, {
 
-    // @public
-    enter: function( event, trail ) {
-      if ( event.pointer.type === 'mouse' ) {
-        this.mouseOverProperty.set( true );
-      }
-      else if ( event.pointer.type === 'touch' ) {
-        this.touchedProperty.set( true );
-      }
-    },
-
-    // @public
-    exit: function( event, trail ) {
-      if ( event.pointer.type === 'mouse' ) {
-        this.mouseOverProperty.set( false );
-      }
-      else if ( event.pointer.type === 'touch' ) {
-        this.touchedProperty.set( false );
-      }
-    },
-
-    // @public
-    down: function( event, trail ) {
-      if ( event.pointer.type === 'mouse' ) {
-        this.mouseDownEmitter.emit();
-      }
-    },
-
-    // @public
-    up: function( event, trail ) {
-      if ( event.pointer.type === 'mouse' ) {
-        this.mouseUpEmitter.emit();
-      }
-      else if ( event.pointer.type === 'touch' ) {
-        this.touchUpEmitter.emit();
-      }
+  // @public
+  enter: function( event, trail ) {
+    if ( event.pointer.type === 'mouse' ) {
+      this.mouseOverProperty.set( true );
     }
-  } );
+    else if ( event.pointer.type === 'touch' ) {
+      this.touchedProperty.set( true );
+    }
+  },
+
+  // @public
+  exit: function( event, trail ) {
+    if ( event.pointer.type === 'mouse' ) {
+      this.mouseOverProperty.set( false );
+    }
+    else if ( event.pointer.type === 'touch' ) {
+      this.touchedProperty.set( false );
+    }
+  },
+
+  // @public
+  down: function( event, trail ) {
+    if ( event.pointer.type === 'mouse' ) {
+      this.mouseDownEmitter.emit();
+    }
+  },
+
+  // @public
+  up: function( event, trail ) {
+    if ( event.pointer.type === 'mouse' ) {
+      this.mouseUpEmitter.emit();
+    }
+    else if ( event.pointer.type === 'touch' ) {
+      this.touchUpEmitter.emit();
+    }
+  }
 } );
