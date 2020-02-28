@@ -1,4 +1,4 @@
-// Copyright 2014-2019, University of Colorado Boulder
+// Copyright 2014-2020, University of Colorado Boulder
 
 /**
  * Model for single problem in the 'Arithmetic' simulation. This model contains properties necessary for each challenge
