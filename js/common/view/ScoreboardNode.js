@@ -17,8 +17,8 @@ import Text from '../../../../scenery/js/nodes/Text.js';
 import VBox from '../../../../scenery/js/nodes/VBox.js';
 import Panel from '../../../../sun/js/Panel.js';
 import GameTimer from '../../../../vegas/js/GameTimer.js';
-import vegasStrings from '../../../../vegas/js/vegas-strings.js';
-import arithmeticStrings from '../../arithmetic-strings.js';
+import vegasStrings from '../../../../vegas/js/vegasStrings.js';
+import arithmeticStrings from '../../arithmeticStrings.js';
 import arithmetic from '../../arithmetic.js';
 import GameState from '../model/GameState.js';
 

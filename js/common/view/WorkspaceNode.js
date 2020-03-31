@@ -17,7 +17,7 @@ import PhetColorScheme from '../../../../scenery-phet/js/PhetColorScheme.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import TextPushButton from '../../../../sun/js/buttons/TextPushButton.js';
-import arithmeticStrings from '../../arithmetic-strings.js';
+import arithmeticStrings from '../../arithmeticStrings.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
 import GameState from '../model/GameState.js';

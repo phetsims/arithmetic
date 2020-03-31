@@ -27,7 +27,7 @@ import factorLevel3Icon from '../../../mipmaps/factor_level_3_icon_png.js';
 import multiplyLevel1Icon from '../../../mipmaps/multiply_level_1_icon_png.js';
 import multiplyLevel2Icon from '../../../mipmaps/multiply_level_2_icon_png.js';
 import multiplyLevel3Icon from '../../../mipmaps/multiply_level_3_icon_png.js';
-import arithmeticStrings from '../../arithmetic-strings.js';
+import arithmeticStrings from '../../arithmeticStrings.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';

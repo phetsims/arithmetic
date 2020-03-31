@@ -7,7 +7,7 @@
  */
 
 import inherit from '../../../../phet-core/js/inherit.js';
-import arithmeticStrings from '../../arithmetic-strings.js';
+import arithmeticStrings from '../../arithmeticStrings.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticView from '../../common/view/ArithmeticView.js';
 import DivideEquationNode from './DivideEquationNode.js';

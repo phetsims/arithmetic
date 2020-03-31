@@ -11,7 +11,7 @@ import Screen from '../../../joist/js/Screen.js';
 import inherit from '../../../phet-core/js/inherit.js';
 import merge from '../../../phet-core/js/merge.js';
 import Tandem from '../../../tandem/js/Tandem.js';
-import arithmeticStrings from '../arithmetic-strings.js';
+import arithmeticStrings from '../arithmeticStrings.js';
 import arithmetic from '../arithmetic.js';
 import ArithmeticConstants from '../common/ArithmeticConstants.js';
 import MultiplyModel from './model/MultiplyModel.js';
