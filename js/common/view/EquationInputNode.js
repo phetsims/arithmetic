@@ -102,7 +102,7 @@ export default inherit( Node, EquationInputNode, {
    * @public
    */
   setFocus: function( focus ) {
-    this.cursorContainer.visible = focus;
+    this.textCursor.visible = focus;
   },
 
   /**
