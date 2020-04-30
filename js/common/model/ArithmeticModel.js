@@ -97,7 +97,7 @@ function ArithmeticModel( tandem, options ) {
 
 arithmetic.register( 'ArithmeticModel', ArithmeticModel );
 
-export default inherit( Object, ArithmeticModel, {
+inherit( Object, ArithmeticModel, {
 
   // @protected - get the current level model, use this to make the code more readable
   get activeLevelModel() {
@@ -357,3 +357,5 @@ export default inherit( Object, ArithmeticModel, {
     };
   }
 } );
+
+export default ArithmeticModel;

@@ -31,7 +31,7 @@ function MultiplyModel( tandem ) {
 
 arithmetic.register( 'MultiplyModel', MultiplyModel );
 
-export default inherit( ArithmeticModel, MultiplyModel, {
+inherit( ArithmeticModel, MultiplyModel, {
 
   // @public
   setUpUnansweredProblem: function() {
@@ -94,3 +94,5 @@ export default inherit( ArithmeticModel, MultiplyModel, {
     soundManager.enabled = soundState;
   }
 } );
+
+export default MultiplyModel;

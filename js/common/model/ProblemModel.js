@@ -25,7 +25,7 @@ function ProblemModel() {
 
 arithmetic.register( 'ProblemModel', ProblemModel );
 
-export default inherit( Object, ProblemModel, {
+inherit( Object, ProblemModel, {
 
   // @public
   reset: function() {
@@ -35,3 +35,5 @@ export default inherit( Object, ProblemModel, {
     this.possiblePointsProperty.reset();
   }
 } );
+
+export default ProblemModel;

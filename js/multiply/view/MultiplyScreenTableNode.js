@@ -42,7 +42,7 @@ function MultiplyScreenTableNode( problemModel, stateProperty, levelNumberProper
 
 arithmetic.register( 'MultiplyScreenTableNode', MultiplyScreenTableNode );
 
-export default inherit( MultiplicationTableNode, MultiplyScreenTableNode, {
+inherit( MultiplicationTableNode, MultiplyScreenTableNode, {
 
   // @public, @override
   refreshLevel: function( level ) {
@@ -72,3 +72,5 @@ export default inherit( MultiplicationTableNode, MultiplyScreenTableNode, {
     } );
   }
 } );
+
+export default MultiplyScreenTableNode;

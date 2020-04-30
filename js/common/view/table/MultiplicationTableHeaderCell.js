@@ -35,7 +35,7 @@ function MultiplicationTableHeaderCell( contentText, backgroundOptions, textOpti
 
 arithmetic.register( 'MultiplicationTableHeaderCell', MultiplicationTableHeaderCell );
 
-export default inherit( AbstractCell, MultiplicationTableHeaderCell, {
+inherit( AbstractCell, MultiplicationTableHeaderCell, {
 
   // @public
   setSelected: function() {
@@ -49,3 +49,5 @@ export default inherit( AbstractCell, MultiplicationTableHeaderCell, {
     this.setTextFill( NORMAL_COLOR_TEXT );
   }
 } );
+
+export default MultiplicationTableHeaderCell;

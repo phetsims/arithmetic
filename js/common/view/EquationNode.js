@@ -63,7 +63,7 @@ function EquationNode( multiplicandProperty, multiplierProperty, productProperty
 
 arithmetic.register( 'EquationNode', EquationNode );
 
-export default inherit( HBox, EquationNode, {
+inherit( HBox, EquationNode, {
 
   /**
    * Set the equation to depict equals or not equals.
@@ -75,3 +75,5 @@ export default inherit( HBox, EquationNode, {
     this.equalsSign.text = showEqual ? MathSymbols.EQUAL_TO : MathSymbols.NOT_EQUAL_TO;
   }
 } );
+
+export default EquationNode;

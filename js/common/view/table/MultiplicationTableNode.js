@@ -246,7 +246,7 @@ function MultiplicationTableNode( levelNumberProperty, stateProperty, levelModel
 
 arithmetic.register( 'MultiplicationTableNode', MultiplicationTableNode );
 
-export default inherit( Node, MultiplicationTableNode, {
+inherit( Node, MultiplicationTableNode, {
 
   /**
    * Set all cells for given level to the default background color
@@ -317,3 +317,5 @@ export default inherit( Node, MultiplicationTableNode, {
   }
 
 } );
+
+export default MultiplicationTableNode;

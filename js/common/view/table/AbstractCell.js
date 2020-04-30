@@ -92,7 +92,7 @@ function createTextNodeIfNeeded( cell ) {
 
 arithmetic.register( 'AbstractCell', AbstractCell );
 
-export default inherit( Rectangle, AbstractCell, {
+inherit( Rectangle, AbstractCell, {
 
   // @public
   setBackgroundFill: function( fill ) {
@@ -160,3 +160,5 @@ export default inherit( Rectangle, AbstractCell, {
     return height;
   }
 } );
+
+export default AbstractCell;

@@ -33,7 +33,7 @@ function MultiplicationTableBodyCell( contentText, backgroundOptions ) {
 
 arithmetic.register( 'MultiplicationTableBodyCell', MultiplicationTableBodyCell );
 
-export default inherit( AbstractCell, MultiplicationTableBodyCell, {
+inherit( AbstractCell, MultiplicationTableBodyCell, {
 
   // @public - set cell into the state that indicates that the user is hovering over it
   setHover: function() {
@@ -51,3 +51,5 @@ export default inherit( AbstractCell, MultiplicationTableBodyCell, {
   }
 
 } );
+
+export default MultiplicationTableBodyCell;

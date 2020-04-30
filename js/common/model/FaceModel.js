@@ -27,7 +27,7 @@ function FaceModel() {
 
 arithmetic.register( 'FaceModel', FaceModel );
 
-export default inherit( Object, FaceModel, {
+inherit( Object, FaceModel, {
 
   // @public
   showFace: function() {
@@ -49,3 +49,5 @@ export default inherit( Object, FaceModel, {
     this.isSmileProperty.reset();
   }
 } );
+
+export default FaceModel;

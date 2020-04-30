@@ -84,7 +84,7 @@ function EquationInputNode( valueProperty, size ) {
 
 arithmetic.register( 'EquationInputNode', EquationInputNode );
 
-export default inherit( Node, EquationInputNode, {
+inherit( Node, EquationInputNode, {
 
   /**
    * Clear the textual value shown in this node.  This is done regardless of the value of the value property that is
@@ -124,3 +124,5 @@ export default inherit( Node, EquationInputNode, {
     updateBoxPosition( this._box, this.inputSize );
   }
 } );
+
+export default EquationInputNode;

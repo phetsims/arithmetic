@@ -23,7 +23,7 @@ function FactorModel( tandem ) {
 
 arithmetic.register( 'FactorModel', FactorModel );
 
-export default inherit( ArithmeticModel, FactorModel, {
+inherit( ArithmeticModel, FactorModel, {
 
   // @public
   setUpUnansweredProblem: function() {
@@ -116,3 +116,5 @@ export default inherit( ArithmeticModel, FactorModel, {
     soundManager.enabled = soundState;
   }
 } );
+
+export default FactorModel;

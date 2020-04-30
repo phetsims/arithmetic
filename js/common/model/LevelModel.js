@@ -41,7 +41,7 @@ function LevelModel( tableSize ) {
 
 arithmetic.register( 'LevelModel', LevelModel );
 
-export default inherit( Object, LevelModel, {
+inherit( Object, LevelModel, {
 
   // @public - reset this level
   reset: function() {
@@ -115,3 +115,5 @@ export default inherit( Object, LevelModel, {
     };
   }
 } );
+
+export default LevelModel;

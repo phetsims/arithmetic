@@ -59,7 +59,7 @@ function DivideScreenTableNode( model ) {
 
 arithmetic.register( 'DivideScreenTableNode', DivideScreenTableNode );
 
-export default inherit( MultiplicationTableNode, DivideScreenTableNode, {
+inherit( MultiplicationTableNode, DivideScreenTableNode, {
 
   // @public, @override
   refreshLevel: function() {
@@ -74,3 +74,5 @@ export default inherit( MultiplicationTableNode, DivideScreenTableNode, {
     }
   }
 } );
+
+export default DivideScreenTableNode;

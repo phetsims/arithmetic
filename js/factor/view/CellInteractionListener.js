@@ -30,7 +30,7 @@ function CellInteractionListener() {
 
 arithmetic.register( 'CellInteractionListener', CellInteractionListener );
 
-export default inherit( Object, CellInteractionListener, {
+inherit( Object, CellInteractionListener, {
 
   // @public
   enter: function( event, trail ) {
@@ -69,3 +69,5 @@ export default inherit( Object, CellInteractionListener, {
     }
   }
 } );
+
+export default CellInteractionListener;

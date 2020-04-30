@@ -36,7 +36,7 @@ function DivideModel( tandem ) {
 
 arithmetic.register( 'DivideModel', DivideModel );
 
-export default inherit( ArithmeticModel, DivideModel, {
+inherit( ArithmeticModel, DivideModel, {
 
   // @public
   setUpUnansweredProblem: function() {
@@ -118,3 +118,5 @@ export default inherit( ArithmeticModel, DivideModel, {
     soundManager.enabled = soundState;
   }
 } );
+
+export default DivideModel;

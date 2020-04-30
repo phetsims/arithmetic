@@ -203,7 +203,7 @@ function FactorScreenTableNode( model ) {
 
 arithmetic.register( 'FactorScreenTableNode', FactorScreenTableNode );
 
-export default inherit( MultiplicationTableNode, FactorScreenTableNode, {
+inherit( MultiplicationTableNode, FactorScreenTableNode, {
 
   // @private, enable all cells for given level
   enableAllCells: function( levelNumber ) {
@@ -255,3 +255,5 @@ export default inherit( MultiplicationTableNode, FactorScreenTableNode, {
     this.enableAllCells( level );
   }
 } );
+
+export default FactorScreenTableNode;
