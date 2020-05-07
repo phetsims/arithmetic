@@ -7,7 +7,7 @@
  */
 
 import Sim from '../../joist/js/Sim.js';
-import SimLauncher from '../../joist/js/SimLauncher.js';
+import simLauncher from '../../joist/js/simLauncher.js';
 import Tandem from '../../tandem/js/Tandem.js';
 import arithmeticStrings from './arithmeticStrings.js';
 import DivideScreen from './divide/DivideScreen.js';
@@ -30,7 +30,7 @@ const simOptions = {
   }
 };
 
-SimLauncher.launch( function() {
+simLauncher.launch( function() {
   // Create and start the sim
   new Sim( arithmeticTitleString, [
     new MultiplyScreen( { tandem: tandem.createTandem( 'multiplyScreen' ) } ),
