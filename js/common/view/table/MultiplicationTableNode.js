@@ -158,7 +158,7 @@ function MultiplicationTableNode( levelNumberProperty, stateProperty, levelModel
     }
   } );
 
-  // @private - node that will be used to animate the answer moving from the equation to the location of the cell.
+  // @private - node that will be used to animate the answer moving from the equation to the position of the cell.
   this.flyingProduct = new Text( 'X', {
     font: ArithmeticConstants.EQUATION_FONT_TEXT,
     fill: 'white',
