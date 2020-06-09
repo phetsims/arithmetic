@@ -8,11 +8,12 @@
 
 import Property from '../../../axon/js/Property.js';
 import Screen from '../../../joist/js/Screen.js';
+import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import inherit from '../../../phet-core/js/inherit.js';
 import merge from '../../../phet-core/js/merge.js';
 import Tandem from '../../../tandem/js/Tandem.js';
-import arithmeticStrings from '../arithmeticStrings.js';
 import arithmetic from '../arithmetic.js';
+import arithmeticStrings from '../arithmeticStrings.js';
 import ArithmeticConstants from '../common/ArithmeticConstants.js';
 import FactorModel from './model/FactorModel.js';
 import FactorScreenIconNode from './view/FactorScreenIconNode.js';
@@ -28,7 +29,10 @@ function FactorScreen( options ) {
 
   options = merge( {
     name: factorString,
-    homeScreenIcon: new FactorScreenIconNode(),
+    homeScreenIcon: new ScreenIcon( new FactorScreenIconNode(), {
+      maxIconWidthProportion: 1,
+      maxIconHeightProportion: 1
+    } ),
     backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
     tandem: Tandem.REQUIRED
   }, options );

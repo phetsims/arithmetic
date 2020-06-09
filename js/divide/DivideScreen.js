@@ -9,6 +9,7 @@
 
 import Property from '../../../axon/js/Property.js';
 import Screen from '../../../joist/js/Screen.js';
+import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import inherit from '../../../phet-core/js/inherit.js';
 import merge from '../../../phet-core/js/merge.js';
 import Tandem from '../../../tandem/js/Tandem.js';
@@ -30,7 +31,10 @@ function DivideScreen( options ) {
   options = merge( {
     name: divideString,
     backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
-    homeScreenIcon: new DivideScreenIconNode(),
+    homeScreenIcon: new ScreenIcon( new DivideScreenIconNode(), {
+      maxIconWidthProportion: 1,
+      maxIconHeightProportion: 1
+    } ),
     tandem: Tandem.REQUIRED
   }, options );
 

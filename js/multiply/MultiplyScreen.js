@@ -8,11 +8,12 @@
 
 import Property from '../../../axon/js/Property.js';
 import Screen from '../../../joist/js/Screen.js';
+import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import inherit from '../../../phet-core/js/inherit.js';
 import merge from '../../../phet-core/js/merge.js';
 import Tandem from '../../../tandem/js/Tandem.js';
-import arithmeticStrings from '../arithmeticStrings.js';
 import arithmetic from '../arithmetic.js';
+import arithmeticStrings from '../arithmeticStrings.js';
 import ArithmeticConstants from '../common/ArithmeticConstants.js';
 import MultiplyModel from './model/MultiplyModel.js';
 import MultiplyScreenIconNode from './view/MultiplyScreenIconNode.js';
@@ -28,7 +29,10 @@ function MultiplyScreen( options ) {
 
   options = merge( {
     name: multiplyString,
-    homeScreenIcon: new MultiplyScreenIconNode(),
+    homeScreenIcon: new ScreenIcon( new MultiplyScreenIconNode(), {
+      maxIconWidthProportion: 1,
+      maxIconHeightProportion: 1
+    } ),
     backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
     tandem: Tandem.REQUIRED
   }, options );
