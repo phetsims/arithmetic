@@ -24,6 +24,7 @@
     "supportsSound": true,
     "simulation": true,
     "phet-io": {
+      "validation": true,
       "wrappers": [
         "phet-io-wrapper-arithmetic"
       ]
