@@ -8,7 +8,7 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
-import timer from '../../../../axon/js/timer.js';
+import stepTimer from '../../../../axon/js/stepTimer.js';
 import inherit from '../../../../phet-core/js/inherit.js';
 import HBox from '../../../../scenery/js/nodes/HBox.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
@@ -62,7 +62,7 @@ function EquationInputNode( valueProperty, size ) {
   } );
 
   // set up blinking of cursor
-  timer.setInterval( function() {
+  stepTimer.setInterval( function() {
     self.textCursor.visible = !self.textCursor.visible;
   }, ArithmeticConstants.CURSOR_BLINK_INTERVAL );
 

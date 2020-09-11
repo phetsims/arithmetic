@@ -10,7 +10,7 @@
 
 import Emitter from '../../../../axon/js/Emitter.js';
 import Property from '../../../../axon/js/Property.js';
-import timer from '../../../../axon/js/timer.js';
+import stepTimer from '../../../../axon/js/stepTimer.js';
 import inherit from '../../../../phet-core/js/inherit.js';
 import merge from '../../../../phet-core/js/merge.js';
 import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
@@ -145,7 +145,7 @@ inherit( Object, ArithmeticModel, {
       this.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
 
       // start a timer that will set up the next problem
-      this.feedbackTimer = timer.setTimeout(
+      this.feedbackTimer = stepTimer.setTimeout(
         function() {
           self.feedbackTimer = null;
           self.nextProblem();
@@ -230,7 +230,7 @@ inherit( Object, ArithmeticModel, {
 
     // if there is a timer running for displaying feedback, cancel it
     if ( this.feedbackTimer ) {
-      timer.clearTimeout( this.feedbackTimer );
+      stepTimer.clearTimeout( this.feedbackTimer );
     }
 
     // go back to the level selection screen
@@ -240,7 +240,7 @@ inherit( Object, ArithmeticModel, {
   // @public
   refreshLevel: function() {
     if ( this.feedbackTimer ) {
-      timer.clearTimeout( this.feedbackTimer );
+      stepTimer.clearTimeout( this.feedbackTimer );
     }
     this.resetLevel();
     this.activeLevelModel.displayScoreProperty.reset();

@@ -8,7 +8,7 @@
  * @author John Blanco
  */
 
-import timer from '../../../../axon/js/timer.js';
+import stepTimer from '../../../../axon/js/stepTimer.js';
 import Utils from '../../../../dot/js/Utils.js';
 import merge from '../../../../phet-core/js/merge.js';
 import FaceWithPointsNode from '../../../../scenery-phet/js/FaceWithPointsNode.js';
@@ -63,15 +63,15 @@ class ArithmeticFaceWithPointsNode extends FaceWithPointsNode {
 
       // cancel previous timer if it exists
       if ( timerID !== null ) {
-        timer.clearInterval( timerID );
+        stepTimer.clearInterval( timerID );
       }
 
       // start up the new timer
-      timerID = timer.setInterval( () => {
+      timerID = stepTimer.setInterval( () => {
         countdown -= UPDATE_PERIOD;
         this.opacity = Utils.clamp( countdown / FADE_TIME, 0, 1 );
         if ( this.opacity === 0 ) {
-          timer.clearInterval( timerID );
+          stepTimer.clearInterval( timerID );
           timerID = null;
           this.visible = false;
         }
@@ -83,7 +83,7 @@ class ArithmeticFaceWithPointsNode extends FaceWithPointsNode {
 
       // Cancel the timer (if running)
       if ( timerID !== null ) {
-        timer.clearTimeout( timerID );
+        stepTimer.clearTimeout( timerID );
         timerID = null;
       }
 
