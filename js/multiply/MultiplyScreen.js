@@ -9,7 +9,6 @@
 import Property from '../../../axon/js/Property.js';
 import Screen from '../../../joist/js/Screen.js';
 import ScreenIcon from '../../../joist/js/ScreenIcon.js';
-import inherit from '../../../phet-core/js/inherit.js';
 import merge from '../../../phet-core/js/merge.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import arithmetic from '../arithmetic.js';
@@ -19,31 +18,30 @@ import MultiplyModel from './model/MultiplyModel.js';
 import MultiplyScreenIconNode from './view/MultiplyScreenIconNode.js';
 import MultiplyView from './view/MultiplyView.js';
 
-const multiplyString = arithmeticStrings.multiply;
+class MultiplyScreen extends Screen {
 
-/**
- * @param {Object} [options]
- * @constructor
- */
-function MultiplyScreen( options ) {
+  /**
+   * @param {Object} [options]
+   */
+  constructor( options ) {
 
-  options = merge( {
-    name: multiplyString,
-    homeScreenIcon: new ScreenIcon( new MultiplyScreenIconNode(), {
-      maxIconWidthProportion: 1,
-      maxIconHeightProportion: 1
-    } ),
-    backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
-    tandem: Tandem.REQUIRED
-  }, options );
+    options = merge( {
+      name: arithmeticStrings.multiply,
+      homeScreenIcon: new ScreenIcon( new MultiplyScreenIconNode(), {
+        maxIconWidthProportion: 1,
+        maxIconHeightProportion: 1
+      } ),
+      backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
+      tandem: Tandem.REQUIRED
+    }, options );
 
-  Screen.call( this,
-    function() { return new MultiplyModel( options.tandem.createTandem( 'model' ) ); },
-    function( model ) { return new MultiplyView( model ); },
-    options );
+    super(
+      function() { return new MultiplyModel( options.tandem.createTandem( 'model' ) ); },
+      function( model ) { return new MultiplyView( model ); },
+      options
+    );
+  }
 }
 
 arithmetic.register( 'MultiplyScreen', MultiplyScreen );
-
-inherit( Screen, MultiplyScreen );
 export default MultiplyScreen;
