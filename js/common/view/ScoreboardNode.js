@@ -7,7 +7,6 @@
  * @author John Blanco
  */
 
-import inherit from '../../../../phet-core/js/inherit.js';
 import merge from '../../../../phet-core/js/merge.js';
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
 import RefreshButton from '../../../../scenery-phet/js/buttons/RefreshButton.js';
@@ -18,8 +17,8 @@ import VBox from '../../../../scenery/js/nodes/VBox.js';
 import Panel from '../../../../sun/js/Panel.js';
 import GameTimer from '../../../../vegas/js/GameTimer.js';
 import vegasStrings from '../../../../vegas/js/vegasStrings.js';
-import arithmeticStrings from '../../arithmeticStrings.js';
 import arithmetic from '../../arithmetic.js';
+import arithmeticStrings from '../../arithmeticStrings.js';
 import GameState from '../model/GameState.js';
 
 const labelScorePatternString = vegasStrings.label.scorePattern;
@@ -39,89 +38,90 @@ const PANEL_OPTIONS = {
 };
 const SPACING = 16;
 
-/**
- * @param {Property} levelNumberProperty - property for level displaying label.
- * @param {Property} stateProperty - State of game property.
- * @param {Array.<LevelModel>} levelModels - Array of properties for score counter component.
- * @param {Property} timerEnabledProperty - Time enabling flag.
- * @param {Function} refreshLevelCallback - Callback listener for refresh level button.
- * @param {Object} [options] - optional parameters that control the appearance and behavior of the panel
- * @constructor
- */
-function ScoreboardNode( levelNumberProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback, options ) {
+class ScoreboardNode extends Node {
 
-  options = merge( {
-    title: ''
-  }, options );
-  const levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, '' ), { font: FONT_BOLD } );
-  const scoreText = new Text( StringUtils.format( labelScorePatternString, '0' ), { font: FONT } );
-  const timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), { font: FONT } );
+  /**
+   * @param {Property} levelNumberProperty - property for level displaying label.
+   * @param {Property} stateProperty - State of game property.
+   * @param {Array.<LevelModel>} levelModels - Array of properties for score counter component.
+   * @param {Property} timerEnabledProperty - Time enabling flag.
+   * @param {Function} refreshLevelCallback - Callback listener for refresh level button.
+   * @param {Object} [options] - optional parameters that control the appearance and behavior of the panel
+   */
+  constructor( levelNumberProperty, stateProperty, levelModels, timerEnabledProperty, refreshLevelCallback, options ) {
 
-  const panelOptions = merge( {}, PANEL_OPTIONS, options );
+    options = merge( {
+      title: ''
+    }, options );
+    const levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, '' ), { font: FONT_BOLD } );
+    const scoreText = new Text( StringUtils.format( labelScorePatternString, '0' ), { font: FONT } );
+    const timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), { font: FONT } );
 
-  Node.call( this );
+    const panelOptions = merge( {}, PANEL_OPTIONS, options );
 
-  // add control panel components
-  const vBox = new VBox( {
-    spacing: SPACING,
-    children: [
-      new Text( options.title, { font: FONT_BOLD } ),
-      levelText,
-      scoreText,
-      timeText,
-      // add refresh button
-      new RefreshButton( {
-        iconScale: 0.6,
-        xMargin: 14,
-        yMargin: 7,
-        listener: refreshLevelCallback
-      } )
-    ]
-  } );
-  this.addChild( new Panel( vBox, panelOptions ) );
+    super();
 
-  // add observers
-  const updateScore = function( score ) {
-    scoreText.text = StringUtils.format( labelScorePatternString, score.toString() );
-  };
+    // add control panel components
+    const vBox = new VBox( {
+      spacing: SPACING,
+      children: [
+        new Text( options.title, { font: FONT_BOLD } ),
+        levelText,
+        scoreText,
+        timeText,
+        // add refresh button
+        new RefreshButton( {
+          iconScale: 0.6,
+          xMargin: 14,
+          yMargin: 7,
+          listener: refreshLevelCallback
+        } )
+      ]
+    } );
+    this.addChild( new Panel( vBox, panelOptions ) );
 
-  const updateTime = function( time ) {
-    timeText.text = StringUtils.format( labelTimeString, GameTimer.formatTime( time ) );
-  };
+    // add observers
+    const updateScore = score => {
+      scoreText.text = StringUtils.format( labelScorePatternString, score.toString() );
+    };
 
-  levelNumberProperty.lazyLink( function( levelNew, levelPrevious ) {
-    if ( levelNew !== null ) {
-      levelText.text = StringUtils.format( patternLevel0LevelNumberString, ( levelNew + 1 ).toString() );
-    }
-    else {
-      levelText.text = '';
-    }
+    const updateTime = time => {
+      timeText.text = StringUtils.format( labelTimeString, GameTimer.formatTime( time ) );
+    };
 
-    // unlink observers for previous level
-    if ( levelModels[ levelPrevious ] ) {
-      levelModels[ levelPrevious ].currentScoreProperty.unlink( updateScore );
-      levelModels[ levelPrevious ].gameTimer.elapsedTimeProperty.unlink( updateTime );
-    }
+    levelNumberProperty.lazyLink( ( levelNew, levelPrevious ) => {
+      if ( levelNew !== null ) {
+        levelText.text = StringUtils.format( patternLevel0LevelNumberString, ( levelNew + 1 ).toString() );
+      }
+      else {
+        levelText.text = '';
+      }
 
-    // link observers for new level
-    if ( stateProperty.value === GameState.SELECTING_LEVEL && levelModels[ levelNew ] ) {
-      levelModels[ levelNew ].currentScoreProperty.link( updateScore );
-      levelModels[ levelNew ].gameTimer.elapsedTimeProperty.link( updateTime );
-    }
-  } );
+      // unlink observers for previous level
+      if ( levelModels[ levelPrevious ] ) {
+        levelModels[ levelPrevious ].currentScoreProperty.unlink( updateScore );
+        levelModels[ levelPrevious ].gameTimer.elapsedTimeProperty.unlink( updateTime );
+      }
 
-  // add/remove time readout
-  timerEnabledProperty.link( function( isTimerEnabled ) {
-    if ( isTimerEnabled ) {
-      vBox.insertChild( 2, timeText ); // 2 - index of initial place for time
-    }
-    else {
-      vBox.removeChild( timeText );
-    }
-  } );
+      // link observers for new level
+      if ( stateProperty.value === GameState.SELECTING_LEVEL && levelModels[ levelNew ] ) {
+        levelModels[ levelNew ].currentScoreProperty.link( updateScore );
+        levelModels[ levelNew ].gameTimer.elapsedTimeProperty.link( updateTime );
+      }
+    } );
+
+    // add/remove time readout
+    timerEnabledProperty.link( isTimerEnabled => {
+      if ( isTimerEnabled ) {
+        vBox.insertChild( 2, timeText ); // 2 - index of initial place for time
+      }
+      else {
+        vBox.removeChild( timeText );
+      }
+    } );
+  }
 }
 
 arithmetic.register( 'ScoreboardNode', ScoreboardNode );
 
-inherit( Node, ScoreboardNode );
 export default ScoreboardNode;

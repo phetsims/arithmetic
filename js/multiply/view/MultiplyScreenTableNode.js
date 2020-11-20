@@ -6,53 +6,47 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
-import inherit from '../../../../phet-core/js/inherit.js';
 import arithmetic from '../../arithmetic.js';
 import GameState from '../../common/model/GameState.js';
 import MultiplicationTableNode from '../../common/view/table/MultiplicationTableNode.js';
 
-/**
- * @param {ProblemModel} problemModel - Model for single multiplication problem.
- * @param {Property} levelNumberProperty - Level difficulty property.
- * @param {Property} stateProperty - Current state property.
- * @param {Array} levelModels - Array of descriptions for each level.
- *
- * @constructor
- */
-function MultiplyScreenTableNode( problemModel, stateProperty, levelNumberProperty, levelModels ) {
-  const self = this;
-  MultiplicationTableNode.call( this, levelNumberProperty, stateProperty, levelModels, true );
-  this.problemModel = problemModel; // @private
+class MultiplyScreenTableNode extends MultiplicationTableNode {
 
-  stateProperty.lazyLink( function( state ) {
+  /**
+   * @param {ProblemModel} problemModel - Model for single multiplication problem.
+   * @param {Property} levelNumberProperty - Level difficulty property.
+   * @param {Property} stateProperty - Current state property.
+   * @param {Array} levelModels - Array of descriptions for each level.
+   *
+   */
+  constructor( problemModel, stateProperty, levelNumberProperty, levelModels ) {
+    super( levelNumberProperty, stateProperty, levelModels, true );
+    this.problemModel = problemModel; // @private
 
-    // set view for multiplication table after choosing multiplicand and multiplier
-    if ( state === GameState.AWAITING_USER_INPUT ) {
+    stateProperty.lazyLink( state => {
 
-      // select the cells that correspond to the current problem
-      self.setCellAppearanceForProblem( levelNumberProperty.value );
-    }
-    else if ( state === GameState.LEVEL_COMPLETED ) {
+      // set view for multiplication table after choosing multiplicand and multiplier
+      if ( state === GameState.AWAITING_USER_INPUT ) {
 
-      // set all cells to default conditions when the table has been filled
-      self.setCellsToDefaultColor( levelNumberProperty.value );
-    }
-  } );
-}
+        // select the cells that correspond to the current problem
+        this.setCellAppearanceForProblem( levelNumberProperty.value );
+      }
+      else if ( state === GameState.LEVEL_COMPLETED ) {
 
-arithmetic.register( 'MultiplyScreenTableNode', MultiplyScreenTableNode );
-
-inherit( MultiplicationTableNode, MultiplyScreenTableNode, {
+        // set all cells to default conditions when the table has been filled
+        this.setCellsToDefaultColor( levelNumberProperty.value );
+      }
+    } );
+  }
 
   // @public, @override
-  refreshLevel: function( level ) {
-    MultiplicationTableNode.prototype.refreshLevel.call( this, level );
+  refreshLevel( level ) {
+    super.refreshLevel( level );
     this.setCellAppearanceForProblem( level );
-  },
+  }
 
   // @private, set the appearance of the cells based on the currently presented problem
-  setCellAppearanceForProblem: function( level ) {
-    const self = this;
+  setCellAppearanceForProblem( level ) {
     this.setCellsToDefaultColor( level );
 
     // set the header cells for this problem to the selected state
@@ -61,16 +55,18 @@ inherit( MultiplicationTableNode, MultiplyScreenTableNode, {
 
     // create a rectangle of selected body cells with a width defined by the multiplier and a height defined by the
     // multplicand
-    this.cells[ level ].forEach( function( multiplicand, index ) {
-      if ( index && index <= self.problemModel.multiplicandProperty.get() ) {
-        multiplicand.forEach( function( cell, index ) {
-          if ( index && index <= self.problemModel.multiplierProperty.get() ) {
+    this.cells[ level ].forEach( ( multiplicand, index ) => {
+      if ( index && index <= this.problemModel.multiplicandProperty.get() ) {
+        multiplicand.forEach( ( cell, index ) => {
+          if ( index && index <= this.problemModel.multiplierProperty.get() ) {
             cell.setSelected();
           }
         } );
       }
     } );
   }
-} );
+}
+
+arithmetic.register( 'MultiplyScreenTableNode', MultiplyScreenTableNode );
 
 export default MultiplyScreenTableNode;

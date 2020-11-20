@@ -11,7 +11,6 @@
 import Emitter from '../../../../axon/js/Emitter.js';
 import Property from '../../../../axon/js/Property.js';
 import stepTimer from '../../../../axon/js/stepTimer.js';
-import inherit from '../../../../phet-core/js/inherit.js';
 import merge from '../../../../phet-core/js/merge.js';
 import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
@@ -27,82 +26,78 @@ import ProblemModel from './ProblemModel.js';
 // constants
 const FEEDBACK_TIME = 1200; // in milliseconds, time that the feedback is presented before moving to next problem
 
-/**
- * Constructor for ArithmeticModel
- * @constructor
- */
-function ArithmeticModel( tandem, options ) {
-  const self = this;
+class ArithmeticModel {
 
-  // @private - for PhET-iO
-  this.checkAnswerEmitter = new Emitter( {
-    tandem: tandem.createTandem( 'checkAnswerEmitter' ),
-    parameters: [
-      { name: 'multiplicand', phetioType: NumberIO },
-      { name: 'product', phetioType: NumberIO },
-      { name: 'multiplier', phetioType: NumberIO },
-      { name: 'isCorrect', phetioType: BooleanIO },
-      { name: 'asString', phetioType: StringIO },
-      { name: 'input', phetioType: StringIO }
-    ]
-  } );
+  /**
+   * Constructor for ArithmeticModel
+   */
+  constructor( tandem, options ) {
 
-  // set up the 'fillEquation' function, which is used to fill in the missing portion(s) based on the user's inputs
-  options = merge( { fillEquation: null }, options );
-  this.fillEquation = options.fillEquation; // @public
+    // @private - for PhET-iO
+    this.checkAnswerEmitter = new Emitter( {
+      tandem: tandem.createTandem( 'checkAnswerEmitter' ),
+      parameters: [
+        { name: 'multiplicand', phetioType: NumberIO },
+        { name: 'product', phetioType: NumberIO },
+        { name: 'multiplier', phetioType: NumberIO },
+        { name: 'isCorrect', phetioType: BooleanIO },
+        { name: 'asString', phetioType: StringIO },
+        { name: 'input', phetioType: StringIO }
+      ]
+    } );
 
-  // @public - active game level, null represents none
-  this.levelNumberProperty = new Property( null );
+    // set up the 'fillEquation' function, which is used to fill in the missing portion(s) based on the user's inputs
+    options = merge( { fillEquation: null }, options );
+    this.fillEquation = options.fillEquation; // @public
 
-  // @public - user's input value
-  this.inputProperty = new Property( '' );
+    // @public - active game level, null represents none
+    this.levelNumberProperty = new Property( null );
 
-  // @public - reference to the portion of the equation that is awaiting input from the user
-  this.activeInputProperty = new Property( null );
+    // @public - user's input value
+    this.inputProperty = new Property( '' );
 
-  // @public - current game state
-  this.stateProperty = new Property( GameState.SELECTING_LEVEL );
+    // @public - reference to the portion of the equation that is awaiting input from the user
+    this.activeInputProperty = new Property( null );
 
-  // @public - emitter that emits an even when a refresh occurs
-  this.refreshEmitter = new Emitter();
+    // @public - current game state
+    this.stateProperty = new Property( GameState.SELECTING_LEVEL );
 
-  // @public - array of models that correspond to a given difficulty level
-  this.levelModels = [
-    // level 1
-    new LevelModel( 6 ),
-    // level 2
-    new LevelModel( 9 ),
-    // level 3
-    new LevelModel( 12 )
-  ];
+    // @public - emitter that emits an even when a refresh occurs
+    this.refreshEmitter = new Emitter();
 
-  // @public - portion of the model that represents a single problem
-  this.problemModel = new ProblemModel();
+    // @public - array of models that correspond to a given difficulty level
+    this.levelModels = [
+      // level 1
+      new LevelModel( 6 ),
+      // level 2
+      new LevelModel( 9 ),
+      // level 3
+      new LevelModel( 12 )
+    ];
 
-  // @public - model for smile face
-  this.faceModel = new FaceModel();
+    // @public - portion of the model that represents a single problem
+    this.problemModel = new ProblemModel();
 
-  // handles game state transitions that pertain to the model (does not require handling GameState.SELECTING_LEVEL)
-  this.stateProperty.lazyLink( function( newState, oldState ) {
-    if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
+    // @public - model for smile face
+    this.faceModel = new FaceModel();
 
-      // start (or restart) the game timer
-      self.activeLevelModel.gameTimer.start();
+    // handles game state transitions that pertain to the model (does not require handling GameState.SELECTING_LEVEL)
+    this.stateProperty.lazyLink( ( newState, oldState ) => {
+      if ( oldState === GameState.SELECTING_LEVEL && newState === GameState.AWAITING_USER_INPUT ) {
 
-      // update display score
-      self.activeLevelModel.displayScoreProperty.set( self.activeLevelModel.currentScoreProperty.get() );
-    }
-  } );
-}
+        // start (or restart) the game timer
+        this.activeLevelModel.gameTimer.start();
 
-arithmetic.register( 'ArithmeticModel', ArithmeticModel );
-
-inherit( Object, ArithmeticModel, {
+        // update display score
+        this.activeLevelModel.displayScoreProperty.set( this.activeLevelModel.currentScoreProperty.get() );
+      }
+    } );
+  }
 
   // @protected - get the current level model, use this to make the code more readable
   get activeLevelModel() {
     return this.levelModels[ this.levelNumberProperty.get() ];
-  },
+  }
 
   /**
    * Check whether the answer submitted by the user is correct.  The user's answer must have been stored in the
@@ -110,9 +105,7 @@ inherit( Object, ArithmeticModel, {
    * method to be used to verify the answer.
    * @public
    */
-  submitAnswer: function() {
-    const self = this;
-
+  submitAnswer() {
     const isCorrect = this.problemModel.multiplicandProperty.get() * this.problemModel.multiplierProperty.get() === this.problemModel.productProperty.get();
     const string = this.problemModel.multiplicandProperty.get() + ' x ' + this.problemModel.multiplierProperty.get() + ' = ' + this.problemModel.productProperty.get();
     this.checkAnswerEmitter.emit(
@@ -146,9 +139,9 @@ inherit( Object, ArithmeticModel, {
 
       // start a timer that will set up the next problem
       this.feedbackTimer = stepTimer.setTimeout(
-        function() {
-          self.feedbackTimer = null;
-          self.nextProblem();
+        () => {
+          this.feedbackTimer = null;
+          this.nextProblem();
         },
         FEEDBACK_TIME
       );
@@ -166,13 +159,13 @@ inherit( Object, ArithmeticModel, {
       // set the appropriate state
       this.stateProperty.set( GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK );
     }
-  },
+  }
 
   /**
    * Move to the next problem or, if all problems have been answered, move to the state where results are shown.
    * @private
    */
-  nextProblem: function() {
+  nextProblem() {
     if ( this.setUpUnansweredProblem() ) {
       this.inputProperty.reset();
       this.stateProperty.set( GameState.AWAITING_USER_INPUT );
@@ -182,15 +175,15 @@ inherit( Object, ArithmeticModel, {
       this.stateProperty.set( GameState.SHOWING_LEVEL_COMPLETED_DIALOG );
       this.activeLevelModel.gameTimer.stop();
     }
-  },
+  }
 
   /**
    * Retry the currently presented problem.
    * @public
    */
-  retryProblem: function() {
+  retryProblem() {
     this.stateProperty.set( GameState.AWAITING_USER_INPUT );
-  },
+  }
 
   /**
    * Pick an unanswered problem and set it up in the model.  Must be overridden in sub-types, since the way problems
@@ -201,9 +194,9 @@ inherit( Object, ArithmeticModel, {
    *
    * @protected
    */
-  setUpUnansweredProblem: function() {
+  setUpUnansweredProblem() {
     throw new Error( 'this function must be overridden in sub-classes' );
-  },
+  }
 
   /**
    * Automatically answer most of the problems for this level.  This is useful for testing, since it can save time
@@ -213,12 +206,12 @@ inherit( Object, ArithmeticModel, {
    *
    * @protected
    */
-  autoAnswer: function() {
+  autoAnswer() {
     // does nothing in the base class, override in descendant classes if desired
-  },
+  }
 
   // @public
-  returnToLevelSelectScreen: function() {
+  returnToLevelSelectScreen() {
 
     if ( this.stateProperty.get() === GameState.AWAITING_USER_INPUT ) {
       // reset any partial input that the user may have entered
@@ -235,10 +228,10 @@ inherit( Object, ArithmeticModel, {
 
     // go back to the level selection screen
     this.stateProperty.set( GameState.SELECTING_LEVEL );
-  },
+  }
 
   // @public
-  refreshLevel: function() {
+  refreshLevel() {
     if ( this.feedbackTimer ) {
       stepTimer.clearTimeout( this.feedbackTimer );
     }
@@ -250,17 +243,17 @@ inherit( Object, ArithmeticModel, {
 
     // automatically answer most of the problems if enabled - this is for testing
     ArithmeticQueryParameters.autoAnswer && this.autoAnswer();
-  },
+  }
 
   // @private
-  resetLevelModels: function() {
-    this.levelModels.forEach( function( levelModel ) {
+  resetLevelModels() {
+    this.levelModels.forEach( levelModel => {
       levelModel.reset();
     } );
-  },
+  }
 
   // @public - set the level to be played, initializing or restoring the level as appropriate
-  setLevel: function( level ) {
+  setLevel( level ) {
     this.levelNumberProperty.set( level );
 
     // restore or init new environment for game
@@ -279,24 +272,24 @@ inherit( Object, ArithmeticModel, {
       // automatically answer most of the problems if enabled - this is for testing
       ArithmeticQueryParameters.autoAnswer && this.autoAnswer();
     }
-  },
+  }
 
   // @private
-  resetLevel: function() {
+  resetLevel() {
     this.activeLevelModel.reset();
     this.inputProperty.reset();
     this.problemModel.reset();
     this.faceModel.reset();
     this.faceModel.hideFace();
-  },
+  }
 
   // @public - select an unused multiplican-multiplier pair
-  selectUnusedMultiplierPair: function() {
+  selectUnusedMultiplierPair() {
     return this.activeLevelModel.selectUnusedMultiplierPair();
-  },
+  }
 
   // @public - reset the scores, clear the boards
-  reset: function() {
+  reset() {
 
     this.levelNumberProperty.reset();
     this.inputProperty.reset();
@@ -311,17 +304,24 @@ inherit( Object, ArithmeticModel, {
 
     // reset sound and timer on/off settings
     ArithmeticGlobals.timerEnabledProperty.reset();
-  },
+  }
 
-  // clear environments of all levels
-  clearGameEnvironments: function() {
-    this.levelModels.forEach( function( levelModel ) {
+  /**
+   * clear environments of all levels
+   * @private
+   */
+  clearGameEnvironments() {
+    this.levelModels.forEach( levelModel => {
       levelModel.environment = null;
     } );
-  },
+  }
 
-  // @private - set the 'game environment', generally used when switching to a different level
-  restoreGameEnvironment: function( environment ) {
+  /**
+   * set the 'game environment', generally used when switching to a different level
+   * @param environment
+   * @private
+   */
+  restoreGameEnvironment( environment ) {
     this.activeLevelModel.currentScoreProperty.set( environment.currentScore );
     this.activeInputProperty.set( environment.activeInput );
     this.problemModel.multiplicandProperty.set( environment.multiplicand );
@@ -335,14 +335,18 @@ inherit( Object, ArithmeticModel, {
     // Elapsed time must account for any time that has gone by since the environment was saved.
     if ( this.stateProperty.get() !== GameState.LEVEL_COMPLETED &&
          this.stateProperty.get() !== GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
+
       this.activeLevelModel.gameTimer.elapsedTimeProperty.value =
         this.activeLevelModel.gameTimer.elapsedTimeProperty.value +
         Math.floor( ( new Date().getTime() - environment.systemTimeWhenSaveOccurred ) / 1000 );
     }
-  },
+  }
 
-  // save game environment of current level
-  saveGameEnvironment: function() {
+  /**
+   * save game environment of current level
+   * @private
+   */
+  saveGameEnvironment() {
     this.activeLevelModel.environment = {
       input: this.inputProperty.get(),
       multiplicand: this.problemModel.multiplicandProperty.get(),
@@ -356,6 +360,8 @@ inherit( Object, ArithmeticModel, {
       activeInput: this.activeInputProperty.get()
     };
   }
-} );
+}
+
+arithmetic.register( 'ArithmeticModel', ArithmeticModel );
 
 export default ArithmeticModel;

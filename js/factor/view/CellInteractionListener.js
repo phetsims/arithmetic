@@ -12,55 +12,51 @@
 
 import Emitter from '../../../../axon/js/Emitter.js';
 import Property from '../../../../axon/js/Property.js';
-import inherit from '../../../../phet-core/js/inherit.js';
 import arithmetic from '../../arithmetic.js';
 
-/**
- * @constructor
- */
-function CellInteractionListener() {
-  this.mouseOverProperty = new Property( false );
-  this.touchedProperty = new Property( false );
-  this.enabledProperty = new Property( true );
+class CellInteractionListener {
 
-  this.mouseDownEmitter = new Emitter();
-  this.mouseUpEmitter = new Emitter();
-  this.touchUpEmitter = new Emitter();
-}
+  /**
+   */
+  constructor() {
+    this.mouseOverProperty = new Property( false );
+    this.touchedProperty = new Property( false );
+    this.enabledProperty = new Property( true );
 
-arithmetic.register( 'CellInteractionListener', CellInteractionListener );
-
-inherit( Object, CellInteractionListener, {
+    this.mouseDownEmitter = new Emitter();
+    this.mouseUpEmitter = new Emitter();
+    this.touchUpEmitter = new Emitter();
+  }
 
   // @public
-  enter: function( event, trail ) {
+  enter( event, trail ) {
     if ( event.pointer.type === 'mouse' ) {
       this.mouseOverProperty.set( true );
     }
     else if ( event.pointer.type === 'touch' ) {
       this.touchedProperty.set( true );
     }
-  },
+  }
 
   // @public
-  exit: function( event, trail ) {
+  exit( event, trail ) {
     if ( event.pointer.type === 'mouse' ) {
       this.mouseOverProperty.set( false );
     }
     else if ( event.pointer.type === 'touch' ) {
       this.touchedProperty.set( false );
     }
-  },
+  }
 
   // @public
-  down: function( event, trail ) {
+  down( event, trail ) {
     if ( event.pointer.type === 'mouse' ) {
       this.mouseDownEmitter.emit();
     }
-  },
+  }
 
   // @public
-  up: function( event, trail ) {
+  up( event, trail ) {
     if ( event.pointer.type === 'mouse' ) {
       this.mouseUpEmitter.emit();
     }
@@ -68,6 +64,8 @@ inherit( Object, CellInteractionListener, {
       this.touchUpEmitter.emit();
     }
   }
-} );
+}
+
+arithmetic.register( 'CellInteractionListener', CellInteractionListener );
 
 export default CellInteractionListener;

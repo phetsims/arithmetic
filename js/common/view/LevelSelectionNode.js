@@ -7,7 +7,6 @@
  * @author John Blanco
  */
 
-import inherit from '../../../../phet-core/js/inherit.js';
 import merge from '../../../../phet-core/js/merge.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import TimerToggleButton from '../../../../scenery-phet/js/buttons/TimerToggleButton.js';
@@ -27,8 +26,8 @@ import factorLevel3Icon from '../../../mipmaps/factor_level_3_icon_png.js';
 import multiplyLevel1Icon from '../../../mipmaps/multiply_level_1_icon_png.js';
 import multiplyLevel2Icon from '../../../mipmaps/multiply_level_2_icon_png.js';
 import multiplyLevel3Icon from '../../../mipmaps/multiply_level_3_icon_png.js';
-import arithmeticStrings from '../../arithmeticStrings.js';
 import arithmetic from '../../arithmetic.js';
+import arithmeticStrings from '../../arithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
 
@@ -58,43 +57,43 @@ const ICON_SETS = {
 
 const chooseYourLevelString = arithmeticStrings.chooseYourLevel;
 
-/**
- * @param {ArithmeticModel} model - Main model for screen.
- * @param {string} titleString - Title string for given screen.
- * @param {Function} callback - Callback function call after pressing button.
- * @param {Bounds2} layoutBounds - Bounds of screen on which this will appear, used for layout
- * @param {Object} [options]
- * @constructor
- */
-function LevelSelectionNode( model, titleString, callback, layoutBounds, options ) {
-  Node.call( this );
+class LevelSelectionNode extends Node {
 
-  // Default options
-  options = merge( {
-    buttonBaseColor: 'white',
-    iconSet: 'multiply' // valid values are 'multiply', 'factor', and 'divide'
-  }, options );
+  /**
+   * @param {ArithmeticModel} model - Main model for screen.
+   * @param {string} titleString - Title string for given screen.
+   * @param {Function} callback - Callback function call after pressing button.
+   * @param {Bounds2} layoutBounds - Bounds of screen on which this will appear, used for layout
+   * @param {Object} [options]
+   */
+  constructor( model, titleString, callback, layoutBounds, options ) {
+    super();
 
-  // add title
-  const tabTitle = new Text( titleString, {
-    font: TAB_TITLE_FONT,
-    centerX: layoutBounds.centerX,
-    top: layoutBounds.height * 0.1
-  } );
-  this.addChild( tabTitle );
+    // Default options
+    options = merge( {
+      buttonBaseColor: 'white',
+      iconSet: 'multiply' // valid values are 'multiply', 'factor', and 'divide'
+    }, options );
 
-  // add choose level title
-  const chooseLevelTitle = new Text( chooseYourLevelString, {
-    font: CHOOSE_LEVEL_TITLE_FONT,
-    centerX: layoutBounds.centerX,
-    top: tabTitle.bottom + 15
-  } );
-  this.addChild( chooseLevelTitle );
+    // add title
+    const tabTitle = new Text( titleString, {
+      font: TAB_TITLE_FONT,
+      centerX: layoutBounds.centerX,
+      top: layoutBounds.height * 0.1
+    } );
+    this.addChild( tabTitle );
 
-  // add select level buttons
-  assert && assert( model.levelModels.length === ICON_SETS[ options.iconSet ].length, 'Number of icons doesn\'t match number of levels' );
-  const levelSelectButtons = model.levelModels.map( function( level, levelIndex ) {
-    return new LevelSelectionButton(
+    // add choose level title
+    const chooseLevelTitle = new Text( chooseYourLevelString, {
+      font: CHOOSE_LEVEL_TITLE_FONT,
+      centerX: layoutBounds.centerX,
+      top: tabTitle.bottom + 15
+    } );
+    this.addChild( chooseLevelTitle );
+
+    // add select level buttons
+    assert && assert( model.levelModels.length === ICON_SETS[ options.iconSet ].length, 'Number of icons doesn\'t match number of levels' );
+    const levelSelectButtons = model.levelModels.map( ( level, levelIndex ) => new LevelSelectionButton(
       new Image( ICON_SETS[ options.iconSet ][ levelIndex ] ),
       model.levelModels[ levelIndex ].displayScoreProperty,
       {
@@ -103,7 +102,7 @@ function LevelSelectionNode( model, titleString, callback, layoutBounds, options
         baseColor: options.buttonBaseColor,
         bestTimeProperty: model.levelModels[ levelIndex ].bestTimeProperty,
         bestTimeVisibleProperty: ArithmeticGlobals.timerEnabledProperty,
-        listener: function() {
+        listener: () => {
           callback( levelIndex );
         },
         scoreDisplayOptions: {
@@ -111,37 +110,36 @@ function LevelSelectionNode( model, titleString, callback, layoutBounds, options
           perfectScore: level.perfectScore
         }
       }
-    );
-  } );
-  const selectLevelButtonsHBox = new HBox( { spacing: 50, children: levelSelectButtons } );
-  selectLevelButtonsHBox.top = chooseLevelTitle.bottom + 15;
-  selectLevelButtonsHBox.centerX = chooseLevelTitle.centerX;
-  this.addChild( selectLevelButtonsHBox );
+    ) );
+    const selectLevelButtonsHBox = new HBox( { spacing: 50, children: levelSelectButtons } );
+    selectLevelButtonsHBox.top = chooseLevelTitle.bottom + 15;
+    selectLevelButtonsHBox.centerX = chooseLevelTitle.centerX;
+    this.addChild( selectLevelButtonsHBox );
 
-  // add timer and sound buttons
-  const soundAndTimerButtons = new VBox( {
-    spacing: 5,
-    children: [
-      new TimerToggleButton( ArithmeticGlobals.timerEnabledProperty )
-    ],
-    right: layoutBounds.maxX * 0.08,
-    bottom: layoutBounds.maxY * 0.95
-  } );
-  this.addChild( soundAndTimerButtons );
+    // add timer and sound buttons
+    const soundAndTimerButtons = new VBox( {
+      spacing: 5,
+      children: [
+        new TimerToggleButton( ArithmeticGlobals.timerEnabledProperty )
+      ],
+      right: layoutBounds.maxX * 0.08,
+      bottom: layoutBounds.maxY * 0.95
+    } );
+    this.addChild( soundAndTimerButtons );
 
-  // add reset all button
-  const resetAllButton = new ResetAllButton( {
-    listener: function() {model.reset(); },
-    right: layoutBounds.maxX * 0.98,
-    bottom: layoutBounds.maxY * 0.95
-  } );
-  this.addChild( resetAllButton );
+    // add reset all button
+    const resetAllButton = new ResetAllButton( {
+      listener: () => {model.reset(); },
+      right: layoutBounds.maxX * 0.98,
+      bottom: layoutBounds.maxY * 0.95
+    } );
+    this.addChild( resetAllButton );
 
-  // pass options through to superclass
-  this.mutate( options );
+    // pass options through to superclass
+    this.mutate( options );
+  }
 }
 
 arithmetic.register( 'LevelSelectionNode', LevelSelectionNode );
 
-inherit( Node, LevelSelectionNode );
 export default LevelSelectionNode;

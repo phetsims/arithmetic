@@ -30,7 +30,7 @@ const simOptions = {
   }
 };
 
-simLauncher.launch( function() {
+simLauncher.launch( () => {
   // Create and start the sim
   new Sim( arithmeticTitleString, [
     new MultiplyScreen( { tandem: tandem.createTandem( 'multiplyScreen' ) } ),

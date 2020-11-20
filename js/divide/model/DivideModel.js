@@ -8,38 +8,33 @@
  */
 
 import Random from '../../../../dot/js/Random.js';
-import inherit from '../../../../phet-core/js/inherit.js';
 import soundManager from '../../../../tambo/js/soundManager.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticModel from '../../common/model/ArithmeticModel.js';
 import GameState from '../../common/model/GameState.js';
 
-/**
- * @param {Tandem} tandem
- * @constructor
- */
-function DivideModel( tandem ) {
-  const self = this;
-  ArithmeticModel.call( this, tandem, {
-    fillEquation: function() {
+class DivideModel extends ArithmeticModel {
 
-      // Convert any strings entered by the user into numerical values.
-      self.problemModel.multiplierProperty.set( parseInt( self.problemModel.multiplierProperty.get(), 10 ) );
-      self.problemModel.multiplicandProperty.set( parseInt( self.problemModel.multiplicandProperty.get(), 10 ) );
+  /**
+   * @param {Tandem} tandem
+   */
+  constructor( tandem ) {
+    super( tandem, {
+      fillEquation: () => {
 
-      // Submit this answer so that it can be checked.
-      self.submitAnswer();
-    }
-  } );
-  this.random = new Random( { staticSeed: true } );
-}
+        // Convert any strings entered by the user into numerical values.
+        this.problemModel.multiplierProperty.set( parseInt( this.problemModel.multiplierProperty.get(), 10 ) );
+        this.problemModel.multiplicandProperty.set( parseInt( this.problemModel.multiplicandProperty.get(), 10 ) );
 
-arithmetic.register( 'DivideModel', DivideModel );
-
-inherit( ArithmeticModel, DivideModel, {
+        // Submit this answer so that it can be checked.
+        this.submitAnswer();
+      }
+    } );
+    this.random = new Random( { staticSeed: true } );
+  }
 
   // @public
-  setUpUnansweredProblem: function() {
+  setUpUnansweredProblem() {
 
     // get available multiplier pair
     const multipliers = this.selectUnusedMultiplierPair();
@@ -70,7 +65,7 @@ inherit( ArithmeticModel, DivideModel, {
 
     // All multiplier pairs have been used, so false is returned.
     return false;
-  },
+  }
 
   /**
    * Automatically answer most of the questions.  This is useful for testing, since it can save time when testing
@@ -79,9 +74,7 @@ inherit( ArithmeticModel, DivideModel, {
    * @override
    * @protected
    */
-  autoAnswer: function() {
-    const self = this;
-
+  autoAnswer() {
     // make sure that sound is off, since otherwise it dings for every solved problem
     const soundState = soundManager.enabled;
     soundManager.enabled = false;
@@ -90,33 +83,35 @@ inherit( ArithmeticModel, DivideModel, {
     const numQuestions = this.activeLevelModel.tableSize * this.activeLevelModel.tableSize;
     const numQuestionsToAnswer = numQuestions - 1;
     console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
-    _.times( numQuestionsToAnswer, function( index ) {
-      if ( !self.problemModel.multiplicandProperty.get() ) {
-        self.problemModel.multiplicandProperty.set(
-          self.problemModel.productProperty.get() / self.problemModel.multiplierProperty.get()
+    _.times( numQuestionsToAnswer, index => {
+      if ( !this.problemModel.multiplicandProperty.get() ) {
+        this.problemModel.multiplicandProperty.set(
+          this.problemModel.productProperty.get() / this.problemModel.multiplierProperty.get()
         );
       }
-      else if ( !self.problemModel.multiplierProperty.get() ) {
-        self.problemModel.multiplierProperty.set(
-          self.problemModel.productProperty.get() / self.problemModel.multiplicandProperty.get()
+      else if ( !this.problemModel.multiplierProperty.get() ) {
+        this.problemModel.multiplierProperty.set(
+          this.problemModel.productProperty.get() / this.problemModel.multiplicandProperty.get()
         );
       }
       else {
         throw new Error( 'unexpected problem structure for problem', index );
       }
-      self.activeLevelModel.currentScoreProperty.value += self.problemModel.possiblePointsProperty.get();
-      self.activeLevelModel.displayScoreProperty.set( self.activeLevelModel.currentScoreProperty.get() );
-      self.activeLevelModel.markCellAsUsed(
-        self.problemModel.multiplicandProperty.get(),
-        self.problemModel.multiplierProperty.get()
+      this.activeLevelModel.currentScoreProperty.value += this.problemModel.possiblePointsProperty.get();
+      this.activeLevelModel.displayScoreProperty.set( this.activeLevelModel.currentScoreProperty.get() );
+      this.activeLevelModel.markCellAsUsed(
+        this.problemModel.multiplicandProperty.get(),
+        this.problemModel.multiplierProperty.get()
       );
-      self.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
-      self.nextProblem();
+      this.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
+      this.nextProblem();
     } );
 
     // restore the original sound state
     soundManager.enabled = soundState;
   }
-} );
+}
+
+arithmetic.register( 'DivideModel', DivideModel );
 
 export default DivideModel;

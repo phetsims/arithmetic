@@ -32,8 +32,6 @@ class ArithmeticView extends ScreenView {
   constructor( model, multiplicationTableNode, equationNode, options ) {
 
     super( { layoutBounds: new Bounds2( 0, 0, 768, 504 ) } );
-    const self = this;
-
     // defaults
     options = merge( {
       titleString: '',
@@ -46,7 +44,7 @@ class ArithmeticView extends ScreenView {
     const levelSelectionNode = new LevelSelectionNode(
       model,
       options.titleString,
-      function( level ) { model.setLevel( level ); },
+      level => { model.setLevel( level ); },
       this.layoutBounds,
       {
         centerX: this.layoutBounds.centerX,
@@ -80,79 +78,71 @@ class ArithmeticView extends ScreenView {
     const levelSelectionScreenInAnimator = new Animation( {
       duration: SCREEN_CHANGE_TIME,
       easing: Easing.CUBIC_IN_OUT,
-      getValue: function() {
-        return levelSelectionNode.x;
-      },
-      setValue: function( newXPosition ) {
+      getValue: () => levelSelectionNode.x,
+      setValue: newXPosition => {
         levelSelectionNode.x = newXPosition;
       },
-      to: self.layoutBounds.minX
+      to: this.layoutBounds.minX
     } );
-    levelSelectionScreenInAnimator.beginEmitter.addListener( function() {
+    levelSelectionScreenInAnimator.beginEmitter.addListener( () => {
       levelSelectionNode.visible = true;
       levelSelectionNode.pickable = false; // prevent interaction during animation
     } );
-    levelSelectionScreenInAnimator.finishEmitter.addListener( function() {
+    levelSelectionScreenInAnimator.finishEmitter.addListener( () => {
       levelSelectionNode.pickable = true;
     } );
 
     const levelSelectionScreenOutAnimator = new Animation( {
       duration: SCREEN_CHANGE_TIME,
       easing: Easing.CUBIC_IN_OUT,
-      getValue: function() {
-        return levelSelectionNode.x;
-      },
-      setValue: function( newXPosition ) {
+      getValue: () => levelSelectionNode.x,
+      setValue: newXPosition => {
         levelSelectionNode.x = newXPosition;
       },
-      to: self.layoutBounds.minX - levelSelectionNode.width
+      to: this.layoutBounds.minX - levelSelectionNode.width
     } );
-    levelSelectionScreenOutAnimator.beginEmitter.addListener( function() {
+    levelSelectionScreenOutAnimator.beginEmitter.addListener( () => {
       levelSelectionNode.pickable = false; // prevent interaction during animation
     } );
-    levelSelectionScreenOutAnimator.finishEmitter.addListener( function() {
+    levelSelectionScreenOutAnimator.finishEmitter.addListener( () => {
       levelSelectionNode.visible = false;
     } );
 
     const workspaceNodeInAnimator = new Animation( {
       duration: SCREEN_CHANGE_TIME,
       easing: Easing.CUBIC_IN_OUT,
-      getValue: function() {
-        return workspaceNode.x;
-      },
-      setValue: function( newXPosition ) {
+      getValue: () => workspaceNode.x,
+      setValue: newXPosition => {
         workspaceNode.x = newXPosition;
       },
-      to: self.layoutBounds.minX
+      to: this.layoutBounds.minX
     } );
-    workspaceNodeInAnimator.beginEmitter.addListener( function() {
+    workspaceNodeInAnimator.beginEmitter.addListener( () => {
       workspaceNode.visible = true;
       workspaceNode.pickable = false; // prevent interaction during animation
     } );
-    workspaceNodeInAnimator.finishEmitter.addListener( function() {
+    workspaceNodeInAnimator.finishEmitter.addListener( () => {
       workspaceNode.pickable = true;
     } );
 
     const workspaceNodeOutAnimator = new Animation( {
       duration: SCREEN_CHANGE_TIME,
       easing: Easing.CUBIC_IN_OUT,
-      getValue: function() {
-        return workspaceNode.x;
-      },
-      setValue: function( newXPosition ) {
+      getValue: () => workspaceNode.x,
+      setValue: newXPosition => {
         workspaceNode.x = newXPosition;
       },
-      to: self.layoutBounds.maxX
+      to: this.layoutBounds.maxX
     } );
-    workspaceNodeOutAnimator.beginEmitter.addListener( function() {
+    workspaceNodeOutAnimator.beginEmitter.addListener( () => {
       workspaceNode.pickable = false; // prevent interaction during animation
     } );
-    workspaceNodeOutAnimator.finishEmitter.addListener( function() {
+    workspaceNodeOutAnimator.finishEmitter.addListener( () => {
       workspaceNode.visible = false;
     } );
 
     // monitor the game state and update the view and changes occur
-    model.stateProperty.link( function( newState, oldState ) {
+    model.stateProperty.link( ( newState, oldState ) => {
 
       // animate the transition between the level select screen and the selected level
       if ( newState === GameState.SELECTING_LEVEL && oldState ) {

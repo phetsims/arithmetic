@@ -37,8 +37,8 @@ class DivideScreen extends Screen {
     }, options );
 
     super(
-      function() { return new DivideModel( options.tandem.createTandem( 'model' ) ); },
-      function( model ) { return new DivideView( model ); },
+      () => new DivideModel( options.tandem.createTandem( 'model' ) ),
+      model => new DivideView( model ),
       options
     );
   }

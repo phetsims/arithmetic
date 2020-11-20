@@ -7,7 +7,6 @@
  * @author John Blanco (MLearner)
  */
 
-import inherit from '../../../../phet-core/js/inherit.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import Line from '../../../../scenery/js/nodes/Line.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
@@ -37,36 +36,37 @@ function createRectangleWithEnclosedText( text, font, xMargin, yMargin ) {
   return box;
 }
 
-/**
- * @constructor
- */
-function FactorScreenIconNode() {
+class FactorScreenIconNode extends Rectangle {
 
-  // create the background
-  Rectangle.call( this, 0, 0, ICON_SIZE.width, ICON_SIZE.height, { fill: ArithmeticConstants.ICON_BACKGROUND_COLOR } );
+  /**
+   */
+  constructor() {
 
-  // Create and position the boxes, but don't add them yet so that we can get the layering right.
-  const topBox = createRectangleWithEnclosedText( '12', NUMBER_FONT, 15, 5 );
-  topBox.centerX = this.width / 2;
-  topBox.top = BOX_VERTICAL_INSET;
-  const multiplicandBox = createRectangleWithEnclosedText( '?', QUESTION_MARK_FONT, 20, 5 );
-  multiplicandBox.centerX = ICON_SIZE.width * 0.3;
-  multiplicandBox.bottom = ICON_SIZE.height - BOX_VERTICAL_INSET;
-  const multiplierBox = createRectangleWithEnclosedText( '?', QUESTION_MARK_FONT, 20, 5 );
-  multiplierBox.centerX = ICON_SIZE.width * 0.7;
-  multiplierBox.bottom = multiplicandBox.bottom;
+    // create the background
+    super( 0, 0, ICON_SIZE.width, ICON_SIZE.height, { fill: ArithmeticConstants.ICON_BACKGROUND_COLOR } );
 
-  // Add the connecting lines
-  this.addChild( new Line( topBox.centerX, topBox.bottom, multiplicandBox.centerX, multiplicandBox.top, CONNECTING_LINES_OPTIONS ) );
-  this.addChild( new Line( topBox.centerX, topBox.bottom, multiplierBox.centerX, multiplierBox.top, CONNECTING_LINES_OPTIONS ) );
+    // Create and position the boxes, but don't add them yet so that we can get the layering right.
+    const topBox = createRectangleWithEnclosedText( '12', NUMBER_FONT, 15, 5 );
+    topBox.centerX = this.width / 2;
+    topBox.top = BOX_VERTICAL_INSET;
+    const multiplicandBox = createRectangleWithEnclosedText( '?', QUESTION_MARK_FONT, 20, 5 );
+    multiplicandBox.centerX = ICON_SIZE.width * 0.3;
+    multiplicandBox.bottom = ICON_SIZE.height - BOX_VERTICAL_INSET;
+    const multiplierBox = createRectangleWithEnclosedText( '?', QUESTION_MARK_FONT, 20, 5 );
+    multiplierBox.centerX = ICON_SIZE.width * 0.7;
+    multiplierBox.bottom = multiplicandBox.bottom;
 
-  // Add the text boxes
-  this.addChild( topBox );
-  this.addChild( multiplicandBox );
-  this.addChild( multiplierBox );
+    // Add the connecting lines
+    this.addChild( new Line( topBox.centerX, topBox.bottom, multiplicandBox.centerX, multiplicandBox.top, CONNECTING_LINES_OPTIONS ) );
+    this.addChild( new Line( topBox.centerX, topBox.bottom, multiplierBox.centerX, multiplierBox.top, CONNECTING_LINES_OPTIONS ) );
+
+    // Add the text boxes
+    this.addChild( topBox );
+    this.addChild( multiplicandBox );
+    this.addChild( multiplierBox );
+  }
 }
 
 arithmetic.register( 'FactorScreenIconNode', FactorScreenIconNode );
 
-inherit( Rectangle, FactorScreenIconNode );
 export default FactorScreenIconNode;

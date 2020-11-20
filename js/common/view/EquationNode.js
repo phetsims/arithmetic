@@ -8,7 +8,6 @@
  */
 
 import Dimension2 from '../../../../dot/js/Dimension2.js';
-import inherit from '../../../../phet-core/js/inherit.js';
 import merge from '../../../../phet-core/js/merge.js';
 import MathSymbols from '../../../../scenery-phet/js/MathSymbols.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
@@ -25,45 +24,52 @@ const INPUT_SIZE_PRODUCT = new Dimension2( 80, 45 ); // size of input box for pr
 const SPACING = 20; // spacing between equation elements
 const SYMBOL_COLOR = '#FFFF00';
 
-/**
- * @param {Property.<number>} multiplicandProperty - Property necessary for creating multiplicand input.
- * @param {Property.<number>} multiplierProperty - Property necessary for creating multiplier input.
- * @param {Property.<number>} productProperty - Property necessary for creating product input.
- * @param {Property.<number>} productProperty - Property necessary for creating product input.
- * @param {Object} [options]
- * @constructor
- */
-function EquationNode( multiplicandProperty, multiplierProperty, productProperty, options ) {
+class EquationNode extends HBox {
 
-  options = merge( {
-    spacing: SPACING,
-    resize: false
-  }, options );
+  /**
+   * @param {Property.<number>} multiplicandProperty - Property necessary for creating multiplicand input.
+   * @param {Property.<number>} multiplierProperty - Property necessary for creating multiplier input.
+   * @param {Property.<number>} productProperty - Property necessary for creating product input.
+   * @param {Property.<number>} productProperty - Property necessary for creating product input.
+   * @param {Object} [options]
+   */
+  constructor( multiplicandProperty, multiplierProperty, productProperty, options ) {
 
-  // @public - Set up the three nodes that depict the numbers in the equation.
-  this.multiplicandInput = new EquationInputNode( multiplicandProperty, INPUT_SIZE_MULTIPLIER );
-  this.multiplierInput = new EquationInputNode( multiplierProperty, INPUT_SIZE_MULTIPLIER );
-  this.productInput = new EquationInputNode( productProperty, INPUT_SIZE_PRODUCT );
+    options = merge( {
+      spacing: SPACING,
+      resize: false
+    }, options );
 
-  // @private - Set up the equals sign, which can potentially be changed to a not equals sign.
-  this.equalsSign = new Text( '', { font: FONT_EQUALS, fill: SYMBOL_COLOR } );
-  this.setShowEqual( true ); // Default to equals equation until set otherwise.
+    // @public - Set up the three nodes that depict the numbers in the equation.
+    const multiplicandInput = new EquationInputNode( multiplicandProperty, INPUT_SIZE_MULTIPLIER );
+    const multiplierInput = new EquationInputNode( multiplierProperty, INPUT_SIZE_MULTIPLIER );
+    const productInput = new EquationInputNode( productProperty, INPUT_SIZE_PRODUCT );
 
-  options.children = [
-    this.multiplicandInput,
-    new Text( MathSymbols.TIMES, { font: FONT_X, fill: SYMBOL_COLOR } ),
-    this.multiplierInput,
-    this.equalsSign,
-    this.productInput
-  ];
+    // @private - Set up the equals sign, which can potentially be changed to a not equals sign.
+    const equalsSign = new Text( MathSymbols.EQUAL_TO, { font: FONT_EQUALS, fill: SYMBOL_COLOR } );
 
-  // Perform the layout by placing everything in an HBox.
-  HBox.call( this, options );
-}
+    options.children = [
+      multiplicandInput,
+      new Text( MathSymbols.TIMES, { font: FONT_X, fill: SYMBOL_COLOR } ),
+      multiplierInput,
+      equalsSign,
+      productInput
+    ];
 
-arithmetic.register( 'EquationNode', EquationNode );
+    // Perform the layout by placing everything in an HBox.
+    super( options );
 
-inherit( HBox, EquationNode, {
+    // @public - these nodes can be manipulated externally
+    this.multiplicandInput = multiplicandInput;
+    this.multiplierInput = multiplierInput;
+    this.productInput = productInput;
+
+    // @private
+    this.equalsSign = equalsSign;
+
+    // Default to equals equation until set otherwise.
+    this.setShowEqual( true );
+  }
 
   /**
    * Set the equation to depict equals or not equals.
@@ -71,9 +77,11 @@ inherit( HBox, EquationNode, {
    * @param {boolean} showEqual
    * @protected
    */
-  setShowEqual: function( showEqual ) {
+  setShowEqual( showEqual ) {
     this.equalsSign.text = showEqual ? MathSymbols.EQUAL_TO : MathSymbols.NOT_EQUAL_TO;
   }
-} );
+}
+
+arithmetic.register( 'EquationNode', EquationNode );
 
 export default EquationNode;

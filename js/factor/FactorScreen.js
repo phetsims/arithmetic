@@ -36,8 +36,8 @@ class FactorScreen extends Screen {
     }, options );
 
     super(
-      function() { return new FactorModel( options.tandem.createTandem( 'model' ) ); },
-      function( model ) { return new FactorView( model ); },
+      () => new FactorModel( options.tandem.createTandem( 'model' ) ),
+      model => new FactorView( model ),
       options
     );
   }

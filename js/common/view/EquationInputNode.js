@@ -9,13 +9,12 @@
  */
 
 import stepTimer from '../../../../axon/js/stepTimer.js';
-import inherit from '../../../../phet-core/js/inherit.js';
 import HBox from '../../../../scenery/js/nodes/HBox.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
-import arithmeticStrings from '../../arithmeticStrings.js';
 import arithmetic from '../../arithmetic.js';
+import arithmeticStrings from '../../arithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 
 const unknownValueIndicatorString = arithmeticStrings.unknownValueIndicator;
@@ -27,83 +26,78 @@ const MIN_X_MARGIN = 5;
 const CURSOR_HEIGHT = new Text( '8', { font: ArithmeticConstants.EQUATION_FONT_TEXT } ).height * 0.7;
 
 // convenience function to avoid duplicated code
-const updateBoxPosition = function( box, inputSize ) {
+const updateBoxPosition = ( box, inputSize ) => {
   box.centerX = inputSize.width / 2;
   box.centerY = inputSize.height / 2;
 };
 
-/**
- * @param {Property} valueProperty for observing and changing by input
- * @param {Dimension2} size - Dimensions of this input component.
- *
- * @constructor
- */
-function EquationInputNode( valueProperty, size ) {
-  const self = this;
-  Node.call( this );
+class EquationInputNode extends Node {
+  /**
+   * @param {Property} valueProperty for observing and changing by input
+   * @param {Dimension2} size - Dimensions of this input component.
+   *
+   */
+  constructor( valueProperty, size ) {
+    super();
 
-  // @private - create text and save reference for use in public methods
-  this.inputText = new Text( unknownValueIndicatorString, {
-    font: ArithmeticConstants.EQUATION_FONT_TEXT,
-    maxWidth: size.width - 2 * MIN_X_MARGIN
-  } );
+    // @private - create text and save reference for use in public methods
+    this.inputText = new Text( unknownValueIndicatorString, {
+      font: ArithmeticConstants.EQUATION_FONT_TEXT,
+      maxWidth: size.width - 2 * MIN_X_MARGIN
+    } );
 
-  // @private - create cursor and save reference for use in public methods
-  this.textCursor = new Rectangle( 0, 2, 1, CURSOR_HEIGHT, { fill: 'black' } );
-  this.cursorContainer = new Node( { children: [ this.textCursor ] } );
+    // @private - create cursor and save reference for use in public methods
+    this.textCursor = new Rectangle( 0, 2, 1, CURSOR_HEIGHT, { fill: 'black' } );
+    this.cursorContainer = new Node( { children: [ this.textCursor ] } );
 
-  // @private - save reference to input size value for use in public methods
-  this.inputSize = size;
+    // @private - save reference to input size value for use in public methods
+    this.inputSize = size;
 
-  // update text when the value changes
-  valueProperty.lazyLink( function( value ) {
-    self.inputText.setText( isNaN( value ) ? '' : value );
-    updateBoxPosition( self._box, size );
-  } );
+    // update text when the value changes
+    valueProperty.lazyLink( value => {
+      this.inputText.setText( isNaN( value ) ? '' : value );
+      updateBoxPosition( this._box, size );
+    } );
 
-  // set up blinking of cursor
-  stepTimer.setInterval( function() {
-    self.textCursor.visible = !self.textCursor.visible;
-  }, ArithmeticConstants.CURSOR_BLINK_INTERVAL );
+    // set up blinking of cursor
+    stepTimer.setInterval( () => {
+      this.textCursor.visible = !this.textCursor.visible;
+    }, ArithmeticConstants.CURSOR_BLINK_INTERVAL );
 
-  // @private - background of this input box
-  this.background = new Rectangle( 0, 0, size.width, size.height, 5, 5, { fill: NON_INTERACTIVE_FILL } );
-  this.addChild( this.background );
+    // @private - background of this input box
+    this.background = new Rectangle( 0, 0, size.width, size.height, 5, 5, { fill: NON_INTERACTIVE_FILL } );
+    this.addChild( this.background );
 
-  // @private - horizontal box containing the input text and the cursor
-  this._box = new HBox( {
-    children: [ this.inputText, this.cursorContainer ],
-    centerX: size.width / 2,
-    centerY: size.height / 2
-  } );
-  this.addChild( this._box );
+    // @private - horizontal box containing the input text and the cursor
+    this._box = new HBox( {
+      children: [ this.inputText, this.cursorContainer ],
+      centerX: size.width / 2,
+      centerY: size.height / 2
+    } );
+    this.addChild( this._box );
 
-  // unfocused state by default
-  this.setFocus( false );
-}
-
-arithmetic.register( 'EquationInputNode', EquationInputNode );
-
-inherit( Node, EquationInputNode, {
+    // unfocused state by default
+    this.setFocus( false );
+  }
 
   /**
    * Clear the textual value shown in this node.  This is done regardless of the value of the value property that is
    * being monitored by this node.
    * @public
    */
-  clear: function() {
+  clear() {
     this.inputText.setText( '' );
     updateBoxPosition( this._box, this.inputSize );
-  },
+  }
 
   /**
    * Set or remove focus, which for this component simply turns the blinking cursor on or off.
    * @param {boolean} focus
    * @public
    */
-  setFocus: function( focus ) {
+  setFocus( focus ) {
     this.textCursor.visible = focus;
-  },
+  }
 
   /**
    * Set the appearance of this node to indicate to the user that it is interactive, meaning that their actions are
@@ -111,18 +105,20 @@ inherit( Node, EquationInputNode, {
    * @param {boolean} interactive
    * @public
    */
-  setInteractiveAppearance: function( interactive ) {
+  setInteractiveAppearance( interactive ) {
     this.background.fill = interactive ? INTERACTIVE_FILL : NON_INTERACTIVE_FILL;
-  },
+  }
 
   /**
    * Set the textual value of this node to a 'placeholder' value (a question mark at the time of this writing).
    * @public
    */
-  setPlaceholder: function() {
+  setPlaceholder() {
     this.inputText.setText( unknownValueIndicatorString );
     updateBoxPosition( this._box, this.inputSize );
   }
-} );
+}
+
+arithmetic.register( 'EquationInputNode', EquationInputNode );
 
 export default EquationInputNode;

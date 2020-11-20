@@ -7,26 +7,22 @@
  * @author John Blanco
  */
 
-import inherit from '../../../../phet-core/js/inherit.js';
 import soundManager from '../../../../tambo/js/soundManager.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticModel from '../../common/model/ArithmeticModel.js';
 import GameState from '../../common/model/GameState.js';
 
-/**
- * @param {Tandem} tandem
- * @constructor
- */
-function FactorModel( tandem ) {
-  ArithmeticModel.call( this, tandem );
-}
+class FactorModel extends ArithmeticModel {
 
-arithmetic.register( 'FactorModel', FactorModel );
-
-inherit( ArithmeticModel, FactorModel, {
+  /**
+   * @param {Tandem} tandem
+   */
+  constructor( tandem ) {
+    super( tandem );
+  }
 
   // @public
-  setUpUnansweredProblem: function() {
+  setUpUnansweredProblem() {
 
     // get available multiplier pair
     const multiplierPair = this.selectUnusedMultiplierPair();
@@ -48,7 +44,7 @@ inherit( ArithmeticModel, FactorModel, {
 
     // All multiplier pairs have been used, so false is returned.
     return false;
-  },
+  }
 
   /**
    * Submit an answer for the currently active problem.  This override exists to handle one very special case on the
@@ -61,7 +57,7 @@ inherit( ArithmeticModel, FactorModel, {
    * @override
    * @public
    */
-  submitAnswer: function() {
+  submitAnswer() {
     if ( this.stateProperty.get() === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
 
       // force a change to the AWAITING_USER_INPUT state before checking the answer
@@ -71,8 +67,8 @@ inherit( ArithmeticModel, FactorModel, {
       this.problemModel.multiplicandProperty.set( multiplicand );
       this.problemModel.multiplierProperty.set( multiplier );
     }
-    ArithmeticModel.prototype.submitAnswer.call( this );
-  },
+    super.submitAnswer();
+  }
 
   /**
    * Automatically answer most of the questions.  This is useful for testing, since it can save time when testing
@@ -81,40 +77,41 @@ inherit( ArithmeticModel, FactorModel, {
    * @override
    * @protected
    */
-  autoAnswer: function() {
+  autoAnswer() {
 
     // make sure that sound is off, since otherwise it dings for every solved problem
     const soundState = soundManager.enabled;
     soundManager.enabled = false;
 
     // answer the questions
-    const self = this;
     const tableSize = this.activeLevelModel.tableSize;
     const numQuestions = tableSize * tableSize;
     const numQuestionsToAnswer = numQuestions - 1;
     const levelModel = this.activeLevelModel; // convenience var
     console.log( 'Automatically answering', numQuestionsToAnswer, 'of', numQuestions, 'questions.' );
-    _.times( numQuestionsToAnswer, function( index ) {
+    _.times( numQuestionsToAnswer, index => {
       // do a brute-force factoring method, since performance isn't really an issue here
       let answerFound = false;
       for ( let multiplicand = 1; multiplicand <= tableSize && !answerFound; multiplicand++ ) {
         for ( let multiplier = 1; multiplier <= tableSize && !answerFound; multiplier++ ) {
-          if ( multiplicand * multiplier === self.problemModel.productProperty.get() && !levelModel.isCellUsed( multiplicand, multiplier ) ) {
+          if ( multiplicand * multiplier === this.problemModel.productProperty.get() && !levelModel.isCellUsed( multiplicand, multiplier ) ) {
 
             answerFound = true;
             levelModel.markCellAsUsed( multiplicand, multiplier );
           }
         }
       }
-      levelModel.currentScoreProperty.value += self.problemModel.possiblePointsProperty.get();
-      levelModel.displayScoreProperty.set( self.activeLevelModel.currentScoreProperty.get() );
-      self.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
-      self.nextProblem();
+      levelModel.currentScoreProperty.value += this.problemModel.possiblePointsProperty.get();
+      levelModel.displayScoreProperty.set( this.activeLevelModel.currentScoreProperty.get() );
+      this.stateProperty.set( GameState.DISPLAYING_CORRECT_ANSWER_FEEDBACK );
+      this.nextProblem();
     } );
 
     // restore the original sound state
     soundManager.enabled = soundState;
   }
-} );
+}
+
+arithmetic.register( 'FactorModel', FactorModel );
 
 export default FactorModel;

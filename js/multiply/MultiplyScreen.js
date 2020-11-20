@@ -36,8 +36,8 @@ class MultiplyScreen extends Screen {
     }, options );
 
     super(
-      function() { return new MultiplyModel( options.tandem.createTandem( 'model' ) ); },
-      function( model ) { return new MultiplyView( model ); },
+      () => new MultiplyModel( options.tandem.createTandem( 'model' ) ),
+      model => new MultiplyView( model ),
       options
     );
   }

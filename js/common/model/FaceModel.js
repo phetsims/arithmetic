@@ -8,46 +8,45 @@
 
 import Emitter from '../../../../axon/js/Emitter.js';
 import Property from '../../../../axon/js/Property.js';
-import inherit from '../../../../phet-core/js/inherit.js';
 import arithmetic from '../../arithmetic.js';
 
-function FaceModel() {
+class FaceModel {
 
-  // @public - Points to be displayed near the face.  In this simulation, the user gets 1 point when they get a
-  // challenge correct on the first try, zero otherwise.
-  this.pointsToDisplayProperty = new Property( 1 );
+  constructor() {
 
-  // @public - flag that controls the expression that the face should depict
-  this.isSmileProperty = new Property( true );
+    // @public - Points to be displayed near the face.  In this simulation, the user gets 1 point when they get a
+    // challenge correct on the first try, zero otherwise.
+    this.pointsToDisplayProperty = new Property( 1 );
 
-  // @public - emitters for showing and hiding the face
-  this.showFaceEmitter = new Emitter();
-  this.hideFaceEmitter = new Emitter();
-}
+    // @public - flag that controls the expression that the face should depict
+    this.isSmileProperty = new Property( true );
 
-arithmetic.register( 'FaceModel', FaceModel );
-
-inherit( Object, FaceModel, {
+    // @public - emitters for showing and hiding the face
+    this.showFaceEmitter = new Emitter();
+    this.hideFaceEmitter = new Emitter();
+  }
 
   // @public
-  showFace: function() {
+  showFace() {
     // Use an emitter to indicate that the face should be shown rather than a property, since by design it is shown
     // and then fades.
     this.showFaceEmitter.emit();
-  },
+  }
 
   // @public
-  hideFace: function() {
+  hideFace() {
     // Emit an event that indicates that the face should be hidden, should be ignored if the face is not currently
     // shown.
     this.hideFaceEmitter.emit();
-  },
+  }
 
-  // public
-  reset: function() {
+  // @public
+  reset() {
     this.pointsToDisplayProperty.reset();
     this.isSmileProperty.reset();
   }
-} );
+}
+
+arithmetic.register( 'FaceModel', FaceModel );
 
 export default FaceModel;

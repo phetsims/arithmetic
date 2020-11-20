@@ -6,7 +6,6 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
-import inherit from '../../../../../phet-core/js/inherit.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import arithmetic from '../../../arithmetic.js';
 import AbstractCell from './AbstractCell.js';
@@ -17,37 +16,36 @@ const SELECT_COLOR_BACKGROUND = 'rgb(0,0,128)'; // background select color
 const NORMAL_COLOR_TEXT = 'white'; // text normal color
 const SELECT_COLOR_TEXT = 'rgb(255,253,56)'; // text select color
 
-/**
- * @param {Text} contentText - Text label for button.
- * @param {Object} backgroundOptions - Background options for button.
- * @param {Object} textOptions - Text options for button.
- *
- * @constructor
- */
-function MultiplicationTableHeaderCell( contentText, backgroundOptions, textOptions ) {
-  backgroundOptions = merge( {
-    fill: NORMAL_COLOR_BACKGROUND
-  }, backgroundOptions );
-  AbstractCell.call( this, backgroundOptions, textOptions );
+class MultiplicationTableHeaderCell extends AbstractCell {
 
-  this.setText( contentText );
-}
+  /**
+   * @param {Text} contentText - Text label for button.
+   * @param {Object} backgroundOptions - Background options for button.
+   * @param {Object} textOptions - Text options for button.
+   *
+   */
+  constructor( contentText, backgroundOptions, textOptions ) {
+    backgroundOptions = merge( {
+      fill: NORMAL_COLOR_BACKGROUND
+    }, backgroundOptions );
+    super( backgroundOptions, textOptions );
 
-arithmetic.register( 'MultiplicationTableHeaderCell', MultiplicationTableHeaderCell );
-
-inherit( AbstractCell, MultiplicationTableHeaderCell, {
+    this.setText( contentText );
+  }
 
   // @public
-  setSelected: function() {
+  setSelected() {
     this.setBackgroundFill( SELECT_COLOR_BACKGROUND );
     this.setTextFill( SELECT_COLOR_TEXT );
-  },
+  }
 
   // @public
-  setNormal: function() {
+  setNormal() {
     this.setBackgroundFill( NORMAL_COLOR_BACKGROUND );
     this.setTextFill( NORMAL_COLOR_TEXT );
   }
-} );
+}
+
+arithmetic.register( 'MultiplicationTableHeaderCell', MultiplicationTableHeaderCell );
 
 export default MultiplicationTableHeaderCell;
