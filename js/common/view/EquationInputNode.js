@@ -70,7 +70,7 @@ class EquationInputNode extends Node {
 
     // @private - horizontal box containing the input text and the cursor
     this._box = new HBox( {
-      children: [ this.inputText, this.cursorContainer ],
+      children: [ this.inputText, new Node( { children: [ this.cursorContainer ] } ) ],
       centerX: size.width / 2,
       centerY: size.height / 2
     } );
@@ -96,7 +96,7 @@ class EquationInputNode extends Node {
    * @public
    */
   setFocus( focus ) {
-    this.textCursor.visible = focus;
+    this.cursorContainer.visible = focus;
   }
 
   /**
