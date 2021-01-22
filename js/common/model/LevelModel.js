@@ -8,6 +8,7 @@
  */
 
 import Property from '../../../../axon/js/Property.js';
+import dotRandom from '../../../../dot/js/dotRandom.js';
 import GameTimer from '../../../../vegas/js/GameTimer.js';
 import arithmetic from '../../arithmetic.js';
 
@@ -93,7 +94,7 @@ class LevelModel {
     }
 
     // set multiplicand
-    const multiplicand = phet.joist.random.shuffle( availableMultiplicands )[ 0 ];
+    const multiplicand = dotRandom.shuffle( availableMultiplicands )[ 0 ];
 
     // find available multipliers
     this.cellUsedStates[ multiplicand - 1 ].forEach( ( isProblemAnswered, index ) => {
@@ -103,7 +104,7 @@ class LevelModel {
     } );
 
     // set multiplier
-    const multiplier = phet.joist.random.sample( availableMultipliers );
+    const multiplier = dotRandom.sample( availableMultipliers );
 
     return {
       multiplicand: multiplicand,
