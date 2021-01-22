@@ -7,7 +7,7 @@
  * @author John Blanco
  */
 
-import Random from '../../../../dot/js/Random.js';
+import dotRandom from '../../../../dot/js/dotRandom.js';
 import soundManager from '../../../../tambo/js/soundManager.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticModel from '../../common/model/ArithmeticModel.js';
@@ -30,7 +30,6 @@ class DivideModel extends ArithmeticModel {
         this.submitAnswer();
       }
     } );
-    this.random = new Random( { staticSeed: true } );
   }
 
   // @public
@@ -51,7 +50,7 @@ class DivideModel extends ArithmeticModel {
       this.problemModel.productProperty.set( multipliers.multiplicand * multipliers.multiplier );
 
       // set multiplicand or multiplier
-      if ( this.random.nextBoolean() ) {
+      if ( dotRandom.nextBoolean() ) {
         this.problemModel.multiplicandProperty.set( multipliers.multiplicand );
         this.activeInputProperty.set( 'multiplier' );
       }
