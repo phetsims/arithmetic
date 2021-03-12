@@ -178,7 +178,7 @@ class MultiplicationTableNode extends Node {
         // make sure the appropriate cells are displaying their numerical values
         for ( let multiplicand = 1; multiplicand <= levelModel.tableSize; multiplicand++ ) {
           for ( let multiplier = 1; multiplier <= levelModel.tableSize; multiplier++ ) {
-            var cell = this.cells[ levelNumberProperty.value ][ multiplicand ][ multiplier ];
+            const cell = this.cells[ levelNumberProperty.value ][ multiplicand ][ multiplier ];
             if ( levelModel.isCellUsed( multiplicand, multiplier ) ) {
 
               // If the cell is marked as used but the text is not yet visible, animate the product to the cell.
