@@ -107,7 +107,7 @@ class ArithmeticModel {
    */
   submitAnswer() {
     const isCorrect = this.problemModel.multiplicandProperty.get() * this.problemModel.multiplierProperty.get() === this.problemModel.productProperty.get();
-    const string = this.problemModel.multiplicandProperty.get() + ' x ' + this.problemModel.multiplierProperty.get() + ' = ' + this.problemModel.productProperty.get();
+    const string = `${this.problemModel.multiplicandProperty.get()} x ${this.problemModel.multiplierProperty.get()} = ${this.problemModel.productProperty.get()}`;
     this.checkAnswerEmitter.emit(
       this.problemModel.multiplicandProperty.get(),
       this.problemModel.productProperty.get(),
