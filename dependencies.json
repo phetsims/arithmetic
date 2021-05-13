@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.0.24 Mon May 10 2021 13:12:50 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "f9c4c6e958ce709af75c019433d1912032ac325b",
+    "sha": "18e0ce90765f17681fbb877d42a1fad9a59b8e76",
     "branch": "1.0"
   },
   "assert": {
@@ -9,7 +9,7 @@
     "branch": "HEAD"
   },
   "axon": {
-    "sha": "60075be97fdf9b4b312311c5e6902de2dca78f3e",
+    "sha": "cbd62fdade64876e4352e74c3fd34fec3a28af45",
     "branch": "HEAD"
   },
   "brand": {
