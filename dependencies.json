@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.0.25-rc.2 Tue Jun 01 2021 19:06:42 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "974adc3c2c4a2d92168f945e15b7d5e6b20c2561",
+    "sha": "b9ff3f515dfeba8f36364c06bb6ff98a663ef26b",
     "branch": "1.0"
   },
   "assert": {
@@ -25,7 +25,7 @@
     "branch": "HEAD"
   },
   "joist": {
-    "sha": "e2d7d804f7e1d22a95ea28aea8c9e7f85affdd56",
+    "sha": "1a1028e4c91ac76dd04696754ff11b8bce613a87",
     "branch": "HEAD"
   },
   "kite": {
