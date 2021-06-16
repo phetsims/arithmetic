@@ -1,4 +1,4 @@
-[object Promise]
+// Copyright 2014-2021, University of Colorado Boulder
 
 /**
  * A Scenery node that represents a set of multiplication tables.  It contains a table for each of the levels in the

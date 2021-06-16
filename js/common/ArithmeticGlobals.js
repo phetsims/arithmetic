@@ -1,4 +1,4 @@
-[object Promise]
+// Copyright 2015-2021, University of Colorado Boulder
 
 /**
  * Variables that need to be globally accessible within the 'Arithmetic' simulation.

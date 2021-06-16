@@ -1,4 +1,4 @@
-[object Promise]
+// Copyright 2014-2021, University of Colorado Boulder
 
 /**
  * Node that looks like an edit box and that is used to either display a fixed value or to show what the user has

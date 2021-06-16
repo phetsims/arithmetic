@@ -1,4 +1,4 @@
-[object Promise]
+// Copyright 2014-2021, University of Colorado Boulder
 
 /**
  * Control panel node. Contains refresh button, sound and timer toggle buttons.

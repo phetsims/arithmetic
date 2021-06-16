@@ -1,4 +1,4 @@
-[object Promise]
+// Copyright 2014-2021, University of Colorado Boulder
 
 /**
  * Base type for models in the 'Arithmetic' simulation.  Each of the three screens - multiplication, factoring, and
