@@ -1,4 +1,4 @@
-// Copyright 2014-2020, University of Colorado Boulder
+[object Promise]
 
 /**
  * This node shows the level completed node when the user completes a level.

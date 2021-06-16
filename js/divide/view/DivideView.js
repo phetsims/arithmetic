@@ -1,4 +1,4 @@
-// Copyright 2014-2020, University of Colorado Boulder
+[object Promise]
 
 /**
  * View for 'Divide' tab in the 'Arithmetic' simulation.

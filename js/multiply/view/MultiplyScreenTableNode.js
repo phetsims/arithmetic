@@ -1,4 +1,4 @@
-// Copyright 2014-2020, University of Colorado Boulder
+[object Promise]
 
 /**
  * Multiplication table node for the 'Multiply' screen in the 'Arithmetic' simulation.

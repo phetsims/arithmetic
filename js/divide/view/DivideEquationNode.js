@@ -1,4 +1,4 @@
-// Copyright 2014-2020, University of Colorado Boulder
+[object Promise]
 
 /**
  * Equation node for 'divide' screen in the Arithmetic simulation.

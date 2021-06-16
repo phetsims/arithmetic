@@ -1,4 +1,4 @@
-// Copyright 2014-2020, University of Colorado Boulder
+[object Promise]
 
 /**
  * Model for single problem in the 'Arithmetic' simulation. This model contains properties necessary for each challenge

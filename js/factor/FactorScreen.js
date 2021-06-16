@@ -1,4 +1,4 @@
-// Copyright 2014-2020, University of Colorado Boulder
+[object Promise]
 
 /**
  * The 'Factor' screen. Conforms to the contract specified in joist/Screen.

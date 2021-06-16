@@ -1,4 +1,4 @@
-// Copyright 2014-2020, University of Colorado Boulder
+[object Promise]
 
 /**
  * Node that represents a smiling or frowning face with the additional points gained for getting the answer correct

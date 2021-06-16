@@ -1,4 +1,4 @@
-// Copyright 2014-2020, University of Colorado Boulder
+[object Promise]
 
 /**
  * Constants used in multiple locations within the 'Arithmetic' simulation.

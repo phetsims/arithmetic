@@ -1,4 +1,4 @@
-// Copyright 2014-2020, University of Colorado Boulder
+[object Promise]
 
 /**
  * A composite node that contains all game components: times table, keypad, equation, smile face, etc.  Some of these
