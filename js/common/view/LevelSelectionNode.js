@@ -108,7 +108,8 @@ class LevelSelectionNode extends Node {
         scoreDisplayOptions: {
           numberOfStars: ArithmeticConstants.NUM_STARS,
           perfectScore: level.perfectScore
-        }
+        },
+        soundPlayerIndex: levelIndex
       }
     ) );
     const selectLevelButtonsHBox = new HBox( { spacing: 50, children: levelSelectButtons } );
