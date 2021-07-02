@@ -21,7 +21,9 @@
       "adapted-from-phet",
       "phet-io"
     ],
-    "supportsSound": true,
+    "features":{
+      "supportsSound": true
+    },
     "simulation": true,
     "phet-io": {
       "validation": false,
