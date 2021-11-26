@@ -14,7 +14,7 @@ import BackButton from '../../../../scenery-phet/js/buttons/BackButton.js';
 import NumberKeypad from '../../../../scenery-phet/js/NumberKeypad.js';
 import PhetColorScheme from '../../../../scenery-phet/js/PhetColorScheme.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import Node from '../../../../scenery/js/nodes/Node.js';
+import { Node } from '../../../../scenery/js/imports.js';
 import TextPushButton from '../../../../sun/js/buttons/TextPushButton.js';
 import arithmetic from '../../arithmetic.js';
 import arithmeticStrings from '../../arithmeticStrings.js';

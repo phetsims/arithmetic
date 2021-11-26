@@ -7,7 +7,7 @@
  * @author John Blanco
  */
 
-import Image from '../../../../scenery/js/nodes/Image.js';
+import { Image } from '../../../../scenery/js/imports.js';
 import overlayPointingHandImage from '../../../images/large-pointing-hand_png.js';
 import cellPointerHandImage from '../../../images/small-pointing-hand_png.js';
 import arithmetic from '../../arithmetic.js';
