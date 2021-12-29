@@ -17,15 +17,15 @@ import { Node } from '../../../../scenery/js/imports.js';
 import { Text } from '../../../../scenery/js/imports.js';
 import { VBox } from '../../../../scenery/js/imports.js';
 import LevelSelectionButton from '../../../../vegas/js/LevelSelectionButton.js';
-import divideLevel1Icon from '../../../mipmaps/divide_level_1_icon_png.js';
-import divideLevel2Icon from '../../../mipmaps/divide_level_2_icon_png.js';
-import divideLevel3Icon from '../../../mipmaps/divide_level_3_icon_png.js';
-import factorLevel1Icon from '../../../mipmaps/factor_level_1_icon_png.js';
-import factorLevel2Icon from '../../../mipmaps/factor_level_2_icon_png.js';
-import factorLevel3Icon from '../../../mipmaps/factor_level_3_icon_png.js';
-import multiplyLevel1Icon from '../../../mipmaps/multiply_level_1_icon_png.js';
-import multiplyLevel2Icon from '../../../mipmaps/multiply_level_2_icon_png.js';
-import multiplyLevel3Icon from '../../../mipmaps/multiply_level_3_icon_png.js';
+import divideLevel1Icon_png from '../../../mipmaps/divideLevel1Icon_png.js';
+import divideLevel2Icon_png from '../../../mipmaps/divideLevel2Icon_png.js';
+import divideLevel3Icon_png from '../../../mipmaps/divideLevel3Icon_png.js';
+import factorLevel1Icon_png from '../../../mipmaps/factorLevel1Icon_png.js';
+import factorLevel2Icon_png from '../../../mipmaps/factorLevel2Icon_png.js';
+import factorLevel3Icon_png from '../../../mipmaps/factorLevel3Icon_png.js';
+import multiplyLevel1Icon_png from '../../../mipmaps/multiplyLevel1Icon_png.js';
+import multiplyLevel2Icon_png from '../../../mipmaps/multiplyLevel2Icon_png.js';
+import multiplyLevel3Icon_png from '../../../mipmaps/multiplyLevel3Icon_png.js';
 import arithmetic from '../../arithmetic.js';
 import arithmeticStrings from '../../arithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
@@ -39,19 +39,19 @@ const BUTTON_LENGTH = 150;
 // icon sets, used to place on the buttons
 const ICON_SETS = {
   multiply: [
-    multiplyLevel1Icon,
-    multiplyLevel2Icon,
-    multiplyLevel3Icon
+    multiplyLevel1Icon_png,
+    multiplyLevel2Icon_png,
+    multiplyLevel3Icon_png
   ],
   factor: [
-    factorLevel1Icon,
-    factorLevel2Icon,
-    factorLevel3Icon
+    factorLevel1Icon_png,
+    factorLevel2Icon_png,
+    factorLevel3Icon_png
   ],
   divide: [
-    divideLevel1Icon,
-    divideLevel2Icon,
-    divideLevel3Icon
+    divideLevel1Icon_png,
+    divideLevel2Icon_png,
+    divideLevel3Icon_png
   ]
 };
 

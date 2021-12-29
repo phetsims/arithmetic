@@ -8,8 +8,8 @@
  */
 
 import { Image } from '../../../../scenery/js/imports.js';
-import overlayPointingHandImage from '../../../images/large-pointing-hand_png.js';
-import cellPointerHandImage from '../../../images/small-pointing-hand_png.js';
+import largePointingHand_png from '../../../images/largePointingHand_png.js';
+import smallPointingHand_png from '../../../images/smallPointingHand_png.js';
 import arithmetic from '../../arithmetic.js';
 import GameState from '../../common/model/GameState.js';
 import MultiplicationTableNode from '../../common/view/table/MultiplicationTableNode.js';
@@ -27,15 +27,15 @@ class FactorScreenTableNode extends MultiplicationTableNode {
     const gameState = model.stateProperty;
 
     // Create an image of a transparent hand that will cue the user that they need to interact with the table.
-    const handImage = new Image( overlayPointingHandImage, { pickable: false } ); // @private
-    handImage.scale( ( this.width / overlayPointingHandImage.width ) * 0.25 );
+    const handImage = new Image( largePointingHand_png, { pickable: false } ); // @private
+    handImage.scale( ( this.width / largePointingHand_png.width ) * 0.25 );
     handImage.centerX = this.width * 0.55; // position empirically determined
     handImage.centerY = this.height / 2;
 
     // Create another hand that will appear over each cell to indicate that the user can click on it.  This was
     // originally handled in the individual cells, but caused startup to be long due to the large number of images
     // created, so was moved here.
-    this.cellPointer = new Image( cellPointerHandImage, { pickable: false } ); // @private
+    this.cellPointer = new Image( smallPointingHand_png, { pickable: false } ); // @private
     this.addChild( this.cellPointer );
 
     // variables used to track cell interaction
