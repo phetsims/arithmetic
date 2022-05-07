@@ -9,20 +9,20 @@ import arithmetic from './arithmetic.js';
 
 type StringsType = {
   'arithmetic': {
-    'title': string
-  },
-  'check': string,
-  'chooseYourLevel': string,
-  'divide': string,
-  'factor': string,
-  'multiply': string,
+    'title': string;
+  };
+  'check': string;
+  'chooseYourLevel': string;
+  'divide': string;
+  'factor': string;
+  'multiply': string;
   'pattern': {
     'level': {
-      '0levelNumber': string
+      '0levelNumber': string;
     }
-  },
-  'tryAgain': string,
-  'unknownValueIndicator': string
+  };
+  'tryAgain': string;
+  'unknownValueIndicator': string;
 };
 
 const arithmeticStrings = getStringModule( 'ARITHMETIC' ) as StringsType;
