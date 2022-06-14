@@ -18,7 +18,7 @@ class MultiplyModel extends ArithmeticModel {
 
     super( tandem, {
       fillEquation: () => {
-        this.problemModel.productProperty.set( parseInt( this.inputProperty.get(), 10 ) );
+        this.problemModel.productProperty.set( Number( this.inputProperty.get() ) );
         this.submitAnswer();
       }
     } );

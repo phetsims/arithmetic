@@ -27,10 +27,10 @@ class DivideEquationNode extends EquationNode {
     // If the input value changes, it means that the user entered something, so put it in the appropriate equation node.
     inputProperty.lazyLink( inputString => {
       if ( activeInputProperty.get() === 'multiplicand' ) {
-        multiplicandProperty.set( parseInt( inputString, 10 ) );
+        multiplicandProperty.set( Number( inputString ) );
       }
       else if ( activeInputProperty.get() === 'multiplier' ) {
-        multiplierProperty.set( parseInt( inputString, 10 ) );
+        multiplierProperty.set( Number( inputString ) );
       }
     } );
 

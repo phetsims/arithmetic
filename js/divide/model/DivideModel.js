@@ -23,8 +23,8 @@ class DivideModel extends ArithmeticModel {
       fillEquation: () => {
 
         // Convert any strings entered by the user into numerical values.
-        this.problemModel.multiplierProperty.set( parseInt( this.problemModel.multiplierProperty.get(), 10 ) );
-        this.problemModel.multiplicandProperty.set( parseInt( this.problemModel.multiplicandProperty.get(), 10 ) );
+        this.problemModel.multiplierProperty.set( Number( this.problemModel.multiplierProperty.get() ) );
+        this.problemModel.multiplicandProperty.set( Number( this.problemModel.multiplicandProperty.get() ) );
 
         // Submit this answer so that it can be checked.
         this.submitAnswer();
