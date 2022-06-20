@@ -11,12 +11,9 @@ import merge from '../../../../phet-core/js/merge.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import TimerToggleButton from '../../../../scenery-phet/js/buttons/TimerToggleButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { HBox } from '../../../../scenery/js/imports.js';
-import { Image } from '../../../../scenery/js/imports.js';
-import { Node } from '../../../../scenery/js/imports.js';
-import { Text } from '../../../../scenery/js/imports.js';
-import { VBox } from '../../../../scenery/js/imports.js';
+import { HBox, Image, Node, Text, VBox } from '../../../../scenery/js/imports.js';
 import LevelSelectionButton from '../../../../vegas/js/LevelSelectionButton.js';
+import ScoreDisplayStars from '../../../../vegas/js/ScoreDisplayStars.js';
 import divideLevel1Icon_png from '../../../mipmaps/divideLevel1Icon_png.js';
 import divideLevel2Icon_png from '../../../mipmaps/divideLevel2Icon_png.js';
 import divideLevel3Icon_png from '../../../mipmaps/divideLevel3Icon_png.js';
@@ -105,10 +102,10 @@ class LevelSelectionNode extends Node {
         listener: () => {
           callback( levelIndex );
         },
-        scoreDisplayOptions: {
+        createScoreDisplay: scoreProperty => new ScoreDisplayStars( scoreProperty, {
           numberOfStars: ArithmeticConstants.NUM_STARS,
           perfectScore: level.perfectScore
-        },
+        } ),
         soundPlayerIndex: levelIndex
       }
     ) );
