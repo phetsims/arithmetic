@@ -9,10 +9,7 @@
  */
 
 import stepTimer from '../../../../axon/js/stepTimer.js';
-import { HBox } from '../../../../scenery/js/imports.js';
-import { Node } from '../../../../scenery/js/imports.js';
-import { Rectangle } from '../../../../scenery/js/imports.js';
-import { Text } from '../../../../scenery/js/imports.js';
+import { HBox, Node, Rectangle, Text } from '../../../../scenery/js/imports.js';
 import arithmetic from '../../arithmetic.js';
 import arithmeticStrings from '../../arithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';

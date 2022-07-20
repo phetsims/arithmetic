@@ -7,8 +7,7 @@
  * @author John Blanco (MLearner)
  */
 
-import { Line } from '../../../../scenery/js/imports.js';
-import { Rectangle } from '../../../../scenery/js/imports.js';
+import { Line, Rectangle } from '../../../../scenery/js/imports.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticConstants from '../../common/ArithmeticConstants.js';
 
