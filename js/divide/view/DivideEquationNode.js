@@ -26,11 +26,12 @@ class DivideEquationNode extends EquationNode {
 
     // If the input value changes, it means that the user entered something, so put it in the appropriate equation node.
     inputProperty.lazyLink( inputString => {
+      const inputStringToNumber = inputString ? Number( inputString ) : '';
       if ( activeInputProperty.get() === 'multiplicand' ) {
-        multiplicandProperty.set( Number( inputString ) );
+        multiplicandProperty.set( inputStringToNumber );
       }
       else if ( activeInputProperty.get() === 'multiplier' ) {
-        multiplierProperty.set( Number( inputString ) );
+        multiplierProperty.set( inputStringToNumber );
       }
     } );
 
