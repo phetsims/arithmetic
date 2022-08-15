@@ -38,8 +38,8 @@ class ArithmeticModel {
       tandem: tandem.createTandem( 'checkAnswerEmitter' ),
       parameters: [
         { name: 'multiplicand', phetioType: NumberIO },
-        { name: 'product', phetioType: NumberIO },
         { name: 'multiplier', phetioType: NumberIO },
+        { name: 'product', phetioType: NumberIO },
         { name: 'isCorrect', phetioType: BooleanIO },
         { name: 'asString', phetioType: StringIO },
         { name: 'input', phetioType: StringIO }
@@ -110,8 +110,8 @@ class ArithmeticModel {
     const string = `${this.problemModel.multiplicandProperty.get()} x ${this.problemModel.multiplierProperty.get()} = ${this.problemModel.productProperty.get()}`;
     this.checkAnswerEmitter.emit(
       this.problemModel.multiplicandProperty.get(),
-      this.problemModel.productProperty.get(),
       this.problemModel.multiplierProperty.get(),
+      this.problemModel.productProperty.get(),
       isCorrect,
       string,
       this.inputProperty.get() );
