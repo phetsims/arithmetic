@@ -11,28 +11,28 @@ import arithmetic from './arithmetic.js';
 type StringsType = {
   'arithmetic': {
     'title': string;
-    'titleProperty': TReadOnlyProperty<string>;
+    'titleStringProperty': TReadOnlyProperty<string>;
   };
   'check': string;
-  'checkProperty': TReadOnlyProperty<string>;
+  'checkStringProperty': TReadOnlyProperty<string>;
   'chooseYourLevel': string;
-  'chooseYourLevelProperty': TReadOnlyProperty<string>;
+  'chooseYourLevelStringProperty': TReadOnlyProperty<string>;
   'divide': string;
-  'divideProperty': TReadOnlyProperty<string>;
+  'divideStringProperty': TReadOnlyProperty<string>;
   'factor': string;
-  'factorProperty': TReadOnlyProperty<string>;
+  'factorStringProperty': TReadOnlyProperty<string>;
   'multiply': string;
-  'multiplyProperty': TReadOnlyProperty<string>;
+  'multiplyStringProperty': TReadOnlyProperty<string>;
   'pattern': {
     'level': {
       '0levelNumber': string;
-      '0levelNumberProperty': TReadOnlyProperty<string>;
+      '0levelNumberStringProperty': TReadOnlyProperty<string>;
     }
   };
   'tryAgain': string;
-  'tryAgainProperty': TReadOnlyProperty<string>;
+  'tryAgainStringProperty': TReadOnlyProperty<string>;
   'unknownValueIndicator': string;
-  'unknownValueIndicatorProperty': TReadOnlyProperty<string>;
+  'unknownValueIndicatorStringProperty': TReadOnlyProperty<string>;
 };
 
 const arithmeticStrings = getStringModule( 'ARITHMETIC' ) as StringsType;
