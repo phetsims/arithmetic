@@ -15,7 +15,7 @@ import FactorScreen from './factor/FactorScreen.js';
 import MultiplyScreen from './multiply/MultiplyScreen.js';
 
 // strings and images
-const arithmeticTitleString = arithmeticStrings.arithmetic.title;
+const arithmeticTitleStringProperty = arithmeticStrings.arithmetic.titleStringProperty;
 
 // constants
 const tandem = Tandem.ROOT;
@@ -32,7 +32,7 @@ const simOptions = {
 
 simLauncher.launch( () => {
   // Create and start the sim
-  new Sim( arithmeticTitleString, [
+  new Sim( arithmeticTitleStringProperty, [
     new MultiplyScreen( { tandem: tandem.createTandem( 'multiplyScreen' ) } ),
     new FactorScreen( { tandem: tandem.createTandem( 'factorScreen' ) } ),
     new DivideScreen( { tandem: tandem.createTandem( 'divideScreen' ) } )
