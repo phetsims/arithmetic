@@ -11,10 +11,10 @@
 import stepTimer from '../../../../axon/js/stepTimer.js';
 import { HBox, Node, Rectangle, Text } from '../../../../scenery/js/imports.js';
 import arithmetic from '../../arithmetic.js';
-import arithmeticStrings from '../../arithmeticStrings.js';
+import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 
-const unknownValueIndicatorString = arithmeticStrings.unknownValueIndicator;
+const unknownValueIndicatorString = ArithmeticStrings.unknownValueIndicator;
 
 // constants
 const INTERACTIVE_FILL = 'white';

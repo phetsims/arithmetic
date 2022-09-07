@@ -7,7 +7,7 @@
  */
 
 import arithmetic from '../../arithmetic.js';
-import arithmeticStrings from '../../arithmeticStrings.js';
+import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticView from '../../common/view/ArithmeticView.js';
 import FactorEquationNode from './FactorEquationNode.js';
 import FactorScreenTableNode from './FactorScreenTableNode.js';
@@ -29,7 +29,7 @@ class FactorView extends ArithmeticView {
       ),
       {
         showKeypad: false,
-        titleString: arithmeticStrings.factor,
+        titleString: ArithmeticStrings.factor,
         levelSelectButtonColor: '#FFC266',
         levelSelectIconSet: 'factor'
       }

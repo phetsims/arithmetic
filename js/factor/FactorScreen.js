@@ -12,7 +12,7 @@ import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import merge from '../../../phet-core/js/merge.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import arithmetic from '../arithmetic.js';
-import arithmeticStrings from '../arithmeticStrings.js';
+import ArithmeticStrings from '../ArithmeticStrings.js';
 import ArithmeticConstants from '../common/ArithmeticConstants.js';
 import FactorModel from './model/FactorModel.js';
 import FactorScreenIconNode from './view/FactorScreenIconNode.js';
@@ -26,7 +26,7 @@ class FactorScreen extends Screen {
   constructor( options ) {
 
     options = merge( {
-      name: arithmeticStrings.factor,
+      name: ArithmeticStrings.factor,
       homeScreenIcon: new ScreenIcon( new FactorScreenIconNode(), {
         maxIconWidthProportion: 1,
         maxIconHeightProportion: 1

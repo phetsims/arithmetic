@@ -24,7 +24,7 @@ import multiplyLevel1Icon_png from '../../../mipmaps/multiplyLevel1Icon_png.js';
 import multiplyLevel2Icon_png from '../../../mipmaps/multiplyLevel2Icon_png.js';
 import multiplyLevel3Icon_png from '../../../mipmaps/multiplyLevel3Icon_png.js';
 import arithmetic from '../../arithmetic.js';
-import arithmeticStrings from '../../arithmeticStrings.js';
+import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
 
@@ -52,7 +52,7 @@ const ICON_SETS = {
   ]
 };
 
-const chooseYourLevelString = arithmeticStrings.chooseYourLevel;
+const chooseYourLevelString = ArithmeticStrings.chooseYourLevel;
 
 class LevelSelectionNode extends Node {
 

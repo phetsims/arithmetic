@@ -12,7 +12,7 @@ import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import merge from '../../../phet-core/js/merge.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import arithmetic from '../arithmetic.js';
-import arithmeticStrings from '../arithmeticStrings.js';
+import ArithmeticStrings from '../ArithmeticStrings.js';
 import ArithmeticConstants from '../common/ArithmeticConstants.js';
 import MultiplyModel from './model/MultiplyModel.js';
 import MultiplyScreenIconNode from './view/MultiplyScreenIconNode.js';
@@ -26,7 +26,7 @@ class MultiplyScreen extends Screen {
   constructor( options ) {
 
     options = merge( {
-      name: arithmeticStrings.multiply,
+      name: ArithmeticStrings.multiply,
       homeScreenIcon: new ScreenIcon( new MultiplyScreenIconNode(), {
         maxIconWidthProportion: 1,
         maxIconHeightProportion: 1

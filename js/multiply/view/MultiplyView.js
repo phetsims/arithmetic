@@ -7,7 +7,7 @@
  */
 
 import arithmetic from '../../arithmetic.js';
-import arithmeticStrings from '../../arithmeticStrings.js';
+import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticView from '../../common/view/ArithmeticView.js';
 import MultiplyEquationNode from './MultiplyEquationNode.js';
 import MultiplyScreenTableNode from './MultiplyScreenTableNode.js';
@@ -33,7 +33,7 @@ class MultiplyView extends ArithmeticView {
         model.inputProperty
       ),
       {
-        titleString: arithmeticStrings.multiply,
+        titleString: ArithmeticStrings.multiply,
         levelSelectButtonColor: '#D8F58A',
         levelSelectIconSet: 'multiply'
       }

@@ -7,7 +7,7 @@
  */
 
 import arithmetic from '../../arithmetic.js';
-import arithmeticStrings from '../../arithmeticStrings.js';
+import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticView from '../../common/view/ArithmeticView.js';
 import DivideEquationNode from './DivideEquationNode.js';
 import DivideScreenTableNode from './DivideScreenTableNode.js';
@@ -31,7 +31,7 @@ class DivideView extends ArithmeticView {
         model.activeInputProperty
       ),
       {
-        titleString: arithmeticStrings.divide,
+        titleString: ArithmeticStrings.divide,
         levelSelectButtonColor: '#BC76A5',
         levelSelectIconSet: 'divide'
       }

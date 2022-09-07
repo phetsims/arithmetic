@@ -35,8 +35,8 @@ type StringsType = {
   'unknownValueIndicatorStringProperty': TReadOnlyProperty<string>;
 };
 
-const arithmeticStrings = getStringModule( 'ARITHMETIC' ) as StringsType;
+const ArithmeticStrings = getStringModule( 'ARITHMETIC' ) as StringsType;
 
-arithmetic.register( 'arithmeticStrings', arithmeticStrings );
+arithmetic.register( 'ArithmeticStrings', ArithmeticStrings );
 
-export default arithmeticStrings;
+export default ArithmeticStrings;

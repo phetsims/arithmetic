@@ -17,7 +17,7 @@ import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import { Node } from '../../../../scenery/js/imports.js';
 import TextPushButton from '../../../../sun/js/buttons/TextPushButton.js';
 import arithmetic from '../../arithmetic.js';
-import arithmeticStrings from '../../arithmeticStrings.js';
+import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
 import GameState from '../model/GameState.js';
 import ArithmeticFaceWithPointsNode from './ArithmeticFaceWithPointsNode.js';
@@ -30,8 +30,8 @@ const BACK_BUTTON_MARGIN = new Dimension2( 20, 10 ); // margin of background of 
 const BUTTON_BASE_COLOR = PhetColorScheme.BUTTON_YELLOW;
 const BUTTON_FONT = new PhetFont( { size: 20 } );
 
-const checkString = arithmeticStrings.check;
-const tryAgainString = arithmeticStrings.tryAgain;
+const checkString = ArithmeticStrings.check;
+const tryAgainString = ArithmeticStrings.tryAgain;
 
 class WorkspaceNode extends Node {
 

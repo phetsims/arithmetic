@@ -13,7 +13,7 @@ import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import merge from '../../../phet-core/js/merge.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import arithmetic from '../arithmetic.js';
-import arithmeticStrings from '../arithmeticStrings.js';
+import ArithmeticStrings from '../ArithmeticStrings.js';
 import ArithmeticConstants from '../common/ArithmeticConstants.js';
 import DivideModel from './model/DivideModel.js';
 import DivideScreenIconNode from './view/DivideScreenIconNode.js';
@@ -27,7 +27,7 @@ class DivideScreen extends Screen {
   constructor( options ) {
 
     options = merge( {
-      name: arithmeticStrings.divide,
+      name: ArithmeticStrings.divide,
       backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
       homeScreenIcon: new ScreenIcon( new DivideScreenIconNode(), {
         maxIconWidthProportion: 1,

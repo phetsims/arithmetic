@@ -9,13 +9,13 @@
 import Sim from '../../joist/js/Sim.js';
 import simLauncher from '../../joist/js/simLauncher.js';
 import Tandem from '../../tandem/js/Tandem.js';
-import arithmeticStrings from './arithmeticStrings.js';
+import ArithmeticStrings from './ArithmeticStrings.js';
 import DivideScreen from './divide/DivideScreen.js';
 import FactorScreen from './factor/FactorScreen.js';
 import MultiplyScreen from './multiply/MultiplyScreen.js';
 
 // strings and images
-const arithmeticTitleStringProperty = arithmeticStrings.arithmetic.titleStringProperty;
+const arithmeticTitleStringProperty = ArithmeticStrings.arithmetic.titleStringProperty;
 
 // constants
 const tandem = Tandem.ROOT;

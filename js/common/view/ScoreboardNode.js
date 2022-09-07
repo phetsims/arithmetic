@@ -16,12 +16,12 @@ import Panel from '../../../../sun/js/Panel.js';
 import GameTimer from '../../../../vegas/js/GameTimer.js';
 import VegasStrings from '../../../../vegas/js/VegasStrings.js';
 import arithmetic from '../../arithmetic.js';
-import arithmeticStrings from '../../arithmeticStrings.js';
+import ArithmeticStrings from '../../ArithmeticStrings.js';
 import GameState from '../model/GameState.js';
 
 const labelScorePatternString = VegasStrings.label.scorePattern;
 const labelTimeString = VegasStrings.label.time;
-const patternLevel0LevelNumberString = arithmeticStrings.pattern.level[ '0levelNumber' ];
+const patternLevel0LevelNumberString = ArithmeticStrings.pattern.level[ '0levelNumber' ];
 
 // constants
 const FONT = new PhetFont( { size: 18 } );
