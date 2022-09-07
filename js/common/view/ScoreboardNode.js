@@ -14,13 +14,13 @@ import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import { Node, Text, VBox } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
 import GameTimer from '../../../../vegas/js/GameTimer.js';
-import vegasStrings from '../../../../vegas/js/vegasStrings.js';
+import VegasStrings from '../../../../vegas/js/VegasStrings.js';
 import arithmetic from '../../arithmetic.js';
 import arithmeticStrings from '../../arithmeticStrings.js';
 import GameState from '../model/GameState.js';
 
-const labelScorePatternString = vegasStrings.label.scorePattern;
-const labelTimeString = vegasStrings.label.time;
+const labelScorePatternString = VegasStrings.label.scorePattern;
+const labelTimeString = VegasStrings.label.time;
 const patternLevel0LevelNumberString = arithmeticStrings.pattern.level[ '0levelNumber' ];
 
 // constants
