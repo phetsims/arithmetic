@@ -26,7 +26,7 @@ class MultiplyScreen extends Screen {
   constructor( options ) {
 
     options = merge( {
-      name: ArithmeticStrings.multiply,
+      name: ArithmeticStrings.multiplyStringProperty,
       homeScreenIcon: new ScreenIcon( new MultiplyScreenIconNode(), {
         maxIconWidthProportion: 1,
         maxIconHeightProportion: 1

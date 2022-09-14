@@ -26,7 +26,7 @@ class FactorScreen extends Screen {
   constructor( options ) {
 
     options = merge( {
-      name: ArithmeticStrings.factor,
+      name: ArithmeticStrings.factorStringProperty,
       homeScreenIcon: new ScreenIcon( new FactorScreenIconNode(), {
         maxIconWidthProportion: 1,
         maxIconHeightProportion: 1

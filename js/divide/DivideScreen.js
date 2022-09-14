@@ -27,7 +27,7 @@ class DivideScreen extends Screen {
   constructor( options ) {
 
     options = merge( {
-      name: ArithmeticStrings.divide,
+      name: ArithmeticStrings.divideStringProperty,
       backgroundColorProperty: new Property( ArithmeticConstants.BACKGROUND_COLOR ),
       homeScreenIcon: new ScreenIcon( new DivideScreenIconNode(), {
         maxIconWidthProportion: 1,
