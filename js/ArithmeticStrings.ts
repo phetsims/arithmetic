@@ -5,34 +5,34 @@
  */
 /* eslint-disable */
 import getStringModule from '../../chipper/js/getStringModule.js';
-import TReadOnlyProperty from '../../axon/js/TReadOnlyProperty.js';
+import LinkableProperty from '../../axon/js/LinkableProperty.js';
 import arithmetic from './arithmetic.js';
 
 type StringsType = {
   'arithmetic': {
     'title': string;
-    'titleStringProperty': TReadOnlyProperty<string>;
+    'titleStringProperty': LinkableProperty<string>;
   };
   'check': string;
-  'checkStringProperty': TReadOnlyProperty<string>;
+  'checkStringProperty': LinkableProperty<string>;
   'chooseYourLevel': string;
-  'chooseYourLevelStringProperty': TReadOnlyProperty<string>;
+  'chooseYourLevelStringProperty': LinkableProperty<string>;
   'divide': string;
-  'divideStringProperty': TReadOnlyProperty<string>;
+  'divideStringProperty': LinkableProperty<string>;
   'factor': string;
-  'factorStringProperty': TReadOnlyProperty<string>;
+  'factorStringProperty': LinkableProperty<string>;
   'multiply': string;
-  'multiplyStringProperty': TReadOnlyProperty<string>;
+  'multiplyStringProperty': LinkableProperty<string>;
   'pattern': {
     'level': {
       '0levelNumber': string;
-      '0levelNumberStringProperty': TReadOnlyProperty<string>;
+      '0levelNumberStringProperty': LinkableProperty<string>;
     }
   };
   'tryAgain': string;
-  'tryAgainStringProperty': TReadOnlyProperty<string>;
+  'tryAgainStringProperty': LinkableProperty<string>;
   'unknownValueIndicator': string;
-  'unknownValueIndicatorStringProperty': TReadOnlyProperty<string>;
+  'unknownValueIndicatorStringProperty': LinkableProperty<string>;
 };
 
 const ArithmeticStrings = getStringModule( 'ARITHMETIC' ) as StringsType;
