@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.0.26 Wed Sep 22 2021 20:33:49 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "3bf74266055bbb8a2ec19258f3dc3da14e820e74",
+    "sha": "c8c4d94ec05b4a18adacda9f719ef0bb1a33858a",
     "branch": "1.0"
   },
   "assert": {
@@ -17,7 +17,7 @@
     "branch": "HEAD"
   },
   "chipper": {
-    "sha": "29094b533e0c257447b1ee04fc30b985e1b32ad8",
+    "sha": "73e75f41562d1fa14950d31786f387b9e972aeef",
     "branch": "HEAD"
   },
   "dot": {
