@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.0.27 Thu Sep 29 2022 09:22:15 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "965d6e5540bae06edce795a422adb27cc365242f",
+    "sha": "65c6c325b59feae5a29cae2c12f92e23ffbf02c5",
     "branch": "1.0"
   },
   "assert": {
@@ -45,7 +45,7 @@
     "branch": "HEAD"
   },
   "scenery": {
-    "sha": "e0deb16e8a99af6f26c577401e5d4d98f6efc171",
+    "sha": "5fc73451b7c745beb4126109dc518ae94b49e876",
     "branch": "HEAD"
   },
   "scenery-phet": {
