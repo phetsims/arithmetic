@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.0.28 Mon Dec 12 2022 15:54:58 GMT-0700 (Mountain Standard Time)",
   "arithmetic": {
-    "sha": "ecb2075ce22c040cbdb20d0182517c24205af021",
+    "sha": "fc0b6fd012dc2156afa15d20d07429669f0d0b08",
     "branch": "1.0"
   },
   "assert": {
@@ -17,7 +17,7 @@
     "branch": "HEAD"
   },
   "chipper": {
-    "sha": "73e75f41562d1fa14950d31786f387b9e972aeef",
+    "sha": "bbb5d314294689baae6ec91a949dd1c099fcee86",
     "branch": "HEAD"
   },
   "dot": {
