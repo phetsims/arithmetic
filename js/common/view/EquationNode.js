@@ -77,7 +77,7 @@ class EquationNode extends HBox {
    * @protected
    */
   setShowEqual( showEqual ) {
-    this.equalsSign.text = showEqual ? MathSymbols.EQUAL_TO : MathSymbols.NOT_EQUAL_TO;
+    this.equalsSign.string = showEqual ? MathSymbols.EQUAL_TO : MathSymbols.NOT_EQUAL_TO;
   }
 }
 

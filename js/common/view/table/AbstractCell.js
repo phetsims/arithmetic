@@ -69,7 +69,7 @@ class AbstractCell extends Rectangle {
   setText( text ) {
     this._text = text;
     if ( this._textNode ) {
-      this._textNode.text = text;
+      this._textNode.string = text;
       this._textNode.centerX = this.width / 2;
     }
   }

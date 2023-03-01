@@ -52,7 +52,7 @@ class EquationInputNode extends Node {
 
     // update text when the value changes
     valueProperty.lazyLink( value => {
-      this.inputText.setText( isNaN( value ) ? '' : value );
+      this.inputText.setString( isNaN( value ) ? '' : value );
       updateBoxPosition( this._box, size );
     } );
 
@@ -83,7 +83,7 @@ class EquationInputNode extends Node {
    * @public
    */
   clear() {
-    this.inputText.setText( '' );
+    this.inputText.setString( '' );
     updateBoxPosition( this._box, this.inputSize );
   }
 
@@ -111,7 +111,7 @@ class EquationInputNode extends Node {
    * @public
    */
   setPlaceholder() {
-    this.inputText.setText( unknownValueIndicatorString );
+    this.inputText.setString( unknownValueIndicatorString );
     updateBoxPosition( this._box, this.inputSize );
   }
 }

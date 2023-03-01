@@ -80,19 +80,19 @@ class ScoreboardNode extends Node {
 
     // add observers
     const updateScore = score => {
-      scoreText.text = StringUtils.format( labelScorePatternString, score.toString() );
+      scoreText.string = StringUtils.format( labelScorePatternString, score.toString() );
     };
 
     const updateTime = time => {
-      timeText.text = StringUtils.format( labelTimeString, GameTimer.formatTime( time ) );
+      timeText.string = StringUtils.format( labelTimeString, GameTimer.formatTime( time ) );
     };
 
     levelNumberProperty.lazyLink( ( levelNew, levelPrevious ) => {
       if ( levelNew !== null ) {
-        levelText.text = StringUtils.format( patternLevel0LevelNumberString, ( levelNew + 1 ).toString() );
+        levelText.string = StringUtils.format( patternLevel0LevelNumberString, ( levelNew + 1 ).toString() );
       }
       else {
-        levelText.text = '';
+        levelText.string = '';
       }
 
       // unlink observers for previous level

@@ -185,7 +185,7 @@ class MultiplicationTableNode extends Node {
                 // Animate the product moving from the equation to the appropriate cell within the table.
                 ( () => {
                   const destinationCell = cell;
-                  this.flyingProduct.text = destinationCell.getTextString();
+                  this.flyingProduct.string = destinationCell.getTextString();
                   this.flyingProduct.setScaleMagnitude( 1 );
                   const flyingProductDestination = this.globalToLocalPoint( destinationCell.parentToGlobalPoint( destinationCell.center ) );
 
