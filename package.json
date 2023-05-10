@@ -29,7 +29,12 @@
       "validation": false
     },
     "supportsOutputJS": true,
-    "published": true
+    "published": true,
+    "screenNameKeys": [
+      "ARITHMETIC/multiply",
+      "ARITHMETIC/factor",
+      "ARITHMETIC/divide"
+    ]
   },
   "eslintConfig": {
     "extends": "../chipper/eslint/sim_eslintrc.js"
