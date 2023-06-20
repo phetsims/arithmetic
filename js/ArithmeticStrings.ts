@@ -5,34 +5,34 @@
  */
 /* eslint-disable */
 import getStringModule from '../../chipper/js/getStringModule.js';
-import LinkableProperty from '../../axon/js/LinkableProperty.js';
+import type LocalizedStringProperty from '../../chipper/js/LocalizedStringProperty.js';
 import arithmetic from './arithmetic.js';
 
 type StringsType = {
   'arithmetic': {
     'title': string;
-    'titleStringProperty': LinkableProperty<string>;
+    'titleStringProperty': LocalizedStringProperty;
   };
   'check': string;
-  'checkStringProperty': LinkableProperty<string>;
+  'checkStringProperty': LocalizedStringProperty;
   'chooseYourLevel': string;
-  'chooseYourLevelStringProperty': LinkableProperty<string>;
+  'chooseYourLevelStringProperty': LocalizedStringProperty;
   'divide': string;
-  'divideStringProperty': LinkableProperty<string>;
+  'divideStringProperty': LocalizedStringProperty;
   'factor': string;
-  'factorStringProperty': LinkableProperty<string>;
+  'factorStringProperty': LocalizedStringProperty;
   'multiply': string;
-  'multiplyStringProperty': LinkableProperty<string>;
+  'multiplyStringProperty': LocalizedStringProperty;
   'pattern': {
     'level': {
       '0levelNumber': string;
-      '0levelNumberStringProperty': LinkableProperty<string>;
+      '0levelNumberStringProperty': LocalizedStringProperty;
     }
   };
   'tryAgain': string;
-  'tryAgainStringProperty': LinkableProperty<string>;
+  'tryAgainStringProperty': LocalizedStringProperty;
   'unknownValueIndicator': string;
-  'unknownValueIndicatorStringProperty': LinkableProperty<string>;
+  'unknownValueIndicatorStringProperty': LocalizedStringProperty;
 };
 
 const ArithmeticStrings = getStringModule( 'ARITHMETIC' ) as StringsType;
