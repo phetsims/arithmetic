@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.0.34 Wed May 10 2023 11:36:42 GMT-0600 (Mountain Daylight Time)",
+  "comment": "# arithmetic 1.0.35-rc.1 Wed Sep 20 2023 19:17:08 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "e5fe72b334e91200bb4496693532ad8dec457434",
+    "sha": "0d69cea746c0bcd95b620d90c302af910d469fcc",
     "branch": "1.0"
   },
   "assert": {
