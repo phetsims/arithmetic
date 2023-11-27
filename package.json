@@ -22,7 +22,10 @@
       "phet-io"
     ],
     "simFeatures": {
-      "supportsSound": true
+      "supportsSound": true,
+      "supportedRegionsAndCultures": [
+        "usa"
+      ]
     },
     "simulation": true,
     "phet-io": {

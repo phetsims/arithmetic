@@ -31,7 +31,7 @@ class ArithmeticModel {
   /**
    * Constructor for ArithmeticModel
    */
-  constructor( tandem, options ) {
+  constructor( preferencesModel, tandem, options ) {
 
     // @private - for PhET-iO
     this.checkAnswerEmitter = new Emitter( {
@@ -92,6 +92,12 @@ class ArithmeticModel {
         this.activeLevelModel.displayScoreProperty.set( this.activeLevelModel.currentScoreProperty.get() );
       }
     } );
+
+    /**
+     * @public
+     * @type {Property<RegionAndCulturePortrayal>}
+     */
+    this.regionAndCulturePortrayalProperty = preferencesModel.localizationModel.regionAndCulturePortrayalProperty;
   }
 
   // @protected - get the current level model, use this to make the code more readable

@@ -6,10 +6,12 @@
  * @author John Blanco, Andrey Zelenkov (MLearner)
  */
 
+import PreferencesModel from '../../joist/js/preferences/PreferencesModel.js';
 import Sim from '../../joist/js/Sim.js';
 import simLauncher from '../../joist/js/simLauncher.js';
 import Tandem from '../../tandem/js/Tandem.js';
 import ArithmeticStrings from './ArithmeticStrings.js';
+import BoxPlayerImages from './common/view/BoxPlayerImages.js';
 import DivideScreen from './divide/DivideScreen.js';
 import FactorScreen from './factor/FactorScreen.js';
 import MultiplyScreen from './multiply/MultiplyScreen.js';
@@ -20,7 +22,14 @@ const arithmeticTitleStringProperty = ArithmeticStrings.arithmetic.titleStringPr
 // constants
 const tandem = Tandem.ROOT;
 
+const preferencesModel = new PreferencesModel( {
+  localizationOptions: {
+    characterSets: BoxPlayerImages.BOX_PLAYER_CHARACTER_SETS
+  }
+} );
+
 const simOptions = {
+  preferencesModel: preferencesModel,
   credits: {
     leadDesign: 'Michael Dubson, Amanda McGarry',
     softwareDevelopment: 'John Blanco, Michael Dubson',
@@ -33,8 +42,8 @@ const simOptions = {
 simLauncher.launch( () => {
   // Create and start the sim
   new Sim( arithmeticTitleStringProperty, [
-    new MultiplyScreen( { tandem: tandem.createTandem( 'multiplyScreen' ) } ),
-    new FactorScreen( { tandem: tandem.createTandem( 'factorScreen' ) } ),
-    new DivideScreen( { tandem: tandem.createTandem( 'divideScreen' ) } )
+    new MultiplyScreen( preferencesModel, { tandem: tandem.createTandem( 'multiplyScreen' ) } ),
+    new FactorScreen( preferencesModel, { tandem: tandem.createTandem( 'factorScreen' ) } ),
+    new DivideScreen( preferencesModel, { tandem: tandem.createTandem( 'divideScreen' ) } )
   ], simOptions ).start();
 } );

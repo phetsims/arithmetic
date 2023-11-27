@@ -15,10 +15,11 @@ import GameState from '../../common/model/GameState.js';
 class FactorModel extends ArithmeticModel {
 
   /**
+   * @param { PreferencesModel } preferencesModel
    * @param {Tandem} tandem
    */
-  constructor( tandem ) {
-    super( tandem );
+  constructor( preferencesModel, tandem ) {
+    super( preferencesModel, tandem );
   }
 
   // @public

@@ -22,9 +22,10 @@ import DivideView from './view/DivideView.js';
 class DivideScreen extends Screen {
 
   /**
+   * @param { PreferencesModel } preferencesModel
    * @param {Object} [options]
    */
-  constructor( options ) {
+  constructor( preferencesModel, options ) {
 
     options = merge( {
       name: ArithmeticStrings.divideStringProperty,
@@ -37,7 +38,7 @@ class DivideScreen extends Screen {
     }, options );
 
     super(
-      () => new DivideModel( options.tandem.createTandem( 'model' ) ),
+      () => new DivideModel( preferencesModel, options.tandem.createTandem( 'model' ) ),
       model => new DivideView( model ),
       options
     );

@@ -14,9 +14,13 @@ import GameState from '../../common/model/GameState.js';
 
 class MultiplyModel extends ArithmeticModel {
 
-  constructor( tandem ) {
+  /**
+   * @param { PreferencesModel } preferencesModel
+   * @param { Tandem } tandem
+   */
+  constructor( preferencesModel, tandem ) {
 
-    super( tandem, {
+    super( preferencesModel, tandem, {
       fillEquation: () => {
         this.problemModel.productProperty.set( Number( this.inputProperty.get() ) );
         this.submitAnswer();

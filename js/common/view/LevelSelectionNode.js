@@ -11,46 +11,19 @@ import merge from '../../../../phet-core/js/merge.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import TimerToggleButton from '../../../../scenery-phet/js/buttons/TimerToggleButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { HBox, Image, Node, Text, VBox } from '../../../../scenery/js/imports.js';
+import { HBox, Node, Text, VBox } from '../../../../scenery/js/imports.js';
 import LevelSelectionButton from '../../../../vegas/js/LevelSelectionButton.js';
 import ScoreDisplayStars from '../../../../vegas/js/ScoreDisplayStars.js';
-import divideLevel1Icon_png from '../../../mipmaps/divideLevel1Icon_png.js';
-import divideLevel2Icon_png from '../../../mipmaps/divideLevel2Icon_png.js';
-import divideLevel3Icon_png from '../../../mipmaps/divideLevel3Icon_png.js';
-import factorLevel1Icon_png from '../../../mipmaps/factorLevel1Icon_png.js';
-import factorLevel2Icon_png from '../../../mipmaps/factorLevel2Icon_png.js';
-import factorLevel3Icon_png from '../../../mipmaps/factorLevel3Icon_png.js';
-import multiplyLevel1Icon_png from '../../../mipmaps/multiplyLevel1Icon_png.js';
-import multiplyLevel2Icon_png from '../../../mipmaps/multiplyLevel2Icon_png.js';
-import multiplyLevel3Icon_png from '../../../mipmaps/multiplyLevel3Icon_png.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
+import BoxPlayerController from './BoxPlayerController.js';
 
 // constants
 const CHOOSE_LEVEL_TITLE_FONT = new PhetFont( { size: 24 } );
 const TAB_TITLE_FONT = new PhetFont( { size: 54 } );
 const BUTTON_LENGTH = 150;
-
-// icon sets, used to place on the buttons
-const ICON_SETS = {
-  multiply: [
-    multiplyLevel1Icon_png,
-    multiplyLevel2Icon_png,
-    multiplyLevel3Icon_png
-  ],
-  factor: [
-    factorLevel1Icon_png,
-    factorLevel2Icon_png,
-    factorLevel3Icon_png
-  ],
-  divide: [
-    divideLevel1Icon_png,
-    divideLevel2Icon_png,
-    divideLevel3Icon_png
-  ]
-};
 
 const chooseYourLevelString = ArithmeticStrings.chooseYourLevel;
 
@@ -88,10 +61,16 @@ class LevelSelectionNode extends Node {
     } );
     this.addChild( chooseLevelTitle );
 
+
+    const boxPlayerController = new BoxPlayerController( model );
+
+    // icon sets, used to place on the buttons
+    const iconSets = boxPlayerController.boxPlayerNodes;
+
     // add select level buttons
-    assert && assert( model.levelModels.length === ICON_SETS[ options.iconSet ].length, 'Number of icons doesn\'t match number of levels' );
+    assert && assert( model.levelModels.length === iconSets[ options.iconSet ].length, 'Number of icons doesn\'t match number of levels' );
     const levelSelectButtons = model.levelModels.map( ( level, levelIndex ) => new LevelSelectionButton(
-      new Image( ICON_SETS[ options.iconSet ][ levelIndex ] ),
+      iconSets[ options.iconSet ][ levelIndex ],
       model.levelModels[ levelIndex ].displayScoreProperty,
       {
         buttonWidth: BUTTON_LENGTH,
