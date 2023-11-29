@@ -11,8 +11,8 @@ import merge from '../../../../phet-core/js/merge.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import TimerToggleButton from '../../../../scenery-phet/js/buttons/TimerToggleButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { HBox, Node, Text, VBox } from '../../../../scenery/js/imports.js';
-import LevelSelectionButton from '../../../../vegas/js/LevelSelectionButton.js';
+import { Node, Text, VBox } from '../../../../scenery/js/imports.js';
+import LevelSelectionButtonGroup from '../../../../vegas/js/LevelSelectionButtonGroup.js';
 import ScoreDisplayStars from '../../../../vegas/js/ScoreDisplayStars.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
@@ -69,29 +69,35 @@ class LevelSelectionNode extends Node {
 
     // add select level buttons
     assert && assert( model.levelModels.length === iconSets[ options.iconSet ].length, 'Number of icons doesn\'t match number of levels' );
-    const levelSelectButtons = model.levelModels.map( ( level, levelIndex ) => new LevelSelectionButton(
-      iconSets[ options.iconSet ][ levelIndex ],
-      model.levelModels[ levelIndex ].displayScoreProperty,
-      {
-        buttonWidth: BUTTON_LENGTH,
-        buttonHeight: BUTTON_LENGTH,
-        baseColor: options.buttonBaseColor,
-        bestTimeProperty: model.levelModels[ levelIndex ].bestTimeProperty,
-        bestTimeVisibleProperty: ArithmeticGlobals.timerEnabledProperty,
-        listener: () => {
-          callback( levelIndex );
-        },
-        createScoreDisplay: scoreProperty => new ScoreDisplayStars( scoreProperty, {
-          numberOfStars: ArithmeticConstants.NUM_STARS,
-          perfectScore: level.perfectScore
-        } ),
-        soundPlayerIndex: levelIndex
+    const levelSelectButtons = model.levelModels.map( ( level, levelIndex ) => {
+      return {
+        icon: iconSets[ options.iconSet ][ levelIndex ],
+        scoreProperty: model.levelModels[ levelIndex ].displayScoreProperty,
+        options: {
+          baseColor: options.buttonBaseColor,
+          bestTimeVisibleProperty: ArithmeticGlobals.timerEnabledProperty,
+          bestTimeProperty: model.levelModels[ levelIndex ].bestTimeProperty,
+          listener: () => {
+            callback( levelIndex );
+          },
+          createScoreDisplay: scoreProperty => new ScoreDisplayStars( scoreProperty, {
+            numberOfStars: ArithmeticConstants.NUM_STARS,
+            perfectScore: level.perfectScore
+          } ),
+          soundPlayerIndex: levelIndex
+        }
+      };
+    } );
+    const levelSelectionButtonGroup = new LevelSelectionButtonGroup( levelSelectButtons, {
+      groupButtonHeight: BUTTON_LENGTH,
+      groupButtonWidth: BUTTON_LENGTH,
+      flowBoxOptions: {
+        spacing: 50,
+        top: chooseLevelTitle.bottom + 15,
+        centerX: chooseLevelTitle.centerX
       }
-    ) );
-    const selectLevelButtonsHBox = new HBox( { spacing: 50, children: levelSelectButtons } );
-    selectLevelButtonsHBox.top = chooseLevelTitle.bottom + 15;
-    selectLevelButtonsHBox.centerX = chooseLevelTitle.centerX;
-    this.addChild( selectLevelButtonsHBox );
+    } );
+    this.addChild( levelSelectionButtonGroup );
 
     // add timer and sound buttons
     const soundAndTimerButtons = new VBox( {
