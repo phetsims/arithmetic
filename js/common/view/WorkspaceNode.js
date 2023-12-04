@@ -30,8 +30,8 @@ const BACK_BUTTON_MARGIN = new Dimension2( 20, 10 ); // margin of background of 
 const BUTTON_BASE_COLOR = PhetColorScheme.BUTTON_YELLOW;
 const BUTTON_FONT = new PhetFont( { size: 20 } );
 
-const checkString = ArithmeticStrings.check;
-const tryAgainString = ArithmeticStrings.tryAgain;
+const checkString = ArithmeticStrings.checkStringProperty;
+const tryAgainString = ArithmeticStrings.tryAgainStringProperty;
 
 class WorkspaceNode extends Node {
 

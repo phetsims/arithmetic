@@ -25,7 +25,7 @@ const CHOOSE_LEVEL_TITLE_FONT = new PhetFont( { size: 24 } );
 const TAB_TITLE_FONT = new PhetFont( { size: 54 } );
 const BUTTON_LENGTH = 150;
 
-const chooseYourLevelString = ArithmeticStrings.chooseYourLevel;
+const chooseYourLevelString = ArithmeticStrings.chooseYourLevelStringProperty;
 
 class LevelSelectionNode extends Node {
 

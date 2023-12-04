@@ -25,7 +25,8 @@
       "supportsSound": true,
       "supportedRegionsAndCultures": [
         "usa"
-      ]
+      ],
+      "supportsDynamicLocale": true
     },
     "simulation": true,
     "phet-io": {

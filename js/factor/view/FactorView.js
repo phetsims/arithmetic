@@ -29,7 +29,7 @@ class FactorView extends ArithmeticView {
       ),
       {
         showKeypad: false,
-        titleString: ArithmeticStrings.factor,
+        titleString: ArithmeticStrings.factorStringProperty,
         levelSelectButtonColor: '#FFC266',
         levelSelectIconSet: 'factor'
       }

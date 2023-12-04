@@ -31,7 +31,7 @@ class DivideView extends ArithmeticView {
         model.activeInputProperty
       ),
       {
-        titleString: ArithmeticStrings.divide,
+        titleString: ArithmeticStrings.divideStringProperty,
         levelSelectButtonColor: '#BC76A5',
         levelSelectIconSet: 'divide'
       }

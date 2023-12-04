@@ -10,28 +10,19 @@ import arithmetic from './arithmetic.js';
 
 type StringsType = {
   'arithmetic': {
-    'title': string;
     'titleStringProperty': LocalizedStringProperty;
   };
-  'check': string;
   'checkStringProperty': LocalizedStringProperty;
-  'chooseYourLevel': string;
   'chooseYourLevelStringProperty': LocalizedStringProperty;
-  'divide': string;
   'divideStringProperty': LocalizedStringProperty;
-  'factor': string;
   'factorStringProperty': LocalizedStringProperty;
-  'multiply': string;
   'multiplyStringProperty': LocalizedStringProperty;
   'pattern': {
     'level': {
-      '0levelNumber': string;
       '0levelNumberStringProperty': LocalizedStringProperty;
     }
   };
-  'tryAgain': string;
   'tryAgainStringProperty': LocalizedStringProperty;
-  'unknownValueIndicator': string;
   'unknownValueIndicatorStringProperty': LocalizedStringProperty;
 };
 

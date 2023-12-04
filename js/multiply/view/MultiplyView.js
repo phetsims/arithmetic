@@ -33,7 +33,7 @@ class MultiplyView extends ArithmeticView {
         model.inputProperty
       ),
       {
-        titleString: ArithmeticStrings.multiply,
+        titleString: ArithmeticStrings.multiplyStringProperty,
         levelSelectButtonColor: '#D8F58A',
         levelSelectIconSet: 'multiply'
       }

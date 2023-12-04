@@ -7,8 +7,10 @@
  * @author John Blanco
  */
 
+import DynamicProperty from '../../../../axon/js/DynamicProperty.js';
+import PatternStringProperty from '../../../../axon/js/PatternStringProperty.js';
+import Property from '../../../../axon/js/Property.js';
 import merge from '../../../../phet-core/js/merge.js';
-import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
 import RefreshButton from '../../../../scenery-phet/js/buttons/RefreshButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import { Node, Text, VBox } from '../../../../scenery/js/imports.js';
@@ -19,9 +21,10 @@ import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import GameState from '../model/GameState.js';
 
-const labelScorePatternString = VegasStrings.label.scorePattern;
-const labelTimeString = VegasStrings.label.time;
-const patternLevel0LevelNumberString = ArithmeticStrings.pattern.level[ '0levelNumber' ];
+const LABEL_SCORE_STRING_PROPERTY = VegasStrings.label.scorePatternStringProperty;
+const LABEL_TIME_STRING_PROPERTY = VegasStrings.label.timeStringProperty;
+const PATTERN_LEVEL_0_LEVEL_STRING_PROPERTY = ArithmeticStrings.pattern.level[ '0levelNumberStringProperty' ];
+console.log( PATTERN_LEVEL_0_LEVEL_STRING_PROPERTY.value );
 
 // constants
 const FONT = new PhetFont( { size: 18 } );
@@ -51,9 +54,40 @@ class ScoreboardNode extends Node {
     options = merge( {
       title: ''
     }, options );
-    const levelText = new Text( StringUtils.format( patternLevel0LevelNumberString, '' ), { font: FONT_BOLD } );
-    const scoreText = new Text( StringUtils.format( labelScorePatternString, '0' ), { font: FONT } );
-    const timeText = new Text( StringUtils.format( labelTimeString, GameTimer.formatTime( 0 ) ), { font: FONT } );
+    const levelText = new Text( new PatternStringProperty( PATTERN_LEVEL_0_LEVEL_STRING_PROPERTY, {
+      level: levelNumberProperty
+    }, {
+      formatNames: [ 'level' ],
+      maps: {
+        0: levelNumber => levelNumber !== null ? ( levelNumber + 1 ).toString() : ''
+      }
+    } ), { font: FONT_BOLD } );
+
+    const currentLevelModelProperty = new Property( levelNumberProperty.value !== null ? levelModels[ levelNumberProperty.value ] : null );
+    const currentScoreProperty = new DynamicProperty( currentLevelModelProperty, {
+      derive: 'currentScoreProperty',
+      defaultValue: 0
+    } );
+
+    const currentElapsedTimeProperty = new DynamicProperty( currentLevelModelProperty, {
+      derive: levelModel => levelModel.gameTimer.elapsedTimeProperty,
+      defaultValue: 0
+    } );
+
+    const scoreText = new Text( new PatternStringProperty( LABEL_SCORE_STRING_PROPERTY, {
+      score: currentScoreProperty
+    }, {
+      formatNames: [ 'score' ]
+    } ), { font: FONT } );
+    const timeText = new Text( new PatternStringProperty( LABEL_TIME_STRING_PROPERTY, {
+        time: currentElapsedTimeProperty
+      },
+      {
+        formatNames: [ 'time' ],
+        maps: {
+          0: time => GameTimer.formatTime( time )
+        }
+      } ), { font: FONT } );
 
     const panelOptions = merge( {}, PANEL_OPTIONS, options );
 
@@ -78,34 +112,14 @@ class ScoreboardNode extends Node {
     } );
     this.addChild( new Panel( vBox, panelOptions ) );
 
-    // add observers
-    const updateScore = score => {
-      scoreText.string = StringUtils.format( labelScorePatternString, score.toString() );
-    };
+    levelNumberProperty.lazyLink( level => {
 
-    const updateTime = time => {
-      timeText.string = StringUtils.format( labelTimeString, GameTimer.formatTime( time ) );
-    };
-
-    levelNumberProperty.lazyLink( ( levelNew, levelPrevious ) => {
-      if ( levelNew !== null ) {
-        levelText.string = StringUtils.format( patternLevel0LevelNumberString, ( levelNew + 1 ).toString() );
-      }
-      else {
-        levelText.string = '';
+      // TODO: Check if this is causing memory leaks, see: https://github.com/phetsims/arithmetic/issues/199
+      if ( stateProperty.value === GameState.SELECTING_LEVEL && levelModels[ level ] ) {
+        currentLevelModelProperty.set( levelModels[ level ] );
       }
 
-      // unlink observers for previous level
-      if ( levelModels[ levelPrevious ] ) {
-        levelModels[ levelPrevious ].currentScoreProperty.unlink( updateScore );
-        levelModels[ levelPrevious ].gameTimer.elapsedTimeProperty.unlink( updateTime );
-      }
-
-      // link observers for new level
-      if ( stateProperty.value === GameState.SELECTING_LEVEL && levelModels[ levelNew ] ) {
-        levelModels[ levelNew ].currentScoreProperty.link( updateScore );
-        levelModels[ levelNew ].gameTimer.elapsedTimeProperty.link( updateTime );
-      }
+      console.log( 'level: ' + level );
     } );
 
     // add/remove time readout

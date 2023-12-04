@@ -14,7 +14,7 @@ import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 
-const unknownValueIndicatorString = ArithmeticStrings.unknownValueIndicator;
+const unknownValueIndicatorString = ArithmeticStrings.unknownValueIndicatorStringProperty;
 
 // constants
 const INTERACTIVE_FILL = 'white';
