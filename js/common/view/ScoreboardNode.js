@@ -123,8 +123,6 @@ class ScoreboardNode extends Panel {
       if ( stateProperty.value === GameState.SELECTING_LEVEL && levelModels[ level ] ) {
         currentLevelModelProperty.set( levelModels[ level ] );
       }
-
-      console.log( 'level: ' + level );
     } );
 
     // add/remove time readout
