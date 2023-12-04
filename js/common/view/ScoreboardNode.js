@@ -59,7 +59,7 @@ class ScoreboardNode extends Node {
     }, {
       formatNames: [ 'level' ],
       maps: {
-        0: levelNumber => levelNumber !== null ? ( levelNumber + 1 ).toString() : ''
+        level: levelNumber => levelNumber !== null ? ( levelNumber + 1 ).toString() : ''
       }
     } ), { font: FONT_BOLD } );
 
@@ -79,13 +79,14 @@ class ScoreboardNode extends Node {
     }, {
       formatNames: [ 'score' ]
     } ), { font: FONT } );
+
     const timeText = new Text( new PatternStringProperty( LABEL_TIME_STRING_PROPERTY, {
         time: currentElapsedTimeProperty
       },
       {
         formatNames: [ 'time' ],
         maps: {
-          0: time => GameTimer.formatTime( time )
+          time: time => GameTimer.formatTime( time )
         }
       } ), { font: FONT } );
 
