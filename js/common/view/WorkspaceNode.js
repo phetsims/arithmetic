@@ -111,7 +111,7 @@ class WorkspaceNode extends Node {
         minWidth: controlPanelWidth,
         maxWidth: controlPanelWidth,
         layoutOptions: {
-          bottomMargin: 20
+          bottomMargin: 32 // empirically determined to match 2015 published version
         }
       }
     );

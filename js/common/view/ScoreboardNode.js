@@ -13,7 +13,7 @@ import Property from '../../../../axon/js/Property.js';
 import merge from '../../../../phet-core/js/merge.js';
 import RefreshButton from '../../../../scenery-phet/js/buttons/RefreshButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { Node, Text, VBox } from '../../../../scenery/js/imports.js';
+import { Text, VBox } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
 import GameTimer from '../../../../vegas/js/GameTimer.js';
 import VegasStrings from '../../../../vegas/js/VegasStrings.js';
@@ -30,12 +30,11 @@ console.log( PATTERN_LEVEL_0_LEVEL_STRING_PROPERTY.value );
 const PANEL_OPTIONS = {
   fill: '#dddddd',
   lineWidth: 0.5,
-  xMargin: 23,
-  yMargin: 23,
+  margin: 15,
   cornerRadius: 5,
   align: 'center'
 };
-const MAX_TEXT_WIDTH = 90;
+const MAX_TEXT_WIDTH = 120;
 const SPACING = 16;
 const BOLD_TEXT_OPTIONS = {
   font: new PhetFont( { size: 18, weight: 'bold' } ),
@@ -46,7 +45,7 @@ const TEXT_OPTIONS = {
   maxWidth: MAX_TEXT_WIDTH
 };
 
-class ScoreboardNode extends Node {
+class ScoreboardNode extends Panel {
 
   /**
    * @param {Property} levelNumberProperty - property for level displaying label.
@@ -99,8 +98,6 @@ class ScoreboardNode extends Node {
 
     const panelOptions = merge( {}, PANEL_OPTIONS, options );
 
-    super();
-
     // add control panel components
     const vBox = new VBox( {
       spacing: SPACING,
@@ -118,7 +115,7 @@ class ScoreboardNode extends Node {
         } )
       ]
     } );
-    this.addChild( new Panel( vBox, panelOptions ) );
+    super( vBox, panelOptions );
 
     levelNumberProperty.lazyLink( level => {
 
