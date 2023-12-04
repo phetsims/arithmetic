@@ -11,14 +11,14 @@ import merge from '../../../../phet-core/js/merge.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import TimerToggleButton from '../../../../scenery-phet/js/buttons/TimerToggleButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { Node, Text, VBox } from '../../../../scenery/js/imports.js';
+import { AlignBox, Node, Text, VBox } from '../../../../scenery/js/imports.js';
 import LevelSelectionButtonGroup from '../../../../vegas/js/LevelSelectionButtonGroup.js';
 import ScoreDisplayStars from '../../../../vegas/js/ScoreDisplayStars.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
-import BoxPlayerController from './BoxPlayerController.js';
+import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
 // constants
 const CHOOSE_LEVEL_TITLE_FONT = new PhetFont( { size: 24 } );
@@ -47,22 +47,14 @@ class LevelSelectionNode extends Node {
 
     // add title
     const tabTitle = new Text( titleString, {
-      font: TAB_TITLE_FONT,
-      centerX: layoutBounds.centerX,
-      top: layoutBounds.height * 0.1
+      font: TAB_TITLE_FONT
     } );
-    this.addChild( tabTitle );
 
     // add choose level title
     const chooseLevelTitle = new Text( chooseYourLevelString, {
-      font: CHOOSE_LEVEL_TITLE_FONT,
-      centerX: layoutBounds.centerX,
-      top: tabTitle.bottom + 15
+      font: CHOOSE_LEVEL_TITLE_FONT
     } );
-    this.addChild( chooseLevelTitle );
-
-
-    const boxPlayerController = new BoxPlayerController( model );
+    const boxPlayerController = new BoxPlayerPortrayal( model );
 
     // icon sets, used to place on the buttons
     const iconSets = boxPlayerController.boxPlayerNodes;
@@ -88,16 +80,33 @@ class LevelSelectionNode extends Node {
         }
       };
     } );
+
+    // TODO: Why is this not respecting invisible child bounds? https://github.com/phetsims/arithmetic/issues/199
     const levelSelectionButtonGroup = new LevelSelectionButtonGroup( levelSelectButtons, {
       groupButtonHeight: BUTTON_LENGTH,
       groupButtonWidth: BUTTON_LENGTH,
       flowBoxOptions: {
-        spacing: 50,
-        top: chooseLevelTitle.bottom + 15,
-        centerX: chooseLevelTitle.centerX
+        spacing: 50
       }
     } );
-    this.addChild( levelSelectionButtonGroup );
+
+    const levelsVBox = new VBox( {
+      children: [
+        tabTitle,
+        chooseLevelTitle,
+        levelSelectionButtonGroup
+      ],
+      spacing: 15
+    } );
+
+    const titlesAlignBox = new AlignBox( levelsVBox, {
+      alignBounds: layoutBounds,
+      yAlign: 'top',
+      xAlign: 'center',
+      yMargin: 38 // empirically determined to match the 2015 published version
+    } );
+
+    this.addChild( titlesAlignBox );
 
     // add timer and sound buttons
     const soundAndTimerButtons = new VBox( {

@@ -24,7 +24,6 @@ import GameState from '../model/GameState.js';
 const LABEL_SCORE_STRING_PROPERTY = VegasStrings.label.scorePatternStringProperty;
 const LABEL_TIME_STRING_PROPERTY = VegasStrings.label.timeStringProperty;
 const PATTERN_LEVEL_0_LEVEL_STRING_PROPERTY = ArithmeticStrings.pattern.level[ '0levelNumberStringProperty' ];
-console.log( PATTERN_LEVEL_0_LEVEL_STRING_PROPERTY.value );
 
 // constants
 const PANEL_OPTIONS = {
