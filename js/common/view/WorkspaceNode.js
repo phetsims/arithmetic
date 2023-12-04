@@ -14,7 +14,7 @@ import BackButton from '../../../../scenery-phet/js/buttons/BackButton.js';
 import NumberKeypad from '../../../../scenery-phet/js/NumberKeypad.js';
 import PhetColorScheme from '../../../../scenery-phet/js/PhetColorScheme.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { Node } from '../../../../scenery/js/imports.js';
+import { Node, VBox } from '../../../../scenery/js/imports.js';
 import TextPushButton from '../../../../sun/js/buttons/TextPushButton.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
@@ -98,7 +98,7 @@ class WorkspaceNode extends Node {
     const controlPanelWidth = layoutBounds.maxX - multiplicationTableNode.right - 60;
 
     // add control panel
-    const controlPanelNode = new ScoreboardNode(
+    const scoreboardNode = new ScoreboardNode(
       model.levelNumberProperty,
       model.stateProperty,
       model.levelModels,
@@ -110,27 +110,33 @@ class WorkspaceNode extends Node {
         title: options.scoreboardTitle,
         minWidth: controlPanelWidth,
         maxWidth: controlPanelWidth,
-        centerX: ( multiplicationTableNode.right + layoutBounds.maxX ) / 2,
-        top: backButton.top
+        layoutOptions: {
+          bottomMargin: 20
+        }
       }
     );
-    controlPanelNode.top = multiplicationTableNode.top;
-    this.addChild( controlPanelNode );
+
+    const controlPanelVBox = new VBox( {
+      children: [ scoreboardNode ],
+      centerX: ( multiplicationTableNode.right + layoutBounds.maxX ) / 2,
+      top: backButton.top,
+      spacing: 22 // empirically determined to match 2015 published version
+    } );
+    controlPanelVBox.top = multiplicationTableNode.top;
+    this.addChild( controlPanelVBox );
 
     // set up some variables needed for positioning the buttons
     const buttonYCenter = ( equationNode.bottom + layoutBounds.maxY ) / 2 - 5; // tweaked a bit empirically
-    const maxButtonWidth = layoutBounds.maxX - multiplicationTableNode.bounds.maxX;
+    const maxButtonWidth = 150;
 
     // add keypad if necessary
     if ( options.showKeypad ) {
+
       // create and add the keypad
       const keypad = new NumberKeypad( {
         valueStringProperty: model.inputProperty,
-        validateKey: NumberKeypad.validateMaxDigits( { maxDigits: 3 } ),
-        centerX: controlPanelNode.centerX,
-        bottom: layoutBounds.maxY * 0.85
+        validateKey: NumberKeypad.validateMaxDigits( { maxDigits: 3 } )
       } );
-      this.addChild( keypad );
 
       // Update the keypad state based on the game state.
       model.stateProperty.link( ( newGameState, oldGameState ) => {
@@ -160,13 +166,13 @@ class WorkspaceNode extends Node {
       // add the 'Check' button, which is only used in conjunction with the keypad
       const checkButton = new TextPushButton( checkString, {
         font: BUTTON_FONT,
-        centerY: buttonYCenter,
-        centerX: controlPanelNode.centerX,
         baseColor: BUTTON_BASE_COLOR,
-        maxWidth: maxButtonWidth,
+        maxWidth: controlPanelWidth,
         listener: () => { model.fillEquation(); }
       } );
-      this.addChild( checkButton );
+
+      controlPanelVBox.addChild( keypad );
+      controlPanelVBox.addChild( checkButton );
 
       const updateCheckButtonState = () => {
         checkButton.visible = ( model.stateProperty.get() === GameState.AWAITING_USER_INPUT );
@@ -196,7 +202,7 @@ class WorkspaceNode extends Node {
     const tryAgainButton = new TextPushButton( tryAgainString, {
       font: BUTTON_FONT,
       centerY: buttonYCenter,
-      centerX: controlPanelNode.centerX,
+      centerX: scoreboardNode.centerX,
       baseColor: BUTTON_BASE_COLOR,
       maxWidth: maxButtonWidth,
       listener: () => {

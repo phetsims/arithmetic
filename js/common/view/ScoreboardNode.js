@@ -111,7 +111,7 @@ class ScoreboardNode extends Node {
         timeText,
         // add refresh button
         new RefreshButton( {
-          iconScale: 0.6,
+          iconHeight: 24,
           xMargin: 14,
           yMargin: 7,
           listener: refreshLevelCallback
