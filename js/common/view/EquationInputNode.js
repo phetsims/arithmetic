@@ -14,7 +14,7 @@ import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 
-const unknownValueIndicatorString = ArithmeticStrings.unknownValueIndicatorStringProperty;
+const UNKNOWN_VALUE_INDICATOR_STRING_PROPERTY = ArithmeticStrings.unknownValueIndicatorStringProperty;
 
 // constants
 const INTERACTIVE_FILL = 'white';
@@ -37,8 +37,14 @@ class EquationInputNode extends Node {
   constructor( valueProperty, size ) {
     super();
 
+    // @private - A "?" that is displayed when the value is NaN
+    this.unknownValueText = new Text( UNKNOWN_VALUE_INDICATOR_STRING_PROPERTY, {
+      font: ArithmeticConstants.EQUATION_FONT_TEXT,
+      maxWidth: size.width - 2 * MIN_X_MARGIN
+    } );
+
     // @private - create text and save reference for use in public methods
-    this.inputText = new Text( unknownValueIndicatorString, {
+    this.inputText = new Text( '', {
       font: ArithmeticConstants.EQUATION_FONT_TEXT,
       maxWidth: size.width - 2 * MIN_X_MARGIN
     } );
@@ -53,6 +59,8 @@ class EquationInputNode extends Node {
     // update text when the value changes
     valueProperty.lazyLink( value => {
       this.inputText.setString( isNaN( value ) ? '' : value );
+      this.inputText.visible = !isNaN( value );
+      this.unknownValueText.visible = isNaN( value );
       updateBoxPosition( this._box, size );
     } );
 
@@ -67,7 +75,7 @@ class EquationInputNode extends Node {
 
     // @private - horizontal box containing the input text and the cursor
     this._box = new HBox( {
-      children: [ this.inputText, new Node( { children: [ this.cursorContainer ] } ) ],
+      children: [ this.unknownValueText, this.inputText, new Node( { children: [ this.cursorContainer ] } ) ],
       centerX: size.width / 2,
       centerY: size.height / 2
     } );
@@ -83,7 +91,8 @@ class EquationInputNode extends Node {
    * @public
    */
   clear() {
-    this.inputText.setString( '' );
+    this.inputText.visible = false;
+    this.unknownValueText.visible = true;
     updateBoxPosition( this._box, this.inputSize );
   }
 
@@ -111,7 +120,8 @@ class EquationInputNode extends Node {
    * @public
    */
   setPlaceholder() {
-    this.inputText.setString( unknownValueIndicatorString );
+    this.unknownValueText.visible = true;
+    this.inputText.visible = false;
     updateBoxPosition( this._box, this.inputSize );
   }
 }
