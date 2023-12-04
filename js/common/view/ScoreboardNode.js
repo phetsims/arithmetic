@@ -27,8 +27,6 @@ const PATTERN_LEVEL_0_LEVEL_STRING_PROPERTY = ArithmeticStrings.pattern.level[ '
 console.log( PATTERN_LEVEL_0_LEVEL_STRING_PROPERTY.value );
 
 // constants
-const FONT = new PhetFont( { size: 18 } );
-const FONT_BOLD = new PhetFont( { size: 18, weight: 'bold' } );
 const PANEL_OPTIONS = {
   fill: '#dddddd',
   lineWidth: 0.5,
@@ -37,7 +35,16 @@ const PANEL_OPTIONS = {
   cornerRadius: 5,
   align: 'center'
 };
+const MAX_TEXT_WIDTH = 90;
 const SPACING = 16;
+const BOLD_TEXT_OPTIONS = {
+  font: new PhetFont( { size: 18, weight: 'bold' } ),
+  maxWidth: MAX_TEXT_WIDTH
+};
+const TEXT_OPTIONS = {
+  font: new PhetFont( { size: 18 } ),
+  maxWidth: MAX_TEXT_WIDTH
+};
 
 class ScoreboardNode extends Node {
 
@@ -61,7 +68,7 @@ class ScoreboardNode extends Node {
       maps: {
         level: levelNumber => levelNumber !== null ? ( levelNumber + 1 ).toString() : ''
       }
-    } ), { font: FONT_BOLD } );
+    } ), BOLD_TEXT_OPTIONS );
 
     const currentLevelModelProperty = new Property( levelNumberProperty.value !== null ? levelModels[ levelNumberProperty.value ] : null );
     const currentScoreProperty = new DynamicProperty( currentLevelModelProperty, {
@@ -78,7 +85,7 @@ class ScoreboardNode extends Node {
       score: currentScoreProperty
     }, {
       formatNames: [ 'score' ]
-    } ), { font: FONT } );
+    } ), TEXT_OPTIONS );
 
     const timeText = new Text( new PatternStringProperty( LABEL_TIME_STRING_PROPERTY, {
         time: currentElapsedTimeProperty
@@ -88,7 +95,7 @@ class ScoreboardNode extends Node {
         maps: {
           time: time => GameTimer.formatTime( time )
         }
-      } ), { font: FONT } );
+      } ), TEXT_OPTIONS );
 
     const panelOptions = merge( {}, PANEL_OPTIONS, options );
 
@@ -98,7 +105,7 @@ class ScoreboardNode extends Node {
     const vBox = new VBox( {
       spacing: SPACING,
       children: [
-        new Text( options.title, { font: FONT_BOLD } ),
+        new Text( options.title, BOLD_TEXT_OPTIONS ),
         levelText,
         scoreText,
         timeText,
