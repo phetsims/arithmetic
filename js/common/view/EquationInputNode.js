@@ -9,7 +9,7 @@
  */
 
 import stepTimer from '../../../../axon/js/stepTimer.js';
-import { HBox, Node, Rectangle, Text } from '../../../../scenery/js/imports.js';
+import { HBox, ManualConstraint, Node, Rectangle, Text } from '../../../../scenery/js/imports.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
@@ -76,8 +76,13 @@ class EquationInputNode extends Node {
     // @private - horizontal box containing the input text and the cursor
     this._box = new HBox( {
       children: [ this.unknownValueText, this.inputText, new Node( { children: [ this.cursorContainer ] } ) ],
-      centerX: size.width / 2,
-      centerY: size.height / 2
+      centerX: this.background.centerX,
+      centerY: this.background.centerY
+    } );
+
+    ManualConstraint.create( this, [ this._box, this.background ], ( boxProxy, backgroundProxy ) => {
+      boxProxy.centerX = backgroundProxy.centerX;
+      boxProxy.centerY = backgroundProxy.centerY;
     } );
     this.addChild( this._box );
 
