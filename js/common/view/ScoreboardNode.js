@@ -109,7 +109,7 @@ class ScoreboardNode extends Panel {
         new EraserButton( {
           iconHeight: 24,
           xMargin: 14,
-          yMargin: 14,
+          yMargin: 7,
           listener: refreshLevelCallback
         } )
       ]
