@@ -125,10 +125,6 @@ class WorkspaceNode extends Node {
     controlPanelVBox.top = multiplicationTableNode.top;
     this.addChild( controlPanelVBox );
 
-    // set up some variables needed for positioning the buttons
-    const buttonYCenter = ( equationNode.bottom + layoutBounds.maxY ) / 2 - 5; // tweaked a bit empirically
-    const maxButtonWidth = 150;
-
     // add keypad if necessary
     if ( options.showKeypad ) {
 
@@ -201,10 +197,8 @@ class WorkspaceNode extends Node {
     // add the 'try again' button
     const tryAgainButton = new TextPushButton( tryAgainString, {
       font: BUTTON_FONT,
-      centerY: buttonYCenter,
-      centerX: scoreboardNode.centerX,
       baseColor: BUTTON_BASE_COLOR,
-      maxWidth: maxButtonWidth,
+      maxWidth: controlPanelWidth,
       listener: () => {
         model.inputProperty.reset();
         model.retryProblem();
