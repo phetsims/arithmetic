@@ -7,7 +7,6 @@
  * @author John Blanco
  */
 
-import Bounds2 from '../../../../dot/js/Bounds2.js';
 import ScreenView from '../../../../joist/js/ScreenView.js';
 import merge from '../../../../phet-core/js/merge.js';
 import Animation from '../../../../twixt/js/Animation.js';
@@ -30,8 +29,8 @@ class ArithmeticView extends ScreenView {
    * @param {Object} [options] - Configuration and position options, see usage in code for details.
    */
   constructor( model, multiplicationTableNode, equationNode, options ) {
+    super( options );
 
-    super( { layoutBounds: new Bounds2( 0, 0, 768, 504 ) } );
     // defaults
     options = merge( {
       titleString: '',
