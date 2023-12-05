@@ -24,6 +24,7 @@ import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 const CHOOSE_LEVEL_TITLE_FONT = new PhetFont( { size: 24 } );
 const TAB_TITLE_FONT = new PhetFont( { size: 54 } );
 const BUTTON_LENGTH = 150;
+const TEXT_MAX_WIDTH = 550;
 
 const chooseYourLevelString = ArithmeticStrings.chooseYourLevelStringProperty;
 
@@ -47,12 +48,14 @@ class LevelSelectionNode extends Node {
 
     // add title
     const tabTitle = new Text( titleString, {
-      font: TAB_TITLE_FONT
+      font: TAB_TITLE_FONT,
+      maxWidth: TEXT_MAX_WIDTH
     } );
 
     // add choose level title
     const chooseLevelTitle = new Text( chooseYourLevelString, {
-      font: CHOOSE_LEVEL_TITLE_FONT
+      font: CHOOSE_LEVEL_TITLE_FONT,
+      maxWidth: TEXT_MAX_WIDTH
     } );
     const boxPlayerController = new BoxPlayerPortrayal( model );
 
@@ -101,9 +104,9 @@ class LevelSelectionNode extends Node {
 
     const titlesAlignBox = new AlignBox( levelsVBox, {
       alignBounds: layoutBounds,
-      yAlign: 'top',
+      yAlign: 'bottom',
       xAlign: 'center',
-      yMargin: 38 // empirically determined to match the 2015 published version
+      bottomMargin: 180 // empirically determined to match the 2015 published version
     } );
 
     this.addChild( titlesAlignBox );
