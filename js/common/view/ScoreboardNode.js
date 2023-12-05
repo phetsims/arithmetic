@@ -15,6 +15,8 @@ import RefreshButton from '../../../../scenery-phet/js/buttons/RefreshButton.js'
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import { Text, VBox } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
+import SoundClipPlayer from '../../../../tambo/js/sound-generators/SoundClipPlayer.js';
+import erase_mp3 from '../../../../scenery-phet/sounds/erase_mp3.js';
 import GameTimer from '../../../../vegas/js/GameTimer.js';
 import VegasStrings from '../../../../vegas/js/VegasStrings.js';
 import arithmetic from '../../arithmetic.js';
@@ -110,7 +112,10 @@ class ScoreboardNode extends Panel {
           iconHeight: 24,
           xMargin: 14,
           yMargin: 7,
-          listener: refreshLevelCallback
+          listener: refreshLevelCallback,
+          soundPlayer: new SoundClipPlayer( erase_mp3, {
+            soundClipOptions: { initialOutputLevel: 0.22 }
+          } )
         } )
       ]
     } );
