@@ -210,7 +210,7 @@ class WorkspaceNode extends Node {
         model.retryProblem();
       }
     } );
-    this.addChild( tryAgainButton );
+    controlPanelVBox.addChild( tryAgainButton );
 
     // control the visibility of the 'Try Again' button
     model.stateProperty.link( state => {
