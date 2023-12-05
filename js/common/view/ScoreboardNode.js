@@ -123,7 +123,6 @@ class ScoreboardNode extends Panel {
 
     levelNumberProperty.lazyLink( level => {
 
-      // TODO: Check if this is causing memory leaks, see: https://github.com/phetsims/arithmetic/issues/199
       if ( stateProperty.value === GameState.SELECTING_LEVEL && levelModels[ level ] ) {
         currentLevelModelProperty.set( levelModels[ level ] );
       }
