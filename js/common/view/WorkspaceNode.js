@@ -1,4 +1,4 @@
-// Copyright 2014-2022, University of Colorado Boulder
+// Copyright 2014-2023, University of Colorado Boulder
 
 /**
  * A composite node that contains all game components: times table, keypad, equation, smile face, etc.  Some of these
