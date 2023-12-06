@@ -9,28 +9,28 @@
 
 import JoistStrings from '../../../../joist/js/JoistStrings.js';
 import { ASIA_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
-import divideLevel1Icon_png from '../../../mipmaps/asia/divideLevel1Icon_png.js';
-import divideLevel2Icon_png from '../../../mipmaps/asia/divideLevel2Icon_png.js';
-import divideLevel3Icon_png from '../../../mipmaps/asia/divideLevel3Icon_png.js';
-import factorLevel1Icon_png from '../../../mipmaps/asia/factorLevel1Icon_png.js';
-import factorLevel2Icon_png from '../../../mipmaps/asia/factorLevel2Icon_png.js';
-import factorLevel3Icon_png from '../../../mipmaps/asia/factorLevel3Icon_png.js';
-import multiplyLevel1Icon_png from '../../../mipmaps/asia/multiplyLevel1Icon_png.js';
-import multiplyLevel2Icon_png from '../../../mipmaps/asia/multiplyLevel2Icon_png.js';
-import multiplyLevel3Icon_png from '../../../mipmaps/asia/multiplyLevel3Icon_png.js';
+import divideLevel1Icon_svg from '../../../images/asia/divideLevel1Icon_svg.js';
+import divideLevel2Icon_svg from '../../../images/asia/divideLevel2Icon_svg.js';
+import divideLevel3Icon_svg from '../../../images/asia/divideLevel3Icon_svg.js';
+import factorLevel1Icon_svg from '../../../images/asia/factorLevel1Icon_svg.js';
+import factorLevel2Icon_svg from '../../../images/asia/factorLevel2Icon_svg.js';
+import factorLevel3Icon_svg from '../../../images/asia/factorLevel3Icon_svg.js';
+import multiplyLevel1Icon_svg from '../../../images/asia/multiplyLevel1Icon_svg.js';
+import multiplyLevel2Icon_svg from '../../../images/asia/multiplyLevel2Icon_svg.js';
+import multiplyLevel3Icon_svg from '../../../images/asia/multiplyLevel3Icon_svg.js';
 import BoxPlayerCharacterSet from './BoxPlayerCharacterSet.js';
 
 const ExplorerCharacterSetAsia = new BoxPlayerCharacterSet(
   JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.asiaStringProperty,
-  multiplyLevel1Icon_png,
-  multiplyLevel2Icon_png,
-  multiplyLevel3Icon_png,
-  factorLevel1Icon_png,
-  factorLevel2Icon_png,
-  factorLevel3Icon_png,
-  divideLevel1Icon_png,
-  divideLevel2Icon_png,
-  divideLevel3Icon_png,
+  multiplyLevel1Icon_svg,
+  multiplyLevel2Icon_svg,
+  multiplyLevel3Icon_svg,
+  factorLevel1Icon_svg,
+  factorLevel2Icon_svg,
+  factorLevel3Icon_svg,
+  divideLevel1Icon_svg,
+  divideLevel2Icon_svg,
+  divideLevel3Icon_svg,
   ASIA_REGION_AND_CULTURE_ID
 );
 
