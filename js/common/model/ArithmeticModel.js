@@ -16,6 +16,7 @@ import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import StringIO from '../../../../tandem/js/types/StringIO.js';
 import arithmetic from '../../arithmetic.js';
+import ArithmeticConstants from '../ArithmeticConstants.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
 import ArithmeticQueryParameters from '../ArithmeticQueryParameters.js';
 import FaceModel from './FaceModel.js';
@@ -68,11 +69,11 @@ class ArithmeticModel {
     // @public - array of models that correspond to a given difficulty level
     this.levelModels = [
       // level 1
-      new LevelModel( 6 ),
+      new LevelModel( ArithmeticConstants.LEVEL_1_TABLE_SIZE ),
       // level 2
-      new LevelModel( 9 ),
+      new LevelModel( ArithmeticConstants.LEVEL_2_TABLE_SIZE ),
       // level 3
-      new LevelModel( 12 )
+      new LevelModel( ArithmeticConstants.LEVEL_3_TABLE_SIZE )
     ];
 
     // @public - portion of the model that represents a single problem
