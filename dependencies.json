@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.0.35 Mon Sep 25 2023 15:34:49 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "0af561bb880be202684e69a0d49c923a4d878985",
+    "sha": "64dc9b99ec9a92c2e221af7ecac421919c3263bd",
     "branch": "1.0"
   },
   "assert": {
@@ -17,7 +17,7 @@
     "branch": "HEAD"
   },
   "chipper": {
-    "sha": "bbb5d314294689baae6ec91a949dd1c099fcee86",
+    "sha": "d4b5ca428ca791009a0494b0b9a2ef2196407bb5",
     "branch": "HEAD"
   },
   "dot": {
