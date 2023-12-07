@@ -58,10 +58,10 @@ class LevelSelectionNode extends Node {
       font: CHOOSE_LEVEL_TITLE_FONT,
       maxWidth: TEXT_MAX_WIDTH
     } );
-    const boxPlayerController = new BoxPlayerCharacters( model );
+    const boxPlayerCharacters = new BoxPlayerCharacters( model );
 
     // icon sets, used to place on the buttons
-    const iconSets = boxPlayerController.boxPlayerNodes;
+    const iconSets = boxPlayerCharacters.boxPlayerNodes;
 
     // add select level buttons
     assert && assert( model.levelModels.length === iconSets[ options.iconSet ].length, 'Number of icons doesn\'t match number of levels' );

@@ -17,7 +17,7 @@ import BoxPlayerPortrayalUSA from './BoxPlayerPortrayalUSA.js';
 
 
 const BoxPlayerImages = {
-  BOX_PLAYER_CHARACTER_SETS: [
+  BOX_PLAYER_PORTRAYALS: [
     BoxPlayerPortrayalMulticultural,
     BoxPlayerPortrayalAfrica,
     BoxPlayerPortrayalAfricaModest,

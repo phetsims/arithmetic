@@ -22,7 +22,7 @@ export default class BoxPlayerCharacters {
    */
   constructor( sceneModel ) {
 
-    const boxPlayerSets = BoxPlayerImages.BOX_PLAYER_CHARACTER_SETS;
+    const boxPlayerSets = BoxPlayerImages.BOX_PLAYER_PORTRAYALS;
     const regionAndCulturePortrayalProperty = sceneModel.regionAndCulturePortrayalProperty;
 
     const createVisibleProperty = set => {

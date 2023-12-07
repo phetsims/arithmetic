@@ -24,7 +24,7 @@ const tandem = Tandem.ROOT;
 
 const preferencesModel = new PreferencesModel( {
   localizationOptions: {
-    characterSets: BoxPlayerImages.BOX_PLAYER_CHARACTER_SETS
+    characterSets: BoxPlayerImages.BOX_PLAYER_PORTRAYALS
   }
 } );
 
