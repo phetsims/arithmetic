@@ -1,7 +1,7 @@
 // Copyright 2023, University of Colorado Boulder
 
 /**
- * The BoxPlayerPortrayal creates the images  of each version of the 'level' box player ( multiply level 1,
+ * The BoxPlayerCharacters creates the images  of each version of the 'level' box player ( multiply level 1,
  * multiply level 2, multiply level 3, factor level 1, factor level 2, factor level 3, divide level 1, divide level 2,
  * and divide level 3), as well as defines the visibility of each individual image based on the
  * regionAndCulturePortrayalProperty.
@@ -15,7 +15,7 @@ import { Image, Node } from '../../../../scenery/js/imports.js';
 import arithmetic from '../../arithmetic.js';
 import BoxPlayerImages from './BoxPlayerImages.js';
 
-export default class BoxPlayerPortrayal {
+export default class BoxPlayerCharacters {
 
   /**
    * @param { ArithmeticModel } sceneModel
@@ -102,4 +102,4 @@ export default class BoxPlayerPortrayal {
   }
 }
 
-arithmetic.register( 'BoxPlayerPortrayal', BoxPlayerPortrayal );
+arithmetic.register( 'BoxPlayerCharacters', BoxPlayerCharacters );

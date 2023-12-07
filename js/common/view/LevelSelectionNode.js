@@ -18,7 +18,7 @@ import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
-import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
+import BoxPlayerCharacters from './BoxPlayerCharacters.js';
 import Range from '../../../../dot/js/Range.js';
 
 // constants
@@ -58,7 +58,7 @@ class LevelSelectionNode extends Node {
       font: CHOOSE_LEVEL_TITLE_FONT,
       maxWidth: TEXT_MAX_WIDTH
     } );
-    const boxPlayerController = new BoxPlayerPortrayal( model );
+    const boxPlayerController = new BoxPlayerCharacters( model );
 
     // icon sets, used to place on the buttons
     const iconSets = boxPlayerController.boxPlayerNodes;
