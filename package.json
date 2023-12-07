@@ -29,7 +29,8 @@
         "africaModest",
         "asia",
         "latinAmerica",
-        "oceania"
+        "oceania",
+        "multi"
       ],
       "supportsDynamicLocale": true
     },

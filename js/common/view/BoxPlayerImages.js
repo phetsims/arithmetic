@@ -11,12 +11,14 @@ import BoxPlayerCharacterSetAfrica from './BoxPlayerCharacterSetAfrica.js';
 import BoxPlayerCharacterSetAfricaModest from './BoxPlayerCharacterSetAfricaModest.js';
 import BoxPlayerCharacterSetAsia from './BoxPlayerCharacterSetAsia.js';
 import BoxPlayerCharacterSetLatinAmerica from './BoxPlayerCharacterSetLatinAmerica.js';
+import BoxPlayerCharacterSetMulticultural from './BoxPlayerCharacterSetMulticultural.js';
 import BoxPlayerCharacterSetOceania from './BoxPlayerCharacterSetOceania.js';
 import BoxPlayerCharacterSetUSA from './BoxPlayerCharacterSetUSA.js';
 
 
 const BoxPlayerImages = {
   BOX_PLAYER_CHARACTER_SETS: [
+    BoxPlayerCharacterSetMulticultural,
     BoxPlayerCharacterSetAfrica,
     BoxPlayerCharacterSetAfricaModest,
     BoxPlayerCharacterSetAsia,
