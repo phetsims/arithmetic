@@ -18,9 +18,9 @@ import divideLevel2Icon_png from '../../../mipmaps/oceania/divideLevel2Icon_png.
 import factorLevel2Icon_png from '../../../mipmaps/oceania/factorLevel2Icon_png.js';
 import multiplyLevel1Icon_png from '../../../mipmaps/oceania/multiplyLevel1Icon_png.js';
 import multiplyLevel2Icon_png from '../../../mipmaps/oceania/multiplyLevel2Icon_png.js';
-import BoxPlayerCharacterSet from './BoxPlayerCharacterSet.js';
+import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
-const ExplorerCharacterSetOceania = new BoxPlayerCharacterSet(
+const BoxPlayerPortrayalOceania = new BoxPlayerPortrayal(
   JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.oceaniaStringProperty,
   multiplyLevel1Icon_png,
   multiplyLevel2Icon_png,
@@ -34,4 +34,4 @@ const ExplorerCharacterSetOceania = new BoxPlayerCharacterSet(
   OCEANIA_REGION_AND_CULTURE_ID
 );
 
-export default ExplorerCharacterSetOceania;
+export default BoxPlayerPortrayalOceania;

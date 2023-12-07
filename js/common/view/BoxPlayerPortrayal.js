@@ -10,7 +10,7 @@
 import RegionAndCulturePortrayal from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
 import arithmetic from '../../arithmetic.js';
 
-export default class BoxPlayerCharacterSet extends RegionAndCulturePortrayal {
+export default class BoxPlayerPortrayal extends RegionAndCulturePortrayal {
 
   /**
    * @param label { LocalizedStringProperty }
@@ -45,4 +45,4 @@ export default class BoxPlayerCharacterSet extends RegionAndCulturePortrayal {
   }
 }
 
-arithmetic.register( 'BoxPlayerCharacterSet', BoxPlayerCharacterSet );
+arithmetic.register( 'BoxPlayerPortrayal', BoxPlayerPortrayal );

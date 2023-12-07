@@ -18,9 +18,9 @@ import factorLevel3Icon_png from '../../../mipmaps/africa-modest/factorLevel3Ico
 import multiplyLevel1Icon_png from '../../../mipmaps/africa/multiplyLevel1Icon_png.js';
 import multiplyLevel2Icon_png from '../../../mipmaps/africa/multiplyLevel2Icon_png.js';
 import multiplyLevel3Icon_png from '../../../mipmaps/africa-modest/multiplyLevel3Icon_png.js';
-import BoxPlayerCharacterSet from './BoxPlayerCharacterSet.js';
+import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
-const ExplorerCharacterSetAfricaModest = new BoxPlayerCharacterSet(
+const BoxPlayerPortrayalAfricaModest = new BoxPlayerPortrayal(
   JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.africaModestStringProperty,
   multiplyLevel1Icon_png,
   multiplyLevel2Icon_png,
@@ -34,4 +34,4 @@ const ExplorerCharacterSetAfricaModest = new BoxPlayerCharacterSet(
   AFRICA_MODEST_REGION_AND_CULTURE_ID
 );
 
-export default ExplorerCharacterSetAfricaModest;
+export default BoxPlayerPortrayalAfricaModest;

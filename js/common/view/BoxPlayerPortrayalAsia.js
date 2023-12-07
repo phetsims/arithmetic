@@ -18,9 +18,9 @@ import factorLevel3Icon_svg from '../../../images/asia/factorLevel3Icon_svg.js';
 import multiplyLevel1Icon_svg from '../../../images/asia/multiplyLevel1Icon_svg.js';
 import multiplyLevel2Icon_svg from '../../../images/asia/multiplyLevel2Icon_svg.js';
 import multiplyLevel3Icon_svg from '../../../images/asia/multiplyLevel3Icon_svg.js';
-import BoxPlayerCharacterSet from './BoxPlayerCharacterSet.js';
+import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
-const ExplorerCharacterSetAsia = new BoxPlayerCharacterSet(
+const BoxPlayerPortrayalAsia = new BoxPlayerPortrayal(
   JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.asiaStringProperty,
   multiplyLevel1Icon_svg,
   multiplyLevel2Icon_svg,
@@ -34,4 +34,4 @@ const ExplorerCharacterSetAsia = new BoxPlayerCharacterSet(
   ASIA_REGION_AND_CULTURE_ID
 );
 
-export default ExplorerCharacterSetAsia;
+export default BoxPlayerPortrayalAsia;

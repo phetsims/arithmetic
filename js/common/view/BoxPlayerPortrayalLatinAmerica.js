@@ -18,9 +18,9 @@ import factorLevel3Icon_png from '../../../mipmaps/latin-america/factorLevel3Ico
 import multiplyLevel1Icon_png from '../../../mipmaps/latin-america/multiplyLevel1Icon_png.js';
 import multiplyLevel2Icon_png from '../../../mipmaps/latin-america/multiplyLevel2Icon_png.js';
 import multiplyLevel3Icon_png from '../../../mipmaps/latin-america/multiplyLevel3Icon_png.js';
-import BoxPlayerCharacterSet from './BoxPlayerCharacterSet.js';
+import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
-const ExplorerCharacterSetLatinAmerica = new BoxPlayerCharacterSet(
+const BoxPlayerPortrayalLatinAmerica = new BoxPlayerPortrayal(
   JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.latinAmericaStringProperty,
   multiplyLevel1Icon_png,
   multiplyLevel2Icon_png,
@@ -34,4 +34,4 @@ const ExplorerCharacterSetLatinAmerica = new BoxPlayerCharacterSet(
   LATIN_AMERICA_REGION_AND_CULTURE_ID
 );
 
-export default ExplorerCharacterSetLatinAmerica;
+export default BoxPlayerPortrayalLatinAmerica;
