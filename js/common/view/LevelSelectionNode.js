@@ -86,7 +86,7 @@ class LevelSelectionNode extends Node {
       };
     } );
 
-    // TODO: Why is this not respecting invisible child bounds? https://github.com/phetsims/arithmetic/issues/199
+    // TODO: Remove decorator pattern to fix layout bug https://github.com/phetsims/vegas/issues/120
     const levelSelectionButtonGroup = new LevelSelectionButtonGroup( levelSelectButtons, {
       groupButtonHeight: BUTTON_LENGTH,
       groupButtonWidth: BUTTON_LENGTH,
