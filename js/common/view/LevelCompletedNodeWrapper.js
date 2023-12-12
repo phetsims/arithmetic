@@ -21,16 +21,19 @@ class LevelCompletedNodeWrapper extends Node {
    * @param {Property} stateProperty - Game state property.
    * @param {Property} timerEnabledProperty - Timer enabled flag.
    * @param {Function} continueCallback - Callback listener for continue button.
-   * @param {Bounds2} layoutBounds - Bounds of main screen. Necessary for placing components.
+   * @param {VBox} controlPanelVBox - VBox that holds the ScoreBoardNode, LevelCompletedNodeWrapper, and number keypad.
    */
-  constructor( levelModels, levelNumberProperty, stateProperty, timerEnabledProperty, continueCallback, layoutBounds ) {
+  constructor( levelModels, levelNumberProperty, stateProperty, timerEnabledProperty,
+               continueCallback, controlPanelVBox ) {
     super();
+
+    const oldChildren = controlPanelVBox.children;
 
     // Show this node only when the level has been completed.
     stateProperty.lazyLink( state => {
       if ( state === GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
         const levelModel = levelModels[ levelNumberProperty.value ];
-        this.addChild( new LevelCompletedNode(
+        const levelCompletedNode = new LevelCompletedNode(
           levelNumberProperty.value + 1,
           levelModel.currentScoreProperty.get(),
           levelModel.perfectScore,
@@ -40,11 +43,25 @@ class LevelCompletedNodeWrapper extends Node {
           levelModel.bestTimeProperty.get(),
           ( levelModel.gameTimer.elapsedTimeProperty.get() < levelModel.bestTimeProperty.get() ),
           continueCallback,
-          { fill: new Color( 255, 235, 205 ), centerX: layoutBounds.maxX / 2, centerY: layoutBounds.maxY / 2 }
-        ) );
+          {
+            fill: new Color( 255, 235, 205 ),
+
+            // Empirically determined values such that LevelCompletedNodeWrapper has same width and proportions as controlPanelVBox.
+            starDiameter: 45,
+            xMargin: 8,
+            cornerRadius: 10,
+            scale: 0.65
+          }
+        );
+
+        // Add levelCompletedNode as a child right below the scoreBoardNode.
+        controlPanelVBox.setChildren( [ controlPanelVBox.children[ 0 ], levelCompletedNode ] );
+        controlPanelVBox.setSpacing( 0 );
       }
       else if ( state === GameState.AWAITING_USER_INPUT || state === GameState.LEVEL_COMPLETED ) {
         this.removeAllChildren();
+        controlPanelVBox.setChildren( oldChildren );
+        controlPanelVBox.setSpacing( ArithmeticConstants.CONTROL_PANEL_VBOX_SPACING );
       }
     } );
   }

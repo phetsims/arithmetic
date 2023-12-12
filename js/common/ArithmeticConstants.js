@@ -21,7 +21,8 @@ const ArithmeticConstants = {
   WORKSPACE_BACKGROUND_COLOR: 'rgb(130,181,252)',
   LEVEL_1_TABLE_SIZE: 6,
   LEVEL_2_TABLE_SIZE: 9,
-  LEVEL_3_TABLE_SIZE: 12
+  LEVEL_3_TABLE_SIZE: 12,
+  CONTROL_PANEL_VBOX_SPACING: 22 // empirically determined to match 2015 published version
 };
 
 arithmetic.register( 'ArithmeticConstants', ArithmeticConstants );

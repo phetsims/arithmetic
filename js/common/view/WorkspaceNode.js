@@ -18,6 +18,7 @@ import { Node, VBox } from '../../../../scenery/js/imports.js';
 import TextPushButton from '../../../../sun/js/buttons/TextPushButton.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
+import ArithmeticConstants from '../ArithmeticConstants.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
 import GameState from '../model/GameState.js';
 import ArithmeticFaceWithPointsNode from './ArithmeticFaceWithPointsNode.js';
@@ -120,7 +121,7 @@ class WorkspaceNode extends Node {
       children: [ scoreboardNode ],
       centerX: ( multiplicationTableNode.right + layoutBounds.maxX ) / 2,
       top: backButton.top,
-      spacing: 22 // empirically determined to match 2015 published version
+      spacing: ArithmeticConstants.CONTROL_PANEL_VBOX_SPACING // empirically determined to match 2015 published version,
     } );
     controlPanelVBox.top = multiplicationTableNode.top;
     this.addChild( controlPanelVBox );
@@ -221,7 +222,7 @@ class WorkspaceNode extends Node {
         model.stateProperty.set( GameState.LEVEL_COMPLETED );
         model.returnToLevelSelectScreen();
       },
-      layoutBounds )
+      controlPanelVBox )
     );
   }
 }
