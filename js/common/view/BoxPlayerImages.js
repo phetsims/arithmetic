@@ -1,6 +1,6 @@
 // Copyright 2023, University of Colorado Boulder
 /**
- * BoxPlayer images contains an array of character sets, each representing a different region/culture.
+ * BoxPlayer images contains an array of portrayals, each representing a different region/culture.
  *
  * @author Luisa Vargas
  *
