@@ -27,8 +27,6 @@ class LevelCompletedNodeWrapper extends Node {
                continueCallback, controlPanelVBox ) {
     super();
 
-    const oldChildren = controlPanelVBox.children;
-
     // Show this node only when the level has been completed.
     stateProperty.lazyLink( state => {
       if ( state === GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
@@ -53,14 +51,11 @@ class LevelCompletedNodeWrapper extends Node {
             scale: 0.65
           }
         );
-
-        // Add levelCompletedNode as a child right below the scoreBoardNode.
-        controlPanelVBox.setChildren( [ controlPanelVBox.children[ 0 ], levelCompletedNode ] );
+        this.addChild( levelCompletedNode );
         controlPanelVBox.setSpacing( 0 );
       }
       else if ( state === GameState.AWAITING_USER_INPUT || state === GameState.LEVEL_COMPLETED ) {
         this.removeAllChildren();
-        controlPanelVBox.setChildren( oldChildren );
         controlPanelVBox.setSpacing( ArithmeticConstants.CONTROL_PANEL_VBOX_SPACING );
       }
     } );

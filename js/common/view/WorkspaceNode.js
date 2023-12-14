@@ -155,8 +155,8 @@ class WorkspaceNode extends Node {
 
         // The keypad should be invisible once the level is completed, and should stay invisible on transition to the
         // SELECTING_LEVEL state.
-        keypad.visible = !( newGameState === GameState.LEVEL_COMPLETED ||
-                            ( oldGameState === GameState.LEVEL_COMPLETED &&
+        keypad.visible = !( newGameState === GameState.LEVEL_COMPLETED || newGameState === GameState.SHOWING_LEVEL_COMPLETED_DIALOG ||
+                            ( ( oldGameState === GameState.LEVEL_COMPLETED || oldGameState === GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) &&
                               newGameState === GameState.SELECTING_LEVEL ) );
       } );
 
@@ -213,7 +213,7 @@ class WorkspaceNode extends Node {
     } );
 
     // add the dialog that indicates that the level has been completed
-    this.addChild( new LevelCompletedNodeWrapper(
+    controlPanelVBox.addChild( new LevelCompletedNodeWrapper(
       model.levelModels,
       model.levelNumberProperty,
       model.stateProperty,
