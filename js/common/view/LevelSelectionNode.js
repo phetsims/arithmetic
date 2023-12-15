@@ -71,8 +71,6 @@ class LevelSelectionNode extends Node {
         scoreProperty: model.levelModels[ levelIndex ].displayScoreProperty,
         options: {
           baseColor: options.buttonBaseColor,
-          bestTimeVisibleProperty: ArithmeticGlobals.timerEnabledProperty,
-          bestTimeProperty: model.levelModels[ levelIndex ].bestTimeProperty,
           listener: () => {
             callback( levelIndex );
           },
