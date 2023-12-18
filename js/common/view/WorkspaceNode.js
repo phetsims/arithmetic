@@ -11,7 +11,7 @@
 import Dimension2 from '../../../../dot/js/Dimension2.js';
 import merge from '../../../../phet-core/js/merge.js';
 import BackButton from '../../../../scenery-phet/js/buttons/BackButton.js';
-import NumberKeypad from '../../../../scenery-phet/js/NumberKeypad.js';
+import Keypad from '../../../../scenery-phet/js/keypad/Keypad.js';
 import PhetColorScheme from '../../../../scenery-phet/js/PhetColorScheme.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import { Node, VBox } from '../../../../scenery/js/imports.js';
@@ -130,10 +130,13 @@ class WorkspaceNode extends Node {
     if ( options.showKeypad ) {
 
       // create and add the keypad
-      const keypad = new NumberKeypad( {
-        valueStringProperty: model.inputProperty,
-        validateKey: NumberKeypad.validateMaxDigits( { maxDigits: 3 } )
+      const keypad = new Keypad( Keypad.PositiveIntegerLayout, {
+        accumulatorOptions: {
+          maxDigits: 3
+        }
       } );
+
+      keypad.stringProperty.link( input => { model.inputProperty.set( input ); } );
 
       // Update the keypad state based on the game state.
       model.stateProperty.link( ( newGameState, oldGameState ) => {
@@ -141,7 +144,7 @@ class WorkspaceNode extends Node {
         if ( newGameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
           // Arm the keypad for auto-clear when showing incorrect feedback.  This is part of the feature where the user
           // can simply start entering values again if they got the wrong answer initially.
-          keypad.clearOnNextKeyPress = true;
+          keypad.setClearOnNextKeyPress( true );
         }
         else if ( newGameState === GameState.AWAITING_USER_INPUT &&
                   oldGameState !== GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
