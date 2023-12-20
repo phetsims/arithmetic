@@ -1,7 +1,7 @@
 // Copyright 2023, University of Colorado Boulder
 
 /**
- * The BoxPlayerPortrayal defines what is needed for each character set in Arithmetic.
+ * The BoxPlayerPortrayal defines what is needed for each portrayal in Arithmetic.
  *
  * @author Luisa Vargas
  *
