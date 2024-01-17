@@ -92,7 +92,8 @@ class ScoreboardNode extends Panel {
         formatNames: [ 'time' ],
         maps: {
           time: time => GameTimer.formatTime( time )
-        }
+        },
+        strictAxonDependencies: false
       } ), TEXT_OPTIONS );
 
     const panelOptions = merge( {}, PANEL_OPTIONS, options );
