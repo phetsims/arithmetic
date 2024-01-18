@@ -14,7 +14,7 @@ import BackButton from '../../../../scenery-phet/js/buttons/BackButton.js';
 import Keypad from '../../../../scenery-phet/js/keypad/Keypad.js';
 import PhetColorScheme from '../../../../scenery-phet/js/PhetColorScheme.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { Node, VBox } from '../../../../scenery/js/imports.js';
+import { KeyboardListener, Node, VBox } from '../../../../scenery/js/imports.js';
 import TextPushButton from '../../../../sun/js/buttons/TextPushButton.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
@@ -133,6 +133,9 @@ class WorkspaceNode extends Node {
       const keypad = new Keypad( Keypad.PositiveIntegerLayout, {
         accumulatorOptions: {
           maxDigits: 3
+        },
+        keyboardListenerOptions: {
+          global: true
         }
       } );
 
@@ -170,6 +173,26 @@ class WorkspaceNode extends Node {
         maxWidth: controlPanelWidth,
         listener: () => { model.fillEquation(); }
       } );
+
+      const submitFromKeypadListener = new KeyboardListener( {
+        keys: [ 'space', 'enter' ],
+        listenerFireTrigger: 'up',
+        global: true,
+        callback: () => {
+          if ( keypad.stringProperty.value === '' ) {
+            return;
+          }
+          if ( model.stateProperty.get() === GameState.AWAITING_USER_INPUT ) {
+            model.fillEquation();
+          }
+          else if ( model.stateProperty.get() === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+            model.inputProperty.reset();
+            model.retryProblem();
+          }
+        }
+      } );
+
+      keypad.addInputListener( submitFromKeypadListener );
 
       controlPanelVBox.addChild( keypad );
       controlPanelVBox.addChild( checkButton );
