@@ -93,7 +93,7 @@ class ScoreboardNode extends Panel {
         maps: {
           time: time => GameTimer.formatTime( time )
         },
-        strictAxonDependencies: false
+        strictAxonDependencies: false //TODO https://github.com/phetsims/arithmetic/issues/202
       } ), TEXT_OPTIONS );
 
     const panelOptions = merge( {}, PANEL_OPTIONS, options );
