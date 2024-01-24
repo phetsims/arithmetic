@@ -54,11 +54,15 @@
             "latinAmerica",
             "oceania",
             "multi"
-          ]
+          ],
+          "supportsDynamicLocale": true
         },
         "simulation": true,
         "phet-io": {
-          "validation": false
+          "validation": false,
+          "wrappers": [
+            "phet-io-sim-specific/repos/arithmetic/wrappers/check-answers"
+          ]
         },
         "supportsOutputJS": true,
         "published": true,
