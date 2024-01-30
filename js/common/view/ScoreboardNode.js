@@ -7,10 +7,12 @@
  * @author John Blanco
  */
 
+import DerivedStringProperty from '../../../../axon/js/DerivedStringProperty.js';
 import DynamicProperty from '../../../../axon/js/DynamicProperty.js';
 import PatternStringProperty from '../../../../axon/js/PatternStringProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import merge from '../../../../phet-core/js/merge.js';
+import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
 import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import { Text, VBox } from '../../../../scenery/js/imports.js';
@@ -20,10 +22,6 @@ import VegasStrings from '../../../../vegas/js/VegasStrings.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import GameState from '../model/GameState.js';
-
-const LABEL_SCORE_STRING_PROPERTY = VegasStrings.label.scorePatternStringProperty;
-const LABEL_TIME_STRING_PROPERTY = VegasStrings.label.timeStringProperty;
-const PATTERN_LEVEL_0_LEVEL_STRING_PROPERTY = ArithmeticStrings.pattern.level[ '0levelNumberStringProperty' ];
 
 // constants
 const PANEL_OPTIONS = {
@@ -59,14 +57,19 @@ class ScoreboardNode extends Panel {
     options = merge( {
       title: ''
     }, options );
-    const levelText = new Text( new PatternStringProperty( PATTERN_LEVEL_0_LEVEL_STRING_PROPERTY, {
-      level: levelNumberProperty
-    }, {
-      formatNames: [ 'level' ],
-      maps: {
-        level: levelNumber => levelNumber !== null ? ( levelNumber + 1 ).toString() : ''
-      }
-    } ), BOLD_TEXT_OPTIONS );
+    const levelText = new Text(
+      new PatternStringProperty(
+        ArithmeticStrings.pattern.level[ '0levelNumberStringProperty' ],
+        { level: levelNumberProperty },
+        {
+          formatNames: [ 'level' ],
+          maps: {
+            level: levelNumber => levelNumber !== null ? ( levelNumber + 1 ).toString() : ''
+          }
+        }
+      ),
+      BOLD_TEXT_OPTIONS
+    );
 
     const currentLevelModelProperty = new Property( levelNumberProperty.value !== null ? levelModels[ levelNumberProperty.value ] : null );
     const currentScoreProperty = new DynamicProperty( currentLevelModelProperty, {
@@ -79,22 +82,30 @@ class ScoreboardNode extends Panel {
       defaultValue: 0
     } );
 
-    const scoreText = new Text( new PatternStringProperty( LABEL_SCORE_STRING_PROPERTY, {
-      score: currentScoreProperty
-    }, {
-      formatNames: [ 'score' ]
-    } ), TEXT_OPTIONS );
+    const scoreText = new Text(
+      new PatternStringProperty(
+        VegasStrings.label.scorePatternStringProperty,
+        { score: currentScoreProperty },
+        { formatNames: [ 'score' ] }
+      ),
+      TEXT_OPTIONS
+    );
 
-    const timeText = new Text( new PatternStringProperty( LABEL_TIME_STRING_PROPERTY, {
-        time: currentElapsedTimeProperty
-      },
-      {
-        formatNames: [ 'time' ],
-        maps: {
-          time: time => GameTimer.formatTime( time )
-        },
-        strictAxonDependencies: false //TODO https://github.com/phetsims/arithmetic/issues/202
-      } ), TEXT_OPTIONS );
+    const timeText = new Text(
+      new DerivedStringProperty(
+        [
+          currentElapsedTimeProperty,
+          VegasStrings.label.timeStringProperty,
+          VegasStrings.pattern[ '0hours' ][ '1minutes' ][ '2secondsStringProperty' ],
+          VegasStrings.pattern[ '0minutes' ][ '1secondsStringProperty' ]
+        ],
+        ( currentElapsedTime, labelTime ) => {
+          const formattedTime = GameTimer.formatTime( currentElapsedTime );
+          return StringUtils.format( labelTime, formattedTime );
+        }
+      ),
+      TEXT_OPTIONS
+    );
 
     const panelOptions = merge( {}, PANEL_OPTIONS, options );
 
