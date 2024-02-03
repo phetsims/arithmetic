@@ -6,9 +6,14 @@
  * @author John Blanco
  */
 
+import getGameLevelsSchema from '../../../vegas/js/getGameLevelsSchema.js';
 import arithmetic from '../arithmetic.js';
 
 const ArithmeticQueryParameters = QueryStringMachine.getAll( {
+
+  // The levels to show, which will be the same for all 3 screens.
+  // See https://github.com/phetsims/arithmetic/issues/203
+  gameLevels: getGameLevelsSchema( 3 ),
 
   // automatically answer most problems to enable faster testing of level completion
   autoAnswer: { type: 'flag' }

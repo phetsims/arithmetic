@@ -18,6 +18,7 @@ import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
+import ArithmeticQueryParameters from '../ArithmeticQueryParameters.js';
 import BoxPlayerCharacters from './BoxPlayerCharacters.js';
 
 // constants
@@ -88,7 +89,8 @@ class LevelSelectionNode extends Node {
       groupButtonWidth: BUTTON_LENGTH,
       flowBoxOptions: {
         spacing: 50
-      }
+      },
+      gameLevels: ArithmeticQueryParameters.gameLevels
     } );
 
     const levelsVBox = new VBox( {
