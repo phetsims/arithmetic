@@ -43,7 +43,7 @@ class LevelCompletedNodeWrapper extends Node {
           continueCallback,
           {
             fill: new Color( 255, 235, 205 ),
-            halfStarScores: levelModel.halfStarScores,
+            useHalfStarScores: true,
 
             // Empirically determined values such that LevelCompletedNodeWrapper has same width and proportions as controlPanelVBox.
             starDiameter: 45,

@@ -77,7 +77,7 @@ class LevelSelectionNode extends Node {
           createScoreDisplay: scoreProperty => new ScoreDisplayStars( scoreProperty, {
             numberOfStars: ArithmeticConstants.NUM_STARS,
             perfectScore: level.perfectScore,
-            halfStarScores: level.halfStarScores
+            useHalfStarScores: true
           } ),
           soundPlayerIndex: levelIndex
         }
