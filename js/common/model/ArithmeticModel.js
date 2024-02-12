@@ -69,11 +69,11 @@ class ArithmeticModel {
     // @public - array of models that correspond to a given difficulty level
     this.levelModels = [
       // level 1
-      new LevelModel( ArithmeticConstants.LEVEL_1_TABLE_SIZE, [ 1, 5, 9, 13, 16, 20, 24, 28, 32 ] ),
+      new LevelModel( ArithmeticConstants.LEVEL_1_TABLE_SIZE ),
       // level 2
-      new LevelModel( ArithmeticConstants.LEVEL_2_TABLE_SIZE, [ 1, 11, 20, 29, 36, 45, 54, 63, 72 ] ),
+      new LevelModel( ArithmeticConstants.LEVEL_2_TABLE_SIZE ),
       // level 3
-      new LevelModel( ArithmeticConstants.LEVEL_3_TABLE_SIZE, [ 1, 20, 36, 52, 64, 80, 96, 112, 128 ] )
+      new LevelModel( ArithmeticConstants.LEVEL_3_TABLE_SIZE )
     ];
 
     // @public - portion of the model that represents a single problem

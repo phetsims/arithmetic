@@ -11,25 +11,13 @@ import Property from '../../../../axon/js/Property.js';
 import dotRandom from '../../../../dot/js/dotRandom.js';
 import GameTimer from '../../../../vegas/js/GameTimer.js';
 import arithmetic from '../../arithmetic.js';
-import ArithmeticConstants from '../ArithmeticConstants.js';
 
 class LevelModel {
 
   /**
    * @param {number} tableSize - width and height of the multiplication table, which is assumed to be square
-   * @param {Array<number>} halfStarScores - array of scores required when filling in the ScoreDisplayStars in half-star increments.
    */
-  constructor( tableSize, halfStarScores ) {
-
-    // Only fill in all stars completely when the perfect score is reached, so the last score must be the perfect score.
-    // See https://github.com/phetsims/arithmetic/issues/174 for more details.
-    const perfectScore = tableSize * tableSize;
-    halfStarScores.push( perfectScore );
-
-    // Assert to ensure stars are filled in half-star increments. See https://github.com/phetsims/arithmetic/issues/174.
-    assert && assert( halfStarScores.length === ArithmeticConstants.NUM_STARS * 2,
-      'There must twice as many scores as the number of stars. Number of scores: ', halfStarScores.length,
-      ' Number of stars: ', ArithmeticConstants.NUM_STARS );
+  constructor( tableSize ) {
 
     // observable model properties
     this.bestTimeProperty = new Property( null );  // @public - best time for level
@@ -38,9 +26,8 @@ class LevelModel {
 
     // non-Property model values
     this.tableSize = tableSize; // @public, read only
-    this.perfectScore = perfectScore; // @public, read only
+    this.perfectScore = tableSize * tableSize; // @public, read only
     this.gameTimer = new GameTimer(); // @public - timer for this level
-    this.halfStarScores = halfStarScores; // @public, read only
 
     // @private - 2d array that tracks the 'used' state of each of the cells in the multiplication table for this level,
     // accessed through methods

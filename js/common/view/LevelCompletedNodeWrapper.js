@@ -6,6 +6,7 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
+import Range from '../../../../dot/js/Range.js';
 import { Color, Node } from '../../../../scenery/js/imports.js';
 import LevelCompletedNode from '../../../../vegas/js/LevelCompletedNode.js';
 import arithmetic from '../../arithmetic.js';
@@ -43,7 +44,7 @@ class LevelCompletedNodeWrapper extends Node {
           continueCallback,
           {
             fill: new Color( 255, 235, 205 ),
-            halfStarScores: levelModel.halfStarScores,
+            halfStarScoreRange: levelModel.tableSize === ArithmeticConstants.LEVEL_3_TABLE_SIZE ? new Range( 131, levelModel.perfectScore - 1 ) : null,
 
             // Empirically determined values such that LevelCompletedNodeWrapper has same width and proportions as controlPanelVBox.
             starDiameter: 45,
