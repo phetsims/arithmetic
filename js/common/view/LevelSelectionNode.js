@@ -20,7 +20,6 @@ import ArithmeticConstants from '../ArithmeticConstants.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
 import ArithmeticQueryParameters from '../ArithmeticQueryParameters.js';
 import BoxPlayerCharacters from './BoxPlayerCharacters.js';
-import Range from '../../../../dot/js/Range.js';
 
 // constants
 const CHOOSE_LEVEL_TITLE_FONT = new PhetFont( { size: 24 } );
@@ -77,8 +76,7 @@ class LevelSelectionNode extends Node {
           },
           createScoreDisplay: scoreProperty => new ScoreDisplayStars( scoreProperty, {
             numberOfStars: ArithmeticConstants.NUM_STARS,
-            perfectScore: level.perfectScore,
-            halfStarScoreRange: level.tableSize === ArithmeticConstants.LEVEL_3_TABLE_SIZE ? new Range( 131, level.perfectScore - 1 ) : null
+            perfectScore: level.perfectScore
           } ),
           soundPlayerIndex: levelIndex
         }
