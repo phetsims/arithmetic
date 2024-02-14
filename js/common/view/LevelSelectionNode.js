@@ -24,7 +24,7 @@ import BoxPlayerCharacters from './BoxPlayerCharacters.js';
 // constants
 const CHOOSE_LEVEL_TITLE_FONT = new PhetFont( { size: 24 } );
 const TAB_TITLE_FONT = new PhetFont( { size: 54 } );
-const BUTTON_LENGTH = 150;
+const BUTTON_LENGTH = 175;
 const TEXT_MAX_WIDTH = 550;
 
 const chooseYourLevelString = ArithmeticStrings.chooseYourLevelStringProperty;
@@ -89,7 +89,10 @@ class LevelSelectionNode extends Node {
       flowBoxOptions: {
         spacing: 50
       },
-      gameLevels: ArithmeticQueryParameters.gameLevels
+      gameLevels: ArithmeticQueryParameters.gameLevels,
+      levelSelectionButtonOptions: {
+        iconToScoreDisplayYSpace: 5
+      }
     } );
 
     const levelsVBox = new VBox( {
@@ -105,7 +108,7 @@ class LevelSelectionNode extends Node {
       alignBounds: layoutBounds,
       yAlign: 'bottom',
       xAlign: 'center',
-      bottomMargin: 180 // empirically determined to match the 2015 published version
+      bottomMargin: 155 // empirically determined to match the 2015 published version
     } );
 
     this.addChild( titlesAlignBox );
