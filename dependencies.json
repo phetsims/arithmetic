@@ -1,99 +1,111 @@
 {
-  "comment": "# arithmetic 1.1.0-dev.3 Fri Sep 28 2018 15:22:45 GMT-0800 (Alaskan Daylight Time)",
+  "comment": "# arithmetic 1.1.0-dev.4 Wed Feb 21 2024 09:48:26 GMT-0700 (Mountain Standard Time)",
   "arithmetic": {
-    "sha": "71c46107a5a4f223f65b566efdf7110a6f979a85",
+    "sha": "b42ecdeba68814eb5f970fe80959db70752820fb",
     "branch": "main"
   },
   "assert": {
-    "sha": "928741cfc8fe804334d5b35292140314511f8678",
+    "sha": "dd61947e1ba2c0655a242bebad9b887b397b01dd",
     "branch": "main"
   },
   "axon": {
-    "sha": "5262c71cbe2cf15cb4e04f70d52973e01d5631ee",
+    "sha": "21c6912d362a3eeb703b30de3dce9bfec9b7c00a",
     "branch": "main"
   },
   "brand": {
-    "sha": "1fd6682e452ae55e0bd27b95376fd2c626b16d6e",
+    "sha": "5e614c8d6309de200bd9166991cf395c16865cfe",
     "branch": "main"
   },
   "chipper": {
-    "sha": "9fc8f6548ba40c2796ea56479adce6f1d312b6de",
+    "sha": "16cda8e548d2d42cd7f3a9453ff23615ed2187ee",
     "branch": "main"
   },
   "dot": {
-    "sha": "a6af50817f502d02ca21307926b0567f72c7ce9c",
+    "sha": "d91e4be9754222ae375e27ee5837c2cb349a549e",
     "branch": "main"
   },
   "joist": {
-    "sha": "8cdfa7f19684fae27536e4ff51e8f04725f3ced3",
+    "sha": "b7425bbddee0006ead535c8908535f5d623de7df",
     "branch": "main"
   },
   "kite": {
-    "sha": "380cef530ae6a8ae4aa644ff4f09baf85326ad9f",
+    "sha": "bb6d7e60fc313e358b17861efce2054c78d74ed6",
+    "branch": "main"
+  },
+  "perennial-alias": {
+    "sha": "201613472fd7e34281fdb6ede30d93c0e6674e28",
     "branch": "main"
   },
   "phet-core": {
-    "sha": "2ff7b4893a5c1198665938f3657b3d893d2e56d6",
+    "sha": "da246bbf0c16cc2d1e0d2edbdb17f39255802ccf",
     "branch": "main"
   },
   "phet-io": {
-    "sha": "0bd35bf2c8bab40fd302326c41ae8fb369e60129",
+    "sha": "617037c0225c381c76513e0ee5c32a50ca33c4db",
     "branch": "main"
   },
-  "phet-io-wrapper-classroom-activity": {
-    "sha": "abc4ae3eda746b338cc8ea08ea0b3ee0cd037c82",
+  "phet-io-sim-specific": {
+    "sha": "53e21d997a1755588eed919bf6b2b77b27506b0e",
     "branch": "main"
   },
-  "phet-io-wrapper-hookes-law-energy": {
-    "sha": "429886e7c198bfdb1fed973f7678b575e3bfc183",
-    "branch": "main"
-  },
-  "phet-io-wrapper-lab-book": {
-    "sha": "186d07deaefc008157f49931e846d931793122d7",
+  "phet-io-sim-specific/repos/arithmetic/wrappers/check-answers": {
+    "sha": "53e21d997a1755588eed919bf6b2b77b27506b0e",
     "branch": "main"
   },
   "phet-io-wrappers": {
-    "sha": "43f3baded4e4b15c91baf7b4904e7f2a842a3b5d",
+    "sha": "f49272efdfbd0ee0618c8037c6020acc2acf2344",
     "branch": "main"
   },
   "phetcommon": {
-    "sha": "33aef589f2f8a6049772398d1387e19b797e3dce",
+    "sha": "92535c7f8a9739a52821269939d4b39d4e2d8e2d",
+    "branch": "main"
+  },
+  "phetmarks": {
+    "sha": "9e5eba8f74fb7433ed995cde315be789034923dc",
     "branch": "main"
   },
   "query-string-machine": {
-    "sha": "9ae63aab514937ff2119f5844c1da37db0ba49d5",
+    "sha": "5fbbd97d38c2b32506ad3e711e18832dd85ce28e",
     "branch": "main"
   },
   "scenery": {
-    "sha": "62b64e732c56d9b435af8cb4d8a8e819e980c29c",
+    "sha": "c776de3c8ef568b820dd0ca100692e43a19acfe4",
     "branch": "main"
   },
   "scenery-phet": {
-    "sha": "dd1fbed6baf9ba4559b94531f2d3c1aede050f20",
+    "sha": "5a86d41c07aa4589be739201d44c1c8cadf57d34",
     "branch": "main"
   },
   "sherpa": {
-    "sha": "c6a137d3ca118fcdce1e18fa0db8c1067d88694a",
+    "sha": "9e14495b0052090e8e9791ccd4c0121817f40724",
+    "branch": "main"
+  },
+  "studio": {
+    "sha": "ea41b45429265bf5a2a8946334cf33b12a97480b",
     "branch": "main"
   },
   "sun": {
-    "sha": "fbf54776d3fbed2ef57efd1d12e32a75cac11439",
+    "sha": "55f1190c795a3962c66558e5bad3d1d0ae84d95a",
     "branch": "main"
   },
   "tambo": {
-    "sha": "afb95743eda90fc067cfb065f36ebae63a8a8393",
+    "sha": "ebe910a6ea4b9403e4e554125967455a518cef12",
     "branch": "main"
   },
   "tandem": {
-    "sha": "6c14e492d11e3a8c0085661c07042291e2111036",
+    "sha": "ed540281d037df6f5894d72c6f0fce8fc7e9f06c",
+    "branch": "main"
+  },
+  "twixt": {
+    "sha": "90c19d39bb9307ce190ca781b5a6bf01cddfb0e9",
+    "branch": "main"
+  },
+  "utterance-queue": {
+    "sha": "c12a61fe24e905fe6e80dc1cab9d29098b1db7a4",
     "branch": "main"
   },
   "vegas": {
-    "sha": "87ea01e95cc812640e3aa1a010c84923676e149c",
-    "branch": "main"
-  },
-  "vibe": {
-    "sha": "82f7679d331a73c076ccd7eaa2bf1442fcad89aa",
+    "sha": "4bc8c218ade81a168d1dc0548e6811fd2807298f",
     "branch": "main"
   }
 }
