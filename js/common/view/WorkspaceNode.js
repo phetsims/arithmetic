@@ -106,6 +106,7 @@ class WorkspaceNode extends Node {
       ArithmeticGlobals.timerEnabledProperty,
       () => {
         model.refreshLevel();
+        options.showKeypad && this.keypad.setClearOnNextKeyPress( true );
       },
       {
         title: options.scoreboardTitle,
@@ -127,6 +128,7 @@ class WorkspaceNode extends Node {
     this.addChild( controlPanelVBox );
 
     // add keypad if necessary
+    this.keypad = null;
     if ( options.showKeypad ) {
 
       // create and add the keypad
@@ -138,6 +140,7 @@ class WorkspaceNode extends Node {
           global: true
         }
       } );
+      this.keypad = keypad;
 
       keypad.stringProperty.link( input => { model.inputProperty.set( input ); } );
 
