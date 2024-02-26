@@ -98,6 +98,12 @@ class WorkspaceNode extends Node {
     // define the width of the control panel so that it fits between the table and the bounds with some margin
     const controlPanelWidth = layoutBounds.maxX - multiplicationTableNode.right - 60;
 
+    /**
+     * The keypad will be defined below if it is to be shown, otherwise it is null.
+     * @type {Keypad|null}
+     */
+    let keypad = null;
+    
     // add control panel
     const scoreboardNode = new ScoreboardNode(
       model.levelNumberProperty,
@@ -106,7 +112,7 @@ class WorkspaceNode extends Node {
       ArithmeticGlobals.timerEnabledProperty,
       () => {
         model.refreshLevel();
-        options.showKeypad && this.keypad.setClearOnNextKeyPress( true );
+        keypad && keypad.setClearOnNextKeyPress( true );
       },
       {
         title: options.scoreboardTitle,
@@ -127,12 +133,10 @@ class WorkspaceNode extends Node {
     controlPanelVBox.top = multiplicationTableNode.top;
     this.addChild( controlPanelVBox );
 
-    // add keypad if necessary
-    this.keypad = null;
     if ( options.showKeypad ) {
 
       // create and add the keypad
-      const keypad = new Keypad( Keypad.PositiveIntegerLayout, {
+      keypad = new Keypad( Keypad.PositiveIntegerLayout, {
         accumulatorOptions: {
           maxDigits: 3
         },
@@ -140,7 +144,6 @@ class WorkspaceNode extends Node {
           global: true
         }
       } );
-      this.keypad = keypad;
 
       keypad.stringProperty.link( input => { model.inputProperty.set( input ); } );
 
