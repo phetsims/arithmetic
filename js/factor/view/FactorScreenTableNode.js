@@ -7,7 +7,7 @@
  * @author John Blanco
  */
 
-import { Image } from '../../../../scenery/js/imports.js';
+import { animatedPanZoomSingleton, Image } from '../../../../scenery/js/imports.js';
 import largePointingHand_png from '../../../images/largePointingHand_png.js';
 import smallPointingHand_png from '../../../images/smallPointingHand_png.js';
 import arithmetic from '../../arithmetic.js';
@@ -37,6 +37,11 @@ class FactorScreenTableNode extends MultiplicationTableNode {
     // created, so was moved here.
     this.cellPointer = new Image( smallPointingHand_png, { pickable: false } ); // @private
     this.addChild( this.cellPointer );
+
+    // Listener to keep the cellPointer in frame when zoomed in.
+    const animateToCellPointerListener = visible => {
+      visible && animatedPanZoomSingleton.listener.panToNode( this.cellPointer );
+    };
 
     // variables used to track cell interaction
     this.cellListeners = []; // @private
@@ -76,6 +81,10 @@ class FactorScreenTableNode extends MultiplicationTableNode {
                     if ( Math.abs( this.cellPointer.height - cell.height * 0.7 ) > 0.01 ) {
                       this.cellPointer.setScaleMagnitude( 1 );
                       this.cellPointer.setScaleMagnitude( cell.height * 0.7 / this.cellPointer.height );
+
+                      // Must link listener here since the scale sets the cellPointer's bounds necessary for panToNode.
+                      !this.cellPointer.visibleProperty.hasListener( animateToCellPointerListener ) &&
+                      this.cellPointer.visibleProperty.link( animateToCellPointerListener );
                     }
                     this.cellPointer.centerX = cell.centerX;
                     this.cellPointer.centerY = cell.centerY;
