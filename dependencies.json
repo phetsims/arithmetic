@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.0.36 Mon Dec 11 2023 16:33:12 GMT-0700 (Mountain Standard Time)",
   "arithmetic": {
-    "sha": "f1a5d7bf30f1260579abcb8d129bed5cd1da065a",
+    "sha": "2b326f18f08d42501b314e95911e668d09977cca",
     "branch": "1.0"
   },
   "assert": {
@@ -45,7 +45,7 @@
     "branch": "HEAD"
   },
   "scenery": {
-    "sha": "5fc73451b7c745beb4126109dc518ae94b49e876",
+    "sha": "db4a079cdbdbb55b0d29e40a87a8411b305e5f9a",
     "branch": "HEAD"
   },
   "scenery-phet": {
