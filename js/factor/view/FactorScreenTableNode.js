@@ -38,9 +38,9 @@ class FactorScreenTableNode extends MultiplicationTableNode {
     this.cellPointer = new Image( smallPointingHand_png, { pickable: false } ); // @private
     this.addChild( this.cellPointer );
 
-    // Listener to keep the cellPointer in frame when zoomed in.
+    // Listener to keep the cellPointer in frame when zoomed in. Don't panToCenter since that is too much movement.
     const animateToCellPointerListener = visible => {
-      visible && animatedPanZoomSingleton.listener.panToNode( this.cellPointer );
+      visible && animatedPanZoomSingleton.listener.panToNode( this.cellPointer, false );
     };
 
     // variables used to track cell interaction
