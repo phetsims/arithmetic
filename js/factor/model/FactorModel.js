@@ -7,6 +7,7 @@
  * @author John Blanco
  */
 
+import { BooleanProperty } from '../../../../axon/js/imports.js';
 import soundManager from '../../../../tambo/js/soundManager.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticModel from '../../common/model/ArithmeticModel.js';
@@ -20,6 +21,9 @@ class FactorModel extends ArithmeticModel {
    */
   constructor( preferencesModel, tandem ) {
     super( preferencesModel, tandem );
+
+    // @public - keeps track of whether the large transparent hand image is visible or not
+    this.handImageVisibleProperty = new BooleanProperty( true );
   }
 
   // @public
@@ -110,6 +114,16 @@ class FactorModel extends ArithmeticModel {
 
     // restore the original sound state
     soundManager.enabled = soundState;
+  }
+
+  /**
+   * Reset scores, clear the boards, and reset the handImageVisibleProperty.
+   * @override
+   * @public
+   */
+  reset() {
+    super.reset();
+    this.handImageVisibleProperty.reset();
   }
 }
 

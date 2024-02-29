@@ -31,6 +31,7 @@ class FactorScreenTableNode extends MultiplicationTableNode {
     handImage.scale( ( this.width / largePointingHand_png.width ) * 0.25 );
     handImage.centerX = this.width * 0.55; // position empirically determined
     handImage.centerY = this.height / 2;
+    handImage.visibleProperty = model.handImageVisibleProperty;
 
     // Create another hand that will appear over each cell to indicate that the user can click on it.  This was
     // originally handled in the individual cells, but caused startup to be long due to the large number of images
@@ -104,7 +105,7 @@ class FactorScreenTableNode extends MultiplicationTableNode {
                     // The user has re-touched the grid after submitting an incorrect answer, so assume they want to retry.
                     model.retryProblem();
                   }
-                  handImage.visible = false; // stop showing hand after first interaction
+                  handImage.visibleProperty.set( false ); // stop showing hand after first interaction
                   updateHover();
                 }
               } );
@@ -113,7 +114,7 @@ class FactorScreenTableNode extends MultiplicationTableNode {
               cellListener.mouseDownEmitter.addListener( () => {
                 this.mouseDownCell = cell;
                 this.activeCell = cell;
-                handImage.visible = false; // stop showing hand after first interaction
+                handImage.visibleProperty.set( false ); // stop showing hand after first interaction
                 updateHover();
               } );
 
