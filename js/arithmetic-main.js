@@ -34,7 +34,7 @@ const simOptions = {
     leadDesign: 'Michael Dubson, Amanda McGarry',
     softwareDevelopment: 'John Blanco, Michael Dubson, Luisa Vargas',
     team: 'Bryce Gruneich, Karina K. R. Hensberry, Trish Loeblein, Ariel Paul, Kathy Perkins, Beth Stade',
-    qualityAssurance: 'Steele Dalton, Bryce Griebenow, Elise Morgan, Oliver Orejola, Ben Roberts, Bryan Yoelin, Clifford Hardin, Kathryn Woessner, Nancy Salpepi',
+    qualityAssurance: 'Steele Dalton, Bryce Griebenow, Elise Morgan, Oliver Orejola, Ben Roberts, Bryan Yoelin, Jaron Droder, Kathryn Woessner, Nancy Salpepi',
     thanks: 'Thanks to Mobile Learner Labs for working with the PhET development team to convert this simulation to HTML5.'
   }
 };
