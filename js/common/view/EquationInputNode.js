@@ -40,7 +40,8 @@ class EquationInputNode extends Node {
     // @private - A "?" that is displayed when the value is NaN
     this.unknownValueText = new Text( UNKNOWN_VALUE_INDICATOR_STRING_PROPERTY, {
       font: ArithmeticConstants.EQUATION_FONT_TEXT,
-      maxWidth: size.width - 2 * MIN_X_MARGIN
+      maxWidth: size.width - 2 * MIN_X_MARGIN,
+      visible: false // Set to false by default, see https://github.com/phetsims/arithmetic/issues/210.
     } );
 
     // @private - create text and save reference for use in public methods
@@ -97,7 +98,6 @@ class EquationInputNode extends Node {
    */
   clear() {
     this.inputText.visible = false;
-    this.unknownValueText.visible = true;
     updateBoxPosition( this._box, this.inputSize );
   }
 
