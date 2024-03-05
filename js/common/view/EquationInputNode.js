@@ -37,11 +37,15 @@ class EquationInputNode extends Node {
   constructor( valueProperty, size ) {
     super();
 
+    // @private - Keep track of whether to allow the unknownValueText to be visible or not. Set to false by default,
+    // see https://github.com/phetsims/arithmetic/issues/210.
+    this.unknownValueTextVisible = false;
+
     // @private - A "?" that is displayed when the value is NaN
     this.unknownValueText = new Text( UNKNOWN_VALUE_INDICATOR_STRING_PROPERTY, {
       font: ArithmeticConstants.EQUATION_FONT_TEXT,
       maxWidth: size.width - 2 * MIN_X_MARGIN,
-      visible: false // Set to false by default, see https://github.com/phetsims/arithmetic/issues/210.
+      visible: this.unknownValueTextVisible
     } );
 
     // @private - create text and save reference for use in public methods
@@ -61,7 +65,7 @@ class EquationInputNode extends Node {
     valueProperty.lazyLink( value => {
       this.inputText.setString( isNaN( value ) ? '' : value );
       this.inputText.visible = !isNaN( value );
-      this.unknownValueText.visible = isNaN( value );
+      this.unknownValueText.visible = isNaN( value ) && this.unknownValueTextVisible;
       updateBoxPosition( this._box, size );
     } );
 
@@ -125,6 +129,7 @@ class EquationInputNode extends Node {
    * @public
    */
   setPlaceholder() {
+    this.unknownValueTextVisible = true;
     this.unknownValueText.visible = true;
     this.inputText.visible = false;
     updateBoxPosition( this._box, this.inputSize );
