@@ -7,7 +7,7 @@
  * @author John Blanco
  */
 
-import { BooleanProperty } from '../../../../axon/js/imports.js';
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import soundManager from '../../../../tambo/js/soundManager.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticModel from '../../common/model/ArithmeticModel.js';
