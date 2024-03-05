@@ -7,7 +7,7 @@
  * @author John Blanco
  */
 
-import { animatedPanZoomSingleton, Image } from '../../../../scenery/js/imports.js';
+import { animatedPanZoomSingleton, Image, Rectangle } from '../../../../scenery/js/imports.js';
 import largePointingHand_png from '../../../images/largePointingHand_png.js';
 import smallPointingHand_png from '../../../images/smallPointingHand_png.js';
 import arithmetic from '../../arithmetic.js';
@@ -38,6 +38,10 @@ class FactorScreenTableNode extends MultiplicationTableNode {
     // created, so was moved here.
     this.cellPointer = new Image( smallPointingHand_png, { pickable: false } ); // @private
     this.addChild( this.cellPointer );
+
+    // Add rectangle that will have the bounds of the cell the cellPointer is in. Initialize to cellPointer image bounds.
+    const invisibleRectangle = new Rectangle( { rectBounds: this.cellPointer } );
+    this.addChild( invisibleRectangle );
 
     // Listener to keep the cellPointer in frame when zoomed in. Don't panToCenter since that is too much movement.
     const animateToCellPointerListener = visible => {
@@ -89,6 +93,7 @@ class FactorScreenTableNode extends MultiplicationTableNode {
                     }
                     this.cellPointer.centerX = cell.centerX;
                     this.cellPointer.centerY = cell.centerY;
+                    invisibleRectangle.setRectBounds( cell.bounds );
                     this.activeCell = cell;
                   }
                   else {
