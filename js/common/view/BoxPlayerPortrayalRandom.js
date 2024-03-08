@@ -31,8 +31,8 @@ const MULTIPLY_RANDOM_PORTRAYAL = dotRandom.sample( PORTRAYALS );
 const FACTOR_RANDOM_PORTRAYAL = dotRandom.sample( PORTRAYALS.filter( set => set !== MULTIPLY_RANDOM_PORTRAYAL ) );
 const DIVIDE_RANDOM_PORTRAYAL = dotRandom.sample( PORTRAYALS.filter( set => set !== FACTOR_RANDOM_PORTRAYAL ) );
 
-const BoxPlayerPortrayalMulticultural = new BoxPlayerPortrayal(
-  JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.multiculturalStringProperty,
+const BoxPlayerPortrayalRandom = new BoxPlayerPortrayal(
+  JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.randomStringProperty,
   MULTIPLY_RANDOM_PORTRAYAL.multiplyLevel1,
   MULTIPLY_RANDOM_PORTRAYAL.multiplyLevel2,
   MULTIPLY_RANDOM_PORTRAYAL.multiplyLevel3,
@@ -45,4 +45,4 @@ const BoxPlayerPortrayalMulticultural = new BoxPlayerPortrayal(
   RANDOM_REGION_AND_CULTURE_ID
 );
 
-export default BoxPlayerPortrayalMulticultural;
+export default BoxPlayerPortrayalRandom;
