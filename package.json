@@ -30,7 +30,7 @@
         "asia",
         "latinAmerica",
         "oceania",
-        "multi"
+        "random"
       ],
       "supportsDynamicLocale": true
     },

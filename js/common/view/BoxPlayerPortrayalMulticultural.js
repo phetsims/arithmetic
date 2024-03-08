@@ -9,7 +9,7 @@
 
 import dotRandom from '../../../../dot/js/dotRandom.js';
 import JoistStrings from '../../../../joist/js/JoistStrings.js';
-import { MULTICULTURAL_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
+import { RANDOM_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
 import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 import BoxPlayerPortrayalAfrica from './BoxPlayerPortrayalAfrica.js';
 import BoxPlayerPortrayalAfricaModest from './BoxPlayerPortrayalAfricaModest.js';
@@ -42,7 +42,7 @@ const BoxPlayerPortrayalMulticultural = new BoxPlayerPortrayal(
   DIVIDE_RANDOM_PORTRAYAL.divideLevel1,
   DIVIDE_RANDOM_PORTRAYAL.divideLevel2,
   DIVIDE_RANDOM_PORTRAYAL.divideLevel3,
-  MULTICULTURAL_REGION_AND_CULTURE_ID
+  RANDOM_REGION_AND_CULTURE_ID
 );
 
 export default BoxPlayerPortrayalMulticultural;
