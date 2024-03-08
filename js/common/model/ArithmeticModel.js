@@ -338,15 +338,6 @@ class ArithmeticModel {
     this.stateProperty.set( environment.state );
     this.inputProperty.set( environment.input );
     this.activeLevelModel.gameTimer.elapsedTimeProperty.value = environment.elapsedTime;
-
-    // Elapsed time must account for any time that has gone by since the environment was saved.
-    if ( this.stateProperty.get() !== GameState.LEVEL_COMPLETED &&
-         this.stateProperty.get() !== GameState.SHOWING_LEVEL_COMPLETED_DIALOG ) {
-
-      this.activeLevelModel.gameTimer.elapsedTimeProperty.value =
-        this.activeLevelModel.gameTimer.elapsedTimeProperty.value +
-        Math.floor( ( new Date().getTime() - environment.systemTimeWhenSaveOccurred ) / 1000 );
-    }
   }
 
   /**
@@ -362,7 +353,6 @@ class ArithmeticModel {
       state: this.stateProperty.get(),
       currentScore: this.activeLevelModel.currentScoreProperty.get(),
       elapsedTime: this.activeLevelModel.gameTimer.elapsedTimeProperty.value,
-      systemTimeWhenSaveOccurred: new Date().getTime(),
       possiblePoints: this.problemModel.possiblePointsProperty.get(),
       activeInput: this.activeInputProperty.get()
     };
