@@ -39,13 +39,15 @@ class FactorScreenTableNode extends MultiplicationTableNode {
     this.cellPointer = new Image( smallPointingHand_png, { pickable: false } ); // @private
     this.addChild( this.cellPointer );
 
-    // Add rectangle that will have the bounds of the cell the cellPointer is in. Initialize to cellPointer image bounds.
-    const invisibleRectangle = new Rectangle( { rectBounds: this.cellPointer } );
-    this.addChild( invisibleRectangle );
+    // Invisible rectangle placed around the cellPointer to encompass the larger bounds of the activeCell, rather than
+    // the smaller bounds of the image cellPointer hand. This ensures smoother movement of the screen when zoomed in.
+    const panToNodeRectangle = new Rectangle( { rectBounds: this.cellPointer.bounds.copy() } );
+    this.addChild( panToNodeRectangle );
 
-    // Listener to keep the cellPointer in frame when zoomed in. Don't panToCenter since that is too much movement.
+    // Listener ensures the cellPointer remains in the visible frame when zoomed in by tracking the panToNodeRectangle.
+    // Don't panToCenter since that is too much movement.
     const animateToCellPointerListener = visible => {
-      visible && animatedPanZoomSingleton.listener.panToNode( this.cellPointer, false );
+      visible && animatedPanZoomSingleton.listener.panToNode( panToNodeRectangle, false );
     };
 
     // variables used to track cell interaction
@@ -93,7 +95,7 @@ class FactorScreenTableNode extends MultiplicationTableNode {
                     }
                     this.cellPointer.centerX = cell.centerX;
                     this.cellPointer.centerY = cell.centerY;
-                    invisibleRectangle.setRectBounds( cell.bounds );
+                    panToNodeRectangle.setRectBounds( cell.bounds );
                     this.activeCell = cell;
                   }
                   else {
