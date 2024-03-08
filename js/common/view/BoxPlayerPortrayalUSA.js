@@ -9,28 +9,28 @@
 
 import JoistStrings from '../../../../joist/js/JoistStrings.js';
 import { USA_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
-import divideLevel1Icon_svg from '../../../images/usa/divideLevel1Icon_svg.js';
-import divideLevel2Icon_svg from '../../../images/usa/divideLevel2Icon_svg.js';
-import divideLevel3Icon_svg from '../../../images/usa/divideLevel3Icon_svg.js';
-import factorLevel1Icon_svg from '../../../images/usa/factorLevel1Icon_svg.js';
-import factorLevel2Icon_svg from '../../../images/usa/factorLevel2Icon_svg.js';
-import factorLevel3Icon_svg from '../../../images/usa/factorLevel3Icon_svg.js';
-import multiplyLevel1Icon_svg from '../../../images/usa/multiplyLevel1Icon_svg.js';
-import multiplyLevel2Icon_svg from '../../../images/usa/multiplyLevel2Icon_svg.js';
-import multiplyLevel3Icon_svg from '../../../images/usa/multiplyLevel3Icon_svg.js';
+import usaDivideLevel1Icon_svg from '../../../images/localized/usaDivideLevel1Icon_svg.js';
+import usaDivideLevel2Icon_svg from '../../../images/localized/usaDivideLevel2Icon_svg.js';
+import usaDivideLevel3Icon_svg from '../../../images/localized/usaDivideLevel3Icon_svg.js';
+import usaFactorLevel1Icon_svg from '../../../images/localized/usaFactorLevel1Icon_svg.js';
+import usaFactorLevel2Icon_svg from '../../../images/localized/usaFactorLevel2Icon_svg.js';
+import usaFactorLevel3Icon_svg from '../../../images/localized/usaFactorLevel3Icon_svg.js';
+import usaMultiplyLevel1Icon_svg from '../../../images/localized/usaMultiplyLevel1Icon_svg.js';
+import usaMultiplyLevel2Icon_svg from '../../../images/localized/usaMultiplyLevel2Icon_svg.js';
+import usaMultiplyLevel3Icon_svg from '../../../images/localized/usaMultiplyLevel3Icon_svg.js';
 import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
 const BoxPlayerPortrayalUSA = new BoxPlayerPortrayal(
   JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.unitedStatesOfAmericaStringProperty,
-  multiplyLevel1Icon_svg,
-  multiplyLevel2Icon_svg,
-  multiplyLevel3Icon_svg,
-  factorLevel1Icon_svg,
-  factorLevel2Icon_svg,
-  factorLevel3Icon_svg,
-  divideLevel1Icon_svg,
-  divideLevel2Icon_svg,
-  divideLevel3Icon_svg,
+  usaMultiplyLevel1Icon_svg,
+  usaMultiplyLevel2Icon_svg,
+  usaMultiplyLevel3Icon_svg,
+  usaFactorLevel1Icon_svg,
+  usaFactorLevel2Icon_svg,
+  usaFactorLevel3Icon_svg,
+  usaDivideLevel1Icon_svg,
+  usaDivideLevel2Icon_svg,
+  usaDivideLevel3Icon_svg,
   USA_REGION_AND_CULTURE_ID
 );
 

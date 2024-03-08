@@ -9,28 +9,28 @@
 
 import JoistStrings from '../../../../joist/js/JoistStrings.js';
 import { OCEANIA_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
-import divideLevel3Icon_svg from '../../../images/asia/divideLevel3Icon_svg.js';
-import factorLevel1Icon_svg from '../../../images/asia/factorLevel1Icon_svg.js';
-import factorLevel3Icon_svg from '../../../images/asia/factorLevel3Icon_svg.js';
-import multiplyLevel3Icon_svg from '../../../images/asia/multiplyLevel3Icon_svg.js';
-import divideLevel1Icon_svg from '../../../images/oceania/divideLevel1Icon_svg.js';
-import divideLevel2Icon_svg from '../../../images/oceania/divideLevel2Icon_svg.js';
-import factorLevel2Icon_svg from '../../../images/oceania/factorLevel2Icon_svg.js';
-import multiplyLevel1Icon_svg from '../../../images/oceania/multiplyLevel1Icon_svg.js';
-import multiplyLevel2Icon_svg from '../../../images/oceania/multiplyLevel2Icon_svg.js';
+import asiaDivideLevel3Icon_svg from '../../../images/localized/asiaDivideLevel3Icon_svg.js';
+import asiaFactorLevel1Icon_svg from '../../../images/localized/asiaFactorLevel1Icon_svg.js';
+import asiaFactorLevel3Icon_svg from '../../../images/localized/asiaFactorLevel3Icon_svg.js';
+import asiaMultiplyLevel3Icon_svg from '../../../images/localized/asiaMultiplyLevel3Icon_svg.js';
+import oceaniaDivideLevel1Icon_svg from '../../../images/localized/oceaniaDivideLevel1Icon_svg.js';
+import oceaniaDivideLevel2Icon_svg from '../../../images/localized/oceaniaDivideLevel2Icon_svg.js';
+import oceaniaFactorLevel2Icon_svg from '../../../images/localized/oceaniaFactorLevel2Icon_svg.js';
+import oceaniaMultiplyLevel1Icon_svg from '../../../images/localized/oceaniaMultiplyLevel1Icon_svg.js';
+import oceaniaMultiplyLevel2Icon_svg from '../../../images/localized/oceaniaMultiplyLevel2Icon_svg.js';
 import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
 const BoxPlayerPortrayalOceania = new BoxPlayerPortrayal(
   JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.oceaniaStringProperty,
-  multiplyLevel1Icon_svg,
-  multiplyLevel2Icon_svg,
-  multiplyLevel3Icon_svg,
-  factorLevel1Icon_svg,
-  factorLevel2Icon_svg,
-  factorLevel3Icon_svg,
-  divideLevel1Icon_svg,
-  divideLevel2Icon_svg,
-  divideLevel3Icon_svg,
+  oceaniaMultiplyLevel1Icon_svg,
+  oceaniaMultiplyLevel2Icon_svg,
+  asiaMultiplyLevel3Icon_svg,
+  asiaFactorLevel1Icon_svg,
+  oceaniaFactorLevel2Icon_svg,
+  asiaFactorLevel3Icon_svg,
+  oceaniaDivideLevel1Icon_svg,
+  oceaniaDivideLevel2Icon_svg,
+  asiaDivideLevel3Icon_svg,
   OCEANIA_REGION_AND_CULTURE_ID
 );
 
