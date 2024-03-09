@@ -9,15 +9,15 @@
 
 import JoistStrings from '../../../../joist/js/JoistStrings.js';
 import { OCEANIA_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
-import asiaDivideLevel3Icon_svg from '../../../images/localized/asiaDivideLevel3Icon_svg.js';
-import asiaFactorLevel1Icon_svg from '../../../images/localized/asiaFactorLevel1Icon_svg.js';
-import asiaFactorLevel3Icon_svg from '../../../images/localized/asiaFactorLevel3Icon_svg.js';
-import asiaMultiplyLevel3Icon_svg from '../../../images/localized/asiaMultiplyLevel3Icon_svg.js';
-import oceaniaDivideLevel1Icon_svg from '../../../images/localized/oceaniaDivideLevel1Icon_svg.js';
-import oceaniaDivideLevel2Icon_svg from '../../../images/localized/oceaniaDivideLevel2Icon_svg.js';
-import oceaniaFactorLevel2Icon_svg from '../../../images/localized/oceaniaFactorLevel2Icon_svg.js';
-import oceaniaMultiplyLevel1Icon_svg from '../../../images/localized/oceaniaMultiplyLevel1Icon_svg.js';
-import oceaniaMultiplyLevel2Icon_svg from '../../../images/localized/oceaniaMultiplyLevel2Icon_svg.js';
+import asiaDivideLevel3Icon_svg from '../../../images/asia/asiaDivideLevel3Icon_svg.js';
+import asiaFactorLevel1Icon_svg from '../../../images/asia/asiaFactorLevel1Icon_svg.js';
+import asiaFactorLevel3Icon_svg from '../../../images/asia/asiaFactorLevel3Icon_svg.js';
+import asiaMultiplyLevel3Icon_svg from '../../../images/asia/asiaMultiplyLevel3Icon_svg.js';
+import oceaniaDivideLevel1Icon_svg from '../../../images/oceania/oceaniaDivideLevel1Icon_svg.js';
+import oceaniaDivideLevel2Icon_svg from '../../../images/oceania/oceaniaDivideLevel2Icon_svg.js';
+import oceaniaFactorLevel2Icon_svg from '../../../images/oceania/oceaniaFactorLevel2Icon_svg.js';
+import oceaniaMultiplyLevel1Icon_svg from '../../../images/oceania/oceaniaMultiplyLevel1Icon_svg.js';
+import oceaniaMultiplyLevel2Icon_svg from '../../../images/oceania/oceaniaMultiplyLevel2Icon_svg.js';
 import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
 const BoxPlayerPortrayalOceania = new BoxPlayerPortrayal(

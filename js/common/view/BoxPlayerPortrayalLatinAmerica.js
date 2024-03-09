@@ -9,15 +9,15 @@
 
 import JoistStrings from '../../../../joist/js/JoistStrings.js';
 import { LATIN_AMERICA_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
-import latinAmericaDivideLevel1Icon_svg from '../../../images/localized/latinAmericaDivideLevel1Icon_svg.js';
-import latinAmericaDivideLevel2Icon_svg from '../../../images/localized/latinAmericaDivideLevel2Icon_svg.js';
-import latinAmericaDivideLevel3Icon_svg from '../../../images/localized/latinAmericaDivideLevel3Icon_svg.js';
-import latinAmericaFactorLevel1Icon_svg from '../../../images/localized/latinAmericaFactorLevel1Icon_svg.js';
-import latinAmericaFactorLevel2Icon_svg from '../../../images/localized/latinAmericaFactorLevel2Icon_svg.js';
-import latinAmericaFactorLevel3Icon_svg from '../../../images/localized/latinAmericaFactorLevel3Icon_svg.js';
-import latinAmericaMultiplyLevel1Icon_svg from '../../../images/localized/latinAmericaMultiplyLevel1Icon_svg.js';
-import latinAmericaMultiplyLevel2Icon_svg from '../../../images/localized/latinAmericaMultiplyLevel2Icon_svg.js';
-import latinAmericaMultiplyLevel3Icon_svg from '../../../images/localized/latinAmericaMultiplyLevel3Icon_svg.js';
+import latinAmericaDivideLevel1Icon_svg from '../../../images/latinAmerica/latinAmericaDivideLevel1Icon_svg.js';
+import latinAmericaDivideLevel2Icon_svg from '../../../images/latinAmerica/latinAmericaDivideLevel2Icon_svg.js';
+import latinAmericaDivideLevel3Icon_svg from '../../../images/latinAmerica/latinAmericaDivideLevel3Icon_svg.js';
+import latinAmericaFactorLevel1Icon_svg from '../../../images/latinAmerica/latinAmericaFactorLevel1Icon_svg.js';
+import latinAmericaFactorLevel2Icon_svg from '../../../images/latinAmerica/latinAmericaFactorLevel2Icon_svg.js';
+import latinAmericaFactorLevel3Icon_svg from '../../../images/latinAmerica/latinAmericaFactorLevel3Icon_svg.js';
+import latinAmericaMultiplyLevel1Icon_svg from '../../../images/latinAmerica/latinAmericaMultiplyLevel1Icon_svg.js';
+import latinAmericaMultiplyLevel2Icon_svg from '../../../images/latinAmerica/latinAmericaMultiplyLevel2Icon_svg.js';
+import latinAmericaMultiplyLevel3Icon_svg from '../../../images/latinAmerica/latinAmericaMultiplyLevel3Icon_svg.js';
 import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
 const BoxPlayerPortrayalLatinAmerica = new BoxPlayerPortrayal(

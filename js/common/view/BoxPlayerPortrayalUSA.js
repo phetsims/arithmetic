@@ -9,15 +9,15 @@
 
 import JoistStrings from '../../../../joist/js/JoistStrings.js';
 import { USA_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
-import usaDivideLevel1Icon_svg from '../../../images/localized/usaDivideLevel1Icon_svg.js';
-import usaDivideLevel2Icon_svg from '../../../images/localized/usaDivideLevel2Icon_svg.js';
-import usaDivideLevel3Icon_svg from '../../../images/localized/usaDivideLevel3Icon_svg.js';
-import usaFactorLevel1Icon_svg from '../../../images/localized/usaFactorLevel1Icon_svg.js';
-import usaFactorLevel2Icon_svg from '../../../images/localized/usaFactorLevel2Icon_svg.js';
-import usaFactorLevel3Icon_svg from '../../../images/localized/usaFactorLevel3Icon_svg.js';
-import usaMultiplyLevel1Icon_svg from '../../../images/localized/usaMultiplyLevel1Icon_svg.js';
-import usaMultiplyLevel2Icon_svg from '../../../images/localized/usaMultiplyLevel2Icon_svg.js';
-import usaMultiplyLevel3Icon_svg from '../../../images/localized/usaMultiplyLevel3Icon_svg.js';
+import usaDivideLevel1Icon_svg from '../../../images/usa/usaDivideLevel1Icon_svg.js';
+import usaDivideLevel2Icon_svg from '../../../images/usa/usaDivideLevel2Icon_svg.js';
+import usaDivideLevel3Icon_svg from '../../../images/usa/usaDivideLevel3Icon_svg.js';
+import usaFactorLevel1Icon_svg from '../../../images/usa/usaFactorLevel1Icon_svg.js';
+import usaFactorLevel2Icon_svg from '../../../images/usa/usaFactorLevel2Icon_svg.js';
+import usaFactorLevel3Icon_svg from '../../../images/usa/usaFactorLevel3Icon_svg.js';
+import usaMultiplyLevel1Icon_svg from '../../../images/usa/usaMultiplyLevel1Icon_svg.js';
+import usaMultiplyLevel2Icon_svg from '../../../images/usa/usaMultiplyLevel2Icon_svg.js';
+import usaMultiplyLevel3Icon_svg from '../../../images/usa/usaMultiplyLevel3Icon_svg.js';
 import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
 const BoxPlayerPortrayalUSA = new BoxPlayerPortrayal(
