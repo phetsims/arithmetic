@@ -1,4 +1,4 @@
-// Copyright 2023, University of Colorado Boulder
+// Copyright 2023-2024, University of Colorado Boulder
 /**
  * BoxPlayer images contains an array of portrayals, each representing a different region/culture.
  *
