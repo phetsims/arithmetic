@@ -7,8 +7,6 @@
  *
  */
 
-import JoistStrings from '../../../../joist/js/JoistStrings.js';
-import { AFRICA_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
 import africaDivideLevel1Icon_svg from '../../../images/africa/africaDivideLevel1Icon_svg.js';
 import africaDivideLevel2Icon_svg from '../../../images/africa/africaDivideLevel2Icon_svg.js';
 import africaDivideLevel3Icon_svg from '../../../images/africa/africaDivideLevel3Icon_svg.js';
@@ -21,7 +19,7 @@ import africaMultiplyLevel3Icon_svg from '../../../images/africa/africaMultiplyL
 import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
 const BoxPlayerPortrayalAfrica = new BoxPlayerPortrayal(
-  JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.africaStringProperty,
+  'africa',
   africaMultiplyLevel1Icon_svg,
   africaMultiplyLevel2Icon_svg,
   africaMultiplyLevel3Icon_svg,
@@ -30,8 +28,7 @@ const BoxPlayerPortrayalAfrica = new BoxPlayerPortrayal(
   africaFactorLevel3Icon_svg,
   africaDivideLevel1Icon_svg,
   africaDivideLevel2Icon_svg,
-  africaDivideLevel3Icon_svg,
-  AFRICA_REGION_AND_CULTURE_ID
+  africaDivideLevel3Icon_svg
 );
 
 export default BoxPlayerPortrayalAfrica;

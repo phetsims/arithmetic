@@ -7,8 +7,6 @@
  *
  */
 
-import JoistStrings from '../../../../joist/js/JoistStrings.js';
-import { ASIA_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
 import asiaDivideLevel1Icon_svg from '../../../images/asia/asiaDivideLevel1Icon_svg.js';
 import asiaDivideLevel2Icon_svg from '../../../images/asia/asiaDivideLevel2Icon_svg.js';
 import asiaDivideLevel3Icon_svg from '../../../images/asia/asiaDivideLevel3Icon_svg.js';
@@ -21,7 +19,7 @@ import asiaMultiplyLevel3Icon_svg from '../../../images/asia/asiaMultiplyLevel3I
 import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
 const BoxPlayerPortrayalAsia = new BoxPlayerPortrayal(
-  JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.asiaStringProperty,
+  'asia',
   asiaMultiplyLevel1Icon_svg,
   asiaMultiplyLevel2Icon_svg,
   asiaMultiplyLevel3Icon_svg,
@@ -30,8 +28,7 @@ const BoxPlayerPortrayalAsia = new BoxPlayerPortrayal(
   asiaFactorLevel3Icon_svg,
   asiaDivideLevel1Icon_svg,
   asiaDivideLevel2Icon_svg,
-  asiaDivideLevel3Icon_svg,
-  ASIA_REGION_AND_CULTURE_ID
+  asiaDivideLevel3Icon_svg
 );
 
 export default BoxPlayerPortrayalAsia;

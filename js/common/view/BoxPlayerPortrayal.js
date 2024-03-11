@@ -13,7 +13,7 @@ import arithmetic from '../../arithmetic.js';
 export default class BoxPlayerPortrayal extends RegionAndCulturePortrayal {
 
   /**
-   * @param label { LocalizedStringProperty }
+   * @param {RegionAndCulture} regionAndCulture
    * @param multiplyLevel1 { HTMLImageElement }
    * @param multiplyLevel2 { HTMLImageElement }
    * @param multiplyLevel3 { HTMLImageElement }
@@ -23,15 +23,13 @@ export default class BoxPlayerPortrayal extends RegionAndCulturePortrayal {
    * @param divideLevel1 { HTMLImageElement }
    * @param divideLevel2 { HTMLImageElement }
    * @param divideLevel3 { HTMLImageElement }
-   * @param queryParameterValue { string }
    */
-  constructor( label,
+  constructor( regionAndCulture,
                multiplyLevel1, multiplyLevel2, multiplyLevel3,
                factorLevel1, factorLevel2, factorLevel3,
-               divideLevel1, divideLevel2, divideLevel3,
-               queryParameterValue ) {
+               divideLevel1, divideLevel2, divideLevel3 ) {
 
-    super( label, queryParameterValue, {} );
+    super( regionAndCulture );
 
     this.multiplyLevel1 = multiplyLevel1;
     this.multiplyLevel2 = multiplyLevel2;

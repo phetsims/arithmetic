@@ -8,8 +8,6 @@
  */
 
 import dotRandom from '../../../../dot/js/dotRandom.js';
-import JoistStrings from '../../../../joist/js/JoistStrings.js';
-import { RANDOM_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
 import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 import BoxPlayerPortrayalAfrica from './BoxPlayerPortrayalAfrica.js';
 import BoxPlayerPortrayalAfricaModest from './BoxPlayerPortrayalAfricaModest.js';
@@ -32,7 +30,7 @@ const FACTOR_RANDOM_PORTRAYAL = dotRandom.sample( PORTRAYALS.filter( set => set 
 const DIVIDE_RANDOM_PORTRAYAL = dotRandom.sample( PORTRAYALS.filter( set => set !== FACTOR_RANDOM_PORTRAYAL ) );
 
 const BoxPlayerPortrayalRandom = new BoxPlayerPortrayal(
-  JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.randomStringProperty,
+  'random',
   MULTIPLY_RANDOM_PORTRAYAL.multiplyLevel1,
   MULTIPLY_RANDOM_PORTRAYAL.multiplyLevel2,
   MULTIPLY_RANDOM_PORTRAYAL.multiplyLevel3,
@@ -41,8 +39,7 @@ const BoxPlayerPortrayalRandom = new BoxPlayerPortrayal(
   FACTOR_RANDOM_PORTRAYAL.factorLevel3,
   DIVIDE_RANDOM_PORTRAYAL.divideLevel1,
   DIVIDE_RANDOM_PORTRAYAL.divideLevel2,
-  DIVIDE_RANDOM_PORTRAYAL.divideLevel3,
-  RANDOM_REGION_AND_CULTURE_ID
+  DIVIDE_RANDOM_PORTRAYAL.divideLevel3
 );
 
 export default BoxPlayerPortrayalRandom;

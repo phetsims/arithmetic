@@ -7,8 +7,6 @@
  *
  */
 
-import JoistStrings from '../../../../joist/js/JoistStrings.js';
-import { USA_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
 import usaDivideLevel1Icon_svg from '../../../images/usa/usaDivideLevel1Icon_svg.js';
 import usaDivideLevel2Icon_svg from '../../../images/usa/usaDivideLevel2Icon_svg.js';
 import usaDivideLevel3Icon_svg from '../../../images/usa/usaDivideLevel3Icon_svg.js';
@@ -21,7 +19,7 @@ import usaMultiplyLevel3Icon_svg from '../../../images/usa/usaMultiplyLevel3Icon
 import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
 const BoxPlayerPortrayalUSA = new BoxPlayerPortrayal(
-  JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.unitedStatesOfAmericaStringProperty,
+  'usa',
   usaMultiplyLevel1Icon_svg,
   usaMultiplyLevel2Icon_svg,
   usaMultiplyLevel3Icon_svg,
@@ -30,8 +28,7 @@ const BoxPlayerPortrayalUSA = new BoxPlayerPortrayal(
   usaFactorLevel3Icon_svg,
   usaDivideLevel1Icon_svg,
   usaDivideLevel2Icon_svg,
-  usaDivideLevel3Icon_svg,
-  USA_REGION_AND_CULTURE_ID
+  usaDivideLevel3Icon_svg
 );
 
 export default BoxPlayerPortrayalUSA;

@@ -7,8 +7,6 @@
  *
  */
 
-import JoistStrings from '../../../../joist/js/JoistStrings.js';
-import { LATIN_AMERICA_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
 import latinAmericaDivideLevel1Icon_svg from '../../../images/latinAmerica/latinAmericaDivideLevel1Icon_svg.js';
 import latinAmericaDivideLevel2Icon_svg from '../../../images/latinAmerica/latinAmericaDivideLevel2Icon_svg.js';
 import latinAmericaDivideLevel3Icon_svg from '../../../images/latinAmerica/latinAmericaDivideLevel3Icon_svg.js';
@@ -21,7 +19,7 @@ import latinAmericaMultiplyLevel3Icon_svg from '../../../images/latinAmerica/lat
 import BoxPlayerPortrayal from './BoxPlayerPortrayal.js';
 
 const BoxPlayerPortrayalLatinAmerica = new BoxPlayerPortrayal(
-  JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.latinAmericaStringProperty,
+  'latinAmerica',
   latinAmericaMultiplyLevel1Icon_svg,
   latinAmericaMultiplyLevel2Icon_svg,
   latinAmericaMultiplyLevel3Icon_svg,
@@ -30,8 +28,7 @@ const BoxPlayerPortrayalLatinAmerica = new BoxPlayerPortrayal(
   latinAmericaFactorLevel3Icon_svg,
   latinAmericaDivideLevel1Icon_svg,
   latinAmericaDivideLevel2Icon_svg,
-  latinAmericaDivideLevel3Icon_svg,
-  LATIN_AMERICA_REGION_AND_CULTURE_ID
+  latinAmericaDivideLevel3Icon_svg
 );
 
 export default BoxPlayerPortrayalLatinAmerica;
