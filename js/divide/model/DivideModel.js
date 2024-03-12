@@ -16,11 +16,10 @@ import GameState from '../../common/model/GameState.js';
 class DivideModel extends ArithmeticModel {
 
   /**
-   * @param { PreferencesModel } preferencesModel
    * @param { Tandem } tandem
    */
-  constructor( preferencesModel, tandem ) {
-    super( preferencesModel, tandem, {
+  constructor( tandem ) {
+    super( tandem, {
       fillEquation: () => {
 
         // Convert any strings entered by the user into numerical values.

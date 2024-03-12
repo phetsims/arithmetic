@@ -16,11 +16,10 @@ import GameState from '../../common/model/GameState.js';
 class FactorModel extends ArithmeticModel {
 
   /**
-   * @param { PreferencesModel } preferencesModel
    * @param {Tandem} tandem
    */
-  constructor( preferencesModel, tandem ) {
-    super( preferencesModel, tandem );
+  constructor( tandem ) {
+    super( tandem );
 
     // @public - keeps track of whether the large transparent hand image is visible or not
     this.handImageVisibleProperty = new BooleanProperty( true );

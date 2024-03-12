@@ -21,10 +21,9 @@ import MultiplyView from './view/MultiplyView.js';
 class MultiplyScreen extends Screen {
 
   /**
-   * @param { PreferencesModel } preferencesModel
    * @param {Object} [options]
    */
-  constructor( preferencesModel, options ) {
+  constructor( options ) {
 
     options = merge( {
       name: ArithmeticStrings.multiplyStringProperty,
@@ -37,7 +36,7 @@ class MultiplyScreen extends Screen {
     }, options );
 
     super(
-      () => new MultiplyModel( preferencesModel, options.tandem.createTandem( 'model' ) ),
+      () => new MultiplyModel( options.tandem.createTandem( 'model' ) ),
       model => new MultiplyView( model ),
       options
     );

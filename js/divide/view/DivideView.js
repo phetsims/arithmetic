@@ -8,6 +8,7 @@
 
 import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
+import ArithmeticImages from '../../ArithmeticImages.js';
 import ArithmeticView from '../../common/view/ArithmeticView.js';
 import DivideEquationNode from './DivideEquationNode.js';
 import DivideScreenTableNode from './DivideScreenTableNode.js';
@@ -30,10 +31,10 @@ class DivideView extends ArithmeticView {
         model.inputProperty,
         model.activeInputProperty
       ),
+      [ ArithmeticImages.divideLevel1ImageProperty, ArithmeticImages.divideLevel2ImageProperty, ArithmeticImages.divideLevel3ImageProperty ],
       {
         titleString: ArithmeticStrings.divideStringProperty,
-        levelSelectButtonColor: '#BC76A5',
-        levelSelectIconSet: 'divide'
+        levelSelectButtonColor: '#BC76A5'
       }
     );
   }

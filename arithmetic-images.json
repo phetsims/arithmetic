@@ -1,0 +1,68 @@
+{
+  "usa": {
+    "divideLevel1": "images/usa/usaDivideLevel1Icon_svg.ts",
+    "divideLevel2": "images/usa/usaDivideLevel2Icon_svg.ts",
+    "divideLevel3": "images/usa/usaDivideLevel3Icon_svg.ts",
+    "factorLevel1": "images/usa/usaFactorLevel1Icon_svg.ts",
+    "factorLevel2": "images/usa/usaFactorLevel2Icon_svg.ts",
+    "factorLevel3": "images/usa/usaFactorLevel3Icon_svg.ts",
+    "multiplyLevel1": "images/usa/usaMultiplyLevel1Icon_svg.ts",
+    "multiplyLevel2": "images/usa/usaMultiplyLevel2Icon_svg.ts",
+    "multiplyLevel3": "images/usa/usaMultiplyLevel3Icon_svg.ts"
+  },
+  "africa": {
+    "divideLevel1": "images/africa/africaDivideLevel1Icon_svg.ts",
+    "divideLevel2": "images/africa/africaDivideLevel2Icon_svg.ts",
+    "divideLevel3": "images/africa/africaDivideLevel3Icon_svg.ts",
+    "factorLevel1": "images/africa/africaFactorLevel1Icon_svg.ts",
+    "factorLevel2": "images/africa/africaFactorLevel2Icon_svg.ts",
+    "factorLevel3": "images/africa/africaFactorLevel3Icon_svg.ts",
+    "multiplyLevel1": "images/africa/africaMultiplyLevel1Icon_svg.ts",
+    "multiplyLevel2": "images/africa/africaMultiplyLevel2Icon_svg.ts",
+    "multiplyLevel3": "images/africa/africaMultiplyLevel3Icon_svg.ts"
+  },
+  "africaModest": {
+    "divideLevel1": "images/africaModest/africaModestDivideLevel1Icon_svg.ts",
+    "divideLevel2": "images/africa/africaDivideLevel2Icon_svg.ts",
+    "divideLevel3": "images/africaModest/africaModestDivideLevel3Icon_svg.ts",
+    "factorLevel1": "images/africa/africaFactorLevel1Icon_svg.ts",
+    "factorLevel2": "images/africa/africaFactorLevel2Icon_svg.ts",
+    "factorLevel3": "images/africaModest/africaModestFactorLevel3Icon_svg.ts",
+    "multiplyLevel1": "images/africa/africaMultiplyLevel1Icon_svg.ts",
+    "multiplyLevel2": "images/africa/africaMultiplyLevel2Icon_svg.ts",
+    "multiplyLevel3": "images/africaModest/africaModestMultiplyLevel3Icon_svg.ts"
+  },
+  "asia": {
+    "divideLevel1": "images/asia/asiaDivideLevel1Icon_svg.ts",
+    "divideLevel2": "images/asia/asiaDivideLevel2Icon_svg.ts",
+    "divideLevel3": "images/asia/asiaDivideLevel3Icon_svg.ts",
+    "factorLevel1": "images/asia/asiaFactorLevel1Icon_svg.ts",
+    "factorLevel2": "images/asia/asiaFactorLevel2Icon_svg.ts",
+    "factorLevel3": "images/asia/asiaFactorLevel3Icon_svg.ts",
+    "multiplyLevel1": "images/asia/asiaMultiplyLevel1Icon_svg.ts",
+    "multiplyLevel2": "images/asia/asiaMultiplyLevel2Icon_svg.ts",
+    "multiplyLevel3": "images/asia/asiaMultiplyLevel3Icon_svg.ts"
+  },
+  "latinAmerica": {
+    "divideLevel1": "images/latinAmerica/latinAmericaDivideLevel1Icon_svg.ts",
+    "divideLevel2": "images/latinAmerica/latinAmericaDivideLevel2Icon_svg.ts",
+    "divideLevel3": "images/latinAmerica/latinAmericaDivideLevel3Icon_svg.ts",
+    "factorLevel1": "images/latinAmerica/latinAmericaFactorLevel1Icon_svg.ts",
+    "factorLevel2": "images/latinAmerica/latinAmericaFactorLevel2Icon_svg.ts",
+    "factorLevel3": "images/latinAmerica/latinAmericaFactorLevel3Icon_svg.ts",
+    "multiplyLevel1": "images/latinAmerica/latinAmericaMultiplyLevel1Icon_svg.ts",
+    "multiplyLevel2": "images/latinAmerica/latinAmericaMultiplyLevel2Icon_svg.ts",
+    "multiplyLevel3": "images/latinAmerica/latinAmericaMultiplyLevel3Icon_svg.ts"
+  },
+  "oceania": {
+    "divideLevel1": "images/oceania/oceaniaDivideLevel1Icon_svg.ts",
+    "divideLevel2": "images/oceania/oceaniaDivideLevel2Icon_svg.ts",
+    "divideLevel3": "images/asia/asiaDivideLevel3Icon_svg.ts",
+    "factorLevel1": "images/asia/asiaFactorLevel1Icon_svg.ts",
+    "factorLevel2": "images/oceania/oceaniaFactorLevel2Icon_svg.ts",
+    "factorLevel3": "images/asia/asiaFactorLevel3Icon_svg.ts",
+    "multiplyLevel1": "images/oceania/oceaniaMultiplyLevel1Icon_svg.ts",
+    "multiplyLevel2": "images/oceania/oceaniaMultiplyLevel2Icon_svg.ts",
+    "multiplyLevel3": "images/asia/asiaMultiplyLevel3Icon_svg.ts"
+  }
+}

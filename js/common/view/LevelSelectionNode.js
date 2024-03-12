@@ -11,7 +11,7 @@ import merge from '../../../../phet-core/js/merge.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import TimerToggleButton from '../../../../scenery-phet/js/buttons/TimerToggleButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { AlignBox, Node, Text, VBox } from '../../../../scenery/js/imports.js';
+import { AlignBox, Node, Text, VBox, Image } from '../../../../scenery/js/imports.js';
 import LevelSelectionButtonGroup from '../../../../vegas/js/LevelSelectionButtonGroup.js';
 import ScoreDisplayStars from '../../../../vegas/js/ScoreDisplayStars.js';
 import arithmetic from '../../arithmetic.js';
@@ -19,7 +19,6 @@ import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
 import ArithmeticQueryParameters from '../ArithmeticQueryParameters.js';
-import BoxPlayerCharacters from './BoxPlayerCharacters.js';
 
 // constants
 const CHOOSE_LEVEL_TITLE_FONT = new PhetFont( { size: 24 } );
@@ -36,15 +35,15 @@ class LevelSelectionNode extends Node {
    * @param {string} titleString - Title string for given screen.
    * @param {Function} callback - Callback function call after pressing button.
    * @param {Bounds2} layoutBounds - Bounds of screen on which this will appear, used for layout
+   * @param {Array<LocalizedImageProperty>} imageProperties - localized images
    * @param {Object} [options]
    */
-  constructor( model, titleString, callback, layoutBounds, options ) {
+  constructor( model, titleString, callback, layoutBounds, imageProperties, options ) {
     super();
 
     // Default options
     options = merge( {
-      buttonBaseColor: 'white',
-      iconSet: 'multiply' // valid values are 'multiply', 'factor', and 'divide'
+      buttonBaseColor: 'white'
     }, options );
 
     // add title
@@ -58,16 +57,15 @@ class LevelSelectionNode extends Node {
       font: CHOOSE_LEVEL_TITLE_FONT,
       maxWidth: TEXT_MAX_WIDTH
     } );
-    const boxPlayerCharacters = new BoxPlayerCharacters( model );
 
     // icon sets, used to place on the buttons
-    const iconSets = boxPlayerCharacters.boxPlayerNodes;
+    const iconSets = imageProperties.map( imageProperty => new Image( imageProperty ) );
 
     // add select level buttons
-    assert && assert( model.levelModels.length === iconSets[ options.iconSet ].length, 'Number of icons doesn\'t match number of levels' );
+    assert && assert( model.levelModels.length === iconSets.length, 'Number of icons doesn\'t match number of levels' );
     const levelSelectButtons = model.levelModels.map( ( level, levelIndex ) => {
       return {
-        icon: iconSets[ options.iconSet ][ levelIndex ],
+        icon: iconSets[ levelIndex ],
         scoreProperty: model.levelModels[ levelIndex ].displayScoreProperty,
         options: {
           baseColor: options.buttonBaseColor,

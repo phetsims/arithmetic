@@ -21,10 +21,9 @@ import FactorView from './view/FactorView.js';
 class FactorScreen extends Screen {
 
   /**
-   * @param { PreferencesModel } preferencesModel
    * @param {Object} [options]
    */
-  constructor( preferencesModel, options ) {
+  constructor( options ) {
 
     options = merge( {
       name: ArithmeticStrings.factorStringProperty,
@@ -37,7 +36,7 @@ class FactorScreen extends Screen {
     }, options );
 
     super(
-      () => new FactorModel( preferencesModel, options.tandem.createTandem( 'model' ) ),
+      () => new FactorModel( options.tandem.createTandem( 'model' ) ),
       model => new FactorView( model ),
       options
     );

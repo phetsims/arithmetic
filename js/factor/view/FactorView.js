@@ -7,6 +7,7 @@
  */
 
 import arithmetic from '../../arithmetic.js';
+import ArithmeticImages from '../../ArithmeticImages.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticView from '../../common/view/ArithmeticView.js';
 import FactorEquationNode from './FactorEquationNode.js';
@@ -27,11 +28,11 @@ class FactorView extends ArithmeticView {
         model.problemModel.multiplierProperty,
         model.problemModel.productProperty
       ),
+      [ ArithmeticImages.factorLevel1ImageProperty, ArithmeticImages.factorLevel2ImageProperty, ArithmeticImages.factorLevel3ImageProperty ],
       {
         showKeypad: false,
         titleString: ArithmeticStrings.factorStringProperty,
-        levelSelectButtonColor: '#FFC266',
-        levelSelectIconSet: 'factor'
+        levelSelectButtonColor: '#FFC266'
       }
     );
   }

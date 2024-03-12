@@ -7,6 +7,7 @@
  */
 
 import arithmetic from '../../arithmetic.js';
+import ArithmeticImages from '../../ArithmeticImages.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticView from '../../common/view/ArithmeticView.js';
 import MultiplyEquationNode from './MultiplyEquationNode.js';
@@ -32,10 +33,10 @@ class MultiplyView extends ArithmeticView {
         model.problemModel.multiplierProperty,
         model.inputProperty
       ),
+      [ ArithmeticImages.multiplyLevel1ImageProperty, ArithmeticImages.multiplyLevel2ImageProperty, ArithmeticImages.multiplyLevel3ImageProperty ],
       {
         titleString: ArithmeticStrings.multiplyStringProperty,
-        levelSelectButtonColor: '#D8F58A',
-        levelSelectIconSet: 'multiply'
+        levelSelectButtonColor: '#D8F58A'
       }
     );
   }

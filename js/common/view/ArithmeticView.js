@@ -27,9 +27,10 @@ class ArithmeticView extends ScreenView {
    * @param {ArithmeticModel} model - Main model for screen.
    * @param {Node} multiplicationTableNode - Multiplication table node for given screen.
    * @param {Node} equationNode - Equation node for given screen.
+   * @param {Array<LocalizedImageProperty>} imageProperties - localized images
    * @param {Object} [options] - Configuration and position options, see usage in code for details.
    */
-  constructor( model, multiplicationTableNode, equationNode, options ) {
+  constructor( model, multiplicationTableNode, equationNode, imageProperties, options ) {
 
     // A PhET wide decision was made to not update custom layout bounds even if they do not match the
     // default layout bounds in ScreenView. Do not change these bounds as changes could break or disturb
@@ -40,8 +41,7 @@ class ArithmeticView extends ScreenView {
     options = merge( {
       titleString: '',
       showKeypad: true,
-      levelSelectButtonColor: 'white',
-      levelSelectIconSet: 'multiply'
+      levelSelectButtonColor: 'white'
     }, options );
 
     // create and add the node that allows the user to select the game level
@@ -50,11 +50,11 @@ class ArithmeticView extends ScreenView {
       options.titleString,
       level => { model.setLevel( level ); },
       this.layoutBounds,
+      imageProperties,
       {
         centerX: this.layoutBounds.centerX,
         centerY: this.layoutBounds.centerY,
-        buttonBaseColor: options.levelSelectButtonColor,
-        iconSet: options.levelSelectIconSet
+        buttonBaseColor: options.levelSelectButtonColor
       }
     );
     this.addChild( levelSelectionNode );
