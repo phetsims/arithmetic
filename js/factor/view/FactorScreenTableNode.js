@@ -7,7 +7,7 @@
  * @author John Blanco
  */
 
-import { animatedPanZoomSingleton, Image, Rectangle } from '../../../../scenery/js/imports.js';
+import { Image } from '../../../../scenery/js/imports.js';
 import largePointingHand_png from '../../../images/largePointingHand_png.js';
 import smallPointingHand_png from '../../../images/smallPointingHand_png.js';
 import arithmetic from '../../arithmetic.js';
@@ -38,17 +38,6 @@ class FactorScreenTableNode extends MultiplicationTableNode {
     // created, so was moved here.
     this.cellPointer = new Image( smallPointingHand_png, { pickable: false } ); // @private
     this.addChild( this.cellPointer );
-
-    // Invisible rectangle placed around the cellPointer to encompass the larger bounds of the activeCell, rather than
-    // the smaller bounds of the image cellPointer hand. This ensures smoother movement of the screen when zoomed in.
-    const panToNodeRectangle = new Rectangle( { rectBounds: this.cellPointer.bounds.copy() } );
-    this.addChild( panToNodeRectangle );
-
-    // Listener ensures the cellPointer remains in the visible frame when zoomed in by tracking the panToNodeRectangle.
-    // Don't panToCenter since that is too much movement.
-    const animateToCellPointerListener = visible => {
-      visible && animatedPanZoomSingleton.listener.panToNode( panToNodeRectangle, false );
-    };
 
     // variables used to track cell interaction
     this.cellListeners = []; // @private
@@ -88,14 +77,9 @@ class FactorScreenTableNode extends MultiplicationTableNode {
                     if ( Math.abs( this.cellPointer.height - cell.height * 0.7 ) > 0.01 ) {
                       this.cellPointer.setScaleMagnitude( 1 );
                       this.cellPointer.setScaleMagnitude( cell.height * 0.7 / this.cellPointer.height );
-
-                      // Must link listener here since the scale sets the cellPointer's bounds necessary for panToNode.
-                      !this.cellPointer.visibleProperty.hasListener( animateToCellPointerListener ) &&
-                      this.cellPointer.visibleProperty.link( animateToCellPointerListener );
                     }
                     this.cellPointer.centerX = cell.centerX;
                     this.cellPointer.centerY = cell.centerY;
-                    panToNodeRectangle.setRectBounds( cell.bounds );
                     this.activeCell = cell;
                   }
                   else {
