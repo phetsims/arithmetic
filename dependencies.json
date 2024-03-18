@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.0.37 Mon Mar 11 2024 09:53:07 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "68e81361e84bbab0a0345909b0f105f80a8cfce8",
+    "sha": "676ccb7d0bad170f6ba65c959fd7666d6067b469",
     "branch": "1.0"
   },
   "assert": {
@@ -37,7 +37,7 @@
     "branch": "HEAD"
   },
   "phetcommon": {
-    "sha": "774f6975fe3b5746d64dd6f47e2f9bb5ba66d996",
+    "sha": "0f35dbad7f1c4fe2add26369d6a6cb88572b4267",
     "branch": "HEAD"
   },
   "phetmarks": {
