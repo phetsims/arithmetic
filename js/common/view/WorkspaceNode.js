@@ -112,7 +112,7 @@ class WorkspaceNode extends Node {
       ArithmeticGlobals.timerEnabledProperty,
       () => {
         model.refreshLevel();
-        keypad && keypad.setClearOnNextKeyPress( true );
+        keypad && keypad.clear();
       },
       {
         title: options.scoreboardTitle,
