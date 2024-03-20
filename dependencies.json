@@ -1,8 +1,8 @@
 {
-  "comment": "# arithmetic 1.1.0-dev.5 Fri Mar 15 2024 10:50:37 GMT-0600 (Mountain Daylight Saving Time)",
+  "comment": "# arithmetic 1.2.0-rc.0 Wed Mar 20 2024 15:57:56 GMT-0600 (Mountain Daylight Saving Time)",
   "arithmetic": {
-    "sha": "178a7d2436288511b38d91fe517acc0b3e4c4d74",
-    "branch": "main"
+    "sha": "80a01cc5613d5298872936c126a4738445e447cc",
+    "branch": "1.2"
   },
   "assert": {
     "sha": "dd61947e1ba2c0655a242bebad9b887b397b01dd",
@@ -17,7 +17,7 @@
     "branch": "main"
   },
   "chipper": {
-    "sha": "49365d759571523891e8143e8aa5811c93dbd3db",
+    "sha": "c3472f0b5f256fedfbfe5d9385aa2e3685b12007",
     "branch": "main"
   },
   "dot": {
@@ -25,7 +25,7 @@
     "branch": "main"
   },
   "joist": {
-    "sha": "ba28dcc7e2b110c80f47a4de0498c8caa2333c39",
+    "sha": "bb641a35f75e180c2ee8e4bc8bd829aea22ac8d8",
     "branch": "main"
   },
   "kite": {
@@ -33,7 +33,7 @@
     "branch": "main"
   },
   "perennial-alias": {
-    "sha": "779b4eeca3825efe9ae9c8e2078b7c385ae3f64e",
+    "sha": "40e46f2887b90a018878663c79d4fe745432885e",
     "branch": "main"
   },
   "phet-core": {
@@ -41,23 +41,23 @@
     "branch": "main"
   },
   "phet-io": {
-    "sha": "3e59e1effe8d1646cf92ca39835487aa1a01098f",
+    "sha": "c44d7ca1faa4e7c7f3aa86a58e67d50559c1841e",
     "branch": "main"
   },
   "phet-io-sim-specific": {
-    "sha": "c5e07964d471af5ae806aff44c22e005354ea563",
+    "sha": "b5fcd8734f72bf1c65a574274a9607b0be60b007",
     "branch": "main"
   },
   "phet-io-wrappers": {
-    "sha": "a374bab9fd0604c3d3d324e329ac7f815a9b3022",
+    "sha": "ab1e7da471bce5504f57cef6edb27f66e191b472",
     "branch": "main"
   },
   "phetcommon": {
-    "sha": "92535c7f8a9739a52821269939d4b39d4e2d8e2d",
+    "sha": "6ff4ca4f129934c43f7c88c5348532461b059358",
     "branch": "main"
   },
   "phetmarks": {
-    "sha": "24d75ba3359b4e9af1a33085c9688fb877d54814",
+    "sha": "4560e0091554bc747b95152f376b856da91ca073",
     "branch": "main"
   },
   "query-string-machine": {
@@ -69,7 +69,7 @@
     "branch": "main"
   },
   "scenery-phet": {
-    "sha": "a855464a49c316e505d8eb571ba0e978f46e50c1",
+    "sha": "2bbac1b08b913167b39a314b06b3dc2635cba4bf",
     "branch": "main"
   },
   "sherpa": {
