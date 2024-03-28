@@ -1,7 +1,7 @@
 {
-  "comment": "# arithmetic 1.2.0-rc.1 Wed Mar 20 2024 15:59:34 GMT-0600 (Mountain Daylight Saving Time)",
+  "comment": "# arithmetic 1.2.0-rc.1 Thu Mar 28 2024 15:36:14 GMT-0600 (Mountain Daylight Saving Time)",
   "arithmetic": {
-    "sha": "dc5c5ef6bdb8d694e1f724747bbd65acead49b04",
+    "sha": "6a79d0e9a2c97d6ac55e914c0475909d04109fa3",
     "branch": "1.2"
   },
   "assert": {
@@ -65,8 +65,8 @@
     "branch": "HEAD"
   },
   "scenery": {
-    "sha": "131daef9d8f0aa1fb70370ee1fedbd5cc8d873b6",
-    "branch": "HEAD"
+    "sha": "9ed475826d161aa5150b4a6bb5afbdccb5cc1346",
+    "branch": "arithmetic-1.2"
   },
   "scenery-phet": {
     "sha": "2bbac1b08b913167b39a314b06b3dc2635cba4bf",
