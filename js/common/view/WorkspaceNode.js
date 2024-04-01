@@ -103,7 +103,7 @@ class WorkspaceNode extends Node {
      * @type {Keypad|null}
      */
     let keypad = null;
-    
+
     // add control panel
     const scoreboardNode = new ScoreboardNode(
       model.levelNumberProperty,
@@ -254,7 +254,11 @@ class WorkspaceNode extends Node {
         model.stateProperty.set( GameState.LEVEL_COMPLETED );
         model.returnToLevelSelectScreen();
       },
-      controlPanelVBox )
+      controlPanelVBox,
+      {
+        minWidth: controlPanelWidth,
+        maxWidth: controlPanelWidth
+      } )
     );
   }
 }
