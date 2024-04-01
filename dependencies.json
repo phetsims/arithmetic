@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.2.0-rc.1 Mon Apr 01 2024 12:55:41 GMT-0400 (Eastern Daylight Time)",
   "arithmetic": {
-    "sha": "4283eb478bdee3baa7c4abe42c5546ed479c39c2",
+    "sha": "a93ff255574ccf433dc77efb7765d3bb84f9b6e5",
     "branch": "1.2"
   },
   "assert": {
@@ -53,7 +53,7 @@
     "branch": "HEAD"
   },
   "phetcommon": {
-    "sha": "6ff4ca4f129934c43f7c88c5348532461b059358",
+    "sha": "3fb55ac3e228b1581ac1fcd3bce00a9f85e6a3d0",
     "branch": "HEAD"
   },
   "phetmarks": {
