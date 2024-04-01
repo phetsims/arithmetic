@@ -22,10 +22,12 @@ class LevelCompletedNodeWrapper extends Node {
    * @param {Property} timerEnabledProperty - Timer enabled flag.
    * @param {Function} continueCallback - Callback listener for continue button.
    * @param {VBox} controlPanelVBox - VBox that holds the ScoreBoardNode, LevelCompletedNodeWrapper, and number keypad.
+   * @param options
    */
   constructor( levelModels, levelNumberProperty, stateProperty, timerEnabledProperty,
-               continueCallback, controlPanelVBox ) {
-    super();
+               continueCallback, controlPanelVBox, options ) {
+
+    super( options );
 
     // Show this node only when the level has been completed.
     stateProperty.lazyLink( state => {
@@ -48,7 +50,8 @@ class LevelCompletedNodeWrapper extends Node {
             starDiameter: 45,
             xMargin: 8,
             cornerRadius: 10,
-            scale: 0.65
+            scale: 0.65,
+            contentMaxWidth: 225
           }
         );
         this.addChild( levelCompletedNode );
