@@ -17,7 +17,7 @@ import Vector2 from '../../../../../dot/js/Vector2.js';
 import ScreenView from '../../../../../joist/js/ScreenView.js';
 import MathSymbols from '../../../../../scenery-phet/js/MathSymbols.js';
 import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
-import { Node, Rectangle, Text } from '../../../../../scenery/js/imports.js';
+import { Node, Text } from '../../../../../scenery/js/imports.js';
 import Animation from '../../../../../twixt/js/Animation.js';
 import Easing from '../../../../../twixt/js/Easing.js';
 import arithmetic from '../../../arithmetic.js';
@@ -51,13 +51,6 @@ class MultiplicationTableNode extends Node {
 
     // @private - three-dimensional array of the cells, indexed by [levelNumber][multiplicand][multiplier]
     this.cells = new Array( levelModels.length );
-
-    // add stroke for all multiplication table views
-    const backgroundRect = new Rectangle( 0, 0, 0, 0, {
-      fill: 'white',
-      cursor: 'pointer' // this is done so that the cursor doesn't change when moving between cells
-    } );
-    this.addChild( backgroundRect );
 
     // create view of multiplication table for each of the levels
     levelModels.forEach( ( level, levelIndex ) => {
@@ -137,10 +130,6 @@ class MultiplicationTableNode extends Node {
       // save view
       this.viewForLevel[ levelIndex ] = levelRootNode;
     } );
-
-    // set background size
-    backgroundRect.setRectWidth( this.bounds.width );
-    backgroundRect.setRectHeight( this.bounds.height );
 
     levelNumberProperty.link( ( levelNumberCurrent, levelNumberPrev ) => {
 
