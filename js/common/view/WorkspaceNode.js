@@ -192,6 +192,7 @@ class WorkspaceNode extends Node {
             model.fillEquation();
           }
           else if ( model.stateProperty.get() === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK ) {
+            keypad.clear();
             model.inputProperty.reset();
             model.retryProblem();
           }
@@ -233,6 +234,7 @@ class WorkspaceNode extends Node {
       baseColor: BUTTON_BASE_COLOR,
       maxWidth: controlPanelWidth,
       listener: () => {
+        keypad && keypad.clear();
         model.inputProperty.reset();
         model.retryProblem();
       }
