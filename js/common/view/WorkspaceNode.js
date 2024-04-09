@@ -160,9 +160,8 @@ class WorkspaceNode extends Node {
           keypad.clear();
         }
 
-        // Only allow the user to input digits when expecting them.  We use 'pickable' here instead of 'enabled' so that
-        // we don't gray out the keypad, which might visually draw attention to it.
-        keypad.pickable = newGameState === GameState.AWAITING_USER_INPUT ||
+        // Only allow the user to input digits when expecting them.
+        keypad.enabled = newGameState === GameState.AWAITING_USER_INPUT ||
                           newGameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK;
 
         // The keypad should be invisible once the level is completed, and should stay invisible on transition to the
