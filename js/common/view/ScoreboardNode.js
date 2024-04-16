@@ -96,6 +96,8 @@ class ScoreboardNode extends Panel {
         [
           currentElapsedTimeProperty,
           VegasStrings.label.timeStringProperty,
+
+          // used by GameTimer.formatTime
           VegasStrings.pattern[ '0hours' ][ '1minutes' ][ '2secondsStringProperty' ],
           VegasStrings.pattern[ '0minutes' ][ '1secondsStringProperty' ]
         ],
