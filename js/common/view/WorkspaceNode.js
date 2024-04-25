@@ -140,9 +140,7 @@ class WorkspaceNode extends Node {
         accumulatorOptions: {
           maxDigits: 3
         },
-        keyboardListenerOptions: {
-          global: true
-        }
+        useGlobalKeyboardListener: true
       } );
 
       keypad.stringProperty.link( input => { model.inputProperty.set( input ); } );
@@ -179,11 +177,10 @@ class WorkspaceNode extends Node {
         listener: () => { model.fillEquation(); }
       } );
 
-      const submitFromKeypadListener = new KeyboardListener( {
+      KeyboardListener.createGlobal( keypad, {
         keys: [ 'space', 'enter' ],
-        listenerFireTrigger: 'up',
-        global: true,
-        callback: () => {
+        fireOnDown: false,
+        fire: () => {
           if ( keypad.stringProperty.value === '' ) {
             return;
           }
@@ -197,8 +194,6 @@ class WorkspaceNode extends Node {
           }
         }
       } );
-
-      keypad.addInputListener( submitFromKeypadListener );
 
       controlPanelVBox.addChild( keypad );
       controlPanelVBox.addChild( checkButton );
