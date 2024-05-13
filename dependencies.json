@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.2.0 Fri Apr 12 2024 15:31:02 GMT-0600 (Mountain Daylight Saving Time)",
   "arithmetic": {
-    "sha": "f409345e4fb6a89bd77203851b79296f034a05fb",
+    "sha": "0d7961ec03993b80699ac1e9770501106fdfa98b",
     "branch": "1.2"
   },
   "assert": {
@@ -45,7 +45,7 @@
     "branch": "HEAD"
   },
   "phet-io-sim-specific": {
-    "sha": "b5fcd8734f72bf1c65a574274a9607b0be60b007",
+    "sha": "d6272883ee9cc3aee5d764e216b39d7eaf8b46be",
     "branch": "HEAD"
   },
   "phet-io-wrappers": {
