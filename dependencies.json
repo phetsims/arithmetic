@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.2.0 Fri Apr 12 2024 15:31:02 GMT-0600 (Mountain Daylight Saving Time)",
   "arithmetic": {
-    "sha": "dc51c9b51b5ce14b80172241c788f00430753795",
+    "sha": "85eca0d8fcb122f60c138b5f0c10baa7c012d277",
     "branch": "1.2"
   },
   "assert": {
@@ -17,7 +17,7 @@
     "branch": "HEAD"
   },
   "chipper": {
-    "sha": "1609228faf7d5302b7c1bf43156bd4d9aaaf4d39",
+    "sha": "82ab2ef571e9ca4383dfbee98fc1b61f92a01631",
     "branch": "HEAD"
   },
   "dot": {
