@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.2.2-rc.1 Tue Jul 09 2024 17:10:07 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "94bdde9b4131fb8106197e7ed96cd5892360c1ac",
+    "sha": "0b28267685287bc194b026331a2113618748e384",
     "branch": "1.2"
   },
   "assert": {
@@ -65,7 +65,7 @@
     "branch": "HEAD"
   },
   "scenery": {
-    "sha": "16898781832bd2bb2d38cf4179ed9c51f04ef0f7",
+    "sha": "8b5732e020cc3499d76c54d15277232529f3206d",
     "branch": "HEAD"
   },
   "scenery-phet": {
