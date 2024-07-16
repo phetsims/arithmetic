@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.2.2 Fri Jul 12 2024 15:39:57 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "c304a202e3de0c32ddd96773b1c59a7479099a50",
+    "sha": "2f65587dd35e0a39b4846177720cd9fa9cb1cd63",
     "branch": "1.2"
   },
   "assert": {
@@ -25,7 +25,7 @@
     "branch": "HEAD"
   },
   "joist": {
-    "sha": "e501a032d8e052d5426e1d1b777edc24eddabfef",
+    "sha": "8531acf381f082a1f294658815aa097e4bae8c55",
     "branch": "HEAD"
   },
   "kite": {
