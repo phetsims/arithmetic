@@ -8,13 +8,14 @@
  * @author John Blanco
  */
 
+import Property from '../../../../axon/js/Property.js';
 import Dimension2 from '../../../../dot/js/Dimension2.js';
 import merge from '../../../../phet-core/js/merge.js';
 import BackButton from '../../../../scenery-phet/js/buttons/BackButton.js';
 import Keypad from '../../../../scenery-phet/js/keypad/Keypad.js';
 import PhetColorScheme from '../../../../scenery-phet/js/PhetColorScheme.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { KeyboardListener, Node, VBox } from '../../../../scenery/js/imports.js';
+import { HotkeyData, KeyboardListener, Node, VBox } from '../../../../scenery/js/imports.js';
 import TextPushButton from '../../../../sun/js/buttons/TextPushButton.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
@@ -160,7 +161,7 @@ class WorkspaceNode extends Node {
 
         // Only allow the user to input digits when expecting them.
         keypad.enabled = newGameState === GameState.AWAITING_USER_INPUT ||
-                          newGameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK;
+                         newGameState === GameState.DISPLAYING_INCORRECT_ANSWER_FEEDBACK;
 
         // The keypad should be invisible once the level is completed, and should stay invisible on transition to the
         // SELECTING_LEVEL state.
@@ -178,7 +179,7 @@ class WorkspaceNode extends Node {
       } );
 
       KeyboardListener.createGlobal( keypad, {
-        keys: [ 'space', 'enter' ],
+        keyStringProperties: WorkspaceNode.SUBMIT_HOTKEY_DATA.keyStringProperties,
         fireOnDown: false,
         fire: () => {
           if ( keypad.stringProperty.value === '' ) {
@@ -257,6 +258,13 @@ class WorkspaceNode extends Node {
       } )
     );
   }
+
+  static SUBMIT_HOTKEY_DATA = new HotkeyData( {
+    keyStringProperties: [ new Property( 'enter' ), new Property( 'space' ) ],
+    binderName: 'Submit answer',
+    repoName: arithmetic.name,
+    global: true
+  } );
 }
 
 arithmetic.register( 'WorkspaceNode', WorkspaceNode );
