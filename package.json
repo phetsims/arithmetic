@@ -59,7 +59,7 @@
         ],
         "parserOptions": {
           "project": [
-            "../arithmetic/tsconfig.json"
+            "../chipper/tsconfig/eslint-all/tsconfig.json"
           ]
         }
       }
