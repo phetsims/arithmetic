@@ -5,7 +5,6 @@
  */
 /* eslint-disable */
 import LocalizedImageProperty from '../../joist/js/i18n/LocalizedImageProperty.js';
-import arithmetic from './arithmetic.js';
 import africaDivideLevel1Icon_svg from '../images/africa/africaDivideLevel1Icon_svg.js';
 import africaDivideLevel2Icon_svg from '../images/africa/africaDivideLevel2Icon_svg.js';
 import africaDivideLevel3Icon_svg from '../images/africa/africaDivideLevel3Icon_svg.js';
@@ -51,6 +50,7 @@ import usaFactorLevel3Icon_svg from '../images/usa/usaFactorLevel3Icon_svg.js';
 import usaMultiplyLevel1Icon_svg from '../images/usa/usaMultiplyLevel1Icon_svg.js';
 import usaMultiplyLevel2Icon_svg from '../images/usa/usaMultiplyLevel2Icon_svg.js';
 import usaMultiplyLevel3Icon_svg from '../images/usa/usaMultiplyLevel3Icon_svg.js';
+import arithmetic from './arithmetic.js';
 
 const ArithmeticImages = {
   divideLevel1ImageProperty: new LocalizedImageProperty( 'divideLevel1', {
