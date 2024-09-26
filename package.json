@@ -49,8 +49,5 @@
       "ARITHMETIC/factor",
       "ARITHMETIC/divide"
     ]
-  },
-  "eslintConfig": {
-    "extends": "../chipper/eslint/sim_eslintrc.js"
   }
 }
