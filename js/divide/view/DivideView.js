@@ -7,8 +7,8 @@
  */
 
 import arithmetic from '../../arithmetic.js';
-import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticImages from '../../ArithmeticImages.js';
+import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticView from '../../common/view/ArithmeticView.js';
 import DivideEquationNode from './DivideEquationNode.js';
 import DivideScreenTableNode from './DivideScreenTableNode.js';

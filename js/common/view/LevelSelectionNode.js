@@ -11,7 +11,7 @@ import merge from '../../../../phet-core/js/merge.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import TimerToggleButton from '../../../../scenery-phet/js/buttons/TimerToggleButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { AlignBox, Node, Text, VBox, Image } from '../../../../scenery/js/imports.js';
+import { AlignBox, Image, Node, Text, VBox } from '../../../../scenery/js/imports.js';
 import LevelSelectionButtonGroup from '../../../../vegas/js/LevelSelectionButtonGroup.js';
 import ScoreDisplayStars from '../../../../vegas/js/ScoreDisplayStars.js';
 import arithmetic from '../../arithmetic.js';
