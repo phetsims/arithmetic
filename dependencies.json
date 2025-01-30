@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.2.3 Wed Jul 17 2024 16:31:49 GMT-0400 (Eastern Daylight Time)",
   "arithmetic": {
-    "sha": "a9d03947fef8a7ab3fb696c9e5c7fa1dae531468",
+    "sha": "5b3f66d1f1c4053861a4638961464e8accf07597",
     "branch": "1.2"
   },
   "assert": {
@@ -17,7 +17,7 @@
     "branch": "HEAD"
   },
   "chipper": {
-    "sha": "878f2b9246989fdcdf96992649fd37401397fbfd",
+    "sha": "5f314482d5256a4e21b91a580d9312d245e39dd1",
     "branch": "HEAD"
   },
   "dot": {
@@ -25,7 +25,7 @@
     "branch": "HEAD"
   },
   "joist": {
-    "sha": "8531acf381f082a1f294658815aa097e4bae8c55",
+    "sha": "381e9169bbe74150d014ac1bd7c68e319ad92a85",
     "branch": "HEAD"
   },
   "kite": {
