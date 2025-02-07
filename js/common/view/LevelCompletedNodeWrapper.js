@@ -6,7 +6,8 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
-import { Color, Node } from '../../../../scenery/js/imports.js';
+import Node from '../../../../scenery/js/nodes/Node.js';
+import Color from '../../../../scenery/js/util/Color.js';
 import LevelCompletedNode from '../../../../vegas/js/LevelCompletedNode.js';
 import arithmetic from '../../arithmetic.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';

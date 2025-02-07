@@ -15,7 +15,8 @@
 
 import merge from '../../../../../phet-core/js/merge.js';
 import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
-import { Rectangle, Text } from '../../../../../scenery/js/imports.js';
+import Rectangle from '../../../../../scenery/js/nodes/Rectangle.js';
+import Text from '../../../../../scenery/js/nodes/Text.js';
 import arithmetic from '../../../arithmetic.js';
 
 // constants
