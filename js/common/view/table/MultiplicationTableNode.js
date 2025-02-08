@@ -1,4 +1,4 @@
-// Copyright 2014-2024, University of Colorado Boulder
+// Copyright 2014-2025, University of Colorado Boulder
 
 /**
  * A Scenery node that represents a set of multiplication tables.  It contains a table for each of the levels in the
