@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.2.4 Fri Feb 07 2025 17:39:14 GMT-0700 (Mountain Standard Time)",
   "arithmetic": {
-    "sha": "6de5d3b58b6dd76645832eb8520103be8647bbf5",
+    "sha": "58a157b36bb4e800249d99ea9544f761fa3f9f44",
     "branch": "1.2"
   },
   "assert": {
@@ -17,7 +17,7 @@
     "branch": "HEAD"
   },
   "chipper": {
-    "sha": "5f314482d5256a4e21b91a580d9312d245e39dd1",
+    "sha": "23110ae825fe8218a5b4043f75c02b437898908d",
     "branch": "HEAD"
   },
   "dot": {
