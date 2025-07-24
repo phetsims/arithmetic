@@ -8,7 +8,6 @@
  * @author John Blanco
  */
 
-import Property from '../../../../axon/js/Property.js';
 import Dimension2 from '../../../../dot/js/Dimension2.js';
 import merge from '../../../../phet-core/js/merge.js';
 import BackButton from '../../../../scenery-phet/js/buttons/BackButton.js';
@@ -263,7 +262,7 @@ class WorkspaceNode extends Node {
   }
 
   static SUBMIT_HOTKEY_DATA = new HotkeyData( {
-    keyStringProperties: [ new Property( 'enter' ), new Property( 'space' ) ],
+    keys: [ 'enter', 'space' ],
     binderName: 'Submit answer',
     repoName: arithmetic.name,
     global: true
