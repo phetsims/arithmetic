@@ -61,7 +61,7 @@ class ArithmeticModel {
     this.activeInputProperty = new Property( null );
 
     // @public - current game state
-    this.stateProperty = new Property( GameState.SELECTING_LEVEL );
+    this.stateProperty = new Property( GameState.SELECTING_LEVEL, { disableListenerLimit: true } );
 
     // @public - emitter that emits an even when a refresh occurs
     this.refreshEmitter = new Emitter();
