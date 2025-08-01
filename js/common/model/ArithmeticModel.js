@@ -1,4 +1,4 @@
-// Copyright 2014-2024, University of Colorado Boulder
+// Copyright 2014-2025, University of Colorado Boulder
 
 /**
  * Base type for models in the 'Arithmetic' simulation.  Each of the three screens - multiplication, factoring, and
