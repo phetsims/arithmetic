@@ -71,11 +71,11 @@ class LevelSelectionNode extends Node {
       return {
         icon: iconSets[ levelIndex ],
         scoreProperty: model.levelModels[ levelIndex ].displayScoreProperty,
+        buttonListener: () => {
+          callback( levelIndex );
+        },
         options: {
           baseColor: options.buttonBaseColor,
-          listener: () => {
-            callback( levelIndex );
-          },
           createScoreDisplay: scoreProperty => new ScoreDisplayStars( scoreProperty, {
             numberOfStars: ArithmeticConstants.NUM_STARS,
             perfectScore: level.perfectScore
