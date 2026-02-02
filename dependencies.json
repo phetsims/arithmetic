@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.2.5 Tue Jun 10 2025 10:51:51 GMT-0600 (Mountain Daylight Time)",
   "arithmetic": {
-    "sha": "9f1a962c507f750cd03e9c544fc023149107874b",
+    "sha": "9c9a7bde06a41dfa8f728bdc7c293ee109355dcf",
     "branch": "1.2"
   },
   "assert": {
@@ -25,7 +25,7 @@
     "branch": "HEAD"
   },
   "joist": {
-    "sha": "338084ef01a906f7c8edfbbfbb6494ac11894c5b",
+    "sha": "9e2f579b2488ac0317921127a449854f156c046e",
     "branch": "HEAD"
   },
   "kite": {
