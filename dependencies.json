@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.2.6 Fri Feb 06 2026 13:31:49 GMT-0500 (Eastern Standard Time)",
   "arithmetic": {
-    "sha": "1d922adf192d650327603904feb83e64a2039941",
+    "sha": "b1ba262e0d79211a8a0ee3dce31d4fa5fb582011",
     "branch": "1.2"
   },
   "assert": {
@@ -25,7 +25,7 @@
     "branch": "HEAD"
   },
   "joist": {
-    "sha": "9e2f579b2488ac0317921127a449854f156c046e",
+    "sha": "48b5c3a6661de09b95b2a8dcc0f4a7ac0622ad98",
     "branch": "HEAD"
   },
   "kite": {
