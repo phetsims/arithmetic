@@ -1,7 +1,7 @@
 {
   "comment": "# arithmetic 1.2.6 Fri Feb 06 2026 13:31:49 GMT-0500 (Eastern Standard Time)",
   "arithmetic": {
-    "sha": "0f71523f47235c0e76acf27eb60d875b8c277bc0",
+    "sha": "8f2b4084deef7cb40b49c272581000ccf5ffb712",
     "branch": "1.2"
   },
   "assert": {
@@ -33,7 +33,7 @@
     "branch": "HEAD"
   },
   "perennial-alias": {
-    "sha": "40e46f2887b90a018878663c79d4fe745432885e",
+    "sha": "844548fe4b00364889ae6f3f3263d52a08a4eb45",
     "branch": "HEAD"
   },
   "phet-core": {
