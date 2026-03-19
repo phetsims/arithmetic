@@ -15,7 +15,6 @@ import merge from '../../../../phet-core/js/merge.js';
 import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import StringIO from '../../../../tandem/js/types/StringIO.js';
-import arithmetic from '../../arithmetic.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
 import ArithmeticQueryParameters from '../ArithmeticQueryParameters.js';
@@ -352,7 +351,5 @@ class ArithmeticModel {
     };
   }
 }
-
-arithmetic.register( 'ArithmeticModel', ArithmeticModel );
 
 export default ArithmeticModel;

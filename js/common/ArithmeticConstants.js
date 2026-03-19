@@ -8,7 +8,6 @@
 
 import Screen from '../../../joist/js/Screen.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
-import arithmetic from '../arithmetic.js';
 
 const ArithmeticConstants = {
   BACKGROUND_COLOR: 'rgb( 173, 202, 255 )',
@@ -24,7 +23,5 @@ const ArithmeticConstants = {
   LEVEL_3_TABLE_SIZE: 12,
   CONTROL_PANEL_VBOX_SPACING: 22 // empirically determined to match 2015 published version
 };
-
-arithmetic.register( 'ArithmeticConstants', ArithmeticConstants );
 
 export default ArithmeticConstants;

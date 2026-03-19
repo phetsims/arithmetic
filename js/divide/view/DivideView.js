@@ -6,7 +6,6 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
-import arithmetic from '../../arithmetic.js';
 import ArithmeticImages from '../../ArithmeticImages.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticView from '../../common/view/ArithmeticView.js';
@@ -40,5 +39,4 @@ class DivideView extends ArithmeticView {
   }
 }
 
-arithmetic.register( 'DivideView', DivideView );
 export default DivideView;

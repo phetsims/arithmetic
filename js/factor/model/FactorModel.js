@@ -9,7 +9,6 @@
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import soundManager from '../../../../tambo/js/soundManager.js';
-import arithmetic from '../../arithmetic.js';
 import ArithmeticModel from '../../common/model/ArithmeticModel.js';
 import GameState from '../../common/model/GameState.js';
 
@@ -125,7 +124,5 @@ class FactorModel extends ArithmeticModel {
     this.handImageVisibleProperty.reset();
   }
 }
-
-arithmetic.register( 'FactorModel', FactorModel );
 
 export default FactorModel;

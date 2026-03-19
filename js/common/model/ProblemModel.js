@@ -8,7 +8,6 @@
  */
 
 import Property from '../../../../axon/js/Property.js';
-import arithmetic from '../../arithmetic.js';
 
 class ProblemModel {
 
@@ -31,7 +30,5 @@ class ProblemModel {
     this.possiblePointsProperty.reset();
   }
 }
-
-arithmetic.register( 'ProblemModel', ProblemModel );
 
 export default ProblemModel;

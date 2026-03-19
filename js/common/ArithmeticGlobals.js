@@ -7,12 +7,9 @@
  */
 
 import Property from '../../../axon/js/Property.js';
-import arithmetic from '../arithmetic.js';
 
 const ArithmeticGlobals = {
   timerEnabledProperty: new Property( false )
 };
-
-arithmetic.register( 'ArithmeticGlobals', ArithmeticGlobals );
 
 export default ArithmeticGlobals;

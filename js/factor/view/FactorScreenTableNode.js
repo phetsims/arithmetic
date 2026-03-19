@@ -10,7 +10,6 @@
 import Image from '../../../../scenery/js/nodes/Image.js';
 import largePointingHand_png from '../../../images/largePointingHand_png.js';
 import smallPointingHand_png from '../../../images/smallPointingHand_png.js';
-import arithmetic from '../../arithmetic.js';
 import GameState from '../../common/model/GameState.js';
 import MultiplicationTableNode from '../../common/view/table/MultiplicationTableNode.js';
 import CellInteractionListener from './CellInteractionListener.js';
@@ -250,7 +249,5 @@ class FactorScreenTableNode extends MultiplicationTableNode {
     this.enableAllCells( level );
   }
 }
-
-arithmetic.register( 'FactorScreenTableNode', FactorScreenTableNode );
 
 export default FactorScreenTableNode;

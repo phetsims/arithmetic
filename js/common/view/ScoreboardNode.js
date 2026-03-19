@@ -20,7 +20,6 @@ import Text from '../../../../scenery/js/nodes/Text.js';
 import Panel from '../../../../sun/js/Panel.js';
 import GameTimer from '../../../../vegas/js/GameTimer.js';
 import VegasStrings from '../../../../vegas/js/VegasStrings.js';
-import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import GameState from '../model/GameState.js';
 
@@ -149,7 +148,5 @@ class ScoreboardNode extends Panel {
     } );
   }
 }
-
-arithmetic.register( 'ScoreboardNode', ScoreboardNode );
 
 export default ScoreboardNode;

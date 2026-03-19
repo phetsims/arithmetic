@@ -8,7 +8,6 @@
  */
 
 import soundManager from '../../../../tambo/js/soundManager.js';
-import arithmetic from '../../arithmetic.js';
 import ArithmeticModel from '../../common/model/ArithmeticModel.js';
 import GameState from '../../common/model/GameState.js';
 
@@ -87,7 +86,5 @@ class MultiplyModel extends ArithmeticModel {
     soundManager.enabled = soundState;
   }
 }
-
-arithmetic.register( 'MultiplyModel', MultiplyModel );
 
 export default MultiplyModel;

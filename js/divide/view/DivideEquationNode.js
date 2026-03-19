@@ -6,7 +6,6 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
-import arithmetic from '../../arithmetic.js';
 import GameState from '../../common/model/GameState.js';
 import EquationNode from '../../common/view/EquationNode.js';
 
@@ -69,7 +68,5 @@ class DivideEquationNode extends EquationNode {
     } );
   }
 }
-
-arithmetic.register( 'DivideEquationNode', DivideEquationNode );
 
 export default DivideEquationNode;

@@ -8,7 +8,6 @@
 
 import { QueryStringMachine } from '../../../query-string-machine/js/QueryStringMachineModule.js';
 import getGameLevelsSchema from '../../../vegas/js/getGameLevelsSchema.js';
-import arithmetic from '../arithmetic.js';
 
 const ArithmeticQueryParameters = QueryStringMachine.getAll( {
 
@@ -24,7 +23,5 @@ const ArithmeticQueryParameters = QueryStringMachine.getAll( {
 if ( phet.chipper.isProduction && !phet.chipper.isDebugBuild ) {
   ArithmeticQueryParameters.autoAnswer = false;
 }
-
-arithmetic.register( 'ArithmeticQueryParameters', ArithmeticQueryParameters );
 
 export default ArithmeticQueryParameters;

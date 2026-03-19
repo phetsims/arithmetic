@@ -7,7 +7,6 @@
  */
 
 import merge from '../../../../../phet-core/js/merge.js';
-import arithmetic from '../../../arithmetic.js';
 import AbstractCell from './AbstractCell.js';
 
 // constants
@@ -45,7 +44,5 @@ class MultiplicationTableHeaderCell extends AbstractCell {
     this.setTextFill( NORMAL_COLOR_TEXT );
   }
 }
-
-arithmetic.register( 'MultiplicationTableHeaderCell', MultiplicationTableHeaderCell );
 
 export default MultiplicationTableHeaderCell;

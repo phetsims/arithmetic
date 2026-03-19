@@ -13,7 +13,6 @@ import merge from '../../../../phet-core/js/merge.js';
 import Animation from '../../../../twixt/js/Animation.js';
 import Easing from '../../../../twixt/js/Easing.js';
 import GameAudioPlayer from '../../../../vegas/js/GameAudioPlayer.js';
-import arithmetic from '../../arithmetic.js';
 import GameState from '../model/GameState.js';
 import LevelSelectionNode from './LevelSelectionNode.js';
 import WorkspaceNode from './WorkspaceNode.js';
@@ -199,5 +198,4 @@ class ArithmeticView extends ScreenView {
   }
 }
 
-arithmetic.register( 'ArithmeticView', ArithmeticView );
 export default ArithmeticView;

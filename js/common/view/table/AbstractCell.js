@@ -17,7 +17,6 @@ import merge from '../../../../../phet-core/js/merge.js';
 import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
 import Rectangle from '../../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../../scenery/js/nodes/Text.js';
-import arithmetic from '../../../arithmetic.js';
 
 // constants
 const SMALL_FONT = new PhetFont( 17 );
@@ -156,7 +155,5 @@ function createTextNodeIfNeeded( cell ) {
   cell._textNode.centerX = cell.bounds.width / 2;
   cell.addChild( cell._textNode );
 }
-
-arithmetic.register( 'AbstractCell', AbstractCell );
 
 export default AbstractCell;

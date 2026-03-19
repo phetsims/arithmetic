@@ -8,7 +8,6 @@
 
 import Emitter from '../../../../axon/js/Emitter.js';
 import Property from '../../../../axon/js/Property.js';
-import arithmetic from '../../arithmetic.js';
 
 class FaceModel {
 
@@ -46,7 +45,5 @@ class FaceModel {
     this.isSmileProperty.reset();
   }
 }
-
-arithmetic.register( 'FaceModel', FaceModel );
 
 export default FaceModel;

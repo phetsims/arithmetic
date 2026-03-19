@@ -6,7 +6,6 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
-import arithmetic from '../../arithmetic.js';
 import GameState from '../../common/model/GameState.js';
 import MultiplicationTableNode from '../../common/view/table/MultiplicationTableNode.js';
 
@@ -66,7 +65,5 @@ class MultiplyScreenTableNode extends MultiplicationTableNode {
     } );
   }
 }
-
-arithmetic.register( 'MultiplyScreenTableNode', MultiplyScreenTableNode );
 
 export default MultiplyScreenTableNode;

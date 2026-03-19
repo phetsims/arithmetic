@@ -6,7 +6,6 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
-import arithmetic from '../../arithmetic.js';
 import ArithmeticImages from '../../ArithmeticImages.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticView from '../../common/view/ArithmeticView.js';
@@ -42,5 +41,4 @@ class MultiplyView extends ArithmeticView {
   }
 }
 
-arithmetic.register( 'MultiplyView', MultiplyView );
 export default MultiplyView;

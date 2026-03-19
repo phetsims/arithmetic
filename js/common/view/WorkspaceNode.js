@@ -269,6 +269,4 @@ class WorkspaceNode extends Node {
   } );
 }
 
-arithmetic.register( 'WorkspaceNode', WorkspaceNode );
-
 export default WorkspaceNode;

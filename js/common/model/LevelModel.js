@@ -10,7 +10,6 @@
 import Property from '../../../../axon/js/Property.js';
 import dotRandom from '../../../../dot/js/dotRandom.js';
 import GameTimer from '../../../../vegas/js/GameTimer.js';
-import arithmetic from '../../arithmetic.js';
 
 class LevelModel {
 
@@ -112,7 +111,5 @@ class LevelModel {
     };
   }
 }
-
-arithmetic.register( 'LevelModel', LevelModel );
 
 export default LevelModel;

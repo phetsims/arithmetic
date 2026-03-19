@@ -6,7 +6,6 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
-import arithmetic from '../../arithmetic.js';
 import GameState from '../../common/model/GameState.js';
 import MultiplicationTableNode from '../../common/view/table/MultiplicationTableNode.js';
 
@@ -69,7 +68,5 @@ class DivideScreenTableNode extends MultiplicationTableNode {
     }
   }
 }
-
-arithmetic.register( 'DivideScreenTableNode', DivideScreenTableNode );
 
 export default DivideScreenTableNode;

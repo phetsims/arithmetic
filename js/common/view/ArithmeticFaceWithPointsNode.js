@@ -13,7 +13,6 @@ import Utils from '../../../../dot/js/Utils.js';
 import merge from '../../../../phet-core/js/merge.js';
 import FaceWithPointsNode from '../../../../scenery-phet/js/FaceWithPointsNode.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import arithmetic from '../../arithmetic.js';
 
 // constants
 const UPDATE_PERIOD = 1 / 60 * 1000; // milliseconds, intended to match the expected frame rate
@@ -93,5 +92,4 @@ class ArithmeticFaceWithPointsNode extends FaceWithPointsNode {
   }
 }
 
-arithmetic.register( 'ArithmeticFaceWithPointsNode', ArithmeticFaceWithPointsNode );
 export default ArithmeticFaceWithPointsNode;

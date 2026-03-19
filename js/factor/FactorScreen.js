@@ -11,7 +11,6 @@ import Screen from '../../../joist/js/Screen.js';
 import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import merge from '../../../phet-core/js/merge.js';
 import Tandem from '../../../tandem/js/Tandem.js';
-import arithmetic from '../arithmetic.js';
 import ArithmeticStrings from '../ArithmeticStrings.js';
 import ArithmeticConstants from '../common/ArithmeticConstants.js';
 import FactorModel from './model/FactorModel.js';
@@ -43,5 +42,4 @@ class FactorScreen extends Screen {
   }
 }
 
-arithmetic.register( 'FactorScreen', FactorScreen );
 export default FactorScreen;

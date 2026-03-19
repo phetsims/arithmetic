@@ -12,7 +12,6 @@ import Screen from '../../../joist/js/Screen.js';
 import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import merge from '../../../phet-core/js/merge.js';
 import Tandem from '../../../tandem/js/Tandem.js';
-import arithmetic from '../arithmetic.js';
 import ArithmeticStrings from '../ArithmeticStrings.js';
 import ArithmeticConstants from '../common/ArithmeticConstants.js';
 import DivideModel from './model/DivideModel.js';
@@ -44,5 +43,4 @@ class DivideScreen extends Screen {
   }
 }
 
-arithmetic.register( 'DivideScreen', DivideScreen );
 export default DivideScreen;

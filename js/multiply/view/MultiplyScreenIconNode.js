@@ -9,7 +9,6 @@
 
 import Line from '../../../../scenery/js/nodes/Line.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
-import arithmetic from '../../arithmetic.js';
 import ArithmeticConstants from '../../common/ArithmeticConstants.js';
 
 // constants
@@ -40,7 +39,5 @@ class MultiplyScreenIconNode extends Rectangle {
     } ) );
   }
 }
-
-arithmetic.register( 'MultiplyScreenIconNode', MultiplyScreenIconNode );
 
 export default MultiplyScreenIconNode;

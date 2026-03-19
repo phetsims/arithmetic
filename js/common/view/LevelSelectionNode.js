@@ -18,7 +18,6 @@ import Node from '../../../../scenery/js/nodes/Node.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import LevelSelectionButtonGroup from '../../../../vegas/js/LevelSelectionButtonGroup.js';
 import ScoreDisplayStars from '../../../../vegas/js/ScoreDisplayStars.js';
-import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 import ArithmeticGlobals from '../ArithmeticGlobals.js';
@@ -138,7 +137,5 @@ class LevelSelectionNode extends Node {
     this.mutate( options );
   }
 }
-
-arithmetic.register( 'LevelSelectionNode', LevelSelectionNode );
 
 export default LevelSelectionNode;

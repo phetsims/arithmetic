@@ -8,7 +8,6 @@
  */
 
 import merge from '../../../../../phet-core/js/merge.js';
-import arithmetic from '../../../arithmetic.js';
 import AbstractCell from './AbstractCell.js';
 
 // constants
@@ -46,7 +45,5 @@ class MultiplicationTableBodyCell extends AbstractCell {
     this.setBackgroundFill( SELECT_COLOR );
   }
 }
-
-arithmetic.register( 'MultiplicationTableBodyCell', MultiplicationTableBodyCell );
 
 export default MultiplicationTableBodyCell;

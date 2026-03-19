@@ -21,7 +21,6 @@ import Node from '../../../../../scenery/js/nodes/Node.js';
 import Text from '../../../../../scenery/js/nodes/Text.js';
 import Animation from '../../../../../twixt/js/Animation.js';
 import Easing from '../../../../../twixt/js/Easing.js';
-import arithmetic from '../../../arithmetic.js';
 import ArithmeticConstants from '../../ArithmeticConstants.js';
 import GameState from '../../model/GameState.js';
 import MultiplicationTableBodyCell from './MultiplicationTableBodyCell.js';
@@ -299,7 +298,5 @@ class MultiplicationTableNode extends Node {
     return parentScreen.globalToLocalPoint( cell.parentToGlobalPoint( cell.center ) );
   }
 }
-
-arithmetic.register( 'MultiplicationTableNode', MultiplicationTableNode );
 
 export default MultiplicationTableNode;

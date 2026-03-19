@@ -6,7 +6,6 @@
  * @author Andrey Zelenkov (MLearner)
  */
 
-import arithmetic from '../../arithmetic.js';
 import GameState from '../../common/model/GameState.js';
 import EquationNode from '../../common/view/EquationNode.js';
 
@@ -41,7 +40,5 @@ class FactorEquationNode extends EquationNode {
     } );
   }
 }
-
-arithmetic.register( 'FactorEquationNode', FactorEquationNode );
 
 export default FactorEquationNode;

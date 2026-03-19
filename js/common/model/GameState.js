@@ -7,8 +7,6 @@
  * @author John Blanco
  */
 
-import arithmetic from '../../arithmetic.js';
-
 // @public
 const GameState = {
   SELECTING_LEVEL: 'SELECTING_LEVEL',
@@ -21,7 +19,5 @@ const GameState = {
 
 // verify that enum is immutable, without the runtime penalty in production code
 if ( assert ) { Object.freeze( GameState ); }
-
-arithmetic.register( 'GameState', GameState );
 
 export default GameState;

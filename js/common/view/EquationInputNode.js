@@ -14,7 +14,6 @@ import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
-import arithmetic from '../../arithmetic.js';
 import ArithmeticStrings from '../../ArithmeticStrings.js';
 import ArithmeticConstants from '../ArithmeticConstants.js';
 
@@ -139,7 +138,5 @@ class EquationInputNode extends Node {
     updateBoxPosition( this._box, this.inputSize );
   }
 }
-
-arithmetic.register( 'EquationInputNode', EquationInputNode );
 
 export default EquationInputNode;

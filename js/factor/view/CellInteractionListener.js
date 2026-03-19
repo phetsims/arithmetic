@@ -12,7 +12,6 @@
 
 import Emitter from '../../../../axon/js/Emitter.js';
 import Property from '../../../../axon/js/Property.js';
-import arithmetic from '../../arithmetic.js';
 
 class CellInteractionListener {
 
@@ -94,7 +93,5 @@ class CellInteractionListener {
     this.interrupted = false;
   }
 }
-
-arithmetic.register( 'CellInteractionListener', CellInteractionListener );
 
 export default CellInteractionListener;

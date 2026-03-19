@@ -11,7 +11,6 @@ import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import Line from '../../../../scenery/js/nodes/Line.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
-import arithmetic from '../../arithmetic.js';
 import ArithmeticConstants from '../../common/ArithmeticConstants.js';
 
 // constants
@@ -66,7 +65,5 @@ class FactorScreenIconNode extends Rectangle {
     this.addChild( multiplierBox );
   }
 }
-
-arithmetic.register( 'FactorScreenIconNode', FactorScreenIconNode );
 
 export default FactorScreenIconNode;
