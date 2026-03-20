@@ -31,4 +31,6 @@ type StringsType = {
 
 const ArithmeticStrings = getStringModule( 'ARITHMETIC' ) as StringsType;
 
+arithmetic.register( 'ArithmeticStrings', ArithmeticStrings );
+
 export default ArithmeticStrings;

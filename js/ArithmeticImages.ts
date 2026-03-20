@@ -128,4 +128,6 @@ const ArithmeticImages = {
   } )
 };
 
+arithmetic.register( 'ArithmeticImages', ArithmeticImages );
+
 export default ArithmeticImages;
